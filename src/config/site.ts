@@ -2,11 +2,23 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "유니버스 피아노",
-  description: "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  description: "유니버스 피아노 홈페이지.",
   mainNav: [
     {
       title: "공지사항",
-      href: "/notices",
+      href: "/notice",
+    },
+    {
+      title: "커뮤니티",
+      href: "/community",
+    },
+    {
+      title: "리뷰",
+      href: "/review",
+    },
+    {
+      title: "고객지원",
+      href: "/support",
     },
   ],
   links: {
