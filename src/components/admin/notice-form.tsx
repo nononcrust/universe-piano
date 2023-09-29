@@ -1,9 +1,10 @@
 "use client";
 
-import { useCreateNotice } from "@/features/admin/hooks/use-create-notice";
+import { noticeApi } from "@/api/notice";
 import { FORM } from "@/lib/constants/form";
 import { ROUTE } from "@/lib/constants/route";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import z from "zod";
@@ -39,7 +40,12 @@ interface NoticeFormProps {
 }
 
 export const NoticeForm = ({ type }: NoticeFormProps) => {
-  const createNoticeMutation = useCreateNotice();
+  const queryClient = useQueryClient();
+
+  const createNoticeMutation = useMutation({
+    mutationFn: noticeApi.createNotice,
+    onSuccess: () => queryClient.invalidateQueries(["notice"]),
+  });
 
   const router = useRouter();
 

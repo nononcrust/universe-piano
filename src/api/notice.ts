@@ -9,14 +9,28 @@ import {
 const ENDPOINT = "/notice";
 
 export const noticeApi = {
-  getNoticeById: (noticeId: number) => api.get<GetNoticeByIdApiResponse>(`${ENDPOINT}/${noticeId}`),
+  getNoticeById: async (noticeId: number) => {
+    const response = await api.get<GetNoticeByIdApiResponse>(`${ENDPOINT}/${noticeId}`);
+    return response.data;
+  },
 
-  getNoticeList: () => api.get<GetNoticeListApiResponse>(`${ENDPOINT}`),
+  getNoticeList: async () => {
+    const response = await api.get<GetNoticeListApiResponse>(`${ENDPOINT}`);
+    return response.data;
+  },
 
-  createNotice: (body: CreateNoticeApiBody) => api.post(`${ENDPOINT}`, body),
+  createNotice: async (body: CreateNoticeApiBody) => {
+    const resposne = await api.post(`${ENDPOINT}`, body);
+    return resposne.data;
+  },
 
-  updateNotice: (noticeId: number, body: UpdateNoticeApiBody) =>
-    api.put(`${ENDPOINT}/${noticeId}`, body),
+  updateNotice: async (noticeId: number, body: UpdateNoticeApiBody) => {
+    const response = await api.put(`${ENDPOINT}/${noticeId}`, body);
+    return response.data;
+  },
 
-  deleteNotice: (noticeId: number) => api.delete(`${ENDPOINT}/${noticeId}`),
+  deleteNotice: async (noticeId: number) => {
+    const response = await api.delete(`${ENDPOINT}/${noticeId}`);
+    return response.data;
+  },
 };

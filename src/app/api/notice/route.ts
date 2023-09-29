@@ -7,7 +7,7 @@ export const GET = async (request: Request) => {
 
   console.log("[db] notices", notices);
 
-  return Response.json(notices);
+  return Response.json(notices.reverse());
 };
 
 export const POST = async (request: Request) => {
