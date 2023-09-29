@@ -3,6 +3,7 @@
 import { noticeApi } from "@/api/notice";
 import { NoticeListItem } from "@/components/notice-list-item";
 import { ROUTE } from "@/lib/constants/route";
+import { formatDate } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
@@ -30,7 +31,7 @@ export default function NoticePage() {
         </Link>
         {noticeListQuery.data?.map((item, index) => (
           <Link key={index} href={ROUTE.NOTICE_DETAIL(String(index))}>
-            <NoticeListItem title={item.title} createdAt={item.createdAt} />
+            <NoticeListItem title={item.title} createdAt={formatDate(item.createdAt)} />
           </Link>
         ))}
       </ul>
