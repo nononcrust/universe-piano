@@ -5,16 +5,20 @@ export const siteConfig = {
   description: "유니버스 피아노 홈페이지.",
   mainNav: [
     {
-      title: "공지사항",
-      href: "/notice",
+      title: "소개",
+      href: "/about",
+    },
+    {
+      title: "서비스",
+      href: "/service",
+    },
+    {
+      title: "스터디",
+      href: "/study",
     },
     {
       title: "커뮤니티",
       href: "/community",
-    },
-    {
-      title: "리뷰",
-      href: "/review",
     },
     {
       title: "고객지원",
