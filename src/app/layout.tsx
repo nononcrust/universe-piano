@@ -1,3 +1,4 @@
+import { Footer } from "@/components/layouts/footer";
 import { Header } from "@/components/layouts/header";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { cn } from "@/lib/utils";
@@ -16,7 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn("min-h-screen bg-background font-sans antialiased")}>
         <div className="flex flex-col">
           <Header />
-          <div className="flex-1">{children}</div>
+          <div className="min-h-screen flex-1">{children}</div>
+          <Footer />
           <TailwindIndicator />
         </div>
       </body>

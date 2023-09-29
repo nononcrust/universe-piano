@@ -13,6 +13,10 @@ export const siteConfig = {
       href: "/service",
     },
     {
+      title: "후기",
+      href: "/review",
+    },
+    {
       title: "스터디",
       href: "/study",
     },

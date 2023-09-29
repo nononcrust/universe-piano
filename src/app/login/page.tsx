@@ -1,3 +1,7 @@
 export default function LoginPage() {
-  return <div>Login</div>;
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      로그인 페이지
+    </main>
+  );
 }

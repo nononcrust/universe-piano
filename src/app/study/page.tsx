@@ -1,7 +1,7 @@
-export default function ReviewPage() {
+export default function StudyPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      리뷰 페이지
+      스터디 페이지
     </main>
   );
 }
