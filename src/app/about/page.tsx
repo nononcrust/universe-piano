@@ -1,10 +1,8 @@
 "use client";
 
 import { PageHeader } from "@/components/page-title";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tabs } from "@radix-ui/react-tabs";
-import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -39,11 +37,11 @@ export default function AboutPage() {
               있도록 항상 고민하고 있습니다.
             </p>
           </div>
-          <div className="relative mt-8 h-[540px]">
+          {/* <div className="relative mt-8 h-[540px]">
             <AspectRatio ratio={16 / 9}>
               <Image src="/images/placeholder-image-1.jpg" alt="" fill />
             </AspectRatio>
-          </div>
+          </div> */}
         </TabsContent>
         <TabsContent className="container px-4" value="greetings">
           <h1 className="mt-8 text-xl font-semibold">대표의 인삿말</h1>
