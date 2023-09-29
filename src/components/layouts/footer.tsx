@@ -1,7 +1,16 @@
+"use client";
+
 import { ROUTE } from "@/lib/constants/route";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const Footer = () => {
+  const pathname = usePathname();
+
+  const isAdminPage = pathname.startsWith(ROUTE.ADMIN.HOME);
+
+  if (isAdminPage) return null;
+
   return (
     <footer className="border-t">
       <div className="container py-8">

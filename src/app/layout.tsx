@@ -2,6 +2,7 @@ import { Footer } from "@/components/layouts/footer";
 import { Header } from "@/components/layouts/header";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { cn } from "@/lib/utils";
+import { Providers } from "@/providers";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -14,13 +15,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <head />
-      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
-        <div className="flex flex-col">
-          <Header />
-          <div className="min-h-screen flex-1">{children}</div>
-          <Footer />
-          <TailwindIndicator />
-        </div>
+      <body>
+        <Providers>
+          <div className={cn("flex flex-col justify-between bg-background font-sans antialiased")}>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <div className="flex flex-1 flex-col">{children}</div>
+            </div>
+            <Footer />
+            <TailwindIndicator />
+          </div>
+        </Providers>
       </body>
     </html>
   );

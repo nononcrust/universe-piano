@@ -105,7 +105,7 @@ interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
 const ListItem = ({ children, href, onClick }: ListItemProps) => {
   return (
     <Link href={href}>
-      <li className="cursor-pointer list-none text-muted-foreground" onClick={onClick}>
+      <li className="cursor-pointer text-muted-foreground" onClick={onClick}>
         {children}
       </li>
     </Link>
