@@ -25,6 +25,10 @@ export const siteConfig = {
       href: "/community",
     },
     {
+      title: "공지사항",
+      href: "/notice",
+    },
+    {
       title: "고객지원",
       href: "/support",
     },

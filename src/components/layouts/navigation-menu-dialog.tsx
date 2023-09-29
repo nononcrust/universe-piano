@@ -1,7 +1,7 @@
 "use client";
 
 import { useScrollLock } from "@/hooks/use-scroll-lock";
-import { ROUTE, Route } from "@/lib/constants/route";
+import { ROUTE } from "@/lib/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icon } from "../icon";
@@ -31,8 +31,11 @@ export const NavigationMenuDialog = ({ isOpen, onClose }: NavigationMenuDialogPr
           <ListItem onClick={onClose} href={ROUTE.ABOUT}>
             대표의 스토리
           </ListItem>
+          <ListItem onClick={onClose} href={ROUTE.NOTICE}>
+            공지사항
+          </ListItem>
         </ListSection>
-        <ListSection title="서비스">
+        {/* <ListSection title="서비스">
           <ListItem onClick={onClose} href={ROUTE.HOME}>
             미국 음대 입시 컨설팅
           </ListItem>
@@ -74,7 +77,7 @@ export const NavigationMenuDialog = ({ isOpen, onClose }: NavigationMenuDialogPr
           <ListItem onClick={onClose} href={ROUTE.HOME}>
             영어 시험 Q&A
           </ListItem>
-        </ListSection>
+        </ListSection> */}
       </ScrollArea>
     </div>
   );
@@ -96,7 +99,7 @@ const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
 
 interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode;
-  href: Route;
+  href: string;
 }
 
 const ListItem = ({ children, href, onClick }: ListItemProps) => {

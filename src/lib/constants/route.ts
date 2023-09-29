@@ -2,6 +2,6 @@ export const ROUTE = {
   HOME: "/",
   LOGIN: "/login",
   ABOUT: "/about",
-};
-
-export type Route = (typeof ROUTE)[keyof typeof ROUTE];
+  NOTICE: "/notice",
+  NOTICE_DETAIL: (noticeId: string) => `/notice/${noticeId}`,
+} as const;
