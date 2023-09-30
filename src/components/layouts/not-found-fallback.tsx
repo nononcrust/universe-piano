@@ -13,11 +13,9 @@ export const NotFoundFallback = ({ message = DEFAULT_MESSAGE }: NotFoundFallback
   const router = useRouter();
 
   return (
-    <div className="flex flex-col">
-      <p>{message}</p>
-      <Button variant="secondary" onClick={router.back}>
-        돌아가기
-      </Button>
+    <div className="flex flex-1 flex-col items-center justify-center gap-4 border border-red-500">
+      <p className="text-muted-foreground">{message}</p>
+      <Button onClick={router.back}>돌아가기</Button>
     </div>
   );
 };
