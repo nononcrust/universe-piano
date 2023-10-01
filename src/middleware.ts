@@ -4,7 +4,6 @@ import { ROUTE } from "./lib/constants/route";
 
 export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get(COOKIE.ACCESS_TOKEN)?.value;
-  console.log("accessToken", accessToken);
 
   // TODO: check if the user is admin
   const isAdmin = accessToken ? true : false;
