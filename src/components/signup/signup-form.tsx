@@ -16,9 +16,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { FORM } from "@/lib/constants/form";
+import { ROUTE } from "@/lib/constants/route";
 import { formatPhoneNumberInput } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -36,6 +38,8 @@ interface SignUpFormProps {
 
 export const SignUpForm = ({ initialData }: SignUpFormProps) => {
   const userInfo = initialData.properties;
+
+  const router = useRouter();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -59,8 +63,9 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
     };
 
     signupMutation.mutate(body, {
-      onSuccess: () => console.log("success!"),
-      onError: () => console.log("error!"),
+      onSuccess: () => {
+        router.push(ROUTE.HOME);
+      },
     });
   });
 
