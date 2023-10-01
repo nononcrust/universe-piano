@@ -1,5 +1,6 @@
 "use client";
 
+import { ROUTE } from "@/lib/constants/route";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 
@@ -15,7 +16,7 @@ export const NotFoundFallback = ({ message = DEFAULT_MESSAGE }: NotFoundFallback
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-4">
       <p className="text-muted-foreground">{message}</p>
-      <Button onClick={router.back}>돌아가기</Button>
+      <Button onClick={() => router.push(ROUTE.HOME)}>홈으로 돌아가기</Button>
     </div>
   );
 };
