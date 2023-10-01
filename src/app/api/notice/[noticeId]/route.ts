@@ -16,8 +16,6 @@ export const GET = async (request: Request, context: Context) => {
     },
   });
 
-  console.log("[db] notice", notice);
-
   return new NextResponse(JSON.stringify(notice), {
     status: 200,
   });

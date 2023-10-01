@@ -11,10 +11,7 @@ export default async function KakaoCallbackPage({
 }) {
   const code = searchParams.code;
 
-  if (!code) {
-    console.log("code not found redirect to login");
-    redirect(ROUTE.LOGIN);
-  }
+  if (!code) redirect(ROUTE.LOGIN);
 
   const data = await kakaoApi.getAccessToken(code);
   const userInfo = await kakaoApi.getUserInfo(data.access_token);
@@ -26,13 +23,16 @@ export default async function KakaoCallbackPage({
     },
   });
 
-  console.log("user", user);
-  console.log("token", data.access_token);
-
   if (user === null) {
-    console.log("user not found redirect to signup");
     redirect(`${ROUTE.SIGNUP}?token=${data.access_token}`);
   }
+
+  fetch("http://localhost:3000/api/auth/login", {
+    method: "POST",
+    body: JSON.stringify({
+      userId: user.id,
+    }),
+  });
 
   const userState = {
     id: userInfo.id,

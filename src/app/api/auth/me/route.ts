@@ -11,8 +11,6 @@ export const GET = async (request: Request) => {
 
   const decoded = jwt.verify(accessToken);
 
-  console.log("jwt token", decoded);
-
   if (!decoded) {
     return new Response("", {
       status: 401,

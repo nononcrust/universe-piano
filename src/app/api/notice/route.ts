@@ -1,11 +1,10 @@
 import { noticeRequestSchema } from "@/api/notice.type";
 import { prisma } from "@/lib/prisma";
+import { noop } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
 export const GET = async (request: Request) => {
   const notices = await prisma.notice.findMany();
-
-  console.log("[db] notices", notices);
 
   return Response.json(notices.reverse());
 };
@@ -28,6 +27,6 @@ export const POST = async (request: Request) => {
       status: 201,
     });
   } catch (error) {
-    console.log(error);
+    noop();
   }
 };

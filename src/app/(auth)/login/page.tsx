@@ -8,8 +8,6 @@ import { userActions } from "@/store/user";
 import Link from "next/link";
 
 export default function LoginPage() {
-  console.log("#", URL.KAKAO_LOGIN);
-
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 

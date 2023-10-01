@@ -23,8 +23,6 @@ const getNoticeDetail = async (noticeId: number) => {
 };
 
 export default async function NoticeDetailPage({ params }: { params: { noticeId: string } }) {
-  console.log("@context", params);
-
   const initialData = await getNoticeDetail(Number(params.noticeId));
 
   if (!initialData) {

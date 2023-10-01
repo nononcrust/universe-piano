@@ -51,7 +51,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
   });
 
   const signupMutation = useMutation({
-    mutationFn: authApi.signup,
+    mutationFn: authApi.register,
   });
 
   const onSubmit = form.handleSubmit((data) => {
