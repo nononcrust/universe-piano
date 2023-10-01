@@ -1,12 +1,10 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
-import { useDialog } from "@/hooks/use-dialog";
 import { ROUTE } from "@/lib/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "../icon";
 import { NavigationMenuDialog } from "./navigation-menu-dialog";
 
 export interface NavItem {
@@ -23,12 +21,9 @@ interface MainNavProps {
 export function MainNav({ items }: MainNavProps) {
   const pathname = usePathname();
 
-  const menuDialog = useDialog();
-
   return (
     <div className="flex gap-6 md:gap-10">
-      <Icon.Menu className="cursor-pointer md:hidden" onClick={menuDialog.open} />
-      <NavigationMenuDialog isOpen={menuDialog.isOpen} onClose={menuDialog.close} />
+      <NavigationMenuDialog />
       <Link href={ROUTE.HOME} className="flex items-center space-x-2">
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>

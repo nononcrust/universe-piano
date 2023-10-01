@@ -13,7 +13,7 @@ export const NotFoundFallback = ({ message = DEFAULT_MESSAGE }: NotFoundFallback
   const router = useRouter();
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 border border-red-500">
+    <div className="flex flex-1 flex-col items-center justify-center gap-4">
       <p className="text-muted-foreground">{message}</p>
       <Button onClick={router.back}>돌아가기</Button>
     </div>

@@ -15,9 +15,9 @@ export const Footer = () => {
     <footer className="border-t">
       <div className="container py-8">
         <div className="flex gap-8">
-          <Link href={ROUTE.HOME}>이용약관</Link>
-          <Link className="underline" href={ROUTE.HOME}>
-            개인정보취급방침
+          <Link href={ROUTE.TERMS.SERVICE}>서비스 이용약관</Link>
+          <Link className="underline" href={ROUTE.TERMS.PRIVACY}>
+            개인정보 처리방침
           </Link>
         </div>
         <div className="mt-8 text-sm text-muted-foreground">

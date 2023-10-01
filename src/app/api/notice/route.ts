@@ -1,4 +1,4 @@
-import { noticeRequestSchema } from "@/app/schema/notice";
+import { noticeRequestSchema } from "@/api/notice.type";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 

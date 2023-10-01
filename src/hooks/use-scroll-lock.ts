@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 
-export const useScrollLock = (enabled?: boolean) => {
+export const useScrollLock = () => {
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
 
-    if (enabled) document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = originalStyle;
     };
-  }, [enabled]);
+  }, []);
 };
