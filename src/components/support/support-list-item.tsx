@@ -11,7 +11,7 @@ interface SupportListItemProps {
 export const SupportListItem = ({ value, title, content }: SupportListItemProps) => {
   return (
     <AccordionItem value={value}>
-      <AccordionTrigger>{title}</AccordionTrigger>
+      <AccordionTrigger>Q. {title}</AccordionTrigger>
       <AccordionContent className="whitespace-pre">{content}</AccordionContent>
     </AccordionItem>
   );

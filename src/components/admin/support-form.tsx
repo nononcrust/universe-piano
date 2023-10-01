@@ -1,13 +1,10 @@
 "use client";
 
-import { noticeApi } from "@/api/notice";
 import { FORM } from "@/lib/constants/form";
-import { ROUTE } from "@/lib/constants/route";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import z from "zod";
+import { z } from "zod";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import {
@@ -20,10 +17,12 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { FormLayout } from "./form-layout";
 
 const formSchema = z.object({
+  category: z.string(),
   title: z
     .string()
     .max(100, { message: FORM.ERROR.MAX_LENGTH(100) })
@@ -36,18 +35,11 @@ const formSchema = z.object({
 
 type FormSchema = z.infer<typeof formSchema>;
 
-interface NoticeFormProps {
+interface SupportFormProps {
   mode: "create" | "update";
 }
 
-export const NoticeForm = ({ mode }: NoticeFormProps) => {
-  const queryClient = useQueryClient();
-
-  const createNoticeMutation = useMutation({
-    mutationFn: noticeApi.createNotice,
-    onSuccess: () => queryClient.invalidateQueries(["notice"]),
-  });
-
+export const SupportForm = ({ mode }: SupportFormProps) => {
   const router = useRouter();
 
   const form = useForm<FormSchema>({
@@ -59,9 +51,10 @@ export const NoticeForm = ({ mode }: NoticeFormProps) => {
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
-    createNoticeMutation.mutate(data, {
-      onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
-    });
+    // createNoticeMutation.mutate(data, {
+    //   onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
+    // });
+    console.log(data);
   });
 
   return (
@@ -69,6 +62,27 @@ export const NoticeForm = ({ mode }: NoticeFormProps) => {
       <CardContent>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
+            <FormField
+              name="category"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>카테고리</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="카테고리를 선택해주세요." />
+                      </SelectTrigger>
+                    </FormControl>
+                    <FormDescription>카테고리를 선택해주세요.</FormDescription>
+                    <SelectContent>
+                      <SelectItem value="common">일반</SelectItem>
+                      <SelectItem value="account">계정</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormItem>
+              )}
+            />
             <FormField
               name="title"
               control={form.control}
