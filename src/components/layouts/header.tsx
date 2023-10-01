@@ -40,7 +40,7 @@ export const Header = () => {
                     href={item.href}
                     className={cn(
                       "flex items-center text-sm font-medium text-muted-foreground",
-                      pathname === item.href && "text-foreground",
+                      pathname.startsWith(item.href) && "text-foreground",
                     )}
                   >
                     {item.title}
