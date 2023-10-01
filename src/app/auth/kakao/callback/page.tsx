@@ -12,33 +12,34 @@ export default async function KakaoCallbackPage({
   const code = searchParams.code;
 
   if (!code) {
-    return redirect(ROUTE.LOGIN);
+    console.log("code not found redirect to login");
+    redirect(ROUTE.LOGIN);
   }
 
-  try {
-    const data = await kakaoApi.getAccessToken(code);
-    const userInfo = await kakaoApi.getUserInfo(data.access_token);
-    const kakaoId = String(userInfo.id);
+  const data = await kakaoApi.getAccessToken(code);
+  const userInfo = await kakaoApi.getUserInfo(data.access_token);
+  const kakaoId = String(userInfo.id);
 
-    const user = await prisma.user.findUnique({
-      where: {
-        kakaoId,
-      },
-    });
+  const user = await prisma.user.findUnique({
+    where: {
+      kakaoId,
+    },
+  });
 
-    if (!user) {
-      return redirect(`${ROUTE.SIGNUP}?token=${data.access_token}`);
-    }
+  console.log("user", user);
+  console.log("token", data.access_token);
 
-    const userState = {
-      id: userInfo.id,
-      nickname: userInfo.properties.nickname,
-      email: "test@gamil.com",
-      profileImage: userInfo.properties.profile_image,
-    };
-
-    return <RedirectWithUser user={userState} />;
-  } catch (error) {
-    return redirect(ROUTE.LOGIN);
+  if (user === null) {
+    console.log("user not found redirect to signup");
+    redirect(`${ROUTE.SIGNUP}?token=${data.access_token}`);
   }
+
+  const userState = {
+    id: userInfo.id,
+    nickname: userInfo.properties.nickname,
+    email: "test@gamil.com",
+    profileImage: userInfo.properties.profile_image,
+  };
+
+  return <RedirectWithUser user={userState} />;
 }

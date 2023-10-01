@@ -11,15 +11,18 @@ const getKakaoUserInfo = async (token: string) => {
 
 export default async function SignUpPage({ searchParams }: { searchParams?: { token: string } }) {
   const token = searchParams?.token;
+  console.log("@token", token);
 
   if (!token) {
-    return redirect(ROUTE.LOGIN);
+    return redirect(ROUTE.HOME);
   }
 
   try {
     const initialData = await getKakaoUserInfo(token);
+    console.log("@initialData", initialData);
     return <SignUpForm initialData={initialData} />;
   } catch (error) {
+    console.log("kakao token error");
     return redirect(ROUTE.LOGIN);
   }
 }
