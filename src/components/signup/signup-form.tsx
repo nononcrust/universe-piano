@@ -55,11 +55,13 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
   });
 
   const onSubmit = form.handleSubmit((data) => {
+    if (signupMutation.isLoading) return;
+
     const body = {
       nickname: data.nickname,
       phone: data.phone,
       kakaoId: String(initialData.id),
-      profileImage: userInfo.profile_image,
+      profileImage: userInfo.thumbnail_image,
     };
 
     signupMutation.mutate(body, {

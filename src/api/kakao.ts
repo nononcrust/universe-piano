@@ -25,6 +25,7 @@ export const kakaoApi = {
   },
   getUserInfo: async (accessToken: string) => {
     const response = await axios.get<GetKakaoUserInfoApiResponse>(ENDPOINT.KAKAO_USER_INFO_URL, {
+      params: { secure_resource: true },
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
