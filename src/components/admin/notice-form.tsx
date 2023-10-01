@@ -98,7 +98,9 @@ export const NoticeForm = ({ mode }: NoticeFormProps) => {
               )}
             />
             <div className="flex justify-end">
-              <Button type="submit">추가</Button>
+              <Button className="flex-1 md:flex-initial" type="submit">
+                추가
+              </Button>
             </div>
           </FormLayout>
         </Form>

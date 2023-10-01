@@ -6,21 +6,60 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon } from "../icon";
 
+const drawer = [
+  {
+    title: "유저 관리",
+    items: [
+      {
+        title: "유저 목록",
+        href: ROUTE.ADMIN.USER.LIST,
+      },
+    ],
+  },
+  {
+    title: "공지사항 관리",
+    items: [
+      {
+        title: "공지사항 목록",
+        href: ROUTE.ADMIN.NOTICE.LIST,
+      },
+      {
+        title: "공지사항 추가",
+        href: ROUTE.ADMIN.NOTICE.CREATE,
+      },
+    ],
+  },
+  {
+    title: "도움말 관리",
+    items: [
+      {
+        title: "도움말 목록",
+        href: ROUTE.ADMIN.SUPPORT.LIST,
+      },
+      {
+        title: "도움말 추가",
+        href: ROUTE.ADMIN.SUPPORT.CREATE,
+      },
+    ],
+  },
+];
+
 export const NavigationDrawer = () => {
   return (
-    <nav className="flex w-[240px] flex-col border-r pt-8">
+    <nav className="hidden w-[240px] flex-col border-r pt-8 md:flex">
       <div className="mb-8 flex items-center gap-3 p-4">
         <Icon.ArrowLeft />
-        <Link href={ROUTE.HOME}>사이트로 돌아가기</Link>
+        <Link href={ROUTE.HOME} className="font-semibold">
+          사이트로 돌아가기
+        </Link>
       </div>
-      <NavigationDrawerSection title="공지사항 관리">
-        <NavigationDrawerItem title="공지사항 목록" href={ROUTE.ADMIN.NOTICE.LIST} />
-        <NavigationDrawerItem title="공지사항 추가" href={ROUTE.ADMIN.NOTICE.CREATE} />
-      </NavigationDrawerSection>
-      <NavigationDrawerSection title="도움말 관리">
-        <NavigationDrawerItem title="도움말 목록" href={ROUTE.ADMIN.SUPPORT.LIST} />
-        <NavigationDrawerItem title="도움말 추가" href={ROUTE.ADMIN.SUPPORT.CREATE} />
-      </NavigationDrawerSection>
+      {drawer.map((section) => (
+        <NavigationDrawerSection key={section.title} title={section.title}>
+          {section.items.map((item) => (
+            <NavigationDrawerItem key={item.title} title={item.title} href={item.href} />
+          ))}
+        </NavigationDrawerSection>
+      ))}
     </nav>
   );
 };

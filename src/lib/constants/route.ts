@@ -8,6 +8,10 @@ export const ROUTE = {
   NOTICE_DETAIL: (noticeId: string) => `/notice/${noticeId}`,
   ADMIN: {
     HOME: "/admin",
+    USER: {
+      LIST: "/admin/user",
+      EDIT: (userId: string) => `/admin/user/${userId}`,
+    },
     NOTICE: {
       LIST: "/admin/notice",
       EDIT: (noticeId: string) => `/admin/notice/${noticeId}`,
