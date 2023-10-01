@@ -29,7 +29,7 @@ export const NoticeDetail = ({ initialData }: NoticeDetailProps) => {
         <h2 className="text-lg font-semibold md:text-2xl">{data.title}</h2>
         <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
       </div>
-      <div className="mt-8">{data.content}</div>
+      <div className="mt-8 whitespace-pre">{data.content}</div>
       <div className="mt-24">
         <Link href={ROUTE.NOTICE}>
           <Button variant="secondary">목록으로</Button>

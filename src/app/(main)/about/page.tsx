@@ -1,6 +1,6 @@
 "use client";
 
-import { PageHeader } from "@/components/page-title";
+import { PageHeader } from "@/components/page-header";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tabs } from "@radix-ui/react-tabs";
 
@@ -14,10 +14,10 @@ export default function AboutPage() {
       <Tabs defaultValue="visitors">
         <TabsList className="h-14 border-b">
           <div className="container flex h-full p-0 md:px-8">
-            <TabsTrigger className="px-8" value="visitors">
+            <TabsTrigger className="flex-1 px-8 md:flex-initial" value="visitors">
               처음 오신 분들께
             </TabsTrigger>
-            <TabsTrigger className="px-8" value="greetings">
+            <TabsTrigger className="flex-1 px-8 md:flex-initial" value="greetings">
               대표의 인삿말
             </TabsTrigger>
           </div>

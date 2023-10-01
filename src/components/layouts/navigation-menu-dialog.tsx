@@ -17,6 +17,7 @@ export const NavigationMenuDialog = () => {
           <ListItem href={ROUTE.ABOUT}>처음 오신 분들께</ListItem>
           <ListItem href={ROUTE.ABOUT}>대표의 스토리</ListItem>
           <ListItem href={ROUTE.NOTICE}>공지사항</ListItem>
+          <ListItem href={ROUTE.SUPPORT}>고객센터</ListItem>
         </ListSection>
       </SheetContent>
     </Sheet>

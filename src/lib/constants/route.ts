@@ -4,6 +4,7 @@ export const ROUTE = {
   SIGNUP: "/signup",
   ABOUT: "/about",
   NOTICE: "/notice",
+  SUPPORT: "/support",
   NOTICE_DETAIL: (noticeId: string) => `/notice/${noticeId}`,
   ADMIN: {
     HOME: "/admin",
