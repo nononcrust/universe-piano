@@ -47,12 +47,12 @@ const drawer = [
 export const NavigationDrawer = () => {
   return (
     <nav className="hidden w-[240px] flex-col border-r pt-8 md:flex">
-      <div className="mb-8 flex items-center gap-3 p-4">
-        <Icon.ArrowLeft />
-        <Link href={ROUTE.HOME} className="font-semibold">
+      <Link href={ROUTE.HOME} className="font-semibold">
+        <div className="mb-8 flex cursor-pointer items-center gap-3 p-4">
+          <Icon.ArrowLeft />
           사이트로 돌아가기
-        </Link>
-      </div>
+        </div>
+      </Link>
       {drawer.map((section) => (
         <NavigationDrawerSection key={section.title} title={section.title}>
           {section.items.map((item) => (

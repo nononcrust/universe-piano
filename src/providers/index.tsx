@@ -24,7 +24,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
       </PersistGate>
     </Provider>
   );
