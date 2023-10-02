@@ -3,6 +3,7 @@
 import { noticeApi } from "@/api/notice";
 import { FORM } from "@/lib/constants/form";
 import { ROUTE } from "@/lib/constants/route";
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -21,6 +22,8 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { useToast } from "../ui/use-toast";
+import { DeleteButton } from "./delete-button";
 import { FormLayout } from "./form-layout";
 
 const formSchema = z.object({
@@ -37,10 +40,14 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>;
 
 interface NoticeFormProps {
-  mode: "create" | "update";
+  mode: "create" | "edit";
+  initialData?: FormSchema;
+  noticeId?: number;
 }
 
-export const NoticeForm = ({ mode }: NoticeFormProps) => {
+export const NoticeForm = ({ mode, initialData, noticeId }: NoticeFormProps) => {
+  const { toast } = useToast();
+
   const queryClient = useQueryClient();
 
   const createNoticeMutation = useMutation({
@@ -48,21 +55,55 @@ export const NoticeForm = ({ mode }: NoticeFormProps) => {
     onSuccess: () => queryClient.invalidateQueries(["notice"]),
   });
 
+  const updateNoticeMutation = useMutation({
+    mutationFn: noticeApi.updateNotice,
+    onSuccess: () => queryClient.invalidateQueries(["notice"]),
+  });
+
+  const deleteNoticeMutation = useMutation({
+    mutationFn: noticeApi.deleteNotice,
+    onSuccess: () => queryClient.invalidateQueries(["notice"]),
+  });
+
   const router = useRouter();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-      content: "",
-    },
+    defaultValues: initialData || { title: "", content: "" },
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
-    createNoticeMutation.mutate(data, {
-      onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
-    });
+    if (mode === "create" && !createNoticeMutation.isLoading) {
+      createNoticeMutation.mutate(data, {
+        onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
+      });
+    }
+
+    if (mode === "edit" && noticeId && !updateNoticeMutation.isLoading) {
+      const body = {
+        noticeId: noticeId,
+        body: data,
+      };
+
+      updateNoticeMutation.mutate(body, {
+        onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
+      });
+    }
   });
+
+  const onDelete = () => {
+    if (mode === "edit" && noticeId && !deleteNoticeMutation.isLoading) {
+      deleteNoticeMutation.mutate(noticeId, {
+        onSuccess: () => {
+          router.push(ROUTE.ADMIN.NOTICE.LIST);
+          toast({
+            title: "공지사항 삭제 완료",
+            description: "공지사항 삭제가 완료되었습니다.",
+          });
+        },
+      });
+    }
+  };
 
   return (
     <Card>
@@ -97,9 +138,10 @@ export const NoticeForm = ({ mode }: NoticeFormProps) => {
                 </FormItem>
               )}
             />
-            <div className="flex justify-end">
+            <div className={cn("flex gap-4", mode === "edit" ? "justify-between" : "justify-end")}>
+              {mode === "edit" && <DeleteButton onDelete={onDelete} />}
               <Button className="flex-1 md:flex-initial" type="submit">
-                추가
+                {mode === "create" ? "추가" : "수정"}
               </Button>
             </div>
           </FormLayout>

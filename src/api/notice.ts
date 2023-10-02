@@ -24,8 +24,8 @@ export const noticeApi = {
     return resposne.data;
   },
 
-  updateNotice: async (noticeId: number, body: UpdateNoticeApiBody) => {
-    const response = await api.put(`${ENDPOINT}/${noticeId}`, body);
+  updateNotice: async (data: { noticeId: number; body: UpdateNoticeApiBody }) => {
+    const response = await api.put(`${ENDPOINT}/${data.noticeId}`, data.body);
     return response.data;
   },
 

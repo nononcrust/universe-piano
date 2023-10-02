@@ -3,7 +3,7 @@ import { SupportForm } from "@/components/admin/support-form";
 
 export default function AdminSupportCreatePage() {
   return (
-    <main className="container">
+    <main>
       <AdminPageTitle title="도움말 추가" />
       <SupportForm mode="create" />
     </main>
