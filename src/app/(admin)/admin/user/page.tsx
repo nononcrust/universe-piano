@@ -2,7 +2,7 @@ import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { User, userColumns } from "@/components/admin/data-table/columns/user-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
 
-export const DUMMY_USER_LIST: User[] = Array(30)
+const DUMMY_USER_LIST: User[] = Array(30)
   .fill(0)
   .map((_, index) => ({
     id: index + 1,
