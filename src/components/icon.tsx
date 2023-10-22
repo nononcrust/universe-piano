@@ -6,6 +6,9 @@ import {
   ChevronsRight,
   Menu,
   MoreHorizontal,
+  ShoppingBasket,
+  ShoppingCart,
+  Star,
   X,
 } from "lucide-react";
 
@@ -18,4 +21,7 @@ export const Icon = {
   ChevronRight: ChevronRight,
   ChevronsLeft: ChevronsLeft,
   ChevronsRight: ChevronsRight,
+  ShoppingCart: ShoppingCart,
+  ShoppingBasket: ShoppingBasket,
+  Star: Star,
 };

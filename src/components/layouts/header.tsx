@@ -7,8 +7,9 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Icon } from "../icon";
 import { NavigationMenuDialog } from "./navigation-menu-dialog";
+import { UserMenu } from "./user-menu";
 
 export interface NavItem {
   title: string;
@@ -18,7 +19,7 @@ export interface NavItem {
 }
 
 export const Header = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   const pathname = usePathname();
 
@@ -55,10 +56,12 @@ export const Header = () => {
           </Link>
         )}
         {user && (
-          <Avatar className="h-8 w-8 cursor-pointer" onClick={logout}>
-            <AvatarImage src={user.profileImage} />
-            <AvatarFallback />
-          </Avatar>
+          <div className="flex items-center gap-4">
+            <Link href={ROUTE.CART}>
+              <Icon.ShoppingCart className="cursor-pointer" />
+            </Link>
+            <UserMenu />
+          </div>
         )}
       </div>
     </header>

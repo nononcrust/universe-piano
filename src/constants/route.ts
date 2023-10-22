@@ -20,6 +20,11 @@ export const ROUTE = {
     SERVICE: "/terms/service",
     PRIVACY: "/terms/privacy",
   },
+  MYPAGE: {
+    HOME: "/mypage",
+    REVIEW: "/mypage/review",
+  },
+  CART: "/cart",
   ADMIN: {
     HOME: "/admin",
     USER: {
