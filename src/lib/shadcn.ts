@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
 import plugin from "tailwindcss/plugin";
 
-export const shadcnPlugin = plugin(
+const shadcnPlugin = plugin(
   ({ addBase }) => {
     addBase({
       ":root": {

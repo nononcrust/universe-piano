@@ -1,5 +1,5 @@
-import { shadcnPreset } from "@/lib/shadcn";
 import type { Config } from "tailwindcss";
+import { shadcnPreset } from "./src/lib/shadcn";
 
 module.exports = {
   presets: [shadcnPreset],
