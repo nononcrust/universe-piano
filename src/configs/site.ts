@@ -13,7 +13,7 @@ export const siteConfig = {
     },
     {
       title: "전자책",
-      href: ROUTE.EBOOK.LIST,
+      href: ROUTE.PRODUCT.LIST,
     },
     {
       title: "후기",

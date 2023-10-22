@@ -11,7 +11,7 @@ interface ProductItemProps {
 export const ProductItem = ({ productId }: ProductItemProps) => {
   return (
     <Link
-      href={ROUTE.EBOOK.DETAIL(String(productId))}
+      href={ROUTE.PRODUCT.DETAIL(String(productId))}
       className="col flex cursor-pointer flex-col gap-2 pb-4"
     >
       <AspectRatio ratio={1} className="rounded-lg border">

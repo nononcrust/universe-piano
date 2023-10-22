@@ -2,6 +2,8 @@ import { CartItem } from "@/components/cart-item";
 import { PageTitle } from "@/components/layouts/page-title";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { ROUTE } from "@/constants/route";
+import Link from "next/link";
 
 const DUMMY_CART_ITEM_LIST = Array(10).fill(0);
 
@@ -23,8 +25,8 @@ export default function CartPage() {
         </div>
         <div className="flex flex-col gap-4">
           <PriceSection />
-          <Button size="lg" className="font-bold">
-            구매하기
+          <Button size="lg" className="font-bold" asChild>
+            <Link href={ROUTE.PAYMENT}>구매하기</Link>
           </Button>
         </div>
       </section>

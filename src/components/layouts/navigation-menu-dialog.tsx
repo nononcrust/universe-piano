@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTE } from "@/constants/route";
+import { siteConfig } from "@/configs/site";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icon } from "../icon";
@@ -13,11 +13,12 @@ export const NavigationMenuDialog = () => {
         <Icon.Menu />
       </SheetTrigger>
       <SheetContent side="left">
-        <ListSection className="mt-4" title="소개">
-          <ListItem href={ROUTE.ABOUT}>처음 오신 분들께</ListItem>
-          <ListItem href={ROUTE.ABOUT}>대표의 스토리</ListItem>
-          <ListItem href={ROUTE.NOTICE.LIST}>공지사항</ListItem>
-          <ListItem href={ROUTE.SUPPORT}>고객센터</ListItem>
+        <ListSection className="mt-4" title="유니버스 피아노">
+          {siteConfig.mainNav.map((item, index) => (
+            <ListItem key={index} href={item.href}>
+              {item.title}
+            </ListItem>
+          ))}
         </ListSection>
       </SheetContent>
     </Sheet>

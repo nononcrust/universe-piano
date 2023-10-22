@@ -3,9 +3,9 @@ export const ROUTE = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   ABOUT: "/about",
-  EBOOK: {
-    LIST: "/ebook",
-    DETAIL: (ebookId: string) => `/ebook/${ebookId}`,
+  PRODUCT: {
+    LIST: "/product",
+    DETAIL: (productId: string) => `/product/${productId}`,
   },
   NOTICE: {
     LIST: "/notice",
@@ -25,6 +25,7 @@ export const ROUTE = {
     REVIEW: "/mypage/review",
   },
   CART: "/cart",
+  PAYMENT: "/payment",
   ADMIN: {
     HOME: "/admin",
     USER: {

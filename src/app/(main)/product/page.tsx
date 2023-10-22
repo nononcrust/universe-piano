@@ -3,7 +3,7 @@ import { ProductItem } from "@/components/product-item";
 
 const DUMMY_PRODUCT_LIST = Array(20).fill(0);
 
-export default function EbookPage() {
+export default function ProductListPage() {
   return (
     <main className="container pb-16">
       <PageTitle title="전자책" />
