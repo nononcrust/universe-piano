@@ -1,7 +1,5 @@
 "use client";
 
-import { authApi } from "@/api/auth";
-import { GetKakaoUserInfoApiResponse } from "@/api/kakao.type";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,8 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FORM } from "@/lib/constants/form";
-import { ROUTE } from "@/lib/constants/route";
+import { FORM } from "@/constants/form";
+import { ROUTE } from "@/constants/route";
+import { authApi } from "@/features/auth";
+import { KakaoUserInfo } from "@/features/kakao";
 import { formatPhoneNumberInput } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -33,7 +33,7 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>;
 
 interface SignUpFormProps {
-  initialData: GetKakaoUserInfoApiResponse;
+  initialData: KakaoUserInfo;
 }
 
 export const SignUpForm = ({ initialData }: SignUpFormProps) => {
@@ -55,7 +55,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
   });
 
   const onSubmit = form.handleSubmit((data) => {
-    if (signupMutation.isLoading) return;
+    if (signupMutation.isPending) return;
 
     const body = {
       nickname: data.nickname,

@@ -1,4 +1,4 @@
-import { noticeRequestSchema } from "@/api/notice.type";
+import { noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { noop } from "@/lib/utils";
 import { NextResponse } from "next/server";

@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTE } from "@/lib/constants/route";
+import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icon } from "../icon";
@@ -16,7 +16,7 @@ export const NavigationMenuDialog = () => {
         <ListSection className="mt-4" title="소개">
           <ListItem href={ROUTE.ABOUT}>처음 오신 분들께</ListItem>
           <ListItem href={ROUTE.ABOUT}>대표의 스토리</ListItem>
-          <ListItem href={ROUTE.NOTICE}>공지사항</ListItem>
+          <ListItem href={ROUTE.NOTICE.LIST}>공지사항</ListItem>
           <ListItem href={ROUTE.SUPPORT}>고객센터</ListItem>
         </ListSection>
       </SheetContent>

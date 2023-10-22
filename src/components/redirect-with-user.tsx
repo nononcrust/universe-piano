@@ -1,27 +1,27 @@
 "use client";
 
-import { authApi } from "@/api/auth";
-import { useAppDispatch } from "@/hooks/use-app-dispatch";
-import { ROUTE } from "@/lib/constants/route";
-import { User, userActions } from "@/store/user";
+import { ROUTE } from "@/constants/route";
+import { authApi } from "@/features/auth";
+import { User, userState } from "@/store/user";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
 interface RedirectWithUserProps {
   user: User;
 }
 
 export const RedirectWithUser = ({ user }: RedirectWithUserProps) => {
-  const dispatch = useAppDispatch();
+  const setUser = useSetRecoilState(userState);
 
   const router = useRouter();
 
   const login = useCallback(async () => {
     await authApi.login({ userId: String(user.id) });
 
-    dispatch(userActions.setUser(user));
+    setUser(user);
     router.replace(ROUTE.HOME);
-  }, [dispatch, user, router]);
+  }, [router, setUser, user]);
 
   useEffect(() => {
     login();

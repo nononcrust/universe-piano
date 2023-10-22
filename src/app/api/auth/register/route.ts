@@ -1,11 +1,11 @@
-import { SignupApiBody, signupRequestSchema } from "@/api/auth.type";
+import { RegisterBody, registerRequestSchema } from "@/features/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export const POST = async (request: Request) => {
-  const body = (await request.json()) as SignupApiBody;
+  const body = (await request.json()) as RegisterBody;
 
-  if (signupRequestSchema.safeParse(body).success === false) {
+  if (registerRequestSchema.safeParse(body).success === false) {
     return new NextResponse("", { status: 400 });
   }
 

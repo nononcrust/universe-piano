@@ -1,8 +1,8 @@
 "use client";
 
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/configs/site";
+import { ROUTE } from "@/constants/route";
 import { useAuth } from "@/hooks/use-auth";
-import { ROUTE } from "@/lib/constants/route";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";

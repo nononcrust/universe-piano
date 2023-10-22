@@ -1,36 +1,30 @@
+import { ROUTE } from "@/constants/route";
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "유니버스 피아노",
-  description: "유니버스 피아노 홈페이지.",
+  description: "유니버스 피아노 홈페이지",
   mainNav: [
     {
       title: "소개",
-      href: "/about",
+      href: ROUTE.ABOUT,
     },
     {
-      title: "서비스",
-      href: "/service",
+      title: "전자책",
+      href: ROUTE.EBOOK.LIST,
     },
     {
       title: "후기",
-      href: "/review",
-    },
-    {
-      title: "스터디",
-      href: "/study",
-    },
-    {
-      title: "커뮤니티",
-      href: "/community",
+      href: ROUTE.REVIEW.LIST,
     },
     {
       title: "공지사항",
-      href: "/notice",
+      href: ROUTE.NOTICE.LIST,
     },
     {
       title: "고객지원",
-      href: "/support",
+      href: ROUTE.SUPPORT,
     },
   ],
   links: {

@@ -1,4 +1,4 @@
-import { COOKIE } from "@/lib/constants/cookie";
+import { COOKIE } from "@/constants/cookie";
 import { jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";

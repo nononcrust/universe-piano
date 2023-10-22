@@ -1,6 +1,6 @@
-import { kakaoApi } from "@/api/kakao";
 import { SignUpForm } from "@/components/signup/signup-form";
-import { ROUTE } from "@/lib/constants/route";
+import { ROUTE } from "@/constants/route";
+import { kakaoApi } from "@/features/kakao";
 import { redirect } from "next/navigation";
 
 const getKakaoUserInfo = async (token: string) => {

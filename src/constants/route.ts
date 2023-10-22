@@ -3,9 +3,23 @@ export const ROUTE = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   ABOUT: "/about",
-  NOTICE: "/notice",
+  EBOOK: {
+    LIST: "/ebook",
+    DETAIL: (ebookId: string) => `/ebook/${ebookId}`,
+  },
+  NOTICE: {
+    LIST: "/notice",
+    DETAIL: (noticeId: string) => `/notice/${noticeId}`,
+  },
+  REVIEW: {
+    LIST: "/review",
+    DETAIL: (reviewId: string) => `/review/${reviewId}`,
+  },
   SUPPORT: "/support",
-  NOTICE_DETAIL: (noticeId: string) => `/notice/${noticeId}`,
+  TERMS: {
+    SERVICE: "/terms/service",
+    PRIVACY: "/terms/privacy",
+  },
   ADMIN: {
     HOME: "/admin",
     USER: {
@@ -22,9 +36,5 @@ export const ROUTE = {
       EDIT: (supportId: string) => `/admin/support/${supportId}`,
       CREATE: "/admin/support/create",
     },
-  },
-  TERMS: {
-    SERVICE: "/terms/service",
-    PRIVACY: "/terms/privacy",
   },
 } as const;

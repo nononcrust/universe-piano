@@ -1,7 +1,7 @@
 "use client";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { ROUTE } from "@/lib/constants/route";
+import { ROUTE } from "@/constants/route";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import { z } from "zod";

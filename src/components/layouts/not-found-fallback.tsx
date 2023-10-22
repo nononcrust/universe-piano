@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTE } from "@/lib/constants/route";
+import { ROUTE } from "@/constants/route";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 

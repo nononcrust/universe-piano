@@ -1,16 +1,13 @@
-import { COOKIE } from "@/lib/constants/cookie";
-import { userActions } from "@/store/user";
+import { COOKIE } from "@/constants/cookie";
+import { userState } from "@/store/user";
 import cookie from "js-cookie";
-import { useAppDispatch } from "./use-app-dispatch";
-import { useAppSelector } from "./use-app-selector";
+import { useRecoilState } from "recoil";
 
 export const useAuth = () => {
-  const { user } = useAppSelector((state) => state.user);
-
-  const dispatch = useAppDispatch();
+  const [user, setUser] = useRecoilState(userState);
 
   const logout = () => {
-    dispatch(userActions.setUser(null));
+    setUser(null);
     cookie.remove(COOKIE.ACCESS_TOKEN);
   };
 

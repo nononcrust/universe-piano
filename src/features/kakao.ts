@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GetKakaoUserInfoApiResponse } from "./kakao.type";
 
 const ENDPOINT = {
   KAKAO_TOKEN_URL: "https://kauth.kakao.com/oauth/token",
@@ -24,7 +23,7 @@ export const kakaoApi = {
     return response.data;
   },
   getUserInfo: async (accessToken: string) => {
-    const response = await axios.get<GetKakaoUserInfoApiResponse>(ENDPOINT.KAKAO_USER_INFO_URL, {
+    const response = await axios.get<KakaoUserInfo>(ENDPOINT.KAKAO_USER_INFO_URL, {
       params: { secure_resource: true },
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -32,4 +31,24 @@ export const kakaoApi = {
     });
     return response.data;
   },
+};
+
+export type KakaoUserInfo = {
+  id: number;
+  connected_at: string;
+  properties: {
+    nickname: string;
+    profile_image: string;
+    thumbnail_image: string;
+  };
+  kakao_account: {
+    profile_nickname_needs_agreement: boolean;
+    profile_image_needs_agreement: boolean;
+    profile: {
+      nickname: string;
+      thumbnail_image_url: string;
+      profile_image_url: string;
+      is_default_image: boolean;
+    };
+  };
 };

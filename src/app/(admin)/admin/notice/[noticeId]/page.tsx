@@ -1,11 +1,11 @@
-import { noticeActions } from "@/actions/notice-actions";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { NoticeForm } from "@/components/admin/notice-form";
-import { ROUTE } from "@/lib/constants/route";
+import { ROUTE } from "@/constants/route";
+import { noticeQuery } from "@/features/notice";
 import { redirect } from "next/navigation";
 
 export default async function AdminNoticeEditPage({ params }: { params: { noticeId: string } }) {
-  const notice = await noticeActions.getNoticeById(Number(params.noticeId));
+  const notice = await noticeQuery.getNoticeById(Number(params.noticeId));
 
   const initialData = notice && {
     title: notice.title,

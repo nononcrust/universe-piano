@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { URL } from "@/lib/constants/url";
+import { URL } from "@/constants/url";
 import Link from "next/link";
 
 export default function LoginPage() {

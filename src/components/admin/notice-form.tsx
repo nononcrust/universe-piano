@@ -1,11 +1,10 @@
 "use client";
 
-import { noticeApi } from "@/api/notice";
-import { FORM } from "@/lib/constants/form";
-import { ROUTE } from "@/lib/constants/route";
+import { FORM } from "@/constants/form";
+import { ROUTE } from "@/constants/route";
+import { useCreateNotice, useDeleteNotice, useUpdateNotice } from "@/features/notice";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import z from "zod";
@@ -48,22 +47,9 @@ interface NoticeFormProps {
 export const NoticeForm = ({ mode, initialData, noticeId }: NoticeFormProps) => {
   const { toast } = useToast();
 
-  const queryClient = useQueryClient();
-
-  const createNoticeMutation = useMutation({
-    mutationFn: noticeApi.createNotice,
-    onSuccess: () => queryClient.invalidateQueries(["notice"]),
-  });
-
-  const updateNoticeMutation = useMutation({
-    mutationFn: noticeApi.updateNotice,
-    onSuccess: () => queryClient.invalidateQueries(["notice"]),
-  });
-
-  const deleteNoticeMutation = useMutation({
-    mutationFn: noticeApi.deleteNotice,
-    onSuccess: () => queryClient.invalidateQueries(["notice"]),
-  });
+  const createNoticeMutation = useCreateNotice();
+  const updateNoticeMutation = useUpdateNotice();
+  const deleteNoticeMutation = useDeleteNotice();
 
   const router = useRouter();
 
@@ -73,13 +59,13 @@ export const NoticeForm = ({ mode, initialData, noticeId }: NoticeFormProps) => 
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
-    if (mode === "create" && !createNoticeMutation.isLoading) {
+    if (mode === "create" && !createNoticeMutation.isPending) {
       createNoticeMutation.mutate(data, {
         onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
       });
     }
 
-    if (mode === "edit" && noticeId && !updateNoticeMutation.isLoading) {
+    if (mode === "edit" && noticeId && !updateNoticeMutation.isPending) {
       const body = {
         noticeId: noticeId,
         body: data,
@@ -92,7 +78,7 @@ export const NoticeForm = ({ mode, initialData, noticeId }: NoticeFormProps) => 
   });
 
   const onDelete = () => {
-    if (mode === "edit" && noticeId && !deleteNoticeMutation.isLoading) {
+    if (mode === "edit" && noticeId && !deleteNoticeMutation.isPending) {
       deleteNoticeMutation.mutate(noticeId, {
         onSuccess: () => {
           router.push(ROUTE.ADMIN.NOTICE.LIST);

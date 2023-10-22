@@ -1,6 +1,6 @@
-import { kakaoApi } from "@/api/kakao";
 import { RedirectWithUser } from "@/components/redirect-with-user";
-import { ROUTE } from "@/lib/constants/route";
+import { ROUTE } from "@/constants/route";
+import { kakaoApi } from "@/features/kakao";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 

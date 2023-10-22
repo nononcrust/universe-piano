@@ -1,6 +1,6 @@
 "use client";
 
-import { FORM } from "@/lib/constants/form";
+import { FORM } from "@/constants/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
