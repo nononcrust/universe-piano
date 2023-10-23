@@ -1,5 +1,8 @@
+import { COOKIE } from "@/constants/cookie";
 import { RegisterBody, registerRequestSchema } from "@/features/auth";
+import { jwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const POST = async (request: Request) => {
@@ -28,5 +31,20 @@ export const POST = async (request: Request) => {
     },
   });
 
-  return new NextResponse(JSON.stringify(user), { status: 201 });
+  const userInfo = {
+    id: Number(user.id),
+    nickname: user.nickname,
+    phone: user.phone,
+    profileImage: user.profileImage,
+    email: "dummy email",
+  };
+
+  const accessToken = jwt.sign(userInfo);
+
+  cookies().set(COOKIE.ACCESS_TOKEN, accessToken, {
+    secure: true,
+    httpOnly: true,
+  });
+
+  return new NextResponse(JSON.stringify(userInfo), { status: 201 });
 };

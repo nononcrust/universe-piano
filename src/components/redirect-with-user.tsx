@@ -1,8 +1,7 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
-import { UserInfo, authApi } from "@/features/auth";
-import { queryKeys } from "@/features/user";
+import { UserInfo, authApi, queryKeys } from "@/features/auth";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";
@@ -19,7 +18,7 @@ export const RedirectWithUser = ({ user }: RedirectWithUserProps) => {
   const login = useCallback(async () => {
     await authApi.login({ user: user });
 
-    queryClient.setQueryData(queryKeys.all(), () => user);
+    queryClient.setQueryData(queryKeys.userInfo(), () => user);
 
     router.replace(ROUTE.HOME);
   }, [router, user, queryClient]);

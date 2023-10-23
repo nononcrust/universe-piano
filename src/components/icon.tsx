@@ -4,6 +4,7 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
+  ClipboardList,
   Menu,
   MoreHorizontal,
   ShoppingBasket,
@@ -24,4 +25,5 @@ export const Icon = {
   ShoppingCart: ShoppingCart,
   ShoppingBasket: ShoppingBasket,
   Star: Star,
+  ClipboardList: ClipboardList,
 };

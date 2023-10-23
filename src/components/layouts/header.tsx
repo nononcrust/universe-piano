@@ -56,9 +56,9 @@ export const Header = () => {
           </Link>
         )}
         {user && (
-          <div className="flex items-center gap-4">
-            <Link href={ROUTE.CART}>
-              <Icon.ShoppingCart className="cursor-pointer" />
+          <div className="flex items-center gap-3">
+            <Link href={ROUTE.PAYMENT}>
+              <Icon.ShoppingCart className="h-8 w-8 rounded-full p-1.5 hover:bg-gray-100" />
             </Link>
             <UserMenu />
           </div>

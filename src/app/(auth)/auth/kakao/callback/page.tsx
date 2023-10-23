@@ -1,5 +1,6 @@
 import { RedirectWithUser } from "@/components/redirect-with-user";
 import { ROUTE } from "@/constants/route";
+import { UserInfo } from "@/features/auth";
 import { kakaoApi } from "@/features/kakao";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
@@ -14,8 +15,8 @@ export default async function KakaoCallbackPage({
   if (!code) redirect(ROUTE.LOGIN);
 
   const data = await kakaoApi.getAccessToken(code);
-  const userInfo = await kakaoApi.getUserInfo(data.access_token);
-  const kakaoId = String(userInfo.id);
+  const kakaoUserInfo = await kakaoApi.getUserInfo(data.access_token);
+  const kakaoId = String(kakaoUserInfo.id);
 
   const user = await prisma.user.findUnique({
     where: {
@@ -27,19 +28,19 @@ export default async function KakaoCallbackPage({
     redirect(`${ROUTE.SIGNUP}?token=${data.access_token}`);
   }
 
-  fetch("http://localhost:3000/api/auth/login", {
+  const userInfo = {
+    id: Number(kakaoId),
+    nickname: user.nickname,
+    email: "test@gamil.com",
+    profileImage: user.profileImage,
+  } satisfies UserInfo;
+
+  await fetch("http://localhost:3000/api/auth/login", {
     method: "POST",
     body: JSON.stringify({
-      userId: user.id,
+      user: userInfo,
     }),
   });
 
-  const userState = {
-    id: userInfo.id,
-    nickname: userInfo.properties.nickname,
-    email: "test@gamil.com",
-    profileImage: userInfo.properties.profile_image,
-  };
-
-  return <RedirectWithUser user={userState} />;
+  return <RedirectWithUser user={userInfo} />;
 }

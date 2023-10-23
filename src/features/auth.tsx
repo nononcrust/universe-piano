@@ -1,6 +1,6 @@
 import { api } from "@/configs/api";
 import { getQueryClient } from "@/lib/react-query";
-import { HydrationBoundary, useQuery } from "@tanstack/react-query";
+import { HydrationBoundary, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
 import z from "zod";
 
@@ -16,7 +16,7 @@ export const authApi = {
     return response.data;
   },
   register: async (body: RegisterBody) => {
-    const response = await api.post(`${ENDPOINT}/register`, body);
+    const response = await api.post<UserInfo>(`${ENDPOINT}/register`, body);
     return response.data;
   },
   getUserInfo: async () => {
@@ -45,6 +45,7 @@ export type RegisterBody = z.infer<typeof registerRequestSchema>;
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
+  userInfo: () => [...queryKeys.all(), "me"] as const,
 };
 
 export const useUserInfo = () => {
@@ -62,6 +63,15 @@ export const prefetchUserInfo = async () => {
   });
 
   return { dehydratedState };
+};
+
+export const useRegister = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: authApi.register,
+    onSuccess: (user) => queryClient.setQueryData(queryKeys.userInfo(), () => user),
+  });
 };
 
 export const UserInfoFetcher = async ({ children }: PropsWithChildren) => {
