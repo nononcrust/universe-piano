@@ -1,7 +1,14 @@
 import { api } from "@/configs/api";
 import { prisma } from "@/lib/prisma";
 import { getQueryClient } from "@/lib/react-query";
-import { dehydrate, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  HydrationBoundary,
+  dehydrate,
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
+import { PropsWithChildren } from "react";
 import { z } from "zod";
 
 const ENDPOINT = "/notice";
@@ -31,23 +38,21 @@ export const noticeApi = {
 
 const queryKeys = {
   all: () => [ENDPOINT] as const,
-  detail: (noticeId: number) => [ENDPOINT, noticeId] as const,
+  detail: (noticeId?: number) => [ENDPOINT, noticeId] as const,
   list: () => [ENDPOINT, "list"] as const,
 };
 
-export const useNoticeList = (initialData?: Notice[]) => {
-  return useQuery({
+export const useNoticeList = () => {
+  return useSuspenseQuery({
     queryKey: queryKeys.list(),
     queryFn: noticeApi.getNoticeList,
-    initialData: initialData,
   });
 };
 
-export const useNoticeById = (noticeId: number, initialData: Notice) => {
-  return useQuery({
+export const useNoticeById = (noticeId?: number) => {
+  return useSuspenseQuery({
     queryKey: queryKeys.detail(noticeId),
-    queryFn: () => noticeApi.getNoticeById(noticeId),
-    initialData: initialData,
+    queryFn: () => (noticeId ? noticeApi.getNoticeById(noticeId) : null),
   });
 };
 
@@ -126,7 +131,7 @@ export const prefetchNoticeList = async () => {
 
   const dehydratedState = dehydrate(queryClient);
 
-  return dehydratedState;
+  return { dehydratedState };
 };
 
 export const prefetchNoticeById = async (noticeId: number) => {
@@ -139,7 +144,7 @@ export const prefetchNoticeById = async (noticeId: number) => {
 
   const dehydratedState = dehydrate(queryClient);
 
-  return dehydratedState;
+  return { dehydratedState };
 };
 
 export const noticeRequestSchema = z.object({
@@ -157,3 +162,27 @@ export const noticeResponseSchema = z.object({
 
 export type Notice = z.infer<typeof noticeResponseSchema>;
 export type NoticeBody = z.infer<typeof noticeRequestSchema>;
+
+export const NoticeListFetcher = async ({ children }: PropsWithChildren) => {
+  const { dehydratedState } = await prefetchNoticeList();
+
+  return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
+};
+
+interface NoticeDetailFetcherProps {
+  children: React.ReactNode;
+  noticeId: number;
+  fallback: React.ReactNode;
+}
+
+export const NoticeDetailFetcher = async ({
+  children,
+  noticeId,
+  fallback,
+}: NoticeDetailFetcherProps) => {
+  const { dehydratedState } = await prefetchNoticeById(noticeId);
+
+  if (!dehydratedState.queries[0].state.data) return <>{fallback}</>;
+
+  return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
+};

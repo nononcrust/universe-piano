@@ -2,6 +2,7 @@
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { ROUTE } from "@/constants/route";
+import { formatDate } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import { z } from "zod";
@@ -50,6 +51,7 @@ export const noticeColumns: ColumnDef<Notice>[] = [
   {
     accessorKey: "createdAt",
     header: "작성일",
+    accessorFn: (row) => formatDate(row.createdAt),
   },
   {
     id: "actions",

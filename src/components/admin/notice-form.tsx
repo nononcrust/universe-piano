@@ -2,7 +2,12 @@
 
 import { FORM } from "@/constants/form";
 import { ROUTE } from "@/constants/route";
-import { useCreateNotice, useDeleteNotice, useUpdateNotice } from "@/features/notice";
+import {
+  useCreateNotice,
+  useDeleteNotice,
+  useNoticeById,
+  useUpdateNotice,
+} from "@/features/notice";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -40,11 +45,10 @@ type FormSchema = z.infer<typeof formSchema>;
 
 interface NoticeFormProps {
   mode: "create" | "edit";
-  initialData?: FormSchema;
   noticeId?: number;
 }
 
-export const NoticeForm = ({ mode, initialData, noticeId }: NoticeFormProps) => {
+export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
   const { toast } = useToast();
 
   const createNoticeMutation = useCreateNotice();
@@ -53,9 +57,14 @@ export const NoticeForm = ({ mode, initialData, noticeId }: NoticeFormProps) => 
 
   const router = useRouter();
 
+  const { data } = useNoticeById(noticeId);
+
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData || { title: "", content: "" },
+    defaultValues: {
+      title: data?.title || "",
+      content: data?.content || "",
+    },
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
@@ -126,7 +135,11 @@ export const NoticeForm = ({ mode, initialData, noticeId }: NoticeFormProps) => 
             />
             <div className={cn("flex gap-4", mode === "edit" ? "justify-between" : "justify-end")}>
               {mode === "edit" && <DeleteButton onDelete={onDelete} />}
-              <Button className="flex-1 md:flex-initial" type="submit">
+              <Button
+                className="flex-1 md:flex-initial"
+                type="submit"
+                disabled={mode === "edit" && !form.formState.isDirty}
+              >
                 {mode === "create" ? "추가" : "수정"}
               </Button>
             </div>
