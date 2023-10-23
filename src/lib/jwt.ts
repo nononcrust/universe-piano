@@ -1,4 +1,6 @@
+import { UserInfo, userInfoSchema } from "@/features/auth";
 import jsonwebtoken from "jsonwebtoken";
+import { z } from "zod";
 
 const secret = process.env.JWT_SECRET!;
 
@@ -12,8 +14,8 @@ export const jwt = {
       return null;
     }
   },
-  sign: (userId: string) => {
-    return jsonwebtoken.sign({ id: userId }, secret, {
+  sign: (user: UserInfo) => {
+    return jsonwebtoken.sign({ user }, secret, {
       algorithm: "HS256",
       expiresIn: "30d",
     });
@@ -26,3 +28,11 @@ export const jwt = {
     }
   },
 };
+
+export const jwtSchema = z.object({
+  user: userInfoSchema,
+  iat: z.number(),
+  exp: z.number(),
+});
+
+export type Jwt = z.infer<typeof jwtSchema>;

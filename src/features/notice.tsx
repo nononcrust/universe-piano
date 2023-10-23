@@ -16,15 +16,15 @@ const ENDPOINT = "/notice";
 export const noticeApi = {
   getNoticeById: async (noticeId: number) => {
     const response = await api.get<Notice>(`${ENDPOINT}/${noticeId}`);
-    return response.data;
+    return noticeResponseSchema.parse(response.data);
   },
   getNoticeList: async () => {
     const response = await api.get<Notice[]>(`${ENDPOINT}`);
-    return response.data;
+    return noticeListResponseSchema.parse(response.data);
   },
   createNotice: async (body: NoticeBody) => {
-    const resposne = await api.post(`${ENDPOINT}`, body);
-    return resposne.data;
+    const response = await api.post(`${ENDPOINT}`, body);
+    return response.data;
   },
   updateNotice: async (data: { noticeId: number; body: Partial<NoticeBody> }) => {
     const response = await api.put(`${ENDPOINT}/${data.noticeId}`, data.body);
@@ -159,6 +159,8 @@ export const noticeResponseSchema = z.object({
   createdAt: z.string(),
   updatedAt: z.string(),
 });
+
+export const noticeListResponseSchema = z.array(noticeResponseSchema);
 
 export type Notice = z.infer<typeof noticeResponseSchema>;
 export type NoticeBody = z.infer<typeof noticeRequestSchema>;

@@ -1,14 +1,15 @@
-import { COOKIE } from "@/constants/cookie";
-import { userState } from "@/store/user";
-import cookie from "js-cookie";
-import { useRecoilState } from "recoil";
+import { authApi, queryKeys, useUserInfo } from "@/features/auth";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const useAuth = () => {
-  const [user, setUser] = useRecoilState(userState);
+  const { data: user } = useUserInfo();
+
+  const queryClient = useQueryClient();
 
   const logout = () => {
-    setUser(null);
-    cookie.remove(COOKIE.ACCESS_TOKEN);
+    queryClient.setQueryData(queryKeys.all(), null);
+
+    authApi.logout();
   };
 
   return { user, logout };

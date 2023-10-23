@@ -1,19 +1,37 @@
-import { jwt } from "@/lib/jwt";
+import { COOKIE } from "@/constants/cookie";
+import { UserInfo } from "@/features/auth";
+import { jwt, jwtSchema } from "@/lib/jwt";
+import { cookies } from "next/headers";
 
 export const GET = async (request: Request) => {
-  const accessToken = request.headers.get("Authorization")?.split(" ")[1];
+  const cookie = cookies().get(COOKIE.ACCESS_TOKEN);
 
-  if (!accessToken) {
-    return new Response("", {
-      status: 401,
+  if (!cookie) {
+    return new Response(null, {
+      status: 200,
     });
   }
 
-  const decoded = jwt.verify(accessToken);
+  const accessToken = cookie.value;
 
-  if (!decoded) {
-    return new Response("", {
-      status: 401,
+  const decoded = jwtSchema.safeParse(jwt.verify(accessToken));
+
+  if (!decoded.success) {
+    return new Response(null, {
+      status: 200,
     });
   }
+
+  const user = decoded.data.user;
+
+  const userInfo: UserInfo = {
+    id: Number(user.id),
+    nickname: user.nickname,
+    profileImage: user.profileImage,
+    email: "dummy email",
+  };
+
+  return new Response(JSON.stringify(userInfo), {
+    status: 200,
+  });
 };

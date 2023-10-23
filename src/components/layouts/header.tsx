@@ -2,7 +2,7 @@
 
 import { siteConfig } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
-import { useAuth } from "@/hooks/use-auth";
+import { useUserInfo } from "@/features/auth";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export interface NavItem {
 }
 
 export const Header = () => {
-  const { user } = useAuth();
+  const { data: user, fetchStatus } = useUserInfo();
 
   const pathname = usePathname();
 
@@ -50,7 +50,7 @@ export const Header = () => {
             )}
           </nav>
         </div>
-        {!user && (
+        {!user && fetchStatus !== "fetching" && (
           <Link className="text-sm" href={ROUTE.LOGIN}>
             로그인
           </Link>
