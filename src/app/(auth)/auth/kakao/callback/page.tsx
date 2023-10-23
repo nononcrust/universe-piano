@@ -35,12 +35,5 @@ export default async function KakaoCallbackPage({
     profileImage: user.profileImage,
   } satisfies UserInfo;
 
-  await fetch("http://localhost:3000/api/auth/login", {
-    method: "POST",
-    body: JSON.stringify({
-      user: userInfo,
-    }),
-  });
-
   return <RedirectWithUser user={userInfo} />;
 }
