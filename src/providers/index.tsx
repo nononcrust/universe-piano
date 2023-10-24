@@ -1,12 +1,23 @@
 "use client";
 
-import { getQueryClient } from "@/lib/react-query";
-import { QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PropsWithChildren, useState } from "react";
 import { RecoilRoot } from "recoil";
 
 export const Providers = ({ children }: PropsWithChildren) => {
-  const [queryClient] = useState(getQueryClient);
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            retry: false,
+            refetchOnReconnect: false,
+            staleTime: 1000 * 60 * 5,
+          },
+        },
+      }),
+  );
 
   return (
     <RecoilRoot>
