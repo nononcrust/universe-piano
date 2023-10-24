@@ -1,4 +1,4 @@
-import { api } from "@/configs/api";
+import { api } from "@/configs/axios";
 import { getQueryClient } from "@/lib/react-query";
 import { HydrationBoundary, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";

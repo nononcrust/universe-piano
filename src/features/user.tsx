@@ -1,4 +1,4 @@
-import { api } from "@/configs/api";
+import { api } from "@/configs/axios";
 import { useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 
 const ENDPOINT = "/user";

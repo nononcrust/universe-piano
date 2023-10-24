@@ -1,16 +1,5 @@
+import { queryClientConfig } from "@/configs/react-query";
 import { QueryClient } from "@tanstack/react-query";
 import { cache } from "react";
 
-export const getQueryClient = cache(
-  () =>
-    new QueryClient({
-      defaultOptions: {
-        queries: {
-          refetchOnWindowFocus: false,
-          retry: false,
-          refetchOnReconnect: false,
-          staleTime: 1000 * 60 * 5,
-        },
-      },
-    }),
-);
+export const getQueryClient = cache(() => new QueryClient(queryClientConfig));

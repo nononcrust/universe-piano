@@ -1,4 +1,4 @@
-import { api } from "@/configs/api";
+import { api } from "@/configs/axios";
 import { prisma } from "@/lib/prisma";
 import { getQueryClient } from "@/lib/react-query";
 import {
@@ -134,7 +134,7 @@ export const prefetchNoticeList = async () => {
   return { dehydratedState };
 };
 
-export const prefetchNoticeById = async (noticeId: number) => {
+export const prefetchNoticeDetail = async (noticeId: number) => {
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery({
@@ -182,7 +182,7 @@ export const NoticeDetailFetcher = async ({
   noticeId,
   fallback,
 }: NoticeDetailFetcherProps) => {
-  const { dehydratedState } = await prefetchNoticeById(noticeId);
+  const { dehydratedState } = await prefetchNoticeDetail(noticeId);
 
   if (!dehydratedState.queries[0].state.data) return <>{fallback}</>;
 
