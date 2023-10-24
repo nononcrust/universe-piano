@@ -25,10 +25,10 @@ export const UserMenu = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
+        <DropdownMenuItem asChild>
           <Link href={ROUTE.CART}>장바구니</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem asChild>
           <Link href={ROUTE.MYPAGE.HOME}>마이페이지</Link>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={logout}>로그아웃</DropdownMenuItem>
