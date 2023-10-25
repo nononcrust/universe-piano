@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export const GET = async (request: Request) => {
   const notices = await noticeQuery.getNoticeList();
 
-  return Response.json(notices.reverse());
+  return Response.json(notices);
 };
 
 export const POST = async (request: Request) => {
