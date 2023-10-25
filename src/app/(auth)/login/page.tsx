@@ -10,7 +10,7 @@ export default function LoginPage() {
       <section className="flex flex-col items-center">
         <h1 className="mt-64 text-2xl font-bold text-foreground md:text-3xl">로그인</h1>
         <h2 className="mt-2 font-medium text-muted-foreground">
-          미대 입시를 위한 모든 것, 유니버스 피아노입니다.
+          미국 음대 입시를 위한 모든 것, 유니버스 피아노입니다.
         </h2>
         <Link href={URL.KAKAO_LOGIN}>
           <Button className="mt-16">카카오 계정으로 로그인</Button>

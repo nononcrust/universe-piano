@@ -1,3 +1,4 @@
+import { noticeQuery, noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -10,11 +11,7 @@ interface Context {
 export const GET = async (request: Request, context: Context) => {
   const noticeId = context.params.noticeId;
 
-  const notice = await prisma.notice.findUnique({
-    where: {
-      id: Number(noticeId),
-    },
-  });
+  const notice = await noticeQuery.getNoticeById(Number(noticeId));
 
   return new NextResponse(JSON.stringify(notice), {
     status: 200,
@@ -23,15 +20,22 @@ export const GET = async (request: Request, context: Context) => {
 
 export const PUT = async (request: Request, context: Context) => {
   const noticeId = context.params.noticeId;
+
   const body = await request.json();
+
+  const parsedBody = noticeRequestSchema.safeParse(body);
+
+  if (!parsedBody.success) {
+    return new NextResponse("", {
+      status: 400,
+    });
+  }
 
   const notice = await prisma.notice.update({
     where: {
       id: Number(noticeId),
     },
-    data: {
-      ...body,
-    },
+    data: parsedBody.data,
   });
 
   return new NextResponse(JSON.stringify(notice), {

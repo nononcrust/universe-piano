@@ -33,32 +33,32 @@ export const Header = () => {
             <span className="inline-block font-bold">{siteConfig.name}</span>
           </Link>
           <nav className="hidden gap-6 md:flex">
-            {siteConfig.mainNav.map(
-              (item, index) =>
-                item.href && (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className={cn(
-                      "flex items-center text-sm font-medium text-muted-foreground",
-                      pathname.startsWith(item.href) && "text-foreground",
-                    )}
-                  >
-                    {item.title}
-                  </Link>
-                ),
-            )}
+            {siteConfig.mainNav.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                className={cn(
+                  "flex items-center text-sm font-medium text-muted-foreground transition hover:text-foreground",
+                  pathname.startsWith(item.href) && "text-foreground",
+                )}
+              >
+                {item.title}
+              </Link>
+            ))}
           </nav>
         </div>
-        {!user && fetchStatus !== "fetching" && (
-          <Link className="text-sm" href={ROUTE.LOGIN}>
+        {!user && (
+          <Link
+            href={ROUTE.LOGIN}
+            className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
+          >
             로그인
           </Link>
         )}
         {user && (
           <div className="flex items-center gap-3">
-            <Link href={ROUTE.PAYMENT}>
-              <Icon.ShoppingCart className="h-8 w-8 rounded-full p-1.5 hover:bg-gray-100" />
+            <Link href={ROUTE.PAYMENT} className="hidden sm:flex">
+              <Icon.ShoppingCart className="h-8 w-8 rounded-full p-1.5 transition duration-200 hover:bg-gray-100" />
             </Link>
             <UserMenu />
           </div>

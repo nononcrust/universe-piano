@@ -96,13 +96,7 @@ export const noticeQuery = {
   getNoticeList: async () => {
     const notices = await prisma.notice.findMany();
 
-    const initialData = notices.map((item) => ({
-      ...item,
-      createdAt: item.createdAt.toISOString(),
-      updatedAt: item.updatedAt.toISOString(),
-    }));
-
-    return initialData.reverse();
+    return JSON.parse(JSON.stringify(notices.reverse()));
   },
   getNoticeById: async (id: number) => {
     const notice = await prisma.notice.findUnique({
@@ -111,13 +105,7 @@ export const noticeQuery = {
       },
     });
 
-    const initialData = notice && {
-      ...notice,
-      createdAt: notice.createdAt.toISOString(),
-      updatedAt: notice.updatedAt.toISOString(),
-    };
-
-    return initialData;
+    return JSON.parse(JSON.stringify(notice));
   },
 };
 

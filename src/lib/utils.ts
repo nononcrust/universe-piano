@@ -8,7 +8,7 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-export const formatDate = (date: string) => {
+export const formatDate = (date: string | Date) => {
   return format(new Date(date), "yyyy.MM.dd");
 };
 

@@ -1,10 +1,9 @@
-import { noticeRequestSchema } from "@/features/notice";
+import { noticeQuery, noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
-import { noop } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
 export const GET = async (request: Request) => {
-  const notices = await prisma.notice.findMany();
+  const notices = await noticeQuery.getNoticeList();
 
   return Response.json(notices.reverse());
 };
@@ -12,21 +11,19 @@ export const GET = async (request: Request) => {
 export const POST = async (request: Request) => {
   const body = await request.json();
 
-  if (!noticeRequestSchema.safeParse(body)) {
+  const parsedBody = noticeRequestSchema.safeParse(body);
+
+  if (!parsedBody.success) {
     return new NextResponse("", {
       status: 400,
     });
   }
 
-  try {
-    const notice = await prisma.notice.create({
-      data: body,
-    });
+  const notice = await prisma.notice.create({
+    data: parsedBody.data,
+  });
 
-    return new NextResponse(JSON.stringify(notice), {
-      status: 201,
-    });
-  } catch (error) {
-    noop();
-  }
+  return new NextResponse(JSON.stringify(notice), {
+    status: 201,
+  });
 };

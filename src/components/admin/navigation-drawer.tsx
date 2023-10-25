@@ -17,6 +17,46 @@ const drawer = [
     ],
   },
   {
+    title: "상품 관리",
+    items: [
+      {
+        title: "상품 목록",
+        href: ROUTE.ADMIN.PRODUCT.LIST,
+      },
+      {
+        title: "상품 추가",
+        href: ROUTE.ADMIN.PRODUCT.CREATE,
+      },
+    ],
+  },
+  {
+    title: "주문 관리",
+    items: [
+      {
+        title: "주문 목록",
+        href: ROUTE.ADMIN.ORDER.LIST,
+      },
+    ],
+  },
+  {
+    title: "후기 관리",
+    items: [
+      {
+        title: "후기 목록",
+        href: ROUTE.ADMIN.REVIEW.LIST,
+      },
+    ],
+  },
+  {
+    title: "문의 관리",
+    items: [
+      {
+        title: "문의 목록",
+        href: ROUTE.ADMIN.QUESTION.LIST,
+      },
+    ],
+  },
+  {
     title: "공지사항 관리",
     items: [
       {
@@ -90,7 +130,9 @@ const NavigationDrawerItem = ({ title, href }: NavigationDrawerItemProps) => {
 
   return (
     <Link href={href}>
-      <li className={cn("p-4 font-medium", isActive && "bg-gray-100")}>{title}</li>
+      <li className={cn("p-4 font-medium transition hover:bg-gray-100", isActive && "bg-gray-100")}>
+        {title}
+      </li>
     </Link>
   );
 };
