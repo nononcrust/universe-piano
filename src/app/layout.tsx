@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/configs/site";
 import { UserInfoFetcher } from "@/features/auth";
 import { Providers } from "@/providers";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </UserInfoFetcher>
         </Providers>
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
