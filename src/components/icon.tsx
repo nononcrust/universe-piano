@@ -7,9 +7,11 @@ import {
   ClipboardList,
   Menu,
   MoreHorizontal,
+  Settings,
   ShoppingBasket,
   ShoppingCart,
   Star,
+  Wrench,
   X,
 } from "lucide-react";
 
@@ -26,4 +28,6 @@ export const Icon = {
   ShoppingBasket: ShoppingBasket,
   Star: Star,
   ClipboardList: ClipboardList,
+  Settings: Settings,
+  Wrench: Wrench,
 };
