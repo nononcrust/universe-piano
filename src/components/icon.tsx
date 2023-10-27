@@ -5,6 +5,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
   ClipboardList,
+  Instagram,
   Menu,
   MoreHorizontal,
   Settings,
@@ -13,6 +14,7 @@ import {
   Star,
   Wrench,
   X,
+  Youtube,
 } from "lucide-react";
 
 export const Icon = {
@@ -30,4 +32,6 @@ export const Icon = {
   ClipboardList: ClipboardList,
   Settings: Settings,
   Wrench: Wrench,
+  Instagram: Instagram,
+  Youtube: Youtube,
 };

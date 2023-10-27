@@ -32,20 +32,8 @@ export default function ProductDetailPage() {
 const ProductImageSection = () => {
   return (
     <div className="flex-1">
-      <AspectRatio className="rounded-3xl border">
-        <Image src="/images/logo.svg" alt="" fill />
-      </AspectRatio>
-      <div className="mt-2 flex justify-between gap-2">
-        {Array(5)
-          .fill(0)
-          .map((_, index) => (
-            <div
-              className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-lg border"
-              key={index}
-            >
-              <Image src="/images/logo.svg" alt="" width={64} height={64} />
-            </div>
-          ))}
+      <div className="flex aspect-square items-center justify-center rounded-2xl border">
+        <Image src="/images/logo.svg" alt="" className="aspect-square" width={400} height={400} />
       </div>
     </div>
   );

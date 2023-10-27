@@ -32,8 +32,13 @@ interface ListSubHeaderProps extends React.HTMLAttributes<HTMLHeadingElement> {
 const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
   return (
     <div className={cn("mb-4", className)}>
-      <h2 className="mb-2 text-lg font-semibold text-foreground">{title}</h2>
-      <ul className="flex flex-col gap-2">{children}</ul>
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-semibold text-foreground">{title}</h2>
+        <SheetClose>
+          <Icon.X />
+        </SheetClose>
+      </div>
+      <ul className="mt-4 flex flex-col gap-2">{children}</ul>
     </div>
   );
 };
@@ -47,7 +52,10 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
   return (
     <Link href={href}>
       <SheetClose className="flex w-full">
-        <li className="cursor-pointer text-muted-foreground" onClick={onClick}>
+        <li
+          className="flex-1 cursor-pointer border-b py-6 text-left text-lg text-muted-foreground"
+          onClick={onClick}
+        >
           {children}
         </li>
       </SheetClose>

@@ -3,5 +3,5 @@ interface PageTitleProps {
 }
 
 export const AdminPageTitle = ({ title }: PageTitleProps) => {
-  return <h1 className="my-8 text-2xl font-bold">{title}</h1>;
+  return <h1 className="my-8 mt-16 text-2xl font-bold md:mt-8">{title}</h1>;
 };

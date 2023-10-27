@@ -3,7 +3,8 @@
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Drawer } from "vaul";
 import { Icon } from "../icon";
 
 const drawer = [
@@ -93,10 +94,10 @@ export const NavigationDrawer = () => {
           사이트로 돌아가기
         </div>
       </Link>
-      {drawer.map((section) => (
-        <NavigationDrawerSection key={section.title} title={section.title}>
-          {section.items.map((item) => (
-            <NavigationDrawerItem key={item.title} title={item.title} href={item.href} />
+      {drawer.map((section, index) => (
+        <NavigationDrawerSection key={index} title={section.title}>
+          {section.items.map((item, index) => (
+            <NavigationDrawerItem key={index} title={item.title} href={item.href} />
           ))}
         </NavigationDrawerSection>
       ))}
@@ -129,10 +130,65 @@ const NavigationDrawerItem = ({ title, href }: NavigationDrawerItemProps) => {
   const isActive = pathname === href;
 
   return (
-    <Link href={href}>
-      <li className={cn("p-4 font-medium transition hover:bg-gray-100", isActive && "bg-gray-100")}>
+    <Link href={href} className="flex flex-1">
+      <li
+        className={cn(
+          "w-full flex-1 p-4 font-medium transition hover:bg-gray-100",
+          isActive && "bg-gray-100",
+        )}
+      >
         {title}
       </li>
     </Link>
+  );
+};
+
+interface MobileNavigationDrawerItemProps {
+  title: string;
+  href: string;
+}
+
+const MobileNavigationDrawerItem = ({ title, href }: MobileNavigationDrawerItemProps) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const isActive = pathname === href;
+
+  return (
+    <li
+      className={cn(
+        "flex w-full flex-1 rounded-lg p-4 font-medium transition hover:bg-gray-100",
+        isActive && "bg-gray-100",
+      )}
+      onClick={() => router.push(href)}
+    >
+      {title}
+    </li>
+  );
+};
+
+export const MobileNavigationDrawer = () => {
+  return (
+    <Drawer.Root>
+      <Drawer.Trigger asChild>
+        <Icon.Menu className="h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200 hover:bg-gray-100" />
+      </Drawer.Trigger>
+      <Drawer.Portal>
+        <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
+        <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 mt-24 flex max-h-[400px] flex-1 flex-col rounded-t-2xl bg-white p-2 outline-none">
+          <div className="overflow-y-auto p-2">
+            {drawer.map((section, index) => (
+              <NavigationDrawerSection key={index} title={section.title}>
+                {section.items.map((item, index) => (
+                  <Drawer.Close key={index} className="flex w-full flex-1 flex-col">
+                    <MobileNavigationDrawerItem title={item.title} href={item.href} />
+                  </Drawer.Close>
+                ))}
+              </NavigationDrawerSection>
+            ))}
+          </div>
+        </Drawer.Content>
+      </Drawer.Portal>
+    </Drawer.Root>
   );
 };
