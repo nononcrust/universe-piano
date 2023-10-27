@@ -3,10 +3,10 @@ import { Button } from "../ui/button";
 
 export const LandingImageSection = () => {
   return (
-    <section className="h-[700px] flex-1 bg-gray-100 p-20">
+    <section className="h-[700px] flex-1 justify-center bg-gray-100 md:justify-start">
       <Aos>
         <div className="container">
-          <h1 className="mt-48 whitespace-pre text-2xl font-bold leading-relaxed">
+          <h1 className="whitespace-pre pt-60 text-2xl font-bold leading-relaxed">
             {"미국 음대 입시를 위한 모든 것,\n유니버스 피아노에서 찾아보세요"}
           </h1>
           <h2 className="mt-2 text-muted-foreground">

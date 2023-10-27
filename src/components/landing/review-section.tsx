@@ -48,7 +48,7 @@ interface ReviewItemProps {
 export const ReviewItem = ({ author, description }: ReviewItemProps) => {
   return (
     <div className="flex flex-row gap-3 md:flex-col">
-      <div className="aspect-square w-[120px] rounded-lg bg-gray-100 md:aspect-video md:w-full" />
+      <div className="aspect-square w-[96px] rounded-lg bg-gray-100 md:aspect-video md:w-full" />
       <div className="flex flex-1 flex-col gap-1">
         <div className="flex items-center justify-between">
           <p className="font-medium">{author}</p>
