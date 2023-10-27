@@ -53,7 +53,7 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
     <Link href={href}>
       <SheetClose className="flex w-full">
         <li
-          className="flex-1 cursor-pointer border-b py-6 text-left text-lg text-muted-foreground"
+          className="flex-1 cursor-pointer py-4 text-left text-lg text-muted-foreground"
           onClick={onClick}
         >
           {children}
