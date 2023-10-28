@@ -3,22 +3,24 @@ export const ROUTE = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   ABOUT: "/about",
-  PRODUCT: {
-    LIST: "/product",
-    DETAIL: (productId: string) => `/product/${productId}`,
+  SERVICE: {
+    LIST: "/service",
+    PRODUCT: {
+      LIST: "/service/product",
+      DETAIL: (productId: string) => `/service/product/${productId}`,
+    },
+    TUTORING: "/service/tutoring",
   },
   NOTICE: {
     LIST: "/notice",
     DETAIL: (noticeId: string) => `/notice/${noticeId}`,
-  },
-  AUDITION: {
-    FIRST: {
-      LIST: "/audition/first",
-      DETAIL: (auditionId: string) => `/audition/first/${auditionId}`,
+    ANNOUNCEMENTS: {
+      LIST: "/notice/announcements",
+      DETAIL: (noticeId: string) => `/notice/announcements/${noticeId}`,
     },
-    SECOND: {
-      LIST: "/audition/second",
-      DETAIL: (auditionId: string) => `/audition/second/${auditionId}`,
+    AUDITION_RESULT: {
+      LIST: "/notice/audition",
+      DETAIL: (noticeId: string) => `/notice/audition/${noticeId}`,
     },
   },
   REVIEW: {
@@ -31,6 +33,17 @@ export const ROUTE = {
       LIST: "/review/consult",
       DETAIL: (reviewId: string) => `/review/consult/${reviewId}`,
     },
+    AUDITION: {
+      LIST: "/review/audition",
+      FIRST: {
+        LIST: "/review/audition/first",
+        DETAIL: (auditionId: string) => `/review/audition/first/${auditionId}`,
+      },
+      SECOND: {
+        LIST: "/review/audition/second",
+        DETAIL: (auditionId: string) => `/review/audition/second/${auditionId}`,
+      },
+    },
   },
   EBOOK: {
     LIST: "/ebook",
@@ -38,6 +51,7 @@ export const ROUTE = {
   },
   SUPPORT: "/support",
   TERMS: {
+    LIST: "/terms",
     SERVICE: "/terms/service",
     PRIVACY: "/terms/privacy",
   },

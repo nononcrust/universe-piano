@@ -1,4 +1,4 @@
-import { CartItem } from "@/components/cart-item";
+import { CartItem } from "@/components/cart/cart-item";
 import { PageTitle } from "@/components/layouts/page-title";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";

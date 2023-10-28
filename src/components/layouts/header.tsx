@@ -38,7 +38,7 @@ export const Header = () => {
                 <span className="inline-block font-bold">{siteConfig.name}</span>
               </Link>
               <nav className="hidden gap-6 md:flex">
-                {siteConfig.mainNav.map((item, index) => (
+                {Object.values(siteConfig.contents).map((item, index) => (
                   <Link
                     key={index}
                     href={item.href}
@@ -70,24 +70,16 @@ export const Header = () => {
             )}
           </div>
         </div>
-        {pathname.startsWith(ROUTE.REVIEW.LIST) && <CategoryTab categories={REVIEW_CATEGORIES} />}
+        {Object.values(siteConfig.contents).map((content, index) =>
+          pathname.startsWith(content.href) ? (
+            <CategoryTab key={index} categories={content.children} />
+          ) : null,
+        )}
         {pathname.startsWith(ROUTE.MYPAGE.HOME) && <CategoryTab categories={MYPAGE_CATEGORIES} />}
       </header>
     </>
   );
 };
-
-const REVIEW_CATEGORIES = [
-  {
-    title: "컨설팅 후기",
-    href: ROUTE.REVIEW.CONSULT.LIST,
-  },
-
-  {
-    title: "스터디 후기",
-    href: ROUTE.REVIEW.STUDY.LIST,
-  },
-];
 
 const MYPAGE_CATEGORIES = [
   {

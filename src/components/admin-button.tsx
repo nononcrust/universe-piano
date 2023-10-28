@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Icon } from "./icon";
 import { Button } from "./ui/button";
 
-export const AdminFab = () => {
+export const AdminButton = () => {
   const { user } = useAuth();
 
   if (!user) return null;

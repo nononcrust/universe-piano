@@ -1,68 +1,11 @@
 "use client";
 
+import { footerNav, siteConfig } from "@/configs/site";
+import { ASSET } from "@/constants/asset";
 import { ROUTE } from "@/constants/route";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "../icon";
-
-const contents = [
-  {
-    title: "안내",
-    children: [
-      {
-        title: "공지사항",
-        href: ROUTE.NOTICE.LIST,
-      },
-      {
-        title: "자주 묻는 질문",
-        href: ROUTE.SUPPORT,
-      },
-    ],
-  },
-  {
-    title: "서비스",
-    children: [
-      {
-        title: "입시 컨설팅",
-        href: ROUTE.HOME,
-      },
-      {
-        title: "유학 컨설팅",
-        href: ROUTE.HOME,
-      },
-      {
-        title: "오디션",
-        href: ROUTE.HOME,
-      },
-    ],
-  },
-  {
-    title: "고객센터",
-    children: [
-      {
-        title: "채널톡",
-        href: ROUTE.HOME,
-      },
-      {
-        title: "1:1 문의",
-        href: ROUTE.HOME,
-      },
-    ],
-  },
-  {
-    title: "이용약관",
-    children: [
-      {
-        title: "서비스 이용약관",
-        href: ROUTE.TERMS.SERVICE,
-      },
-      {
-        title: "개인정보 처리방침",
-        href: ROUTE.TERMS.PRIVACY,
-      },
-    ],
-  },
-] as const;
 
 export const Footer = () => {
   const pathname = usePathname();
@@ -75,8 +18,8 @@ export const Footer = () => {
     <footer className="border-t">
       <div className="container py-8">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {contents.map((section) => (
-            <div key={section.title} className="flex flex-col">
+          {Object.values(footerNav).map((section, index) => (
+            <div key={index} className="flex flex-col">
               <p className="font-medium">{section.title}</p>
               <div className="mt-2">
                 {section.children.map((item) => (
@@ -101,15 +44,67 @@ export const Footer = () => {
             문의: 채널톡
           </p>
         </div>
-        <div className="mt-4 flex gap-2">
-          <div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500">
-            <Icon.Instagram className="text-white" size={18} />
-          </div>
-          <div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500">
-            <Icon.Youtube className="text-white" size={18} />
-          </div>
-        </div>
+        <SocialIconList />
       </div>
     </footer>
+  );
+};
+
+const SocialIconList = () => {
+  return (
+    <div className="mt-4 flex gap-2">
+      <Link
+        href={siteConfig.links.instagram}
+        target="_blank"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+      >
+        <Image
+          src={ASSET.SOCIAL.INSTAGRAM}
+          width={18}
+          height={18}
+          alt="instagram"
+          className="h-auto"
+        />
+      </Link>
+      <Link
+        href={siteConfig.links.kakao}
+        target="_blank"
+        className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+      >
+        <Image
+          src={ASSET.SOCIAL.KAKAO}
+          width={18}
+          height={18}
+          alt="kakao"
+          className="translate-y-[0.5px]"
+        />
+      </Link>
+      <Link
+        href={siteConfig.links.blog}
+        target="_blank"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+      >
+        <Image
+          src={ASSET.SOCIAL.NAVER_BLOG}
+          width={16}
+          height={16}
+          alt="naver-blog"
+          className="translate-y-[0.5px]"
+        />
+      </Link>
+      <Link
+        href={siteConfig.links.cafe}
+        target="_blank"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+      >
+        <Image
+          src={ASSET.SOCIAL.NAVER_CAFE}
+          width={16}
+          height={16}
+          alt="naver-cafe"
+          className="translate-x-[1px]"
+        />
+      </Link>
+    </div>
   );
 };

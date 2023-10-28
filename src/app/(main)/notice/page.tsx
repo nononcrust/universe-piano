@@ -1,10 +1,6 @@
-import { NoticeList } from "@/components/notice/notice-list";
-import { NoticeListFetcher } from "@/features/notice";
+import { ROUTE } from "@/constants/route";
+import { redirect } from "next/navigation";
 
-export default async function NoticePage() {
-  return (
-    <NoticeListFetcher>
-      <NoticeList />
-    </NoticeListFetcher>
-  );
+export default function NoticeListPage() {
+  return redirect(ROUTE.NOTICE.ANNOUNCEMENTS.LIST);
 }

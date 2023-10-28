@@ -50,7 +50,7 @@ model Category {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name String
+  name     String
   products Product[]
 }
 
@@ -67,8 +67,9 @@ model Product {
   reviews     Review[]
   orders      Order[]
   carts       Cart[]
+  image       String
 
-  category   Category @relation(fields: [categoryId], references: [id])
+  category Category @relation(fields: [categoryId], references: [id])
 
   @@index([categoryId])
 }
@@ -99,6 +100,7 @@ model Review {
   rating    Int
   userId    String
   productId Int
+  image    String
 
   user    User    @relation(fields: [userId], references: [id])
   product Product @relation(fields: [productId], references: [id])

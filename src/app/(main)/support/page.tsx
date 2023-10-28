@@ -33,7 +33,7 @@ const TAB_LIST = {
 export default function SupportPage() {
   return (
     <main className="container pb-16">
-      <PageTitle title="고객지원" subtitle="궁금한 점은 무엇이든지 물어보세요" />
+      <PageTitle title="자주 묻는 질문" />
       <Input placeholder="검색어를 입력해주세요." className="mt-8" />
       <Tabs className="mt-4 overflow-x-auto border-b" defaultValue="all">
         <TabsList>

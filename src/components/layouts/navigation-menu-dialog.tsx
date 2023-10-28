@@ -14,10 +14,14 @@ export const NavigationMenuDialog = () => {
       </SheetTrigger>
       <SheetContent side="left">
         <ListSection className="mt-4" title="유니버스 피아노">
-          {siteConfig.mainNav.map((item, index) => (
-            <ListItem key={index} href={item.href}>
-              {item.title}
-            </ListItem>
+          {Object.values(siteConfig.contents).map((category, index) => (
+            <ListCategory key={category.href} title={category.title}>
+              {category.children.map((item) => (
+                <ListItem key={item.href} href={item.href}>
+                  {item.title}
+                </ListItem>
+              ))}
+            </ListCategory>
           ))}
         </ListSection>
       </SheetContent>
@@ -39,6 +43,20 @@ const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
         </SheetClose>
       </div>
       <ul className="mt-4 flex flex-col gap-2">{children}</ul>
+    </div>
+  );
+};
+
+interface ListCategoryProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+const ListCategory = ({ title, children }: ListCategoryProps) => {
+  return (
+    <div className="flex flex-col">
+      <p className="mb-2 font-medium">{title}</p>
+      {children}
     </div>
   );
 };

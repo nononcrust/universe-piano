@@ -14,6 +14,8 @@ import {
 export const UserMenu = () => {
   const { user, logout } = useAuth();
 
+  const isAdmin = true;
+
   if (!user) return null;
 
   return (
@@ -25,15 +27,20 @@ export const UserMenu = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="translate-y-1">
-        <DropdownMenuItem asChild className="px-4 py-2">
+        {/* <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.CART}>장바구니</Link>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.MYPAGE.HOME}>마이페이지</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="px-4 py-2">
-          <Link href={ROUTE.EBOOK.LIST}>전자책 목록</Link>
+          <Link href={ROUTE.EBOOK.LIST}>나의 서재</Link>
         </DropdownMenuItem>
+        {isAdmin && (
+          <DropdownMenuItem asChild className="px-4 py-2">
+            <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem className="px-4 py-2" onClick={logout}>
           로그아웃
         </DropdownMenuItem>

@@ -7,9 +7,12 @@ export const siteConfig = {
   title: "유니버스 피아노 - 미국 음대 입시의 모든것",
   description: "유니버스 피아노 홈페이지",
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    instagram: "https://www.instagram.com/universe_piano",
+    kakao: "https://open.kakao.com/o/sy3BCAif",
+    blog: "https://blog.naver.com/universepiano",
+    cafe: "https://cafe.naver.com/universepianousa",
+    email: "universepiano@naver.com",
+    mobile: "010-2134-7370",
   },
   openGraph: {
     title: "유니버스 피아노",
@@ -26,28 +29,78 @@ export const siteConfig = {
       },
     ],
   },
-  mainNav: [
-    // {
+  contents: {
+    // about: {
     //   title: "소개",
     //   href: ROUTE.ABOUT,
+    //   children: [
+    //     {
+    //       title: "유니버스 피아노",
+    //       href: ROUTE.HOME,
+    //     },
+    //     {
+    //       title: "대표의 스토리",
+    //       href: ROUTE.HOME,
+    //     },
+    //   ],
     // },
-    {
-      title: "공지사항",
+    notice: {
+      title: "소식",
       href: ROUTE.NOTICE.LIST,
+      children: [
+        {
+          title: "공지사항",
+          href: ROUTE.NOTICE.ANNOUNCEMENTS.LIST,
+        },
+        {
+          title: "2차 오디션 결과 발표",
+          href: ROUTE.NOTICE.AUDITION_RESULT.LIST,
+        },
+      ],
     },
-    {
+    review: {
       title: "리뷰",
       href: ROUTE.REVIEW.LIST,
+      children: [
+        {
+          title: "컨설팅 후기",
+          href: ROUTE.REVIEW.CONSULT.LIST,
+        },
+        {
+          title: "스터디 후기",
+          href: ROUTE.REVIEW.STUDY.LIST,
+        },
+      ],
     },
-    {
-      title: "스토어",
-      href: ROUTE.PRODUCT.LIST,
+    service: {
+      title: "서비스",
+      href: ROUTE.SERVICE.LIST,
+      children: [
+        {
+          title: "미국 음대 입시 과외",
+          href: ROUTE.HOME,
+        },
+        {
+          title: "입시 컨설팅",
+          href: ROUTE.HOME,
+        },
+        {
+          title: "전자책",
+          href: ROUTE.SERVICE.PRODUCT.LIST,
+        },
+      ],
     },
-    {
+    support: {
       title: "고객지원",
       href: ROUTE.SUPPORT,
+      children: [
+        {
+          title: "자주 묻는 질문",
+          href: ROUTE.SUPPORT,
+        },
+      ],
     },
-  ],
+  },
   adminNav: [
     {
       title: "유저 관리",
@@ -125,4 +178,22 @@ export const siteConfig = {
       ],
     },
   ],
+};
+
+export const footerNav = {
+  ...siteConfig.contents,
+  terms: {
+    title: "이용약관",
+    href: ROUTE.TERMS.LIST,
+    children: [
+      {
+        title: "서비스 이용약관",
+        href: ROUTE.TERMS.SERVICE,
+      },
+      {
+        title: "개인정보 처리방침",
+        href: ROUTE.TERMS.PRIVACY,
+      },
+    ],
+  },
 };
