@@ -77,8 +77,20 @@ export const EbookMobileNavigationDrawer = () => {
         <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
         <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 mt-24 flex max-h-[400px] flex-1 flex-col rounded-t-2xl bg-white p-2 outline-none">
           <div className="overflow-y-auto p-2">
+            <div className="mb-4 flex h-14 items-center gap-2">
+              <Drawer.Close className="flex h-full flex-1 items-center gap-4 rounded-lg border px-4 transition">
+                <Icon.BookOpen />
+                <p>책 목록</p>
+              </Drawer.Close>
+              <Drawer.Close className="flex h-full flex-1 items-center gap-4 rounded-lg border px-4 transition">
+                <Icon.Home />
+                <p>홈페이지</p>
+              </Drawer.Close>
+            </div>
             {drawer.map((item, index) => (
-              <EbookMobileNavigationDrwerItem key={index} title={item.title} href={item.href} />
+              <Drawer.Close key={index} className="flex w-full flex-col">
+                <EbookMobileNavigationDrwerItem title={item.title} href={item.href} />
+              </Drawer.Close>
             ))}
           </div>
         </Drawer.Content>

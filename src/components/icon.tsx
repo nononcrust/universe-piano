@@ -1,5 +1,6 @@
 import {
   ArrowLeft,
+  BookOpen,
   ChevronLeft,
   ChevronRight,
   ChevronsLeft,
@@ -7,6 +8,7 @@ import {
   CircleDollarSign,
   ClipboardList,
   CreditCard,
+  Home,
   Instagram,
   Menu,
   MoreHorizontal,
@@ -38,4 +40,6 @@ export const Icon = {
   Youtube: Youtube,
   CreditCard: CreditCard,
   CircleDollarSign: CircleDollarSign,
+  BookOpen: BookOpen,
+  Home: Home,
 };
