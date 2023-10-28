@@ -1,3 +1,5 @@
+import { ServicePreparingFallback } from "@/components/layouts/service-preparing-fallback";
+
 export default function AccountPage() {
-  return <main>계정</main>;
+  return <ServicePreparingFallback />;
 }

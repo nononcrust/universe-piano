@@ -8,12 +8,13 @@ export const KakaoLoginButton = ({ className, ...props }: KakaoLoginButtonProps)
   return (
     <button
       className={cn(
-        "flex h-12 w-12 items-center justify-center gap-2 rounded-full border border-white bg-[#FFEB00] text-sm font-medium text-[#3C2929] transition hover:border-gray-200",
+        "flex h-12 items-center justify-center gap-2 rounded-md border border-white bg-[#FFEB00] px-4 text-sm font-medium text-[#3C2929] transition hover:border-gray-200",
         className,
       )}
       {...props}
     >
       <KakaoLogo />
+      카카오 계정으로 로그인
     </button>
   );
 };

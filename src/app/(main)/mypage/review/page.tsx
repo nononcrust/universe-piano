@@ -1,3 +1,5 @@
+import { ServicePreparingFallback } from "@/components/layouts/service-preparing-fallback";
+
 export default function MyReviewPage() {
-  return <main>나의 리뷰</main>;
+  return <ServicePreparingFallback />;
 }

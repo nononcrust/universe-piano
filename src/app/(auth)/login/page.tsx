@@ -13,7 +13,7 @@ export default function LoginPage() {
           <Image src="/images/logo.svg" width={64} height={64} alt="logo" />
           <h1 className="text-2xl font-bold text-foreground md:text-3xl">유니버스 피아노</h1>
         </div>
-        <h2 className="text-muted-foreground">카카오 계정으로 간편하게 로그인</h2>
+        <h2 className="text-muted-foreground">미국 음대 입시를 위한 모든 것</h2>
         <Link href={URL.KAKAO_LOGIN}>
           <KakaoLoginButton className="mt-8 cursor-pointer" />
         </Link>

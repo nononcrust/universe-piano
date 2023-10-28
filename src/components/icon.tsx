@@ -7,6 +7,7 @@ import {
   ChevronsRight,
   CircleDollarSign,
   ClipboardList,
+  Construction,
   CreditCard,
   Home,
   Instagram,
@@ -42,4 +43,5 @@ export const Icon = {
   CircleDollarSign: CircleDollarSign,
   BookOpen: BookOpen,
   Home: Home,
+  Construction: Construction,
 };

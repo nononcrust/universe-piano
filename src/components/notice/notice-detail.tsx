@@ -23,7 +23,7 @@ export const NoticeDetail = () => {
       </div>
       <div className="mt-8 whitespace-pre">{data.content}</div>
       <div className="mt-24">
-        <Link href={ROUTE.NOTICE.LIST}>
+        <Link href={ROUTE.NOTICE.ANNOUNCEMENTS.LIST}>
           <Button variant="secondary">목록으로</Button>
         </Link>
       </div>

@@ -74,7 +74,7 @@ export const siteConfig = {
     },
     service: {
       title: "서비스",
-      href: ROUTE.SERVICE.LIST,
+      href: ROUTE.SERVICE.PRODUCT.LIST,
       children: [
         {
           title: "미국 음대 입시 과외",
