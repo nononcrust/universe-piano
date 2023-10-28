@@ -13,8 +13,8 @@ export const LandingImageSection = () => {
             입시 상담부터 유학 준비까지 유니버스 피아노가 함께합니다.
           </h2>
           <div className="mt-4 flex gap-4">
-            <Button>상담 문의</Button>
-            <Button variant="outline">둘러보기</Button>
+            <Button>무료 강의 & 전자책 받기</Button>
+            <Button variant="outline">상담 문의</Button>
           </div>
         </div>
       </Aos>

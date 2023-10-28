@@ -11,9 +11,26 @@ export const ROUTE = {
     LIST: "/notice",
     DETAIL: (noticeId: string) => `/notice/${noticeId}`,
   },
+  AUDITION: {
+    FIRST: {
+      LIST: "/audition/first",
+      DETAIL: (auditionId: string) => `/audition/first/${auditionId}`,
+    },
+    SECOND: {
+      LIST: "/audition/second",
+      DETAIL: (auditionId: string) => `/audition/second/${auditionId}`,
+    },
+  },
   REVIEW: {
     LIST: "/review",
-    DETAIL: (reviewId: string) => `/review/${reviewId}`,
+    STUDY: {
+      LIST: "/review/study",
+      DETAIL: (reviewId: string) => `/review/study/${reviewId}`,
+    },
+    CONSULT: {
+      LIST: "/review/consult",
+      DETAIL: (reviewId: string) => `/review/consult/${reviewId}`,
+    },
   },
   EBOOK: {
     LIST: "/ebook",
@@ -27,6 +44,7 @@ export const ROUTE = {
   MYPAGE: {
     HOME: "/mypage",
     REVIEW: "/mypage/review",
+    ACCOUNT: "/mypage/account",
   },
   CART: "/cart",
   PAYMENT: "/payment",
