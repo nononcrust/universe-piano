@@ -4,7 +4,9 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
+  CircleDollarSign,
   ClipboardList,
+  CreditCard,
   Instagram,
   Menu,
   MoreHorizontal,
@@ -34,4 +36,6 @@ export const Icon = {
   Wrench: Wrench,
   Instagram: Instagram,
   Youtube: Youtube,
+  CreditCard: CreditCard,
+  CircleDollarSign: CircleDollarSign,
 };
