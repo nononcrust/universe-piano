@@ -15,6 +15,10 @@ export const ROUTE = {
     LIST: "/review",
     DETAIL: (reviewId: string) => `/review/${reviewId}`,
   },
+  EBOOK: {
+    LIST: "/ebook",
+    DETAIL: (ebookId: string) => `/ebook/${ebookId}`,
+  },
   SUPPORT: "/support",
   TERMS: {
     SERVICE: "/terms/service",
@@ -26,6 +30,7 @@ export const ROUTE = {
   },
   CART: "/cart",
   PAYMENT: "/payment",
+
   ADMIN: {
     HOME: "/admin",
     USER: {

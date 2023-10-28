@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "../icon";
 import { NavigationMenuDialog } from "./navigation-menu-dialog";
 import { UserMenu } from "./user-menu";
 
@@ -57,9 +56,9 @@ export const Header = () => {
         )}
         {user && (
           <div className="flex items-center gap-3">
-            <Link href={ROUTE.PAYMENT} className="hidden sm:flex">
+            {/* <Link href={ROUTE.PAYMENT} className="hidden sm:flex">
               <Icon.ShoppingCart className="h-8 w-8 rounded-full p-1.5 transition duration-200 hover:bg-gray-100" />
-            </Link>
+            </Link> */}
             <UserMenu />
           </div>
         )}

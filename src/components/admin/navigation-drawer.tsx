@@ -1,89 +1,12 @@
 "use client";
 
+import { siteConfig } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Drawer } from "vaul";
 import { Icon } from "../icon";
-
-const drawer = [
-  {
-    title: "유저 관리",
-    items: [
-      {
-        title: "유저 목록",
-        href: ROUTE.ADMIN.USER.LIST,
-      },
-    ],
-  },
-  {
-    title: "상품 관리",
-    items: [
-      {
-        title: "상품 목록",
-        href: ROUTE.ADMIN.PRODUCT.LIST,
-      },
-      {
-        title: "상품 추가",
-        href: ROUTE.ADMIN.PRODUCT.CREATE,
-      },
-    ],
-  },
-  {
-    title: "주문 관리",
-    items: [
-      {
-        title: "주문 목록",
-        href: ROUTE.ADMIN.ORDER.LIST,
-      },
-    ],
-  },
-  {
-    title: "후기 관리",
-    items: [
-      {
-        title: "후기 목록",
-        href: ROUTE.ADMIN.REVIEW.LIST,
-      },
-    ],
-  },
-  {
-    title: "문의 관리",
-    items: [
-      {
-        title: "문의 목록",
-        href: ROUTE.ADMIN.QUESTION.LIST,
-      },
-    ],
-  },
-  {
-    title: "공지사항 관리",
-    items: [
-      {
-        title: "공지사항 목록",
-        href: ROUTE.ADMIN.NOTICE.LIST,
-      },
-      {
-        title: "공지사항 추가",
-        href: ROUTE.ADMIN.NOTICE.CREATE,
-      },
-    ],
-  },
-  {
-    title: "도움말 관리",
-    items: [
-      {
-        title: "도움말 목록",
-        href: ROUTE.ADMIN.SUPPORT.LIST,
-      },
-      {
-        title: "도움말 추가",
-        href: ROUTE.ADMIN.SUPPORT.CREATE,
-      },
-    ],
-  },
-];
 
 export const NavigationDrawer = () => {
   return (
@@ -94,7 +17,7 @@ export const NavigationDrawer = () => {
           사이트로 돌아가기
         </div>
       </Link>
-      {drawer.map((section, index) => (
+      {siteConfig.adminNav.map((section, index) => (
         <NavigationDrawerSection key={index} title={section.title}>
           {section.items.map((item, index) => (
             <NavigationDrawerItem key={index} title={item.title} href={item.href} />
@@ -177,7 +100,7 @@ export const MobileNavigationDrawer = () => {
         <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
         <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 mt-24 flex max-h-[400px] flex-1 flex-col rounded-t-2xl bg-white p-2 outline-none">
           <div className="overflow-y-auto p-2">
-            {drawer.map((section, index) => (
+            {siteConfig.adminNav.map((section, index) => (
               <NavigationDrawerSection key={index} title={section.title}>
                 {section.items.map((item, index) => (
                   <Drawer.Close key={index} className="flex w-full flex-1 flex-col">

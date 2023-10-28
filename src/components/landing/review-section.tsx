@@ -21,15 +21,15 @@ export const ReviewSection = () => {
         <div className="mt-8 grid grid-cols-1 gap-8 text-left md:grid-cols-3">
           <ReviewItem
             author="김원붕"
-            description='평소 "피아노를 배우고 싶다"는 생각이 있었지만, 어떻게 시작해야 할지 막막했습니다. 유니버스 피아노의 도움으로 피아노를 배우고 있습니다. 입시 상담부터 유학 준비까지..'
+            description='평소 "피아노를 배우고 싶다"는 생각이 있었지만, 어떻게 시작해야 할지 막막했습니다. 입시 상담부터 유학 준비까지..'
           />
           <ReviewItem
             author="김원붕"
-            description='평소 "피아노를 배우고 싶다"는 생각이 있었지만, 어떻게 시작해야 할지 막막했습니다. 유니버스 피아노의 도움으로 피아노를 배우고 있습니다. 입시 상담부터 유학 준비까지..'
+            description='평소 "피아노를 배우고 싶다"는 생각이 있었지만, 어떻게 시작해야 할지 막막했습니다. 입시 상담부터 유학 준비까지..'
           />
           <ReviewItem
             author="김원붕"
-            description='평소 "피아노를 배우고 싶다"는 생각이 있었지만, 어떻게 시작해야 할지 막막했습니다. 유니버스 피아노의 도움으로 피아노를 배우고 있습니다. 입시 상담부터 유학 준비까지..'
+            description='평소 "피아노를 배우고 싶다"는 생각이 있었지만, 어떻게 시작해야 할지 막막했습니다. 입시 상담부터 유학 준비까지..'
           />
         </div>
         <div className="mt-20 flex justify-center">

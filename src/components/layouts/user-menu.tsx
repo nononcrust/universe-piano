@@ -24,14 +24,19 @@ export const UserMenu = () => {
           <AvatarFallback />
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem asChild>
+      <DropdownMenuContent align="end" className="translate-y-1">
+        <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.CART}>장바구니</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild>
+        <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.MYPAGE.HOME}>마이페이지</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={logout}>로그아웃</DropdownMenuItem>
+        <DropdownMenuItem asChild className="px-4 py-2">
+          <Link href={ROUTE.EBOOK.LIST}>전자책 목록</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="px-4 py-2" onClick={logout}>
+          로그아웃
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
