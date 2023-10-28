@@ -23,6 +23,10 @@ export const Header = () => {
 
   const pathname = usePathname();
 
+  const getDomain = (href: string) => {
+    return `/${href.split("/")[1]}`;
+  };
+
   return (
     <>
       <header className="sticky top-0 z-40 w-full bg-background">
@@ -44,7 +48,7 @@ export const Header = () => {
                     href={item.href}
                     className={cn(
                       "flex items-center text-sm font-medium text-muted-foreground transition hover:text-foreground",
-                      pathname.startsWith(item.href) && "text-foreground",
+                      pathname.startsWith(getDomain(item.href)) && "text-foreground",
                     )}
                   >
                     {item.title}
