@@ -8,9 +8,9 @@ import { useParams } from "next/navigation";
 import { Button } from "../ui/button";
 
 export const NoticeDetail = () => {
-  const { noticeId } = useParams();
+  const { id } = useParams();
 
-  const { data } = useNoticeById(Number(noticeId));
+  const { data } = useNoticeById(Number(id));
 
   if (!data) return null;
 
