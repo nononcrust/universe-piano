@@ -1,3 +1,6 @@
+import { ROUTE } from "@/constants/route";
+import Link from "next/link";
+import { Icon } from "../icon";
 import { Aos } from "../ui/aos";
 import { Button } from "../ui/button";
 
@@ -16,6 +19,10 @@ export const LandingImageSection = () => {
             <Button>무료 강의 & 전자책 받기</Button>
             <Button variant="outline">상담 문의</Button>
           </div>
+          <Link href={ROUTE.NOTICE.AUDITION_RESULT.LIST} className="mt-16 flex items-center gap-1">
+            <p>미국 음대 2차 오디션 결과발표 바로가기</p>
+            <Icon.ChevronRight size={20} />
+          </Link>
         </div>
       </Aos>
     </section>
