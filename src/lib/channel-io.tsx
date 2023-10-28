@@ -204,8 +204,10 @@ export const ChannelProvider = ({ children }: PropsWithChildren) => {
 
     channel.loadScript();
 
+    const pluginKey = process.env.NEXT_PUBLIC_CHANNEL_IO_KEY!;
+
     channel.boot({
-      pluginKey: process.env.NEXT_PUBLIC_CHANNEL_IO_KEY!,
+      pluginKey: pluginKey!,
     });
 
     return () => {
