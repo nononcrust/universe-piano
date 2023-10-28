@@ -1,5 +1,5 @@
 import { CartItem } from "@/components/cart/cart-item";
-import { PageTitle } from "@/components/layouts/page-title";
+import { PageTitle } from "@/components/layout/page-title";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ROUTE } from "@/constants/route";

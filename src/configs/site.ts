@@ -101,6 +101,24 @@ export const siteConfig = {
       ],
     },
   },
+  mainNav: [
+    {
+      title: "소식",
+      href: ROUTE.NOTICE.ANNOUNCEMENTS.LIST,
+    },
+    {
+      title: "리뷰",
+      href: ROUTE.REVIEW.CONSULT.LIST,
+    },
+    {
+      title: "서비스",
+      href: ROUTE.SERVICE.PRODUCT.LIST,
+    },
+    {
+      title: "고객지원",
+      href: ROUTE.SUPPORT,
+    },
+  ],
   adminNav: [
     {
       title: "유저 관리",

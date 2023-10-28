@@ -1,6 +1,6 @@
 "use client";
 
-import { PageTitle } from "@/components/layouts/page-title";
+import { PageTitle } from "@/components/layout/page-title";
 import { Pagination } from "@/components/pagination";
 import { useState } from "react";
 

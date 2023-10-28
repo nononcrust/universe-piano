@@ -1,4 +1,4 @@
-import { PageTitle } from "@/components/layouts/page-title";
+import { PageTitle } from "@/components/layout/page-title";
 import { SupportList } from "@/components/support/support-list";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";

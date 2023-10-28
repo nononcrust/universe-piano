@@ -1,8 +1,8 @@
 "use client";
 
 import { Icon } from "@/components/icon";
-import { PageSubtitle } from "@/components/layouts/page-subtitle";
-import { PageTitle } from "@/components/layouts/page-title";
+import { PageSubtitle } from "@/components/layout/page-subtitle";
+import { PageTitle } from "@/components/layout/page-title";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {

@@ -1,4 +1,4 @@
-import { NotFoundFallback } from "@/components/layouts/not-found-fallback";
+import { NotFoundFallback } from "@/components/layout/not-found-fallback";
 
 export default function NotFoundPage() {
   return (

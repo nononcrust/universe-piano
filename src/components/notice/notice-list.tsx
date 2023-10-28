@@ -4,7 +4,7 @@ import { ROUTE } from "@/constants/route";
 import { useNoticeList } from "@/features/notice";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
-import { PageTitle } from "../layouts/page-title";
+import { PageTitle } from "../layout/page-title";
 import { NoticeListItem } from "./notice-list-item";
 
 export const NoticeList = () => {

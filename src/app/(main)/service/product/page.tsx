@@ -1,4 +1,4 @@
-import { PageTitle } from "@/components/layouts/page-title";
+import { PageTitle } from "@/components/layout/page-title";
 import { ProductItem } from "@/components/product-item";
 
 const DUMMY_PRODUCT_LIST = Array(20).fill(0);

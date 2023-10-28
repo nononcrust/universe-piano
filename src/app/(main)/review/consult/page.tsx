@@ -1,4 +1,4 @@
-import { ServicePreparingFallback } from "@/components/layouts/service-preparing-fallback";
+import { ServicePreparingFallback } from "@/components/layout/service-preparing-fallback";
 
 export default function ConsultReviewListPage() {
   return (

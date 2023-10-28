@@ -1,5 +1,5 @@
 import { Icon } from "@/components/icon";
-import { PageTitle } from "@/components/layouts/page-title";
+import { PageTitle } from "@/components/layout/page-title";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import {

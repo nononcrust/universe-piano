@@ -38,7 +38,7 @@ export const Header = () => {
                 <span className="inline-block font-bold">{siteConfig.name}</span>
               </Link>
               <nav className="hidden gap-6 md:flex">
-                {Object.values(siteConfig.contents).map((item, index) => (
+                {siteConfig.mainNav.map((item, index) => (
                   <Link
                     key={index}
                     href={item.href}
