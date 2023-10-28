@@ -196,12 +196,10 @@ class ChannelService {
   }
 }
 
-export default new ChannelService();
+export const channel = new ChannelService();
 
 export const ChannelProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
-    const channel = new ChannelService();
-
     channel.loadScript();
 
     channel.boot({
