@@ -15,7 +15,7 @@ interface CategoryTabProps {
 
 export const CategoryTab = ({ categories }: CategoryTabProps) => {
   const pathname = usePathname();
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => pathname.startsWith(href);
 
   return (
     <div className="flex h-12 items-center border-b">
