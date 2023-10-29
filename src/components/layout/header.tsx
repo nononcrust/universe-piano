@@ -38,7 +38,7 @@ export const Header = () => {
                 href={ROUTE.HOME}
                 className="absolute left-1/2 top-0 flex h-16 -translate-x-1/2 items-center md:static md:left-auto md:translate-x-0"
               >
-                <Image src="/images/logo.svg" width={40} height={40} alt="사이트 로고" />
+                <Image src="/images/logo.svg" width={40} height={40} alt="사이트 로고" priority />
                 <span className="inline-block font-bold">{siteConfig.name}</span>
               </Link>
               <nav className="hidden gap-6 md:flex">
