@@ -6,6 +6,10 @@ export const siteConfig = {
   name: "유니버스 피아노",
   title: "유니버스 피아노 - 미국 음대 입시의 모든것",
   description: "유니버스 피아노 홈페이지",
+  icons: [
+    { rel: "shortcut icon", type: "image/x-icon", url: "/favicon.ico" },
+    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
+  ],
   links: {
     instagram: "https://www.instagram.com/universe_piano",
     kakao: "https://open.kakao.com/o/sy3BCAif",

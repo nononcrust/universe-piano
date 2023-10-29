@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   openGraph: siteConfig.openGraph,
+  icons: siteConfig.icons,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
