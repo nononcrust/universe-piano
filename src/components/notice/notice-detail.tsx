@@ -5,6 +5,7 @@ import { useNoticeById } from "@/features/notice";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Markdown } from "../markdown";
 import { Button } from "../ui/button";
 
 export const NoticeDetail = () => {
@@ -21,7 +22,7 @@ export const NoticeDetail = () => {
         <h2 className="text-lg font-semibold md:text-2xl">{data.title}</h2>
         <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
       </div>
-      <div className="mt-8 whitespace-pre">{data.content}</div>
+      <Markdown className="prose mt-8" content={data.content} />
       <div className="mt-24">
         <Link href={ROUTE.NOTICE.ANNOUNCEMENTS.LIST}>
           <Button variant="secondary">목록으로</Button>

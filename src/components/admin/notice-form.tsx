@@ -27,7 +27,7 @@ import {
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useToast } from "../ui/use-toast";
-import { DeleteButton } from "./delete-button";
+import { DeleteConfirmDialog } from "./delete-confirm-dialog";
 import { FormLayout } from "./form-layout";
 
 const formSchema = z.object({
@@ -70,7 +70,13 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
   const onSubmit = form.handleSubmit((data: FormSchema) => {
     if (mode === "create" && !createNoticeMutation.isPending) {
       createNoticeMutation.mutate(data, {
-        onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
+        onSuccess: () => {
+          router.push(ROUTE.ADMIN.NOTICE.LIST);
+          toast({
+            title: "공지사항 추가 완료",
+            description: "공지사항 추가가 완료되었습니다.",
+          });
+        },
       });
     }
 
@@ -81,11 +87,17 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
       };
 
       updateNoticeMutation.mutate(body, {
-        onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
+        onSuccess: () => {
+          console.log("success!!!!!!!!!!!");
+          router.push(ROUTE.ADMIN.NOTICE.LIST);
+          toast({
+            title: "공지사항 수정 완료",
+            description: "공지사항 수정이 완료되었습니다.",
+          });
+        },
       });
     }
   });
-
   const onDelete = () => {
     if (mode === "edit" && noticeId && !deleteNoticeMutation.isPending) {
       deleteNoticeMutation.mutate(noticeId, {
@@ -134,7 +146,7 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
               )}
             />
             <div className={cn("flex gap-4", mode === "edit" ? "justify-between" : "justify-end")}>
-              {mode === "edit" && <DeleteButton onDelete={onDelete} />}
+              {mode === "edit" && <DeleteConfirmDialog onDelete={onDelete} />}
               <Button
                 className="flex-1 md:flex-initial"
                 type="submit"

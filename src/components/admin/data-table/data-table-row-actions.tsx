@@ -6,22 +6,21 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ROUTE } from "@/constants/route";
 import { Row } from "@tanstack/react-table";
+import { useRouter } from "next/navigation";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 
 export const DataTableRowActions = <TData,>({ row }: DataTableRowActionsProps<TData>) => {
-  const onEdit = () => {
-    console.log("수정하기", row.original);
-  };
+  const router = useRouter();
 
-  const onDelete = () => {
-    console.log("삭제하기", row.original);
+  const onEditButtonClick = () => {
+    router.push(ROUTE.ADMIN.NOTICE.EDIT(row.getValue("id")));
   };
 
   return (
@@ -33,9 +32,7 @@ export const DataTableRowActions = <TData,>({ row }: DataTableRowActionsProps<TD
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem onClick={onEdit}>수정하기</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={onDelete}>삭제하기</DropdownMenuItem>
+        <DropdownMenuItem onClick={onEditButtonClick}>수정하기</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -1,6 +1,5 @@
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -11,11 +10,11 @@ import {
 } from "../ui/alert-dialog";
 import { Button } from "../ui/button";
 
-interface DeleteButtonProps {
+interface DeletConfirmDialogProps {
   onDelete: () => void;
 }
 
-export const DeleteButton = ({ onDelete }: DeleteButtonProps) => {
+export const DeleteConfirmDialog = ({ onDelete }: DeletConfirmDialogProps) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -32,7 +31,9 @@ export const DeleteButton = ({ onDelete }: DeleteButtonProps) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>취소</AlertDialogCancel>
-          <AlertDialogAction onClick={onDelete}>삭제</AlertDialogAction>
+          <Button className="flex-1 md:flex-initial" variant="destructive" onClick={onDelete}>
+            삭제
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

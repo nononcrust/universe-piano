@@ -51,6 +51,7 @@
     "react-day-picker": "^8.8.2",
     "react-dom": "latest",
     "react-hook-form": "^7.46.2",
+    "react-remark": "^2.1.0",
     "recoil": "^0.7.7",
     "superjson": "^2.2.0",
     "tailwind-merge": "^1.14.0",
@@ -59,6 +60,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/jsonwebtoken": "^9.0.3",
     "@types/node": "latest",
     "@types/react": "latest",
