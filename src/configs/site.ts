@@ -46,15 +46,15 @@ export const siteConfig = {
     // },
     notice: {
       title: "소식",
-      href: ROUTE.NOTICE.LIST,
+      href: ROUTE.NEWS.LIST,
       children: [
         {
           title: "공지사항",
-          href: ROUTE.NOTICE.ANNOUNCEMENTS.LIST,
+          href: ROUTE.NEWS.NOTICE.LIST,
         },
         {
           title: "2차 오디션 결과 발표",
-          href: ROUTE.NOTICE.AUDITION_RESULT.LIST,
+          href: ROUTE.NEWS.AUDITION.LIST,
         },
       ],
     },
@@ -74,7 +74,7 @@ export const siteConfig = {
     },
     service: {
       title: "서비스",
-      href: ROUTE.SERVICE.PRODUCT.LIST,
+      href: ROUTE.SERVICE.LIST,
       children: [
         {
           title: "미국 음대 입시 과외",
@@ -104,7 +104,7 @@ export const siteConfig = {
   mainNav: [
     {
       title: "소식",
-      href: ROUTE.NOTICE.ANNOUNCEMENTS.LIST,
+      href: ROUTE.NEWS.NOTICE.LIST,
     },
     {
       title: "리뷰",

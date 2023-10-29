@@ -15,7 +15,7 @@ export const NoticeList = () => {
       <PageTitle title="공지사항" />
       <ul className="mt-8 flex flex-col divide-y">
         {data.map((item, index) => (
-          <Link key={index} href={ROUTE.NOTICE.ANNOUNCEMENTS.DETAIL(String(item.id))}>
+          <Link key={index} href={ROUTE.NEWS.NOTICE.DETAIL(String(item.id))}>
             <NoticeListItem title={item.title} createdAt={formatDate(item.createdAt)} />
           </Link>
         ))}

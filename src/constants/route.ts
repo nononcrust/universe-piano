@@ -7,47 +7,46 @@ export const ROUTE = {
     LIST: "/service",
     PRODUCT: {
       LIST: "/service/product",
-      DETAIL: (productId: string) => `/service/product/${productId}`,
+      DETAIL: (id: string) => `/service/product/${id}`,
     },
     TUTORING: "/service/tutoring",
   },
-  NOTICE: {
-    LIST: "/notice",
-    DETAIL: (noticeId: string) => `/notice/${noticeId}`,
-    ANNOUNCEMENTS: {
-      LIST: "/notice/announcements",
-      DETAIL: (noticeId: string) => `/notice/announcements/${noticeId}`,
+  NEWS: {
+    LIST: "/news",
+    NOTICE: {
+      LIST: "/news/notice",
+      DETAIL: (id: string) => `/news/notice/${id}`,
     },
-    AUDITION_RESULT: {
-      LIST: "/notice/audition",
-      DETAIL: (noticeId: string) => `/notice/audition/${noticeId}`,
+    AUDITION: {
+      LIST: "/news/audition",
+      DETAIL: (id: string) => `/news/audition/${id}`,
     },
   },
   REVIEW: {
     LIST: "/review",
     STUDY: {
       LIST: "/review/study",
-      DETAIL: (reviewId: string) => `/review/study/${reviewId}`,
+      DETAIL: (id: string) => `/review/study/${id}`,
     },
     CONSULT: {
       LIST: "/review/consult",
-      DETAIL: (reviewId: string) => `/review/consult/${reviewId}`,
+      DETAIL: (id: string) => `/review/consult/${id}`,
     },
     AUDITION: {
       LIST: "/review/audition",
       FIRST: {
         LIST: "/review/audition/first",
-        DETAIL: (auditionId: string) => `/review/audition/first/${auditionId}`,
+        DETAIL: (id: string) => `/review/audition/first/${id}`,
       },
       SECOND: {
         LIST: "/review/audition/second",
-        DETAIL: (auditionId: string) => `/review/audition/second/${auditionId}`,
+        DETAIL: (id: string) => `/review/audition/second/${id}`,
       },
     },
   },
   EBOOK: {
     LIST: "/ebook",
-    DETAIL: (ebookId: string) => `/ebook/${ebookId}`,
+    DETAIL: (id: string) => `/ebook/${id}`,
   },
   SUPPORT: "/support",
   TERMS: {
@@ -67,33 +66,33 @@ export const ROUTE = {
     HOME: "/admin",
     USER: {
       LIST: "/admin/user",
-      EDIT: (userId: string) => `/admin/user/${userId}`,
+      EDIT: (id: string) => `/admin/user/${id}`,
     },
     PRODUCT: {
       LIST: "/admin/product",
-      EDIT: (productId: string) => `/admin/product/${productId}`,
+      EDIT: (id: string) => `/admin/product/${id}`,
       CREATE: "/admin/product/create",
     },
     ORDER: {
       LIST: "/admin/order",
-      EDIT: (orderId: string) => `/admin/order/${orderId}`,
+      EDIT: (id: string) => `/admin/order/${id}`,
     },
     REVIEW: {
       LIST: "/admin/review",
-      EDIT: (reviewId: string) => `/admin/review/${reviewId}`,
+      EDIT: (id: string) => `/admin/review/${id}`,
     },
     NOTICE: {
       LIST: "/admin/notice",
-      EDIT: (noticeId: string) => `/admin/notice/${noticeId}`,
+      EDIT: (id: string) => `/admin/notice/${id}`,
       CREATE: "/admin/notice/create",
     },
     QUESTION: {
       LIST: "/admin/question",
-      EDIT: (questionId: string) => `/admin/question/${questionId}`,
+      EDIT: (id: string) => `/admin/question/${id}`,
     },
     SUPPORT: {
       LIST: "/admin/support",
-      EDIT: (supportId: string) => `/admin/support/${supportId}`,
+      EDIT: (id: string) => `/admin/support/${id}`,
       CREATE: "/admin/support/create",
     },
   },

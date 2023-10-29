@@ -24,7 +24,7 @@ export const NoticeDetail = () => {
       </div>
       <Markdown className="prose mt-8" content={data.content} />
       <div className="mt-24">
-        <Link href={ROUTE.NOTICE.ANNOUNCEMENTS.LIST}>
+        <Link href={ROUTE.NEWS.NOTICE.LIST}>
           <Button variant="secondary">목록으로</Button>
         </Link>
       </div>
