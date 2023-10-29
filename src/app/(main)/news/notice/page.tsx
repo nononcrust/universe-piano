@@ -1,6 +1,7 @@
 "use client";
 
 import { PageTitle } from "@/components/layout/page-title";
+import { NoticeListItem } from "@/components/notice/notice-list-item";
 import { ROUTE } from "@/constants/route";
 import { useNoticeList } from "@/features/notice";
 import { formatDate } from "@/lib/utils";
@@ -22,17 +23,3 @@ export default function NoticePage() {
     </main>
   );
 }
-
-interface NoticeListItemProps {
-  title: string;
-  createdAt: string;
-}
-
-export const NoticeListItem = ({ title, createdAt }: NoticeListItemProps) => {
-  return (
-    <li className="flex cursor-pointer flex-col py-4">
-      <p className="text-lg font-semibold">{title}</p>
-      <p className="text-sm text-muted-foreground">{createdAt}</p>
-    </li>
-  );
-};
