@@ -1,14 +1,5 @@
 import { api } from "@/configs/axios";
-import { prisma } from "@/lib/prisma";
-import { getQueryClient } from "@/lib/react-query";
-import {
-  HydrationBoundary,
-  dehydrate,
-  useMutation,
-  useQueryClient,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
-import { PropsWithChildren } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
 const ENDPOINT = "/notice";
@@ -43,16 +34,17 @@ const queryKeys = {
 };
 
 export const useNoticeList = () => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: queryKeys.list(),
     queryFn: noticeApi.getNoticeList,
   });
 };
 
-export const useNoticeById = (noticeId?: number) => {
-  return useSuspenseQuery({
+export const useNoticeById = (noticeId: number) => {
+  return useQuery({
     queryKey: queryKeys.detail(noticeId),
-    queryFn: () => (noticeId ? noticeApi.getNoticeById(noticeId) : null),
+    queryFn: () => noticeApi.getNoticeById(noticeId),
+    enabled: !!noticeId,
   });
 };
 
@@ -73,10 +65,9 @@ export const useUpdateNotice = () => {
 
   return useMutation({
     mutationFn: noticeApi.updateNotice,
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: queryKeys.all(),
-      }),
+    onSuccess: (data, variables) => {
+      queryClient.setQueryData(queryKeys.detail(variables.noticeId), data);
+    },
   });
 };
 
@@ -85,55 +76,42 @@ export const useDeleteNotice = () => {
 
   return useMutation({
     mutationFn: noticeApi.deleteNotice,
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: queryKeys.all(),
-      }),
+    onSuccess: (_, variables) => {
+      queryClient.setQueryData(queryKeys.detail(variables), null);
+    },
   });
 };
 
 export const noticeQuery = {
-  getNoticeList: async () => {
-    const notices = await prisma.notice.findMany();
-
-    return JSON.parse(JSON.stringify(notices.reverse()));
-  },
-  getNoticeById: async (id: number) => {
-    const notice = await prisma.notice.findUnique({
-      where: {
-        id,
-      },
-    });
-
-    return JSON.parse(JSON.stringify(notice));
-  },
+  getNoticeList: async () => {},
+  getNoticeById: async (id: number) => {},
 };
 
-export const prefetchNoticeList = async () => {
-  const queryClient = getQueryClient();
+// export const prefetchNoticeList = async () => {
+//   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: queryKeys.list(),
-    queryFn: noticeQuery.getNoticeList,
-  });
+//   await queryClient.prefetchQuery({
+//     queryKey: queryKeys.list(),
+//     queryFn: noticeQuery.getNoticeList,
+//   });
 
-  const dehydratedState = dehydrate(queryClient);
+//   const dehydratedState = dehydrate(queryClient);
 
-  return { dehydratedState };
-};
+//   return { dehydratedState };
+// };
 
-export const prefetchNoticeDetail = async (noticeId: number) => {
-  const queryClient = getQueryClient();
+// export const prefetchNoticeDetail = async (noticeId: number) => {
+//   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: queryKeys.detail(noticeId),
-    queryFn: () => noticeQuery.getNoticeById(noticeId),
-  });
+//   await queryClient.prefetchQuery({
+//     queryKey: queryKeys.detail(noticeId),
+//     queryFn: () => noticeQuery.getNoticeById(noticeId),
+//   });
 
-  const dehydratedState = dehydrate(queryClient);
+//   const dehydratedState = dehydrate(queryClient);
 
-  return { dehydratedState };
-};
+//   return { dehydratedState };
+// };
 
 export const noticeRequestSchema = z.object({
   title: z.string().min(1).max(100),
@@ -153,26 +131,26 @@ export const noticeListResponseSchema = z.array(noticeResponseSchema);
 export type Notice = z.infer<typeof noticeResponseSchema>;
 export type NoticeBody = z.infer<typeof noticeRequestSchema>;
 
-export const NoticeListFetcher = async ({ children }: PropsWithChildren) => {
-  const { dehydratedState } = await prefetchNoticeList();
+// export const NoticeListFetcher = async ({ children }: PropsWithChildren) => {
+//   const { dehydratedState } = await prefetchNoticeList();
 
-  return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
-};
+//   return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
+// };
 
-interface NoticeDetailFetcherProps {
-  children: React.ReactNode;
-  noticeId: number;
-  fallback: React.ReactNode;
-}
+// interface NoticeDetailFetcherProps {
+//   children: React.ReactNode;
+//   noticeId: number;
+//   fallback: React.ReactNode;
+// }
 
-export const NoticeDetailFetcher = async ({
-  children,
-  noticeId,
-  fallback,
-}: NoticeDetailFetcherProps) => {
-  const { dehydratedState } = await prefetchNoticeDetail(noticeId);
+// export const NoticeDetailFetcher = async ({
+//   children,
+//   noticeId,
+//   fallback,
+// }: NoticeDetailFetcherProps) => {
+//   const { dehydratedState } = await prefetchNoticeDetail(noticeId);
 
-  if (!dehydratedState.queries[0].state.data) return <>{fallback}</>;
+//   if (!dehydratedState.queries[0].state.data) return <>{fallback}</>;
 
-  return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
-};
+//   return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
+// };

@@ -11,6 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { Button } from "../ui/button";
@@ -57,13 +58,13 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
 
   const router = useRouter();
 
-  const { data } = useNoticeById(noticeId);
+  const { data } = useNoticeById(noticeId || 0);
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: data?.title || "",
-      content: data?.content || "",
+      title: "",
+      content: "",
     },
   });
 
@@ -88,7 +89,6 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
 
       updateNoticeMutation.mutate(body, {
         onSuccess: () => {
-          console.log("success!!!!!!!!!!!");
           router.push(ROUTE.ADMIN.NOTICE.LIST);
           toast({
             title: "공지사항 수정 완료",
@@ -111,6 +111,18 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
       });
     }
   };
+
+  useEffect(() => {
+    if (mode === "edit" && data) {
+      console.log(data);
+      form.reset({
+        title: data.title,
+        content: data.content,
+      });
+    }
+  }, [data, form, mode]);
+
+  if (mode === "edit" && !data) return null;
 
   return (
     <Card>

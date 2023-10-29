@@ -1,11 +1,13 @@
-import { noticeQuery, noticeRequestSchema } from "@/features/notice";
+import { noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export const GET = async (request: Request) => {
-  const notices = await noticeQuery.getNoticeList();
+  const notices = await prisma.notice.findMany();
 
-  return Response.json(notices);
+  return new NextResponse(JSON.stringify(notices.reverse()), {
+    status: 200,
+  });
 };
 
 export const POST = async (request: Request) => {

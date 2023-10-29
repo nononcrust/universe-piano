@@ -1,4 +1,4 @@
-import { noticeQuery, noticeRequestSchema } from "@/features/notice";
+import { noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -11,7 +11,11 @@ interface Context {
 export const GET = async (request: Request, context: Context) => {
   const noticeId = context.params.noticeId;
 
-  const notice = await noticeQuery.getNoticeById(Number(noticeId));
+  const notice = await prisma.notice.findUnique({
+    where: {
+      id: Number(noticeId),
+    },
+  });
 
   return new NextResponse(JSON.stringify(notice), {
     status: 200,
