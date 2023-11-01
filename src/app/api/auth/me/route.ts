@@ -28,7 +28,7 @@ export const GET = async (request: Request) => {
     id: user.id,
     nickname: user.nickname,
     profileImage: user.profileImage,
-    email: "dummy email",
+    email: user.email,
   };
 
   return new Response(JSON.stringify(userInfo), {

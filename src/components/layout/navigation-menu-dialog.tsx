@@ -1,19 +1,30 @@
 "use client";
 
 import { siteConfig } from "@/configs/site";
+import { ROUTE } from "@/constants/route";
+import { useUserInfo } from "@/features/auth";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icon } from "../icon";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export const NavigationMenuDialog = () => {
+  const { data: user } = useUserInfo();
+
   return (
     <Sheet>
       <SheetTrigger className="md:hidden">
         <Icon.Menu />
       </SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent side="right">
         <ListSection className="mt-4" title="유니버스 피아노">
+          {/* {user && (
+            <div className="mb-4 mt-2">
+              <UserProfile />
+            </div>
+          )} */}
           {Object.values(siteConfig.contents).map((category, index) => (
             <ListCategory key={category.href} title={category.title}>
               {category.children.map((item) => (
@@ -24,6 +35,13 @@ export const NavigationMenuDialog = () => {
             </ListCategory>
           ))}
         </ListSection>
+        {!user && (
+          <div className="mt-8 flex gap-4">
+            <Button asChild className="h-14 flex-1">
+              <Link href={ROUTE.LOGIN}>유니버스 피아노 시작하기</Link>
+            </Button>
+          </div>
+        )}
       </SheetContent>
     </Sheet>
   );
@@ -78,5 +96,24 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
         </li>
       </SheetClose>
     </Link>
+  );
+};
+
+const UserProfile = () => {
+  const { data: user } = useUserInfo();
+
+  if (!user) return null;
+
+  return (
+    <div className="flex gap-4">
+      <Avatar className="h-12 w-12">
+        <AvatarImage src={user.profileImage} />
+        <AvatarFallback resource={user.profileImage} />
+      </Avatar>
+      <div>
+        <p className="font-semibold">{user.nickname}</p>
+        <p className="text-muted-foreground">{user.email}</p>
+      </div>
+    </div>
   );
 };

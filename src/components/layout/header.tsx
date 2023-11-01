@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 import { CategoryTab } from "./category-tab";
 import { NavigationMenuDialog } from "./navigation-menu-dialog";
 import { UserMenu } from "./user-menu";
@@ -20,6 +21,7 @@ export interface NavItem {
 
 export const Header = () => {
   const { data: user, fetchStatus } = useUserInfo();
+  console.log(user);
 
   const pathname = usePathname();
 
@@ -32,12 +34,8 @@ export const Header = () => {
       <header className="sticky top-0 z-40 w-full bg-background">
         <div className="border-b">
           <div className="container flex h-16 items-center justify-between space-x-4 sm:space-x-0">
-            <NavigationMenuDialog />
             <div className="flex gap-12">
-              <Link
-                href={ROUTE.HOME}
-                className="absolute left-1/2 top-0 flex h-16 -translate-x-1/2 items-center md:static md:left-auto md:translate-x-0"
-              >
+              <Link href={ROUTE.HOME} className="top-0 flex h-16 items-center">
                 <Image src="/images/logo.svg" width={40} height={40} alt="사이트 로고" priority />
                 <span className="inline-block font-bold">{siteConfig.name}</span>
               </Link>
@@ -56,19 +54,29 @@ export const Header = () => {
                 ))}
               </nav>
             </div>
+            <NavigationMenuDialog />
             {!user && (
-              <Link
-                href={ROUTE.LOGIN}
-                className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
-              >
-                로그인
-              </Link>
+              <div className="hidden gap-2 md:flex">
+                <Button asChild size="sm" className="h-[32px] text-xs" variant="secondary">
+                  <Link
+                    href={ROUTE.LOGIN}
+                    className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
+                  >
+                    로그인
+                  </Link>
+                </Button>
+                <Button asChild size="sm" className="h-[32px] text-xs">
+                  <Link
+                    href={ROUTE.LOGIN}
+                    className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
+                  >
+                    회원가입
+                  </Link>
+                </Button>
+              </div>
             )}
             {user && (
-              <div className="flex items-center gap-3">
-                {/* <Link href={ROUTE.PAYMENT} className="hidden sm:flex">
-              <Icon.ShoppingCart className="h-8 w-8 rounded-full p-1.5 transition duration-200 hover:bg-gray-100" />
-            </Link> */}
+              <div className="hidden md:flex">
                 <UserMenu />
               </div>
             )}

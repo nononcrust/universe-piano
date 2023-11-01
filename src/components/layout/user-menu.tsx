@@ -1,6 +1,7 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
+import { useUserInfo } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -12,9 +13,12 @@ import {
 } from "../ui/dropdown-menu";
 
 export const UserMenu = () => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
+  const { data: user } = useUserInfo();
 
   const isAdmin = true;
+
+  console.log("header", user);
 
   if (!user) return null;
 
@@ -23,7 +27,7 @@ export const UserMenu = () => {
       <DropdownMenuTrigger>
         <Avatar className="h-8 w-8 cursor-pointer">
           <AvatarImage src={user.profileImage} />
-          <AvatarFallback />
+          <AvatarFallback resource={user.profileImage} />
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="translate-y-1">

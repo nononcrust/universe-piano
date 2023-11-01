@@ -1,20 +1,22 @@
 import { COOKIE } from "@/constants/cookie";
-import { RegisterBody, registerRequestSchema } from "@/features/auth";
+import { registerRequestSchema } from "@/features/auth";
 import { jwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const POST = async (request: Request) => {
-  const body = (await request.json()) as RegisterBody;
+  const body = await request.json();
 
-  if (registerRequestSchema.safeParse(body).success === false) {
+  const parsedBody = registerRequestSchema.safeParse(body);
+
+  if (parsedBody.success === false) {
     return new NextResponse("", { status: 400 });
   }
 
   const existingUser = await prisma.user.findUnique({
     where: {
-      kakaoId: body.kakaoId,
+      kakaoId: parsedBody.data.kakaoId,
     },
   });
 
@@ -24,10 +26,10 @@ export const POST = async (request: Request) => {
 
   const user = await prisma.user.create({
     data: {
-      kakaoId: body.kakaoId,
-      nickname: body.nickname,
-      phone: body.phone,
-      profileImage: body.profileImage,
+      kakaoId: parsedBody.data.kakaoId,
+      nickname: parsedBody.data.nickname,
+      phone: parsedBody.data.phone,
+      profileImage: parsedBody.data.profileImage,
     },
   });
 

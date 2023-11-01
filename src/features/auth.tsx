@@ -1,13 +1,11 @@
 import { api } from "@/configs/axios";
-import { getQueryClient } from "@/lib/react-query";
-import { HydrationBoundary, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { PropsWithChildren } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
 
 const ENDPOINT = "/auth";
 
 export const authApi = {
-  login: async (body: { user: UserInfo }) => {
+  login: async (body: UserInfo) => {
     const response = await api.post(`${ENDPOINT}/login`, body);
     return response.data;
   },
@@ -50,19 +48,9 @@ export const queryKeys = {
 
 export const useUserInfo = () => {
   return useQuery({
-    queryKey: queryKeys.all(),
+    queryKey: queryKeys.userInfo(),
     queryFn: authApi.getUserInfo,
   });
-};
-
-export const prefetchUserInfo = async () => {
-  const queryClient = getQueryClient();
-  const dehydratedState = await queryClient.prefetchQuery({
-    queryKey: queryKeys.all(),
-    queryFn: authApi.getUserInfo,
-  });
-
-  return { dehydratedState };
 };
 
 export const useRegister = () => {
@@ -72,10 +60,4 @@ export const useRegister = () => {
     mutationFn: authApi.register,
     onSuccess: (user) => queryClient.setQueryData(queryKeys.userInfo(), () => user),
   });
-};
-
-export const UserInfoFetcher = async ({ children }: PropsWithChildren) => {
-  const { dehydratedState } = await prefetchUserInfo();
-
-  return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
 };

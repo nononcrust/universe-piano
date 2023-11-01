@@ -18,7 +18,7 @@ model User {
 
   kakaoId      String   @unique
   role         Role     @default(USER)
-  level        Level    @default(SPROUT)
+  tier         Tier     @default(SPROUT)
   nickname     String
   phone        String
   profileImage String
@@ -100,7 +100,7 @@ model Review {
   rating    Int
   userId    String
   productId Int
-  image    String
+  image     String
 
   user    User    @relation(fields: [userId], references: [id])
   product Product @relation(fields: [productId], references: [id])
@@ -130,7 +130,7 @@ enum Role {
   USER
 }
 
-enum Level {
+enum Tier {
   SPROUT
   SILVER
   GOLD

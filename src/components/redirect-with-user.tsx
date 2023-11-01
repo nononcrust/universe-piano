@@ -16,9 +16,9 @@ export const RedirectWithUser = ({ user }: RedirectWithUserProps) => {
   const router = useRouter();
 
   const login = useCallback(async () => {
-    await authApi.login({ user: user });
+    await authApi.login(user);
 
-    queryClient.setQueryData(queryKeys.userInfo(), () => user);
+    queryClient.setQueryData(queryKeys.userInfo(), user);
 
     router.replace(ROUTE.HOME);
   }, [router, user, queryClient]);
