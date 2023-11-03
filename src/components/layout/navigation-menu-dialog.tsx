@@ -15,7 +15,7 @@ export const NavigationMenuDialog = () => {
 
   return (
     <Sheet>
-      <SheetTrigger className="md:hidden">
+      <SheetTrigger className="outline-none md:hidden">
         <Icon.Menu />
       </SheetTrigger>
       <SheetContent side="right">

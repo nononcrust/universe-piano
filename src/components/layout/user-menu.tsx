@@ -18,8 +18,6 @@ export const UserMenu = () => {
 
   const isAdmin = true;
 
-  console.log("header", user);
-
   if (!user) return null;
 
   return (

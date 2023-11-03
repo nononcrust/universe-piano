@@ -21,7 +21,6 @@ export interface NavItem {
 
 export const Header = () => {
   const { data: user, fetchStatus } = useUserInfo();
-  console.log(user);
 
   const pathname = usePathname();
 

@@ -12,5 +12,5 @@ export function middleware(request: NextRequest) {
     if (!isAdmin) {
       return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
     }
-  }
+  } 
 }

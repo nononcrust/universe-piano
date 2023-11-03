@@ -114,7 +114,6 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
 
   useEffect(() => {
     if (mode === "edit" && data) {
-      console.log(data);
       form.reset({
         title: data.title,
         content: data.content,
