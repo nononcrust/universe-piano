@@ -3,6 +3,7 @@
 import { siteConfig } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { useUserInfo } from "@/features/auth";
+import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icon } from "../icon";
@@ -12,6 +13,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export const NavigationMenuDialog = () => {
   const { data: user } = useUserInfo();
+  const { logout } = useAuth();
 
   return (
     <Sheet>
@@ -25,13 +27,7 @@ export const NavigationMenuDialog = () => {
               <UserProfile />
             </div>
           )} */}
-          {!user && (
-            <div className="my-4 flex gap-4">
-              <Button asChild className="h-14 flex-1">
-                <Link href={ROUTE.LOGIN}>유니버스 피아노 시작하기</Link>
-              </Button>
-            </div>
-          )}
+
           {Object.values(siteConfig.contents).map((category, index) => (
             <ListCategory key={category.href} title={category.title}>
               {category.children.map((item) => (
@@ -42,6 +38,18 @@ export const NavigationMenuDialog = () => {
             </ListCategory>
           ))}
         </ListSection>
+        {user && (
+          <button className="mt-2 font-medium text-muted-foreground" onClick={logout}>
+            로그아웃
+          </button>
+        )}
+        {!user && (
+          <div className="my-4 flex gap-4">
+            <Button asChild className="h-14 flex-1">
+              <Link href={ROUTE.LOGIN}>유니버스 피아노 시작하기</Link>
+            </Button>
+          </div>
+        )}
       </SheetContent>
     </Sheet>
   );
@@ -71,11 +79,7 @@ interface ListCategoryProps {
 }
 
 const ListCategory = ({ title, children }: ListCategoryProps) => {
-  return (
-    <div className="mt-2 flex flex-col border-t border-gray-100 pt-3 first:border-none">
-      {children}
-    </div>
-  );
+  return <div className="mt-2 flex flex-col border-b border-gray-100 pb-3">{children}</div>;
 };
 
 interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
