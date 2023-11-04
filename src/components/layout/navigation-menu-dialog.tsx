@@ -18,13 +18,20 @@ export const NavigationMenuDialog = () => {
       <SheetTrigger className="outline-none md:hidden">
         <Icon.Menu />
       </SheetTrigger>
-      <SheetContent side="right">
-        <ListSection className="mt-4" title="유니버스 피아노">
+      <SheetContent className="overflow-y-auto" side="right">
+        <ListSection title="유니버스 피아노">
           {/* {user && (
             <div className="mb-4 mt-2">
               <UserProfile />
             </div>
           )} */}
+          {!user && (
+            <div className="my-4 flex gap-4">
+              <Button asChild className="h-14 flex-1">
+                <Link href={ROUTE.LOGIN}>유니버스 피아노 시작하기</Link>
+              </Button>
+            </div>
+          )}
           {Object.values(siteConfig.contents).map((category, index) => (
             <ListCategory key={category.href} title={category.title}>
               {category.children.map((item) => (
@@ -35,13 +42,6 @@ export const NavigationMenuDialog = () => {
             </ListCategory>
           ))}
         </ListSection>
-        {!user && (
-          <div className="mt-8 flex gap-4">
-            <Button asChild className="h-14 flex-1">
-              <Link href={ROUTE.LOGIN}>유니버스 피아노 시작하기</Link>
-            </Button>
-          </div>
-        )}
       </SheetContent>
     </Sheet>
   );
@@ -72,8 +72,7 @@ interface ListCategoryProps {
 
 const ListCategory = ({ title, children }: ListCategoryProps) => {
   return (
-    <div className="flex flex-col">
-      <p className="mb-2 font-medium">{title}</p>
+    <div className="mt-2 flex flex-col border-t border-gray-100 pt-3 first:border-none">
       {children}
     </div>
   );
@@ -89,7 +88,7 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
     <Link href={href}>
       <SheetClose className="flex w-full">
         <li
-          className="flex-1 cursor-pointer py-1 text-left text-muted-foreground"
+          className="flex-1 cursor-pointer py-3 text-left font-medium text-foreground"
           onClick={onClick}
         >
           {children}

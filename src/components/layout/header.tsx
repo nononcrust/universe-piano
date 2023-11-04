@@ -30,13 +30,13 @@ export const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-background">
+      <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-lg">
         <div className="border-b">
           <div className="container flex h-16 items-center justify-between space-x-4 sm:space-x-0">
             <div className="flex gap-12">
               <Link href={ROUTE.HOME} className="top-0 flex h-16 items-center">
                 <Image src="/images/logo.svg" width={40} height={40} alt="사이트 로고" priority />
-                <span className="inline-block font-bold">{siteConfig.name}</span>
+                <span className="inline-block font-semibold">{siteConfig.name}</span>
               </Link>
               <nav className="hidden gap-6 md:flex">
                 {siteConfig.mainNav.map((item, index) => (
@@ -56,20 +56,20 @@ export const Header = () => {
             <NavigationMenuDialog />
             {!user && (
               <div className="hidden gap-2 md:flex">
-                <Button asChild size="sm" className="h-[32px] text-xs" variant="secondary">
+                {/* <Button asChild size="sm" className="h-[32px] text-xs" variant="outline">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
                   >
                     로그인
                   </Link>
-                </Button>
+                </Button> */}
                 <Button asChild size="sm" className="h-[32px] text-xs">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
                   >
-                    회원가입
+                    시작하기
                   </Link>
                 </Button>
               </div>

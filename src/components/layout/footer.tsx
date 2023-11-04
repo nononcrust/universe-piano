@@ -20,7 +20,7 @@ export const Footer = () => {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {Object.values(footerNav).map((section, index) => (
             <div key={index} className="flex flex-col">
-              <p className="font-medium">{section.title}</p>
+              <p className="font-semibold">{section.title}</p>
               <div className="mt-2">
                 {section.children.map((item) => (
                   <p

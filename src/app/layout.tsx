@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <head />
-      <body>
+      <body className="antialiased">
         <Providers>
           <UserInfoFetcher>
             {children}

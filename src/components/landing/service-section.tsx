@@ -9,12 +9,8 @@ export const ServiceSection = () => {
           <h1 className="text-2xl">
             <strong>2차 오디션</strong> 관련 서비스
           </h1>
-          <div className="flex cursor-pointer items-center">
-            바로가기
-            <Icon.ChevronRight size={20} />
-          </div>
         </div>
-        <h2 className="mt-4 text-muted-foreground">
+        <h2 className="mt-2 text-muted-foreground">
           오디션 준비 어려우셨죠? 유니버스 피아노가 도와드릴게요.
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 text-left md:grid-cols-2">
