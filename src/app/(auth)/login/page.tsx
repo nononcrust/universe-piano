@@ -7,8 +7,8 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <main className="flex md:min-h-screen md:bg-gray-50 md:py-16">
-      <section className="container flex max-w-sm flex-1 flex-col items-center justify-center bg-white md:border">
+    <main className="flex items-center md:min-h-screen md:bg-gray-50 md:py-16">
+      <section className="container flex max-w-sm flex-col items-center justify-center rounded-xl bg-white py-28 md:border">
         <Image
           className="mt-60 md:mt-0"
           src="/images/logo.svg"

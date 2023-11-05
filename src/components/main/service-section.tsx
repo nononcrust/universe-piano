@@ -6,9 +6,7 @@ export const ServiceSection = () => {
     <Aos>
       <section className="container flex flex-col pt-32">
         <div className="flex justify-between">
-          <h1 className="text-2xl">
-            <strong>2차 오디션</strong> 관련 서비스
-          </h1>
+          <h1 className="text-2xl font-bold">2차 오디션 관련 서비스</h1>
         </div>
         <h2 className="mt-2 text-muted-foreground">
           오디션 준비 어려우셨죠? 유니버스 피아노가 도와드릴게요.

@@ -6,9 +6,7 @@ export const ReviewSection = () => {
     <Aos>
       <section className="container flex flex-col pt-32">
         <div className="flex justify-between">
-          <h1 className="text-2xl">
-            합격자들의 <strong>생생한 후기</strong>
-          </h1>
+          <h1 className="text-2xl font-bold">합격자들의 생생한 후기</h1>
         </div>
         <h2 className="mt-2 text-muted-foreground">실제 합격자들의 후기를 확인해보세요.</h2>
         <div className="mt-8 grid grid-cols-1 gap-8 text-left md:grid-cols-3">
