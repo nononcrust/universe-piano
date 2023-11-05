@@ -2,7 +2,10 @@ export const ROUTE = {
   HOME: "/",
   LOGIN: "/login",
   SIGNUP: "/signup",
-  ABOUT: "/about",
+  ABOUT: {
+    LIST: "/about",
+    COMPANY: "/about/company",
+  },
   SERVICE: {
     LIST: "/service",
     PRODUCT: {

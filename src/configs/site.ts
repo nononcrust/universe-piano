@@ -1,4 +1,5 @@
 import { ROUTE } from "@/constants/route";
+import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
 export type SiteConfig = typeof siteConfig;
 
@@ -7,7 +8,7 @@ export const siteConfig = {
   title: "유니버스 피아노 - 미국 음대 입시의 모든것",
   description: "유니버스 피아노 홈페이지",
   icons: [
-    { rel: "shortcut icon", type: "image/x-icon", url: "/favicon.ico" },
+    { rel: "shortcut icon", url: "/favicon.ico" },
     { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
   ],
   links: {
@@ -32,22 +33,8 @@ export const siteConfig = {
         height: 628,
       },
     ],
-  },
+  } as OpenGraph,
   contents: {
-    // about: {
-    //   title: "소개",
-    //   href: ROUTE.ABOUT,
-    //   children: [
-    //     {
-    //       title: "유니버스 피아노",
-    //       href: ROUTE.HOME,
-    //     },
-    //     {
-    //       title: "대표의 스토리",
-    //       href: ROUTE.HOME,
-    //     },
-    //   ],
-    // },
     notice: {
       title: "소식",
       href: ROUTE.NEWS.LIST,
@@ -82,11 +69,11 @@ export const siteConfig = {
       children: [
         {
           title: "미국 음대 입시 과외",
-          href: ROUTE.HOME,
+          href: "/service/tutoring",
         },
         {
           title: "입시 컨설팅",
-          href: ROUTE.HOME,
+          href: "/service/consulting",
         },
         {
           title: "전자책",
@@ -203,6 +190,16 @@ export const siteConfig = {
 };
 
 export const footerNav = {
+  about: {
+    title: "소개",
+    href: ROUTE.ABOUT.LIST,
+    children: [
+      {
+        title: "회사 소개",
+        href: ROUTE.ABOUT.COMPANY,
+      },
+    ],
+  },
   ...siteConfig.contents,
   terms: {
     title: "이용약관",

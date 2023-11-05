@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   openGraph: siteConfig.openGraph,
   icons: siteConfig.icons,
+  ...(process.env.NODE_ENV === "development" && { metadataBase: new URL("http://localhost") }),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

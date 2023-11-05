@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-interface AosProps {
+interface AosProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export const Aos = ({ children }: AosProps) => {
+export const Aos = ({ children, className, ...props }: AosProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
 
@@ -18,7 +18,9 @@ export const Aos = ({ children }: AosProps) => {
       className={cn(
         "translate-y-20 opacity-0 transition duration-700 ease-out",
         isInView && "translate-y-0 opacity-100",
+        className,
       )}
+      {...props}
     >
       {children}
     </div>
