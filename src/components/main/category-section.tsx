@@ -25,7 +25,7 @@ const categories = [
 
 export default function CategorySection() {
   return (
-    <section className="grid grid-cols-4 md:grid-cols-5">
+    <section className="container grid grid-cols-4 md:grid-cols-5">
       {categories.map((category, index) => (
         <Category key={index} {...category} />
       ))}
