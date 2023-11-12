@@ -23,6 +23,12 @@ export const authApi = {
   },
 };
 
+export const socialDataSchema = z.object({
+  id: z.string().nonempty(),
+  nickname: z.string().nonempty(),
+  profileImage: z.string().nonempty(),
+});
+
 export const registerRequestSchema = z.object({
   nickname: z.string().max(20).nonempty(),
   phone: z.string().min(10).max(13).nonempty(),
@@ -36,6 +42,8 @@ export const userInfoSchema = z.object({
   email: z.string(),
   profileImage: z.string(),
 });
+
+export type SocialData = z.infer<typeof socialDataSchema>;
 
 export type UserInfo = z.infer<typeof userInfoSchema>;
 

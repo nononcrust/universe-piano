@@ -1,6 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
 import { UserInfo, queryKeys } from "@/features/auth";
-import { jwt, jwtSchema } from "@/lib/jwt";
+import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { getQueryClient } from "@/lib/react-query";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { cookies } from "next/headers";
@@ -15,7 +15,7 @@ const getUserInfo = async () => {
 
   const accessToken = cookie.value;
 
-  const decoded = jwtSchema.safeParse(jwt.verify(accessToken));
+  const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
 
   if (!decoded.success) {
     return null;

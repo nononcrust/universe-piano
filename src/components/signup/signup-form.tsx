@@ -15,8 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { FORM } from "@/constants/form";
 import { ROUTE } from "@/constants/route";
-import { authApi } from "@/features/auth";
-import { KakaoUserInfo } from "@/features/kakao";
+import { SocialData, authApi } from "@/features/auth";
 import { formatPhoneNumberInput } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -33,18 +32,16 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>;
 
 interface SignUpFormProps {
-  initialData: KakaoUserInfo;
+  initialData: SocialData;
 }
 
 export const SignUpForm = ({ initialData }: SignUpFormProps) => {
-  const userInfo = initialData.properties;
-
   const router = useRouter();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nickname: userInfo.nickname || "",
+      nickname: initialData.nickname || "",
       phone: "",
       terms: false,
     },
@@ -61,7 +58,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
       nickname: data.nickname,
       phone: data.phone,
       kakaoId: String(initialData.id),
-      profileImage: userInfo.thumbnail_image,
+      profileImage: initialData.profileImage,
     };
 
     signupMutation.mutate(body, {
@@ -78,7 +75,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
         카카오 계정으로 회원가입을 진행합니다.
       </h2>
       <Avatar className="mt-8 h-20 w-20">
-        <AvatarImage src={userInfo.profile_image} alt="user profile image" />
+        <AvatarImage src={initialData.profileImage} alt="user profile image" />
         <AvatarFallback />
       </Avatar>
       <Form {...form}>

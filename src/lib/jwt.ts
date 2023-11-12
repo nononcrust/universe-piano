@@ -1,4 +1,4 @@
-import { UserInfo, userInfoSchema } from "@/features/auth";
+import { SocialData, UserInfo, socialDataSchema, userInfoSchema } from "@/features/auth";
 import jsonwebtoken from "jsonwebtoken";
 import { z } from "zod";
 
@@ -20,6 +20,12 @@ export const jwt = {
       expiresIn: "30d",
     });
   },
+  signRegisterToken: (socialData: SocialData) => {
+    return jsonwebtoken.sign({ socialData }, secret, {
+      algorithm: "HS256",
+      expiresIn: "1d",
+    });
+  },
   verify: (token: string) => {
     try {
       return jsonwebtoken.verify(token, secret);
@@ -29,10 +35,16 @@ export const jwt = {
   },
 };
 
-export const jwtSchema = z.object({
+export const registerTokenSchema = z.object({
+  socialData: socialDataSchema,
+  iat: z.number(),
+  exp: z.number(),
+});
+
+export const accessTokenSchema = z.object({
   user: userInfoSchema,
   iat: z.number(),
   exp: z.number(),
 });
 
-export type Jwt = z.infer<typeof jwtSchema>;
+export type Jwt = z.infer<typeof accessTokenSchema>;

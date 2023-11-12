@@ -48,5 +48,7 @@ export const POST = async (request: Request) => {
     httpOnly: true,
   });
 
+  cookies().delete(COOKIE.REGISTER_TOKEN);
+
   return new NextResponse(JSON.stringify(userInfo), { status: 201 });
 };

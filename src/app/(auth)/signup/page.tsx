@@ -1,24 +1,26 @@
 import { SignUpForm } from "@/components/signup/signup-form";
+import { COOKIE } from "@/constants/cookie";
 import { ROUTE } from "@/constants/route";
-import { kakaoApi } from "@/features/kakao";
+import { jwt, registerTokenSchema } from "@/lib/jwt";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const getKakaoUserInfo = async (token: string) => {
-  const data = await kakaoApi.getUserInfo(token);
+export default async function SignUpPage() {
+  const registerToken = cookies().get(COOKIE.REGISTER_TOKEN);
+  console.log(registerToken);
 
-  return data;
-};
+  if (!registerToken) {
+    return redirect(ROUTE.HOME);
+  }
 
-export default async function SignUpPage({ searchParams }: { searchParams?: { token: string } }) {
-  const token = searchParams?.token;
+  const initialData = registerTokenSchema.safeParse(jwt.verify(registerToken.value));
 
-  if (!token) {
+  if (!initialData.success) {
     return redirect(ROUTE.HOME);
   }
 
   try {
-    const initialData = await getKakaoUserInfo(token);
-    return <SignUpForm initialData={initialData} />;
+    return <SignUpForm initialData={initialData.data.socialData} />;
   } catch (error) {
     return redirect(ROUTE.LOGIN);
   }

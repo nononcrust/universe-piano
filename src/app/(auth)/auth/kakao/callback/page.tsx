@@ -1,7 +1,9 @@
+import { RedirectWithRegisterToken } from "@/components/redirect-with-register-token";
 import { RedirectWithUser } from "@/components/redirect-with-user";
 import { ROUTE } from "@/constants/route";
-import { UserInfo } from "@/features/auth";
+import { SocialData, UserInfo } from "@/features/auth";
 import { kakaoApi } from "@/features/kakao";
+import { jwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
@@ -25,7 +27,15 @@ export default async function KakaoCallbackPage({
   });
 
   if (user === null) {
-    redirect(`${ROUTE.SIGNUP}?token=${data.access_token}`);
+    const socialData = {
+      id: kakaoId,
+      nickname: kakaoUserInfo.properties.nickname,
+      profileImage: kakaoUserInfo.properties.profile_image,
+    } satisfies SocialData;
+
+    const registerToken = jwt.signRegisterToken(socialData);
+
+    return <RedirectWithRegisterToken registerToken={registerToken} />;
   }
 
   const userInfo = {

@@ -1,6 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
 import { UserInfo } from "@/features/auth";
-import { jwt, jwtSchema } from "@/lib/jwt";
+import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
 
 export const GET = async (request: Request) => {
@@ -14,7 +14,7 @@ export const GET = async (request: Request) => {
 
   const accessToken = cookie.value;
 
-  const decoded = jwtSchema.safeParse(jwt.verify(accessToken));
+  const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
 
   if (!decoded.success) {
     return new Response(null, {
