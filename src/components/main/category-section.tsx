@@ -14,7 +14,7 @@ const categories = [
     href: ROUTE.HOME,
   },
   {
-    title: "전자책",
+    title: "독학 키트",
     href: ROUTE.HOME,
   },
   {

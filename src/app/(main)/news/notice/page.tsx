@@ -8,14 +8,6 @@ import { useNoticeList } from "@/features/notice";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 
-const DUMMY_DATA = Array(10)
-  .fill(0)
-  .map((_, index) => ({
-    id: index,
-    title: "공지사항 테스트입니다. 안녕하세요",
-    createdAt: "2021-09-01T00:00:00.000Z",
-  }));
-
 export default function NoticePage() {
   const { data, isFetched } = useNoticeList();
 

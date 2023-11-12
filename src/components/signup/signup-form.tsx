@@ -26,7 +26,7 @@ import { z } from "zod";
 
 const formSchema = z.object({
   nickname: z.string().min(2).max(8).nonempty(FORM.ERROR.REQUIRED),
-  phone: z.string().min(10).max(13).nonempty(FORM.ERROR.REQUIRED),
+  phone: z.string().min(13).max(13).nonempty(FORM.ERROR.REQUIRED),
   terms: z.boolean().refine((value) => value === true),
 });
 

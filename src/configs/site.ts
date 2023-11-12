@@ -76,7 +76,7 @@ export const siteConfig = {
           href: "/service/consulting",
         },
         {
-          title: "전자책",
+          title: "독학 키트",
           href: ROUTE.SERVICE.PRODUCT.LIST,
         },
       ],

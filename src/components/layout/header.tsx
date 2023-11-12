@@ -56,20 +56,20 @@ export const Header = () => {
             <NavigationMenuDialog />
             {!user && (
               <div className="hidden gap-2 md:flex">
-                {/* <Button asChild size="sm" className="h-[32px] text-xs" variant="outline">
+                <Button asChild size="sm" className="h-[32px] text-xs" variant="secondary">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
                   >
                     로그인
                   </Link>
-                </Button> */}
+                </Button>
                 <Button asChild size="sm" className="h-[32px] text-xs">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
                   >
-                    시작하기
+                    회원가입
                   </Link>
                 </Button>
               </div>
