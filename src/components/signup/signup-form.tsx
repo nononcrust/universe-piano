@@ -15,10 +15,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { FORM } from "@/constants/form";
 import { ROUTE } from "@/constants/route";
-import { SocialData, authApi } from "@/features/auth";
+import { SocialData, authApi, queryKeys } from "@/features/auth";
 import { formatPhoneNumberInput } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -37,6 +37,7 @@ interface SignUpFormProps {
 
 export const SignUpForm = ({ initialData }: SignUpFormProps) => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -62,7 +63,8 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
     };
 
     signupMutation.mutate(body, {
-      onSuccess: () => {
+      onSuccess: (data) => {
+        queryClient.setQueryData(queryKeys.userInfo(), data);
         router.push(ROUTE.HOME);
       },
     });

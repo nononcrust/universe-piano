@@ -15,6 +15,8 @@ const getUserInfo = async () => {
 
   const accessToken = cookie.value;
 
+  console.log("accessToken", jwt.verify(accessToken));
+
   const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
 
   if (!decoded.success) {
@@ -23,9 +25,12 @@ const getUserInfo = async () => {
 
   const user = decoded.data.user;
 
+  console.log("decoded user", user);
+
   const userInfo: UserInfo = {
     id: user.id,
     nickname: user.nickname,
+    phone: user.phone,
     profileImage: user.profileImage,
     email: user.email,
   };

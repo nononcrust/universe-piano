@@ -39,8 +39,9 @@ export default async function KakaoCallbackPage({
   }
 
   const userInfo = {
-    id: Number(kakaoId),
+    id: user.id,
     nickname: user.nickname,
+    phone: user.phone,
     email: "test@gamil.com",
     profileImage: user.profileImage,
   } satisfies UserInfo;

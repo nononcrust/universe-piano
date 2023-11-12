@@ -27,6 +27,7 @@ export const GET = async (request: Request) => {
   const userInfo: UserInfo = {
     id: user.id,
     nickname: user.nickname,
+    phone: user.phone,
     profileImage: user.profileImage,
     email: user.email,
   };

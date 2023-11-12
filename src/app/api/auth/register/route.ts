@@ -1,5 +1,5 @@
 import { COOKIE } from "@/constants/cookie";
-import { registerRequestSchema } from "@/features/auth";
+import { UserInfo, registerRequestSchema } from "@/features/auth";
 import { jwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
 import { cookies } from "next/headers";
@@ -34,12 +34,14 @@ export const POST = async (request: Request) => {
   });
 
   const userInfo = {
-    id: Number(user.id),
+    id: user.id,
     nickname: user.nickname,
     phone: user.phone,
     profileImage: user.profileImage,
     email: "dummy email",
-  };
+  } satisfies UserInfo;
+
+  console.log("@db user", user);
 
   const accessToken = jwt.sign(userInfo);
 

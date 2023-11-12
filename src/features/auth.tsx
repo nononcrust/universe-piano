@@ -37,8 +37,9 @@ export const registerRequestSchema = z.object({
 });
 
 export const userInfoSchema = z.object({
-  id: z.number(),
+  id: z.string(),
   nickname: z.string(),
+  phone: z.string(),
   email: z.string(),
   profileImage: z.string(),
 });
