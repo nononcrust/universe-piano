@@ -4,12 +4,13 @@ import { NextResponse } from "next/server";
 
 interface Context {
   params: {
-    noticeId: string;
+    id: string;
   };
 }
 
 export const GET = async (request: Request, context: Context) => {
-  const noticeId = context.params.noticeId;
+  const noticeId = context.params.id;
+  console.log("context", context.params);
 
   const notice = await prisma.notice.findUnique({
     where: {
@@ -17,22 +18,18 @@ export const GET = async (request: Request, context: Context) => {
     },
   });
 
-  return new NextResponse(JSON.stringify(notice), {
-    status: 200,
-  });
+  return NextResponse.json(notice);
 };
 
 export const PUT = async (request: Request, context: Context) => {
-  const noticeId = context.params.noticeId;
+  const noticeId = context.params.id;
 
   const body = await request.json();
 
   const parsedBody = noticeRequestSchema.safeParse(body);
 
   if (!parsedBody.success) {
-    return new NextResponse("", {
-      status: 400,
-    });
+    return new NextResponse("Bad Request", { status: 400 });
   }
 
   const notice = await prisma.notice.update({
@@ -42,21 +39,17 @@ export const PUT = async (request: Request, context: Context) => {
     data: parsedBody.data,
   });
 
-  return new NextResponse(JSON.stringify(notice), {
-    status: 200,
-  });
+  return NextResponse.json(notice);
 };
 
 export const DELETE = async (request: Request, context: Context) => {
-  const noticeId = context.params.noticeId;
+  const noticeId = context.params.id;
 
-  await prisma.notice.delete({
+  const notice = await prisma.notice.delete({
     where: {
       id: Number(noticeId),
     },
   });
 
-  return new NextResponse(null, {
-    status: 204,
-  });
+  return NextResponse.json(notice);
 };

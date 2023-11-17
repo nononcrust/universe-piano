@@ -120,19 +120,19 @@ export const siteConfig = {
         },
       ],
     },
-    {
-      title: "상품 관리",
-      items: [
-        {
-          title: "상품 목록",
-          href: ROUTE.ADMIN.PRODUCT.LIST,
-        },
-        {
-          title: "상품 추가",
-          href: ROUTE.ADMIN.PRODUCT.CREATE,
-        },
-      ],
-    },
+    // {
+    //   title: "상품 관리",
+    //   items: [
+    //     {
+    //       title: "상품 목록",
+    //       href: ROUTE.ADMIN.PRODUCT.LIST,
+    //     },
+    //     {
+    //       title: "상품 추가",
+    //       href: ROUTE.ADMIN.PRODUCT.CREATE,
+    //     },
+    //   ],
+    // },
     {
       title: "주문 관리",
       items: [
@@ -142,26 +142,26 @@ export const siteConfig = {
         },
       ],
     },
+    // {
+    //   title: "후기 관리",
+    //   items: [
+    //     {
+    //       title: "후기 목록",
+    //       href: ROUTE.ADMIN.REVIEW.LIST,
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: "문의 관리",
+    //   items: [
+    //     {
+    //       title: "문의 목록",
+    //       href: ROUTE.ADMIN.QUESTION.LIST,
+    //     },
+    //   ],
+    // },
     {
-      title: "후기 관리",
-      items: [
-        {
-          title: "후기 목록",
-          href: ROUTE.ADMIN.REVIEW.LIST,
-        },
-      ],
-    },
-    {
-      title: "문의 관리",
-      items: [
-        {
-          title: "문의 목록",
-          href: ROUTE.ADMIN.QUESTION.LIST,
-        },
-      ],
-    },
-    {
-      title: "공지사항 관리",
+      title: "소식 관리",
       items: [
         {
           title: "공지사항 목록",
@@ -171,18 +171,13 @@ export const siteConfig = {
           title: "공지사항 추가",
           href: ROUTE.ADMIN.NOTICE.CREATE,
         },
-      ],
-    },
-    {
-      title: "도움말 관리",
-      items: [
         {
-          title: "도움말 목록",
-          href: ROUTE.ADMIN.SUPPORT.LIST,
+          title: "오디션 결과 목록",
+          href: ROUTE.ADMIN.AUDITION.LIST,
         },
         {
-          title: "도움말 추가",
-          href: ROUTE.ADMIN.SUPPORT.CREATE,
+          title: "오디션 결과 추가",
+          href: ROUTE.ADMIN.AUDITION.CREATE,
         },
       ],
     },

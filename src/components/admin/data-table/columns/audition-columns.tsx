@@ -3,12 +3,12 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { ROUTE } from "@/constants/route";
 import { formatDate } from "@/lib/utils";
-import { Notice } from "@prisma/client";
+import { Audition } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import { DataTableRowActions } from "../data-table-row-actions";
 
-export const noticeColumns: ColumnDef<Notice>[] = [
+export const auditionColumns: ColumnDef<Audition>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -35,7 +35,7 @@ export const noticeColumns: ColumnDef<Notice>[] = [
     accessorKey: "title",
     header: "제목",
     cell: ({ row }) => (
-      <Link className="hover:underline" href={ROUTE.ADMIN.NOTICE.EDIT(row.getValue("id"))}>
+      <Link className="hover:underline" href={ROUTE.ADMIN.AUDITION.EDIT(row.getValue("id"))}>
         {row.getValue("title")}
       </Link>
     ),

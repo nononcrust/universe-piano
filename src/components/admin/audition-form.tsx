@@ -1,19 +1,16 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
-import { auditionRequestSchema } from "@/features/audition";
-import {
-  useCreateNotice,
-  useDeleteNotice,
-  useNoticeById,
-  useUpdateNotice,
-} from "@/features/notice";
+import { useCreateAudition } from "@/features/audition";
+import { useDeleteNotice, useNoticeById, useUpdateNotice } from "@/features/notice";
 import { cn } from "@/lib/utils";
+import { contentSchema, titleSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { ImageInput } from "../image-input";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import {
@@ -31,26 +28,33 @@ import { useToast } from "../ui/use-toast";
 import { DeleteConfirmDialog } from "./delete-confirm-dialog";
 import { FormLayout } from "./form-layout";
 
-type FormSchema = z.infer<typeof auditionRequestSchema>;
+const formSchema = z.object({
+  title: titleSchema,
+  content: contentSchema,
+});
 
-interface NoticeFormProps {
+type FormSchema = z.infer<typeof formSchema>;
+
+interface AuditionFormProps {
   mode: "create" | "edit";
-  noticeId?: number;
+  auditionId?: number;
 }
 
-export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
+export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
+  const [images, setImages] = useState<string[]>([]);
+
   const { toast } = useToast();
 
-  const createNoticeMutation = useCreateNotice();
+  const createAuditionMutation = useCreateAudition();
   const updateNoticeMutation = useUpdateNotice();
   const deleteNoticeMutation = useDeleteNotice();
 
   const router = useRouter();
 
-  const { data } = useNoticeById(noticeId || 0);
+  const { data } = useNoticeById(auditionId || 0);
 
   const form = useForm<FormSchema>({
-    resolver: zodResolver(auditionRequestSchema),
+    resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
       content: "",
@@ -58,57 +62,58 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
-    if (mode === "create" && !createNoticeMutation.isPending) {
-      createNoticeMutation.mutate(data, {
+    if (mode === "create" && !createAuditionMutation.isPending) {
+      console.log("form data", data);
+      createAuditionMutation.mutate(data, {
         onSuccess: () => {
           router.push(ROUTE.ADMIN.NOTICE.LIST);
           toast({
-            title: "공지사항 추가 완료",
-            description: "공지사항 추가가 완료되었습니다.",
+            title: "오디션 결과 추가 완료",
+            description: "오디션 결과 추가가 완료되었습니다.",
           });
         },
       });
     }
 
-    if (mode === "edit" && noticeId && !updateNoticeMutation.isPending) {
+    if (mode === "edit" && auditionId && !updateNoticeMutation.isPending) {
       const body = {
-        id: noticeId,
+        noticeId: auditionId,
         body: data,
       };
 
-      updateNoticeMutation.mutate(body, {
-        onSuccess: () => {
-          router.push(ROUTE.ADMIN.NOTICE.LIST);
-          toast({
-            title: "공지사항 수정 완료",
-            description: "공지사항 수정이 완료되었습니다.",
-          });
-        },
-      });
+      //   updateNoticeMutation.mutate(body, {
+      //     onSuccess: () => {
+      //       router.push(ROUTE.ADMIN.NOTICE.LIST);
+      //       toast({
+      //         title: "오디션 결과 수정 완료",
+      //         description: "오디션 결과 수정이 완료되었습니다.",
+      //       });
+      //     },
+      //   });
     }
   });
   const onDelete = () => {
-    if (mode === "edit" && noticeId && !deleteNoticeMutation.isPending) {
-      deleteNoticeMutation.mutate(noticeId, {
+    if (mode === "edit" && auditionId && !deleteNoticeMutation.isPending) {
+      deleteNoticeMutation.mutate(auditionId, {
         onSuccess: () => {
           router.push(ROUTE.ADMIN.NOTICE.LIST);
           toast({
-            title: "공지사항 삭제 완료",
-            description: "공지사항 삭제가 완료되었습니다.",
+            title: "오디션 결과 삭제 완료",
+            description: "오디션 결과 삭제가 완료되었습니다.",
           });
         },
       });
     }
   };
 
-  useEffect(() => {
-    if (mode === "edit" && data) {
-      form.reset({
-        title: data.title,
-        content: data.content,
-      });
-    }
-  }, [data, form, mode]);
+  // useEffect(() => {
+  //   if (mode === "edit" && data) {
+  //     form.reset({
+  //       title: data.title,
+  //       content: data.content,
+  //     });
+  //   }
+  // }, [data, form, mode]);
 
   if (mode === "edit" && !data) return null;
 
@@ -145,6 +150,7 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
                 </FormItem>
               )}
             />
+            <ImageInput />
             <div className={cn("flex gap-4", mode === "edit" ? "justify-between" : "justify-end")}>
               {mode === "edit" && <DeleteConfirmDialog onDelete={onDelete} />}
               <Button

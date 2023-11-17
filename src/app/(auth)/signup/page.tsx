@@ -7,7 +7,6 @@ import { redirect } from "next/navigation";
 
 export default async function SignUpPage() {
   const registerToken = cookies().get(COOKIE.REGISTER_TOKEN);
-  console.log(registerToken);
 
   if (!registerToken) {
     return redirect(ROUTE.HOME);

@@ -41,8 +41,6 @@ export const POST = async (request: Request) => {
     email: "dummy email",
   } satisfies UserInfo;
 
-  console.log("@db user", user);
-
   const accessToken = jwt.sign(userInfo);
 
   cookies().set(COOKIE.ACCESS_TOKEN, accessToken, {

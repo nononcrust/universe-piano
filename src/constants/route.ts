@@ -89,6 +89,11 @@ export const ROUTE = {
       EDIT: (id: string) => `/admin/notice/${id}`,
       CREATE: "/admin/notice/create",
     },
+    AUDITION: {
+      LIST: "/admin/audition",
+      EDIT: (id: string) => `/admin/audition/${id}`,
+      CREATE: "/admin/audition/create",
+    },
     QUESTION: {
       LIST: "/admin/question",
       EDIT: (id: string) => `/admin/question/${id}`,

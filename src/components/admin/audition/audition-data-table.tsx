@@ -4,7 +4,7 @@ import { useNoticeList } from "@/features/notice";
 import { noticeColumns } from "../data-table/columns/notice-columns";
 import { DataTable } from "../data-table/data-table";
 
-export const NoticeDataTable = () => {
+export const AuditionDataTable = () => {
   const { data } = useNoticeList();
 
   if (!data) return null;

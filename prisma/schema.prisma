@@ -16,15 +16,65 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  kakaoId      String   @unique
-  role         Role     @default(USER)
-  tier         Tier     @default(SPROUT)
-  nickname     String
-  phone        String
-  profileImage String
-  reviews      Review[]
-  orders       Order[]
-  carts        Cart[]
+  kakaoId                String                  @unique
+  role                   Role                    @default(USER)
+  tier                   Tier                    @default(SPROUT)
+  nickname               String
+  phone                  String
+  profileImage           String
+  point                  Int                     @default(0)
+  reviews                Review[]
+  orders                 Order[]
+  posts                  Post[]
+  comments               Comment[]
+  auditionResultComments AuditionComment[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  title   String
+  content String
+
+  comments Comment[]
+  images   Image[]
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  @@index([userId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  content String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  post   Post @relation(fields: [postId], references: [id])
+  postId Int
+
+  @@index([userId])
+  @@index([postId])
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  url String
+
+  post   Post @relation(fields: [postId], references: [id])
+  postId Int
+
+  @@index([postId])
 }
 
 model Notice {
@@ -36,13 +86,32 @@ model Notice {
   content String
 }
 
-model Question {
+model Audition {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   title   String
   content String
+
+  comments AuditionComment[]
+}
+
+model AuditionComment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  content String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  audition   Audition @relation(fields: [auditionId], references: [id])
+  auditionId Int
+
+  @@index([userId])
+  @@index([auditionId])
 }
 
 model Category {
@@ -66,7 +135,6 @@ model Product {
   description String
   reviews     Review[]
   orders      Order[]
-  carts       Cart[]
   image       String
 
   category Category @relation(fields: [categoryId], references: [id])
@@ -101,22 +169,6 @@ model Review {
   userId    String
   productId Int
   image     String
-
-  user    User    @relation(fields: [userId], references: [id])
-  product Product @relation(fields: [productId], references: [id])
-
-  @@index([userId])
-  @@index([productId])
-}
-
-model Cart {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  quantity  Int
-  userId    String
-  productId Int
 
   user    User    @relation(fields: [userId], references: [id])
   product Product @relation(fields: [productId], references: [id])
