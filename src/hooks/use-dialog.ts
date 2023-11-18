@@ -7,5 +7,9 @@ export const useDialog = () => {
 
   const close = () => setIsOpen(false);
 
-  return { isOpen, open, close };
+  const onOpenChange = (isOpen: boolean) => {
+    isOpen ? open() : close();
+  };
+
+  return { isOpen, open, close, onOpenChange };
 };

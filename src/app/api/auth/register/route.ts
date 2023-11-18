@@ -4,51 +4,56 @@ import { jwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 export const POST = async (request: Request) => {
-  const body = await request.json();
+  try {
+    const body = await request.json();
 
-  const parsedBody = registerRequestSchema.safeParse(body);
+    const parsedBody = registerRequestSchema.parse(body);
 
-  if (parsedBody.success === false) {
-    return new NextResponse("", { status: 400 });
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        kakaoId: parsedBody.kakaoId,
+      },
+    });
+
+    if (existingUser) {
+      return new NextResponse("User Already Exists", { status: 409 });
+    }
+
+    const user = await prisma.user.create({
+      data: {
+        kakaoId: parsedBody.kakaoId,
+        nickname: parsedBody.nickname,
+        phone: parsedBody.phone,
+        profileImage: parsedBody.profileImage,
+      },
+    });
+
+    const userInfo = {
+      id: user.id,
+      nickname: user.nickname,
+      phone: user.phone,
+      profileImage: user.profileImage,
+      email: "dummy email",
+    } satisfies UserInfo;
+
+    const accessToken = jwt.sign(userInfo);
+
+    cookies().set(COOKIE.ACCESS_TOKEN, accessToken, {
+      secure: true,
+      httpOnly: true,
+    });
+
+    cookies().delete(COOKIE.REGISTER_TOKEN);
+
+    return NextResponse.json(userInfo);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      return new NextResponse("Bad Request", { status: 400 });
+    }
+
+    return new NextResponse("Internal Error", { status: 500 });
   }
-
-  const existingUser = await prisma.user.findUnique({
-    where: {
-      kakaoId: parsedBody.data.kakaoId,
-    },
-  });
-
-  if (existingUser) {
-    return new NextResponse("", { status: 409 });
-  }
-
-  const user = await prisma.user.create({
-    data: {
-      kakaoId: parsedBody.data.kakaoId,
-      nickname: parsedBody.data.nickname,
-      phone: parsedBody.data.phone,
-      profileImage: parsedBody.data.profileImage,
-    },
-  });
-
-  const userInfo = {
-    id: user.id,
-    nickname: user.nickname,
-    phone: user.phone,
-    profileImage: user.profileImage,
-    email: "dummy email",
-  } satisfies UserInfo;
-
-  const accessToken = jwt.sign(userInfo);
-
-  cookies().set(COOKIE.ACCESS_TOKEN, accessToken, {
-    secure: true,
-    httpOnly: true,
-  });
-
-  cookies().delete(COOKIE.REGISTER_TOKEN);
-
-  return new NextResponse(JSON.stringify(userInfo), { status: 201 });
 };

@@ -48,8 +48,8 @@ export default function PaymentPage() {
         <section className="mt-8 flex flex-col gap-4">
           <PageSubtitle title="주문자 정보" />
           <FormField
-            control={form.control}
             name="name"
+            control={form.control}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>이름</FormLabel>
@@ -61,8 +61,8 @@ export default function PaymentPage() {
             )}
           />
           <FormField
-            control={form.control}
             name="email"
+            control={form.control}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>이메일</FormLabel>
@@ -74,8 +74,8 @@ export default function PaymentPage() {
             )}
           />
           <FormField
-            control={form.control}
             name="phone"
+            control={form.control}
             render={({ field: { onChange, ...field } }) => (
               <FormItem>
                 <FormLabel>전화번호</FormLabel>
@@ -98,8 +98,8 @@ export default function PaymentPage() {
         <section>
           <PageSubtitle title="적립금 사용" className="mb-4 mt-16" />
           <FormField
-            control={form.control}
             name="point"
+            control={form.control}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>적립금</FormLabel>
@@ -146,8 +146,8 @@ export default function PaymentPage() {
         </section>
         <section>
           <FormField
-            control={form.control}
             name="terms"
+            control={form.control}
             render={({ field }) => (
               <FormItem className="mt-16 flex flex-row items-start space-x-2 space-y-0">
                 <FormControl>

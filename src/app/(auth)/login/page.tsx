@@ -7,15 +7,9 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <main className="flex items-center md:min-h-screen md:bg-gray-50 md:py-16">
+    <main className="flex h-[calc(100dvh)] items-center md:min-h-screen md:bg-gray-50 md:py-16">
       <section className="container flex max-w-sm flex-col items-center justify-center rounded-xl bg-white py-28 md:border">
-        <Image
-          className="mt-60 md:mt-0"
-          src="/images/logo.svg"
-          width={128}
-          height={128}
-          alt="logo"
-        />
+        <Image src="/images/logo.svg" width={128} height={128} alt="logo" />
         <h1 className="text-lg font-bold text-foreground md:text-xl">
           미국 음대 입시를 위한 모든 것
         </h1>

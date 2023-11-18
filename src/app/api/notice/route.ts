@@ -1,25 +1,38 @@
 import { noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 export const GET = async (request: Request) => {
-  const notices = await prisma.notice.findMany();
+  try {
+    const notices = await prisma.notice.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-  return NextResponse.json(notices.reverse());
+    return NextResponse.json(notices);
+  } catch (error) {
+    return new NextResponse("Internal Error", { status: 500 });
+  }
 };
 
 export const POST = async (request: Request) => {
-  const body = await request.json();
+  try {
+    const body = await request.json();
 
-  const parsedBody = noticeRequestSchema.safeParse(body);
+    const parsedBody = noticeRequestSchema.parse(body);
 
-  if (!parsedBody.success) {
-    return new NextResponse("Bad Request", { status: 400 });
+    const notice = await prisma.notice.create({
+      data: parsedBody,
+    });
+
+    return NextResponse.json(notice);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      return new NextResponse("Bad Request", { status: 400 });
+    }
+
+    return new NextResponse("Internal Error", { status: 500 });
   }
-
-  const notice = await prisma.notice.create({
-    data: parsedBody.data,
-  });
-
-  return NextResponse.json(notice);
 };

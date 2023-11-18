@@ -1,6 +1,7 @@
-import { auditionRequestSchema } from "@/features/audition";
+import { auditionRequestSchema, getAuditionById } from "@/features/audition";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 interface Context {
   params: {
@@ -9,46 +10,57 @@ interface Context {
 }
 
 export const GET = async (request: Request, context: Context) => {
-  const auditionId = context.params.id;
+  try {
+    const auditionId = Number(context.params.id);
 
-  const audition = await prisma.audition.findUnique({
-    where: {
-      id: Number(auditionId),
-    },
-  });
+    const audition = await getAuditionById(auditionId);
 
-  return NextResponse.json(audition);
+    return NextResponse.json(audition);
+  } catch (error) {
+    return new NextResponse("Internal Error", { status: 500 });
+  }
 };
 
 export const PUT = async (request: Request, context: Context) => {
-  const auditionId = context.params.id;
+  try {
+    const auditionId = Number(context.params.id);
 
-  const body = await request.json();
+    const body = await request.json();
 
-  const parsedBody = auditionRequestSchema.safeParse(body);
+    const parsedBody = auditionRequestSchema.parse(body);
 
-  if (!parsedBody.success) {
-    return new NextResponse("Bad Request", { status: 400 });
+    const audition = await prisma.audition.update({
+      where: {
+        id: auditionId,
+      },
+      include: {
+        comments: true,
+      },
+      data: parsedBody,
+    });
+
+    return NextResponse.json(audition);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      return new NextResponse("Bad Request", { status: 400 });
+    }
+
+    return new NextResponse("Internal Error", { status: 500 });
   }
-
-  const audition = await prisma.audition.update({
-    where: {
-      id: Number(auditionId),
-    },
-    data: parsedBody.data,
-  });
-
-  return NextResponse.json(audition);
 };
 
 export const DELETE = async (request: Request, context: Context) => {
-  const auditionId = context.params.id;
+  try {
+    const auditionId = Number(context.params.id);
 
-  const audition = await prisma.audition.delete({
-    where: {
-      id: Number(auditionId),
-    },
-  });
+    const audition = await prisma.audition.delete({
+      where: {
+        id: auditionId,
+      },
+    });
 
-  return NextResponse.json(audition);
+    return NextResponse.json(audition);
+  } catch (error) {
+    return new NextResponse("Internal Error", { status: 500 });
+  }
 };

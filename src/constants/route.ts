@@ -59,6 +59,7 @@ export const ROUTE = {
   },
   MYPAGE: {
     HOME: "/mypage",
+    PROFILE: "/mypage/profile",
     REVIEW: "/mypage/review",
     ACCOUNT: "/mypage/account",
   },

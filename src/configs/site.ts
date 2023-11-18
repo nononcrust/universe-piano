@@ -44,7 +44,7 @@ export const siteConfig = {
           href: ROUTE.NEWS.NOTICE.LIST,
         },
         {
-          title: "2차 오디션 결과 발표",
+          title: "오디션 결과 발표",
           href: ROUTE.NEWS.AUDITION.LIST,
         },
       ],

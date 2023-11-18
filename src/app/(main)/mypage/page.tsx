@@ -1,5 +1,6 @@
-import { ServicePreparingFallback } from "@/components/layout/service-preparing-fallback";
+import { ROUTE } from "@/constants/route";
+import { redirect } from "next/navigation";
 
 export default function MyPage() {
-  return <ServicePreparingFallback />;
+  return redirect(ROUTE.MYPAGE.PROFILE);
 }

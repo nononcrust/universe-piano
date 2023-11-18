@@ -1,6 +1,7 @@
 import { noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 interface Context {
   params: {
@@ -9,47 +10,58 @@ interface Context {
 }
 
 export const GET = async (request: Request, context: Context) => {
-  const noticeId = context.params.id;
-  console.log("context", context.params);
+  try {
+    const noticeId = Number(context.params.id);
 
-  const notice = await prisma.notice.findUnique({
-    where: {
-      id: Number(noticeId),
-    },
-  });
+    const notice = await prisma.notice.findUnique({
+      where: {
+        id: noticeId,
+      },
+    });
 
-  return NextResponse.json(notice);
+    return NextResponse.json(notice);
+  } catch (error) {
+    return new NextResponse("Internal Error", { status: 500 });
+  }
 };
 
 export const PUT = async (request: Request, context: Context) => {
-  const noticeId = context.params.id;
+  try {
+    const noticeId = Number(context.params.id);
 
-  const body = await request.json();
+    const body = await request.json();
 
-  const parsedBody = noticeRequestSchema.safeParse(body);
+    const parsedBody = noticeRequestSchema.parse(body);
 
-  if (!parsedBody.success) {
-    return new NextResponse("Bad Request", { status: 400 });
+    const notice = await prisma.notice.update({
+      where: {
+        id: noticeId,
+      },
+      data: parsedBody,
+    });
+
+    return NextResponse.json(notice);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      return new NextResponse("Bad Request", { status: 400 });
+    }
+
+    return new NextResponse("Internal Error", { status: 500 });
   }
-
-  const notice = await prisma.notice.update({
-    where: {
-      id: Number(noticeId),
-    },
-    data: parsedBody.data,
-  });
-
-  return NextResponse.json(notice);
 };
 
 export const DELETE = async (request: Request, context: Context) => {
-  const noticeId = context.params.id;
+  try {
+    const noticeId = Number(context.params.id);
 
-  const notice = await prisma.notice.delete({
-    where: {
-      id: Number(noticeId),
-    },
-  });
+    const notice = await prisma.notice.delete({
+      where: {
+        id: noticeId,
+      },
+    });
 
-  return NextResponse.json(notice);
+    return NextResponse.json(notice);
+  } catch (error) {
+    return new NextResponse("Internal Error", { status: 500 });
+  }
 };

@@ -87,6 +87,7 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
       });
     }
   });
+
   const onDelete = () => {
     if (mode === "edit" && noticeId && !deleteNoticeMutation.isPending) {
       deleteNoticeMutation.mutate(noticeId, {
