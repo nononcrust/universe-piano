@@ -10,3 +10,11 @@ export const contentSchema = z
   .string()
   .max(1000, { message: FORM.ERROR.MAX_LENGTH(1000) })
   .nonempty(FORM.ERROR.REQUIRED);
+
+export const nicknameSchema = z
+  .string()
+  .min(2)
+  .max(20, { message: FORM.ERROR.MAX_LENGTH(20) })
+  .nonempty(FORM.ERROR.REQUIRED);
+
+export const emailSchema = z.string().email().nonempty(FORM.ERROR.REQUIRED);

@@ -1,5 +1,9 @@
-import { api } from "@/configs/axios";
+import { COOKIE } from "@/constants/cookie";
+import { UserInfo } from "@/features/auth";
+import { api } from "@/lib/axios";
+import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import { cookies } from "next/headers";
 
 const ENDPOINT = "/user";
 
@@ -80,4 +84,32 @@ export const useDeleteUser = () => {
         queryKey: queryKeys.all(),
       }),
   });
+};
+
+export const getUserInfo = async () => {
+  const cookie = cookies().get(COOKIE.ACCESS_TOKEN);
+
+  if (!cookie) {
+    return null;
+  }
+
+  const accessToken = cookie.value;
+
+  const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
+
+  if (!decoded.success) {
+    return null;
+  }
+
+  const user = decoded.data.user;
+
+  const userInfo: UserInfo = {
+    id: user.id,
+    nickname: user.nickname,
+    phone: user.phone,
+    profileImage: user.profileImage,
+    email: user.email,
+  };
+
+  return userInfo;
 };

@@ -1,4 +1,4 @@
-import { api } from "@/configs/axios";
+import { api } from "@/lib/axios";
 import { Notice } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";

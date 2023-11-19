@@ -1,7 +1,7 @@
 "use client";
 
-import { queryClientConfig } from "@/configs/react-query";
 import { ChannelProvider } from "@/lib/channel-io";
+import { queryClientConfig } from "@/lib/react-query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PropsWithChildren, useState } from "react";
 

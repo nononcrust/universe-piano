@@ -86,23 +86,7 @@ export const Header = () => {
             <CategoryTab key={index} categories={content.children} />
           ) : null,
         )}
-        {pathname.startsWith(ROUTE.MYPAGE.HOME) && <CategoryTab categories={MYPAGE_CATEGORIES} />}
       </header>
     </>
   );
 };
-
-const MYPAGE_CATEGORIES = [
-  {
-    title: "프로필",
-    href: ROUTE.MYPAGE.HOME,
-  },
-  {
-    title: "나의 리뷰",
-    href: ROUTE.MYPAGE.REVIEW,
-  },
-  {
-    title: "계정 설정",
-    href: ROUTE.MYPAGE.ACCOUNT,
-  },
-];

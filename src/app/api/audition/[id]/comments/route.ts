@@ -1,6 +1,6 @@
 import { auditionCommentRequestSchema } from "@/features/audition";
+import { getUserInfo } from "@/features/user";
 import { prisma } from "@/lib/prisma";
-import { getUserInfo } from "@/lib/server";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 

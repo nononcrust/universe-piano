@@ -60,7 +60,7 @@ export const ROUTE = {
   MYPAGE: {
     HOME: "/mypage",
     PROFILE: "/mypage/profile",
-    REVIEW: "/mypage/review",
+    ACTIVITY: "/mypage/activity",
     ACCOUNT: "/mypage/account",
   },
   CART: "/cart",

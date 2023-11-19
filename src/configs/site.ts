@@ -91,6 +91,24 @@ export const siteConfig = {
         },
       ],
     },
+    mypage: {
+      title: "마이페이지",
+      href: ROUTE.MYPAGE.HOME,
+      children: [
+        {
+          title: "프로필",
+          href: ROUTE.MYPAGE.PROFILE,
+        },
+        {
+          title: "활동",
+          href: ROUTE.MYPAGE.ACTIVITY,
+        },
+        {
+          title: "계정 설정",
+          href: ROUTE.MYPAGE.ACCOUNT,
+        },
+      ],
+    },
   },
   mainNav: [
     {

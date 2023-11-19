@@ -1,4 +1,4 @@
-import { api } from "@/configs/axios";
+import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
 import { contentSchema, titleSchema } from "@/schemas/form";
 import { Audition, AuditionComment, Prisma } from "@prisma/client";
