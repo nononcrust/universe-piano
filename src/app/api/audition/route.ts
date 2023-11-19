@@ -17,14 +17,18 @@ export const POST = async (request: Request) => {
   try {
     const body = await request.json();
 
-    const parsedBody = auditionRequestSchema.parse(body);
+    const { images, ...parsedBody } = auditionRequestSchema.parse(body);
 
     const notice = await prisma.audition.create({
-      data: parsedBody,
+      data: {
+        ...parsedBody,
+        ...(images && { image: images[0] }),
+      },
     });
 
     return NextResponse.json(notice);
   } catch (error) {
+    console.log(error);
     if (error instanceof ZodError) {
       return new NextResponse("Bad Request", { status: 400 });
     }

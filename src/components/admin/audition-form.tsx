@@ -4,10 +4,9 @@ import { ROUTE } from "@/constants/route";
 import { useCreateAudition } from "@/features/audition";
 import { useDeleteNotice, useNoticeById, useUpdateNotice } from "@/features/notice";
 import { cn } from "@/lib/utils";
-import { contentSchema, titleSchema } from "@/schemas/form";
+import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { ImageInput } from "../image-input";
@@ -31,6 +30,7 @@ import { FormLayout } from "./form-layout";
 const formSchema = z.object({
   title: titleSchema,
   content: contentSchema,
+  images: imagesSchema,
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -41,8 +41,6 @@ interface AuditionFormProps {
 }
 
 export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
-  const [images, setImages] = useState<string[]>([]);
-
   const { toast } = useToast();
 
   const createAuditionMutation = useCreateAudition();
@@ -58,15 +56,15 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
     defaultValues: {
       title: "",
       content: "",
+      images: [],
     },
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
     if (mode === "create" && !createAuditionMutation.isPending) {
-      console.log("form data", data);
       createAuditionMutation.mutate(data, {
         onSuccess: () => {
-          router.push(ROUTE.ADMIN.NOTICE.LIST);
+          router.push(ROUTE.ADMIN.AUDITION.LIST);
           toast({
             title: "오디션 결과 추가 완료",
             description: "오디션 결과 추가가 완료되었습니다.",
@@ -83,7 +81,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
 
       //   updateNoticeMutation.mutate(body, {
       //     onSuccess: () => {
-      //       router.push(ROUTE.ADMIN.NOTICE.LIST);
+      //       router.push(ROUTE.ADMIN.AUDITION.LIST);
       //       toast({
       //         title: "오디션 결과 수정 완료",
       //         description: "오디션 결과 수정이 완료되었습니다.",
@@ -96,7 +94,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
     if (mode === "edit" && auditionId && !deleteNoticeMutation.isPending) {
       deleteNoticeMutation.mutate(auditionId, {
         onSuccess: () => {
-          router.push(ROUTE.ADMIN.NOTICE.LIST);
+          router.push(ROUTE.ADMIN.AUDITION.LIST);
           toast({
             title: "오디션 결과 삭제 완료",
             description: "오디션 결과 삭제가 완료되었습니다.",
@@ -150,7 +148,17 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
                 </FormItem>
               )}
             />
-            <ImageInput />
+            <FormField
+              name="images"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <ImageInput value={field.value || []} onChange={field.onChange} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
             <div className={cn("flex gap-4", mode === "edit" ? "justify-between" : "justify-end")}>
               {mode === "edit" && <DeleteConfirmDialog onDelete={onDelete} />}
               <Button

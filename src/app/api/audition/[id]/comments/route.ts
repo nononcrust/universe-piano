@@ -1,8 +1,6 @@
-import { COOKIE } from "@/constants/cookie";
 import { auditionCommentRequestSchema } from "@/features/audition";
-import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
-import { cookies } from "next/headers";
+import { getServerSession } from "@/lib/session";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
@@ -18,27 +16,9 @@ export const POST = async (request: Request, context: Context) => {
 
     const body = await request.json();
 
-    const getUserInfo = async () => {
-      const cookie = cookies().get(COOKIE.ACCESS_TOKEN);
+    const session = await getServerSession();
 
-      if (!cookie) {
-        return null;
-      }
-
-      const accessToken = cookie.value;
-
-      const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
-
-      if (!decoded.success) {
-        return null;
-      }
-
-      const userInfo = decoded.data.user;
-
-      return userInfo;
-    };
-
-    const user = await getUserInfo();
+    const user = session?.user;
 
     if (!user) {
       return new NextResponse("Unauthorized", { status: 401 });

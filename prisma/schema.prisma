@@ -16,13 +16,13 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  kakaoId                String                  @unique
-  role                   Role                    @default(USER)
-  tier                   Tier                    @default(SPROUT)
+  kakaoId                String            @unique
+  role                   Role              @default(USER)
+  tier                   Tier              @default(SPROUT)
   nickname               String
   phone                  String
   profileImage           String
-  point                  Int                     @default(0)
+  point                  Int               @default(0)
   reviews                Review[]
   orders                 Order[]
   posts                  Post[]
@@ -93,6 +93,7 @@ model Audition {
 
   title   String
   content String
+  image   String?
 
   comments AuditionComment[]
 }

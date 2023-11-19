@@ -8,6 +8,7 @@ import { ROUTE } from "@/constants/route";
 import { useAuditionDetail, useDeleteAuditionComment } from "@/features/audition";
 import { AccessControl } from "@/lib/acl";
 import { formatDate, formatDateDistance } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -34,6 +35,9 @@ export default function AuditionDetailPage() {
           <div className="mt-12 border-b pb-8">
             <h2 className="text-lg font-semibold md:text-2xl">{data.title}</h2>
             <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
+          </div>
+          <div className="relative mt-8 flex max-w-full">
+            {data.image && <Image width={500} height={400} src={data.image} alt="" />}
           </div>
           <Markdown className="prose mt-8" content={data.content} />
         </>

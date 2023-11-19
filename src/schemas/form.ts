@@ -11,6 +11,8 @@ export const contentSchema = z
   .max(1000, { message: FORM.ERROR.MAX_LENGTH(1000) })
   .nonempty(FORM.ERROR.REQUIRED);
 
+export const imagesSchema = z.array(z.string()).optional();
+
 export const nicknameSchema = z
   .string()
   .min(2)

@@ -1,6 +1,6 @@
 import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
-import { contentSchema, titleSchema } from "@/schemas/form";
+import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
 import { Audition, AuditionComment, Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
@@ -121,7 +121,7 @@ export const useDeleteAuditionComment = () => {
 export const getAuditionById = async (auditionId: number) => {
   const audition = await prisma.audition.findUnique({
     where: {
-      id: Number(auditionId),
+      id: auditionId,
     },
     include: {
       comments: {
@@ -142,7 +142,7 @@ export const getAuditionById = async (auditionId: number) => {
 export const auditionRequestSchema = z.object({
   title: titleSchema,
   content: contentSchema,
-  images: z.array(z.string()).optional(),
+  images: imagesSchema,
 });
 
 export type AuditionBody = z.infer<typeof auditionRequestSchema>;
