@@ -12,10 +12,6 @@ export const userApi = {
     const response = await api.get(`${ENDPOINT}/${userId}`);
     return response.data;
   },
-  createUser: async (body: any) => {
-    const response = await api.post(ENDPOINT, body);
-    return response.data;
-  },
   updateUser: async (data: { userId: number; body: any }) => {
     const response = await api.put(`${ENDPOINT}/${data.userId}`, data.body);
     return response.data;
@@ -43,18 +39,6 @@ export const useUserById = (userId?: number) => {
   return useSuspenseQuery({
     queryKey: queryKeys.detail(userId),
     queryFn: () => (userId ? userApi.getUserById(userId) : null),
-  });
-};
-
-export const useCreateUser = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: userApi.createUser,
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: queryKeys.all(),
-      }),
   });
 };
 

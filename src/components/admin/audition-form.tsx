@@ -1,12 +1,17 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
-import { useCreateAudition } from "@/features/audition";
-import { useDeleteNotice, useNoticeById, useUpdateNotice } from "@/features/notice";
+import {
+  useAuditionDetail,
+  useCreateAudition,
+  useDeleteAudition,
+  useUpdateAudition,
+} from "@/features/audition";
 import { cn } from "@/lib/utils";
 import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { ImageInput } from "../image-input";
@@ -44,12 +49,12 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
   const { toast } = useToast();
 
   const createAuditionMutation = useCreateAudition();
-  const updateNoticeMutation = useUpdateNotice();
-  const deleteNoticeMutation = useDeleteNotice();
+  const updateAuditionMutation = useUpdateAudition();
+  const deleteAuditionMutation = useDeleteAudition();
 
   const router = useRouter();
 
-  const { data } = useNoticeById(auditionId || 0);
+  const { data } = useAuditionDetail(auditionId || 0);
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -73,26 +78,26 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
       });
     }
 
-    if (mode === "edit" && auditionId && !updateNoticeMutation.isPending) {
+    if (mode === "edit" && auditionId && !updateAuditionMutation.isPending) {
       const body = {
-        noticeId: auditionId,
+        id: auditionId,
         body: data,
       };
 
-      //   updateNoticeMutation.mutate(body, {
-      //     onSuccess: () => {
-      //       router.push(ROUTE.ADMIN.AUDITION.LIST);
-      //       toast({
-      //         title: "오디션 결과 수정 완료",
-      //         description: "오디션 결과 수정이 완료되었습니다.",
-      //       });
-      //     },
-      //   });
+      updateAuditionMutation.mutate(body, {
+        onSuccess: () => {
+          router.push(ROUTE.ADMIN.AUDITION.LIST);
+          toast({
+            title: "오디션 결과 수정 완료",
+            description: "오디션 결과 수정이 완료되었습니다.",
+          });
+        },
+      });
     }
   });
   const onDelete = () => {
-    if (mode === "edit" && auditionId && !deleteNoticeMutation.isPending) {
-      deleteNoticeMutation.mutate(auditionId, {
+    if (mode === "edit" && auditionId && !deleteAuditionMutation.isPending) {
+      deleteAuditionMutation.mutate(auditionId, {
         onSuccess: () => {
           router.push(ROUTE.ADMIN.AUDITION.LIST);
           toast({
@@ -104,14 +109,15 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (mode === "edit" && data) {
-  //     form.reset({
-  //       title: data.title,
-  //       content: data.content,
-  //     });
-  //   }
-  // }, [data, form, mode]);
+  useEffect(() => {
+    if (mode === "edit" && data) {
+      form.reset({
+        title: data.title,
+        content: data.content,
+        images: data.image ? [data.image] : [],
+      });
+    }
+  }, [data, form, mode]);
 
   if (mode === "edit" && !data) return null;
 

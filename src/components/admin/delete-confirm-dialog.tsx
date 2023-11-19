@@ -1,5 +1,6 @@
 import {
   AlertDialog,
+  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -31,9 +32,7 @@ export const DeleteConfirmDialog = ({ onDelete }: DeletConfirmDialogProps) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>취소</AlertDialogCancel>
-          <Button className="flex-1 md:flex-initial" variant="destructive" onClick={onDelete}>
-            삭제
-          </Button>
+          <AlertDialogAction onClick={onDelete}>삭제</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

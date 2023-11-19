@@ -5,7 +5,7 @@ import { auditionRequestSchema } from "@/features/audition";
 import {
   useCreateNotice,
   useDeleteNotice,
-  useNoticeById,
+  useNoticeDetail,
   useUpdateNotice,
 } from "@/features/notice";
 import { cn } from "@/lib/utils";
@@ -47,7 +47,7 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
 
   const router = useRouter();
 
-  const { data } = useNoticeById(noticeId || 0);
+  const { data } = useNoticeDetail(noticeId || 0);
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(auditionRequestSchema),

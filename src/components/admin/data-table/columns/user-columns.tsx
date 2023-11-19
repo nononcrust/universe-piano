@@ -1,18 +1,10 @@
 "use client";
 
 import { Checkbox } from "@/components/ui/checkbox";
+import { TIER_LABEL } from "@/constants/enum";
+import { User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { z } from "zod";
 import { DataTableRowActions } from "../data-table-row-actions";
-
-export const userSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  phone: z.string(),
-  type: z.union([z.literal("admin"), z.literal("user")]),
-});
-
-export type User = z.infer<typeof userSchema>;
 
 export const userColumns: ColumnDef<User>[] = [
   {
@@ -33,21 +25,22 @@ export const userColumns: ColumnDef<User>[] = [
     ),
   },
   {
-    accessorKey: "id",
-    header: "ID",
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
-  },
-  {
-    accessorKey: "name",
+    accessorKey: "nickname",
     header: "이름",
+    cell: ({ row }) => row.getValue("nickname"),
   },
   {
     accessorKey: "phone",
     header: "연락처",
   },
   {
-    accessorKey: "type",
-    header: "유형",
+    accessorKey: "email",
+    header: "이메일",
+  },
+  {
+    accessorKey: "tier",
+    header: "등급",
+    cell: ({ row }) => TIER_LABEL[row.getValue("tier") as keyof typeof TIER_LABEL],
   },
   {
     id: "actions",

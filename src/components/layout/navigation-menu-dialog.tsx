@@ -1,6 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/configs/site";
+import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useUserInfo } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
@@ -8,6 +9,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icon } from "../icon";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
@@ -22,21 +24,27 @@ export const NavigationMenuDialog = () => {
       </SheetTrigger>
       <SheetContent className="overflow-y-auto" side="right">
         <ListSection title="유니버스 피아노">
-          {/* {user && (
+          {user && (
             <div className="mb-4 mt-2">
               <UserProfile />
             </div>
-          )} */}
-
-          {Object.values(siteConfig.contents).map((category, index) => (
-            <ListCategory key={category.href} title={category.title}>
-              {category.children.map((item) => (
-                <ListItem key={item.href} href={item.href}>
-                  {item.title}
-                </ListItem>
-              ))}
+          )}
+          {user && (
+            <ListCategory title="">
+              <ListItem href={ROUTE.MYPAGE.PROFILE}>MY 유니버스</ListItem>
             </ListCategory>
-          ))}
+          )}
+          {Object.values(siteConfig.contents)
+            .filter((item) => item.href !== ROUTE.MYPAGE.HOME)
+            .map((category, index) => (
+              <ListCategory key={category.href} title={category.title}>
+                {category.children.map((item) => (
+                  <ListItem key={item.href} href={item.href}>
+                    {item.title}
+                  </ListItem>
+                ))}
+              </ListCategory>
+            ))}
         </ListSection>
         {user && (
           <button className="mt-2 font-medium text-muted-foreground" onClick={logout}>
@@ -114,8 +122,11 @@ const UserProfile = () => {
         <AvatarFallback resource={user.profileImage} />
       </Avatar>
       <div>
-        <p className="font-semibold">{user.nickname}</p>
-        <p className="text-muted-foreground">{user.email}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-lg font-semibold">{user.nickname}</p>
+          <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
+        </div>
+        <p className="text-sm text-muted-foreground">{user.email}</p>
       </div>
     </div>
   );

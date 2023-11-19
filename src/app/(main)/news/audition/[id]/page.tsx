@@ -25,11 +25,9 @@ export default function AuditionDetailPage() {
     mutate(commentId);
   };
 
-  if (!data) return null;
-
   return (
     <main className="container py-16">
-      <h1 className="text-2xl font-bold text-foreground md:mt-8 md:text-3xl">공지사항</h1>
+      <h1 className="text-2xl font-bold text-foreground md:mt-8 md:text-3xl">오디션 결과 발표</h1>
       {data && (
         <>
           <div className="mt-12 border-b pb-8">
@@ -40,32 +38,32 @@ export default function AuditionDetailPage() {
             {data.image && <Image width={500} height={400} src={data.image} alt="" />}
           </div>
           <Markdown className="prose mt-8" content={data.content} />
+          <h1 className="mt-24 text-xl font-bold text-foreground md:text-2xl">
+            댓글 {data._count.comments}
+          </h1>
+          <AccessControl>
+            <CommentInput className="mt-8" auditionId={Number(id)} />
+          </AccessControl>
+          <ul className="mt-8 flex flex-col gap-8">
+            {data.comments.map((comment) => (
+              <CommentItem
+                key={comment.id}
+                authorId={comment.user.id}
+                profileImage={comment.user.profileImage}
+                nickname={comment.user.nickname}
+                content={comment.content}
+                createdAt={formatDateDistance(comment.createdAt)}
+                onDelete={() => onCommentDelete(comment.id)}
+              />
+            ))}
+            <div className="mt-8">
+              <Link href={ROUTE.NEWS.AUDITION.LIST}>
+                <Button variant="secondary">목록으로</Button>
+              </Link>
+            </div>
+          </ul>
         </>
       )}
-      <h1 className="mt-24 text-xl font-bold text-foreground md:text-2xl">
-        댓글 {data._count.comments}
-      </h1>
-      <AccessControl>
-        <CommentInput className="mt-8" auditionId={Number(id)} />
-      </AccessControl>
-      <ul className="mt-8 flex flex-col gap-8">
-        {data.comments.map((comment) => (
-          <CommentItem
-            key={comment.id}
-            authorId={comment.user.id}
-            profileImage={comment.user.profileImage}
-            nickname={comment.user.nickname}
-            content={comment.content}
-            createdAt={formatDateDistance(comment.createdAt)}
-            onDelete={() => onCommentDelete(comment.id)}
-          />
-        ))}
-        <div className="mt-8">
-          <Link href={ROUTE.NEWS.NOTICE.LIST}>
-            <Button variant="secondary">목록으로</Button>
-          </Link>
-        </div>
-      </ul>
     </main>
   );
 }

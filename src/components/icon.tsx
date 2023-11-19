@@ -17,6 +17,7 @@ import {
   ShoppingBasket,
   ShoppingCart,
   Star,
+  User,
   Wrench,
   X,
   Youtube,
@@ -44,4 +45,5 @@ export const Icon = {
   BookOpen: BookOpen,
   Home: Home,
   Construction: Construction,
+  User: User,
 };
