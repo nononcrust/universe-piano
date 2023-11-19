@@ -3,7 +3,7 @@
 import { Markdown } from "@/components/markdown";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
-import { useNoticeById } from "@/features/notice";
+import { useNoticeDetail } from "@/features/notice";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 export default function NoticeDetailPage() {
   const { id } = useParams();
 
-  const { data } = useNoticeById(Number(id));
+  const { data } = useNoticeDetail(Number(id));
 
   return (
     <main className="container py-16">
