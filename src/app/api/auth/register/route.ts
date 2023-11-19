@@ -31,15 +31,18 @@ export const POST = async (request: Request) => {
       },
     });
 
-    const userInfo = {
+    const userInfo: UserInfo = {
       id: user.id,
       nickname: user.nickname,
       phone: user.phone,
       profileImage: user.profileImage,
       email: "dummy email",
-    } satisfies UserInfo;
+      tier: user.tier,
+      role: user.role,
+      point: user.point,
+    };
 
-    const accessToken = jwt.sign(userInfo);
+    const accessToken = jwt.signUser(userInfo);
 
     cookies().set(COOKIE.ACCESS_TOKEN, accessToken, {
       secure: true,

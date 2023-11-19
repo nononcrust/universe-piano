@@ -1,6 +1,8 @@
+import { COOKIE } from "@/constants/cookie";
 import { auditionCommentRequestSchema } from "@/features/audition";
-import { getUserInfo } from "@/features/user";
+import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
@@ -15,6 +17,26 @@ export const POST = async (request: Request, context: Context) => {
     const auditionCommentId = Number(context.params.id);
 
     const body = await request.json();
+
+    const getUserInfo = async () => {
+      const cookie = cookies().get(COOKIE.ACCESS_TOKEN);
+
+      if (!cookie) {
+        return null;
+      }
+
+      const accessToken = cookie.value;
+
+      const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
+
+      if (!decoded.success) {
+        return null;
+      }
+
+      const userInfo = decoded.data.user;
+
+      return userInfo;
+    };
 
     const user = await getUserInfo();
 

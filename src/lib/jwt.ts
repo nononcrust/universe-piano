@@ -14,7 +14,7 @@ export const jwt = {
       return null;
     }
   },
-  sign: (user: UserInfo) => {
+  signUser: (user: UserInfo) => {
     return jsonwebtoken.sign({ user }, secret, {
       algorithm: "HS256",
       expiresIn: "30d",

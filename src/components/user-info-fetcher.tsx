@@ -1,11 +1,33 @@
+import { COOKIE } from "@/constants/cookie";
 import { queryKeys } from "@/features/auth";
-import { getUserInfo } from "@/features/user";
+import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { getQueryClient } from "@/lib/react-query";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import { cookies } from "next/headers";
 import { PropsWithChildren } from "react";
 
 const prefetchUserInfo = async () => {
   const queryClient = getQueryClient();
+
+  const getUserInfo = async () => {
+    const cookie = cookies().get(COOKIE.ACCESS_TOKEN);
+
+    if (!cookie) {
+      return null;
+    }
+
+    const accessToken = cookie.value;
+
+    const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
+
+    if (!decoded.success) {
+      return null;
+    }
+
+    const userInfo = decoded.data.user;
+
+    return userInfo;
+  };
 
   await queryClient.prefetchQuery({
     queryKey: queryKeys.userInfo(),

@@ -38,13 +38,16 @@ export default async function KakaoCallbackPage({
     return <RedirectWithRegisterToken registerToken={registerToken} />;
   }
 
-  const userInfo = {
+  const userInfo: UserInfo = {
     id: user.id,
     nickname: user.nickname,
     phone: user.phone,
     email: "test@gamil.com",
     profileImage: user.profileImage,
-  } satisfies UserInfo;
+    tier: user.tier,
+    role: user.role,
+    point: user.point,
+  };
 
   return <RedirectWithUser user={userInfo} />;
 }

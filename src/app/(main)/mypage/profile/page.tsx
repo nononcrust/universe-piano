@@ -4,6 +4,7 @@ import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { TIER_LABEL } from "@/constants/enum";
 import { useUserInfo } from "@/features/auth";
 
 export default function MyProfilePage() {
@@ -23,7 +24,7 @@ export default function MyProfilePage() {
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <p className="text-2xl font-semibold">{user.nickname}</p>
-            <Badge variant="secondary">새싹</Badge>
+            <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
           </div>
           <p className="text-muted-foreground">{user.email}</p>
         </div>

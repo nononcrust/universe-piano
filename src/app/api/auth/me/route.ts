@@ -1,5 +1,4 @@
 import { COOKIE } from "@/constants/cookie";
-import { UserInfo } from "@/features/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -17,15 +16,7 @@ export const GET = async (request: Request) => {
 
     const decoded = accessTokenSchema.parse(jwt.verify(accessToken));
 
-    const user = decoded.user;
-
-    const userInfo: UserInfo = {
-      id: user.id,
-      nickname: user.nickname,
-      phone: user.phone,
-      profileImage: user.profileImage,
-      email: user.email,
-    };
+    const userInfo = decoded.user;
 
     return NextResponse.json(userInfo);
   } catch (error) {

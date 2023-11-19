@@ -1,4 +1,5 @@
 import { api } from "@/lib/axios";
+import { Role, Tier } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
 
@@ -42,6 +43,9 @@ export const userInfoSchema = z.object({
   phone: z.string(),
   email: z.string(),
   profileImage: z.string(),
+  tier: z.enum([Object.values(Tier)[0], ...Object.values(Tier).slice(1)]),
+  role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]),
+  point: z.number(),
 });
 
 export type SocialData = z.infer<typeof socialDataSchema>;

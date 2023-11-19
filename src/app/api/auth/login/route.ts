@@ -13,7 +13,7 @@ export const POST = async (request: Request) => {
 
     const user = parsedBody;
 
-    const accessToken = jwt.sign(user);
+    const accessToken = jwt.signUser(user);
 
     cookies().set(COOKIE.ACCESS_TOKEN, accessToken, {
       secure: true,
