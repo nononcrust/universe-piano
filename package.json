@@ -55,6 +55,7 @@
     "react-hook-form": "^7.46.2",
     "react-remark": "^2.1.0",
     "superjson": "^2.2.0",
+    "swiper": "^11.0.4",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.0.1",
