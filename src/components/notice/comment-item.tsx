@@ -41,17 +41,17 @@ export const CommentItem = ({
   };
 
   return (
-    <div className="flex gap-2">
-      <Avatar className="h-10 w-10">
+    <div className="flex gap-3">
+      <Avatar className="h-8 w-8">
         <AvatarImage src={profileImage} />
         <AvatarFallback />
       </Avatar>
       <div className="flex flex-1 flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="flex items-center gap-2">
-            <span className="font-bold">{nickname}</span>
-            <span className="text-xs text-muted-foreground">{createdAt}</span>
-          </p>
+          <div className="flex flex-col">
+            <p className="text-sm font-semibold">{nickname}</p>
+            <p className="text-xs text-muted-foreground">{createdAt}</p>
+          </div>
           {isMyComment && (
             <p
               className="cursor-pointer text-xs font-medium text-muted-foreground"

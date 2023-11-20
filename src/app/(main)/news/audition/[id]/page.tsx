@@ -1,5 +1,6 @@
 "use client";
 
+import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { Markdown } from "@/components/markdown";
 import { CommentInput } from "@/components/notice/comment-input";
 import { CommentItem } from "@/components/notice/comment-item";
@@ -38,11 +39,9 @@ export default function AuditionDetailPage() {
             {data.image && <Image width={500} height={400} src={data.image} alt="" />}
           </div>
           <Markdown className="prose mt-8" content={data.content} />
-          <h1 className="mt-24 text-xl font-bold text-foreground md:text-2xl">
-            댓글 {data._count.comments}
-          </h1>
+          <PageSubtitle className="mt-24" title={`댓글 ${data._count.comments}`} />
           <AccessControl>
-            <CommentInput className="mt-8" auditionId={Number(id)} />
+            <CommentInput className="mt-4" auditionId={Number(id)} />
           </AccessControl>
           <ul className="mt-8 flex flex-col gap-8">
             {data.comments.map((comment) => (

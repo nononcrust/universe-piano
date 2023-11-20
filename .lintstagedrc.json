@@ -1,3 +1,0 @@
-{
-  "**/*.{ts,tsx}": "npm run type-check"
-}

@@ -1,6 +1,8 @@
 import { MobileHeader } from "@/components/admin/mobile-header";
 import { NavigationDrawer } from "@/components/admin/navigation-drawer";
 
+export const revalidate = 0;
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex">

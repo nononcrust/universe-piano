@@ -5,6 +5,7 @@ export const ROUTE = {
   ABOUT: {
     LIST: "/about",
     COMPANY: "/about/company",
+    STORY: "/about/story",
   },
   SERVICE: {
     LIST: "/service",

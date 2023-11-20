@@ -7,8 +7,6 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "../styles/globals.css";
 
-export const revalidate = 0;
-
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,

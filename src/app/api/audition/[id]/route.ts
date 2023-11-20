@@ -27,7 +27,7 @@ export const PUT = async (request: Request, context: Context) => {
 
     const body = await request.json();
 
-    const parsedBody = auditionRequestSchema.parse(body);
+    const { images, ...parsedBody } = auditionRequestSchema.parse(body);
 
     const audition = await prisma.audition.update({
       where: {
@@ -36,11 +36,15 @@ export const PUT = async (request: Request, context: Context) => {
       include: {
         comments: true,
       },
-      data: parsedBody,
+      data: {
+        ...parsedBody,
+        ...(images && { image: images[0] }),
+      },
     });
 
     return NextResponse.json(audition);
   } catch (error) {
+    console.log("@@@", error);
     if (error instanceof ZodError) {
       return new NextResponse("Bad Request", { status: 400 });
     }
@@ -61,6 +65,7 @@ export const DELETE = async (request: Request, context: Context) => {
 
     return NextResponse.json(audition);
   } catch (error) {
+    console.log(error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 };

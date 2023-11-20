@@ -13,6 +13,13 @@ import { ROUTE } from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";
 
+const DUMMY_PRODUCT_DETAIL = {
+  productName: "미국 음대 오디션에서 살아남기",
+  price: 9900,
+  rating: 4.8,
+  reviewCount: 3,
+};
+
 export default function ProductDetailPage() {
   return (
     <main className="container pb-16">
@@ -42,16 +49,16 @@ const ProductImageSection = () => {
 const ProductOptionSection = () => {
   return (
     <div className="flex flex-1 flex-col">
-      <p className="text-gray-500">전자책</p>
-      <h1 className="mt-2 text-2xl font-bold">압도적 사이즈와 개방감! 사계절 사용 에어 2룸텐트</h1>
+      <p className="text-gray-500">독학 키트</p>
+      <h1 className="mt-2 text-2xl font-bold">{DUMMY_PRODUCT_DETAIL.productName}</h1>
       <div className="mt-2 flex items-center gap-2">
         <Icon.Star size={20} className="fill-black" />
-        <p>4.8</p>
+        <p>{DUMMY_PRODUCT_DETAIL.rating}</p>
       </div>
       <ProductOption className="mt-4" />
       <div className="mt-8 flex items-center justify-between">
         <p className="text-sm font-bold">주문 금액</p>
-        <p className="font-bold">1,679,000원</p>
+        <p className="font-bold">{DUMMY_PRODUCT_DETAIL.price.toLocaleString()}원</p>
       </div>
       <ProductAction />
     </div>
@@ -129,11 +136,8 @@ const ProductOption = ({ className }: ProductOptionProps) => {
 const ProductAction = () => {
   return (
     <div className="mt-8 flex gap-4">
-      <Button className="flex-1" size="lg" variant="outline">
-        장바구니
-      </Button>
       <Button className="flex-1" size="lg" asChild>
-        <Link href={ROUTE.PAYMENT}>바로구매</Link>
+        <Link href={ROUTE.PAYMENT}>구매하기</Link>
       </Button>
     </div>
   );

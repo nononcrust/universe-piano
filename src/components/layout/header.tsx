@@ -1,6 +1,6 @@
 "use client";
 
-import { siteConfig } from "@/configs/site";
+import { headerNav, siteConfig, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { useUserInfo } from "@/features/auth";
 import { cn } from "@/lib/utils";
@@ -39,7 +39,7 @@ export const Header = () => {
                 <span className="inline-block font-semibold">{siteConfig.name}</span>
               </Link>
               <nav className="hidden gap-6 md:flex">
-                {siteConfig.mainNav.map((item, index) => (
+                {headerNav.map((item, index) => (
                   <Link
                     key={index}
                     href={item.href}
@@ -81,7 +81,7 @@ export const Header = () => {
             )}
           </div>
         </div>
-        {Object.values(siteConfig.contents).map((content, index) =>
+        {Object.values(siteContents).map((content, index) =>
           pathname.startsWith(content.href) ? (
             <CategoryTab key={index} categories={content.children} />
           ) : null,

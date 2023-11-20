@@ -108,7 +108,7 @@ model AuditionComment {
   user   User   @relation(fields: [userId], references: [id])
   userId String
 
-  audition   Audition @relation(fields: [auditionId], references: [id])
+  audition   Audition @relation(fields: [auditionId], references: [id], onDelete: Cascade)
   auditionId Int
 
   @@index([userId])

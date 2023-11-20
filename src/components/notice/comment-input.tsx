@@ -53,10 +53,10 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
             name="content"
             control={form.control}
             render={({ field }) => (
-              <Textarea placeholder="댓글로 내 생각을 알려주세요." {...field} />
+              <Textarea placeholder="댓글로 내 생각을 알려주세요." maxLength={200} {...field} />
             )}
           />
-          <div className="flex flex-col justify-end md:flex-row">
+          <div className="flex justify-end">
             <Button className="mt-4" type="submit" disabled={!form.formState.isValid}>
               댓글 달기
             </Button>

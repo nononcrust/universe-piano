@@ -1,6 +1,6 @@
 "use client";
 
-import { siteConfig } from "@/configs/site";
+import { siteContents } from "@/configs/site";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useUserInfo } from "@/features/auth";
@@ -34,7 +34,7 @@ export const NavigationMenuDialog = () => {
               <ListItem href={ROUTE.MYPAGE.PROFILE}>MY 유니버스</ListItem>
             </ListCategory>
           )}
-          {Object.values(siteConfig.contents)
+          {Object.values(siteContents)
             .filter((item) => item.href !== ROUTE.MYPAGE.HOME)
             .map((category, index) => (
               <ListCategory key={category.href} title={category.title}>

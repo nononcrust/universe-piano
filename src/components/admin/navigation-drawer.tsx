@@ -1,6 +1,6 @@
 "use client";
 
-import { siteConfig } from "@/configs/site";
+import { adminNav } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -17,7 +17,7 @@ export const NavigationDrawer = () => {
           사이트로 돌아가기
         </div>
       </Link>
-      {siteConfig.adminNav.map((section, index) => (
+      {adminNav.map((section, index) => (
         <NavigationDrawerSection key={index} title={section.title}>
           {section.items.map((item, index) => (
             <NavigationDrawerItem key={index} title={item.title} href={item.href} />
@@ -100,7 +100,7 @@ export const MobileNavigationDrawer = () => {
         <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
         <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 mt-24 flex max-h-[400px] flex-1 flex-col rounded-t-2xl bg-white p-2 outline-none">
           <div className="overflow-y-auto p-2">
-            {siteConfig.adminNav.map((section, index) => (
+            {adminNav.map((section, index) => (
               <NavigationDrawerSection key={index} title={section.title}>
                 {section.items.map((item, index) => (
                   <Drawer.Close key={index} className="flex w-full flex-1 flex-col">
