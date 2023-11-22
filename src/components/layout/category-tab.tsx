@@ -18,7 +18,7 @@ export const CategoryTab = ({ categories }: CategoryTabProps) => {
   const isActive = (href: string) => pathname.startsWith(href);
 
   return (
-    <div className="flex h-12 items-center border-b">
+    <div className="hidden h-12 items-center border-b md:flex">
       <div className="container flex h-full items-center gap-4">
         {categories.map((category, index) => (
           <Link

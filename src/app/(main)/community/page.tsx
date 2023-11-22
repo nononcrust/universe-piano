@@ -20,7 +20,7 @@ export default function CommunityPage() {
         <Pagination
           currentPage={currentPage}
           totalPage={DUMMY_TOTAL_PAGE}
-          onClick={(page) => setCurrentPage(page)}
+          onChange={(page) => setCurrentPage(page)}
         />
       </div>
     </main>

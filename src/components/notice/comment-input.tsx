@@ -1,3 +1,5 @@
+"use client";
+
 import { useCreateAuditionComment } from "@/features/audition";
 import { cn } from "@/lib/utils";
 import { contentSchema } from "@/schemas/form";
@@ -53,7 +55,12 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
             name="content"
             control={form.control}
             render={({ field }) => (
-              <Textarea placeholder="댓글로 내 생각을 알려주세요." maxLength={200} {...field} />
+              <Textarea
+                className="focus-visible:ring-0"
+                placeholder="댓글로 내 생각을 알려주세요."
+                maxLength={200}
+                {...field}
+              />
             )}
           />
           <div className="flex justify-end">

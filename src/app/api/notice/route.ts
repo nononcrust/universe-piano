@@ -1,15 +1,11 @@
-import { noticeRequestSchema } from "@/features/notice";
+import { getNoticeList, noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 export const GET = async (request: Request) => {
   try {
-    const notices = await prisma.notice.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    const notices = await getNoticeList();
 
     return NextResponse.json(notices);
   } catch (error) {

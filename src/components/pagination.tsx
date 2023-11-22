@@ -5,10 +5,10 @@ interface PaginationProps {
   className?: string;
   currentPage: number;
   totalPage: number;
-  onClick: (page: number) => void;
+  onChange: (page: number) => void;
 }
 
-export const Pagination = ({ className, currentPage, totalPage, onClick }: PaginationProps) => {
+export const Pagination = ({ className, currentPage, totalPage, onChange }: PaginationProps) => {
   const renderPagination = () => {
     if (totalPage <= 5) {
       return Array(totalPage)
@@ -18,7 +18,7 @@ export const Pagination = ({ className, currentPage, totalPage, onClick }: Pagin
             page={index + 1}
             key={index}
             isActive={currentPage === index + 1}
-            onClick={() => onClick(index + 1)}
+            onClick={() => onChange(index + 1)}
           />
         ));
     }
@@ -33,14 +33,14 @@ export const Pagination = ({ className, currentPage, totalPage, onClick }: Pagin
                 page={index + 1}
                 key={index}
                 isActive={currentPage === index + 1}
-                onClick={() => onClick(index + 1)}
+                onClick={() => onChange(index + 1)}
               />
             ))}
           <PaginationEllipsis />
           <PaginationButton
             page={totalPage}
             isActive={currentPage === totalPage}
-            onClick={() => onClick(totalPage)}
+            onClick={() => onChange(totalPage)}
           />
         </>
       );
@@ -49,7 +49,7 @@ export const Pagination = ({ className, currentPage, totalPage, onClick }: Pagin
     if (currentPage > 4 && currentPage + 2 < totalPage) {
       return (
         <>
-          <PaginationButton page={1} isActive={currentPage === 1} onClick={() => onClick(1)} />
+          <PaginationButton page={1} isActive={currentPage === 1} onClick={() => onChange(1)} />
           <PaginationEllipsis />
           {Array(3)
             .fill(0)
@@ -58,7 +58,7 @@ export const Pagination = ({ className, currentPage, totalPage, onClick }: Pagin
                 page={currentPage - 2 + index}
                 key={index}
                 isActive={currentPage === currentPage - 1 + index}
-                onClick={() => onClick(currentPage - 1 + index)}
+                onClick={() => onChange(currentPage - 1 + index)}
               />
             ))}
           {currentPage + 2 < totalPage && <PaginationEllipsis />}
@@ -66,7 +66,7 @@ export const Pagination = ({ className, currentPage, totalPage, onClick }: Pagin
             <PaginationButton
               page={totalPage}
               isActive={currentPage === totalPage}
-              onClick={() => onClick(totalPage)}
+              onClick={() => onChange(totalPage)}
             />
           )}
         </>
@@ -76,7 +76,7 @@ export const Pagination = ({ className, currentPage, totalPage, onClick }: Pagin
     if (currentPage > totalPage - 4) {
       return (
         <>
-          <PaginationButton page={1} isActive={currentPage === 1} onClick={() => onClick(1)} />
+          <PaginationButton page={1} isActive={currentPage === 1} onClick={() => onChange(1)} />
           <PaginationEllipsis />
           {Array(5)
             .fill(0)
@@ -85,7 +85,7 @@ export const Pagination = ({ className, currentPage, totalPage, onClick }: Pagin
                 page={totalPage - 4 + index}
                 key={index}
                 isActive={currentPage === totalPage - 4 + index}
-                onClick={() => onClick(totalPage - 4 + index)}
+                onClick={() => onChange(totalPage - 4 + index)}
               />
             ))}
         </>

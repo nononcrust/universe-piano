@@ -1,21 +1,17 @@
-"use client";
-
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { noticeColumns } from "@/components/admin/data-table/columns/notice-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
-import { useNoticeList } from "@/features/notice";
+import { getNoticeList } from "@/features/notice";
 
-export default function AdminNoticeListPage() {
-  const { data } = useNoticeList();
-
-  if (!data) return null;
+export default async function AdminNoticeListPage() {
+  const notices = await getNoticeList();
 
   return (
     <main>
       <AdminPageTitle title="공지사항 목록" />
       <DataTable
         columns={noticeColumns}
-        data={data}
+        data={notices}
         searchColumnKey="title"
         searchInputPlaceholder="제목으로 검색"
       />

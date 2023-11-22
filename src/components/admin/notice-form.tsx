@@ -2,16 +2,11 @@
 
 import { ROUTE } from "@/constants/route";
 import { auditionRequestSchema } from "@/features/audition";
-import {
-  useCreateNotice,
-  useDeleteNotice,
-  useNoticeDetail,
-  useUpdateNotice,
-} from "@/features/notice";
+import { useCreateNotice, useDeleteNotice, useUpdateNotice } from "@/features/notice";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Notice } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { Button } from "../ui/button";
@@ -35,10 +30,10 @@ type FormSchema = z.infer<typeof auditionRequestSchema>;
 
 interface NoticeFormProps {
   mode: "create" | "edit";
-  noticeId?: number;
+  notice?: Notice;
 }
 
-export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
+export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
   const { toast } = useToast();
 
   const createNoticeMutation = useCreateNotice();
@@ -47,71 +42,65 @@ export const NoticeForm = ({ mode, noticeId }: NoticeFormProps) => {
 
   const router = useRouter();
 
-  const { data } = useNoticeDetail(noticeId || 0);
-
   const form = useForm<FormSchema>({
     resolver: zodResolver(auditionRequestSchema),
     defaultValues: {
-      title: "",
-      content: "",
+      title: notice?.title || "",
+      content: notice?.content || "",
     },
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
     if (mode === "create" && !createNoticeMutation.isPending) {
-      createNoticeMutation.mutate(data, {
-        onSuccess: () => {
-          router.push(ROUTE.ADMIN.NOTICE.LIST);
-          toast({
-            title: "공지사항 추가 완료",
-            description: "공지사항 추가가 완료되었습니다.",
-          });
+      createNoticeMutation.mutate(
+        { body: data },
+        {
+          onSuccess: () => {
+            router.refresh();
+            router.push(ROUTE.ADMIN.NOTICE.LIST);
+            toast({
+              title: "공지사항 추가 완료",
+              description: "공지사항 추가가 완료되었습니다.",
+            });
+          },
         },
-      });
+      );
     }
 
-    if (mode === "edit" && noticeId && !updateNoticeMutation.isPending) {
-      const body = {
-        id: noticeId,
-        body: data,
-      };
-
-      updateNoticeMutation.mutate(body, {
-        onSuccess: () => {
-          router.push(ROUTE.ADMIN.NOTICE.LIST);
-          toast({
-            title: "공지사항 수정 완료",
-            description: "공지사항 수정이 완료되었습니다.",
-          });
+    if (mode === "edit" && notice?.id && !updateNoticeMutation.isPending) {
+      updateNoticeMutation.mutate(
+        { id: notice.id, body: data },
+        {
+          onSuccess: () => {
+            router.refresh();
+            router.push(ROUTE.ADMIN.NOTICE.LIST);
+            toast({
+              title: "공지사항 수정 완료",
+              description: "공지사항 수정이 완료되었습니다.",
+            });
+          },
         },
-      });
+      );
     }
   });
 
   const onDelete = () => {
-    if (mode === "edit" && noticeId && !deleteNoticeMutation.isPending) {
-      deleteNoticeMutation.mutate(noticeId, {
-        onSuccess: () => {
-          router.push(ROUTE.ADMIN.NOTICE.LIST);
-          toast({
-            title: "공지사항 삭제 완료",
-            description: "공지사항 삭제가 완료되었습니다.",
-          });
+    if (mode === "edit" && notice?.id && !deleteNoticeMutation.isPending) {
+      deleteNoticeMutation.mutate(
+        { id: notice.id },
+        {
+          onSuccess: () => {
+            router.refresh();
+            router.push(ROUTE.ADMIN.NOTICE.LIST);
+            toast({
+              title: "공지사항 삭제 완료",
+              description: "공지사항 삭제가 완료되었습니다.",
+            });
+          },
         },
-      });
+      );
     }
   };
-
-  useEffect(() => {
-    if (mode === "edit" && data) {
-      form.reset({
-        title: data.title,
-        content: data.content,
-      });
-    }
-  }, [data, form, mode]);
-
-  if (mode === "edit" && !data) return null;
 
   return (
     <Card>

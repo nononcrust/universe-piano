@@ -67,15 +67,18 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
     if (mode === "create" && !createAuditionMutation.isPending) {
-      createAuditionMutation.mutate(data, {
-        onSuccess: () => {
-          router.push(ROUTE.ADMIN.AUDITION.LIST);
-          toast({
-            title: "오디션 결과 추가 완료",
-            description: "오디션 결과 추가가 완료되었습니다.",
-          });
+      createAuditionMutation.mutate(
+        { body: data },
+        {
+          onSuccess: () => {
+            router.push(ROUTE.ADMIN.AUDITION.LIST);
+            toast({
+              title: "오디션 결과 추가 완료",
+              description: "오디션 결과 추가가 완료되었습니다.",
+            });
+          },
         },
-      });
+      );
     }
 
     if (mode === "edit" && auditionId && !updateAuditionMutation.isPending) {
@@ -97,15 +100,18 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
   });
   const onDelete = () => {
     if (mode === "edit" && auditionId && !deleteAuditionMutation.isPending) {
-      deleteAuditionMutation.mutate(auditionId, {
-        onSuccess: () => {
-          router.push(ROUTE.ADMIN.AUDITION.LIST);
-          toast({
-            title: "오디션 결과 삭제 완료",
-            description: "오디션 결과 삭제가 완료되었습니다.",
-          });
+      deleteAuditionMutation.mutate(
+        { id: auditionId },
+        {
+          onSuccess: () => {
+            router.push(ROUTE.ADMIN.AUDITION.LIST);
+            toast({
+              title: "오디션 결과 삭제 완료",
+              description: "오디션 결과 삭제가 완료되었습니다.",
+            });
+          },
         },
-      });
+      );
     }
   };
 

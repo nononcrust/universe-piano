@@ -1,13 +1,12 @@
 import { COOKIE } from "@/constants/cookie";
 import { queryKeys } from "@/features/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
-import { getQueryClient } from "@/lib/react-query";
-import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { cookies } from "next/headers";
 import { PropsWithChildren } from "react";
 
 const prefetchUserInfo = async () => {
-  const queryClient = getQueryClient();
+  const queryClient = new QueryClient();
 
   const getUserInfo = async () => {
     const cookie = cookies().get(COOKIE.ACCESS_TOKEN);

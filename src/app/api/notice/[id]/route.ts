@@ -1,4 +1,4 @@
-import { noticeRequestSchema } from "@/features/notice";
+import { getNoticeById, noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -13,11 +13,7 @@ export const GET = async (request: Request, context: Context) => {
   try {
     const noticeId = Number(context.params.id);
 
-    const notice = await prisma.notice.findUnique({
-      where: {
-        id: noticeId,
-      },
-    });
+    const notice = await getNoticeById(noticeId);
 
     return NextResponse.json(notice);
   } catch (error) {

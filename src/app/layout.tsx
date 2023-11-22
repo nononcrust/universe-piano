@@ -4,8 +4,16 @@ import { UserInfoFetcher } from "@/components/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { Providers } from "@/providers";
 import { Analytics } from "@vercel/analytics/react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
+
+export const revalidate = 0;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: siteConfig.title,

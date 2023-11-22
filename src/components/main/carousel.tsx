@@ -11,13 +11,13 @@ export const Carousel = () => {
     <Swiper
       modules={[Pagination]}
       loop
-      className="h-[200px] rounded-xl border"
+      className="h-[160px] rounded-xl border md:h-[200px]"
       pagination={{ clickable: true }}
     >
       <SwiperSlide className="bg-gray-100" />
-      <SwiperSlide className="bg-gray-300" />
+      <SwiperSlide className="bg-gray-200" />
       <SwiperSlide className="bg-gray-100" />
-      <SwiperSlide className="bg-gray-300" />
+      <SwiperSlide className="bg-gray-200" />
     </Swiper>
   );
 };

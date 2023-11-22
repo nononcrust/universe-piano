@@ -5,6 +5,29 @@ import { Audition, AuditionComment, Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
+export const getAuditionList = () => {
+  return prisma.audition.findMany();
+};
+
+export const getAuditionById = (auditionId: number) => {
+  return prisma.audition.findUnique({
+    where: {
+      id: auditionId,
+    },
+    include: {
+      comments: {
+        include: {
+          user: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+      _count: true,
+    },
+  });
+};
+
 const ENDPOINT = "/audition";
 
 export const auditionApi = {
@@ -12,33 +35,33 @@ export const auditionApi = {
     const response = await api.get<Audition[]>(ENDPOINT);
     return response.data;
   },
-  getAuditionById: async (id: number) => {
-    const response = await api.get<GetAuditionByIdResponse>(`${ENDPOINT}/${id}`);
+  getAuditionById: async (data: { id: number }) => {
+    const response = await api.get<GetAuditionByIdResponse>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
-  createAudition: async (body: AuditionBody) => {
-    const response = await api.post(ENDPOINT, body);
+  createAudition: async (data: { body: AuditionBody }) => {
+    const response = await api.post(ENDPOINT, data.body);
     return response.data;
   },
   updateAudition: async (data: { id: number; body: Partial<AuditionBody> }) => {
     const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
     return response.data;
   },
-  deleteAudition: async (id: number) => {
-    const response = await api.delete(`${ENDPOINT}/${id}`);
+  deleteAudition: async (data: { id: number }) => {
+    const response = await api.delete(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
   createAuditionComment: async (data: { id: number; body: AuditionCommentBody }) => {
     const response = await api.post(`${ENDPOINT}/${data.id}/comments`, data.body);
     return response.data;
   },
-  deleteAuditionComment: async (id: number) => {
-    const response = await api.delete<AuditionComment>(`${ENDPOINT}/comments/${id}`);
+  deleteAuditionComment: async (data: { id: number }) => {
+    const response = await api.delete<AuditionComment>(`${ENDPOINT}/comments/${data.id}`);
     return response.data;
   },
 };
 
-const queryKeys = {
+export const queryKeys = {
   all: () => [ENDPOINT] as const,
   detail: (id?: number) => [ENDPOINT, id] as const,
   list: () => [ENDPOINT, "list"] as const,
@@ -54,7 +77,7 @@ export const useAuditionList = () => {
 export const useAuditionDetail = (id: number) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
-    queryFn: () => auditionApi.getAuditionById(id),
+    queryFn: () => auditionApi.getAuditionById({ id }),
   });
 };
 
@@ -87,7 +110,7 @@ export const useDeleteAudition = () => {
   return useMutation({
     mutationFn: auditionApi.deleteAudition,
     onSuccess: (_, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables), null);
+      queryClient.setQueryData(queryKeys.detail(variables.id), null);
     },
   });
 };
@@ -118,27 +141,6 @@ export const useDeleteAuditionComment = () => {
   });
 };
 
-export const getAuditionById = async (auditionId: number) => {
-  const audition = await prisma.audition.findUnique({
-    where: {
-      id: auditionId,
-    },
-    include: {
-      comments: {
-        include: {
-          user: true,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      },
-      _count: true,
-    },
-  });
-
-  return audition;
-};
-
 export const auditionRequestSchema = z.object({
   title: titleSchema,
   content: contentSchema,
@@ -153,7 +155,7 @@ export const auditionCommentRequestSchema = z.object({
 
 export type AuditionCommentBody = z.infer<typeof auditionCommentRequestSchema>;
 
-type GetAuditionByIdResponse = Prisma.AuditionGetPayload<{
+export type GetAuditionByIdResponse = Prisma.AuditionGetPayload<{
   include: {
     comments: {
       include: {

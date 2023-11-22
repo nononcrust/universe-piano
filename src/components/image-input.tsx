@@ -18,9 +18,6 @@ export const ImageInput = ({ value, onChange }: ImageInputProps) => {
     onClientUploadComplete: () => {
       setIsUploading(false);
     },
-    onUploadError: (error) => {
-      console.log(error);
-    },
   });
 
   const onAddImageButtonClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {

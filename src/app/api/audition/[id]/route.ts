@@ -44,7 +44,6 @@ export const PUT = async (request: Request, context: Context) => {
 
     return NextResponse.json(audition);
   } catch (error) {
-    console.log("@@@", error);
     if (error instanceof ZodError) {
       return new NextResponse("Bad Request", { status: 400 });
     }
@@ -65,7 +64,6 @@ export const DELETE = async (request: Request, context: Context) => {
 
     return NextResponse.json(audition);
   } catch (error) {
-    console.log(error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 };

@@ -1,34 +1,51 @@
 import { api } from "@/lib/axios";
+import { prisma } from "@/lib/prisma";
 import { Notice } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
 const ENDPOINT = "/notice";
 
+export const getNoticeList = () => {
+  return prisma.notice.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+};
+
+export const getNoticeById = (noticeId: number) => {
+  return prisma.notice.findUnique({
+    where: {
+      id: noticeId,
+    },
+  });
+};
+
 export const noticeApi = {
-  getNoticeById: async (id: number) => {
-    const response = await api.get<Notice>(`${ENDPOINT}/${id}`);
+  getNoticeById: async (data: { id: number }) => {
+    const response = await api.get<Notice>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
   getNoticeList: async () => {
     const response = await api.get<Notice[]>(`${ENDPOINT}`);
     return response.data;
   },
-  createNotice: async (body: NoticeBody) => {
-    const response = await api.post(`${ENDPOINT}`, body);
+  createNotice: async (data: { body: NoticeBody }) => {
+    const response = await api.post(`${ENDPOINT}`, data.body);
     return response.data;
   },
   updateNotice: async (data: { id: number; body: Partial<NoticeBody> }) => {
     const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
     return response.data;
   },
-  deleteNotice: async (id: number) => {
-    const response = await api.delete(`${ENDPOINT}/${id}`);
+  deleteNotice: async (data: { id: number }) => {
+    const response = await api.delete(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
 };
 
-const queryKeys = {
+export const queryKeys = {
   all: () => [ENDPOINT] as const,
   detail: (id?: number) => [ENDPOINT, id] as const,
   list: () => [ENDPOINT, "list"] as const,
@@ -44,8 +61,7 @@ export const useNoticeList = () => {
 export const useNoticeDetail = (id: number) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
-    queryFn: () => noticeApi.getNoticeById(id),
-    enabled: !!id,
+    queryFn: () => noticeApi.getNoticeById({ id }),
   });
 };
 
@@ -78,7 +94,7 @@ export const useDeleteNotice = () => {
   return useMutation({
     mutationFn: noticeApi.deleteNotice,
     onSuccess: (_, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables), null);
+      queryClient.setQueryData(queryKeys.detail(variables.id), null);
     },
   });
 };
@@ -86,6 +102,7 @@ export const useDeleteNotice = () => {
 export const noticeRequestSchema = z.object({
   title: z.string().min(1).max(100),
   content: z.string().min(1).max(1000),
+  images: z.array(z.string().url()).optional(),
 });
 
 export type NoticeBody = z.infer<typeof noticeRequestSchema>;

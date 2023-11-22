@@ -1,11 +1,11 @@
 "use client";
 
-import { useNoticeList } from "@/features/notice";
+import { useAuditionList } from "@/features/audition";
 import { noticeColumns } from "../data-table/columns/notice-columns";
 import { DataTable } from "../data-table/data-table";
 
 export const AuditionDataTable = () => {
-  const { data } = useNoticeList();
+  const { data } = useAuditionList();
 
   if (!data) return null;
 

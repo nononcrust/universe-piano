@@ -3,14 +3,14 @@
 import { ChannelProvider } from "@/lib/channel-io";
 import { queryClientConfig } from "@/lib/react-query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren } from "react";
+
+const queryClient = new QueryClient(queryClientConfig);
 
 export const Providers = ({ children }: PropsWithChildren) => {
-  const [queryClient] = useState(() => new QueryClient(queryClientConfig));
-
   return (
-    <ChannelProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </ChannelProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChannelProvider>{children}</ChannelProvider>;
+    </QueryClientProvider>
   );
 };

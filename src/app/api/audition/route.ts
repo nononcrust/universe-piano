@@ -28,7 +28,6 @@ export const POST = async (request: Request) => {
 
     return NextResponse.json(notice);
   } catch (error) {
-    console.log(error);
     if (error instanceof ZodError) {
       return new NextResponse("Bad Request", { status: 400 });
     }
