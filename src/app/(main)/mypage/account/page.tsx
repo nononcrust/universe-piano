@@ -13,8 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useUserInfo } from "@/features/auth";
-import { useUpdateUser } from "@/features/user";
+import { useUpdateProfile, useUserInfo } from "@/features/auth";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -29,7 +28,7 @@ const formSchema = z.object({
 export default function AccountPage() {
   const { data: user } = useUserInfo();
 
-  const updateUserMutation = useUpdateUser();
+  const updateProfileMutation = useUpdateProfile();
 
   const form = useForm({
     mode: "onChange",
@@ -41,9 +40,9 @@ export default function AccountPage() {
   });
 
   const onSubmit = form.handleSubmit((data) => {
-    if (!user || updateUserMutation.isPending) return;
+    if (!user || updateProfileMutation.isPending) return;
 
-    updateUserMutation.mutate(
+    updateProfileMutation.mutate(
       { id: user.id, body: data },
       {
         onSuccess: () => {

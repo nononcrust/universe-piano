@@ -2,6 +2,7 @@ import { api } from "@/lib/axios";
 import { Role, Tier } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
+import { userApi } from "./user";
 
 const ENDPOINT = "/auth";
 
@@ -74,5 +75,17 @@ export const useRegister = () => {
   return useMutation({
     mutationFn: authApi.register,
     onSuccess: (user) => queryClient.setQueryData(queryKeys.userInfo(), () => user),
+  });
+};
+
+export const useUpdateProfile = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: userApi.updateUser,
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.all(),
+      }),
   });
 };
