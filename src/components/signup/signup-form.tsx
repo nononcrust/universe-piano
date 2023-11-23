@@ -42,7 +42,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nickname: initialData.nickname || "",
+      nickname: initialData.nickname ?? "",
       phone: "",
       terms: false,
     },
@@ -60,6 +60,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
       phone: data.phone,
       kakaoId: String(initialData.id),
       profileImage: initialData.profileImage,
+      email: initialData.email,
     };
 
     signupMutation.mutate(body, {

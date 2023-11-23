@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 import { ImageInput } from "../image-input";
 import { Button } from "../ui/button";
@@ -28,7 +29,6 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { useToast } from "../ui/use-toast";
 import { DeleteConfirmDialog } from "./delete-confirm-dialog";
 import { FormLayout } from "./form-layout";
 
@@ -46,15 +46,13 @@ interface AuditionFormProps {
 }
 
 export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
-  const { toast } = useToast();
-
   const createAuditionMutation = useCreateAudition();
   const updateAuditionMutation = useUpdateAudition();
   const deleteAuditionMutation = useDeleteAudition();
 
   const router = useRouter();
 
-  const { data } = useAuditionDetail(auditionId || 0);
+  const { data } = useAuditionDetail(auditionId ?? 0);
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -72,10 +70,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
         {
           onSuccess: () => {
             router.push(ROUTE.ADMIN.AUDITION.LIST);
-            toast({
-              title: "오디션 결과 추가 완료",
-              description: "오디션 결과 추가가 완료되었습니다.",
-            });
+            toast.success("오디션 결과가 추가되었습니다.");
           },
         },
       );
@@ -90,10 +85,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
       updateAuditionMutation.mutate(body, {
         onSuccess: () => {
           router.push(ROUTE.ADMIN.AUDITION.LIST);
-          toast({
-            title: "오디션 결과 수정 완료",
-            description: "오디션 결과 수정이 완료되었습니다.",
-          });
+          toast.success("오디션 결과가 수정되었습니다.");
         },
       });
     }
@@ -105,10 +97,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
         {
           onSuccess: () => {
             router.push(ROUTE.ADMIN.AUDITION.LIST);
-            toast({
-              title: "오디션 결과 삭제 완료",
-              description: "오디션 결과 삭제가 완료되었습니다.",
-            });
+            toast.success("오디션 결과가 삭제되었습니다.");
           },
         },
       );
@@ -139,7 +128,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
                 <FormItem>
                   <FormLabel>제목</FormLabel>
                   <FormControl>
-                    <Input placeholder="제목" {...field} />
+                    <Input variant="outline" placeholder="제목" {...field} />
                   </FormControl>
                   <FormDescription>제목을 입력해주세요.</FormDescription>
                   <FormMessage />
@@ -153,7 +142,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
                 <FormItem>
                   <FormLabel>내용</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="내용" {...field} />
+                    <Textarea variant="outline" placeholder="내용" {...field} />
                   </FormControl>
                   <FormDescription>내용을 입력해주세요.</FormDescription>
                   <FormMessage />

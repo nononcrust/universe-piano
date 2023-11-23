@@ -19,6 +19,7 @@ model User {
   kakaoId                String            @unique
   role                   Role              @default(USER)
   tier                   Tier              @default(SPROUT)
+  email                  String
   nickname               String
   phone                  String
   profileImage           String

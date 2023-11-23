@@ -1,5 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
-import { queryKeys } from "@/features/auth";
+import { UserInfo, queryKeys } from "@/features/auth";
+import { getUserById } from "@/features/user";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { cookies } from "next/headers";
@@ -23,7 +24,24 @@ const prefetchUserInfo = async () => {
       return null;
     }
 
-    const userInfo = decoded.data.user;
+    const id = decoded.data.user.id;
+
+    const user = await getUserById(id);
+
+    if (!user) {
+      return null;
+    }
+
+    const userInfo: UserInfo = {
+      id: user.id,
+      nickname: user.nickname,
+      phone: user.phone,
+      email: user.email,
+      profileImage: user.profileImage,
+      tier: user.tier,
+      role: user.role,
+      point: user.point,
+    };
 
     return userInfo;
   };

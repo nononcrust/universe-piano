@@ -28,6 +28,7 @@ export const POST = async (request: Request) => {
         nickname: parsedBody.nickname,
         phone: parsedBody.phone,
         profileImage: parsedBody.profileImage,
+        email: parsedBody.email,
       },
     });
 
@@ -36,7 +37,7 @@ export const POST = async (request: Request) => {
       nickname: user.nickname,
       phone: user.phone,
       profileImage: user.profileImage,
-      email: "dummy email",
+      email: user.email,
       tier: user.tier,
       role: user.role,
       point: user.point,
@@ -57,6 +58,7 @@ export const POST = async (request: Request) => {
       return new NextResponse("Bad Request", { status: 400 });
     }
 
+    console.log(error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 };

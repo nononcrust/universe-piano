@@ -1,4 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
+import { UserInfo } from "@/features/auth";
+import { getUserById } from "@/features/user";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -16,7 +18,24 @@ export const GET = async (request: Request) => {
 
     const decoded = accessTokenSchema.parse(jwt.verify(accessToken));
 
-    const userInfo = decoded.user;
+    const id = decoded.user.id;
+
+    const user = await getUserById(id);
+
+    if (!user) {
+      return new Response(null, { status: 200 });
+    }
+
+    const userInfo: UserInfo = {
+      id: user.id,
+      nickname: user.nickname,
+      phone: user.phone,
+      email: user.email,
+      profileImage: user.profileImage,
+      tier: user.tier,
+      role: user.role,
+      point: user.point,
+    };
 
     return NextResponse.json(userInfo);
   } catch (error) {

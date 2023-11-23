@@ -25,16 +25,18 @@ export const authApi = {
 };
 
 export const socialDataSchema = z.object({
-  id: z.string().nonempty(),
-  nickname: z.string().nonempty(),
-  profileImage: z.string().nonempty(),
+  id: z.string(),
+  nickname: z.string(),
+  profileImage: z.string(),
+  email: z.string().email(),
 });
 
 export const registerRequestSchema = z.object({
-  nickname: z.string().max(20).nonempty(),
-  phone: z.string().min(10).max(13).nonempty(),
-  kakaoId: z.string().nonempty(),
-  profileImage: z.string().nonempty(),
+  nickname: z.string().max(20),
+  phone: z.string().min(10).max(13),
+  kakaoId: z.string(),
+  profileImage: z.string(),
+  email: z.string().email(),
 });
 
 export const userInfoSchema = z.object({

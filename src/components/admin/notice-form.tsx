@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Notice } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
@@ -22,7 +23,6 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { useToast } from "../ui/use-toast";
 import { DeleteConfirmDialog } from "./delete-confirm-dialog";
 import { FormLayout } from "./form-layout";
 
@@ -34,8 +34,6 @@ interface NoticeFormProps {
 }
 
 export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
-  const { toast } = useToast();
-
   const createNoticeMutation = useCreateNotice();
   const updateNoticeMutation = useUpdateNotice();
   const deleteNoticeMutation = useDeleteNotice();
@@ -45,8 +43,8 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(auditionRequestSchema),
     defaultValues: {
-      title: notice?.title || "",
-      content: notice?.content || "",
+      title: notice?.title ?? "",
+      content: notice?.content ?? "",
     },
   });
 
@@ -58,10 +56,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
           onSuccess: () => {
             router.refresh();
             router.push(ROUTE.ADMIN.NOTICE.LIST);
-            toast({
-              title: "공지사항 추가 완료",
-              description: "공지사항 추가가 완료되었습니다.",
-            });
+            toast.success("공지사항이 추가되었습니다.");
           },
         },
       );
@@ -74,10 +69,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
           onSuccess: () => {
             router.refresh();
             router.push(ROUTE.ADMIN.NOTICE.LIST);
-            toast({
-              title: "공지사항 수정 완료",
-              description: "공지사항 수정이 완료되었습니다.",
-            });
+            toast.success("공지사항이 수정되었습니다.");
           },
         },
       );
@@ -92,10 +84,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
           onSuccess: () => {
             router.refresh();
             router.push(ROUTE.ADMIN.NOTICE.LIST);
-            toast({
-              title: "공지사항 삭제 완료",
-              description: "공지사항 삭제가 완료되었습니다.",
-            });
+            toast.success("공지사항이 삭제되었습니다.");
           },
         },
       );
@@ -114,7 +103,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
                 <FormItem>
                   <FormLabel>제목</FormLabel>
                   <FormControl>
-                    <Input placeholder="제목" {...field} />
+                    <Input variant="outline" placeholder="제목" {...field} />
                   </FormControl>
                   <FormDescription>제목을 입력해주세요.</FormDescription>
                   <FormMessage />
@@ -128,7 +117,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
                 <FormItem>
                   <FormLabel>내용</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="내용" {...field} />
+                    <Textarea variant="outline" placeholder="내용" {...field} />
                   </FormControl>
                   <FormDescription>내용을 입력해주세요.</FormDescription>
                   <FormMessage />

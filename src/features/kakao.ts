@@ -1,4 +1,5 @@
 import axios from "axios";
+import { z } from "zod";
 
 const KAKAO_CLIENT_ID = process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID;
 const KAKAO_CLIENT_SECRET = process.env.KAKAO_CLIENT_SECRET;
@@ -29,32 +30,40 @@ export const kakaoApi = {
     return response.data;
   },
   getUserInfo: async (accessToken: string) => {
-    const response = await axios.get<KakaoUserInfo>(ENDPOINT.KAKAO_USER_INFO_URL, {
+    const response = await axios.get(ENDPOINT.KAKAO_USER_INFO_URL, {
       params: { secure_resource: true },
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    return response.data;
+
+    return kakaoUserInfoSchema.parse(response.data);
   },
 };
 
-export type KakaoUserInfo = {
-  id: number;
-  connected_at: string;
-  properties: {
-    nickname: string;
-    profile_image: string;
-    thumbnail_image: string;
-  };
-  kakao_account: {
-    profile_nickname_needs_agreement: boolean;
-    profile_image_needs_agreement: boolean;
-    profile: {
-      nickname: string;
-      thumbnail_image_url: string;
-      profile_image_url: string;
-      is_default_image: boolean;
-    };
-  };
-};
+export const kakaoUserInfoSchema = z.object({
+  id: z.number(),
+  connected_at: z.string(),
+  properties: z.object({
+    nickname: z.string(),
+    profile_image: z.string(),
+    thumbnail_image: z.string(),
+  }),
+  kakao_account: z.object({
+    profile_nickname_needs_agreement: z.boolean(),
+    profile_image_needs_agreement: z.boolean(),
+    profile: z.object({
+      nickname: z.string(),
+      thumbnail_image_url: z.string(),
+      profile_image_url: z.string(),
+      is_default_image: z.boolean(),
+    }),
+    has_email: z.boolean(),
+    email_needs_agreement: z.boolean(),
+    is_email_valid: z.boolean(),
+    is_email_verified: z.boolean(),
+    email: z.string(),
+  }),
+});
+
+export type KakaoUserInfo = z.infer<typeof kakaoUserInfoSchema>;

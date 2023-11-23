@@ -39,11 +39,11 @@ export const auditionApi = {
     const response = await api.get<GetAuditionByIdResponse>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
-  createAudition: async (data: { body: AuditionBody }) => {
+  createAudition: async (data: { body: AuditionRequest }) => {
     const response = await api.post(ENDPOINT, data.body);
     return response.data;
   },
-  updateAudition: async (data: { id: number; body: Partial<AuditionBody> }) => {
+  updateAudition: async (data: { id: number; body: Partial<AuditionRequest> }) => {
     const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
     return response.data;
   },
@@ -51,7 +51,7 @@ export const auditionApi = {
     const response = await api.delete(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
-  createAuditionComment: async (data: { id: number; body: AuditionCommentBody }) => {
+  createAuditionComment: async (data: { id: number; body: AuditionCommentRequest }) => {
     const response = await api.post(`${ENDPOINT}/${data.id}/comments`, data.body);
     return response.data;
   },
@@ -147,13 +147,13 @@ export const auditionRequestSchema = z.object({
   images: imagesSchema,
 });
 
-export type AuditionBody = z.infer<typeof auditionRequestSchema>;
+export type AuditionRequest = z.infer<typeof auditionRequestSchema>;
 
 export const auditionCommentRequestSchema = z.object({
   content: contentSchema,
 });
 
-export type AuditionCommentBody = z.infer<typeof auditionCommentRequestSchema>;
+export type AuditionCommentRequest = z.infer<typeof auditionCommentRequestSchema>;
 
 export type GetAuditionByIdResponse = Prisma.AuditionGetPayload<{
   include: {

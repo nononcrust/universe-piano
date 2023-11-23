@@ -1,15 +1,11 @@
-import { prisma } from "@/lib/prisma";
+import { getUserList } from "@/features/user";
 import { NextResponse } from "next/server";
 
 export const GET = async (request: Request) => {
   try {
-    const notices = await prisma.user.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    const users = await getUserList();
 
-    return NextResponse.json(notices);
+    return NextResponse.json(users);
   } catch (error) {
     return new NextResponse("Internal Error", { status: 500 });
   }

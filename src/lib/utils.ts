@@ -50,3 +50,9 @@ export const formatPhoneNumberInput = (input: string) => {
     return part1;
   }
 };
+
+export const allowNumberOnly = (input: string) => {
+  const numericValue = input.replace(/[^0-9]/g, "");
+
+  return numericValue;
+};

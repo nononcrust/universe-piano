@@ -1,10 +1,9 @@
 import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { Toaster } from "@/components/ui/toaster";
 import { UserInfoFetcher } from "@/components/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { Providers } from "@/providers";
-import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
+import { Toaster } from "sonner";
 import "../styles/globals.css";
 
 export const revalidate = 0;
@@ -35,7 +34,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </UserInfoFetcher>
         </Providers>
         <Toaster />
-        <Analytics />
       </body>
     </html>
   );

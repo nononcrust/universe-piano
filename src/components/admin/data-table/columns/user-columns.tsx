@@ -2,9 +2,10 @@
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { TIER_LABEL } from "@/constants/enum";
+import { ROUTE } from "@/constants/route";
 import { User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { DataTableRowActions } from "../data-table-row-actions";
+import Link from "next/link";
 
 export const userColumns: ColumnDef<User>[] = [
   {
@@ -25,9 +26,18 @@ export const userColumns: ColumnDef<User>[] = [
     ),
   },
   {
+    accessorKey: "id",
+    header: "ID",
+    cell: () => null,
+  },
+  {
     accessorKey: "nickname",
     header: "이름",
-    cell: ({ row }) => row.getValue("nickname"),
+    cell: ({ row }) => (
+      <Link className="hover:underline" href={ROUTE.ADMIN.USER.EDIT(row.getValue("id"))}>
+        {row.getValue("nickname")}
+      </Link>
+    ),
   },
   {
     accessorKey: "phone",
@@ -41,9 +51,5 @@ export const userColumns: ColumnDef<User>[] = [
     accessorKey: "tier",
     header: "등급",
     cell: ({ row }) => TIER_LABEL[row.getValue("tier") as keyof typeof TIER_LABEL],
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];

@@ -12,7 +12,7 @@ export const NavigationDrawer = () => {
   return (
     <nav className="hidden w-[240px] flex-col border-r pt-8 md:flex">
       <Link href={ROUTE.HOME} className="font-semibold">
-        <div className="mb-8 flex cursor-pointer items-center gap-3 p-4">
+        <div className="mx-4 mb-8 flex cursor-pointer items-center gap-3 rounded-lg px-4 py-3 transition hover:bg-gray-100">
           <Icon.ArrowLeft />
           사이트로 돌아가기
         </div>

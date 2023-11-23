@@ -17,7 +17,7 @@ export default function AdminUserListPage() {
         columns={userColumns}
         data={data}
         searchInputPlaceholder="이름으로 검색"
-        searchColumnKey="name"
+        searchColumnKey="nickname"
       />
     </main>
   );

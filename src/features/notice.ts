@@ -14,10 +14,10 @@ export const getNoticeList = () => {
   });
 };
 
-export const getNoticeById = (noticeId: number) => {
+export const getNoticeById = (id: number) => {
   return prisma.notice.findUnique({
     where: {
-      id: noticeId,
+      id,
     },
   });
 };
@@ -31,11 +31,11 @@ export const noticeApi = {
     const response = await api.get<Notice[]>(`${ENDPOINT}`);
     return response.data;
   },
-  createNotice: async (data: { body: NoticeBody }) => {
+  createNotice: async (data: { body: NoticeRequest }) => {
     const response = await api.post(`${ENDPOINT}`, data.body);
     return response.data;
   },
-  updateNotice: async (data: { id: number; body: Partial<NoticeBody> }) => {
+  updateNotice: async (data: { id: number; body: Partial<NoticeRequest> }) => {
     const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
     return response.data;
   },
@@ -105,4 +105,4 @@ export const noticeRequestSchema = z.object({
   images: z.array(z.string().url()).optional(),
 });
 
-export type NoticeBody = z.infer<typeof noticeRequestSchema>;
+export type NoticeRequest = z.infer<typeof noticeRequestSchema>;

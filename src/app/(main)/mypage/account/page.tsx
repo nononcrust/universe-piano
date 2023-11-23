@@ -7,16 +7,18 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useUserInfo } from "@/features/auth";
+import { useUpdateUser } from "@/features/user";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -25,22 +27,40 @@ const formSchema = z.object({
 });
 
 export default function AccountPage() {
+  const { data: user } = useUserInfo();
+
+  const updateUserMutation = useUpdateUser();
+
   const form = useForm({
+    mode: "onChange",
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nickname: "",
-      email: "",
+      nickname: user?.nickname ?? "",
+      email: user?.email ?? "",
     },
   });
 
   const onSubmit = form.handleSubmit((data) => {
-    console.log("user profile update data", data);
+    if (!user || updateUserMutation.isPending) return;
+
+    updateUserMutation.mutate(
+      { id: user.id, body: data },
+      {
+        onSuccess: () => {
+          toast.success("프로필이 변경되었습니다.");
+          form.reset({
+            nickname: data.nickname,
+            email: data.email,
+          });
+        },
+      },
+    );
   });
 
   return (
     <main className="container pb-16">
       <PageTitle title="계정 설정" />
-      <PageSubtitle className="mt-8" title="회원 정보 수정" />
+      <PageSubtitle className="mt-8" title="프로필 변경" />
       <Form {...form}>
         <FormLayout onSubmit={onSubmit}>
           <FormField
@@ -50,29 +70,29 @@ export default function AccountPage() {
               <FormItem>
                 <FormLabel>닉네임</FormLabel>
                 <FormControl>
-                  <Input placeholder="김원붕" {...field} />
+                  <Input maxLength={10} placeholder="김원붕" {...field} />
                 </FormControl>
-                <FormDescription>변경할 닉네임을 입력해주세요.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
           <FormField
-            name="nickname"
+            name="email"
             control={form.control}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>이메일</FormLabel>
                 <FormControl>
-                  <Input placeholder="universe@piano.com" {...field} />
+                  <Input maxLength={50} placeholder="universe@piano.com" {...field} />
                 </FormControl>
-                <FormDescription>변경할 이메일을 입력해주세요.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
           <div className="flex justify-end">
-            <Button type="submit">저장</Button>
+            <Button type="submit" disabled={!form.formState.isDirty || !form.formState.isValid}>
+              저장
+            </Button>
           </div>
         </FormLayout>
       </Form>

@@ -39,7 +39,7 @@ export default function MyProfilePage() {
       </div>
       <PageSubtitle className="mt-20" title="적립금" />
       <p className="mt-2">
-        사용 가능한 적립금: <strong className="text-primary">0 P</strong>
+        사용 가능한 적립금: <strong className="text-primary">{user.point} P</strong>
       </p>
     </main>
   );
