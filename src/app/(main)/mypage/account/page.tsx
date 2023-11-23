@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { useUpdateProfile, useUserInfo } from "@/features/auth";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -27,6 +28,8 @@ const formSchema = z.object({
 
 export default function AccountPage() {
   const { data: user } = useUserInfo();
+
+  const router = useRouter();
 
   const updateProfileMutation = useUpdateProfile();
 
@@ -46,6 +49,7 @@ export default function AccountPage() {
       { id: user.id, body: data },
       {
         onSuccess: () => {
+          router.refresh();
           toast.success("프로필이 변경되었습니다.");
           form.reset({
             nickname: data.nickname,
