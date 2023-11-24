@@ -28,7 +28,7 @@ export default function MyProfilePage() {
           </Avatar>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <p className="text-2xl font-semibold">{user.nickname}</p>
+              <p className="text-2xl font-medium">{user.nickname}</p>
               <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
             </div>
             <p className="text-muted-foreground">{user.email}</p>
@@ -45,7 +45,7 @@ export default function MyProfilePage() {
         <div className="flex h-[30px] w-[30px] items-center justify-center rounded-md bg-black">
           <Icon.Leaf className="h-[18px] w-[18px] text-white" />
         </div>
-        <p className="text-lg font-semibold text-primary">{user.point} P</p>
+        <p className="text-lg font-medium text-primary">{user.point} P</p>
       </div>
     </main>
   );

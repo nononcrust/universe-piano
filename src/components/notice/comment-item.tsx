@@ -49,7 +49,7 @@ export const CommentItem = ({
       <div className="flex flex-1 flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
-            <p className="text-sm font-semibold">{nickname}</p>
+            <p className="text-sm font-medium">{nickname}</p>
             <p className="text-xs text-muted-foreground">{createdAt}</p>
           </div>
           {isMyComment && (

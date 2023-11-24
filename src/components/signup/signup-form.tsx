@@ -73,7 +73,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
 
   return (
     <main className="container flex max-w-md flex-col items-center pb-16">
-      <h1 className="mt-16 text-2xl font-bold text-foreground md:text-3xl">회원가입</h1>
+      <h1 className="mt-16 text-2xl font-medium text-foreground md:text-3xl">회원가입</h1>
       <h2 className="mt-2 font-medium text-muted-foreground">
         카카오 계정으로 회원가입을 진행합니다.
       </h2>

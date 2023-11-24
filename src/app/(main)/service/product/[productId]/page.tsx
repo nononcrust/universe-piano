@@ -50,15 +50,15 @@ const ProductOptionSection = () => {
   return (
     <div className="flex flex-1 flex-col">
       <p className="text-gray-500">독학 키트</p>
-      <h1 className="mt-2 text-2xl font-bold">{DUMMY_PRODUCT_DETAIL.productName}</h1>
+      <h1 className="mt-2 text-2xl font-medium">{DUMMY_PRODUCT_DETAIL.productName}</h1>
       <div className="mt-2 flex items-center gap-2">
         <Icon.Star size={20} className="fill-black" />
         <p>{DUMMY_PRODUCT_DETAIL.rating}</p>
       </div>
       <ProductOption className="mt-4" />
       <div className="mt-8 flex items-center justify-between">
-        <p className="text-sm font-bold">주문 금액</p>
-        <p className="font-bold">{DUMMY_PRODUCT_DETAIL.price.toLocaleString()}원</p>
+        <p className="text-sm font-medium">주문 금액</p>
+        <p className="font-medium">{DUMMY_PRODUCT_DETAIL.price.toLocaleString()}원</p>
       </div>
       <ProductAction />
     </div>

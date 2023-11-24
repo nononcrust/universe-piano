@@ -35,13 +35,13 @@ export const ProductItem = ({
       <div className="flex flex-col gap-1">
         <p className="text-sm text-gray-700">{productName}</p>
         <div className="flex items-center justify-between">
-          <p className="font-bold">{price.toLocaleString()}</p>
+          <p className="font-medium">{price.toLocaleString()}</p>
           <div className="flex gap-2">
             <div className="flex items-center gap-[2px]">
               <Icon.Star size={12} className="fill-primary text-primary" />
-              <p className="text-xs font-bold">{rating}</p>
+              <p className="text-xs font-medium">{rating}</p>
             </div>
-            <p className="text-xs font-bold text-gray-400">리뷰 {reviewCount}</p>
+            <p className="text-xs font-medium text-gray-400">리뷰 {reviewCount}</p>
           </div>
         </div>
       </div>

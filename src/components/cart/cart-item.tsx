@@ -13,7 +13,7 @@ export const CartItem = () => {
         </p>
         <div className="flex items-center justify-between">
           <p className="text-xs text-gray-500">적림급: 200p</p>
-          <p className="font-semibold">52,800원</p>
+          <p className="font-medium">52,800원</p>
         </div>
       </div>
       <Icon.X size={20} className="cursor-pointer" />

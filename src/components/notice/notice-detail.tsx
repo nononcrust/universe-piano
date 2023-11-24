@@ -7,6 +7,7 @@ import { useNoticeDetail } from "@/features/notice";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
+import { PageTitle } from "../layout/page-title";
 
 export const NoticeDetail = () => {
   const params = useParams<{ id: string }>();
@@ -21,9 +22,9 @@ export const NoticeDetail = () => {
 
   return (
     <main className="container py-16">
-      <h1 className="text-2xl font-bold text-foreground md:mt-8 md:text-3xl">공지사항</h1>
+      <PageTitle title="공지사항" />
       <div className="mt-12 border-b pb-8">
-        <h2 className="text-lg font-semibold md:text-2xl">{data.title}</h2>
+        <h2 className="text-lg font-medium md:text-2xl">{data.title}</h2>
         <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
       </div>
       <Markdown className="prose mt-8" content={data.content} />

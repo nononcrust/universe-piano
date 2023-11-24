@@ -10,7 +10,7 @@ export default function LoginPage() {
     <main className="flex h-[calc(100dvh)] items-center md:min-h-screen md:bg-gray-50 md:py-16">
       <section className="container flex max-w-sm flex-col items-center justify-center rounded-xl bg-white py-28 md:border">
         <Image src="/images/logo.svg" width={128} height={128} alt="logo" />
-        <h1 className="text-lg font-bold text-foreground md:text-xl">
+        <h1 className="text-lg font-medium text-foreground md:text-xl">
           미국 음대 입시를 위한 모든 것
         </h1>
         <h2 className="mt-2 whitespace-pre text-center text-muted-foreground">

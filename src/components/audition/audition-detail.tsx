@@ -22,11 +22,11 @@ export const AuditionDetail = () => {
 
   return (
     <main className="container py-16">
-      <h1 className="text-2xl font-bold text-foreground md:mt-8 md:text-3xl">오디션 결과 발표</h1>
+      <h1 className="text-2xl font-medium text-foreground md:mt-8 md:text-3xl">오디션 결과 발표</h1>
       {data && (
         <>
           <div className="mt-12 border-b pb-8">
-            <h2 className="text-lg font-semibold md:text-2xl">{data.title}</h2>
+            <h2 className="text-lg font-medium md:text-2xl">{data.title}</h2>
             <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
           </div>
           <div className="relative mt-8 flex max-w-full">

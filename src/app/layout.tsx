@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={pretendard.className}>
       <head />
-      <body className="antialiased">
+      <body className="tracking-tight antialiased">
         <Providers>
           <UserInfoFetcher>
             {children}

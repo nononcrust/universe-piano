@@ -145,15 +145,15 @@ export default function PaymentPage() {
           <section className="mt-12 flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">상품 금액</p>
-              <p className="text-sm font-semibold">9,900원</p>
+              <p className="text-sm font-medium">9,900원</p>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">적립금 사용</p>
-              <p className="text-sm font-semibold">1,200원</p>
+              <p className="text-sm font-medium">1,200원</p>
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-lg font-semibold">최종 결제 금액</p>
-              <p className="text-xl font-bold">8,700원</p>
+              <p className="text-lg font-medium">최종 결제 금액</p>
+              <p className="text-xl font-medium">8,700원</p>
             </div>
           </section>
           <section>
@@ -212,7 +212,7 @@ const Product = () => {
       <div className="h-20 w-20 rounded-md bg-gray-100" />
       <div className="flex flex-1 flex-col gap-2">
         <p className="text-sm">독학 키트 | 미국 음대 오디션에서 살아남는 방법</p>
-        <p className="font-semibold">9,900원</p>
+        <p className="font-medium">9,900원</p>
       </div>
     </div>
   );
