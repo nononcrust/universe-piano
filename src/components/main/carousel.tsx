@@ -10,7 +10,7 @@ export const Carousel = () => {
     <Swiper
       loop
       modules={[Pagination]}
-      className="h-[160px] rounded-xl border md:h-[200px]"
+      className="h-[200px] rounded-xl border md:h-[240px]"
       pagination={{ clickable: true }}
     >
       <SwiperSlide className="bg-gradient-to-r from-indigo-500 via-purple-300 to-pink-300 px-4 py-3 md:px-6 md:py-5">
