@@ -5,7 +5,7 @@ export default function AboutCompanyPage() {
     <main>
       <Aos>
         <section className="container py-32">
-          <h1 className="text-3xl font-medium md:text-4xl md:leading-tight">
+          <h1 className="text-3xl font-semibold md:text-4xl md:leading-tight">
             미국 음대 입시를 위한 모든 것<br />
             유니버스 피아노에서 찾아보세요
           </h1>
@@ -27,7 +27,7 @@ export default function AboutCompanyPage() {
       >
         <Aos className="flex-1">
           <div className="container flex h-full flex-1 items-center">
-            <h1 className="text-2xl font-medium text-white md:text-4xl">
+            <h1 className="text-2xl font-semibold text-white md:text-4xl">
               <p>미국 음대 입시를 위한 모든 것,</p>
               <p className="mt-1 md:mt-2">유니버스 피아노에서 찾아보세요</p>
             </h1>
