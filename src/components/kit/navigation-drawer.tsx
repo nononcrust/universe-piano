@@ -44,22 +44,22 @@ const drawer = [
   },
 ];
 
-export const EbookNavigationDrawer = () => {
+export const KitNavigationDrawer = () => {
   return (
     <nav className="hidden w-[240px] flex-col border-r pt-16 md:flex">
       {drawer.map((item, index) => (
-        <EbookNavigationDrawerItem key={index} title={item.title} href={item.href} />
+        <KitNavigationDrawerItem key={index} title={item.title} href={item.href} />
       ))}
     </nav>
   );
 };
 
-interface EbookNavigationDrawerItemProps {
+interface KitNavigationDrawerItemProps {
   title: string;
   href: string;
 }
 
-const EbookNavigationDrawerItem = ({ title, href }: EbookNavigationDrawerItemProps) => {
+const KitNavigationDrawerItem = ({ title, href }: KitNavigationDrawerItemProps) => {
   return (
     <Link href={href} className="p-4 text-muted-foreground transition hover:text-accent-foreground">
       {title}
@@ -67,7 +67,7 @@ const EbookNavigationDrawerItem = ({ title, href }: EbookNavigationDrawerItemPro
   );
 };
 
-export const EbookMobileNavigationDrawer = () => {
+export const KitMobileNavigationDrawer = () => {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
@@ -89,7 +89,7 @@ export const EbookMobileNavigationDrawer = () => {
             </div>
             {drawer.map((item, index) => (
               <Drawer.Close key={index} className="flex w-full flex-col">
-                <EbookMobileNavigationDrwerItem title={item.title} href={item.href} />
+                <KitMobileNavigationDrwerItem title={item.title} href={item.href} />
               </Drawer.Close>
             ))}
           </div>
@@ -99,12 +99,12 @@ export const EbookMobileNavigationDrawer = () => {
   );
 };
 
-interface EbookMobileNavigationDrwerItemProps {
+interface KitMobileNavigationDrwerItemProps {
   title: string;
   href: string;
 }
 
-const EbookMobileNavigationDrwerItem = ({ title, href }: EbookMobileNavigationDrwerItemProps) => {
+const KitMobileNavigationDrwerItem = ({ title, href }: KitMobileNavigationDrwerItemProps) => {
   return (
     <li
       className={cn(

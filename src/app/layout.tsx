@@ -3,8 +3,14 @@ import { UserInfoFetcher } from "@/components/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { Providers } from "@/providers";
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import { Toaster } from "sonner";
 import "../styles/globals.css";
+
+const pretendard = localFont({
+  src: "../assets/fonts/pretendard-variable.woff2",
+  display: "block",
+});
 
 export const revalidate = 0;
 
@@ -24,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={pretendard.className}>
       <head />
       <body className="antialiased">
         <Providers>

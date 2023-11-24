@@ -36,7 +36,7 @@ export const UserMenu = () => {
           <Link href={ROUTE.MYPAGE.PROFILE}>마이페이지</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="px-4 py-2">
-          <Link href={ROUTE.EBOOK.LIST}>나의 서재</Link>
+          <Link href={ROUTE.KIT.LIST}>나의 서재</Link>
         </DropdownMenuItem>
         {isAdmin && (
           <DropdownMenuItem asChild className="px-4 py-2">

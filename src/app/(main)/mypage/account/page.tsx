@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
 import { useUpdateProfile, useUserInfo } from "@/features/auth";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -50,7 +51,7 @@ export default function AccountPage() {
       {
         onSuccess: () => {
           router.refresh();
-          toast.success("프로필이 변경되었습니다.");
+          toast.success("프로필이 수정되었습니다.");
           form.reset({
             nickname: data.nickname,
             email: data.email,
@@ -63,7 +64,7 @@ export default function AccountPage() {
   return (
     <main className="container pb-16">
       <PageTitle title="계정 설정" />
-      <PageSubtitle className="mt-8" title="프로필 변경" />
+      <PageSubtitle className="mt-8" title="프로필 수정" />
       <Form {...form}>
         <FormLayout onSubmit={onSubmit}>
           <FormField
@@ -73,7 +74,12 @@ export default function AccountPage() {
               <FormItem>
                 <FormLabel>닉네임</FormLabel>
                 <FormControl>
-                  <Input maxLength={10} placeholder="김원붕" {...field} />
+                  <Input
+                    variant="outline"
+                    maxLength={10}
+                    placeholder="닉네임을 입력해주세요."
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -86,7 +92,12 @@ export default function AccountPage() {
               <FormItem>
                 <FormLabel>이메일</FormLabel>
                 <FormControl>
-                  <Input maxLength={50} placeholder="universe@piano.com" {...field} />
+                  <Input
+                    variant="outline"
+                    maxLength={50}
+                    placeholder="universe@piano.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -99,7 +110,15 @@ export default function AccountPage() {
           </div>
         </FormLayout>
       </Form>
-      <PageSubtitle className="mt-20" title="회원 탈퇴" />
+      <PageSubtitle className="mt-16" title="알림 설정" />
+      <div className="mt-4 flex items-center justify-between rounded-lg border p-4">
+        <div className="flex flex-col gap-1">
+          <p className="font-medium">마케팅 알림</p>
+          <p className="text-sm text-muted-foreground">유용한 소식, 정보 등을 받을 수 있습니다.</p>
+        </div>
+        <Switch />
+      </div>
+      <PageSubtitle className="mt-16" title="회원 탈퇴" />
       <button className="mt-8 text-sm font-medium text-destructive underline">탈퇴하기</button>
     </main>
   );

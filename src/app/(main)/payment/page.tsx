@@ -76,7 +76,7 @@ export default function PaymentPage() {
                 <FormItem>
                   <FormLabel>이름</FormLabel>
                   <FormControl>
-                    <Input placeholder="실명을 입력해주세요." {...field} />
+                    <Input variant="outline" placeholder="실명을 입력해주세요." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -89,7 +89,7 @@ export default function PaymentPage() {
                 <FormItem>
                   <FormLabel>이메일</FormLabel>
                   <FormControl>
-                    <Input placeholder="이메일을 입력해주세요." {...field} />
+                    <Input variant="outline" placeholder="이메일을 입력해주세요." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -103,6 +103,7 @@ export default function PaymentPage() {
                   <FormLabel>전화번호</FormLabel>
                   <FormControl>
                     <Input
+                      variant="outline"
                       placeholder="000-0000-0000"
                       onChange={(e) => onChange(formatPhoneNumberInput(e.target.value))}
                       {...field}

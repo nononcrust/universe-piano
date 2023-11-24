@@ -104,7 +104,7 @@ interface PaginationButtonProps {
 
 const PaginationButton = ({ page, isActive, onClick }: PaginationButtonProps) => {
   return (
-    <Button className="h-8 w-8" variant={isActive ? "default" : "link"} onClick={onClick}>
+    <Button className="h-8 w-8" variant={isActive ? "default" : "ghost"} onClick={onClick}>
       {page}
     </Button>
   );

@@ -1,10 +1,11 @@
 "use client";
 
+import { Icon } from "@/components/icon";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/ui/icon-button";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useUserInfo } from "@/features/auth";
@@ -21,7 +22,7 @@ export default function MyProfilePage() {
       <PageSubtitle className="mt-8" title="기본 정보" />
       <div className="mt-8 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Avatar className="h-20 w-20">
+          <Avatar className="h-16 w-16">
             <AvatarImage src={user.profileImage} />
             <AvatarFallback />
           </Avatar>
@@ -33,14 +34,19 @@ export default function MyProfilePage() {
             <p className="text-muted-foreground">{user.email}</p>
           </div>
         </div>
-        <Button variant="secondary" asChild>
-          <Link href={ROUTE.MYPAGE.ACCOUNT}>프로필 수정</Link>
-        </Button>
+        <IconButton>
+          <Link href={ROUTE.MYPAGE.ACCOUNT}>
+            <Icon.Settings />
+          </Link>
+        </IconButton>
       </div>
       <PageSubtitle className="mt-20" title="적립금" />
-      <p className="mt-2">
-        사용 가능한 적립금: <strong className="text-primary">{user.point} P</strong>
-      </p>
+      <div className="mt-4 flex items-center gap-3 rounded-xl bg-secondary p-6">
+        <div className="flex h-[30px] w-[30px] items-center justify-center rounded-md bg-black">
+          <Icon.Leaf className="h-[18px] w-[18px] text-white" />
+        </div>
+        <p className="text-lg font-semibold text-primary">{user.point} P</p>
+      </div>
     </main>
   );
 }

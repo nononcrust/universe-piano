@@ -12,10 +12,6 @@ interface Context {
 
 export const POST = async (request: Request, context: Context) => {
   try {
-    const auditionCommentId = Number(context.params.id);
-
-    const body = await request.json();
-
     const session = await getServerSession();
 
     const user = session?.user;
@@ -23,6 +19,10 @@ export const POST = async (request: Request, context: Context) => {
     if (!user) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
+
+    const auditionCommentId = Number(context.params.id);
+
+    const body = await request.json();
 
     const parsedBody = auditionCommentRequestSchema.parse(body);
 

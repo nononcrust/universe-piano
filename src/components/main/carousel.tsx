@@ -2,14 +2,15 @@
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export const Carousel = () => {
   return (
     <Swiper
       loop
-      modules={[Pagination]}
+      modules={[Pagination, Autoplay]}
+      autoplay={{ delay: 7000 }}
       className="h-[200px] rounded-xl border md:h-[240px]"
       pagination={{ clickable: true }}
     >

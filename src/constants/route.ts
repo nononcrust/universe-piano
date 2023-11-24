@@ -48,9 +48,9 @@ export const ROUTE = {
       },
     },
   },
-  EBOOK: {
-    LIST: "/ebook",
-    DETAIL: (id: string) => `/ebook/${id}`,
+  KIT: {
+    LIST: "/kit",
+    DETAIL: (id: string) => `/kit/${id}`,
   },
   SUPPORT: "/support",
   TERMS: {

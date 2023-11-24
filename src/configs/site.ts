@@ -39,7 +39,7 @@ export const siteConfig = {
 export const headerNav = [
   {
     title: "소개",
-    href: ROUTE.ABOUT.LIST,
+    href: ROUTE.ABOUT.COMPANY,
   },
   {
     title: "소식",
