@@ -75,7 +75,7 @@ export default function AccountPage() {
                 <FormLabel>닉네임</FormLabel>
                 <FormControl>
                   <Input
-                    variant="outline"
+                    variant="underline"
                     maxLength={10}
                     placeholder="닉네임을 입력해주세요."
                     {...field}
@@ -93,7 +93,7 @@ export default function AccountPage() {
                 <FormLabel>이메일</FormLabel>
                 <FormControl>
                   <Input
-                    variant="outline"
+                    variant="underline"
                     maxLength={50}
                     placeholder="universe@piano.com"
                     {...field}

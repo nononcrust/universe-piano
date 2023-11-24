@@ -41,11 +41,9 @@ export default function MyProfilePage() {
         </IconButton>
       </div>
       <PageSubtitle className="mt-20" title="적립금" />
-      <div className="mt-4 flex items-center gap-3 rounded-xl bg-secondary p-6">
-        <div className="flex h-[30px] w-[30px] items-center justify-center rounded-md bg-black">
-          <Icon.Leaf className="h-[18px] w-[18px] text-white" />
-        </div>
-        <p className="text-lg font-medium text-primary">{user.point} P</p>
+      <div className="mt-4 flex items-center gap-3">
+        사용 가능한 적립금:
+        <p className="font-semibold text-primary">{user.point} P</p>
       </div>
     </main>
   );
