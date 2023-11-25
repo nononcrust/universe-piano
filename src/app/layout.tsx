@@ -19,9 +19,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
-  openGraph: siteConfig.openGraph,
   icons: siteConfig.icons,
-  ...(process.env.NODE_ENV === "development" && { metadataBase: new URL("http://localhost") }),
+  ...(process.env.NODE_ENV === "production" && { openGraph: siteConfig.openGraph }),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
