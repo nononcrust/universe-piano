@@ -2,15 +2,11 @@ import { ROUTE } from "@/constants/route";
 
 const categories = [
   {
-    title: "입시 상담",
+    title: "입시 컨설팅",
     href: ROUTE.HOME,
   },
   {
-    title: "오디션 참가",
-    href: ROUTE.HOME,
-  },
-  {
-    title: "합격자 후기",
+    title: "1:1 과외",
     href: ROUTE.HOME,
   },
   {
@@ -18,14 +14,22 @@ const categories = [
     href: ROUTE.HOME,
   },
   {
-    title: "리뷰",
+    title: "수강생 후기",
+    href: ROUTE.HOME,
+  },
+  {
+    title: "공지사항",
+    href: ROUTE.HOME,
+  },
+  {
+    title: "상담하기",
     href: ROUTE.HOME,
   },
 ] as const;
 
 export default function CategorySection() {
   return (
-    <section className="container grid grid-cols-4 md:grid-cols-5">
+    <section className="grid-row-gap-7 container mt-16 grid grid-cols-3 gap-y-8 md:grid-flow-col md:grid-cols-none">
       {categories.map((category, index) => (
         <Category key={index} {...category} />
       ))}
@@ -40,9 +44,9 @@ interface CategoryProps {
 
 const Category = ({ title, href }: CategoryProps) => {
   return (
-    <div className="flex flex-col items-center justify-center pt-16">
-      <div className="aspect-square w-12 rounded-lg bg-gray-100" />
-      <p className="mt-2 text-sm font-medium">{title}</p>
+    <div className="flex cursor-pointer flex-col items-center justify-center">
+      <div className="aspect-square w-16 rounded-2xl bg-gray-100" />
+      <p className="mt-2 text-sm font-medium text-muted-foreground">{title}</p>
     </div>
   );
 };
