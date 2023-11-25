@@ -14,9 +14,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+import { ROUTE } from "@/constants/route";
 import { useUpdateProfile, useUserInfo } from "@/features/auth";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -119,7 +121,9 @@ export default function AccountPage() {
         <Switch />
       </div>
       <PageSubtitle className="mt-16" title="회원 탈퇴" />
-      <button className="mt-8 text-sm font-medium text-destructive underline">탈퇴하기</button>
+      <Link href={ROUTE.WITHDRAWAL}>
+        <button className="mt-8 text-sm font-medium text-destructive underline">탈퇴하기</button>
+      </Link>
     </main>
   );
 }

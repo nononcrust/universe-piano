@@ -15,7 +15,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export const NavigationMenuDialog = () => {
   const { data: user } = useUserInfo();
-  const { logout } = useAuth();
+  const auth = useAuth();
 
   return (
     <Sheet>
@@ -57,7 +57,7 @@ export const NavigationMenuDialog = () => {
             ))}
         </ListSection>
         {user && (
-          <button className="mt-2 font-medium text-muted-foreground" onClick={logout}>
+          <button className="mt-2 font-medium text-muted-foreground" onClick={auth.logout}>
             로그아웃
           </button>
         )}

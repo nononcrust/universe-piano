@@ -1,9 +1,15 @@
 import { FORM } from "@/constants/form";
 import { z } from "zod";
 
-export const titleSchema = z.string().max(100, { message: FORM.ERROR.MAX_LENGTH(100) });
+export const titleSchema = z
+  .string()
+  .min(1)
+  .max(100, { message: FORM.ERROR.MAX_LENGTH(100) });
 
-export const contentSchema = z.string().max(1000, { message: FORM.ERROR.MAX_LENGTH(1000) });
+export const contentSchema = z
+  .string()
+  .min(1)
+  .max(1000, { message: FORM.ERROR.MAX_LENGTH(1000) });
 
 export const imagesSchema = z.array(z.string()).optional();
 

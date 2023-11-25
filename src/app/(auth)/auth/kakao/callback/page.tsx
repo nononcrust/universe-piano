@@ -43,7 +43,7 @@ export default async function KakaoCallbackPage({
     id: user.id,
     nickname: user.nickname,
     phone: user.phone,
-    email: "test@gamil.com",
+    email: user.email,
     profileImage: user.profileImage,
     tier: user.tier,
     role: user.role,

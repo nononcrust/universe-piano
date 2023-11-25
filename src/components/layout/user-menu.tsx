@@ -13,8 +13,8 @@ import {
 } from "../ui/dropdown-menu";
 
 export const UserMenu = () => {
-  const { logout } = useAuth();
   const { data: user } = useUserInfo();
+  const auth = useAuth();
 
   const isAdmin = true;
 
@@ -43,7 +43,7 @@ export const UserMenu = () => {
             <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>
           </DropdownMenuItem>
         )}
-        <DropdownMenuItem className="px-4 py-2" onClick={logout}>
+        <DropdownMenuItem className="px-4 py-2" onClick={auth.logout}>
           로그아웃
         </DropdownMenuItem>
       </DropdownMenuContent>

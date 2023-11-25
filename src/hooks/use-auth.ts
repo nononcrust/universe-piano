@@ -4,11 +4,17 @@ import { useQueryClient } from "@tanstack/react-query";
 export const useAuth = () => {
   const queryClient = useQueryClient();
 
-  const logout = () => {
-    queryClient.setQueryData(queryKeys.userInfo(), null);
+  const logout = async () => {
+    await authApi.logout();
 
-    authApi.logout();
+    queryClient.setQueryData(queryKeys.userInfo(), null);
   };
 
-  return { logout };
+  const withdrawal = async () => {
+    await authApi.withdrawal();
+
+    queryClient.setQueryData(queryKeys.userInfo(), null);
+  };
+
+  return { logout, withdrawal };
 };

@@ -24,8 +24,6 @@ export const AccessControl = ({
   if (action === "fallback") {
     if (role === Role.USER && !user) return fallback;
     if (role === Role.ADMIN && user?.role !== Role.ADMIN) return fallback;
-
-    return fallback;
   }
 
   return <>{children}</>;

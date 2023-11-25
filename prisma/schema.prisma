@@ -55,10 +55,10 @@ model Comment {
 
   content String
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  post   Post @relation(fields: [postId], references: [id])
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId Int
 
   @@index([userId])
@@ -106,7 +106,7 @@ model AuditionComment {
 
   content String
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
   audition   Audition @relation(fields: [auditionId], references: [id], onDelete: Cascade)

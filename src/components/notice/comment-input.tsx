@@ -26,6 +26,7 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
       content: "",
     },
   });
+  console.log(form);
 
   const { mutate, isPending } = useCreateAuditionComment();
 

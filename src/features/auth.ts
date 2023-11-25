@@ -23,6 +23,10 @@ export const authApi = {
     const response = await api.get<UserInfo>(`${ENDPOINT}/me`);
     return response.data;
   },
+  withdrawal: async () => {
+    const response = await api.delete(`${ENDPOINT}/withdrawal`);
+    return response.data;
+  },
 };
 
 export const socialDataSchema = z.object({
