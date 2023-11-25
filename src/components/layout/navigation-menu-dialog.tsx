@@ -19,7 +19,7 @@ export const NavigationMenuDialog = () => {
 
   return (
     <Sheet>
-      <SheetTrigger className="outline-none md:hidden">
+      <SheetTrigger className="outline-none md:hidden" aria-label="menu-button">
         <Icon.Menu />
       </SheetTrigger>
       <SheetContent className="overflow-y-auto" side="right">
