@@ -21,7 +21,7 @@ export const NoticeDetail = () => {
   if (!data) return null;
 
   return (
-    <main className="container py-16">
+    <main className="container pb-16">
       <PageTitle title="공지사항" />
       <div className="mt-12 border-b pb-8">
         <h2 className="text-lg font-medium md:text-2xl">{data.title}</h2>

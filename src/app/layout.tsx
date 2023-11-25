@@ -5,6 +5,8 @@ import { Providers } from "@/providers";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
+import "swiper/css";
+import "swiper/css/pagination";
 import "../styles/globals.css";
 
 const pretendard = localFont({

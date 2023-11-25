@@ -9,6 +9,7 @@ import {
   ClipboardList,
   Construction,
   CreditCard,
+  Flag,
   Home,
   Instagram,
   Leaf,
@@ -52,4 +53,5 @@ export const Icon = {
   Sprout: Sprout,
   Leaf: Leaf,
   Search: Search,
+  Flag: Flag,
 };

@@ -12,6 +12,7 @@ import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
+import { PageTitle } from "../layout/page-title";
 
 export const AuditionDetail = () => {
   const params = useParams<{ id: string }>();
@@ -21,8 +22,8 @@ export const AuditionDetail = () => {
   if (data === null) return redirect(ROUTE.NEWS.AUDITION.LIST);
 
   return (
-    <main className="container py-16">
-      <h1 className="text-2xl font-medium text-foreground md:mt-8 md:text-3xl">오디션 결과 발표</h1>
+    <main className="container pb-16">
+      <PageTitle title="오디션 결과 발표" />
       {data && (
         <>
           <div className="mt-12 border-b pb-8">
