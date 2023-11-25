@@ -40,7 +40,7 @@ export const Carousel = () => {
           </div>
           <div className="absolute right-4 top-4 z-0">
             <div className="relative h-[200px] w-[300px] md:h-[300px] md:w-[400px]">
-              <Image src="/images/carousel-contact.jpg" alt="carousel-image" fill />
+              <Image loading='eager' priority src="/images/carousel-contact.jpg" alt="carousel-image" fill />
             </div>
           </div>
         </div>

@@ -64,14 +64,14 @@ export const Header = () => {
                     로그인
                   </Link>
                 </Button>
-                <Button asChild size="sm" className="h-[32px] text-xs">
+                {/* <Button asChild size="sm" className="h-[32px] text-xs">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
                   >
                     회원가입
                   </Link>
-                </Button>
+                </Button> */}
               </div>
             )}
             {user && (
