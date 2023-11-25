@@ -14,6 +14,7 @@ import {
   Leaf,
   Menu,
   MoreHorizontal,
+  Search,
   Settings,
   ShoppingBasket,
   ShoppingCart,
@@ -50,4 +51,5 @@ export const Icon = {
   User: User,
   Sprout: Sprout,
   Leaf: Leaf,
+  Search: Search,
 };

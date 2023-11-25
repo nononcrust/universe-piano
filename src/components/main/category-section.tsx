@@ -45,8 +45,8 @@ interface CategoryProps {
 const Category = ({ title, href }: CategoryProps) => {
   return (
     <div className="flex cursor-pointer flex-col items-center justify-center">
-      <div className="aspect-square w-16 rounded-2xl bg-gray-100" />
-      <p className="mt-2 text-sm font-medium text-muted-foreground">{title}</p>
+      <div className="aspect-square w-16 rounded-2xl border bg-gray-100" />
+      <p className="mt-2 text-sm font-medium">{title}</p>
     </div>
   );
 };

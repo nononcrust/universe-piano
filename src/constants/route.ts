@@ -14,6 +14,7 @@ export const ROUTE = {
       DETAIL: (id: string) => `/service/product/${id}`,
     },
     TUTORING: "/service/tutoring",
+    CONSULTING: "/service/consulting",
   },
   NEWS: {
     LIST: "/news",
@@ -63,6 +64,7 @@ export const ROUTE = {
     PROFILE: "/mypage/profile",
     ACTIVITY: "/mypage/activity",
     ACCOUNT: "/mypage/account",
+    ORDER: "/mypage/order",
   },
   CART: "/cart",
   PAYMENT: "/payment",

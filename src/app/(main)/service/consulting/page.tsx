@@ -7,7 +7,7 @@ export default function ConsultingListPage() {
         <div className="container my-24 flex flex-col gap-8 md:flex-row md:items-center">
           <div className="flex flex-1 flex-col gap-4">
             <p className="font-medium">입시 컨설팅</p>
-            <h1 className="text-3xl font-medium">
+            <h1 className="text-3xl font-bold">
               1:1 입시 컨설팅으로
               <br />
               미국 음대 입시 준비를 시작하세요

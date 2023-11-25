@@ -108,11 +108,11 @@ export const siteContents = {
     children: [
       {
         title: "미국 음대 입시 과외",
-        href: "/service/tutoring",
+        href: ROUTE.SERVICE.TUTORING,
       },
       {
         title: "입시 컨설팅",
-        href: "/service/consulting",
+        href: ROUTE.SERVICE.CONSULTING,
       },
       {
         title: "독학 키트",
@@ -141,6 +141,10 @@ export const siteContents = {
       {
         title: "활동",
         href: ROUTE.MYPAGE.ACTIVITY,
+      },
+      {
+        title: "구매 내역",
+        href: ROUTE.MYPAGE.ORDER,
       },
       {
         title: "계정 설정",
@@ -199,11 +203,11 @@ export const footerNav = {
     children: [
       {
         title: "미국 음대 입시 과외",
-        href: "/service/tutoring",
+        href: ROUTE.SERVICE.TUTORING,
       },
       {
         title: "입시 컨설팅",
-        href: "/service/consulting",
+        href: ROUTE.SERVICE.CONSULTING,
       },
       {
         title: "독학 키트",

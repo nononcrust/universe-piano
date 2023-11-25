@@ -10,7 +10,7 @@ const queryClient = new QueryClient(queryClientConfig);
 export const Providers = ({ children }: PropsWithChildren) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ChannelProvider>{children}</ChannelProvider>;
+      <ChannelProvider>{children}</ChannelProvider>
     </QueryClientProvider>
   );
 };
