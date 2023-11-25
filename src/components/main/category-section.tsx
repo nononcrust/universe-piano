@@ -61,7 +61,7 @@ const CategoryCarousel = () => {
     <Swiper
       spaceBetween={16}
       freeMode
-      slidesPerView="auto"
+      slidesPerView={4.5}
       modules={[FreeMode]}
       className="mt-8 flex pl-4 pr-4 md:hidden"
     >
