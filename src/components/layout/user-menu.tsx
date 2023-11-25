@@ -16,8 +16,6 @@ export const UserMenu = () => {
   const { data: user } = useUserInfo();
   const auth = useAuth();
 
-  const isAdmin = true;
-
   if (!user) return null;
 
   return (
@@ -38,11 +36,11 @@ export const UserMenu = () => {
         <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.KIT.LIST}>나의 서재</Link>
         </DropdownMenuItem>
-        {isAdmin && (
-          <DropdownMenuItem asChild className="px-4 py-2">
-            <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>
-          </DropdownMenuItem>
-        )}
+        {/* <AccessControl role={Role.ADMIN}> */}
+        <DropdownMenuItem asChild className="px-4 py-2">
+          <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>
+        </DropdownMenuItem>
+        {/* </AccessControl> */}
         <DropdownMenuItem className="px-4 py-2" onClick={auth.logout}>
           로그아웃
         </DropdownMenuItem>

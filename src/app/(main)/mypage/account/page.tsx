@@ -116,7 +116,9 @@ export default function AccountPage() {
       <div className="mt-4 flex items-center justify-between rounded-lg border p-4">
         <div className="flex flex-col gap-1">
           <p className="font-medium">마케팅 알림</p>
-          <p className="text-sm text-muted-foreground">유용한 소식, 정보 등을 받을 수 있습니다.</p>
+          <p className="text-sm text-muted-foreground">
+            유용한 소식, 정보 등을 받아볼 수 있습니다.
+          </p>
         </div>
         <Switch />
       </div>
