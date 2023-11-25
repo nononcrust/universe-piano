@@ -6,7 +6,6 @@ import type { Metadata, Viewport } from "next";
 import { Toaster } from "sonner";
 import "swiper/css";
 import "swiper/css/pagination";
-import "../styles/font.css";
 import "../styles/globals.css";
 
 export const revalidate = 0;
@@ -28,7 +27,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <head />
+      <head>
+        <link
+          rel="preload"
+          as="style"
+          crossOrigin=""
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+      </head>
       <body className="tracking-tight antialiased">
         <Providers>
           <UserInfoFetcher>
