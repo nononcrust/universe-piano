@@ -74,7 +74,7 @@ const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
   return (
     <div className={cn("mb-4", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-medium text-foreground">{title}</h2>
+        <h2 className="text-lg font-semibold text-foreground">{title}</h2>
         <SheetClose className="outline-none">
           <Icon.X />
         </SheetClose>

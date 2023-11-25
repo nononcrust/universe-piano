@@ -36,7 +36,7 @@ export const Header = () => {
             <div className="flex gap-12">
               <Link href={ROUTE.HOME} className="top-0 flex h-16 items-center">
                 <Image src="/images/logo.svg" width={40} height={40} alt="사이트 로고" priority />
-                <span className="inline-block font-medium">{siteConfig.name}</span>
+                <span className="inline-block font-semibold">{siteConfig.name}</span>
               </Link>
               <nav className="hidden gap-6 md:flex">
                 {headerNav.map((item, index) => (
@@ -44,8 +44,8 @@ export const Header = () => {
                     key={index}
                     href={item.href}
                     className={cn(
-                      "flex items-center text-sm font-medium text-muted-foreground transition hover:text-foreground",
-                      pathname.startsWith(getDomain(item.href)) && "text-foreground",
+                      "flex items-center text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground",
+                      pathname.startsWith(getDomain(item.href)) && "font-semibold text-foreground",
                     )}
                   >
                     {item.title}
