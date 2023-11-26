@@ -36,10 +36,10 @@ export const Header = () => {
             <div className="flex gap-12">
               <Link href={ROUTE.HOME} className="top-0 flex h-16 items-center">
                 <Image
-                  className="-translate-x-3 transform"
-                  src="/images/text-logo.svg"
-                  width={110}
-                  height={40}
+                  className="h-auto w-[100px]"
+                  src="/images/text-logo.png"
+                  width={100}
+                  height={28.13}
                   alt="사이트 로고"
                   priority
                 />

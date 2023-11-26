@@ -23,11 +23,11 @@ export const Carousel = () => {
           <div className="absolute -right-4 top-6 z-0 md:right-4 md:top-8">
             <div className="relative h-[200px] w-[270px] md:h-[260px] md:w-[340px]">
               <Image
-                loading="eager"
                 priority
                 src="/images/3d-megaphone.png"
                 alt="carousel-image"
                 fill
+                sizes="(min-width: 768px) 340px, 270px"
               />
             </div>
           </div>
@@ -46,11 +46,11 @@ export const Carousel = () => {
           <div className="absolute right-4 top-12 z-0 md:right-12">
             <div className="relative h-[160px] w-[200px] md:h-[220px] md:w-[280px]">
               <Image
-                loading="eager"
                 priority
                 src="/images/3d-sparkle.png"
                 alt="carousel-image"
                 fill
+                sizes="(min-width: 768px) 340px, 270px"
               />
             </div>
           </div>
@@ -67,11 +67,11 @@ export const Carousel = () => {
           <div className="absolute -right-4 top-6 z-0 md:right-4">
             <div className="relative h-[200px] w-[300px] md:h-[300px] md:w-[400px]">
               <Image
-                loading="eager"
                 priority
                 src="/images/3d-checklist.jpg"
                 alt="carousel-image"
                 fill
+                sizes="(min-width: 768px) 340px, 270px"
               />
             </div>
           </div>
@@ -88,11 +88,11 @@ export const Carousel = () => {
           <div className="absolute -right-4 top-6 z-0 md:right-4">
             <div className="relative h-[200px] w-[300px] md:h-[300px] md:w-[400px]">
               <Image
-                loading="eager"
                 priority
                 src="/images/3d-clipboard.jpg"
                 alt="carousel-image"
                 fill
+                sizes="(min-width: 768px) 340px, 270px"
               />
             </div>
           </div>

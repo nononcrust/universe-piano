@@ -76,10 +76,10 @@ const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
       <div className="flex h-10 items-center justify-between">
         <Image
           priority
-          className="-translate-x-2 transform"
-          src="/images/text-logo.svg"
-          width={110}
-          height={40}
+          className="w-[100px]"
+          src="/images/text-logo.png"
+          width={100}
+          height={28.13}
           alt="사이트 로고"
         />
         <SheetClose className="outline-none">
