@@ -45,13 +45,13 @@ export const headerNav = [
     title: "소식",
     href: ROUTE.NEWS.NOTICE.LIST,
   },
-  {
-    title: "리뷰",
-    href: ROUTE.REVIEW.CONSULT.LIST,
-  },
+  // {
+  //   title: "리뷰",
+  //   href: ROUTE.REVIEW.CONSULT.LIST,
+  // },
   {
     title: "서비스",
-    href: ROUTE.SERVICE.PRODUCT.LIST,
+    href: ROUTE.SERVICE.CONSULTING,
   },
   {
     title: "고객지원",
@@ -88,31 +88,31 @@ export const siteContents = {
       },
     ],
   },
-  review: {
-    title: "리뷰",
-    href: ROUTE.REVIEW.LIST,
-    children: [
-      {
-        title: "컨설팅 후기",
-        href: ROUTE.REVIEW.CONSULT.LIST,
-      },
-      {
-        title: "스터디 후기",
-        href: ROUTE.REVIEW.STUDY.LIST,
-      },
-    ],
-  },
+  // review: {
+  //   title: "리뷰",
+  //   href: ROUTE.REVIEW.LIST,
+  //   children: [
+  //     {
+  //       title: "컨설팅 후기",
+  //       href: ROUTE.REVIEW.CONSULT.LIST,
+  //     },
+  //     {
+  //       title: "스터디 후기",
+  //       href: ROUTE.REVIEW.STUDY.LIST,
+  //     },
+  //   ],
+  // },
   service: {
     title: "서비스",
     href: ROUTE.SERVICE.LIST,
     children: [
       {
-        title: "미국 음대 입시 과외",
-        href: ROUTE.SERVICE.TUTORING,
-      },
-      {
         title: "입시 컨설팅",
         href: ROUTE.SERVICE.CONSULTING,
+      },
+      {
+        title: "미국 음대 입시 과외",
+        href: ROUTE.SERVICE.TUTORING,
       },
       {
         title: "독학 키트",

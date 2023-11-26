@@ -9,7 +9,7 @@ export default function ConsultingListPage() {
         <div className="container mt-16 flex flex-col items-center gap-8">
           <div className="flex flex-1 flex-col items-center gap-4">
             <Badge>입시 컨설팅</Badge>
-            <h1 className="text-center text-3xl font-bold leading-tight md:text-4xl">
+            <h1 className="text-center text-2xl font-bold leading-tight md:text-4xl">
               1:1 입시 컨설팅으로
               <br />
               미국 음대 입시 준비를 시작하세요
@@ -23,10 +23,10 @@ export default function ConsultingListPage() {
       </section>
       <section>
         <div className="container mb-24">
-          <h1 className="mt-24 text-center text-3xl font-bold">
+          <h1 className="mt-24 text-center text-2xl font-bold md:text-3xl">
             미국 음대 입시 3요소 영역별 젼략 제공
           </h1>
-          <h2 className="mt-4 text-center text-lg font-medium text-muted-foreground">
+          <h2 className="text-md mt-4 text-center font-medium text-muted-foreground md:text-lg">
             컨설팅을 통해 미국 음대 입시에 필요한 요소를 어쩌구
           </h2>
           <div className="container mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -53,7 +53,7 @@ export default function ConsultingListPage() {
       </section>
       <section>
         <div className="container mt-16 flex flex-col items-center">
-          <h1 className="text-center text-3xl font-bold">수강생들의 생생한 후기</h1>
+          <h1 className="text-center text-2xl font-bold md:text-3xl">수강생들의 생생한 후기</h1>
         </div>
       </section>
       <section className="container my-24 flex justify-center">

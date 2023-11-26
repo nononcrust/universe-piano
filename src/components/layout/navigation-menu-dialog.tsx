@@ -6,6 +6,7 @@ import { ROUTE } from "@/constants/route";
 import { useUserInfo } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "../icon";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -23,9 +24,9 @@ export const NavigationMenuDialog = () => {
         <Icon.Menu />
       </SheetTrigger>
       <SheetContent className="overflow-y-auto" side="right">
-        <ListSection title="유니버스 피아노">
+        <ListSection>
           {!user && (
-            <div className="my-4 flex gap-3">
+            <div className="mb-4 flex gap-3">
               <Button variant="secondary" asChild className="h-12 flex-1">
                 <Link href={ROUTE.LOGIN}>유니버스 피아노 시작하기</Link>
               </Button>
@@ -66,15 +67,21 @@ export const NavigationMenuDialog = () => {
   );
 };
 interface ListSubHeaderProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  title: string;
   children: React.ReactNode;
 }
 
 const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
   return (
     <div className={cn("mb-4", className)}>
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-foreground">{title}</h2>
+      <div className="flex h-10 items-center justify-between">
+        <Image
+          priority
+          className="-translate-x-2 transform"
+          src="/images/text-logo.svg"
+          width={110}
+          height={40}
+          alt="사이트 로고"
+        />
         <SheetClose className="outline-none">
           <Icon.X />
         </SheetClose>
