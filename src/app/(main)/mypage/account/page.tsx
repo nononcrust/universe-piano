@@ -98,6 +98,7 @@ export default function AccountPage() {
                     variant="underline"
                     maxLength={50}
                     placeholder="universe@piano.com"
+                    disabled
                     {...field}
                   />
                 </FormControl>
