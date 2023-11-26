@@ -1,6 +1,7 @@
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { UserInfoFetcher } from "@/components/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
+import { GoogleAnalytics } from "@/lib/google-analytics";
 import { Providers } from "@/providers";
 import type { Metadata, Viewport } from "next";
 import { Toaster } from "sonner";
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-jp-dynamic-subset.min.css"
         />
+        <GoogleAnalytics />
       </head>
       <body className="tracking-tight antialiased">
         <Providers>
