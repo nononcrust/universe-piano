@@ -1,6 +1,6 @@
 "use client";
 
-import { headerNav, siteConfig, siteContents } from "@/configs/site";
+import { headerNav, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { useUserInfo } from "@/features/auth";
 import { cn } from "@/lib/utils";
@@ -35,8 +35,14 @@ export const Header = () => {
           <div className="container flex h-16 items-center justify-between space-x-4 sm:space-x-0">
             <div className="flex gap-12">
               <Link href={ROUTE.HOME} className="top-0 flex h-16 items-center">
-                <Image src="/images/logo.svg" width={40} height={40} alt="사이트 로고" priority />
-                <span className="inline-block font-semibold">{siteConfig.name}</span>
+                <Image
+                  src="/images/text-logo.svg"
+                  width={110}
+                  height={40}
+                  alt="사이트 로고"
+                  priority
+                />
+                {/* <span className="inline-block font-semibold">{siteConfig.name}</span> */}
               </Link>
               <nav className="hidden gap-6 md:flex">
                 {headerNav.map((item, index) => (
