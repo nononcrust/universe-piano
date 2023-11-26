@@ -36,6 +36,7 @@ export const Header = () => {
             <div className="flex gap-12">
               <Link href={ROUTE.HOME} className="top-0 flex h-16 items-center">
                 <Image
+                  className="-translate-x-3 transform"
                   src="/images/text-logo.svg"
                   width={110}
                   height={40}
