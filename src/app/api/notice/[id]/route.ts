@@ -11,7 +11,7 @@ interface Context {
 
 export const GET = async (request: Request, context: Context) => {
   try {
-    const noticeId = Number(context.params.id);
+    const noticeId = context.params.id;
 
     const notice = await getNoticeById(noticeId);
 
@@ -23,7 +23,7 @@ export const GET = async (request: Request, context: Context) => {
 
 export const PUT = async (request: Request, context: Context) => {
   try {
-    const noticeId = Number(context.params.id);
+    const noticeId = context.params.id;
 
     const body = await request.json();
 
@@ -48,7 +48,7 @@ export const PUT = async (request: Request, context: Context) => {
 
 export const DELETE = async (request: Request, context: Context) => {
   try {
-    const noticeId = Number(context.params.id);
+    const noticeId = context.params.id;
 
     const notice = await prisma.notice.delete({
       where: {

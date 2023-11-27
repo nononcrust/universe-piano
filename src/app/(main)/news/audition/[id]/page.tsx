@@ -11,7 +11,7 @@ type Context = {
 export default async function AuditionDetailPage(context: Context) {
   const queryClient = new QueryClient();
 
-  const id = Number(context.params.id);
+  const id = context.params.id;
 
   await queryClient.prefetchQuery({
     queryKey: queryKeys.detail(id),

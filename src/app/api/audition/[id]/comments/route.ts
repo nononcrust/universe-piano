@@ -20,7 +20,7 @@ export const POST = async (request: Request, context: Context) => {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const auditionCommentId = Number(context.params.id);
+    const auditionCommentId = context.params.id;
 
     const body = await request.json();
 

@@ -9,7 +9,7 @@ type Context = {
 };
 
 export default async function NoticeDetailPage(context: Context) {
-  const id = Number(context.params.id);
+  const id = context.params.id;
 
   const queryClient = new QueryClient();
 

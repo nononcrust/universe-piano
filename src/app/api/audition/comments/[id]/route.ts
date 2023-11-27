@@ -9,7 +9,7 @@ interface Context {
 
 export const DELETE = async (request: Request, context: Context) => {
   try {
-    const auditionCommentId = Number(context.params.id);
+    const auditionCommentId = context.params.id;
 
     const auditionComment = await prisma.auditionComment.delete({
       where: {

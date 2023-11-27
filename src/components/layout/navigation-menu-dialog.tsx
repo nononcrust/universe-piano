@@ -74,14 +74,9 @@ const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
   return (
     <div className={cn("mb-4", className)}>
       <div className="flex h-10 items-center justify-between">
-        <Image
-          priority
-          className="w-[100px]"
-          src="/images/text-logo.png"
-          width={100}
-          height={28.13}
-          alt="사이트 로고"
-        />
+        <div className="relative h-[30px] w-[100px]">
+          <Image priority fill sizes="100px" src="/images/text-logo.png" alt="사이트 로고" />
+        </div>
         <SheetClose className="outline-none">
           <Icon.X />
         </SheetClose>

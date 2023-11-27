@@ -9,7 +9,7 @@ type Context = {
 };
 
 export default async function AdminNoticeEditPage(context: Context) {
-  const id = Number(context.params.id);
+  const id = context.params.id;
 
   const notice = await getNoticeById(id);
 

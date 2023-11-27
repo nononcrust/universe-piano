@@ -12,30 +12,29 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String @id @default(cuid())
+  kakaoId      String @unique
+  role         Role   @default(USER)
+  tier         Tier   @default(SPROUT)
+  email        String
+  nickname     String
+  phone        String
+  profileImage String
+  point        Int    @default(0)
 
-  kakaoId                String            @unique
-  role                   Role              @default(USER)
-  tier                   Tier              @default(SPROUT)
-  email                  String
-  nickname               String
-  phone                  String
-  profileImage           String
-  point                  Int               @default(0)
-  reviews                Review[]
-  orders                 Order[]
   posts                  Post[]
   comments               Comment[]
+  cart                   Cart?
+  orders                 Order[]
+  productReviews         ProductReview[]
   auditionResultComments AuditionComment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  id      String @id @default(cuid())
   title   String
   content String
 
@@ -45,135 +44,193 @@ model Post {
   user   User   @relation(fields: [userId], references: [id])
   userId String
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([userId])
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  id      String @id @default(cuid())
   content String
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId Int
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([userId])
   @@index([postId])
 }
 
 model Image {
-  id        Int      @id @default(autoincrement())
+  id  String @id @default(cuid())
+  url String
+
+  post   Post?   @relation(fields: [postId], references: [id])
+  postId String?
+
+  audition   Audition? @relation(fields: [auditionId], references: [id])
+  auditionId String?
+
+  product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+
+  productReview   ProductReview? @relation(fields: [productReviewId], references: [id])
+  productReviewId String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  url String
-
-  post   Post @relation(fields: [postId], references: [id])
-  postId Int
-
   @@index([postId])
+  @@index([auditionId])
+  @@index([productId])
+  @@index([productReviewId])
 }
 
 model Notice {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id String @id @default(cuid())
 
   title   String
   content String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Audition {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  id      String @id @default(cuid())
   title   String
   content String
-  image   String?
 
+  images   Image[]
   comments AuditionComment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model AuditionComment {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  id      String @id @default(cuid())
   content String
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
   audition   Audition @relation(fields: [auditionId], references: [id], onDelete: Cascade)
-  auditionId Int
+  auditionId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([userId])
   @@index([auditionId])
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
+  id   String @id @default(cuid())
+  name String @unique
+
+  products Product[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  name     String
-  products Product[]
 }
 
 model Product {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  categoryId Int
-
+  id          String  @id @default(cuid())
   name        String
   price       Int
-  description String
-  reviews     Review[]
-  orders      Order[]
-  image       String
+  description String?
+  images      Image[]
 
-  category Category @relation(fields: [categoryId], references: [id])
+  productReviews ProductReview[]
+  orders         OrderItem[]
+  categories     Category[]
+  cartItems      CartItem[]
 
-  @@index([categoryId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model Order {
-  id        Int      @id @default(autoincrement())
+model Cart {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @id
+
+  cartItems CartItem[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  userId    String
-  productId Int
-  status    OrderStatus
-
-  user    User    @relation(fields: [userId], references: [id])
-  product Product @relation(fields: [productId], references: [id])
-
   @@index([userId])
+}
+
+model CartItem {
+  amount Int
+
+  cart   Cart   @relation(fields: [cartId], references: [userId])
+  cartId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@unique([cartId, productId], name: "CartItem_cartId_productId_unique")
   @@index([productId])
 }
 
-model Review {
-  id        String   @id @default(uuid())
+model Order {
+  id     String      @unique @default(cuid())
+  number Int         @id @default(autoincrement())
+  status OrderStatus
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  orderItems OrderItem[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  title     String
-  content   String
-  rating    Int
-  userId    String
-  productId Int
-  image     String
+  @@index([userId])
+}
 
-  user    User    @relation(fields: [userId], references: [id])
-  product Product @relation(fields: [productId], references: [id])
+model OrderItem {
+  id     String @id @default(cuid())
+  amount Int
+  price  Int
+
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model ProductReview {
+  id      String  @id @default(cuid())
+  title   String
+  content String
+  rating  Int
+  images  Image[]
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([userId])
   @@index([productId])

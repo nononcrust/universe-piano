@@ -42,7 +42,7 @@ type FormSchema = z.infer<typeof formSchema>;
 
 interface AuditionFormProps {
   mode: "create" | "edit";
-  auditionId?: number;
+  auditionId?: string;
 }
 
 export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
@@ -52,7 +52,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
 
   const router = useRouter();
 
-  const { data } = useAuditionDetail(auditionId ?? 0);
+  const { data } = useAuditionDetail(auditionId ?? "");
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -109,7 +109,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
       form.reset({
         title: data.title,
         content: data.content,
-        images: data.image ? [data.image] : [],
+        images: data.images.map((image) => image.url),
       });
     }
   }, [data, form, mode]);

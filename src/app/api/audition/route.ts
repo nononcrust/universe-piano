@@ -22,7 +22,11 @@ export const POST = async (request: Request) => {
     const notice = await prisma.audition.create({
       data: {
         ...parsedBody,
-        ...(images && { image: images[0] }),
+        images: {
+          createMany: {
+            data: images?.map((image) => ({ url: image })) ?? [],
+          },
+        },
       },
     });
 
@@ -32,6 +36,7 @@ export const POST = async (request: Request) => {
       return new NextResponse("Bad Request", { status: 400 });
     }
 
+    console.log("error", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 };

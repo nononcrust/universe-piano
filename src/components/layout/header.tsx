@@ -34,12 +34,15 @@ export const Header = () => {
         <div className="border-b">
           <div className="container flex h-16 items-center justify-between space-x-4 sm:space-x-0">
             <div className="flex gap-12">
-              <Link href={ROUTE.HOME} className="top-0 flex h-16 items-center">
+              <Link
+                href={ROUTE.HOME}
+                className="relative top-0 flex h-[30px] w-[100px] items-center"
+              >
                 <Image
-                  className="h-auto w-[100px]"
+                  className="overflow-hidden"
                   src="/images/text-logo.png"
-                  width={100}
-                  height={28.13}
+                  sizes="100px"
+                  fill
                   alt="사이트 로고"
                   priority
                 />

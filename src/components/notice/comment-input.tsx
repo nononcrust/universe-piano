@@ -16,7 +16,7 @@ const formSchema = z.object({
 
 interface CommentInputProps {
   className?: string;
-  auditionId: number;
+  auditionId: string;
 }
 
 export const CommentInput = ({ className, auditionId }: CommentInputProps) => {

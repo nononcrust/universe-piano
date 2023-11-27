@@ -11,7 +11,7 @@ interface Context {
 
 export const GET = async (request: Request, context: Context) => {
   try {
-    const auditionId = Number(context.params.id);
+    const auditionId = context.params.id;
 
     const audition = await getAuditionById(auditionId);
 
@@ -23,7 +23,7 @@ export const GET = async (request: Request, context: Context) => {
 
 export const PUT = async (request: Request, context: Context) => {
   try {
-    const auditionId = Number(context.params.id);
+    const auditionId = context.params.id;
 
     const body = await request.json();
 
@@ -54,7 +54,7 @@ export const PUT = async (request: Request, context: Context) => {
 
 export const DELETE = async (request: Request, context: Context) => {
   try {
-    const auditionId = Number(context.params.id);
+    const auditionId = context.params.id;
 
     const audition = await prisma.audition.delete({
       where: {

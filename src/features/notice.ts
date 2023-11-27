@@ -14,7 +14,7 @@ export const getNoticeList = () => {
   });
 };
 
-export const getNoticeById = (id: number) => {
+export const getNoticeById = (id: string) => {
   return prisma.notice.findUnique({
     where: {
       id,
@@ -23,7 +23,7 @@ export const getNoticeById = (id: number) => {
 };
 
 export const noticeApi = {
-  getNoticeById: async (data: { id: number }) => {
+  getNoticeById: async (data: { id: string }) => {
     const response = await api.get<Notice>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
@@ -35,11 +35,11 @@ export const noticeApi = {
     const response = await api.post(`${ENDPOINT}`, data.body);
     return response.data;
   },
-  updateNotice: async (data: { id: number; body: Partial<NoticeRequest> }) => {
+  updateNotice: async (data: { id: string; body: Partial<NoticeRequest> }) => {
     const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
     return response.data;
   },
-  deleteNotice: async (data: { id: number }) => {
+  deleteNotice: async (data: { id: string }) => {
     const response = await api.delete(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
@@ -47,7 +47,7 @@ export const noticeApi = {
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
-  detail: (id?: number) => [ENDPOINT, id] as const,
+  detail: (id?: string) => [ENDPOINT, id] as const,
   list: () => [ENDPOINT, "list"] as const,
 };
 
@@ -58,7 +58,7 @@ export const useNoticeList = () => {
   });
 };
 
-export const useNoticeDetail = (id: number) => {
+export const useNoticeDetail = (id: string) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => noticeApi.getNoticeById({ id }),

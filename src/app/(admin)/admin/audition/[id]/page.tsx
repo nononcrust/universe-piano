@@ -5,7 +5,7 @@ export default async function AdminNoticeEditPage({ params }: { params: { id: st
   return (
     <main className="container">
       <AdminPageTitle title="오디션 결과 수정" />
-      <AuditionForm mode="edit" auditionId={Number(params.id)} />
+      <AuditionForm mode="edit" auditionId={params.id} />
     </main>
   );
 }

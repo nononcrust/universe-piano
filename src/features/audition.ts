@@ -9,12 +9,13 @@ export const getAuditionList = () => {
   return prisma.audition.findMany();
 };
 
-export const getAuditionById = (auditionId: number) => {
+export const getAuditionById = (auditionId: string) => {
   return prisma.audition.findUnique({
     where: {
       id: auditionId,
     },
     include: {
+      images: true,
       comments: {
         include: {
           user: true,
@@ -35,7 +36,7 @@ export const auditionApi = {
     const response = await api.get<Audition[]>(ENDPOINT);
     return response.data;
   },
-  getAuditionById: async (data: { id: number }) => {
+  getAuditionById: async (data: { id: string }) => {
     const response = await api.get<GetAuditionByIdResponse>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
@@ -43,19 +44,19 @@ export const auditionApi = {
     const response = await api.post(ENDPOINT, data.body);
     return response.data;
   },
-  updateAudition: async (data: { id: number; body: Partial<AuditionRequest> }) => {
+  updateAudition: async (data: { id: string; body: Partial<AuditionRequest> }) => {
     const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
     return response.data;
   },
-  deleteAudition: async (data: { id: number }) => {
+  deleteAudition: async (data: { id: string }) => {
     const response = await api.delete(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
-  createAuditionComment: async (data: { id: number; body: AuditionCommentRequest }) => {
+  createAuditionComment: async (data: { id: string; body: AuditionCommentRequest }) => {
     const response = await api.post(`${ENDPOINT}/${data.id}/comments`, data.body);
     return response.data;
   },
-  deleteAuditionComment: async (data: { id: number }) => {
+  deleteAuditionComment: async (data: { id: string }) => {
     const response = await api.delete<AuditionComment>(`${ENDPOINT}/comments/${data.id}`);
     return response.data;
   },
@@ -63,7 +64,7 @@ export const auditionApi = {
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
-  detail: (id?: number) => [ENDPOINT, id] as const,
+  detail: (id?: string) => [ENDPOINT, id] as const,
   list: () => [ENDPOINT, "list"] as const,
 };
 
@@ -74,7 +75,7 @@ export const useAuditionList = () => {
   });
 };
 
-export const useAuditionDetail = (id: number) => {
+export const useAuditionDetail = (id: string) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => auditionApi.getAuditionById({ id }),
@@ -157,6 +158,7 @@ export type AuditionCommentRequest = z.infer<typeof auditionCommentRequestSchema
 
 export type GetAuditionByIdResponse = Prisma.AuditionGetPayload<{
   include: {
+    images: true;
     comments: {
       include: {
         user: true;

@@ -2,11 +2,11 @@
 
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { User } from "@prisma/client";
+import { Order } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 
-export const userColumns: ColumnDef<User>[] = [
+export const orderColumns: ColumnDef<Order>[] = [
   {
     accessorKey: "nickname",
     header: "이름",

@@ -11,7 +11,7 @@ interface AuditionCommentProps {
 export const AuditionComment = ({ comment }: AuditionCommentProps) => {
   const { mutate, isPending } = useDeleteAuditionComment();
 
-  const onCommentDelete = (commentId: number) => {
+  const onCommentDelete = (commentId: string) => {
     if (isPending) return;
 
     mutate({ id: commentId });

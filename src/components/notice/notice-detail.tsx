@@ -12,9 +12,7 @@ import { PageTitle } from "../layout/page-title";
 export const NoticeDetail = () => {
   const params = useParams<{ id: string }>();
 
-  const id = Number(params.id);
-
-  const { data } = useNoticeDetail(id);
+  const { data } = useNoticeDetail(params.id);
 
   if (data === null) return redirect(ROUTE.NEWS.NOTICE.LIST);
 

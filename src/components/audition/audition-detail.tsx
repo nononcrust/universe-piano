@@ -17,7 +17,7 @@ import { PageTitle } from "../layout/page-title";
 export const AuditionDetail = () => {
   const params = useParams<{ id: string }>();
 
-  const { data } = useAuditionDetail(Number(params.id));
+  const { data } = useAuditionDetail(params.id);
 
   if (data === null) return redirect(ROUTE.NEWS.AUDITION.LIST);
 
@@ -31,7 +31,9 @@ export const AuditionDetail = () => {
             <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
           </div>
           <div className="relative mt-8 flex max-w-full">
-            {data.image && <Image width={500} height={400} src={data.image} alt="" />}
+            {data.images?.map((image) => (
+              <Image key={image.id} width={500} height={400} src={image.url} alt="" />
+            ))}
           </div>
           <Markdown className="prose mt-8" content={data.content} />
           <PageSubtitle className="mt-24" title={`댓글 ${data._count.comments}`} />
