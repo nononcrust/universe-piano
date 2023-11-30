@@ -1,6 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
 import { UserInfo, queryKeys } from "@/features/auth";
-import { getUserById } from "@/features/user";
+import { userRepository } from "@/features/user";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { cookies } from "next/headers";
@@ -26,7 +26,7 @@ const prefetchUserInfo = async () => {
 
     const id = decoded.data.user.id;
 
-    const user = await getUserById(id);
+    const user = await userRepository.getUserById(id);
 
     if (!user) {
       return null;

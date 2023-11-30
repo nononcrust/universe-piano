@@ -1,10 +1,10 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { noticeColumns } from "@/components/admin/data-table/columns/notice-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
-import { getNoticeList } from "@/features/notice";
+import { noticeRepository } from "@/features/notice";
 
 export default async function AdminNoticeListPage() {
-  const notices = await getNoticeList();
+  const notices = await noticeRepository.getNoticeList();
 
   return (
     <main>

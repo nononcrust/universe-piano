@@ -1,14 +1,14 @@
 "use client";
 
-import { GetAuditionByIdResponse, useDeleteAuditionComment } from "@/features/audition";
+import { AuditionComment, useDeleteAuditionComment } from "@/features/audition";
 import { formatDateDistance } from "@/lib/utils";
 import { CommentItem } from "../notice/comment-item";
 
-interface AuditionCommentProps {
-  comment: GetAuditionByIdResponse["comments"][0];
+interface AuditionCommentItemProps {
+  comment: AuditionComment;
 }
 
-export const AuditionComment = ({ comment }: AuditionCommentProps) => {
+export const AuditionCommentItem = ({ comment }: AuditionCommentItemProps) => {
   const { mutate, isPending } = useDeleteAuditionComment();
 
   const onCommentDelete = (commentId: string) => {

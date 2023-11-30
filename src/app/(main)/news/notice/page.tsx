@@ -1,5 +1,5 @@
 import { NoticeList } from "@/components/notice/notice-list";
-import { getNoticeList, queryKeys } from "@/features/notice";
+import { noticeRepository, queryKeys } from "@/features/notice";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
 export default async function NoticeListPage() {
@@ -7,7 +7,7 @@ export default async function NoticeListPage() {
 
   await queryClient.prefetchQuery({
     queryKey: queryKeys.list(),
-    queryFn: getNoticeList,
+    queryFn: noticeRepository.getNoticeList,
   });
 
   return (

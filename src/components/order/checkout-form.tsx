@@ -16,51 +16,49 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { FORM } from "@/constants/form";
 import { useUserInfo } from "@/features/auth";
-import { formatPhoneNumberInput } from "@/lib/utils";
+import { useOrderDetail } from "@/features/order";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  name: z.string().min(1, { message: FORM.ERROR.REQUIRED }),
-  email: z.string().min(1, { message: FORM.ERROR.REQUIRED }).email(FORM.ERROR.INVALID_EMAIL),
-  phone: z
-    .string()
-    .min(1, { message: FORM.ERROR.REQUIRED })
-    .length(13, { message: FORM.ERROR.INVALID_PHONE }),
   point: z.number().int(),
 });
 
-export default function PaymentPage() {
+export const CheckoutForm = () => {
   const [termsChecked, setTermsChecked] = useState(false);
+
   const { data: user } = useUserInfo();
+
+  const params = useParams<{ id: string }>();
+
+  const { data: order } = useOrderDetail(params.id);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      point: 0,
+      point: user?.point ?? 0,
     },
   });
+
+  const onAllPointClick = () => {
+    if (!user) return;
+
+    form.setValue("point", user.point);
+  };
 
   const onSubmit = form.handleSubmit((data) => {
     console.log("payment", data);
   });
 
-  useEffect(() => {
-    if (!user) return;
+  // if (data?.status !== OrderStatus.CHECKING) {
+  //   return redirect(ROUTE.HOME);
+  // }
 
-    form.reset({
-      name: user.nickname,
-      email: user.email,
-      phone: user.phone,
-    });
-  }, [form, user]);
+  if (!user) return null;
 
   return (
     <main className="container pb-16">
@@ -69,7 +67,7 @@ export default function PaymentPage() {
           <PageTitle title="주문 및 결제" />
           <section className="mt-8 flex flex-col gap-4">
             <PageSubtitle title="주문자 정보" />
-            <FormField
+            {/* <FormField
               name="name"
               control={form.control}
               render={({ field }) => (
@@ -112,11 +110,17 @@ export default function PaymentPage() {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
           </section>
           <section>
             <PageSubtitle title="상품 정보" className="mb-4 mt-16" />
-            <Product />
+            <div className="flex gap-4">
+              <div className="h-20 w-20 rounded-md bg-gray-100" />
+              <div className="flex flex-1 flex-col gap-2">
+                <p className="text-sm">독학 키트 | 미국 음대 오디션에서 살아남는 방법</p>
+                <p className="font-medium">9,900원</p>
+              </div>
+            </div>
           </section>
           <section>
             <PageSubtitle title="적립금 사용" className="mb-4 mt-16" />
@@ -128,8 +132,17 @@ export default function PaymentPage() {
                   <FormLabel>적립금</FormLabel>
                   <FormControl>
                     <div className="flex gap-2">
-                      <Input className="flex-1" placeholder="0" disabled {...field} />
-                      <Button variant="secondary" disabled>
+                      <Input
+                        className="flex-1"
+                        placeholder="적립금을 입력해주세요."
+                        disabled={user.point === 0}
+                        {...field}
+                      />
+                      <Button
+                        variant="secondary"
+                        disabled={user.point === 0}
+                        onClick={onAllPointClick}
+                      >
                         전액 사용
                       </Button>
                     </div>
@@ -139,7 +152,7 @@ export default function PaymentPage() {
               )}
             />
             <p className="mt-2 text-sm">
-              사용 가능한 적립금: <strong className="text-primary">0 P</strong>
+              사용 가능한 적립금: <strong className="text-primary">{user.point} P</strong>
             </p>
           </section>
           <section className="mt-12 flex flex-col gap-4">
@@ -158,17 +171,17 @@ export default function PaymentPage() {
           </section>
           <section>
             <PageSubtitle title="결제 수단" className="mb-4 mt-16" />
-            <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
+            <RadioGroup defaultValue="deposit" className="grid grid-cols-3 gap-4">
               {/* <div className="cursor-pointer">
-              <RadioGroupItem value="card" id="card" className="peer sr-only" />
-              <Label
-              htmlFor="card"
-              className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-              >
-              <Icon.CreditCard className="mb-3 h-6 w-6" />
-              신용카드
-              </Label>
-            </div> */}
+        <RadioGroupItem value="card" id="card" className="peer sr-only" />
+        <Label
+        htmlFor="card"
+        className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+        >
+        <Icon.CreditCard className="mb-3 h-6 w-6" />
+        신용카드
+        </Label>
+      </div> */}
               <div className="cursor-pointer">
                 <RadioGroupItem value="deposit" id="deposit" className="peer sr-only" />
                 <Label
@@ -203,17 +216,5 @@ export default function PaymentPage() {
         </form>
       </Form>
     </main>
-  );
-}
-
-const Product = () => {
-  return (
-    <div className="flex gap-4">
-      <div className="h-20 w-20 rounded-md bg-gray-100" />
-      <div className="flex flex-1 flex-col gap-2">
-        <p className="text-sm">독학 키트 | 미국 음대 오디션에서 살아남는 방법</p>
-        <p className="font-medium">9,900원</p>
-      </div>
-    </div>
   );
 };

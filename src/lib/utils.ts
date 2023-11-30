@@ -56,3 +56,14 @@ export const allowNumberOnly = (input: string) => {
 
   return numericValue;
 };
+
+export const getRatingAverage = (ratings: number[]) => {
+    if (ratings.length === 0) {
+      return 0;
+    }
+  
+    const sum = ratings.reduce((accumulator, rating) => accumulator + rating, 0);
+  
+    const average = sum / ratings.length;
+    return average;
+}

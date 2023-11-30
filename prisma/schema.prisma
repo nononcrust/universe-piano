@@ -28,6 +28,7 @@ model User {
   orders                 Order[]
   productReviews         ProductReview[]
   auditionResultComments AuditionComment[]
+  subscriptions          Subscription[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -148,13 +149,18 @@ model Product {
   description String?
   images      Image[]
 
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
   productReviews ProductReview[]
   orders         OrderItem[]
-  categories     Category[]
   cartItems      CartItem[]
+  subscriptions  Subscription[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
 }
 
 model Cart {
@@ -179,6 +185,25 @@ model CartItem {
   productId String
 
   @@unique([cartId, productId], name: "CartItem_cartId_productId_unique")
+  @@index([productId])
+}
+
+model Subscription {
+  id String @id @default(cuid())
+
+  startDate DateTime
+  endDate   DateTime
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
   @@index([productId])
 }
 
@@ -249,6 +274,7 @@ enum Tier {
 }
 
 enum OrderStatus {
+  CHECKING
   PAYMENT_PENDING
   PAYMENT_COMPLETED
 }

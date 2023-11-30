@@ -1,5 +1,6 @@
-import { AuditionDetail } from "@/components/audition/audition-detail";
-import { auditionRepository, queryKeys } from "@/features/audition";
+import { CheckoutForm } from "@/components/order/checkout-form";
+import { noticeRepository } from "@/features/notice";
+import { queryKeys } from "@/features/order";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
 type Context = {
@@ -8,19 +9,19 @@ type Context = {
   };
 };
 
-export default async function AuditionDetailPage(context: Context) {
-  const queryClient = new QueryClient();
-
+export default async function CheckoutPage(context: Context) {
   const id = context.params.id;
+
+  const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: queryKeys.detail(id),
-    queryFn: () => auditionRepository.getAuditionById(id),
+    queryFn: () => noticeRepository.getNoticeById(id),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <AuditionDetail />
+      <CheckoutForm />
     </HydrationBoundary>
   );
 }

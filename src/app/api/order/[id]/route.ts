@@ -1,4 +1,4 @@
-import { userRepository, userUpdateRequestSchema } from "@/features/user";
+import { orderRepository, orderRequestSchema } from "@/features/order";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -11,11 +11,11 @@ interface Context {
 
 export const GET = async (request: Request, context: Context) => {
   try {
-    const id = context.params.id;
+    const orderId = context.params.id;
 
-    const user = await userRepository.getUserById(id);
+    const order = await orderRepository.getOrderById(orderId);
 
-    return NextResponse.json(user);
+    return NextResponse.json(order);
   } catch (error) {
     return new NextResponse("Internal Error", { status: 500 });
   }
@@ -23,20 +23,20 @@ export const GET = async (request: Request, context: Context) => {
 
 export const PUT = async (request: Request, context: Context) => {
   try {
-    const id = context.params.id;
+    const orderId = context.params.id;
 
     const body = await request.json();
 
-    const parsedBody = userUpdateRequestSchema.parse(body);
+    const parsedBody = orderRequestSchema.parse(body);
 
-    const user = await prisma.user.update({
+    const order = await prisma.order.update({
       where: {
-        id: id,
+        id: orderId,
       },
       data: parsedBody,
     });
 
-    return NextResponse.json(user);
+    return NextResponse.json(order);
   } catch (error) {
     if (error instanceof ZodError) {
       return new NextResponse("Bad Request", { status: 400 });
@@ -48,15 +48,15 @@ export const PUT = async (request: Request, context: Context) => {
 
 export const DELETE = async (request: Request, context: Context) => {
   try {
-    const id = context.params.id;
+    const orderId = context.params.id;
 
-    const user = await prisma.user.delete({
+    const order = await prisma.order.delete({
       where: {
-        id: id,
+        id: orderId,
       },
     });
 
-    return NextResponse.json(user);
+    return NextResponse.json(order);
   } catch (error) {
     return new NextResponse("Internal Error", { status: 500 });
   }

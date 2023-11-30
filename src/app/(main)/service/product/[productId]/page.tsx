@@ -137,7 +137,7 @@ const ProductAction = () => {
   return (
     <div className="mt-8 flex gap-4">
       <Button className="flex-1" size="lg" asChild>
-        <Link href={ROUTE.PAYMENT}>구매하기</Link>
+        <Link href={ROUTE.CHECKOUT}>구매하기</Link>
       </Button>
     </div>
   );

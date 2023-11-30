@@ -1,34 +1,39 @@
 import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
-import { Notice } from "@prisma/client";
+import { Prisma } from "@prisma/client";
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
+export const noticeRepository = {
+  getNoticeList: () => {
+    return prisma.notice.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+  },
+  getNoticeById: (id: string) => {
+    return prisma.notice.findUnique({
+      where: {
+        id,
+      },
+    });
+  },
+};
+
+export type NoticeList = Prisma.PromiseReturnType<typeof noticeRepository.getNoticeList>;
+export type NoticeDetail = Prisma.PromiseReturnType<typeof noticeRepository.getNoticeById>;
+
 const ENDPOINT = "/notice";
 
-export const getNoticeList = () => {
-  return prisma.notice.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
-};
-
-export const getNoticeById = (id: string) => {
-  return prisma.notice.findUnique({
-    where: {
-      id,
-    },
-  });
-};
-
 export const noticeApi = {
-  getNoticeById: async (data: { id: string }) => {
-    const response = await api.get<Notice>(`${ENDPOINT}/${data.id}`);
+  getNoticeList: async () => {
+    const response = await api.get<NoticeList>(`${ENDPOINT}`);
     return response.data;
   },
-  getNoticeList: async () => {
-    const response = await api.get<Notice[]>(`${ENDPOINT}`);
+  getNoticeById: async (data: { id: string }) => {
+    const response = await api.get<NoticeDetail>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
   createNotice: async (data: { body: NoticeRequest }) => {

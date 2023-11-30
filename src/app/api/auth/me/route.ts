@@ -1,6 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
 import { UserInfo } from "@/features/auth";
-import { getUserById } from "@/features/user";
+import { userRepository } from "@/features/user";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -20,7 +20,7 @@ export const GET = async (request: Request) => {
 
     const id = decoded.user.id;
 
-    const user = await getUserById(id);
+    const user = await userRepository.getUserById(id);
 
     if (!user) {
       return new Response(null, { status: 200 });

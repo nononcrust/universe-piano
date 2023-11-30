@@ -1,6 +1,6 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { NoticeForm } from "@/components/admin/notice-form";
-import { getNoticeById } from "@/features/notice";
+import { noticeRepository } from "@/features/notice";
 
 type Context = {
   params: {
@@ -11,7 +11,7 @@ type Context = {
 export default async function AdminNoticeEditPage(context: Context) {
   const id = context.params.id;
 
-  const notice = await getNoticeById(id);
+  const notice = await noticeRepository.getNoticeById(id);
 
   if (!notice) return null;
 

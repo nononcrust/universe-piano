@@ -1,34 +1,38 @@
 import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
-import { Role, Tier, User } from "@prisma/client";
+import { Prisma, Role, Tier } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
+export const userRepository = {
+  getUserList: () => {
+    return prisma.user.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+  },
+  getUserById: (id: string) => {
+    return prisma.user.findUnique({
+      where: {
+        id,
+      },
+    });
+  },
+};
+
+export type UserList = Prisma.PromiseReturnType<typeof userRepository.getUserList>;
+export type UserDetail = Prisma.PromiseReturnType<typeof userRepository.getUserById>;
+
 const ENDPOINT = "/user";
-
-export const getUserList = () => {
-  return prisma.user.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
-};
-
-export const getUserById = (id: string) => {
-  return prisma.user.findUnique({
-    where: {
-      id,
-    },
-  });
-};
 
 export const userApi = {
   getUserList: async () => {
-    const response = await api.get<User[]>(ENDPOINT);
+    const response = await api.get<UserList>(ENDPOINT);
     return response.data;
   },
   getUserById: async (data: { id: string }) => {
-    const response = await api.get(`${ENDPOINT}/${data.id}`);
+    const response = await api.get<UserDetail>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
   updateUser: async (data: { id: string; body: Partial<UserRequest> }) => {

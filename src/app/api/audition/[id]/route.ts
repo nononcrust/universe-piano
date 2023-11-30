@@ -1,4 +1,4 @@
-import { auditionRequestSchema, getAuditionById } from "@/features/audition";
+import { auditionRepository, auditionRequestSchema } from "@/features/audition";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -13,7 +13,7 @@ export const GET = async (request: Request, context: Context) => {
   try {
     const auditionId = context.params.id;
 
-    const audition = await getAuditionById(auditionId);
+    const audition = await auditionRepository.getAuditionById(auditionId);
 
     return NextResponse.json(audition);
   } catch (error) {

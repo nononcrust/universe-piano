@@ -1,6 +1,6 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { UserForm } from "@/components/admin/user-form";
-import { getUserById } from "@/features/user";
+import { userRepository } from "@/features/user";
 
 interface Context {
   params: {
@@ -11,7 +11,7 @@ interface Context {
 export default async function AdminUserEditPage(context: Context) {
   const id = context.params.id;
 
-  const user = await getUserById(id);
+  const user = await userRepository.getUserById(id);
 
   if (!user) return null;
 

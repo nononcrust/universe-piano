@@ -1,43 +1,48 @@
 import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
 import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
-import { Audition, AuditionComment, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
-export const getAuditionList = () => {
-  return prisma.audition.findMany();
+export const auditionRepository = {
+  getAuditionList: () => {
+    return prisma.audition.findMany();
+  },
+  getAuditionById: (id: string) => {
+    return prisma.audition.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        images: true,
+        comments: {
+          include: {
+            user: true,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
+        },
+        _count: true,
+      },
+    });
+  },
 };
 
-export const getAuditionById = (auditionId: string) => {
-  return prisma.audition.findUnique({
-    where: {
-      id: auditionId,
-    },
-    include: {
-      images: true,
-      comments: {
-        include: {
-          user: true,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      },
-      _count: true,
-    },
-  });
-};
+export type AuditionList = Prisma.PromiseReturnType<typeof auditionRepository.getAuditionList>;
+export type AuditionDetail = Prisma.PromiseReturnType<typeof auditionRepository.getAuditionById>;
+export type AuditionComment = NonNullable<AuditionDetail>["comments"][number];
 
 const ENDPOINT = "/audition";
 
 export const auditionApi = {
   getAuditionList: async () => {
-    const response = await api.get<Audition[]>(ENDPOINT);
+    const response = await api.get<AuditionList>(ENDPOINT);
     return response.data;
   },
   getAuditionById: async (data: { id: string }) => {
-    const response = await api.get<GetAuditionByIdResponse>(`${ENDPOINT}/${data.id}`);
+    const response = await api.get<AuditionDetail>(`${ENDPOINT}/${data.id}`);
     return response.data;
   },
   createAudition: async (data: { body: AuditionRequest }) => {
@@ -155,15 +160,3 @@ export const auditionCommentRequestSchema = z.object({
 });
 
 export type AuditionCommentRequest = z.infer<typeof auditionCommentRequestSchema>;
-
-export type GetAuditionByIdResponse = Prisma.AuditionGetPayload<{
-  include: {
-    images: true;
-    comments: {
-      include: {
-        user: true;
-      };
-    };
-    _count: true;
-  };
-}>;

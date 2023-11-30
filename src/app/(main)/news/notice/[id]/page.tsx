@@ -1,5 +1,5 @@
 import { NoticeDetail } from "@/components/notice/notice-detail";
-import { getNoticeById, queryKeys } from "@/features/notice";
+import { noticeRepository, queryKeys } from "@/features/notice";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
 type Context = {
@@ -15,7 +15,7 @@ export default async function NoticeDetailPage(context: Context) {
 
   await queryClient.prefetchQuery({
     queryKey: queryKeys.detail(id),
-    queryFn: () => getNoticeById(id),
+    queryFn: () => noticeRepository.getNoticeById(id),
   });
 
   return (

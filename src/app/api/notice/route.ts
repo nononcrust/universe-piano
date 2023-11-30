@@ -1,11 +1,11 @@
-import { getNoticeList, noticeRequestSchema } from "@/features/notice";
+import { noticeRepository, noticeRequestSchema } from "@/features/notice";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 export const GET = async (request: Request) => {
   try {
-    const notices = await getNoticeList();
+    const notices = await noticeRepository.getNoticeList();
 
     return NextResponse.json(notices);
   } catch (error) {
