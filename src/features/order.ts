@@ -35,6 +35,19 @@ export const orderRepository = {
 export type OrderList = Prisma.PromiseReturnType<typeof orderRepository.getOrderList>;
 export type OrderDetail = Prisma.PromiseReturnType<typeof orderRepository.getOrderById>;
 
+const orderProductSchema = z.object({
+  productId: z.string(),
+  amount: z.number(),
+  price: z.number(),
+});
+
+export const orderRequestSchema = z.object({
+  status: z.enum([Object.values(OrderStatus)[0], ...Object.values(OrderStatus).slice(1)]),
+  products: z.array(orderProductSchema),
+});
+
+export type OrderRequest = z.infer<typeof orderRequestSchema>;
+
 const ENDPOINT = "/order";
 
 export const orderApi = {
@@ -72,16 +85,3 @@ export const useOrderDetail = (id: string) => {
     queryFn: () => orderApi.getOrderById({ id }),
   });
 };
-
-const orderProductSchema = z.object({
-  productId: z.string(),
-  amount: z.number(),
-  price: z.number(),
-});
-
-export const orderRequestSchema = z.object({
-  status: z.enum([Object.values(OrderStatus)[0], ...Object.values(OrderStatus).slice(1)]),
-  products: z.array(orderProductSchema),
-});
-
-export type OrderRequest = z.infer<typeof orderRequestSchema>;

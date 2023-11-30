@@ -25,6 +25,14 @@ export const noticeRepository = {
 export type NoticeList = Prisma.PromiseReturnType<typeof noticeRepository.getNoticeList>;
 export type NoticeDetail = Prisma.PromiseReturnType<typeof noticeRepository.getNoticeById>;
 
+export const noticeRequestSchema = z.object({
+  title: z.string().min(1).max(100),
+  content: z.string().min(1).max(1000),
+  images: z.array(z.string().url()).optional(),
+});
+
+export type NoticeRequest = z.infer<typeof noticeRequestSchema>;
+
 const ENDPOINT = "/notice";
 
 export const noticeApi = {
@@ -103,11 +111,3 @@ export const useDeleteNotice = () => {
     },
   });
 };
-
-export const noticeRequestSchema = z.object({
-  title: z.string().min(1).max(100),
-  content: z.string().min(1).max(1000),
-  images: z.array(z.string().url()).optional(),
-});
-
-export type NoticeRequest = z.infer<typeof noticeRequestSchema>;

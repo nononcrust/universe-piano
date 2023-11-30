@@ -4,31 +4,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
 import { userApi } from "./user";
 
-const ENDPOINT = "/auth";
-
-export const authApi = {
-  login: async (body: UserInfo) => {
-    const response = await api.post(`${ENDPOINT}/login`, body);
-    return response.data;
-  },
-  logout: async () => {
-    const response = await api.get(`${ENDPOINT}/logout`);
-    return response.data;
-  },
-  register: async (body: RegisterBody) => {
-    const response = await api.post<UserInfo>(`${ENDPOINT}/register`, body);
-    return response.data;
-  },
-  getUserInfo: async () => {
-    const response = await api.get<UserInfo>(`${ENDPOINT}/me`);
-    return response.data;
-  },
-  withdrawal: async () => {
-    const response = await api.delete(`${ENDPOINT}/withdrawal`);
-    return response.data;
-  },
-};
-
 export const socialDataSchema = z.object({
   id: z.string(),
   nickname: z.string(),
@@ -56,10 +31,33 @@ export const userInfoSchema = z.object({
 });
 
 export type SocialData = z.infer<typeof socialDataSchema>;
-
 export type UserInfo = z.infer<typeof userInfoSchema>;
-
 export type RegisterBody = z.infer<typeof registerRequestSchema>;
+
+const ENDPOINT = "/auth";
+
+export const authApi = {
+  login: async (body: UserInfo) => {
+    const response = await api.post(`${ENDPOINT}/login`, body);
+    return response.data;
+  },
+  logout: async () => {
+    const response = await api.get(`${ENDPOINT}/logout`);
+    return response.data;
+  },
+  register: async (body: RegisterBody) => {
+    const response = await api.post<UserInfo>(`${ENDPOINT}/register`, body);
+    return response.data;
+  },
+  getUserInfo: async () => {
+    const response = await api.get<UserInfo>(`${ENDPOINT}/me`);
+    return response.data;
+  },
+  withdrawal: async () => {
+    const response = await api.delete(`${ENDPOINT}/withdrawal`);
+    return response.data;
+  },
+};
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,

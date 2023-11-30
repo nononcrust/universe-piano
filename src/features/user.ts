@@ -24,6 +24,24 @@ export const userRepository = {
 export type UserList = Prisma.PromiseReturnType<typeof userRepository.getUserList>;
 export type UserDetail = Prisma.PromiseReturnType<typeof userRepository.getUserById>;
 
+export const userRequestSchema = z.object({
+  nickname: z.string(),
+  email: z.string().email(),
+  role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]),
+  tier: z.enum([Object.values(Tier)[0], ...Object.values(Tier).slice(1)]),
+  point: z.number().int(),
+});
+
+export const userUpdateRequestSchema = z.object({
+  nickname: z.string().optional(),
+  email: z.string().email().optional(),
+  role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]).optional(),
+  tier: z.enum([Object.values(Tier)[0], ...Object.values(Tier).slice(1)]).optional(),
+  point: z.number().int().optional(),
+});
+
+export type UserRequest = z.infer<typeof userRequestSchema>;
+
 const ENDPOINT = "/user";
 
 export const userApi = {
@@ -88,21 +106,3 @@ export const useDeleteUser = () => {
       }),
   });
 };
-
-export const userRequestSchema = z.object({
-  nickname: z.string(),
-  email: z.string().email(),
-  role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]),
-  tier: z.enum([Object.values(Tier)[0], ...Object.values(Tier).slice(1)]),
-  point: z.number().int(),
-});
-
-export const userUpdateRequestSchema = z.object({
-  nickname: z.string().optional(),
-  email: z.string().email().optional(),
-  role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]).optional(),
-  tier: z.enum([Object.values(Tier)[0], ...Object.values(Tier).slice(1)]).optional(),
-  point: z.number().int().optional(),
-});
-
-export type UserRequest = z.infer<typeof userRequestSchema>;

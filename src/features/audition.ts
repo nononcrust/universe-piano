@@ -34,6 +34,20 @@ export type AuditionList = Prisma.PromiseReturnType<typeof auditionRepository.ge
 export type AuditionDetail = Prisma.PromiseReturnType<typeof auditionRepository.getAuditionById>;
 export type AuditionComment = NonNullable<AuditionDetail>["comments"][number];
 
+export const auditionRequestSchema = z.object({
+  title: titleSchema,
+  content: contentSchema,
+  images: imagesSchema,
+});
+
+export type AuditionRequest = z.infer<typeof auditionRequestSchema>;
+
+export const auditionCommentRequestSchema = z.object({
+  content: contentSchema,
+});
+
+export type AuditionCommentRequest = z.infer<typeof auditionCommentRequestSchema>;
+
 const ENDPOINT = "/audition";
 
 export const auditionApi = {
@@ -146,17 +160,3 @@ export const useDeleteAuditionComment = () => {
     },
   });
 };
-
-export const auditionRequestSchema = z.object({
-  title: titleSchema,
-  content: contentSchema,
-  images: imagesSchema,
-});
-
-export type AuditionRequest = z.infer<typeof auditionRequestSchema>;
-
-export const auditionCommentRequestSchema = z.object({
-  content: contentSchema,
-});
-
-export type AuditionCommentRequest = z.infer<typeof auditionCommentRequestSchema>;
