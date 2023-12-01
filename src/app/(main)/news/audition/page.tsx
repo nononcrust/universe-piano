@@ -1,18 +1,45 @@
-import { AuditionList } from "@/components/audition/audition-list";
-import { auditionRepository, queryKeys } from "@/features/audition";
-import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
+"use client";
 
-export default async function AuditionListPage() {
-  const queryClient = new QueryClient();
+import { PageTitle } from "@/components/layout/page-title";
+import { NoticeListItem } from "@/components/notice/notice-list-item";
+import { Pagination } from "@/components/pagination";
+import { ROUTE } from "@/constants/route";
+import { useAuditionList } from "@/features/audition";
+import { usePagination } from "@/hooks/use-pagination";
+import { formatDate } from "@/lib/utils";
+import Link from "next/link";
 
-  await queryClient.prefetchQuery({
-    queryKey: queryKeys.list(),
-    queryFn: auditionRepository.getAuditionList,
-  });
+export default function AuditionListPage() {
+  const { data: auditions, isLoading } = useAuditionList();
+  const pagination = usePagination();
+
+  const totalPage = auditions ? Math.ceil(auditions.length / 10) : 0;
+
+  const paginatedAuditions = auditions?.slice(
+    (pagination.current - 1) * 10,
+    pagination.current * 10,
+  );
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <AuditionList />
-    </HydrationBoundary>
+    <main className="container pb-16">
+      <PageTitle title="오디션 결과 발표" />
+      <ul className="mt-8 flex flex-col divide-y">
+        {paginatedAuditions?.map((item, index) => (
+          <Link key={index} href={ROUTE.NEWS.AUDITION.DETAIL(String(item.id))}>
+            <NoticeListItem title={item.title} createdAt={formatDate(item.createdAt)} />
+          </Link>
+        ))}
+      </ul>
+      {isLoading &&
+        Array(5)
+          .fill(0)
+          .map((_, index) => <NoticeListItem.Skeleton key={index} />)}
+      <Pagination
+        className="mt-8"
+        currentPage={pagination.current}
+        totalPage={totalPage}
+        onChange={pagination.onChange}
+      />
+    </main>
   );
 }

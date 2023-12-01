@@ -7,11 +7,11 @@ import { CommentInput } from "@/components/notice/comment-input";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useAuditionDetail } from "@/features/audition";
-import { AccessControl } from "@/lib/acl";
 import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
+import { AccessControl } from "../access-control";
 import { PageTitle } from "../layout/page-title";
 
 export const AuditionDetail = () => {

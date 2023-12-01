@@ -1,4 +1,5 @@
 import { noticeRepository, noticeRequestSchema } from "@/features/notice";
+import { adminGuard } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -14,6 +15,8 @@ export const GET = async (request: Request) => {
 };
 
 export const POST = async (request: Request) => {
+  adminGuard();
+
   try {
     const body = await request.json();
 

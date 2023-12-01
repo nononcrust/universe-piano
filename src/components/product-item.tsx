@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "./icon";
 import { AspectRatio } from "./ui/aspect-ratio";
+import { Skeleton } from "./ui/skeleton";
 
 interface ProductItemProps {
   product: ProductList[number];
@@ -44,3 +45,21 @@ export const ProductItem = ({ product }: ProductItemProps) => {
     </Link>
   );
 };
+
+const ProductItemSkeleton = () => {
+  return (
+    <div className="col flex flex-col gap-2 pb-4">
+      <AspectRatio ratio={1}>
+        <Skeleton className="h-full w-full rounded-lg" />
+      </AspectRatio>
+      <div className="flex flex-col gap-2">
+        <Skeleton className="h-4 w-1/2" />
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-4 w-1/4" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+ProductItem.Skeleton = ProductItemSkeleton;

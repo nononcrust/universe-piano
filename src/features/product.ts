@@ -35,7 +35,7 @@ export type ProductDetail = Prisma.PromiseReturnType<typeof productRepository.ge
 
 const ENDPOINT = "/product";
 
-export const productApi = {
+const productApi = {
   getProductList: async () => {
     const response = await api.get<ProductList>(ENDPOINT);
     return response.data;

@@ -1,6 +1,8 @@
 import { COOKIE } from "@/constants/cookie";
 import { Session, UserInfo } from "@/features/auth";
+import { Role } from "@prisma/client";
 import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 import { accessTokenSchema, jwt } from "./jwt";
 
 export const issueAccessToken = (user: UserInfo) => {
@@ -41,4 +43,12 @@ export const getServerSession = async (): Promise<Session | null> => {
   } satisfies Session;
 
   return session;
+};
+
+export const adminGuard = async () => {
+  const session = await getServerSession();
+
+  if (session?.user.role !== Role.ADMIN) {
+    return NextResponse.json("Unauthorized", { status: 401 });
+  }
 };

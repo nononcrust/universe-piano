@@ -1,4 +1,5 @@
 import { noticeRepository, noticeRequestSchema } from "@/features/notice";
+import { adminGuard } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -22,6 +23,8 @@ export const GET = async (request: Request, context: Context) => {
 };
 
 export const PUT = async (request: Request, context: Context) => {
+  adminGuard();
+
   try {
     const noticeId = context.params.id;
 
@@ -47,6 +50,8 @@ export const PUT = async (request: Request, context: Context) => {
 };
 
 export const DELETE = async (request: Request, context: Context) => {
+  adminGuard();
+
   try {
     const noticeId = context.params.id;
 

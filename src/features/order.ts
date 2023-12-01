@@ -50,7 +50,7 @@ export type OrderRequest = z.infer<typeof orderRequestSchema>;
 
 const ENDPOINT = "/order";
 
-export const orderApi = {
+const orderApi = {
   getOrderList: async () => {
     const response = await api.get<OrderList>(ENDPOINT);
     return response.data;

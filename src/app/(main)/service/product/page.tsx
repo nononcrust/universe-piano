@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { useProductList } from "@/features/product";
 
 export default function ProductListPage() {
-  const { data: products } = useProductList();
+  const { data: products, isLoading } = useProductList();
 
   return (
     <main className="container pb-16">
@@ -17,6 +17,7 @@ export default function ProductListPage() {
       </div>
       <section className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products?.map((product) => <ProductItem key={product.id} product={product} />)}
+        {isLoading && <ProductItem.Skeleton />}
       </section>
     </main>
   );

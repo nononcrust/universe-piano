@@ -50,7 +50,7 @@ export type AuditionCommentRequest = z.infer<typeof auditionCommentRequestSchema
 
 const ENDPOINT = "/audition";
 
-export const auditionApi = {
+const auditionApi = {
   getAuditionList: async () => {
     const response = await api.get<AuditionList>(ENDPOINT);
     return response.data;

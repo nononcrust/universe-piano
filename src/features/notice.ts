@@ -35,7 +35,7 @@ export type NoticeRequest = z.infer<typeof noticeRequestSchema>;
 
 const ENDPOINT = "/notice";
 
-export const noticeApi = {
+const noticeApi = {
   getNoticeList: async () => {
     const response = await api.get<NoticeList>(`${ENDPOINT}`);
     return response.data;
