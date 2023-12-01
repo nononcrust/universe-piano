@@ -33,6 +33,7 @@ export const userInfoSchema = z.object({
 export type SocialData = z.infer<typeof socialDataSchema>;
 export type UserInfo = z.infer<typeof userInfoSchema>;
 export type RegisterBody = z.infer<typeof registerRequestSchema>;
+export type Session = { user: UserInfo };
 
 const ENDPOINT = "/auth";
 
@@ -49,8 +50,8 @@ export const authApi = {
     const response = await api.post<UserInfo>(`${ENDPOINT}/register`, body);
     return response.data;
   },
-  getUserInfo: async () => {
-    const response = await api.get<UserInfo>(`${ENDPOINT}/me`);
+  getSession: async () => {
+    const response = await api.get<Session>(`${ENDPOINT}/session`);
     return response.data;
   },
   withdrawal: async () => {
@@ -61,13 +62,13 @@ export const authApi = {
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
-  userInfo: () => [...queryKeys.all(), "me"] as const,
+  session: () => [...queryKeys.all(), "session"] as const,
 };
 
-export const useUserInfo = () => {
+export const useSession = () => {
   return useQuery({
-    queryKey: queryKeys.userInfo(),
-    queryFn: authApi.getUserInfo,
+    queryKey: queryKeys.session(),
+    queryFn: authApi.getSession,
   });
 };
 
@@ -76,7 +77,7 @@ export const useRegister = () => {
 
   return useMutation({
     mutationFn: authApi.register,
-    onSuccess: (user) => queryClient.setQueryData(queryKeys.userInfo(), () => user),
+    onSuccess: (session) => queryClient.setQueryData(queryKeys.session(), () => session),
   });
 };
 

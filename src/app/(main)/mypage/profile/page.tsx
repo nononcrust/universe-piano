@@ -8,13 +8,15 @@ import { Badge } from "@/components/ui/badge";
 import { IconButton } from "@/components/ui/icon-button";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { useUserInfo } from "@/features/auth";
+import { useSession } from "@/features/auth";
 import Link from "next/link";
 
 export default function MyProfilePage() {
-  const { data: user } = useUserInfo();
+  const { data: session } = useSession();
 
-  if (!user) return null;
+  if (!session) return null;
+
+  const user = session.user;
 
   return (
     <main className="container pb-16">

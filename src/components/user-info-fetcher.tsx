@@ -1,5 +1,5 @@
 import { COOKIE } from "@/constants/cookie";
-import { UserInfo, queryKeys } from "@/features/auth";
+import { Session, UserInfo, queryKeys } from "@/features/auth";
 import { userRepository } from "@/features/user";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
@@ -9,7 +9,7 @@ import { PropsWithChildren } from "react";
 const prefetchUserInfo = async () => {
   const queryClient = new QueryClient();
 
-  const getUserInfo = async () => {
+  const getSession = async () => {
     const cookie = cookies().get(COOKIE.ACCESS_TOKEN);
 
     if (!cookie) {
@@ -43,12 +43,16 @@ const prefetchUserInfo = async () => {
       point: user.point,
     };
 
-    return userInfo;
+    const session = {
+      user: userInfo,
+    } satisfies Session;
+
+    return session;
   };
 
   await queryClient.prefetchQuery({
-    queryKey: queryKeys.userInfo(),
-    queryFn: getUserInfo,
+    queryKey: queryKeys.session(),
+    queryFn: getSession,
   });
 
   const dehydratedState = dehydrate(queryClient);

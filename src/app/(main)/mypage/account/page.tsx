@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { ROUTE } from "@/constants/route";
-import { useUpdateProfile, useUserInfo } from "@/features/auth";
+import { useSession, useUpdateProfile } from "@/features/auth";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -30,7 +30,7 @@ const formSchema = z.object({
 });
 
 export default function AccountPage() {
-  const { data: user } = useUserInfo();
+  const { data: session } = useSession();
 
   const router = useRouter();
 
@@ -40,16 +40,16 @@ export default function AccountPage() {
     mode: "onChange",
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nickname: user?.nickname ?? "",
-      email: user?.email ?? "",
+      nickname: session?.user.nickname ?? "",
+      email: session?.user.email ?? "",
     },
   });
 
   const onSubmit = form.handleSubmit((data) => {
-    if (!user || updateProfileMutation.isPending) return;
+    if (!session || updateProfileMutation.isPending) return;
 
     updateProfileMutation.mutate(
-      { id: user.id, body: data },
+      { id: session.user.id, body: data },
       {
         onSuccess: () => {
           router.refresh();

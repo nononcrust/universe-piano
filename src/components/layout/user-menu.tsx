@@ -1,7 +1,7 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
-import { useUserInfo } from "@/features/auth";
+import { useSession } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -13,10 +13,14 @@ import {
 } from "../ui/dropdown-menu";
 
 export const UserMenu = () => {
-  const { data: user } = useUserInfo();
+  const { data: session } = useSession();
+  console.log("session", session);
+
   const auth = useAuth();
 
-  if (!user) return null;
+  if (!session) return null;
+
+  const user = session.user;
 
   return (
     <DropdownMenu>

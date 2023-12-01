@@ -3,7 +3,7 @@
 import { siteContents } from "@/configs/site";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { useUserInfo } from "@/features/auth";
+import { useSession } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -15,7 +15,8 @@ import { Button } from "../ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export const NavigationMenuDialog = () => {
-  const { data: user } = useUserInfo();
+  const { data: session } = useSession();
+
   const auth = useAuth();
 
   return (
@@ -25,7 +26,7 @@ export const NavigationMenuDialog = () => {
       </SheetTrigger>
       <SheetContent className="overflow-y-auto" side="right">
         <ListSection>
-          {!user && (
+          {!session && (
             <div className="mb-4 flex gap-3">
               <Button variant="secondary" asChild className="h-12 flex-1">
                 <Link href={ROUTE.LOGIN}>유니버스 피아노 로그인</Link>
@@ -35,12 +36,12 @@ export const NavigationMenuDialog = () => {
               </Button> */}
             </div>
           )}
-          {user && (
+          {session && (
             <div className="mb-4 mt-2">
               <UserProfile />
             </div>
           )}
-          {user && (
+          {session && (
             <ListCategory title="">
               <ListItem href={ROUTE.MYPAGE.PROFILE}>MY 유니버스</ListItem>
             </ListCategory>
@@ -57,7 +58,7 @@ export const NavigationMenuDialog = () => {
               </ListCategory>
             ))}
         </ListSection>
-        {user && (
+        {session && (
           <button className="mt-2 font-medium text-muted-foreground" onClick={auth.logout}>
             로그아웃
           </button>
@@ -70,7 +71,7 @@ interface ListSubHeaderProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: React.ReactNode;
 }
 
-const ListSection = ({ title, className, children }: ListSubHeaderProps) => {
+const ListSection = ({ className, children }: ListSubHeaderProps) => {
   return (
     <div className={cn("mb-4", className)}>
       <div className="flex h-10 items-center justify-between">
@@ -91,7 +92,7 @@ interface ListCategoryProps {
   children: React.ReactNode;
 }
 
-const ListCategory = ({ title, children }: ListCategoryProps) => {
+const ListCategory = ({ children }: ListCategoryProps) => {
   return <div className="mt-2 flex flex-col border-b border-gray-100 pb-3">{children}</div>;
 };
 
@@ -116,9 +117,11 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
 };
 
 const UserProfile = () => {
-  const { data: user } = useUserInfo();
+  const { data: session } = useSession();
 
-  if (!user) return null;
+  if (!session) return null;
+
+  const user = session.user;
 
   return (
     <div className="flex gap-4">

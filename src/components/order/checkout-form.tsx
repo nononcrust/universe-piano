@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useUserInfo } from "@/features/auth";
+import { useSession } from "@/features/auth";
 import { useOrderDetail } from "@/features/order";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams } from "next/navigation";
@@ -31,7 +31,7 @@ const formSchema = z.object({
 export const CheckoutForm = () => {
   const [termsChecked, setTermsChecked] = useState(false);
 
-  const { data: user } = useUserInfo();
+  const { data: session } = useSession();
 
   const params = useParams<{ id: string }>();
 
@@ -40,14 +40,14 @@ export const CheckoutForm = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      point: user?.point ?? 0,
+      point: session?.user.point ?? 0,
     },
   });
 
   const onAllPointClick = () => {
-    if (!user) return;
+    if (!session) return;
 
-    form.setValue("point", user.point);
+    form.setValue("point", session.user.point);
   };
 
   const onSubmit = form.handleSubmit((data) => {
@@ -58,7 +58,9 @@ export const CheckoutForm = () => {
   //   return redirect(ROUTE.HOME);
   // }
 
-  if (!user) return null;
+  if (!session) return null;
+
+  const user = session.user;
 
   return (
     <main className="container pb-16">

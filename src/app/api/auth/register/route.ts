@@ -1,6 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
 import { UserInfo, registerRequestSchema } from "@/features/auth";
-import { jwt } from "@/lib/jwt";
+import { issueAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -19,7 +19,7 @@ export const POST = async (request: Request) => {
     });
 
     if (existingUser) {
-      return new NextResponse("User Already Exists", { status: 409 });
+      return NextResponse.json("User Already Exists", { status: 409 });
     }
 
     const user = await prisma.user.create({
@@ -43,22 +43,17 @@ export const POST = async (request: Request) => {
       point: user.point,
     };
 
-    const accessToken = jwt.signUser(userInfo);
-
-    cookies().set(COOKIE.ACCESS_TOKEN, accessToken, {
-      secure: true,
-      httpOnly: true,
-    });
+    issueAccessToken(userInfo);
 
     cookies().delete(COOKIE.REGISTER_TOKEN);
 
     return NextResponse.json(userInfo);
   } catch (error) {
     if (error instanceof ZodError) {
-      return new NextResponse("Bad Request", { status: 400 });
+      return NextResponse.json("Bad Request", { status: 400 });
     }
 
     console.log(error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };

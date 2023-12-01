@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { FORM } from "@/constants/form";
 import { ROUTE } from "@/constants/route";
-import { SocialData, authApi, queryKeys } from "@/features/auth";
+import { Session, SocialData, authApi, queryKeys } from "@/features/auth";
 import { formatPhoneNumberInput } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -65,7 +65,11 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
 
     signupMutation.mutate(body, {
       onSuccess: (data) => {
-        queryClient.setQueryData(queryKeys.userInfo(), data);
+        const session = {
+          user: data,
+        } satisfies Session;
+
+        queryClient.setQueryData(queryKeys.session(), session);
         router.push(ROUTE.HOME);
       },
     });

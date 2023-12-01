@@ -1,7 +1,5 @@
-import { COOKIE } from "@/constants/cookie";
+import { getServerSession, revokeAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { getServerSession } from "@/lib/session";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const DELETE = async (request: Request) => {
@@ -11,7 +9,7 @@ export const DELETE = async (request: Request) => {
     const user = session?.user;
 
     if (!user) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return NextResponse.json("Unauthorized", { status: 401 });
     }
 
     const deletedUser = await prisma.user.delete({
@@ -20,11 +18,10 @@ export const DELETE = async (request: Request) => {
       },
     });
 
-    cookies().delete(COOKIE.ACCESS_TOKEN);
+    revokeAccessToken();
 
     return NextResponse.json(deletedUser);
   } catch (error) {
-    console.log(error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };

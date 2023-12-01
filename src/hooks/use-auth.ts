@@ -7,13 +7,13 @@ export const useAuth = () => {
   const logout = async () => {
     await authApi.logout();
 
-    queryClient.setQueryData(queryKeys.userInfo(), null);
+    queryClient.setQueryData(queryKeys.session(), null);
   };
 
   const withdrawal = async () => {
     await authApi.withdrawal();
 
-    queryClient.setQueryData(queryKeys.userInfo(), null);
+    queryClient.setQueryData(queryKeys.session(), null);
   };
 
   return { logout, withdrawal };

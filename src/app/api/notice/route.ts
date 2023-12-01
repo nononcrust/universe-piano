@@ -9,7 +9,7 @@ export const GET = async (request: Request) => {
 
     return NextResponse.json(notices);
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };
 
@@ -26,9 +26,9 @@ export const POST = async (request: Request) => {
     return NextResponse.json(notice);
   } catch (error) {
     if (error instanceof ZodError) {
-      return new NextResponse("Bad Request", { status: 400 });
+      return NextResponse.json("Bad Request", { status: 400 });
     }
 
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };

@@ -1,6 +1,6 @@
 import { auditionCommentRequestSchema } from "@/features/audition";
+import { getServerSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { getServerSession } from "@/lib/session";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
@@ -17,7 +17,7 @@ export const POST = async (request: Request, context: Context) => {
     const user = session?.user;
 
     if (!user) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return NextResponse.json("Unauthorized", { status: 401 });
     }
 
     const auditionCommentId = context.params.id;
@@ -37,9 +37,9 @@ export const POST = async (request: Request, context: Context) => {
     return NextResponse.json(auditionComment);
   } catch (error) {
     if (error instanceof ZodError) {
-      return new NextResponse("Bad Request", { status: 400 });
+      return NextResponse.json("Bad Request", { status: 400 });
     }
 
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };

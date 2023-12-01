@@ -2,7 +2,7 @@
 
 import { headerNav, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
-import { useUserInfo } from "@/features/auth";
+import { useSession } from "@/features/auth";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +20,7 @@ export interface NavItem {
 }
 
 export const Header = () => {
-  const { data: user, fetchStatus } = useUserInfo();
+  const { data: session, fetchStatus } = useSession();
 
   const pathname = usePathname();
 
@@ -64,7 +64,7 @@ export const Header = () => {
               </nav>
             </div>
             <NavigationMenuDialog />
-            {!user && (
+            {!session && (
               <div className="hidden gap-2 md:flex">
                 <Button asChild size="sm" className="h-[32px] text-xs" variant="secondary">
                   <Link
@@ -84,7 +84,7 @@ export const Header = () => {
                 </Button> */}
               </div>
             )}
-            {user && (
+            {session && (
               <div className="hidden md:flex">
                 <UserMenu />
               </div>

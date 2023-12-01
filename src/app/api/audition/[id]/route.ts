@@ -17,7 +17,7 @@ export const GET = async (request: Request, context: Context) => {
 
     return NextResponse.json(audition);
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };
 
@@ -45,10 +45,10 @@ export const PUT = async (request: Request, context: Context) => {
     return NextResponse.json(audition);
   } catch (error) {
     if (error instanceof ZodError) {
-      return new NextResponse("Bad Request", { status: 400 });
+      return NextResponse.json("Bad Request", { status: 400 });
     }
 
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };
 
@@ -64,6 +64,6 @@ export const DELETE = async (request: Request, context: Context) => {
 
     return NextResponse.json(audition);
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };

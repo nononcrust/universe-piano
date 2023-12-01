@@ -1,6 +1,6 @@
 "use client";
 
-import { useUserInfo } from "@/features/auth";
+import { useSession } from "@/features/auth";
 import { useDialog } from "@/hooks/use-dialog";
 import {
   AlertDialog,
@@ -30,11 +30,11 @@ export const CommentItem = ({
   createdAt,
   onDelete,
 }: CommentItemProps) => {
-  const { data: user } = useUserInfo();
+  const { data: session } = useSession();
 
   const deleteConfirmDialog = useDialog();
 
-  const isMyComment = user?.id === authorId;
+  const isMyComment = session?.user.id === authorId;
 
   const onDeleteButtonClick = () => {
     deleteConfirmDialog.open();

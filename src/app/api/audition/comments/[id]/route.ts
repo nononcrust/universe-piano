@@ -19,6 +19,6 @@ export const DELETE = async (request: Request, context: Context) => {
 
     return NextResponse.json(auditionComment);
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json("Internal Error", { status: 500 });
   }
 };
