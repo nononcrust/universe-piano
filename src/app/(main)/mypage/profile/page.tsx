@@ -42,10 +42,20 @@ export default function MyProfilePage() {
           </Link>
         </IconButton>
       </div>
-      <PageSubtitle className="mt-20" title="적립금" />
-      <div className="mt-4 flex items-center gap-3">
-        사용 가능한 적립금:
+      <div className="mt-8 flex items-center justify-between gap-3 rounded-2xl bg-gray-100 p-4">
+        <p>포인트</p>
         <p className="font-semibold text-primary">{user.point} P</p>
+      </div>
+      <PageSubtitle className="mt-20" title="추가 정보" />
+      <div className="mt-8 flex flex-col gap-4">
+        <Link className="flex items-center justify-between text-lg" href={ROUTE.MYPAGE.ORDER}>
+          <p>구매 내역</p>
+          <Icon.ChevronRight className="ml-2 h-4 w-4 text-muted-foreground" />
+        </Link>
+        <Link className="flex items-center justify-between text-lg" href={ROUTE.MYPAGE.ACTIVITY}>
+          <p>활동</p>
+          <Icon.ChevronRight className="ml-2 h-4 w-4 text-muted-foreground" />
+        </Link>
       </div>
     </main>
   );

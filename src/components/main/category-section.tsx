@@ -7,32 +7,32 @@ const categories = [
   {
     title: "입시 컨설팅",
     href: ROUTE.HOME,
-    icon: <Icon.Flag className="h-8 w-8" />,
+    icon: <Icon.Flag className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
     title: "1:1 과외",
     href: ROUTE.HOME,
-    icon: <Icon.Star className="h-8 w-8" />,
+    icon: <Icon.Star className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
     title: "독학 키트",
     href: ROUTE.HOME,
-    icon: <Icon.BookOpen className="h-8 w-8" />,
+    icon: <Icon.BookOpen className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
     title: "후기",
     href: ROUTE.HOME,
-    icon: <Icon.Leaf className="h-8 w-8" />,
+    icon: <Icon.Leaf className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
     title: "공지사항",
     href: ROUTE.HOME,
-    icon: <Icon.Megaphone className="h-8 w-8" />,
+    icon: <Icon.Megaphone className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
     title: "상담하기",
     href: ROUTE.HOME,
-    icon: <Icon.User className="h-8 w-8" />,
+    icon: <Icon.User className="h-8 w-8" strokeWidth={1.5} />,
   },
 ] as const;
 
@@ -63,7 +63,7 @@ const CategoryItem = ({ title, href, icon }: CategoryItemProps) => {
       <div className="flex h-16 w-16 items-center justify-center rounded-[20px] bg-gray-100">
         {icon}
       </div>
-      <p className="mt-2 text-center text-sm font-medium">{title}</p>
+      <p className="mt-2 text-center text-muted-foreground">{title}</p>
     </div>
   );
 };

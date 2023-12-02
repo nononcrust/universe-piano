@@ -54,7 +54,7 @@ export const Header = () => {
                     key={index}
                     href={item.href}
                     className={cn(
-                      "flex items-center text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground",
+                      "flex items-center font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground",
                       pathname.startsWith(getDomain(item.href)) && "font-semibold text-foreground",
                     )}
                   >

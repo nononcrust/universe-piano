@@ -15,12 +15,12 @@ export const Carousel = () => {
       <SwiperSlide className="bg-gray-100">
         <div className="container relative md:pt-16">
           <div className="absolute z-10 mt-28 flex flex-col md:mt-20">
-            <p className="text-2xl font-bold md:text-3xl">1차 오디션 결과 발표</p>
-            <p className="z-10 mt-1 text-sm font-medium md:text-base">
+            <p className="text-2xl font-semibold md:text-3xl">1차 오디션 결과 발표</p>
+            <p className="z-10 mt-1 text-sm font-medium text-muted-foreground md:text-base">
               미국 음대 오디션 결과, 유니버스 피아노에서 확인하세요.
             </p>
           </div>
-          <div className="absolute right-2 top-10 z-0 md:right-16 md:top-16">
+          <div className="absolute right-2 top-10 z-0 md:right-0 md:top-16">
             <div className="relative h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
               <Image
                 priority
@@ -36,14 +36,14 @@ export const Carousel = () => {
       <SwiperSlide className="bg-gray-100">
         <div className="container relative md:pt-16">
           <div className="absolute z-10 mt-24 flex flex-col md:mt-20">
-            <p className="text-2xl font-bold md:text-3xl">2025 가을학기 서비스</p>
-            <p className="z-10 mt-1 whitespace-pre text-sm font-medium md:text-base">
+            <p className="text-2xl font-semibold md:text-3xl">2025 가을학기 서비스</p>
+            <p className="z-10 mt-1 whitespace-pre text-sm font-medium text-muted-foreground md:text-base">
               {
                 "컨설팅, 영어 스터디, 과외, 독학키트까지\n미국 음대 입시에 필요한 모든 것을 담았습니다."
               }
             </p>
           </div>
-          <div className="absolute right-8 top-14 z-0 md:right-24 md:top-24">
+          <div className="absolute right-8 top-14 z-0 md:right-8 md:top-24">
             <div className="relative h-[140px] w-[140px] md:h-[160px] md:w-[160px]">
               <Image
                 priority

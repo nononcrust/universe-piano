@@ -1,7 +1,11 @@
+"use client";
+
 import { PageTitle } from "@/components/layout/page-title";
+import { Pagination } from "@/components/pagination";
 import { SupportList } from "@/components/support/support-list";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { usePagination } from "@/hooks/use-pagination";
+import { useState } from "react";
 
 const DUMMY_SUPPORT_LIST = [
   {
@@ -28,14 +32,32 @@ const TAB_LIST = {
   subscription: "구독",
   register: "가입",
   account: "계정",
-};
+} as const;
+
+type Tab = keyof typeof TAB_LIST;
 
 export default function SupportPage() {
+  const [tab, setTab] = useState<Tab>("all");
+  const pagination = usePagination();
+
   return (
     <main className="container pb-16">
       <PageTitle title="자주 묻는 질문" />
-      <Input placeholder="검색어를 입력해주세요." className="mt-8" />
-      <Tabs className="mt-4 overflow-x-auto border-b" defaultValue="all">
+      <div className="mt-8 flex gap-2 overflow-x-auto">
+        {Object.entries(TAB_LIST).map(([value, label], index) => (
+          <Button
+            key={index}
+            size="sm"
+            className="rounded-full px-4"
+            variant={tab === value ? "default" : "secondary"}
+            onClick={() => setTab(value as keyof typeof TAB_LIST)}
+          >
+            {label}
+          </Button>
+        ))}
+      </div>
+      {/* <Input placeholder="검색어를 입력해주세요." className="mt-4" /> */}
+      {/* <Tabs className="mt-4 overflow-x-auto border-b" defaultValue="all">
         <TabsList>
           {Object.entries(TAB_LIST).map(([value, label], index) => (
             <TabsTrigger key={index} className="px-6" value={value}>
@@ -43,10 +65,16 @@ export default function SupportPage() {
             </TabsTrigger>
           ))}
         </TabsList>
-      </Tabs>
-      <section className="mt-8">
+      </Tabs> */}
+      <div className="mt-8">
         <SupportList initialData={DUMMY_SUPPORT_LIST} />
-      </section>
+      </div>
+      <Pagination
+        className="mt-8"
+        currentPage={pagination.current}
+        totalPage={1}
+        onChange={pagination.onChange}
+      />
     </main>
   );
 }

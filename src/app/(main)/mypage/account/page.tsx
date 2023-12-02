@@ -108,7 +108,7 @@ export default function AccountPage() {
           />
           <div className="flex justify-end">
             <Button type="submit" disabled={!form.formState.isDirty || !form.formState.isValid}>
-              저장
+              저장하기
             </Button>
           </div>
         </FormLayout>
