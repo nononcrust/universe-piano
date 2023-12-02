@@ -16,16 +16,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
-import { useOrderDetail } from "@/features/order";
+import { useOrderDetail, useUpdateOrder } from "@/features/order";
+import { allowNumberOnly, defaultZero, limitMaxNumber, trimLeadingZeros } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useParams } from "next/navigation";
+import { OrderStatus } from "@prisma/client";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  point: z.number().int(),
+  point: z.string(),
 });
 
 export const CheckoutForm = () => {
@@ -35,32 +38,51 @@ export const CheckoutForm = () => {
 
   const params = useParams<{ id: string }>();
 
+  const router = useRouter();
+
   const { data: order } = useOrderDetail(params.id);
+
+  const updateOrderMutation = useUpdateOrder();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      point: session?.user.point ?? 0,
+      point: "0",
     },
   });
 
-  const onAllPointClick = () => {
-    if (!session) return;
+  const onAllPointClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    if (!session || !order) return;
+    event.preventDefault();
 
-    form.setValue("point", session.user.point);
+    form.setValue("point", String(Math.min(session.user.point, order.orderItems[0].product.price)));
   };
 
   const onSubmit = form.handleSubmit((data) => {
-    console.log("payment", data);
+    if (updateOrderMutation.isPending) return;
+
+    updateOrderMutation.mutate(
+      {
+        id: params.id,
+        body: {
+          status: OrderStatus.PAYMENT_PENDING,
+          point: Number(data.point),
+        },
+      },
+      {
+        onSuccess: () => {
+          router.push(ROUTE.HOME);
+        },
+      },
+    );
   });
 
-  // if (data?.status !== OrderStatus.CHECKING) {
-  //   return redirect(ROUTE.HOME);
-  // }
-
-  if (!session) return null;
+  if (!session || !order) return null;
 
   const user = session.user;
+  const productsPrice = order.orderItems.reduce((acc, cur) => acc + cur.product.price, 0);
+  const point = form.watch("point");
+  const totalPrice = productsPrice - Number(point);
 
   return (
     <main className="container pb-16">
@@ -116,20 +138,24 @@ export const CheckoutForm = () => {
           </section>
           <section>
             <PageSubtitle title="상품 정보" className="mb-4 mt-16" />
-            <div className="flex gap-4">
-              <div className="h-20 w-20 rounded-md bg-gray-100" />
-              <div className="flex flex-1 flex-col gap-2">
-                <p className="text-sm">독학 키트 | 미국 음대 오디션에서 살아남는 방법</p>
-                <p className="font-medium">9,900원</p>
+            {order.orderItems.map((orderItem) => (
+              <div className="flex gap-4" key={orderItem.id}>
+                <div className="h-20 w-20 rounded-md bg-gray-100" />
+                <div className="flex flex-1 flex-col gap-2">
+                  <p className="text-sm">
+                    {orderItem.product.category.name} | {orderItem.product.name}
+                  </p>
+                  <p className="font-medium">{orderItem.product.price}원</p>
+                </div>
               </div>
-            </div>
+            ))}
           </section>
           <section>
             <PageSubtitle title="적립금 사용" className="mb-4 mt-16" />
             <FormField
               name="point"
               control={form.control}
-              render={({ field }) => (
+              render={({ field: { onChange, ...field } }) => (
                 <FormItem>
                   <FormLabel>적립금</FormLabel>
                   <FormControl>
@@ -139,6 +165,14 @@ export const CheckoutForm = () => {
                         placeholder="적립금을 입력해주세요."
                         disabled={user.point === 0}
                         {...field}
+                        onChange={(e) =>
+                          onChange(
+                            limitMaxNumber(
+                              defaultZero(trimLeadingZeros(allowNumberOnly(e.target.value))),
+                              Math.min(user.point, productsPrice),
+                            ),
+                          )
+                        }
                       />
                       <Button
                         variant="secondary"
@@ -160,15 +194,15 @@ export const CheckoutForm = () => {
           <section className="mt-12 flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">상품 금액</p>
-              <p className="text-sm font-medium">9,900원</p>
+              <p className="text-sm font-medium">{productsPrice?.toLocaleString()}원</p>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">적립금 사용</p>
-              <p className="text-sm font-medium">1,200원</p>
+              <p className="text-sm font-medium">{point.toLocaleString()}원</p>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-lg font-medium">최종 결제 금액</p>
-              <p className="text-xl font-medium">8,700원</p>
+              <p className="text-xl font-medium">{totalPrice.toLocaleString()}원</p>
             </div>
           </section>
           <section>

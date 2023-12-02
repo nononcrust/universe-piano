@@ -1,32 +1,34 @@
 "use client";
 
-import { TIER_LABEL } from "@/constants/enum";
+import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { Order } from "@prisma/client";
+import { OrderList } from "@/features/order";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 
-export const orderColumns: ColumnDef<Order>[] = [
+export const orderColumns: ColumnDef<OrderList[number]>[] = [
   {
-    accessorKey: "nickname",
-    header: "이름",
+    header: "주문번호",
     cell: ({ row }) => (
-      <Link className="hover:underline" href={ROUTE.ADMIN.USER.EDIT(row.original.id)}>
-        {row.getValue("nickname")}
+      <Link className="hover:underline" href={ROUTE.ADMIN.ORDER.EDIT(row.original.id)}>
+        {row.original.number}
       </Link>
     ),
   },
   {
-    accessorKey: "phone",
+    accessorFn: (row) => row.user.nickname,
+    header: "닉네임",
+  },
+  {
+    accessorFn: (row) => row.user.phone,
     header: "연락처",
   },
   {
-    accessorKey: "email",
+    accessorFn: (row) => row.user.email,
     header: "이메일",
   },
   {
-    accessorKey: "tier",
-    header: "등급",
-    cell: ({ row }) => TIER_LABEL[row.getValue("tier") as keyof typeof TIER_LABEL],
+    accessorFn: (row) => ORDER_STATUS_LABEL[row.status],
+    header: "주문 상태",
   },
 ];

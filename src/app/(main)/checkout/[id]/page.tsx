@@ -1,6 +1,5 @@
 import { CheckoutForm } from "@/components/order/checkout-form";
-import { noticeRepository } from "@/features/notice";
-import { queryKeys } from "@/features/order";
+import { orderRepository, queryKeys } from "@/features/order";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
 type Context = {
@@ -16,7 +15,7 @@ export default async function CheckoutPage(context: Context) {
 
   await queryClient.prefetchQuery({
     queryKey: queryKeys.detail(id),
-    queryFn: () => noticeRepository.getNoticeById(id),
+    queryFn: () => orderRepository.getOrderById(id),
   });
 
   return (

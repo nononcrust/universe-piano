@@ -22,6 +22,7 @@ export const productRepository = {
       include: {
         images: true,
         productReviews: true,
+        category: true,
       },
       where: {
         id,

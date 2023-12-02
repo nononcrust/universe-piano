@@ -5,7 +5,6 @@ import { formatDate } from "@/lib/utils";
 import { Audition } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
-import { DataTableRowActions } from "../data-table-row-actions";
 
 export const auditionColumns: ColumnDef<Audition>[] = [
   {
@@ -21,9 +20,5 @@ export const auditionColumns: ColumnDef<Audition>[] = [
     accessorKey: "createdAt",
     header: "작성일",
     accessorFn: (row) => formatDate(row.createdAt),
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];

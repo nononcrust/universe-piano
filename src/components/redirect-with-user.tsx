@@ -18,9 +18,9 @@ export const RedirectWithUser = ({ user }: RedirectWithUserProps) => {
   const login = useCallback(async () => {
     await authApi.login(user);
 
-    const session = {
+    const session: Session = {
       user,
-    } satisfies Session;
+    };
 
     queryClient.setQueryData(queryKeys.session(), session);
 

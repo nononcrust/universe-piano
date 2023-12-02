@@ -9,12 +9,12 @@ interface AuditionCommentItemProps {
 }
 
 export const AuditionCommentItem = ({ comment }: AuditionCommentItemProps) => {
-  const { mutate, isPending } = useDeleteAuditionComment();
+  const deleteAuditionCommentMutation = useDeleteAuditionComment();
 
   const onCommentDelete = (commentId: string) => {
-    if (isPending) return;
+    if (deleteAuditionCommentMutation.isPending) return;
 
-    mutate({ id: commentId });
+    deleteAuditionCommentMutation.mutate({ id: commentId });
   };
 
   return (

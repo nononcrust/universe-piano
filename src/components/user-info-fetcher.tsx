@@ -43,9 +43,9 @@ const prefetchUserInfo = async () => {
       point: user.point,
     };
 
-    const session = {
+    const session: Session = {
       user: userInfo,
-    } satisfies Session;
+    };
 
     return session;
   };

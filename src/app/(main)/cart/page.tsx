@@ -26,7 +26,7 @@ export default function CartPage() {
         <div className="flex flex-col gap-4">
           <PriceSection />
           <Button size="lg" className="font-medium" asChild>
-            <Link href={ROUTE.CHECKOUT}>구매하기</Link>
+            <Link href={ROUTE.CHECKOUT("1")}>구매하기</Link>
           </Button>
         </div>
       </section>

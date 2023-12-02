@@ -27,12 +27,12 @@ export default async function KakaoCallbackPage({
   });
 
   if (user === null) {
-    const socialData = {
+    const socialData: SocialData = {
       id: kakaoId,
       nickname: kakaoUserInfo.properties.nickname,
       profileImage: kakaoUserInfo.properties.profile_image,
       email: kakaoUserInfo.kakao_account.email,
-    } satisfies SocialData;
+    };
 
     const registerToken = jwt.signRegisterToken(socialData);
 

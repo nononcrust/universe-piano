@@ -67,9 +67,11 @@ export const ROUTE = {
     ORDER: "/mypage/order",
   },
   CART: "/cart",
-  CHECKOUT: "/checkout",
+  CHECKOUT: (id: string) => `/checkout/${id}`,
   WITHDRAWAL: "/withdrawal",
-
+  ORDER: {
+    DETAIL: (id: string) => `/order/${id}`,
+  },
   ADMIN: {
     HOME: "/admin",
     USER: {

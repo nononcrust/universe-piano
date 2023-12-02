@@ -38,9 +38,9 @@ export const getServerSession = async (): Promise<Session | null> => {
 
   const user = decoded.data.user;
 
-  const session = {
+  const session: Session = {
     user,
-  } satisfies Session;
+  };
 
   return session;
 };

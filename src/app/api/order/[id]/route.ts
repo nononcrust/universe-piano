@@ -1,4 +1,4 @@
-import { orderRepository, orderRequestSchema } from "@/features/order";
+import { orderRepository, orderUpdateRequestSchema } from "@/features/order";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -27,7 +27,7 @@ export const PUT = async (request: Request, context: Context) => {
 
     const body = await request.json();
 
-    const parsedBody = orderRequestSchema.parse(body);
+    const parsedBody = orderUpdateRequestSchema.parse(body);
 
     const order = await prisma.order.update({
       where: {

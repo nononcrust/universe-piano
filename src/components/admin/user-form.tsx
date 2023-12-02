@@ -49,18 +49,18 @@ export const UserForm = ({ user }: UserFormProps) => {
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
-    if (!updateUserMutation.isPending) {
-      updateUserMutation.mutate(
-        { id: user.id, body: data },
-        {
-          onSuccess: () => {
-            router.refresh();
-            router.push(ROUTE.ADMIN.USER.LIST);
-            toast("유저 정보가 수정되었습니다.");
-          },
+    if (updateUserMutation.isPending) return;
+
+    updateUserMutation.mutate(
+      { id: user.id, body: data },
+      {
+        onSuccess: () => {
+          router.refresh();
+          router.push(ROUTE.ADMIN.USER.LIST);
+          toast.success("유저 정보가 수정되었습니다.");
         },
-      );
-    }
+      },
+    );
   });
 
   return (

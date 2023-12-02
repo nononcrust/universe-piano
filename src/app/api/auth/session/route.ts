@@ -29,9 +29,9 @@ export const GET = async (request: Request) => {
 
     issueAccessToken(user);
 
-    const session = {
+    const session: Session = {
       user: user,
-    } satisfies Session;
+    };
 
     return NextResponse.json(session);
   } catch (error) {

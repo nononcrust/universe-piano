@@ -26,14 +26,13 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
       content: "",
     },
   });
-  console.log(form);
 
-  const { mutate, isPending } = useCreateAuditionComment();
+  const createAuditionCommentMutation = useCreateAuditionComment();
 
   const onSubmit = form.handleSubmit((data) => {
-    if (isPending) return;
+    if (createAuditionCommentMutation.isPending) return;
 
-    mutate(
+    createAuditionCommentMutation.mutate(
       {
         id: auditionId,
         body: {

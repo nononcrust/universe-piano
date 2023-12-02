@@ -210,12 +210,14 @@ model Subscription {
 model Order {
   id     String      @unique @default(cuid())
   number Int         @id @default(autoincrement())
+  point  Int
   status OrderStatus
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
 
   orderItems OrderItem[]
+
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

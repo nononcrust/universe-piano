@@ -14,7 +14,6 @@ import {
 
 export const UserMenu = () => {
   const { data: session } = useSession();
-  console.log("session", session);
 
   const auth = useAuth();
 

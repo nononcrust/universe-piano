@@ -37,6 +37,8 @@ export const ImageInput = ({ value, onChange }: ImageInputProps) => {
     const uploadedFiles = await startUpload(files);
     setIsUploading(false);
 
+    console.log(uploadedFiles);
+
     if (!uploadedFiles) return;
 
     const urls = uploadedFiles.map((file) => file.url);

@@ -26,10 +26,11 @@ export const POST = async (request: Request) => {
 
     const body = await request.json();
 
-    const { status, products } = orderRequestSchema.parse(body);
+    const { status, products, point } = orderRequestSchema.parse(body);
 
     const order = await prisma.order.create({
       data: {
+        point: point,
         status: status,
         user: {
           connect: {

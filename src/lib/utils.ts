@@ -57,13 +57,37 @@ export const allowNumberOnly = (input: string) => {
   return numericValue;
 };
 
+export const trimLeadingZeros = (input: string) => {
+  if (input.length === 1) {
+    return input;
+  }
+
+  return input.replace(/^0+/, "");
+};
+
+export const defaultZero = (input: string) => {
+  if (input === "") {
+    return "0";
+  }
+
+  return input;
+};
+
+export const limitMaxNumber = (input: string, max: number) => {
+  if (Number(input) > max) {
+    return String(max);
+  }
+
+  return input;
+};
+
 export const getRatingAverage = (ratings: number[]) => {
-    if (ratings.length === 0) {
-      return 0;
-    }
-  
-    const sum = ratings.reduce((accumulator, rating) => accumulator + rating, 0);
-  
-    const average = sum / ratings.length;
-    return average;
-}
+  if (ratings.length === 0) {
+    return 0;
+  }
+
+  const sum = ratings.reduce((accumulator, rating) => accumulator + rating, 0);
+
+  const average = sum / ratings.length;
+  return average;
+};

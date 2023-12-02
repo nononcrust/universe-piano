@@ -65,9 +65,9 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
 
     signupMutation.mutate(body, {
       onSuccess: (data) => {
-        const session = {
+        const session: Session = {
           user: data,
-        } satisfies Session;
+        };
 
         queryClient.setQueryData(queryKeys.session(), session);
         router.push(ROUTE.HOME);

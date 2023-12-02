@@ -1,6 +1,5 @@
 "use client";
 
-import { Icon } from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table } from "@tanstack/react-table";
@@ -24,17 +23,16 @@ export const DataTableToolbar = <TData,>({
         <Input
           placeholder={searchInputPlaceholder}
           value={(table.getColumn(searchColumnKey)?.getFilterValue() as string) ?? ""}
-          onChange={(event) => table.getColumn("title")?.setFilterValue(event.target.value)}
+          onChange={(event) => table.getColumn(searchColumnKey)?.setFilterValue(event.target.value)}
           className="h-8 w-[150px] lg:w-[250px]"
         />
         {isFiltered && (
           <Button
-            variant="ghost"
+            variant="secondary"
             onClick={() => table.resetColumnFilters()}
             className="h-8 px-2 lg:px-3"
           >
             필터 초기화
-            <Icon.X className="ml-2 h-4 w-4" />
           </Button>
         )}
       </div>

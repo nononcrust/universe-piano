@@ -1,3 +1,5 @@
+"use client";
+
 import { Icon } from "@/components/icon";
 import { PageTitle } from "@/components/layout/page-title";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -10,8 +12,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ROUTE } from "@/constants/route";
+import { useCreateOrder } from "@/features/order";
+import { useProductDetail } from "@/features/product";
+import { OrderStatus } from "@prisma/client";
 import Image from "next/image";
-import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 
 const DUMMY_PRODUCT_DETAIL = {
   productName: "미국 음대 오디션에서 살아남기",
@@ -21,6 +26,12 @@ const DUMMY_PRODUCT_DETAIL = {
 };
 
 export default function ProductDetailPage() {
+  const params = useParams<{ id: string }>();
+
+  const { data: product } = useProductDetail(params.id);
+
+  if (!product) return null;
+
   return (
     <main className="container pb-16">
       <section className="mt-8 flex flex-col gap-12 md:flex-row">
@@ -47,10 +58,16 @@ const ProductImageSection = () => {
 };
 
 const ProductOptionSection = () => {
+  const params = useParams<{ id: string }>();
+
+  const { data: product } = useProductDetail(params.id);
+
+  if (!product) return null;
+
   return (
     <div className="flex flex-1 flex-col">
-      <p className="text-gray-500">독학 키트</p>
-      <h1 className="mt-2 text-2xl font-medium">{DUMMY_PRODUCT_DETAIL.productName}</h1>
+      <p className="text-gray-500">{product.category.name}</p>
+      <h1 className="mt-2 text-2xl font-medium">{product.name}</h1>
       <div className="mt-2 flex items-center gap-2">
         <Icon.Star size={20} className="fill-black" />
         <p>{DUMMY_PRODUCT_DETAIL.rating}</p>
@@ -58,7 +75,7 @@ const ProductOptionSection = () => {
       <ProductOption className="mt-4" />
       <div className="mt-8 flex items-center justify-between">
         <p className="text-sm font-medium">주문 금액</p>
-        <p className="font-medium">{DUMMY_PRODUCT_DETAIL.price.toLocaleString()}원</p>
+        <p className="font-medium">{product.price.toLocaleString()}원</p>
       </div>
       <ProductAction />
     </div>
@@ -134,10 +151,45 @@ const ProductOption = ({ className }: ProductOptionProps) => {
 };
 
 const ProductAction = () => {
+  const params = useParams<{ id: string }>();
+
+  const router = useRouter();
+
+  const { data: product } = useProductDetail(params.id);
+
+  const createOrderMutation = useCreateOrder();
+
+  const onCheckout = async () => {
+    if (!product || createOrderMutation.isPending) return;
+
+    const orderProduct = {
+      productId: product.id,
+      amount: 1,
+      price: product.price,
+    };
+
+    createOrderMutation.mutate(
+      {
+        body: {
+          point: 0,
+          status: OrderStatus.CHECKING,
+          products: [orderProduct],
+        },
+      },
+      {
+        onSuccess: (order) => {
+          router.push(ROUTE.CHECKOUT(order.id));
+        },
+      },
+    );
+  };
+
+  if (!product) return null;
+
   return (
     <div className="mt-8 flex gap-4">
-      <Button className="flex-1" size="lg" asChild>
-        <Link href={ROUTE.CHECKOUT}>구매하기</Link>
+      <Button className="flex-1" size="lg" onClick={onCheckout}>
+        구매하기
       </Button>
     </div>
   );
