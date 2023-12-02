@@ -1,14 +1,17 @@
 "use client";
 
+import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Badge } from "../ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
@@ -29,10 +32,26 @@ export const UserMenu = () => {
           <AvatarFallback resource={user.profileImage} />
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="translate-y-1">
+      <DropdownMenuContent align="end" className="min-w-[320px] translate-y-1">
         {/* <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.CART}>장바구니</Link>
         </DropdownMenuItem> */}
+        <div className="p-4">
+          <div className="flex gap-4">
+            <Avatar className="h-12 w-12">
+              <AvatarImage src={user.profileImage} />
+              <AvatarFallback resource={user.profileImage} />
+            </Avatar>
+            <div>
+              <div className="flex items-center gap-2">
+                <p className="text-lg font-medium">{user.nickname}</p>
+                <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground">{user.email}</p>
+            </div>
+          </div>
+        </div>
+        <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.MYPAGE.PROFILE}>마이페이지</Link>
         </DropdownMenuItem>
@@ -44,6 +63,7 @@ export const UserMenu = () => {
           <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>
         </DropdownMenuItem>
         {/* </AccessControl> */}
+        <DropdownMenuSeparator />
         <DropdownMenuItem className="px-4 py-2" onClick={auth.logout}>
           로그아웃
         </DropdownMenuItem>
