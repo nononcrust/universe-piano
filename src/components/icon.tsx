@@ -13,6 +13,7 @@ import {
   Home,
   Instagram,
   Leaf,
+  Megaphone,
   Menu,
   MoreHorizontal,
   Search,
@@ -54,4 +55,5 @@ export const Icon = {
   Leaf: Leaf,
   Search: Search,
   Flag: Flag,
+  Megaphone: Megaphone,
 };

@@ -1,38 +1,38 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
-import Image from "next/image";
+import { Icon } from "../icon";
 
 const categories = [
   {
     title: "입시 컨설팅",
     href: ROUTE.HOME,
-    icon: <Image priority src="/images/idea.svg" width={48} height={48} alt="idea" />,
+    icon: <Icon.Flag className="h-8 w-8" />,
   },
   {
     title: "1:1 과외",
     href: ROUTE.HOME,
-    icon: <Image priority src="/images/beginner.svg" width={48} height={48} alt="idea" />,
+    icon: <Icon.Star className="h-8 w-8" />,
   },
   {
     title: "독학 키트",
     href: ROUTE.HOME,
-    icon: <Image priority src="/images/toolbox.svg" width={48} height={48} alt="idea" />,
+    icon: <Icon.BookOpen className="h-8 w-8" />,
   },
   {
     title: "후기",
     href: ROUTE.HOME,
-    icon: <Image priority src="/images/chat.svg" width={48} height={48} alt="idea" />,
+    icon: <Icon.Leaf className="h-8 w-8" />,
   },
   {
     title: "공지사항",
     href: ROUTE.HOME,
-    icon: <Image priority src="/images/commercial.svg" width={48} height={48} alt="idea" />,
+    icon: <Icon.Megaphone className="h-8 w-8" />,
   },
   {
     title: "상담하기",
     href: ROUTE.HOME,
-    icon: <Image priority src="/images/laptop.svg" width={48} height={48} alt="idea" />,
+    icon: <Icon.User className="h-8 w-8" />,
   },
 ] as const;
 
