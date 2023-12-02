@@ -82,7 +82,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
         카카오 계정으로 회원가입을 진행합니다.
       </h2>
       <Avatar className="mt-8 h-20 w-20">
-        <AvatarImage src={initialData.profileImage} alt="user profile image" />
+        <AvatarImage src={initialData.profileImage} alt="프로필 이미지" />
         <AvatarFallback />
       </Avatar>
       <Form {...form}>

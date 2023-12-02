@@ -32,7 +32,14 @@ export const AuditionDetail = () => {
           </div>
           <div className="relative mt-8 flex max-w-full">
             {audition.images?.map((image) => (
-              <Image key={image.id} width={500} height={400} src={image.url} alt="" />
+              <Image
+                className="rounded-2xl"
+                key={image.id}
+                width={500}
+                height={400}
+                src={image.url}
+                alt="게시글 이미지"
+              />
             ))}
           </div>
           <Markdown className="prose mt-8" content={audition.content} />

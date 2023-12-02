@@ -1,9 +1,7 @@
 import { ROUTE } from "@/constants/route";
 import { ProductList } from "@/features/product";
-import { getRatingAverage } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "./icon";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { Skeleton } from "./ui/skeleton";
 
@@ -12,7 +10,7 @@ interface ProductItemProps {
 }
 
 export const ProductItem = ({ product }: ProductItemProps) => {
-  const ratingAverage = getRatingAverage(product.productReviews.map((review) => review.rating));
+  // const ratingAverage = getRatingAverage(product.productReviews.map((review) => review.rating));
 
   return (
     <Link
@@ -21,17 +19,17 @@ export const ProductItem = ({ product }: ProductItemProps) => {
     >
       <AspectRatio ratio={1} className="rounded-lg border">
         <Image
-          src={"/images/logo.svg"}
+          src="/images/logo.svg"
           fill
-          alt=""
+          alt="상품 이미지"
           className="transition-all hover:scale-100 md:hover:scale-110"
         />
       </AspectRatio>
       <div className="flex flex-col gap-1">
-        <p className="text-sm text-gray-700">{product.name}</p>
+        <p className="text-lg text-gray-700 md:text-sm">{product.name}</p>
         <div className="flex items-center justify-between">
-          <p className="font-medium">{product.price.toLocaleString()}</p>
-          <div className="flex gap-2">
+          <p className="text-xl font-medium md:text-lg">{product.price.toLocaleString()}</p>
+          {/* <div className="flex gap-2">
             <div className="flex items-center gap-[2px]">
               <Icon.Star size={12} className="fill-primary text-primary" />
               <p className="text-xs font-medium">{ratingAverage}</p>
@@ -39,7 +37,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
             <p className="text-xs font-medium text-gray-400">
               리뷰 {product._count.productReviews}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </Link>

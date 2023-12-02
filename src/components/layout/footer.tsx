@@ -62,7 +62,7 @@ const SocialIconList = () => {
           src={ASSET.SOCIAL.INSTAGRAM}
           width={18}
           height={18}
-          alt="instagram"
+          alt="인스타그램 아이콘"
           className="h-auto"
         />
       </Link>
@@ -75,7 +75,7 @@ const SocialIconList = () => {
           src={ASSET.SOCIAL.KAKAO}
           width={18}
           height={18}
-          alt="kakao"
+          alt="카카오 아이콘"
           className="translate-y-[0.5px]"
         />
       </Link>
@@ -88,7 +88,7 @@ const SocialIconList = () => {
           src={ASSET.SOCIAL.NAVER_BLOG}
           width={16}
           height={16}
-          alt="naver-blog"
+          alt="네이버 블로그 아이콘"
           className="translate-y-[0.5px]"
         />
       </Link>
@@ -101,7 +101,7 @@ const SocialIconList = () => {
           src={ASSET.SOCIAL.NAVER_CAFE}
           width={16}
           height={16}
-          alt="naver-cafe"
+          alt="네이버 카페 아이콘"
           className="translate-x-[1px]"
         />
       </Link>

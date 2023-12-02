@@ -4,13 +4,6 @@ import { Icon } from "@/components/icon";
 import { PageTitle } from "@/components/layout/page-title";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { ROUTE } from "@/constants/route";
 import { useCreateOrder } from "@/features/order";
 import { useProductDetail } from "@/features/product";
@@ -51,7 +44,13 @@ const ProductImageSection = () => {
   return (
     <div className="flex-1">
       <div className="flex aspect-square items-center justify-center rounded-2xl border">
-        <Image src="/images/logo.svg" alt="" className="aspect-square" width={400} height={400} />
+        <Image
+          src="/images/logo.svg"
+          alt="상품 이미지"
+          className="aspect-square"
+          width={400}
+          height={400}
+        />
       </div>
     </div>
   );
@@ -72,7 +71,7 @@ const ProductOptionSection = () => {
         <Icon.Star size={20} className="fill-black" />
         <p>{DUMMY_PRODUCT_DETAIL.rating}</p>
       </div>
-      <ProductOption className="mt-4" />
+      {/* <ProductOption className="mt-4" /> */}
       <div className="mt-8 flex items-center justify-between">
         <p className="text-sm font-medium">주문 금액</p>
         <p className="font-medium">{product.price.toLocaleString()}원</p>
@@ -90,7 +89,7 @@ const ProductInfoSection = () => {
           .fill(0)
           .map((_, index) => (
             <AspectRatio key={index} className="rounded-lg border">
-              <Image src="/images/logo.svg" alt="" fill />
+              <Image src="/images/logo.svg" alt="상품 설명 이미지" fill />
             </AspectRatio>
           ))}
       </div>
@@ -102,7 +101,7 @@ const ProductAside = () => {
   return (
     <aside className="basis-1/3">
       <div className="sticky top-24 flex flex-col">
-        <ProductOption />
+        {/* <ProductOption /> */}
         <ProductAction />
       </div>
     </aside>
@@ -113,42 +112,42 @@ interface ProductOptionProps {
   className?: string;
 }
 
-const ProductOption = ({ className }: ProductOptionProps) => {
-  return (
-    <>
-      <Select>
-        <SelectTrigger className={className}>
-          <SelectValue placeholder="옵션을 선택해주세요" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="option-1">옵션 1</SelectItem>
-          <SelectItem value="option-2">옵션 2</SelectItem>
-          <SelectItem value="option-3">옵션 3</SelectItem>
-        </SelectContent>
-      </Select>
-      <Select>
-        <SelectTrigger className="mt-4">
-          <SelectValue placeholder="옵션을 선택해주세요" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="option-1">옵션 1</SelectItem>
-          <SelectItem value="option-2">옵션 2</SelectItem>
-          <SelectItem value="option-3">옵션 3</SelectItem>
-        </SelectContent>
-      </Select>
-      <Select>
-        <SelectTrigger className="mt-4">
-          <SelectValue placeholder="옵션을 선택해주세요" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="option-1">옵션 1</SelectItem>
-          <SelectItem value="option-2">옵션 2</SelectItem>
-          <SelectItem value="option-3">옵션 3</SelectItem>
-        </SelectContent>
-      </Select>
-    </>
-  );
-};
+// const ProductOption = ({ className }: ProductOptionProps) => {
+//   return (
+//     <>
+//       <Select>
+//         <SelectTrigger className={className}>
+//           <SelectValue placeholder="옵션을 선택해주세요" />
+//         </SelectTrigger>
+//         <SelectContent>
+//           <SelectItem value="option-1">옵션 1</SelectItem>
+//           <SelectItem value="option-2">옵션 2</SelectItem>
+//           <SelectItem value="option-3">옵션 3</SelectItem>
+//         </SelectContent>
+//       </Select>
+//       <Select>
+//         <SelectTrigger className="mt-4">
+//           <SelectValue placeholder="옵션을 선택해주세요" />
+//         </SelectTrigger>
+//         <SelectContent>
+//           <SelectItem value="option-1">옵션 1</SelectItem>
+//           <SelectItem value="option-2">옵션 2</SelectItem>
+//           <SelectItem value="option-3">옵션 3</SelectItem>
+//         </SelectContent>
+//       </Select>
+//       <Select>
+//         <SelectTrigger className="mt-4">
+//           <SelectValue placeholder="옵션을 선택해주세요" />
+//         </SelectTrigger>
+//         <SelectContent>
+//           <SelectItem value="option-1">옵션 1</SelectItem>
+//           <SelectItem value="option-2">옵션 2</SelectItem>
+//           <SelectItem value="option-3">옵션 3</SelectItem>
+//         </SelectContent>
+//       </Select>
+//     </>
+//   );
+// };
 
 const ProductAction = () => {
   const params = useParams<{ id: string }>();

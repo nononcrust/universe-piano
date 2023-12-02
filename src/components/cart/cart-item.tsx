@@ -6,7 +6,13 @@ export const CartItem = () => {
   return (
     <div className="flex gap-4 rounded-lg border p-4">
       <Checkbox />
-      <Image width={80} height={80} src={"/images/logo.svg"} alt="" className="rounded-md border" />
+      <Image
+        width={80}
+        height={80}
+        src={"/images/logo.svg"}
+        alt="장바구니 이미지"
+        className="rounded-md border"
+      />
       <div className="flex flex-1 flex-col gap-4">
         <p className="text-sm text-gray-700">
           [맞춤/5%추가인하][맞춤] 25mm 알루미늄 블라인드 거실 창문 39컬러

@@ -7,7 +7,7 @@ export default function MyAcitivtyPage() {
     <main className="container pb-16">
       <PageTitle title="활동" />
       <PageSubtitle className="mt-8" title="작성한 댓글" />
-      <EmptyState message="작성한 댓글이 없습니다." />
+      <EmptyState message="작성한 댓글이 없어요." />
     </main>
   );
 }

@@ -85,7 +85,13 @@ interface ImagePreviewItemProps {
 const ImagePreviewItem = ({ imageUrl, onDelete }: ImagePreviewItemProps) => {
   return (
     <div className="relative">
-      <Image width={96} height={96} src={imageUrl} className="h-24 w-24 rounded-lg border" alt="" />
+      <Image
+        width={96}
+        height={96}
+        src={imageUrl}
+        className="h-24 w-24 rounded-lg border"
+        alt="이미지 미리보기"
+      />
       <div className="absolute -right-1 -top-1 flex cursor-pointer rounded-full bg-black p-[2px] transition hover:bg-gray-700">
         <Icon.X className="h-4 w-4 text-white" onClick={() => onDelete(imageUrl)} />
       </div>

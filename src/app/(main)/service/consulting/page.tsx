@@ -18,7 +18,7 @@ export default function ConsultingListPage() {
           {/* <div className="aspect-square w-full rounded-xl bg-gray-200 md:max-w-[260px]" /> */}
         </div>
         <div className="flex justify-center">
-          <Image src="/images/3d-star.png" width={300} height={300} alt="star" />
+          <Image src="/images/3d-star.png" width={300} height={300} alt="별" />
         </div>
       </section>
       <section>

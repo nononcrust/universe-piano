@@ -25,7 +25,7 @@ export const Carousel = () => {
               <Image
                 priority
                 src="/images/cat_working.png"
-                alt="carousel-image"
+                alt="고양이"
                 fill
                 sizes="(min-width: 768px) 200px, 200px"
               />
@@ -48,7 +48,7 @@ export const Carousel = () => {
               <Image
                 priority
                 src="/images/black_cat.png"
-                alt="carousel-image"
+                alt="고양이"
                 fill
                 sizes="(min-width: 768px) 200px, 200px"
               />
