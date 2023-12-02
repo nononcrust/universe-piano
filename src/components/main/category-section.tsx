@@ -2,8 +2,6 @@
 
 import { ROUTE } from "@/constants/route";
 import Image from "next/image";
-import { FreeMode } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 const categories = [
   {
@@ -40,39 +38,18 @@ const categories = [
 
 export default function CategorySection() {
   return (
-    <>
-      <section className="grid-row-gap-7 container mt-16 hidden grid-flow-col grid-cols-none gap-y-8 md:grid">
-        {categories.map((category, index) => (
-          <CategoryItem
-            key={index}
-            title={category.title}
-            icon={category.icon}
-            href={category.href}
-          />
-        ))}
-      </section>
-      <CategoryCarousel />
-    </>
+    <section className="container flex overflow-x-auto pt-8 md:justify-center md:pt-16">
+      {categories.map((category, index) => (
+        <CategoryItem
+          key={index}
+          title={category.title}
+          icon={category.icon}
+          href={category.href}
+        />
+      ))}
+    </section>
   );
 }
-
-const CategoryCarousel = () => {
-  return (
-    <Swiper
-      spaceBetween={16}
-      freeMode
-      slidesPerView={4.5}
-      modules={[FreeMode]}
-      className="mt-8 flex pl-4 pr-4 md:hidden"
-    >
-      {categories.map((category, index) => (
-        <SwiperSlide key={index}>
-          <CategoryItem title={category.title} icon={category.icon} href={category.href} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  );
-};
 
 interface CategoryItemProps {
   title: string;
@@ -82,7 +59,7 @@ interface CategoryItemProps {
 
 const CategoryItem = ({ title, href, icon }: CategoryItemProps) => {
   return (
-    <div className="flex cursor-pointer flex-col items-center justify-center transition md:hover:-translate-y-1.5">
+    <div className="flex min-w-[90px] cursor-pointer flex-col items-center justify-center transition md:min-w-[120px] md:hover:-translate-y-1.5">
       <div className="flex h-16 w-16 items-center justify-center rounded-[20px] bg-gray-100">
         {icon}
       </div>
