@@ -64,11 +64,7 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
             )}
           />
           <div className="flex justify-end">
-            <Button
-              className="mt-4 max-md:h-14 max-md:flex-1 max-md:rounded-2xl max-md:text-base"
-              type="submit"
-              disabled={!form.formState.isValid}
-            >
+            <Button className="mt-4" type="submit" disabled={!form.formState.isValid}>
               댓글 달기
             </Button>
           </div>
