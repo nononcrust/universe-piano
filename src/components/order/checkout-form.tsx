@@ -187,7 +187,7 @@ export const CheckoutForm = () => {
                 </FormItem>
               )}
             />
-            <p className="mt-2 text-sm">
+            <p className="mt-2 text-sm font-medium">
               사용 가능한 적립금: <strong className="text-primary">{user.point} P</strong>
             </p>
           </section>
@@ -209,15 +209,15 @@ export const CheckoutForm = () => {
             <PageSubtitle title="결제 수단" className="mb-4 mt-16" />
             <RadioGroup defaultValue="deposit" className="grid grid-cols-3 gap-4">
               {/* <div className="cursor-pointer">
-        <RadioGroupItem value="card" id="card" className="peer sr-only" />
-        <Label
-        htmlFor="card"
-        className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-        >
-        <Icon.CreditCard className="mb-3 h-6 w-6" />
-        신용카드
-        </Label>
-      </div> */}
+                <RadioGroupItem value="card" id="card" className="peer sr-only" />
+                <Label
+                  htmlFor="card"
+                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  <Icon.CreditCard className="mb-3 h-6 w-6" />
+                  신용카드
+                </Label>
+              </div> */}
               <div className="cursor-pointer">
                 <RadioGroupItem value="deposit" id="deposit" className="peer sr-only" />
                 <Label
