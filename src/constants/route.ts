@@ -71,6 +71,7 @@ export const ROUTE = {
   WITHDRAWAL: "/withdrawal",
   ORDER: {
     DETAIL: (id: string) => `/order/${id}`,
+    RESULT: (id: string) => `/order/${id}/result`,
   },
   ADMIN: {
     HOME: "/admin",

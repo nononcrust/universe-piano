@@ -36,7 +36,7 @@ export const siteConfig = {
   } as OpenGraph,
   depositAccount: {
     bank: "농협",
-    number: "302-1213-4545-621",
+    number: "30212134545621",
     holder: "최경원",
   },
 };

@@ -71,7 +71,7 @@ export const CheckoutForm = () => {
       },
       {
         onSuccess: () => {
-          router.push(ROUTE.HOME);
+          router.push(ROUTE.ORDER.RESULT(params.id));
         },
       },
     );

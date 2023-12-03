@@ -1,6 +1,5 @@
 "use client";
 
-import { Icon } from "@/components/icon";
 import { PageTitle } from "@/components/layout/page-title";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
@@ -27,7 +26,7 @@ export default function ProductDetailPage() {
 
   return (
     <main className="container pb-16">
-      <section className="mt-8 flex flex-col gap-12 md:flex-row">
+      <section className="mt-5 flex flex-col gap-12 md:mt-12 md:flex-row">
         <ProductImageSection />
         <ProductOptionSection />
       </section>
@@ -67,14 +66,15 @@ const ProductOptionSection = () => {
     <div className="flex flex-1 flex-col">
       <p className="text-gray-500">{product.category.name}</p>
       <h1 className="mt-2 text-2xl font-medium">{product.name}</h1>
-      <div className="mt-2 flex items-center gap-2">
+      {/* <div className="mt-2 flex items-center gap-2">
         <Icon.Star size={20} className="fill-black" />
         <p>{DUMMY_PRODUCT_DETAIL.rating}</p>
-      </div>
+      </div> */}
       {/* <ProductOption className="mt-4" /> */}
+      <p className="mt-4">{product.description}</p>
       <div className="mt-8 flex items-center justify-between">
-        <p className="text-sm font-medium">주문 금액</p>
-        <p className="font-medium">{product.price.toLocaleString()}원</p>
+        <p className="font-medium">주문 금액</p>
+        <p className="text-lg font-medium">{product.price.toLocaleString()}원</p>
       </div>
       <ProductAction />
     </div>
