@@ -1,6 +1,6 @@
 "use client";
 
-import { headerNav, siteConfig, siteContents } from "@/configs/site";
+import { siteConfig, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { CategoryTab } from "./category-tab";
+import { HeaderNav } from "./header-nav";
 import { NavigationMenuDialog } from "./navigation-menu-dialog";
 import { UserMenu } from "./user-menu";
 
@@ -22,10 +23,6 @@ export const Header = () => {
   const { data: session, fetchStatus } = useSession();
 
   const pathname = usePathname();
-
-  const getDomain = (href: string) => {
-    return `/${href.split("/")[1]}`;
-  };
 
   return (
     <>
@@ -44,20 +41,7 @@ export const Header = () => {
                 /> */}
                 <span className="font-semibold">{siteConfig.name}</span>
               </Link>
-              <nav className="hidden gap-6 md:flex">
-                {headerNav.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className={cn(
-                      "flex items-center text-[15px] text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground",
-                      pathname.startsWith(getDomain(item.href)) && "font-semibold text-foreground",
-                    )}
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </nav>
+              <HeaderNav />
             </div>
             <NavigationMenuDialog />
             {session && (

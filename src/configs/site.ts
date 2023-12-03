@@ -41,29 +41,6 @@ export const siteConfig = {
   },
 };
 
-export const headerNav = [
-  {
-    title: "소개",
-    href: ROUTE.ABOUT.COMPANY,
-  },
-  {
-    title: "소식",
-    href: ROUTE.NEWS.NOTICE.LIST,
-  },
-  // {
-  //   title: "리뷰",
-  //   href: ROUTE.REVIEW.CONSULT.LIST,
-  // },
-  {
-    title: "서비스",
-    href: ROUTE.SERVICE.CONSULTING,
-  },
-  {
-    title: "고객지원",
-    href: ROUTE.SUPPORT,
-  },
-];
-
 export const siteContents = {
   about: {
     title: "소개",
