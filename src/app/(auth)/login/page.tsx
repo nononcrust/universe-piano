@@ -11,7 +11,7 @@ export default function LoginPage() {
         {/* <div className="relative h-[44px] w-[140px]">
           <Image fill sizes="140px" src="/images/text-logo.png" alt="사이트 로고" priority />
         </div> */}
-        <p>유니버스 피아노</p>
+        <p className="text-2xl font-bold">유니버스 피아노</p>
         <h1 className="mt-8 text-lg font-medium text-foreground md:text-xl">
           미국 음대 입시를 위한 모든 것
         </h1>
