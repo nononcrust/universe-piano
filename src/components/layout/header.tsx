@@ -4,6 +4,7 @@ import { siteConfig, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
@@ -30,15 +31,14 @@ export const Header = () => {
         <div className="border-b">
           <div className="container flex h-16 items-center justify-between space-x-4 sm:space-x-0">
             <div className="flex gap-12">
-              <Link href={ROUTE.HOME} className="relative top-0 flex items-center">
-                {/* <Image
-                  className="overflow-hidden"
-                  src="/images/text-logo.png"
-                  sizes="100px"
-                  fill
+              <Link href={ROUTE.HOME} className="flex items-center">
+                <Image
+                  width={40}
+                  height={40}
+                  src="/images/logo-icon.svg"
                   alt="사이트 로고"
                   priority
-                /> */}
+                />
                 <span className="font-semibold">{siteConfig.name}</span>
               </Link>
               <HeaderNav />
