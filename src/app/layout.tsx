@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <GoogleAnalytics />
       </head>
-      <body className="antialiased">
+      <body className="tracking-tight antialiased">
         <Providers>
           <UserInfoFetcher>
             {children}
