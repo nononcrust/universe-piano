@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,7 +9,7 @@ export const Carousel = () => {
       loop
       modules={[Autoplay]}
       autoplay={{ delay: 700000 }}
-      className="h-[240px] border md:h-[320px]"
+      className="h-[240px] rounded-2xl md:h-[320px] md:border"
     >
       <SwiperSlide className="bg-gray-100">
         <div className="container relative md:pt-16">
@@ -21,7 +20,7 @@ export const Carousel = () => {
             </p>
           </div>
           <div className="absolute right-2 top-10 z-0 md:right-0 md:top-16">
-            <div className="relative h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
+            {/* <div className="relative h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
               <Image
                 priority
                 src="/images/cat_working.png"
@@ -29,7 +28,7 @@ export const Carousel = () => {
                 fill
                 sizes="(min-width: 768px) 200px, 200px"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </SwiperSlide>
@@ -44,7 +43,7 @@ export const Carousel = () => {
             </p>
           </div>
           <div className="absolute right-8 top-14 z-0 md:right-8 md:top-24">
-            <div className="relative h-[140px] w-[140px] md:h-[160px] md:w-[160px]">
+            {/* <div className="relative h-[140px] w-[140px] md:h-[160px] md:w-[160px]">
               <Image
                 priority
                 src="/images/black_cat.png"
@@ -52,7 +51,7 @@ export const Carousel = () => {
                 fill
                 sizes="(min-width: 768px) 200px, 200px"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </SwiperSlide>

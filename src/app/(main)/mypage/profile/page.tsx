@@ -49,11 +49,11 @@ export default function MyProfilePage() {
       <PageSubtitle className="mt-20" title="추가 정보" />
       <div className="mt-8 flex flex-col gap-4">
         <Link className="flex items-center justify-between text-lg" href={ROUTE.MYPAGE.ORDER}>
-          <p>구매 내역</p>
+          <p className="flex-1 transition hover:translate-x-1">구매 내역</p>
           <Icon.ChevronRight className="ml-2 h-4 w-4 text-muted-foreground" />
         </Link>
         <Link className="flex items-center justify-between text-lg" href={ROUTE.MYPAGE.ACTIVITY}>
-          <p>활동</p>
+          <p className="flex-1 transition hover:translate-x-1">활동</p>
           <Icon.ChevronRight className="ml-2 h-4 w-4 text-muted-foreground" />
         </Link>
       </div>

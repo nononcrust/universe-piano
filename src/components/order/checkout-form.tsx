@@ -246,7 +246,12 @@ export const CheckoutForm = () => {
               <FormMessage />
             </FormItem>
           </section>
-          <Button size="lg" className="mt-8 w-full" type="submit" disabled={!termsChecked}>
+          <Button
+            size="lg"
+            className="mt-8 w-full max-md:rounded-2xl max-md:py-7 max-md:text-base"
+            type="submit"
+            disabled={!termsChecked}
+          >
             결제하기
           </Button>
         </form>

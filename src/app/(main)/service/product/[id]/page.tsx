@@ -187,7 +187,11 @@ const ProductAction = () => {
 
   return (
     <div className="mt-8 flex gap-4">
-      <Button className="flex-1" size="lg" onClick={onCheckout}>
+      <Button
+        className="flex-1 max-md:rounded-2xl max-md:py-7 max-md:text-base"
+        size="lg"
+        onClick={onCheckout}
+      >
         구매하기
       </Button>
     </div>

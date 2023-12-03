@@ -1,36 +1,29 @@
-import { Icon } from "../icon";
-import { Aos } from "../ui/aos";
+import { ROUTE } from "@/constants/route";
+import Link from "next/link";
 
 export const ServiceSection = () => {
   return (
-    <Aos>
-      <section className="container flex flex-col pt-32">
-        <div className="flex justify-between">
+    <section className="flex flex-col pt-32">
+      <div className="container flex flex-col">
+        <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">2차 오디션 관련 서비스</h1>
+          <Link
+            href={ROUTE.SERVICE.CONSULTING}
+            className="text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-accent-foreground"
+          >
+            전체보기
+          </Link>
         </div>
-        <h2 className="mt-2 text-muted-foreground">
-          오디션 준비 어려우셨죠? 유니버스 피아노가 도와드릴게요.
+        <h2 className="hidden text-muted-foreground md:flex">
+          미국 음대 입시의 모든것, 유니버스 피아노
         </h2>
-        <div className="mt-8 grid grid-cols-1 gap-8 text-left md:grid-cols-2">
-          <ServiceItem
-            title="유니버스 피아노와 함께하면 너무 쉬운 오디션"
-            description="유니버스 피아노와 함께하면 음대 입시가 쉬워집니다."
-          />
-          <ServiceItem
-            title="24시간 무료 상담 신청"
-            description="유니버스 피아노와 함께하면 음대 입시가 쉬워집니다."
-          />
-          <ServiceItem
-            title="음대 입시 관련 정보"
-            description="유니버스 피아노와 함께하면 음대 입시가 쉬워집니다."
-          />
-          <ServiceItem
-            title="미국 음대 입시 유학 컨설팅"
-            description="유니버스 피아노와 함께하면 음대 입시가 쉬워집니다."
-          />
-        </div>
-      </section>
-    </Aos>
+      </div>
+      <div className="container mt-8 flex gap-8 overflow-x-auto text-left md:grid md:grid-cols-3">
+        <ServiceItem title="유니버스 피아노" description="미국 음대 입시의 모든 것." />
+        <ServiceItem title="유니버스 피아노" description="미국 음대 입시의 모든 것." />
+        <ServiceItem title="유니버스 피아노" description="미국 음대 입시의 모든 것." />
+      </div>
+    </section>
   );
 };
 
@@ -41,17 +34,12 @@ interface ServiceItemProps {
 
 const ServiceItem = ({ title, description }: ServiceItemProps) => {
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-end"></div>
-      <div className="aspect-video rounded-lg bg-gray-100" />
-      <div className="mt-3 flex items-center justify-between">
+    <div className="flex min-w-[320px] flex-col md:min-w-full">
+      <div className="aspect-video rounded-xl bg-gray-100" />
+      <div className="mt-3 flex flex-col pl-2">
         <p className="font-medium">{title}</p>
-        <div className="flex items-center">
-          <p className="flex cursor-pointer text-sm">바로가기</p>
-          <Icon.ChevronRight size={18} />
-        </div>
+        <p className="text-sm text-muted-foreground">{description}</p>
       </div>
-      <p className="text-sm text-muted-foreground">{description}</p>
     </div>
   );
 };
