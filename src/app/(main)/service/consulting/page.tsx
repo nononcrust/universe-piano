@@ -107,8 +107,7 @@ const ReviewItem = () => {
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
         <Icon.Star className="h-4 w-4 fill-gray-100 text-gray-100" />
       </div>
-
-      <p className="mt-2 text-muted-foreground">
+      <p className="mt-6 text-muted-foreground">
         토플 초보도 접근하기 정말 쉬운 교육과정과 플랫폼을 가지고 있어요. 하지만 교육이 끝났을 때는
         쉬운 스타트와 확실한 엔딩, 저는 유니버스 피아노를 그렇게 정의할게요.
       </p>
