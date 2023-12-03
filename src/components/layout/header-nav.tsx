@@ -45,7 +45,9 @@ export const HeaderNav = () => {
       <NavigationMenuList className="flex gap-6">
         <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <HeaderNavItem title="서비스" href={ROUTE.SERVICE.CONSULTING} />
+            <p className="text-[15px] text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground">
+              서비스
+            </p>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[320px] md:grid-cols-1">
