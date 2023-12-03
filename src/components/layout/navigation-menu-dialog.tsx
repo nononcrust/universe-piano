@@ -27,8 +27,8 @@ export const NavigationMenuDialog = () => {
       <SheetContent className="overflow-y-auto" side="right">
         <ListSection>
           {!session && (
-            <div className="mb-4 flex gap-3">
-              <Button variant="secondary" asChild className="h-12 flex-1">
+            <div className="mb-4 mt-4 flex gap-3">
+              <Button variant="secondary" asChild className="h-14 flex-1 rounded-2xl text-base">
                 <Link href={ROUTE.LOGIN}>유니버스 피아노 로그인</Link>
               </Button>
               {/* <Button asChild className="h-12 flex-1">
@@ -59,9 +59,13 @@ export const NavigationMenuDialog = () => {
             ))}
         </ListSection>
         {session && (
-          <button className="mt-2 font-medium text-muted-foreground" onClick={auth.logout}>
+          <Button
+            variant="secondary"
+            className="mt-2 h-14 w-full rounded-2xl text-base"
+            onClick={auth.logout}
+          >
             로그아웃
-          </button>
+          </Button>
         )}
       </SheetContent>
     </Sheet>

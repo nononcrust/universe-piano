@@ -107,7 +107,11 @@ export default function AccountPage() {
             )}
           />
           <div className="flex justify-end">
-            <Button type="submit" disabled={!form.formState.isDirty || !form.formState.isValid}>
+            <Button
+              className="max-md:h-14 max-md:flex-1 max-md:rounded-2xl max-md:text-base"
+              type="submit"
+              disabled={!form.formState.isDirty || !form.formState.isValid}
+            >
               저장하기
             </Button>
           </div>
@@ -125,7 +129,9 @@ export default function AccountPage() {
       </div>
       <PageSubtitle className="mt-16" title="회원 탈퇴" />
       <Link href={ROUTE.WITHDRAWAL}>
-        <button className="mt-8 text-sm font-medium text-destructive underline">탈퇴하기</button>
+        <Button variant="destructive" className="mt-8">
+          탈퇴하기
+        </Button>
       </Link>
     </main>
   );

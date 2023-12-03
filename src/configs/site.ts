@@ -34,6 +34,11 @@ export const siteConfig = {
       },
     ],
   } as OpenGraph,
+  depositAccount: {
+    bank: "농협",
+    number: "302-1213-4545-621",
+    holder: "최경원",
+  },
 };
 
 export const headerNav = [

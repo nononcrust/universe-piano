@@ -64,6 +64,11 @@ export const Header = () => {
               </nav>
             </div>
             <NavigationMenuDialog />
+            {session && (
+              <div className="hidden md:flex">
+                <UserMenu />
+              </div>
+            )}
             {!session && (
               <div className="hidden gap-2 md:flex">
                 <Button asChild size="sm" className="h-[32px] text-xs" variant="secondary">
@@ -82,11 +87,6 @@ export const Header = () => {
                     회원가입
                   </Link>
                 </Button> */}
-              </div>
-            )}
-            {session && (
-              <div className="hidden md:flex">
-                <UserMenu />
               </div>
             )}
           </div>

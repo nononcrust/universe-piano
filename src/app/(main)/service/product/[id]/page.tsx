@@ -188,7 +188,7 @@ const ProductAction = () => {
   return (
     <div className="mt-8 flex gap-4">
       <Button
-        className="flex-1 max-md:rounded-2xl max-md:py-7 max-md:text-base"
+        className="flex-1 max-md:h-14 max-md:rounded-2xl max-md:text-base"
         size="lg"
         onClick={onCheckout}
       >

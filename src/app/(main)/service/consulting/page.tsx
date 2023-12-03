@@ -57,7 +57,7 @@ export default function ConsultingListPage() {
         </div>
       </section>
       <section className="container my-24 flex justify-center">
-        <Button className="w-full rounded-2xl py-7 text-base md:w-40 md:rounded-xl">
+        <Button className="h-14 w-full rounded-2xl text-base md:w-40 md:rounded-xl">
           컨설팅 신청하기
         </Button>
       </section>

@@ -3,6 +3,17 @@
 import { FormLayout } from "@/components/admin/form-layout";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -69,11 +80,35 @@ export default function WithdrawalPage() {
               </FormItem>
             )}
           />
-          <div className="mt-8 flex gap-4">
-            <Button type="submit" disabled={!form.getValues("agreed")}>
-              탈퇴하기
-            </Button>
-            <Button variant="secondary" asChild>
+          <div className="mt-8 flex flex-col gap-4 md:flex-row">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
+                  disabled={!form.getValues("agreed")}
+                >
+                  탈퇴하기
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>정말로 탈퇴하시겠습니까?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    탈퇴한 계정은 복구할 수 없습니다. 신중히 결정해주세요.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>돌아가기</AlertDialogCancel>
+                  <AlertDialogAction type="submit">탈퇴하기</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+
+            <Button
+              className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
+              variant="secondary"
+              asChild
+            >
               <Link href={ROUTE.MYPAGE.ACCOUNT}>돌아가기</Link>
             </Button>
           </div>
