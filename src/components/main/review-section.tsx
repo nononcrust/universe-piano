@@ -4,7 +4,7 @@ import Link from "next/link";
 export const ReviewSection = () => {
   return (
     <section className="container flex flex-col pt-32">
-      <div className="flex items-center justify-between">
+      <div className="mt-2 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">합격자들의 생생한 후기</h1>
         <Link
           href={ROUTE.SERVICE.CONSULTING}

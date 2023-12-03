@@ -1,6 +1,4 @@
-import { CardSection } from "@/components/main/card-section";
 import { CarouselSection } from "@/components/main/carousel-section";
-import { ReviewSection } from "@/components/main/review-section";
 import { ServiceSection } from "@/components/main/service-section";
 
 export default function Home() {
@@ -9,8 +7,8 @@ export default function Home() {
       <CarouselSection />
       {/* <CategorySection /> */}
       <ServiceSection />
-      <ReviewSection />
-      <CardSection />
+      {/* <ReviewSection /> */}
+      {/* <CardSection /> */}
     </main>
   );
 }

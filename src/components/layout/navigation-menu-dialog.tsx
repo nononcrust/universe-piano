@@ -6,7 +6,6 @@ import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "../icon";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -79,9 +78,10 @@ const ListSection = ({ className, children }: ListSubHeaderProps) => {
   return (
     <div className={cn("mb-4", className)}>
       <div className="flex h-10 items-center justify-between">
-        <div className="relative h-[30px] w-[100px]">
+        {/* <div className="relative h-[30px] w-[100px]">
           <Image priority fill sizes="100px" src="/images/text-logo.png" alt="사이트 로고" />
-        </div>
+        </div> */}
+        <p className="font-semibold">유니버스 피아노</p>
         <SheetClose className="outline-none">
           <Icon.X />
         </SheetClose>

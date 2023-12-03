@@ -1,10 +1,9 @@
 "use client";
 
-import { headerNav, siteContents } from "@/configs/site";
+import { headerNav, siteConfig, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
@@ -34,19 +33,16 @@ export const Header = () => {
         <div className="border-b">
           <div className="container flex h-16 items-center justify-between space-x-4 sm:space-x-0">
             <div className="flex gap-12">
-              <Link
-                href={ROUTE.HOME}
-                className="relative top-0 flex h-[30px] w-[100px] items-center"
-              >
-                <Image
+              <Link href={ROUTE.HOME} className="relative top-0 flex items-center">
+                {/* <Image
                   className="overflow-hidden"
                   src="/images/text-logo.png"
                   sizes="100px"
                   fill
                   alt="사이트 로고"
                   priority
-                />
-                {/* <span className="inline-block font-semibold">{siteConfig.name}</span> */}
+                /> */}
+                <span className="font-semibold">{siteConfig.name}</span>
               </Link>
               <nav className="hidden gap-6 md:flex">
                 {headerNav.map((item, index) => (
@@ -54,7 +50,7 @@ export const Header = () => {
                     key={index}
                     href={item.href}
                     className={cn(
-                      "flex items-center text-[15px] font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground",
+                      "flex items-center text-[15px] text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground",
                       pathname.startsWith(getDomain(item.href)) && "font-semibold text-foreground",
                     )}
                   >

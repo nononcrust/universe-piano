@@ -9,12 +9,12 @@ export const Carousel = () => {
       loop
       modules={[Autoplay]}
       autoplay={{ delay: 700000 }}
-      className="h-[240px] rounded-2xl md:h-[320px] md:border"
+      className="h-[240px] md:h-[320px]"
     >
       <SwiperSlide className="bg-gray-100">
         <div className="container relative md:pt-16">
           <div className="absolute z-10 mt-28 flex flex-col md:mt-20">
-            <p className="text-2xl font-semibold md:text-3xl">1차 오디션 결과 발표</p>
+            <p className="text-xl font-semibold md:text-2xl">1차 오디션 결과 발표</p>
             <p className="z-10 mt-1 text-sm font-medium text-muted-foreground md:text-base">
               미국 음대 오디션 결과, 유니버스 피아노에서 확인하세요.
             </p>
@@ -35,7 +35,7 @@ export const Carousel = () => {
       <SwiperSlide className="bg-gray-100">
         <div className="container relative md:pt-16">
           <div className="absolute z-10 mt-24 flex flex-col md:mt-20">
-            <p className="text-2xl font-semibold md:text-3xl">2025 가을학기 서비스</p>
+            <p className="text-xl font-semibold md:text-2xl">2025 가을학기 서비스</p>
             <p className="z-10 mt-1 whitespace-pre text-sm font-medium text-muted-foreground md:text-base">
               {
                 "컨설팅, 영어 스터디, 과외, 독학키트까지\n미국 음대 입시에 필요한 모든 것을 담았습니다."
