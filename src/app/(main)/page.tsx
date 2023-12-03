@@ -1,14 +1,15 @@
+import { CardSection } from "@/components/main/card-section";
 import { CarouselSection } from "@/components/main/carousel-section";
-import { ServiceSection } from "@/components/main/service-section";
+import CategorySection from "@/components/main/category-section";
 
 export default function Home() {
   return (
     <main className="pb-32">
       <CarouselSection />
-      {/* <CategorySection /> */}
-      <ServiceSection />
+      <CategorySection />
+      {/* <ServiceSection /> */}
       {/* <ReviewSection /> */}
-      {/* <CardSection /> */}
+      <CardSection />
     </main>
   );
 }

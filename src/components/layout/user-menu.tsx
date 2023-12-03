@@ -34,11 +34,11 @@ export const UserMenu = () => {
           <AvatarFallback resource={user.profileImage} />
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[320px] translate-y-1">
+      <DropdownMenuContent align="end" className="translate-y-1">
         {/* <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.CART}>장바구니</Link>
         </DropdownMenuItem> */}
-        <div className="p-4">
+        <div className="p-4 pr-12">
           <div className="flex gap-4">
             <Avatar className="h-12 w-12">
               <AvatarImage src={user.profileImage} />

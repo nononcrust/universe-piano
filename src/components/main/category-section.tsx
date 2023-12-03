@@ -38,15 +38,17 @@ const categories = [
 
 export default function CategorySection() {
   return (
-    <section className="container grid grid-cols-3 gap-8 pt-8 md:grid-cols-6 md:pt-16">
-      {categories.map((category, index) => (
-        <CategoryItem
-          key={index}
-          title={category.title}
-          icon={category.icon}
-          href={category.href}
-        />
-      ))}
+    <section className="container flex justify-center pt-8 md:pt-16">
+      <div className="grid grid-cols-3 gap-4 md:grid-cols-6">
+        {categories.map((category, index) => (
+          <CategoryItem
+            key={index}
+            title={category.title}
+            icon={category.icon}
+            href={category.href}
+          />
+        ))}
+      </div>
     </section>
   );
 }
@@ -59,10 +61,8 @@ interface CategoryItemProps {
 
 const CategoryItem = ({ title, href, icon }: CategoryItemProps) => {
   return (
-    <div className="flex cursor-pointer flex-col items-center justify-center transition md:hover:-translate-y-1.5">
-      <div className="flex h-16 w-16 items-center justify-center rounded-[20px] bg-gray-100">
-        {icon}
-      </div>
+    <div className="flex w-24 cursor-pointer flex-col items-center justify-center rounded-xl p-4 transition hover:bg-gray-100">
+      <div className="flex items-center justify-center">{icon}</div>
       <p className="mt-2 text-center text-sm text-muted-foreground">{title}</p>
     </div>
   );
