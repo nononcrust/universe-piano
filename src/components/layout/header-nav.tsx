@@ -5,14 +5,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "../ui/navigation-menu";
+import { NavigationMenu, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 
 const SERVICES: { title: string; href: string; description: string }[] = [
   {
@@ -43,7 +36,7 @@ export const HeaderNav = () => {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList className="flex gap-6">
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>
             <p className="text-[15px] text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground">
               서비스
@@ -58,9 +51,10 @@ export const HeaderNav = () => {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
 
         <HeaderNavItem title="소개" href={ROUTE.ABOUT.COMPANY} />
+        <HeaderNavItem title="서비스" href={ROUTE.SERVICE.CONSULTING} />
         <HeaderNavItem title="소식" href={ROUTE.NEWS.NOTICE.LIST} />
         <HeaderNavItem title="고객지원" href={ROUTE.SUPPORT} />
       </NavigationMenuList>
