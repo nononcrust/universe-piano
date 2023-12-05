@@ -25,16 +25,6 @@ export const NavigationMenuDialog = () => {
       </SheetTrigger>
       <SheetContent className="overflow-y-auto" side="right">
         <ListSection>
-          {!session && (
-            <div className="mb-4 mt-4 flex gap-3">
-              <Button variant="secondary" asChild className="h-14 flex-1 rounded-2xl text-base">
-                <Link href={ROUTE.LOGIN}>유니버스 피아노 로그인</Link>
-              </Button>
-              {/* <Button asChild className="h-12 flex-1">
-                <Link href={ROUTE.LOGIN}>회원가입</Link>
-              </Button> */}
-            </div>
-          )}
           {session && (
             <div className="mb-4 mt-2">
               <UserProfile />
@@ -57,6 +47,16 @@ export const NavigationMenuDialog = () => {
               </ListCategory>
             ))}
         </ListSection>
+        {!session && (
+          <div className="mb-4 mt-4 flex gap-3">
+            <Button variant="secondary" asChild className="h-14 flex-1 rounded-2xl text-base">
+              <Link href={ROUTE.LOGIN}>유니버스 피아노 로그인</Link>
+            </Button>
+            {/* <Button asChild className="h-12 flex-1">
+                <Link href={ROUTE.LOGIN}>회원가입</Link>
+              </Button> */}
+          </div>
+        )}
         {session && (
           <Button
             variant="secondary"

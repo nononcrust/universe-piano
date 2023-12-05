@@ -6,6 +6,7 @@ import { PageTitle } from "@/components/layout/page-title";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
@@ -24,7 +25,7 @@ export default function MyProfilePage() {
       <PageSubtitle className="mt-8" title="기본 정보" />
       <div className="mt-8 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Avatar className="h-16 w-16">
+          <Avatar className="h-20 w-20">
             <AvatarImage src={user.profileImage} />
             <AvatarFallback />
           </Avatar>
@@ -38,7 +39,7 @@ export default function MyProfilePage() {
         </div>
         {/* <IconButton>
           <Link href={ROUTE.MYPAGE.ACCOUNT}>
-            <Icon.Settings />
+          <Icon.Settings />
           </Link>
         </IconButton> */}
         <Link href={ROUTE.MYPAGE.ACCOUNT}>
@@ -53,18 +54,28 @@ export default function MyProfilePage() {
         </p>
       </div>
       <PageSubtitle className="mt-20" title="추가 정보" />
-      <div className="mt-8 flex flex-col gap-4">
-        <Link className="flex items-center justify-between text-lg" href={ROUTE.KIT.LIST}>
+      <Separator className="mt-4" />
+      <div className="mt-6 flex flex-col">
+        <Link
+          className="flex items-center justify-between py-2 transition md:hover:translate-x-2"
+          href={ROUTE.KIT.LIST}
+        >
           <p className="flex-1 font-medium">나의 독학 키트</p>
-          <Icon.ChevronRight className="ml-2 h-4 w-4 text-muted-foreground" />
+          <Icon.ChevronRight className="ml-2 h-5 w-5 text-muted-foreground" />
         </Link>
-        <Link className="flex items-center justify-between text-lg" href={ROUTE.MYPAGE.ORDER}>
+        <Link
+          className="flex items-center justify-between py-2 transition md:hover:translate-x-2"
+          href={ROUTE.MYPAGE.ORDER}
+        >
           <p className="flex-1 font-medium">구매 내역</p>
-          <Icon.ChevronRight className="ml-2 h-4 w-4 text-muted-foreground" />
+          <Icon.ChevronRight className="ml-2 h-5 w-5 text-muted-foreground" />
         </Link>
-        <Link className="flex items-center justify-between text-lg" href={ROUTE.MYPAGE.ACTIVITY}>
+        <Link
+          className="flex items-center justify-between py-2 transition md:hover:translate-x-2"
+          href={ROUTE.MYPAGE.ACTIVITY}
+        >
           <p className="flex-1 font-medium">활동</p>
-          <Icon.ChevronRight className="ml-2 h-4 w-4 text-muted-foreground" />
+          <Icon.ChevronRight className="ml-2 h-5 w-5 text-muted-foreground" />
         </Link>
       </div>
     </main>

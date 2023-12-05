@@ -3,6 +3,7 @@
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/configs/site";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { useOrderDetail } from "@/features/order";
@@ -23,6 +24,7 @@ export default function OrderDetailPage() {
     <main className="container">
       <PageTitle title="주문 상세정보" />
       <PageSubtitle className="mt-8" title="상품 정보" />
+      <Separator className="mt-4" />
       <div className="mt-4">
         {order.orderItems.map((orderItem) => (
           <div className="flex gap-4" key={orderItem.id}>
@@ -37,6 +39,7 @@ export default function OrderDetailPage() {
         ))}
       </div>
       <PageSubtitle className="mt-16" title="주문 정보" />
+      <Separator className="mt-4" />
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-muted-foreground">주문번호</p>
@@ -56,6 +59,7 @@ export default function OrderDetailPage() {
         </div>
       </div>
       <PageSubtitle className="mt-16" title="결제 정보" />
+      <Separator className="mt-4" />
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-muted-foreground">결제방법</p>

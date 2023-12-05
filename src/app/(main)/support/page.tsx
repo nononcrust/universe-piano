@@ -49,7 +49,7 @@ export default function SupportPage() {
             key={index}
             size="sm"
             className="rounded-full px-4"
-            variant={tab === value ? "default" : "secondary"}
+            variant={tab === value ? "default" : "outline"}
             onClick={() => setTab(value as keyof typeof TAB_LIST)}
           >
             {label}

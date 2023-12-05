@@ -6,7 +6,7 @@ interface PageSubtitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 export const PageSubtitle = ({ title, className, ...props }: PageSubtitleProps) => {
   return (
-    <h2 className={cn("text-lg font-medium text-foreground md:text-xl", className)} {...props}>
+    <h2 className={cn("text-lg font-semibold text-foreground md:text-xl", className)} {...props}>
       {title}
     </h2>
   );

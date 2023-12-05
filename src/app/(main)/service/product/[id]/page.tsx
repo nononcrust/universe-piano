@@ -3,19 +3,13 @@
 import { PageTitle } from "@/components/layout/page-title";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
 import { ROUTE } from "@/constants/route";
 import { useCreateOrder } from "@/features/order";
 import { useProductDetail } from "@/features/product";
 import { OrderStatus } from "@prisma/client";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-
-const DUMMY_PRODUCT_DETAIL = {
-  productName: "미국 음대 오디션에서 살아남기",
-  price: 9900,
-  rating: 4.8,
-  reviewCount: 3,
-};
 
 export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
@@ -64,7 +58,9 @@ const ProductOptionSection = () => {
 
   return (
     <div className="flex flex-1 flex-col">
-      <p className="text-gray-500">{product.category.name}</p>
+      <div className="flex">
+        <Chip>{product.category.name}</Chip>
+      </div>
       <h1 className="mt-2 text-2xl font-medium">{product.name}</h1>
       {/* <div className="mt-2 flex items-center gap-2">
         <Icon.Star size={20} className="fill-black" />
@@ -72,10 +68,6 @@ const ProductOptionSection = () => {
       </div> */}
       {/* <ProductOption className="mt-4" /> */}
       <p className="mt-4">{product.description}</p>
-      <div className="mt-8 flex items-center justify-between">
-        <p className="font-medium">주문 금액</p>
-        <p className="text-lg font-medium">{product.price.toLocaleString()}원</p>
-      </div>
       <ProductAction />
     </div>
   );
@@ -186,9 +178,13 @@ const ProductAction = () => {
   if (!product) return null;
 
   return (
-    <div className="mt-8 flex gap-4">
+    <div className="mt-8 flex flex-col gap-4">
+      <div className="mt-8 flex items-center justify-between">
+        <p className="font-medium">주문 금액</p>
+        <p className="text-lg font-medium">{product.price.toLocaleString()}원</p>
+      </div>
       <Button
-        className="flex-1 max-md:h-14 max-md:rounded-2xl max-md:text-base"
+        className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
         size="lg"
         onClick={onCheckout}
       >
