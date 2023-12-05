@@ -19,7 +19,7 @@ export const POST = async (request: Request) => {
 
     const { images, ...parsedBody } = auditionRequestSchema.parse(body);
 
-    const notice = await prisma.audition.create({
+    const audition = await prisma.audition.create({
       data: {
         ...parsedBody,
         images: {
@@ -30,7 +30,7 @@ export const POST = async (request: Request) => {
       },
     });
 
-    return NextResponse.json(notice);
+    return NextResponse.json(audition);
   } catch (error) {
     if (error instanceof ZodError) {
       return NextResponse.json("Bad Request", { status: 400 });

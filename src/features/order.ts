@@ -68,6 +68,11 @@ export const orderRepository = {
   getOrderById: (id: string, params?: OrderRequestParams) => {
     return prisma.order.findUnique({
       include: {
+        user: {
+          include: {
+            subscriptions: true,
+          },
+        },
         orderItems: {
           include: {
             product: {
@@ -149,9 +154,9 @@ const orderApi = {
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
-  detail: (id?: string) => [ENDPOINT, id] as const,
-  list: () => [ENDPOINT, "list"] as const,
-  myList: () => [ENDPOINT, "myList"] as const,
+  detail: (id?: string) => [...queryKeys.all(), id] as const,
+  list: () => [...queryKeys.all(), "list"] as const,
+  myList: () => [...queryKeys.all(), "myList"] as const,
 };
 
 export const useMyOrderList = () => {

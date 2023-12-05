@@ -1,11 +1,11 @@
 "use client";
 
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
-import { ROUTE } from "@/constants/route";
 import { OrderDetail, orderUpdateRequestSchema, useUpdateOrder } from "@/features/order";
-import { cn } from "@/lib/utils";
+import { useCreateSubscription, useUpdateSubscription } from "@/features/subscription";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -31,6 +31,8 @@ interface OrderFormProps {
 
 export const OrderForm = ({ order }: OrderFormProps) => {
   const updateOrderMutation = useUpdateOrder();
+  const createSubscriptionMutation = useCreateSubscription();
+  const updateSubscriptionMutation = useUpdateSubscription();
 
   const router = useRouter();
 
@@ -48,13 +50,61 @@ export const OrderForm = ({ order }: OrderFormProps) => {
         {
           onSuccess: () => {
             router.refresh();
-            router.push(ROUTE.ADMIN.ORDER.LIST);
             toast.success("주문 정보가 수정되었습니다.");
+            form.reset();
           },
         },
       );
     }
   });
+
+  const existingSubscription = order.user.subscriptions.find(
+    (subscription) => subscription.productId === order.orderItems[0].productId,
+  );
+
+  const isSubscribedBefore =
+    order.user.subscriptions.some(
+      (subscription) => subscription.productId === order.orderItems[0].productId,
+    ) && existingSubscription;
+
+  const isSubscribing = !!existingSubscription && existingSubscription.endDate > new Date();
+  console.log("isSubscribing", isSubscribing);
+
+  const onStartSubscription: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
+    if (createSubscriptionMutation.isPending || updateSubscriptionMutation.isPending) return;
+
+    const body = {
+      userId: order.user.id,
+      productId: order.orderItems[0].productId,
+      startDate: new Date().toISOString(),
+      endDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30 * 6).toISOString(),
+    };
+
+    if (isSubscribedBefore) {
+      updateSubscriptionMutation.mutate(
+        { id: existingSubscription.id, body },
+        {
+          onSuccess: () => {
+            router.refresh();
+            toast.success("구독이 시작되었습니다.");
+          },
+        },
+      );
+    }
+
+    if (!isSubscribedBefore) {
+      createSubscriptionMutation.mutate(
+        { body },
+        {
+          onSuccess: () => {
+            router.refresh();
+            toast.success("구독이 시작되었습니다.");
+          },
+        },
+      );
+    }
+  };
 
   return (
     <Card>
@@ -86,7 +136,10 @@ export const OrderForm = ({ order }: OrderFormProps) => {
                 </FormItem>
               )}
             />
-            <div className={cn("flex justify-end")}>
+            <div className="flex justify-between">
+              <Button onClick={onStartSubscription} disabled={isSubscribing}>
+                해당 상품으로 구독 시작
+              </Button>
               <Button
                 className="flex-1 md:flex-initial"
                 type="submit"

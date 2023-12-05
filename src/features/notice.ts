@@ -60,8 +60,8 @@ const noticeApi = {
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
-  detail: (id?: string) => [ENDPOINT, id] as const,
-  list: () => [ENDPOINT, "list"] as const,
+  detail: (id?: string) => [...queryKeys.all(), id] as const,
+  list: () => [...queryKeys.all(), "list"] as const,
 };
 
 export const useNoticeList = () => {

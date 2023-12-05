@@ -42,7 +42,7 @@ model Post {
   comments Comment[]
   images   Image[]
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
   createdAt DateTime @default(now())
@@ -149,7 +149,7 @@ model Product {
   description String?
   images      Image[]
 
-  category Category @relation(fields: [categoryId], references: [id])
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId String
 
   productReviews ProductReview[]
@@ -164,7 +164,7 @@ model Product {
 }
 
 model Cart {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id
 
   cartItems CartItem[]
@@ -178,10 +178,10 @@ model Cart {
 model CartItem {
   amount Int
 
-  cart   Cart   @relation(fields: [cartId], references: [userId])
+  cart   Cart   @relation(fields: [cartId], references: [userId], onDelete: Cascade)
   cartId String
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
   @@unique([cartId, productId], name: "CartItem_cartId_productId_unique")
@@ -194,10 +194,10 @@ model Subscription {
   startDate DateTime
   endDate   DateTime
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
   createdAt DateTime @default(now())
@@ -213,11 +213,10 @@ model Order {
   point  Int
   status OrderStatus
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
   orderItems OrderItem[]
-
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -230,10 +229,10 @@ model OrderItem {
   amount Int
   price  Int
 
-  order   Order  @relation(fields: [orderId], references: [id])
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId String
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
   createdAt DateTime @default(now())
@@ -250,10 +249,10 @@ model ProductReview {
   rating  Int
   images  Image[]
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
   createdAt DateTime @default(now())

@@ -9,6 +9,7 @@ import Link from "next/link";
 export const orderColumns: ColumnDef<OrderList[number]>[] = [
   {
     header: "주문번호",
+    accessorKey: "number",
     cell: ({ row }) => (
       <Link className="hover:underline" href={ROUTE.ADMIN.ORDER.EDIT(row.original.id)}>
         {row.original.number}
