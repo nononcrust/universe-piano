@@ -63,16 +63,19 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
       email: initialData.email,
     };
 
-    signupMutation.mutate(body, {
-      onSuccess: (data) => {
-        const session: Session = {
-          user: data,
-        };
+    signupMutation.mutate(
+      { body },
+      {
+        onSuccess: (data) => {
+          const session: Session = {
+            user: data,
+          };
 
-        queryClient.setQueryData(queryKeys.session(), session);
-        router.push(ROUTE.HOME);
+          queryClient.setQueryData(queryKeys.session(), session);
+          router.push(ROUTE.HOME);
+        },
       },
-    });
+    );
   });
 
   return (

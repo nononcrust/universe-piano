@@ -38,16 +38,16 @@ export type Session = { user: UserInfo };
 const ENDPOINT = "/auth";
 
 export const authApi = {
-  login: async (body: UserInfo) => {
-    const response = await api.post(`${ENDPOINT}/login`, body);
+  login: async (data: { body: UserInfo }) => {
+    const response = await api.post(`${ENDPOINT}/login`, data.body);
     return response.data;
   },
   logout: async () => {
     const response = await api.get(`${ENDPOINT}/logout`);
     return response.data;
   },
-  register: async (body: RegisterBody) => {
-    const response = await api.post<UserInfo>(`${ENDPOINT}/register`, body);
+  register: async (data: { body: RegisterBody }) => {
+    const response = await api.post<UserInfo>(`${ENDPOINT}/register`, data.body);
     return response.data;
   },
   getSession: async () => {

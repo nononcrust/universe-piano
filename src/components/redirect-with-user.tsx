@@ -16,7 +16,7 @@ export const RedirectWithUser = ({ user }: RedirectWithUserProps) => {
   const router = useRouter();
 
   const login = useCallback(async () => {
-    await authApi.login(user);
+    await authApi.login({ body: user });
 
     const session: Session = {
       user,
