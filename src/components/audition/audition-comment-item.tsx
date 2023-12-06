@@ -14,7 +14,7 @@ export const AuditionCommentItem = ({ comment }: AuditionCommentItemProps) => {
   const onCommentDelete = (commentId: string) => {
     if (deleteAuditionCommentMutation.isPending) return;
 
-    deleteAuditionCommentMutation.mutate({ id: commentId });
+    deleteAuditionCommentMutation.mutate({ params: { id: commentId } });
   };
 
   return (

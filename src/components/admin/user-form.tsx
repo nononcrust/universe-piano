@@ -52,7 +52,7 @@ export const UserForm = ({ user }: UserFormProps) => {
     if (updateUserMutation.isPending) return;
 
     updateUserMutation.mutate(
-      { id: user.id, body: data },
+      { params: { id: user.id }, body: data },
       {
         onSuccess: () => {
           router.refresh();

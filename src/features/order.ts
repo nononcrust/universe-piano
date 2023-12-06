@@ -65,7 +65,7 @@ export const orderRepository = {
       },
     });
   },
-  getOrderById: (id: string, params?: OrderRequestParams) => {
+  getOrderById: (id: string, queries?: OrderRequestQueries) => {
     return prisma.order.findUnique({
       include: {
         user: {
@@ -85,7 +85,7 @@ export const orderRepository = {
         },
       },
       where: {
-        status: params?.status,
+        status: queries?.status,
         id,
       },
     });
@@ -119,7 +119,7 @@ export const orderUpdateRequestSchema = z.object({
 export type OrderRequest = z.infer<typeof orderRequestSchema>;
 export type OrderUpdateRequest = z.infer<typeof orderUpdateRequestSchema>;
 
-export type OrderRequestParams = {
+export type OrderRequestQueries = {
   status?: OrderStatus;
 };
 
@@ -134,20 +134,20 @@ const orderApi = {
     const response = await api.get<MyOrderList>(`/my${ENDPOINT}`);
     return response.data;
   },
-  getOrderById: async (data: { id: string; params?: OrderRequestParams }) => {
-    const response = await api.get<OrderDetail>(`${ENDPOINT}/${data.id}`);
+  getOrderById: async (data: { params: { id: string }; queries?: OrderRequestQueries }) => {
+    const response = await api.get<OrderDetail>(`${ENDPOINT}/${data.params.id}`);
     return response.data;
   },
   createOrder: async (data: { body: OrderRequest }) => {
     const response = await api.post<Order>(ENDPOINT, data.body);
     return response.data;
   },
-  updateOrder: async (data: { id: string; body: OrderUpdateRequest }) => {
-    const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
+  updateOrder: async (data: { params: { id: string }; body: OrderUpdateRequest }) => {
+    const response = await api.put(`${ENDPOINT}/${data.params.id}`, data.body);
     return response.data;
   },
-  deleteOrder: async (data: { id: string }) => {
-    const response = await api.delete(`${ENDPOINT}/${data.id}`);
+  deleteOrder: async (data: { params: { id: string } }) => {
+    const response = await api.delete(`${ENDPOINT}/${data.params.id}`);
     return response.data;
   },
 };
@@ -173,10 +173,10 @@ export const useOrderList = () => {
   });
 };
 
-export const useOrderDetail = ({ id }: { id: string }) => {
+export const useOrderDetail = ({ params }: { params: { id: string } }) => {
   return useQuery({
-    queryKey: queryKeys.detail(id),
-    queryFn: () => orderApi.getOrderById({ id }),
+    queryKey: queryKeys.detail(params.id),
+    queryFn: () => orderApi.getOrderById({ params }),
   });
 };
 
@@ -212,7 +212,7 @@ export const useDeleteOrder = () => {
   return useMutation({
     mutationFn: orderApi.deleteOrder,
     onSuccess: (_, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables.id), null);
+      queryClient.setQueryData(queryKeys.detail(variables.params.id), null);
     },
   });
 };

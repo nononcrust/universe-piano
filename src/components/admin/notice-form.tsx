@@ -64,7 +64,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
 
     if (mode === "edit" && notice?.id && !updateNoticeMutation.isPending) {
       updateNoticeMutation.mutate(
-        { id: notice.id, body: data },
+        { params: { id: notice.id }, body: data },
         {
           onSuccess: () => {
             router.refresh();
@@ -79,7 +79,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
   const onDelete = () => {
     if (mode === "edit" && notice?.id && !deleteNoticeMutation.isPending) {
       deleteNoticeMutation.mutate(
-        { id: notice.id },
+        { params: { id: notice.id } },
         {
           onSuccess: () => {
             router.refresh();

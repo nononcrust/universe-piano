@@ -40,20 +40,20 @@ const noticeApi = {
     const response = await api.get<NoticeList>(`${ENDPOINT}`);
     return response.data;
   },
-  getNoticeById: async (data: { id: string }) => {
-    const response = await api.get<NoticeDetail>(`${ENDPOINT}/${data.id}`);
+  getNoticeById: async (data: { params: { id: string } }) => {
+    const response = await api.get<NoticeDetail>(`${ENDPOINT}/${data.params.id}`);
     return response.data;
   },
   createNotice: async (data: { body: NoticeRequest }) => {
     const response = await api.post(`${ENDPOINT}`, data.body);
     return response.data;
   },
-  updateNotice: async (data: { id: string; body: Partial<NoticeRequest> }) => {
-    const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
+  updateNotice: async (data: { params: { id: string }; body: Partial<NoticeRequest> }) => {
+    const response = await api.put(`${ENDPOINT}/${data.params.id}`, data.body);
     return response.data;
   },
-  deleteNotice: async (data: { id: string }) => {
-    const response = await api.delete(`${ENDPOINT}/${data.id}`);
+  deleteNotice: async (data: { params: { id: string } }) => {
+    const response = await api.delete(`${ENDPOINT}/${data.params.id}`);
     return response.data;
   },
 };
@@ -71,10 +71,10 @@ export const useNoticeList = () => {
   });
 };
 
-export const useNoticeDetail = ({ id }: { id: string }) => {
+export const useNoticeDetail = ({ params }: { params: { id: string } }) => {
   return useQuery({
-    queryKey: queryKeys.detail(id),
-    queryFn: () => noticeApi.getNoticeById({ id }),
+    queryKey: queryKeys.detail(params.id),
+    queryFn: () => noticeApi.getNoticeById({ params }),
   });
 };
 
@@ -96,7 +96,7 @@ export const useUpdateNotice = () => {
   return useMutation({
     mutationFn: noticeApi.updateNotice,
     onSuccess: (data, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables.id), data);
+      queryClient.setQueryData(queryKeys.detail(variables.params.id), data);
     },
   });
 };
@@ -107,7 +107,7 @@ export const useDeleteNotice = () => {
   return useMutation({
     mutationFn: noticeApi.deleteNotice,
     onSuccess: (_, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables.id), null);
+      queryClient.setQueryData(queryKeys.detail(variables.params.id), null);
     },
   });
 };

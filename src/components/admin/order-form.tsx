@@ -46,7 +46,7 @@ export const OrderForm = ({ order }: OrderFormProps) => {
   const onSubmit = form.handleSubmit((data: FormSchema) => {
     if (!updateOrderMutation.isPending) {
       updateOrderMutation.mutate(
-        { id: order.id, body: data },
+        { params: { id: order.id }, body: data },
         {
           onSuccess: () => {
             router.refresh();
@@ -83,7 +83,7 @@ export const OrderForm = ({ order }: OrderFormProps) => {
 
     if (isSubscribedBefore) {
       updateSubscriptionMutation.mutate(
-        { id: existingSubscription.id, body },
+        { params: { id: existingSubscription.id }, body },
         {
           onSuccess: () => {
             router.refresh();

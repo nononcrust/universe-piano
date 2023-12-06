@@ -41,8 +41,8 @@ const subscriptionApi = {
     const response = await api.post(ENDPOINT, data.body);
     return response.data;
   },
-  updateSubscription: async (data: { id: string; body: SubscriptionRequest }) => {
-    const response = await api.put(ENDPOINT, data.body);
+  updateSubscription: async (data: { params: { id: string }; body: SubscriptionRequest }) => {
+    const response = await api.put(`${ENDPOINT}/${data.params.id}`, data.body);
     return response.data;
   },
 };

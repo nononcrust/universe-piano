@@ -49,16 +49,16 @@ export const userApi = {
     const response = await api.get<UserList>(ENDPOINT);
     return response.data;
   },
-  getUserById: async (data: { id: string }) => {
-    const response = await api.get<UserDetail>(`${ENDPOINT}/${data.id}`);
+  getUserById: async (data: { params: { id: string } }) => {
+    const response = await api.get<UserDetail>(`${ENDPOINT}/${data.params.id}`);
     return response.data;
   },
-  updateUser: async (data: { id: string; body: Partial<UserRequest> }) => {
-    const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
+  updateUser: async (data: { params: { id: string }; body: Partial<UserRequest> }) => {
+    const response = await api.put(`${ENDPOINT}/${data.params.id}`, data.body);
     return response.data;
   },
-  deleteUser: async (data: { id: string }) => {
-    const response = await api.delete(`${ENDPOINT}/${data.id}`);
+  deleteUser: async (data: { params: { id: string } }) => {
+    const response = await api.delete(`${ENDPOINT}/${data.params.id}`);
     return response.data;
   },
 };
@@ -76,10 +76,10 @@ export const useUserList = () => {
   });
 };
 
-export const useUserDetail = ({ id }: { id: string }) => {
+export const useUserDetail = ({ params }: { params: { id: string } }) => {
   return useQuery({
-    queryKey: queryKeys.detail(id),
-    queryFn: () => userApi.getUserById({ id }),
+    queryKey: queryKeys.detail(params.id),
+    queryFn: () => userApi.getUserById({ params }),
   });
 };
 

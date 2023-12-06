@@ -34,7 +34,7 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
 
     createAuditionCommentMutation.mutate(
       {
-        id: auditionId,
+        params: { id: auditionId },
         body: {
           content: data.content,
         },

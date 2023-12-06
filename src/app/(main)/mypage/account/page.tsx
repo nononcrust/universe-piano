@@ -49,7 +49,7 @@ export default function AccountPage() {
     if (!session || updateProfileMutation.isPending) return;
 
     updateProfileMutation.mutate(
-      { id: session.user.id, body: data },
+      { params: { id: session.user.id }, body: data },
       {
         onSuccess: () => {
           router.refresh();

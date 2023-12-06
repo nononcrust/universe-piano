@@ -41,8 +41,8 @@ const productApi = {
     const response = await api.get<ProductList>(ENDPOINT);
     return response.data;
   },
-  getProductById: async (data: { id: string }) => {
-    const response = await api.get<ProductDetail>(`${ENDPOINT}/${data.id}`);
+  getProductById: async (data: { params: { id: string } }) => {
+    const response = await api.get<ProductDetail>(`${ENDPOINT}/${data.params.id}`);
     return response.data;
   },
 };
@@ -60,9 +60,9 @@ export const useProductList = () => {
   });
 };
 
-export const useProductDetail = ({ id }: { id: string }) => {
+export const useProductDetail = ({ params }: { params: { id: string } }) => {
   return useQuery({
-    queryKey: queryKeys.detail(id),
-    queryFn: () => productApi.getProductById({ id }),
+    queryKey: queryKeys.detail(params.id),
+    queryFn: () => productApi.getProductById({ params }),
   });
 };

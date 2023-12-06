@@ -77,23 +77,21 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
     }
 
     if (mode === "edit" && auditionId && !updateAuditionMutation.isPending) {
-      const body = {
-        id: auditionId,
-        body: data,
-      };
-
-      updateAuditionMutation.mutate(body, {
-        onSuccess: () => {
-          router.push(ROUTE.ADMIN.AUDITION.LIST);
-          toast.success("오디션 결과가 수정되었습니다.");
+      updateAuditionMutation.mutate(
+        { params: { id: auditionId }, body: data },
+        {
+          onSuccess: () => {
+            router.push(ROUTE.ADMIN.AUDITION.LIST);
+            toast.success("오디션 결과가 수정되었습니다.");
+          },
         },
-      });
+      );
     }
   });
   const onDelete = () => {
     if (mode === "edit" && auditionId && !deleteAuditionMutation.isPending) {
       deleteAuditionMutation.mutate(
-        { id: auditionId },
+        { params: { id: auditionId } },
         {
           onSuccess: () => {
             router.push(ROUTE.ADMIN.AUDITION.LIST);

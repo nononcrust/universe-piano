@@ -40,7 +40,7 @@ export const CheckoutForm = () => {
 
   const router = useRouter();
 
-  const { data: order } = useOrderDetail({ id: params.id });
+  const { data: order } = useOrderDetail({ params });
 
   const updateOrderMutation = useUpdateOrder();
 
@@ -63,7 +63,7 @@ export const CheckoutForm = () => {
 
     updateOrderMutation.mutate(
       {
-        id: params.id,
+        params: { id: params.id },
         body: {
           status: OrderStatus.PAYMENT_PENDING,
           point: Number(data.point),
