@@ -94,7 +94,7 @@ export const useAuditionList = () => {
   });
 };
 
-export const useAuditionDetail = (id: string) => {
+export const useAuditionDetail = ({ id }: { id: string }) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => auditionApi.getAuditionById({ id }),

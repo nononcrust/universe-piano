@@ -52,7 +52,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
 
   const router = useRouter();
 
-  const { data } = useAuditionDetail(auditionId ?? "");
+  const { data } = useAuditionDetail({ id: auditionId ?? "" });
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),

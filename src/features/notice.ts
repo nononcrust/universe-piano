@@ -71,7 +71,7 @@ export const useNoticeList = () => {
   });
 };
 
-export const useNoticeDetail = (id: string) => {
+export const useNoticeDetail = ({ id }: { id: string }) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => noticeApi.getNoticeById({ id }),

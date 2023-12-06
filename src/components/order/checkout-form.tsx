@@ -40,7 +40,7 @@ export const CheckoutForm = () => {
 
   const router = useRouter();
 
-  const { data: order } = useOrderDetail(params.id);
+  const { data: order } = useOrderDetail({ id: params.id });
 
   const updateOrderMutation = useUpdateOrder();
 

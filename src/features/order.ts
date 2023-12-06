@@ -173,7 +173,7 @@ export const useOrderList = () => {
   });
 };
 
-export const useOrderDetail = (id: string) => {
+export const useOrderDetail = ({ id }: { id: string }) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => orderApi.getOrderById({ id }),

@@ -60,7 +60,7 @@ export const useProductList = () => {
   });
 };
 
-export const useProductDetail = (id: string) => {
+export const useProductDetail = ({ id }: { id: string }) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => productApi.getProductById({ id }),

@@ -17,7 +17,7 @@ import { PageTitle } from "../layout/page-title";
 export const AuditionDetail = () => {
   const params = useParams<{ id: string }>();
 
-  const { data: audition } = useAuditionDetail(params.id);
+  const { data: audition } = useAuditionDetail({ id: params.id });
 
   if (audition === null) return redirect(ROUTE.NEWS.AUDITION.LIST);
 
