@@ -76,10 +76,10 @@ export const useUserList = () => {
   });
 };
 
-export const useUserDetail = ({ params }: { params: { id: string } }) => {
+export const useUserDetail = ({ id }: { id: string }) => {
   return useQuery({
-    queryKey: queryKeys.detail(params.id),
-    queryFn: () => userApi.getUserById({ params }),
+    queryKey: queryKeys.detail(id),
+    queryFn: () => userApi.getUserById({ params: { id } }),
   });
 };
 

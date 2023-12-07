@@ -14,7 +14,7 @@ import { useParams, useRouter } from "next/navigation";
 export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
 
-  const { data: product } = useProductDetail({ params });
+  const { data: product } = useProductDetail({ id: params.id });
 
   if (!product) return null;
 
@@ -52,7 +52,7 @@ const ProductImageSection = () => {
 const ProductOptionSection = () => {
   const params = useParams<{ id: string }>();
 
-  const { data: product } = useProductDetail({ params });
+  const { data: product } = useProductDetail({ id: params.id });
 
   if (!product) return null;
 
@@ -146,7 +146,7 @@ const ProductAction = () => {
 
   const router = useRouter();
 
-  const { data: product } = useProductDetail({ params });
+  const { data: product } = useProductDetail({ id: params.id });
 
   const createOrderMutation = useCreateOrder();
 

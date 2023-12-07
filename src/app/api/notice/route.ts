@@ -1,29 +1,23 @@
-import { noticeRepository, noticeRequestSchema } from "@/features/notice";
+import { noticeRequestSchema, noticeService } from "@/features/notice";
 import { adminGuard } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 export const GET = async (request: Request) => {
-  try {
-    const notices = await noticeRepository.getNoticeList();
+  const notices = await noticeService.getNoticeList();
 
-    return NextResponse.json(notices);
-  } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
-  }
+  return NextResponse.json(notices);
 };
 
 export const POST = async (request: Request) => {
   adminGuard();
 
   try {
-    const body = await request.json();
-
-    const parsedBody = noticeRequestSchema.parse(body);
+    const body = noticeRequestSchema.parse(await request.json());
 
     const notice = await prisma.notice.create({
-      data: parsedBody,
+      data: body,
     });
 
     return NextResponse.json(notice);

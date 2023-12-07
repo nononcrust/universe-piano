@@ -22,6 +22,13 @@ export const noticeRepository = {
   },
 };
 
+export const noticeService = {
+  getNoticeList: () => {
+    return noticeRepository.getNoticeList();
+  },
+  createNotice: () => {},
+};
+
 export type NoticeList = Prisma.PromiseReturnType<typeof noticeRepository.getNoticeList>;
 export type NoticeDetail = Prisma.PromiseReturnType<typeof noticeRepository.getNoticeById>;
 
@@ -71,10 +78,10 @@ export const useNoticeList = () => {
   });
 };
 
-export const useNoticeDetail = ({ params }: { params: { id: string } }) => {
+export const useNoticeDetail = ({ id }: { id: string }) => {
   return useQuery({
-    queryKey: queryKeys.detail(params.id),
-    queryFn: () => noticeApi.getNoticeById({ params }),
+    queryKey: queryKeys.detail(id),
+    queryFn: () => noticeApi.getNoticeById({ params: { id } }),
   });
 };
 

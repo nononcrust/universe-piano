@@ -14,7 +14,7 @@ import { useParams } from "next/navigation";
 export default function OrderDetailPage() {
   const params = useParams<{ id: string }>();
 
-  const { data: order } = useOrderDetail({ params });
+  const { data: order } = useOrderDetail({ id: params.id });
 
   if (!order) return null;
 

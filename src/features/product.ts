@@ -60,9 +60,9 @@ export const useProductList = () => {
   });
 };
 
-export const useProductDetail = ({ params }: { params: { id: string } }) => {
+export const useProductDetail = ({ id }: { id: string }) => {
   return useQuery({
-    queryKey: queryKeys.detail(params.id),
-    queryFn: () => productApi.getProductById({ params }),
+    queryKey: queryKeys.detail(id),
+    queryFn: () => productApi.getProductById({ params: { id } }),
   });
 };
