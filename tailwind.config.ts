@@ -4,7 +4,7 @@ import { shadcnPreset } from "./src/lib/shadcn";
 
 module.exports = {
   presets: [shadcnPreset],
-  plugins: [typographyPlugin],
+  plugins: [typographyPlugin, require("tailwind-scrollbar-hide")],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
