@@ -110,6 +110,10 @@ const shadcnPlugin = plugin(
           sm: "calc(var(--radius) - 4px)",
         },
         keyframes: {
+          "avatar-image-fade-in": {
+            from: { opacity: "0" },
+            to: { opacity: "1" },
+          },
           "form-message-down": {
             from: { transform: "translateY(-8px)", opacity: "0" },
             to: { transform: "translateY(0)", opacity: "1" },
@@ -124,6 +128,7 @@ const shadcnPlugin = plugin(
           },
         },
         animation: {
+          "avatar-image-fade-in": "avatar-image-fade-in 0.6s ease-in-out",
           "form-message-down": "form-message-down 0.7s cubic-bezier(0.16,1,0.3,1)",
           "accordion-down": "accordion-down 0.2s ease-in-out",
           "accordion-up": "accordion-up 0.2s ease-in-out",
