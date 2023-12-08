@@ -2,6 +2,7 @@ import { Icon } from "@/components/icon";
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ScrollShadow } from "@/components/ui/scroll-shadow";
 import Image from "next/image";
 
 export default function ConsultingListPage() {
@@ -57,7 +58,6 @@ export default function ConsultingListPage() {
           </div>
         </Aos>
       </section>
-
       <Aos>
         <section className="mt-16 bg-gray-50 py-32">
           <div className="container flex flex-col">
@@ -68,11 +68,13 @@ export default function ConsultingListPage() {
               새롭게 올라온 이용후기를 직접 읽어보고 판단해보세요.
             </h2>
           </div>
-          <div className="container mt-8 flex gap-4 overflow-x-auto">
-            <ReviewItem />
-            <ReviewItem />
-            <ReviewItem />
-          </div>
+          <ScrollShadow>
+            <div className="scrollbar-hide container mt-8 flex gap-4 overflow-x-auto">
+              <ReviewItem />
+              <ReviewItem />
+              <ReviewItem />
+            </div>
+          </ScrollShadow>
         </section>
       </Aos>
       <Aos>
