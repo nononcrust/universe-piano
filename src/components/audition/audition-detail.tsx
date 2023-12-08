@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useAuditionDetail } from "@/features/audition";
 import { formatDate } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
@@ -48,9 +49,13 @@ export const AuditionDetail = () => {
             <CommentInput className="mt-4" auditionId={audition.id} />
           </AccessControl>
           <ul className="mt-8 flex flex-col gap-8">
-            {audition.comments.map((comment) => (
-              <AuditionCommentItem key={comment.id} comment={comment} />
-            ))}
+            <AnimatePresence>
+              {audition.comments.map((comment) => (
+                <motion.div key={comment.id} layout>
+                  <AuditionCommentItem comment={comment} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
             <div className="mt-8">
               <Link href={ROUTE.NEWS.AUDITION.LIST}>
                 <Button variant="secondary">목록으로</Button>

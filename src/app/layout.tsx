@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <TailwindIndicator />
           </UserInfoFetcher>
         </Providers>
-        <Toaster />
+        <Toaster richColors />
       </body>
     </html>
   );

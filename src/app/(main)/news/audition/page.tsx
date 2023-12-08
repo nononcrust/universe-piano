@@ -5,12 +5,15 @@ import { NoticeListItem } from "@/components/notice/notice-list-item";
 import { Pagination } from "@/components/pagination";
 import { ROUTE } from "@/constants/route";
 import { useAuditionList } from "@/features/audition";
+import { useAnimateOnLoad } from "@/hooks/use-animate-on-load";
 import { usePagination } from "@/hooks/use-pagination";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import Link from "next/link";
 
 export default function AuditionListPage() {
   const { data: auditions, isLoading } = useAuditionList();
+  const { animating } = useAnimateOnLoad({ isLoading });
+
   const pagination = usePagination();
 
   const totalPage = auditions ? Math.ceil(auditions.length / 10) : 0;
@@ -25,7 +28,11 @@ export default function AuditionListPage() {
       <PageTitle title="오디션 결과 발표" />
       <ul className="mt-8 flex flex-col divide-y">
         {paginatedAuditions?.map((item, index) => (
-          <Link key={index} href={ROUTE.NEWS.AUDITION.DETAIL(String(item.id))}>
+          <Link
+            className={cn(animating && "animate-fade-in")}
+            key={index}
+            href={ROUTE.NEWS.AUDITION.DETAIL(String(item.id))}
+          >
             <NoticeListItem title={item.title} createdAt={formatDate(item.createdAt)} />
           </Link>
         ))}

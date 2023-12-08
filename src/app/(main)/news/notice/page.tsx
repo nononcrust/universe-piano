@@ -5,14 +5,16 @@ import { NoticeListItem } from "@/components/notice/notice-list-item";
 import { Pagination } from "@/components/pagination";
 import { ROUTE } from "@/constants/route";
 import { useNoticeList } from "@/features/notice";
+import { useAnimateOnLoad } from "@/hooks/use-animate-on-load";
 import { usePagination } from "@/hooks/use-pagination";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import Link from "next/link";
 
 export default function NoticeListPage() {
   const pagination = usePagination();
 
   const { data: notices, isLoading } = useNoticeList();
+  const { animating } = useAnimateOnLoad({ isLoading });
 
   const totalPage = notices ? Math.ceil(notices.length / 10) : 0;
 
@@ -23,7 +25,11 @@ export default function NoticeListPage() {
       <PageTitle title="공지사항" />
       <ul className="mt-8 flex flex-col divide-y">
         {paginatedNotices?.map((item, index) => (
-          <Link key={index} href={ROUTE.NEWS.NOTICE.DETAIL(String(item.id))}>
+          <Link
+            className={cn(animating && "animate-fade-in")}
+            key={index}
+            href={ROUTE.NEWS.NOTICE.DETAIL(String(item.id))}
+          >
             <NoticeListItem title={item.title} createdAt={formatDate(item.createdAt)} />
           </Link>
         ))}
