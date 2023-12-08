@@ -81,7 +81,7 @@ export const UserForm = ({ user }: UserFormProps) => {
                 <FormItem>
                   <FormLabel>닉네임</FormLabel>
                   <FormControl>
-                    <Input variant="outline" placeholder="닉네임" {...field} />
+                    <Input placeholder="닉네임" {...field} />
                   </FormControl>
                   <FormDescription>닉네임을 입력해주세요.</FormDescription>
                   <FormMessage />
@@ -95,7 +95,7 @@ export const UserForm = ({ user }: UserFormProps) => {
                 <FormItem>
                   <FormLabel>이메일</FormLabel>
                   <FormControl>
-                    <Input variant="outline" placeholder="이메일" {...field} />
+                    <Input placeholder="이메일" {...field} />
                   </FormControl>
                   <FormDescription>이메일을 입력해주세요.</FormDescription>
                   <FormMessage />
@@ -135,7 +135,6 @@ export const UserForm = ({ user }: UserFormProps) => {
                   <FormLabel>적립금</FormLabel>
                   <FormControl>
                     <Input
-                      variant="outline"
                       placeholder="적립금"
                       onChange={(e) => onChange(Number(allowNumberOnly(e.target.value)))}
                       {...field}

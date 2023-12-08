@@ -118,7 +118,7 @@ export default function AccountPage() {
         </FormLayout>
       </Form>
       <PageSubtitle className="mt-16" title="알림 설정" />
-      <div className="mt-4 flex items-center justify-between rounded-lg border p-4">
+      <div className="mt-4 flex items-center justify-between rounded-2xl border p-4">
         <div className="flex flex-col gap-1">
           <p className="font-medium">마케팅 알림</p>
           <p className="text-sm text-muted-foreground">

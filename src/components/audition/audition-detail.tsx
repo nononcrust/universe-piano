@@ -30,13 +30,13 @@ export const AuditionDetail = () => {
             <h2 className="text-lg font-medium md:text-2xl">{audition.title}</h2>
             <p className="mt-4 text-sm text-muted-foreground">{formatDate(audition.createdAt)}</p>
           </div>
-          <div className="relative mt-8 flex max-w-full">
+          <div className="relative mt-8 flex max-w-full flex-col gap-4">
             {audition.images?.map((image) => (
               <Image
                 className="rounded-2xl"
                 key={image.id}
                 width={500}
-                height={400}
+                height={500}
                 src={image.url}
                 alt="게시글 이미지"
               />

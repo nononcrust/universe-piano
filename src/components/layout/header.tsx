@@ -13,13 +13,6 @@ import { HeaderNav } from "./header-nav";
 import { NavigationMenuDialog } from "./navigation-menu-dialog";
 import { UserMenu } from "./user-menu";
 
-export interface NavItem {
-  title: string;
-  href?: string;
-  disabled?: boolean;
-  external?: boolean;
-}
-
 export const Header = () => {
   const { data: session, fetchStatus } = useSession();
 

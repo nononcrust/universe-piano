@@ -53,7 +53,6 @@ export const UserMenu = () => {
             </div>
           </div>
         </div>
-        <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.MYPAGE.PROFILE}>마이페이지</Link>
         </DropdownMenuItem>

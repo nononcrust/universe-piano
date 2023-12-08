@@ -103,7 +103,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
                 <FormItem>
                   <FormLabel>제목</FormLabel>
                   <FormControl>
-                    <Input variant="outline" placeholder="제목" {...field} />
+                    <Input placeholder="제목" {...field} />
                   </FormControl>
                   <FormDescription>제목을 입력해주세요.</FormDescription>
                   <FormMessage />
@@ -117,7 +117,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
                 <FormItem>
                   <FormLabel>내용</FormLabel>
                   <FormControl>
-                    <Textarea variant="outline" placeholder="내용" {...field} />
+                    <Textarea placeholder="내용" {...field} />
                   </FormControl>
                   <FormDescription>내용을 입력해주세요.</FormDescription>
                   <FormMessage />

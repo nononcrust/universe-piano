@@ -17,7 +17,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
       href={ROUTE.SERVICE.PRODUCT.DETAIL(String(product.id))}
       className="col flex cursor-pointer flex-col gap-2 pb-4"
     >
-      <AspectRatio ratio={1} className="rounded-lg border">
+      <AspectRatio ratio={1} className="rounded-2xl border">
         <Image
           src="/images/logo.svg"
           fill
@@ -48,7 +48,7 @@ const ProductItemSkeleton = () => {
   return (
     <div className="col flex flex-col gap-2 pb-4">
       <AspectRatio ratio={1}>
-        <Skeleton className="h-full w-full rounded-lg" />
+        <Skeleton className="h-full w-full rounded-2xl" />
       </AspectRatio>
       <div className="flex flex-col gap-2">
         <Skeleton className="h-4 w-1/2" />

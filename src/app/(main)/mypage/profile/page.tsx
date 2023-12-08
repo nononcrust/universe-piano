@@ -43,7 +43,7 @@ export default function MyProfilePage() {
           </Link>
         </IconButton> */}
         <Link href={ROUTE.MYPAGE.ACCOUNT}>
-          <Button variant="outline">프로필 수정</Button>
+          <Button variant="secondary">프로필 수정</Button>
         </Link>
       </div>
       <PageSubtitle className="mt-20" title="적립금" />
