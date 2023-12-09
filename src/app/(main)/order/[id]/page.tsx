@@ -2,24 +2,58 @@
 
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/configs/site";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
-import { useOrderDetail } from "@/features/order";
+import { ROUTE } from "@/constants/route";
+import { useOrderDetail, useUpdateOrder } from "@/features/order";
+import { useDialog } from "@/hooks/use-dialog";
 import { formatDate } from "@/lib/utils";
 import { OrderStatus } from "@prisma/client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function OrderDetailPage() {
+  const orderCancelConfirmDialog = useDialog();
+
   const params = useParams<{ id: string }>();
 
+  const router = useRouter();
+
   const { data: order } = useOrderDetail({ id: params.id });
+  const updateOrderMutation = useUpdateOrder();
+
+  const onCancelOrderButtonClick = () => {
+    if (!order) return;
+
+    updateOrderMutation.mutate(
+      {
+        params: { id: order.id },
+        body: { status: OrderStatus.CANCELLED },
+      },
+      {
+        onSuccess: () => {
+          toast.success("주문이 취소되었습니다.");
+          router.push(ROUTE.MYPAGE.ORDER);
+        },
+      },
+    );
+  };
 
   if (!order) return null;
 
   return (
-    <main className="container">
+    <main className="container pb-16">
       <PageTitle title="주문 상세정보" />
       <PageSubtitle className="mt-8" title="상품 정보" />
       <Separator className="mt-4" />
@@ -74,11 +108,25 @@ export default function OrderDetailPage() {
           </p>
         </div>
       </div>
-      {order.status !== OrderStatus.PAYMENT_COMPLETED && (
-        <Button className="mt-16" variant="secondary">
+      {order.status === OrderStatus.PAYMENT_PENDING && (
+        <Button className="mt-16" variant="secondary" onClick={orderCancelConfirmDialog.open}>
           주문 취소
         </Button>
       )}
+      <AlertDialog
+        open={orderCancelConfirmDialog.isOpen}
+        onOpenChange={orderCancelConfirmDialog.onOpenChange}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>주문을 취소할까요?</AlertDialogTitle>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={onCancelOrderButtonClick}>주문 취소하기</AlertDialogAction>
+            <AlertDialogCancel>돌아가기</AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </main>
   );
 }

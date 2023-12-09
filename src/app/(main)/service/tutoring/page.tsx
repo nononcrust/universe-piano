@@ -1,3 +1,4 @@
+import { ServiceFloatingButton } from "@/components/service-floating-button";
 import Image from "next/image";
 
 export default function TutoringListPage() {
@@ -11,6 +12,7 @@ export default function TutoringListPage() {
       <Image src="/images/tutoring/tutoring-6.jpg" width={860} height={1100} alt="" />
       <Image src="/images/tutoring/tutoring-7.jpg" width={860} height={1000} alt="" />
       <Image src="/images/tutoring/tutoring-8.jpg" width={860} height={250} alt="" />
+      <ServiceFloatingButton />
     </main>
   );
 }

@@ -1,7 +1,6 @@
 import { orderRepository, orderUpdateRequestSchema } from "@/features/order";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import { ZodError } from "zod";
 
 interface Context {
   params: {
@@ -22,28 +21,20 @@ export const GET = async (request: Request, context: Context) => {
 };
 
 export const PUT = async (request: Request, context: Context) => {
-  try {
-    const orderId = context.params.id;
+  const orderId = context.params.id;
 
-    const body = await request.json();
+  const requestBody = await request.json();
 
-    const parsedBody = orderUpdateRequestSchema.parse(body);
+  const body = orderUpdateRequestSchema.parse(requestBody);
 
-    const order = await prisma.order.update({
-      where: {
-        id: orderId,
-      },
-      data: parsedBody,
-    });
+  const order = await prisma.order.update({
+    where: {
+      id: orderId,
+    },
+    data: body,
+  });
 
-    return NextResponse.json(order);
-  } catch (error) {
-    if (error instanceof ZodError) {
-      return NextResponse.json("Bad Request", { status: 400 });
-    }
-
-    return NextResponse.json("Internal Error", { status: 500 });
-  }
+  return NextResponse.json(order);
 };
 
 export const DELETE = async (request: Request, context: Context) => {

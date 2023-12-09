@@ -150,17 +150,9 @@ const ProductAction = () => {
   const { data: product } = useProductDetail({ id: params.id });
   const { data: session } = useSession();
 
-  const hasSubscribed =
+  const subscribed =
     product &&
-    session &&
-    session.user.subscriptions.some((subscription) => subscription.productId === product.id);
-
-  const hasOrdered =
-    product &&
-    session &&
-    session.user.orders.some((order) =>
-      order.orderItems.some((orderItem) => orderItem.productId === product.id),
-    );
+    session?.user.subscriptions.some((subscription) => subscription.productId === product.id);
 
   const createOrderMutation = useCreateOrder();
 
@@ -201,9 +193,9 @@ const ProductAction = () => {
         className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
         size="lg"
         onClick={onCheckout}
-        disabled={!!(hasOrdered || hasSubscribed)}
+        disabled={!!subscribed}
       >
-        {hasOrdered || hasSubscribed ? "이미 구매한 상품입니다." : "구매하기"}
+        {subscribed ? "이미 구매한 상품입니다." : "구매하기"}
       </Button>
     </div>
   );

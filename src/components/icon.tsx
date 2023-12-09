@@ -15,6 +15,7 @@ import {
   Leaf,
   Megaphone,
   Menu,
+  MessageCircle,
   MoreHorizontal,
   Search,
   Settings,
@@ -56,4 +57,5 @@ export const Icon = {
   Search: Search,
   Flag: Flag,
   Megaphone: Megaphone,
+  MessageCircle: MessageCircle,
 };
