@@ -10,7 +10,7 @@
 <p align="center">
   <a href="#introduction"><strong>소개</strong></a> ·
   <a href="#local-development"><strong>로컬 개발 환경</strong></a> ·
-  <a href="#tech-stack"><strong>기술 스택</strong></a> ·
+  <a href="#tech-stack"><strong>기술 스택</strong></a>
 </p>
 <br/>
 
