@@ -1,12 +1,12 @@
 import { COOKIE } from "@/constants/cookie";
-import { Session, UserInfo } from "@/features/auth";
+import { JwtPayload, Session, authRepository } from "@/features/auth";
 import { Role } from "@prisma/client";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { accessTokenSchema, jwt } from "./jwt";
 
-export const issueAccessToken = (user: UserInfo) => {
-  const accessToken = jwt.signUser(user);
+export const issueAccessToken = (jwtPayload: JwtPayload) => {
+  const accessToken = jwt.signUser(jwtPayload);
 
   const MAX_AGE_30_DAYS = 60 * 60 * 24 * 30;
 
@@ -36,7 +36,14 @@ export const getServerSession = async (): Promise<Session | null> => {
     return null;
   }
 
-  const user = decoded.data.user;
+  const userId = decoded.data.user.id;
+
+  const user = await authRepository.getUserById(userId);
+
+  if (!user) {
+    revokeAccessToken();
+    return null;
+  }
 
   const session: Session = {
     user,

@@ -15,10 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { FORM } from "@/constants/form";
 import { ROUTE } from "@/constants/route";
-import { Session, SocialData, authApi, queryKeys } from "@/features/auth";
+import { SocialData, useRegister } from "@/features/auth";
 import { formatPhoneNumberInput } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -37,7 +36,6 @@ interface SignUpFormProps {
 
 export const SignUpForm = ({ initialData }: SignUpFormProps) => {
   const router = useRouter();
-  const queryClient = useQueryClient();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -48,12 +46,12 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
     },
   });
 
-  const signupMutation = useMutation({
-    mutationFn: authApi.register,
-  });
+  console.log("@", form);
+
+  const registerMutation = useRegister();
 
   const onSubmit = form.handleSubmit((data) => {
-    if (signupMutation.isPending) return;
+    if (registerMutation.isPending) return;
 
     const body = {
       nickname: data.nickname,
@@ -63,15 +61,10 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
       email: initialData.email,
     };
 
-    signupMutation.mutate(
+    registerMutation.mutate(
       { body },
       {
-        onSuccess: (data) => {
-          const session: Session = {
-            user: data,
-          };
-
-          queryClient.setQueryData(queryKeys.session(), session);
+        onSuccess: () => {
           router.push(ROUTE.HOME);
         },
       },

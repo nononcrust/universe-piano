@@ -1,10 +1,9 @@
 import { RedirectWithRegisterToken } from "@/components/redirect-with-register-token";
 import { RedirectWithUser } from "@/components/redirect-with-user";
 import { ROUTE } from "@/constants/route";
-import { SocialData, UserInfo } from "@/features/auth";
+import { SocialData, authRepository } from "@/features/auth";
 import { kakaoApi } from "@/features/kakao";
 import { jwt } from "@/lib/jwt";
-import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
 export default async function KakaoCallbackPage({
@@ -20,11 +19,7 @@ export default async function KakaoCallbackPage({
   const kakaoUserInfo = await kakaoApi.getUserInfo(data.access_token);
   const kakaoId = String(kakaoUserInfo.id);
 
-  const user = await prisma.user.findUnique({
-    where: {
-      kakaoId,
-    },
-  });
+  const user = await authRepository.getUserByKakaoId(kakaoId);
 
   if (user === null) {
     const socialData: SocialData = {
@@ -39,16 +34,5 @@ export default async function KakaoCallbackPage({
     return <RedirectWithRegisterToken registerToken={registerToken} />;
   }
 
-  const userInfo: UserInfo = {
-    id: user.id,
-    nickname: user.nickname,
-    phone: user.phone,
-    email: user.email,
-    profileImage: user.profileImage,
-    tier: user.tier,
-    role: user.role,
-    point: user.point,
-  };
-
-  return <RedirectWithUser user={userInfo} />;
+  return <RedirectWithUser user={user} />;
 }

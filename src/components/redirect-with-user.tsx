@@ -1,13 +1,13 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
-import { Session, UserInfo, authApi, queryKeys } from "@/features/auth";
+import { Session, User, authApi, queryKeys } from "@/features/auth";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";
 
 interface RedirectWithUserProps {
-  user: UserInfo;
+  user: User;
 }
 
 export const RedirectWithUser = ({ user }: RedirectWithUserProps) => {

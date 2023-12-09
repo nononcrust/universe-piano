@@ -22,7 +22,7 @@ import { useOrderDetail, useUpdateOrder } from "@/features/order";
 import { allowNumberOnly, defaultZero, limitMaxNumber, trimLeadingZeros } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { OrderStatus } from "@prisma/client";
-import { useParams, useRouter } from "next/navigation";
+import { redirect, useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -71,7 +71,8 @@ export const CheckoutForm = () => {
       },
       {
         onSuccess: () => {
-          router.push(ROUTE.ORDER.RESULT(params.id));
+          router.replace(ROUTE.ORDER.RESULT(params.id));
+          router.refresh();
         },
       },
     );
@@ -83,6 +84,8 @@ export const CheckoutForm = () => {
   const productsPrice = order.orderItems.reduce((acc, cur) => acc + cur.product.price, 0);
   const point = form.watch("point");
   const totalPrice = productsPrice - Number(point);
+
+  if (order.status !== OrderStatus.CHECKING) return redirect(ROUTE.ORDER.RESULT(params.id));
 
   return (
     <main className="container pb-16">

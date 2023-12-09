@@ -1,15 +1,13 @@
-import { userInfoSchema } from "@/features/auth";
+import { jwtPayloadSchema } from "@/features/auth";
 import { issueAccessToken } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 export const POST = async (request: Request) => {
   try {
-    const requestBody = await request.json();
+    const body = jwtPayloadSchema.parse(await request.json());
 
-    const parsedBody = userInfoSchema.parse(requestBody);
-
-    const user = parsedBody;
+    const user = body;
 
     issueAccessToken(user);
 

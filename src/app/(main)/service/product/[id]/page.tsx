@@ -5,6 +5,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth";
 import { useCreateOrder } from "@/features/order";
 import { useProductDetail } from "@/features/product";
 import { OrderStatus } from "@prisma/client";
@@ -147,6 +148,19 @@ const ProductAction = () => {
   const router = useRouter();
 
   const { data: product } = useProductDetail({ id: params.id });
+  const { data: session } = useSession();
+
+  const hasSubscribed =
+    product &&
+    session &&
+    session.user.subscriptions.some((subscription) => subscription.productId === product.id);
+
+  const hasOrdered =
+    product &&
+    session &&
+    session.user.orders.some((order) =>
+      order.orderItems.some((orderItem) => orderItem.productId === product.id),
+    );
 
   const createOrderMutation = useCreateOrder();
 
@@ -187,8 +201,9 @@ const ProductAction = () => {
         className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
         size="lg"
         onClick={onCheckout}
+        disabled={!!(hasOrdered || hasSubscribed)}
       >
-        구매하기
+        {hasOrdered || hasSubscribed ? "이미 구매한 상품입니다." : "구매하기"}
       </Button>
     </div>
   );

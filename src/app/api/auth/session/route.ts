@@ -1,6 +1,5 @@
 import { COOKIE } from "@/constants/cookie";
-import { Session } from "@/features/auth";
-import { userRepository } from "@/features/user";
+import { Session, authRepository } from "@/features/auth";
 import { issueAccessToken, revokeAccessToken } from "@/lib/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
@@ -20,7 +19,7 @@ export const GET = async (request: Request) => {
 
     const id = decoded.user.id;
 
-    const user = await userRepository.getUserById(id);
+    const user = await authRepository.getUserById(id);
 
     if (!user) {
       revokeAccessToken();

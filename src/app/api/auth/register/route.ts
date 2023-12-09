@@ -1,5 +1,5 @@
 import { COOKIE } from "@/constants/cookie";
-import { UserInfo, registerRequestSchema } from "@/features/auth";
+import { JwtPayload, authRepository, registerRequestSchema } from "@/features/auth";
 import { issueAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { cookies } from "next/headers";
@@ -22,7 +22,7 @@ export const POST = async (request: Request) => {
       return NextResponse.json("User Already Exists", { status: 409 });
     }
 
-    const user = await prisma.user.create({
+    const createdUser = await prisma.user.create({
       data: {
         kakaoId: parsedBody.kakaoId,
         nickname: parsedBody.nickname,
@@ -31,23 +31,17 @@ export const POST = async (request: Request) => {
         email: parsedBody.email,
       },
     });
-
-    const userInfo: UserInfo = {
-      id: user.id,
-      nickname: user.nickname,
-      phone: user.phone,
-      profileImage: user.profileImage,
-      email: user.email,
-      tier: user.tier,
-      role: user.role,
-      point: user.point,
-    };
-
-    issueAccessToken(userInfo);
-
     cookies().delete(COOKIE.REGISTER_TOKEN);
 
-    return NextResponse.json(userInfo);
+    const user = await authRepository.getUserById(createdUser.id);
+
+    const jwtPayload: JwtPayload = {
+      id: createdUser.id,
+    };
+
+    issueAccessToken(jwtPayload);
+
+    return NextResponse.json(user, { status: 201 });
   } catch (error) {
     if (error instanceof ZodError) {
       return NextResponse.json("Bad Request", { status: 400 });

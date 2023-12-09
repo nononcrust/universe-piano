@@ -1,8 +1,43 @@
 import { api } from "@/lib/axios";
-import { Role, Tier } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
 import { userApi } from "./user";
+
+const getUserArgs = {
+  include: {
+    orders: {
+      include: {
+        orderItems: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    },
+    subscriptions: true,
+  },
+};
+
+export const authRepository = {
+  getUserByKakaoId: (kakaoId: string) => {
+    return prisma.user.findUnique({
+      where: {
+        kakaoId,
+      },
+      ...getUserArgs,
+    });
+  },
+  getUserById: (id: string) => {
+    return prisma.user.findUnique({
+      where: {
+        id,
+      },
+      ...getUserArgs,
+    });
+  },
+};
 
 export const socialDataSchema = z.object({
   id: z.string(),
@@ -19,26 +54,20 @@ export const registerRequestSchema = z.object({
   email: z.string().email(),
 });
 
-export const userInfoSchema = z.object({
+export const jwtPayloadSchema = z.object({
   id: z.string(),
-  nickname: z.string(),
-  phone: z.string(),
-  email: z.string(),
-  profileImage: z.string(),
-  tier: z.enum([Object.values(Tier)[0], ...Object.values(Tier).slice(1)]),
-  role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]),
-  point: z.number(),
 });
 
+export type JwtPayload = z.infer<typeof jwtPayloadSchema>;
 export type SocialData = z.infer<typeof socialDataSchema>;
-export type UserInfo = z.infer<typeof userInfoSchema>;
 export type RegisterBody = z.infer<typeof registerRequestSchema>;
-export type Session = { user: UserInfo };
+export type User = NonNullable<Prisma.PromiseReturnType<typeof authRepository.getUserById>>;
+export type Session = { user: User };
 
 const ENDPOINT = "/auth";
 
 export const authApi = {
-  login: async (data: { body: UserInfo }) => {
+  login: async (data: { body: JwtPayload }) => {
     const response = await api.post(`${ENDPOINT}/login`, data.body);
     return response.data;
   },
@@ -47,7 +76,7 @@ export const authApi = {
     return response.data;
   },
   register: async (data: { body: RegisterBody }) => {
-    const response = await api.post<UserInfo>(`${ENDPOINT}/register`, data.body);
+    const response = await api.post<User>(`${ENDPOINT}/register`, data.body);
     return response.data;
   },
   getSession: async () => {
@@ -77,7 +106,13 @@ export const useRegister = () => {
 
   return useMutation({
     mutationFn: authApi.register,
-    onSuccess: (session) => queryClient.setQueryData(queryKeys.session(), () => session),
+    onSuccess: (data) => {
+      const session: Session = {
+        user: data,
+      };
+
+      queryClient.setQueryData(queryKeys.session(), session);
+    },
   });
 };
 

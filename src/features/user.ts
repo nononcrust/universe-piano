@@ -17,6 +17,9 @@ export const userRepository = {
       where: {
         id,
       },
+      include: {
+        orders: true,
+      },
     });
   },
 };
