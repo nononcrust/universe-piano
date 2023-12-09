@@ -4,7 +4,7 @@
 </a>
 
 <p align="center">
-  유니버스 피아노 공식 홈페이지
+  유니버스 피아노 공식 홈페이지.
 </p>
 
 <p align="center">
