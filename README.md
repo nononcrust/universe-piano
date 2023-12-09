@@ -4,8 +4,8 @@
 </a>
 
 <p align="center">
-  유니버스 피아노 공식 홈페이지.
-</p>
+  유니버스 피아노 공식 홈페이지
+</p>
 
 <p align="center">
   <a href="#introduction"><strong>소개</strong></a> ·
