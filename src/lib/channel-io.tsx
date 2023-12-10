@@ -1,3 +1,4 @@
+import { useSession } from "@/features/auth";
 import { PropsWithChildren, useEffect } from "react";
 
 declare global {
@@ -199,17 +200,20 @@ class ChannelService {
 export const channel = new ChannelService();
 
 export const ChannelProvider = ({ children }: PropsWithChildren) => {
+  const { data: session } = useSession();
+
   useEffect(() => {
     channel.loadScript();
 
     channel.boot({
       pluginKey: process.env.NEXT_PUBLIC_CHANNEL_IO_KEY!,
+      ...(session && { memberId: session.user.id }),
     });
 
     return () => {
       channel.shutdown();
     };
-  }, []);
+  }, [session]);
 
   return <>{children}</>;
 };

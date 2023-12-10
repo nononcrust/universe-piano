@@ -3,7 +3,6 @@
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React from "react";
 import { NavigationMenu, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 
@@ -68,19 +67,10 @@ interface HeaderNavItemProps {
 }
 
 const HeaderNavItem = ({ title, href }: HeaderNavItemProps) => {
-  const pathname = usePathname();
-
-  const getDomain = (href: string) => {
-    return `/${href.split("/")[1]}`;
-  };
-
   return (
     <Link
       href={href}
-      className={cn(
-        "flex items-center text-[15px] text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground",
-        pathname.startsWith(getDomain(href)) && "font-semibold text-foreground",
-      )}
+      className="flex items-center text-[15px] font-semibold transition hover:opacity-80"
     >
       {title}
     </Link>
