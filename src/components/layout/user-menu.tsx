@@ -53,19 +53,19 @@ export const UserMenu = () => {
             </div>
           </div>
         </div>
-        <DropdownMenuItem asChild className="px-4 py-2">
+        <DropdownMenuItem asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.MYPAGE.PROFILE}>마이페이지</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild className="px-4 py-2">
+        <DropdownMenuItem asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.KIT.LIST}>나의 독학 키트</Link>
         </DropdownMenuItem>
         <AccessControl role={Role.ADMIN}>
-          <DropdownMenuItem asChild className="px-4 py-2">
+          <DropdownMenuItem asChild className="px-4 py-2 font-medium">
             <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>
           </DropdownMenuItem>
         </AccessControl>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="px-4 py-2" onClick={auth.logout}>
+        <DropdownMenuItem className="px-4 py-2 font-medium" onClick={auth.logout}>
           로그아웃
         </DropdownMenuItem>
       </DropdownMenuContent>

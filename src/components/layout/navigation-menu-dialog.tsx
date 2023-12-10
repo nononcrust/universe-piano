@@ -97,7 +97,7 @@ interface ListCategoryProps {
 }
 
 const ListCategory = ({ children }: ListCategoryProps) => {
-  return <div className="mt-2 flex flex-col border-b border-gray-100 pb-3">{children}</div>;
+  return <>{children}</>;
 };
 
 interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
