@@ -1,16 +1,16 @@
 import { ROUTE } from "@/constants/route";
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
-export type SiteConfig = typeof siteConfig;
-
 export const siteConfig = {
   name: "유니버스 피아노",
+  ceo: "최경원",
+  bin: "170-41-01086",
+  mailOrderBusinessNumber: "2023-울산동구-0158",
+  isa: "김한희",
   title: "유니버스 피아노 - 미국 음대 입시의 모든것",
+  address: "울산광역시 동구 봉수로 250, 105동 1604호",
+  email: "nononcrust@gmail.com",
   description: "유니버스 피아노 홈페이지",
-  icons: [
-    { rel: "shortcut icon", url: "/favicon.ico" },
-    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
-  ],
   links: {
     instagram: "https://www.instagram.com/universe_piano",
     kakao: "https://open.kakao.com/o/sy3BCAif",
@@ -19,6 +19,15 @@ export const siteConfig = {
     email: "universepiano@naver.com",
     mobile: "010-2134-7370",
   },
+  depositAccount: {
+    bank: "농협",
+    number: "30212134545621",
+    holder: "최경원",
+  },
+  icons: [
+    { rel: "shortcut icon", url: "/favicon.ico" },
+    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
+  ],
   openGraph: {
     title: "유니버스 피아노",
     type: "website",
@@ -34,11 +43,6 @@ export const siteConfig = {
       },
     ],
   } as OpenGraph,
-  depositAccount: {
-    bank: "농협",
-    number: "30212134545621",
-    holder: "최경원",
-  },
 };
 
 export const siteContents = {
@@ -97,6 +101,10 @@ export const siteContents = {
         href: ROUTE.SERVICE.TUTORING,
       },
       {
+        title: "스터디",
+        href: ROUTE.SERVICE.STUDY,
+      },
+      {
         title: "독학 키트",
         href: ROUTE.SERVICE.PRODUCT.LIST,
       },
@@ -138,74 +146,16 @@ export const siteContents = {
 
 export const footerNav = {
   about: {
-    title: "소개",
-    href: ROUTE.ABOUT.LIST,
-    children: [
-      {
-        title: "유니버스 피아노",
-        href: ROUTE.ABOUT.COMPANY,
-      },
-      {
-        title: "대표의 스토리",
-        href: ROUTE.ABOUT.STORY,
-      },
-    ],
+    ...siteContents.about,
   },
   notice: {
-    title: "소식",
-    href: ROUTE.NEWS.LIST,
-    children: [
-      {
-        title: "공지사항",
-        href: ROUTE.NEWS.NOTICE.LIST,
-      },
-      {
-        title: "오디션 결과 발표",
-        href: ROUTE.NEWS.AUDITION.LIST,
-      },
-    ],
-  },
-  review: {
-    title: "리뷰",
-    href: ROUTE.REVIEW.LIST,
-    children: [
-      {
-        title: "컨설팅 후기",
-        href: ROUTE.REVIEW.CONSULT.LIST,
-      },
-      {
-        title: "스터디 후기",
-        href: ROUTE.REVIEW.STUDY.LIST,
-      },
-    ],
+    ...siteContents.notice,
   },
   service: {
-    title: "서비스",
-    href: ROUTE.SERVICE.LIST,
-    children: [
-      {
-        title: "미국 음대 입시 과외",
-        href: ROUTE.SERVICE.TUTORING,
-      },
-      {
-        title: "입시 컨설팅",
-        href: ROUTE.SERVICE.CONSULTING,
-      },
-      {
-        title: "독학 키트",
-        href: ROUTE.SERVICE.PRODUCT.LIST,
-      },
-    ],
+    ...siteContents.service,
   },
   support: {
-    title: "고객지원",
-    href: ROUTE.SUPPORT,
-    children: [
-      {
-        title: "자주 묻는 질문",
-        href: ROUTE.SUPPORT,
-      },
-    ],
+    ...siteContents.support,
   },
   terms: {
     title: "이용약관",

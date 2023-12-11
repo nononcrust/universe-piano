@@ -36,12 +36,12 @@ export const Footer = () => {
         </div>
         <div className="mt-8 text-sm text-muted-foreground">
           <p>
-            (주)유니버스 피아노 | 대표이사: 김원붕 | 사업자번호: 120-39-190283 | 통신판매업
-            신고번호: 제 2023-용인기흥-2730
+            {`(주)유니버스 피아노 | 대표이사: ${siteConfig.ceo} | 사업자번호: ${siteConfig.bin} | 통신판매업
+            신고번호: 제 ${siteConfig.mailOrderBusinessNumber}`}
           </p>
           <p>
-            경기도 용인시 성복 2로 220 304 | nononcrust@gmail.com | 개인정보책임관리자: 김원붕 |
-            문의: 채널톡
+            {`${siteConfig.address} | ${siteConfig.email} | 개인정보책임관리자: ${siteConfig.isa} |
+            문의: 채널톡`}
           </p>
         </div>
         <SocialIconList />
