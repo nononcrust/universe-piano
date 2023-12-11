@@ -11,6 +11,7 @@ import {
   CreditCard,
   Flag,
   Home,
+  Info,
   Instagram,
   Leaf,
   Megaphone,
@@ -58,4 +59,5 @@ export const Icon = {
   Flag: Flag,
   Megaphone: Megaphone,
   MessageCircle: MessageCircle,
+  Info: Info,
 };

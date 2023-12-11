@@ -7,7 +7,11 @@ import { z } from "zod";
 
 export const auditionRepository = {
   getAuditionList: () => {
-    return prisma.audition.findMany();
+    return prisma.audition.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
   },
   getAuditionById: (id: string) => {
     return prisma.audition.findUnique({

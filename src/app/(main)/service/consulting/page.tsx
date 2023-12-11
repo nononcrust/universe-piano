@@ -69,7 +69,7 @@ export default function ConsultingListPage() {
             </h2>
           </div>
           <ScrollShadow>
-            <div className="scrollbar-hide container mt-8 flex gap-4 overflow-x-auto">
+            <div className="container mt-8 flex gap-4 overflow-x-auto scrollbar-hide">
               <ReviewItem />
               <ReviewItem />
               <ReviewItem />
