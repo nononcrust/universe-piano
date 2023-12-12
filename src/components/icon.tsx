@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   BookOpen,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ChevronsLeft,
@@ -37,6 +38,7 @@ export const Icon = {
   MoreHorizontal: MoreHorizontal,
   ChevronLeft: ChevronLeft,
   ChevronRight: ChevronRight,
+  ChevronDown: ChevronDown,
   ChevronsLeft: ChevronsLeft,
   ChevronsRight: ChevronsRight,
   ShoppingCart: ShoppingCart,

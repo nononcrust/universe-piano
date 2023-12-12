@@ -1,3 +1,4 @@
+import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { Icon } from "@/components/icon";
 import { Instagram } from "@/components/instagram";
 import { SectionSubtitle } from "@/components/section-subtitle";
@@ -40,6 +41,7 @@ export default function StudyPage() {
       <StudyMissionSection />
       <StudyReviewSection />
       <StudyInfoSection />
+      <StudyFaqSection />
     </main>
   );
 }
@@ -273,7 +275,7 @@ const StudyMissionItem = () => {
 
 const StudyReviewSection = () => {
   return (
-    <Aos className="my-16 bg-gray-100">
+    <Aos className="mt-16 bg-gray-100">
       <section className="container pb-24">
         <SectionTitle title="스터디 리뷰" />
         <SectionSubtitle title="스터디 크루분들의 솔직한 리뷰를 확인해보세요." />
@@ -295,7 +297,7 @@ const StudyReviewSection = () => {
 
 const StudyInfoSection = () => {
   return (
-    <Aos className="my-16 bg-zinc-900 pb-24 text-white">
+    <Aos className="bg-zinc-900 pb-24 text-white">
       <section className="container">
         <SectionTitle className="text-left" title="스터디 신청 및 월별 커리큘럼 확인" />
         <SectionSubtitle
@@ -328,5 +330,32 @@ const StudyInfoSection = () => {
         </div>
       </section>
     </Aos>
+  );
+};
+
+const StudyFaqSection = () => {
+  return (
+    <FaqSection>
+      <FaqSectionItem
+        title="스터디는 어떻게 신청하나요?"
+        description="인스타그램 혹은 카카오톡으로 문의해주세요."
+        value="item-1"
+      />
+      <FaqSectionItem
+        title="스터디를 신청하고 중간에 환불할 수 있나요?"
+        description="네, 환불 금액은 신청 날짜에 따라 계산됩니다."
+        value="item-2"
+      />
+      <FaqSectionItem
+        title="스터디는 어떻게 신청하나요?"
+        description="인스타그램 혹은 카카오톡으로 문의해주세요."
+        value="item-3"
+      />
+      <FaqSectionItem
+        title="스터디를 신청하고 중간에 환불할 수 있나요?"
+        description="네, 환불 금액은 신청 날짜에 따라 계산됩니다."
+        value="item-4"
+      />
+    </FaqSection>
   );
 };
