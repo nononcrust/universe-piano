@@ -225,7 +225,7 @@ export const CheckoutForm = () => {
                 <RadioGroupItem value="deposit" id="deposit" className="peer sr-only" />
                 <Label
                   htmlFor="deposit"
-                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-foreground [&:has([data-state=checked])]:border-foreground"
                 >
                   <Icon.CircleDollarSign className="mb-3 h-6 w-6" />
                   무통장 입금

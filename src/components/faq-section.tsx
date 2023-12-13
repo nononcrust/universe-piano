@@ -21,7 +21,7 @@ export const FaqSection = ({ children }: FaqSectionProps) => {
           {children}
         </Accordion.Root>
         <div className="mt-12 flex justify-center">
-          <Button className="rounded-full" size="lg">
+          <Button className="h-12 rounded-full px-12 text-lg" size="lg">
             더보기
           </Button>
         </div>

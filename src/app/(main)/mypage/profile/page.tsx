@@ -50,7 +50,7 @@ export default function MyProfilePage() {
       <div className="mt-4 flex items-center justify-between gap-3">
         <p>
           사용 가능한 적립금:
-          <span className="ml-2 font-semibold text-primary">{user.point} P</span>
+          <span className="ml-2 font-semibold text-foreground">{user.point} P</span>
         </p>
       </div>
       <PageSubtitle className="mt-20" title="추가 정보" />

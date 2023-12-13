@@ -10,25 +10,7 @@ import Image from "next/image";
 export default function StudyPage() {
   return (
     <main className="flex flex-col">
-      <section className="bg-gray-50">
-        <Aos>
-          <div className="container mt-16 flex flex-col items-center gap-8 py-16">
-            <div className="flex flex-1 flex-col items-center gap-4">
-              <div className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-3 py-1 text-sm font-semibold text-white">
-                영어 스터디
-              </div>
-              <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl">
-                음대생을 위한 영어 스터디
-              </h1>
-            </div>
-            {/* <div className="aspect-square w-full rounded-xl bg-gray-200 md:max-w-[260px]" /> */}
-            <div className="flex justify-center">
-              <div className="h-[300px]" />
-              {/* <Image src="/images/3d-star.png" width={300} height={300} alt="별" /> */}
-            </div>
-          </div>
-        </Aos>
-      </section>
+      <HeroSection />
       <section className="container flex justify-center">
         <button className="hover: mt-16 rounded-full bg-black px-10 py-4 text-lg font-bold text-white drop-shadow-lg">
           스터디 신청 및 커리큘럼 확인
@@ -45,6 +27,30 @@ export default function StudyPage() {
     </main>
   );
 }
+
+const HeroSection = () => {
+  return (
+    <section className="bg-gray-50">
+      <Aos>
+        <div className="container mt-16 flex flex-col items-center gap-8 py-16">
+          <div className="flex flex-1 flex-col items-center gap-4">
+            <div className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-3 py-1 text-sm font-semibold text-white">
+              영어 스터디
+            </div>
+            <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl">
+              음대생을 위한 영어 스터디
+            </h1>
+          </div>
+          {/* <div className="aspect-square w-full rounded-xl bg-gray-200 md:max-w-[260px]" /> */}
+          <div className="flex justify-center">
+            <div className="h-[300px]" />
+            {/* <Image src="/images/3d-star.png" width={300} height={300} alt="별" /> */}
+          </div>
+        </div>
+      </Aos>
+    </section>
+  );
+};
 
 const ReviewItem = () => {
   return (
@@ -304,20 +310,20 @@ const StudyInfoSection = () => {
           className="text-left text-gray-300"
           title="스터디 신청 방법 및  월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
         />
-        <div className="mt-20 flex flex-col gap-16 md:flex-row md:gap-36">
-          <div>
+        <div className="mt-20 flex flex-col gap-8 md:flex-row">
+          <div className="rounded-2xl bg-zinc-700 p-8">
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
-            <ul className="list-inside list-disc">
+            <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">모집 기간: 매월 20일 - 29일</li>
               <li className="mt-4 font-medium text-gray-300">월 190,000</li>
               <li className="mt-4 font-medium text-gray-300">
-                스터디 비용과 스터디 벌금을 별도입니다.
+                스터디 비용과 스터디 벌금은 별도입니다.
               </li>
             </ul>
           </div>
-          <div>
+          <div className="rounded-2xl bg-zinc-700 p-8">
             <p className="text-2xl font-bold">스터디 벌금</p>
-            <ul className="list-inside list-disc">
+            <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">인증 기준 미달 시, 벌금 부과</li>
               <li className="mt-4 font-medium text-gray-300">
                 모여진 벌금은 월말에 가장 성실하게 공부하신 분께 전액 수여합니다.
