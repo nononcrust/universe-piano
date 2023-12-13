@@ -1,6 +1,5 @@
 import typographyPlugin from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
-import colors from "tailwindcss/colors";
 import { shadcnPreset } from "./src/lib/shadcn";
 
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.violet[500],
+        primary: "#6857FF",
       },
     },
   },

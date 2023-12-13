@@ -77,7 +77,10 @@ const HeaderNavItem = ({ title, href }: HeaderNavItemProps) => {
   return (
     <Link
       href={href}
-      className={cn("flex items-center text-[15px] font-semibold transition hover:opacity-80")}
+      className={cn(
+        "flex items-center text-[15px] font-semibold transition hover:text-primary",
+        pathname.startsWith(getDomain(href)) && "text-primary",
+      )}
     >
       {title}
     </Link>
