@@ -203,6 +203,8 @@ export const ChannelProvider = ({ children }: PropsWithChildren) => {
   const { data: session } = useSession();
 
   useEffect(() => {
+    if (session === undefined) return;
+
     channel.loadScript();
 
     channel.boot({
