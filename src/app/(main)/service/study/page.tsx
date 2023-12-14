@@ -30,7 +30,7 @@ export default function StudyPage() {
 
 const HeroSection = () => {
   return (
-    <section className="bg-gray-50">
+    <section className="bg-slate-50">
       <Aos>
         <div className="container mt-16 flex flex-col items-center gap-8 py-16">
           <div className="flex flex-1 flex-col items-center gap-4">
@@ -54,7 +54,7 @@ const HeroSection = () => {
 
 const ReviewItem = () => {
   return (
-    <div className="h-[240px] rounded-2xl bg-white p-6 max-md:min-w-[320px]">
+    <div className="h-[240px] rounded-2xl bg-white p-6 shadow-lg max-md:min-w-[320px]">
       <p className="text-xl font-semibold">
         신상호
         <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">
@@ -111,7 +111,7 @@ interface CheckPointItemProps {
 
 const CheckPointItem = ({ number, title }: CheckPointItemProps) => {
   return (
-    <div className="flex max-w-[600px] gap-4 rounded-xl bg-gray-100 p-4">
+    <div className="flex max-w-[600px] gap-4 rounded-xl border bg-slate-100 p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black font-bold text-white">
           {number}
@@ -160,7 +160,7 @@ interface StudyCompositionItemProps {
 const StudyCompositionItem = ({ imageSrc, title, description }: StudyCompositionItemProps) => {
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
-      <div className="flex h-[200px] w-full items-center justify-center rounded-2xl bg-[#B8C0F6] md:h-[160px]">
+      <div className="flex h-[200px] w-full items-center justify-center rounded-2xl border bg-[#B8C0F6] shadow-md md:h-[160px]">
         <Image className="rounded-2xl" width={180} height={120} alt="" src={imageSrc} />
       </div>
       <div className="ml-2 mt-2 flex flex-col">
@@ -200,7 +200,7 @@ interface WhyUniverseItem {
 
 const WhyUniverseItem = ({ number, title }: WhyUniverseItem) => {
   return (
-    <div className="flex h-[320px] flex-1 flex-col justify-end rounded-2xl border bg-gray-100 p-6 font-bold">
+    <div className="flex h-[320px] flex-1 flex-col justify-end rounded-2xl border bg-slate-100 p-6 font-bold">
       <p className="text-xl underline underline-offset-4">0{number}</p>
       <p className="mt-2 whitespace-pre text-xl">{title}</p>
     </div>
@@ -238,7 +238,7 @@ interface StudyExpecttationItemProps {
 const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttationItemProps) => {
   return (
     <div className="flex flex-col md:flex-row md:gap-16">
-      <div className="h-[280px] min-w-[280px] rounded-2xl border bg-gray-100" />
+      <div className="h-[280px] min-w-[280px] rounded-2xl border bg-slate-100" />
       <div className="flex flex-col">
         <p className="mt-8 text-2xl font-semibold md:mt-12 md:text-3xl">{title}</p>
         <p className="mt-4 text-lg font-semibold">{subtitle}</p>
@@ -276,13 +276,13 @@ const StudyMissionSection = () => {
 };
 
 const StudyMissionItem = () => {
-  return <div className="h-[400px] min-w-[240px] rounded-2xl border bg-gray-100" />;
+  return <div className="h-[400px] min-w-[240px] rounded-2xl border bg-slate-100" />;
 };
 
 const StudyReviewSection = () => {
   return (
-    <Aos className="mt-16 bg-gray-100">
-      <section className="container pb-24">
+    <section className="mt-16 bg-slate-100">
+      <Aos className="container pb-24">
         <SectionTitle title="스터디 리뷰" />
         <SectionSubtitle title="스터디 크루분들의 솔직한 리뷰를 확인해보세요." />
         <div className="mt-12 flex flex-col gap-6 md:flex-row">
@@ -296,22 +296,22 @@ const StudyReviewSection = () => {
           </p>
           <Instagram className="h-16 w-16 cursor-pointer transition hover:scale-110" />
         </div>
-      </section>
-    </Aos>
+      </Aos>
+    </section>
   );
 };
 
 const StudyInfoSection = () => {
   return (
-    <Aos className="bg-zinc-900 pb-24 text-white">
-      <section className="container">
+    <section className="bg-zinc-900 pb-24 text-white">
+      <Aos className="container">
         <SectionTitle className="text-left" title="스터디 신청 및 월별 커리큘럼 확인" />
         <SectionSubtitle
           className="text-left text-gray-300"
           title="스터디 신청 방법 및  월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
         />
         <div className="mt-20 flex flex-col gap-8 md:flex-row">
-          <div className="rounded-2xl bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-500 bg-zinc-700 p-8">
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">모집 기간: 매월 20일 - 29일</li>
@@ -321,7 +321,7 @@ const StudyInfoSection = () => {
               </li>
             </ul>
           </div>
-          <div className="rounded-2xl bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-500 bg-zinc-700 p-8">
             <p className="text-2xl font-bold">스터디 벌금</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">인증 기준 미달 시, 벌금 부과</li>
@@ -334,8 +334,8 @@ const StudyInfoSection = () => {
             </ul>
           </div>
         </div>
-      </section>
-    </Aos>
+      </Aos>
+    </section>
   );
 };
 

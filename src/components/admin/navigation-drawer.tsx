@@ -56,8 +56,8 @@ const NavigationDrawerItem = ({ title, href }: NavigationDrawerItemProps) => {
     <Link href={href} className="flex flex-1">
       <li
         className={cn(
-          "w-full flex-1 p-4 font-medium transition hover:bg-gray-100",
-          isActive && "bg-gray-100",
+          "w-full flex-1 p-4 font-medium transition hover:bg-slate-100",
+          isActive && "bg-slate-100",
         )}
       >
         {title}
@@ -80,8 +80,8 @@ const MobileNavigationDrawerItem = ({ title, href }: MobileNavigationDrawerItemP
   return (
     <li
       className={cn(
-        "flex w-full flex-1 rounded-lg p-4 font-medium transition hover:bg-gray-100",
-        isActive && "bg-gray-100",
+        "flex w-full flex-1 rounded-lg p-4 font-medium transition hover:bg-slate-100",
+        isActive && "bg-slate-100",
       )}
       onClick={() => router.push(href)}
     >
@@ -94,11 +94,11 @@ export const MobileNavigationDrawer = () => {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
-        <Icon.Menu className="h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200 hover:bg-gray-100" />
+        <Icon.Menu className="h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200 hover:bg-slate-100" />
       </Drawer.Trigger>
       <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
-        <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 mt-24 flex max-h-[400px] flex-1 flex-col rounded-t-2xl bg-white p-2 outline-none">
+        <Drawer.Overlay className="bg-slatek/40 fixed inset-0 z-40" />
+        <Drawer.Content className="bg-slatee fixed bottom-0 left-0 right-0 z-50 mt-24 flex max-h-[400px] flex-1 flex-col rounded-t-2xl p-2 outline-none">
           <div className="overflow-y-auto p-2">
             {adminNav.map((section, index) => (
               <NavigationDrawerSection key={index} title={section.title}>

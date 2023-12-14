@@ -42,14 +42,14 @@ export default function AboutCompanyPage() {
             미국 음대 입시를 위한 모든 것
           </h1>
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="h-[240px] rounded-2xl bg-gray-100"></div>
-            <div className="h-[240px] rounded-2xl bg-gray-100"></div>
-            <div className="h-[240px] rounded-2xl bg-gray-100"></div>
+            <div className="h-[240px] rounded-2xl bg-slate-100"></div>
+            <div className="h-[240px] rounded-2xl bg-slate-100"></div>
+            <div className="h-[240px] rounded-2xl bg-slate-100"></div>
           </div>
         </section>
       </Aos>
       <section
-        className="flex h-[320px] flex-1 justify-center bg-gray-100 bg-cover bg-center bg-no-repeat md:justify-start"
+        className="flex h-[320px] flex-1 justify-center bg-slate-100 bg-cover bg-center bg-no-repeat md:justify-start"
         style={{
           backgroundImage: "url(/images/hero.webp)",
         }}

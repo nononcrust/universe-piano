@@ -61,7 +61,7 @@ interface CategoryItemProps {
 
 const CategoryItem = ({ title, href, icon }: CategoryItemProps) => {
   return (
-    <div className="flex w-24 cursor-pointer flex-col items-center justify-center rounded-xl p-4 transition hover:bg-gray-100">
+    <div className="flex w-24 cursor-pointer flex-col items-center justify-center rounded-xl p-4 transition hover:bg-slate-100">
       <div className="flex items-center justify-center">{icon}</div>
       <p className="mt-2 text-center text-sm text-muted-foreground">{title}</p>
     </div>

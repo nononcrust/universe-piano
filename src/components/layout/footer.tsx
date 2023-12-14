@@ -56,7 +56,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.instagram}
         target="_blank"
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-400 transition hover:bg-slate-500"
       >
         <Image
           src={ASSET.SOCIAL.INSTAGRAM}
@@ -69,7 +69,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.kakao}
         target="_blank"
-        className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-slate-400 transition hover:bg-slate-500"
       >
         <Image
           src={ASSET.SOCIAL.KAKAO}
@@ -82,7 +82,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.blog}
         target="_blank"
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-400 transition hover:bg-slate-500"
       >
         <Image
           src={ASSET.SOCIAL.NAVER_BLOG}
@@ -95,7 +95,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.cafe}
         target="_blank"
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-400 transition hover:bg-slate-500"
       >
         <Image
           src={ASSET.SOCIAL.NAVER_CAFE}

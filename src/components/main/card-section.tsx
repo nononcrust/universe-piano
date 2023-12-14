@@ -32,7 +32,7 @@ interface CardItemProps {
 
 export const CardItem = ({ title, description }: CardItemProps) => {
   return (
-    <div className="flex flex-col items-start justify-between rounded-2xl bg-gray-50 p-6 transition max-md:min-w-[320px]">
+    <div className="flex flex-col items-start justify-between rounded-2xl bg-slate-50 p-6 transition max-md:min-w-[320px]">
       <div className="flex flex-col justify-between">
         <div className="flex items-center">
           <p className="text-lg font-semibold">{title}</p>

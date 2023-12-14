@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
 import Image from "next/image";
 
-export default function ConsultingListPage() {
+export default function ConsultingPage() {
   return (
     <main className="flex flex-col">
-      <section className="bg-gray-50">
+      <section className="bg-slate-50">
         <Aos>
           <div className="container mt-16 flex flex-col items-center gap-8 py-16">
             <div className="flex flex-1 flex-col items-center gap-4">
@@ -19,47 +19,14 @@ export default function ConsultingListPage() {
                 미국 음대 입시 준비를 시작하세요
               </h1>
             </div>
-            {/* <div className="aspect-square w-full rounded-xl bg-gray-200 md:max-w-[260px]" /> */}
             <div className="flex justify-center">
               <Image src="/images/3d-star.png" width={300} height={300} alt="별" />
             </div>
           </div>
         </Aos>
       </section>
-      <section>
-        <Aos>
-          <div className="container mb-24 py-16">
-            <h1 className="mt-32 text-center text-2xl font-bold md:text-3xl">
-              미국 음대 입시 3요소 영역별 젼략 제공
-            </h1>
-            <h2 className="text-md mt-4 text-center font-medium text-muted-foreground md:text-lg">
-              컨설팅을 통해 미국 음대 입시에 필요한 요소를 어쩌구
-            </h2>
-            <div className="container mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-              <div className="flex flex-col items-center rounded-2xl bg-gray-50 p-8">
-                <Badge>학업성취도</Badge>
-                <p className="mt-4 text-center font-medium">
-                  미국 음대 입시에 필요한 3요소 중 학업성취도 영역의 상세 내용이 들어갈 공간입니다.
-                </p>
-              </div>
-              <div className="flex flex-col items-center rounded-2xl bg-gray-50 p-8">
-                <Badge>실력증명</Badge>
-                <p className="mt-4 text-center font-medium">
-                  미국 음대 입시에 필요한 3요소 중 학업성취도 영역의 상세 내용이 들어갈 공간입니다.
-                </p>
-              </div>
-              <div className="flex flex-col items-center rounded-2xl bg-gray-50 p-8">
-                <Badge>성장가능성</Badge>
-                <p className="mt-4 text-center font-medium">
-                  미국 음대 입시에 필요한 3요소 중 학업성취도 영역의 상세 내용이 들어갈 공간입니다.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Aos>
-      </section>
       <Aos>
-        <section className="mt-16 bg-gray-50 py-32">
+        <section className="mt-16 bg-slate-50 py-32">
           <div className="container flex flex-col">
             <h1 className="whitespace-pre-wrap text-center text-2xl font-bold md:text-3xl">
               {"솔직하고 담백한\n고객님들의 진심 어린 후기"}

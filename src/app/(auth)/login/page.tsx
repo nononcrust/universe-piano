@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <main className="flex h-[calc(100dvh)] items-center md:min-h-screen md:bg-gray-50 md:py-16">
+    <main className="flex h-[calc(100dvh)] items-center md:min-h-screen md:bg-slate-50 md:py-16">
       <section className="container flex max-w-sm flex-col items-center justify-center rounded-2xl bg-white py-28 md:border">
         {/* <div className="relative h-[44px] w-[140px]">
           <Image fill sizes="140px" src="/images/text-logo.png" alt="사이트 로고" priority />
