@@ -1,6 +1,6 @@
 import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma, Role, Tier } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
 import { userApi } from "./user";
@@ -56,6 +56,8 @@ export const registerRequestSchema = z.object({
 
 export const jwtPayloadSchema = z.object({
   id: z.string(),
+  role: z.nativeEnum(Role),
+  tier: z.nativeEnum(Tier),
 });
 
 export type JwtPayload = z.infer<typeof jwtPayloadSchema>;
