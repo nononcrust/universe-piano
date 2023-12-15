@@ -43,7 +43,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.0.woff2) format("woff2-variations");
   unicode-range: U+f9ca-fa0b, U+ff03-ff05, U+ff07, U+ff0a-ff0b, U+ff0d-ff19, U+ff1b, U+ff1d,
@@ -54,7 +54,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.1.woff2) format("woff2-variations");
   unicode-range: U+d723-d728, U+d72a-d733, U+d735-d748, U+d74a-d74f, U+d752-d753, U+d755-d757,
@@ -66,7 +66,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.2.woff2) format("woff2-variations");
   unicode-range: U+d679-d68b, U+d68e-d69e, U+d6a0, U+d6a2-d6a7, U+d6a9-d6c3, U+d6c6-d6c7,
@@ -78,7 +78,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.3.woff2) format("woff2-variations");
   unicode-range: U+d5bc-d5c7, U+d5ca-d5cb, U+d5cd-d5cf, U+d5d1-d5d7, U+d5d9-d5da, U+d5dc,
@@ -92,7 +92,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.4.woff2) format("woff2-variations");
   unicode-range: U+d507, U+d509-d50b, U+d50d-d513, U+d515-d53b, U+d53e-d53f, U+d541-d543,
@@ -104,7 +104,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.5.woff2) format("woff2-variations");
   unicode-range: U+d464-d477, U+d47a-d47b, U+d47d-d47f, U+d481-d487, U+d489-d48a, U+d48c,
@@ -115,7 +115,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.6.woff2) format("woff2-variations");
   unicode-range: U+d3bf-d3c7, U+d3ca-d3cf, U+d3d1-d3eb, U+d3ee-d3ef, U+d3f1-d3f3, U+d3f5-d3fb,
@@ -126,7 +126,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.7.woff2) format("woff2-variations");
   unicode-range: U+d2ff, U+d302-d304, U+d306-d30b, U+d30f, U+d311-d313, U+d315-d31b, U+d31e,
@@ -139,7 +139,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.8.woff2) format("woff2-variations");
   unicode-range: U+d257-d27f, U+d281-d29b, U+d29d-d29f, U+d2a1-d2ab, U+d2ad-d2b7, U+d2ba-d2bb,
@@ -150,7 +150,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.9.woff2) format("woff2-variations");
   unicode-range: U+d1b4, U+d1b6-d1f3, U+d1f5-d22b, U+d22e-d22f, U+d231-d233, U+d235-d23b,
@@ -161,7 +161,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.10.woff2) format("woff2-variations");
   unicode-range: U+d105-d12f, U+d132-d133, U+d135-d137, U+d139-d13f, U+d141-d142, U+d144,
@@ -173,7 +173,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.11.woff2) format("woff2-variations");
   unicode-range: U+d04b-d04f, U+d051-d057, U+d059-d06b, U+d06d-d06f, U+d071-d073, U+d075-d07b,
@@ -186,7 +186,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.12.woff2) format("woff2-variations");
   unicode-range: U+cfa2-cfc3, U+cfc5-cfdf, U+cfe2-cfe3, U+cfe5-cfe7, U+cfe9-cff4, U+cff6-cffb,
@@ -197,7 +197,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.13.woff2) format("woff2-variations");
   unicode-range: U+cef0-cef3, U+cef6, U+cef9-ceff, U+cf01-cf03, U+cf05-cf07, U+cf09-cf0f,
@@ -209,7 +209,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.14.woff2) format("woff2-variations");
   unicode-range: U+ce3c-ce57, U+ce5a-ce5b, U+ce5d-ce5f, U+ce61-ce67, U+ce6a, U+ce6c, U+ce6e-ce73,
@@ -221,7 +221,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.15.woff2) format("woff2-variations");
   unicode-range: U+cd92-cd93, U+cd96-cd97, U+cd99-cd9b, U+cd9d-cda3, U+cda6-cda8, U+cdaa-cdaf,
@@ -232,7 +232,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.16.woff2) format("woff2-variations");
   unicode-range: U+ccef-cd07, U+cd0a-cd0b, U+cd0d-cd1a, U+cd1c, U+cd1e-cd2b, U+cd2d-cd5b,
@@ -243,7 +243,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.17.woff2) format("woff2-variations");
   unicode-range: U+cc3f-cc43, U+cc46-cc47, U+cc49-cc4b, U+cc4d-cc53, U+cc55-cc58, U+cc5a-cc5f,
@@ -255,7 +255,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.18.woff2) format("woff2-variations");
   unicode-range: U+cb91-cbd3, U+cbd5-cbe3, U+cbe5-cc0b, U+cc0e-cc0f, U+cc11-cc13, U+cc15-cc1b,
@@ -266,7 +266,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.19.woff2) format("woff2-variations");
   unicode-range: U+caf4-cb47, U+cb4a-cb90;
@@ -276,7 +276,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.20.woff2) format("woff2-variations");
   unicode-range: U+ca4a-ca4b, U+ca4e-ca4f, U+ca51-ca53, U+ca55-ca5b, U+ca5d-ca60, U+ca62-ca83,
@@ -288,7 +288,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.21.woff2) format("woff2-variations");
   unicode-range: U+c996-c997, U+c99a-c99c, U+c99e-c9bf, U+c9c2-c9c3, U+c9c5-c9c7, U+c9c9-c9cf,
@@ -300,7 +300,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.22.woff2) format("woff2-variations");
   unicode-range: U+c8e9-c8f4, U+c8f6-c8fb, U+c8fe-c8ff, U+c901-c903, U+c905-c90b, U+c90e-c910,
@@ -312,7 +312,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.23.woff2) format("woff2-variations");
   unicode-range: U+c841-c84b, U+c84d-c86f, U+c872-c873, U+c875-c877, U+c879-c87f, U+c882-c884,
@@ -323,7 +323,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.24.woff2) format("woff2-variations");
   unicode-range: U+c779-c77b, U+c77e-c782, U+c786, U+c78b, U+c78d, U+c78f, U+c792-c793, U+c795,
@@ -336,7 +336,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.25.woff2) format("woff2-variations");
   unicode-range: U+c6bb-c6bf, U+c6c2, U+c6c4, U+c6c6-c6cb, U+c6ce-c6cf, U+c6d1-c6d3, U+c6d5-c6db,
@@ -350,7 +350,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.26.woff2) format("woff2-variations");
   unicode-range: U+c5f5-c5fb, U+c5fe, U+c602-c605, U+c607, U+c609-c60f, U+c611-c61a, U+c61c-c623,
@@ -364,7 +364,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.27.woff2) format("woff2-variations");
   unicode-range: U+c517-c527, U+c52a-c52b, U+c52d-c52f, U+c531-c538, U+c53a, U+c53c, U+c53e-c543,
@@ -379,7 +379,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.28.woff2) format("woff2-variations");
   unicode-range: U+c475-c4ef, U+c4f2-c4f3, U+c4f5-c4f7, U+c4f9-c4ff, U+c502-c50b, U+c50d-c516;
@@ -389,7 +389,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.29.woff2) format("woff2-variations");
   unicode-range: U+c3d0-c3d7, U+c3da-c3db, U+c3dd-c3de, U+c3e1-c3ec, U+c3ee-c3f3, U+c3f5-c42b,
@@ -400,7 +400,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.30.woff2) format("woff2-variations");
   unicode-range: U+c32b-c367, U+c36a-c36b, U+c36d-c36f, U+c371-c377, U+c37a-c37b, U+c37e-c383,
@@ -411,7 +411,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.31.woff2) format("woff2-variations");
   unicode-range: U+c26a-c26b, U+c26d-c26f, U+c271-c273, U+c275-c27b, U+c27e-c287, U+c289-c28f,
@@ -425,7 +425,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.32.woff2) format("woff2-variations");
   unicode-range: U+c1bc-c1c3, U+c1c5-c1df, U+c1e1-c1fb, U+c1fd-c203, U+c205-c20c, U+c20e,
@@ -437,7 +437,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.33.woff2) format("woff2-variations");
   unicode-range: U+c101-c11b, U+c11f, U+c121-c123, U+c125-c12b, U+c12e, U+c132-c137, U+c13a-c13b,
@@ -450,7 +450,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.34.woff2) format("woff2-variations");
   unicode-range: U+c049-c057, U+c059-c05b, U+c05d-c05f, U+c061-c067, U+c069-c08f, U+c091-c0ab,
@@ -463,7 +463,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.35.woff2) format("woff2-variations");
   unicode-range: U+bfa7-bfaf, U+bfb1-bfc4, U+bfc6-bfcb, U+bfce-bfcf, U+bfd1-bfd3, U+bfd5-bfdb,
@@ -474,7 +474,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.36.woff2) format("woff2-variations");
   unicode-range: U+bf07, U+bf09-bf3f, U+bf41-bf4f, U+bf52-bf54, U+bf56-bfa6;
@@ -484,7 +484,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.37.woff2) format("woff2-variations");
   unicode-range: U+be56, U+be58, U+be5c-be5f, U+be62-be63, U+be65-be67, U+be69-be74, U+be76-be7b,
@@ -496,7 +496,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.38.woff2) format("woff2-variations");
   unicode-range: U+bdb0-bdd3, U+bdd5-bdef, U+bdf1-be0b, U+be0d-be0f, U+be11-be13, U+be15-be43,
@@ -507,7 +507,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.39.woff2) format("woff2-variations");
   unicode-range: U+bd03, U+bd06, U+bd08, U+bd0a-bd0f, U+bd11-bd22, U+bd25-bd47, U+bd49-bd58,
@@ -519,7 +519,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.40.woff2) format("woff2-variations");
   unicode-range: U+bc4e-bc83, U+bc86-bc87, U+bc89-bc8b, U+bc8d-bc93, U+bc96, U+bc98, U+bc9b-bc9f,
@@ -531,7 +531,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.41.woff2) format("woff2-variations");
   unicode-range: U+bb90-bba3, U+bba5-bbab, U+bbad-bbbf, U+bbc1-bbf7, U+bbfa-bbfb, U+bbfd-bbfe,
@@ -544,7 +544,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.42.woff2) format("woff2-variations");
   unicode-range: U+bae6-bafb, U+bafd-bb17, U+bb19-bb33, U+bb37, U+bb39-bb3a, U+bb3d-bb43,
@@ -555,7 +555,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.43.woff2) format("woff2-variations");
   unicode-range: U+ba30-ba37, U+ba3a-ba3b, U+ba3d-ba3f, U+ba41-ba47, U+ba49-ba4a, U+ba4c,
@@ -568,7 +568,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.44.woff2) format("woff2-variations");
   unicode-range: U+b96e-b973, U+b976-b977, U+b979-b97b, U+b97d-b983, U+b986, U+b988, U+b98a-b98d,
@@ -581,7 +581,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.45.woff2) format("woff2-variations");
   unicode-range: U+b8bf-b8cb, U+b8cd-b8e0, U+b8e2-b8e7, U+b8ea-b8eb, U+b8ed-b8ef, U+b8f1-b8f7,
@@ -593,7 +593,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.46.woff2) format("woff2-variations");
   unicode-range: U+b80d-b80f, U+b811-b817, U+b81a, U+b81c-b823, U+b826-b827, U+b829-b82b,
@@ -605,7 +605,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.47.woff2) format("woff2-variations");
   unicode-range: U+b74d-b75f, U+b761-b763, U+b765-b774, U+b776-b77b, U+b77e-b77f, U+b781-b783,
@@ -617,7 +617,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.48.woff2) format("woff2-variations");
   unicode-range: U+b6a7-b6aa, U+b6ac-b6b0, U+b6b2-b6ef, U+b6f1-b727, U+b72a-b72b, U+b72d-b72e,
@@ -628,7 +628,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.49.woff2) format("woff2-variations");
   unicode-range: U+b605-b60f, U+b612-b617, U+b619-b624, U+b626-b69b, U+b69e-b6a3, U+b6a5-b6a6;
@@ -638,7 +638,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.50.woff2) format("woff2-variations");
   unicode-range: U+b55f, U+b562-b583, U+b585-b59f, U+b5a2-b5a3, U+b5a5-b5a7, U+b5a9-b5b2,
@@ -649,7 +649,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.51.woff2) format("woff2-variations");
   unicode-range: U+b4a5-b4b6, U+b4b8-b4bf, U+b4c1-b4c7, U+b4c9-b4db, U+b4de-b4df, U+b4e1-b4e2,
@@ -662,7 +662,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.52.woff2) format("woff2-variations");
   unicode-range: U+b3f8-b3fb, U+b3fd-b40f, U+b411-b417, U+b419-b41b, U+b41d-b41f, U+b421-b427,
@@ -674,7 +674,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.53.woff2) format("woff2-variations");
   unicode-range: U+b342-b353, U+b356-b357, U+b359-b35b, U+b35d-b35e, U+b360-b363, U+b366, U+b368,
@@ -686,7 +686,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.54.woff2) format("woff2-variations");
   unicode-range: U+b27c-b283, U+b285-b28f, U+b292-b293, U+b295-b297, U+b29a-b29f, U+b2a1-b2a4,
@@ -699,7 +699,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.55.woff2) format("woff2-variations");
   unicode-range: U+b1d6-b1e7, U+b1e9-b1fc, U+b1fe-b203, U+b206-b207, U+b209-b20b, U+b20d-b213,
@@ -710,7 +710,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.56.woff2) format("woff2-variations");
   unicode-range: U+b120-b122, U+b126-b127, U+b129-b12b, U+b12d-b133, U+b136, U+b138, U+b13a-b13f,
@@ -722,7 +722,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.57.woff2) format("woff2-variations");
   unicode-range: U+b05f-b07b, U+b07e-b07f, U+b081-b083, U+b085-b08b, U+b08d-b097, U+b09b,
@@ -735,7 +735,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.58.woff2) format("woff2-variations");
   unicode-range: U+afac-afb7, U+afba-afbb, U+afbd-afbf, U+afc1-afc6, U+afca-afcc, U+afce-afd3,
@@ -747,7 +747,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.59.woff2) format("woff2-variations");
   unicode-range: U+af03-af07, U+af09-af2b, U+af2e-af33, U+af35-af3b, U+af3e-af40, U+af44-af47,
@@ -758,7 +758,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.60.woff2) format("woff2-variations");
   unicode-range: U+ae56-ae5b, U+ae5e-ae60, U+ae62-ae64, U+ae66-ae67, U+ae69-ae6b, U+ae6d-ae83,
@@ -770,7 +770,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.61.woff2) format("woff2-variations");
   unicode-range: U+ad9c-ada3, U+ada5-adbf, U+adc1-adc3, U+adc5-adc7, U+adc9-add2, U+add4-addb,
@@ -783,7 +783,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.62.woff2) format("woff2-variations");
   unicode-range: U+ace2-ace3, U+ace5-ace6, U+ace9-acef, U+acf2, U+acf4, U+acf7-acfb, U+acfe-acff,
@@ -796,7 +796,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.63.woff2) format("woff2-variations");
   unicode-range: U+ac25-ac2c, U+ac2e, U+ac30, U+ac32-ac37, U+ac39-ac3f, U+ac41-ac4c, U+ac4e-ac6f,
@@ -809,7 +809,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.64.woff2) format("woff2-variations");
   unicode-range: U+99df, U+99ed, U+99f1, U+99ff, U+9a01, U+9a08, U+9a0e-9a0f, U+9a19, U+9a2b, U+9a30,
@@ -830,7 +830,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.65.woff2) format("woff2-variations");
   unicode-range: U+338c-339c, U+339f-33a0, U+33a2-33cb, U+33cf-33d0, U+33d3, U+33d6, U+33d8,
@@ -847,7 +847,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.66.woff2) format("woff2-variations");
   unicode-range: U+3136, U+3138, U+313a-3140, U+3143-3144, U+3150, U+3152, U+3154-3156, U+3158-315b,
@@ -859,7 +859,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.67.woff2) format("woff2-variations");
   unicode-range: U+2f7d, U+2f7f-2f8b, U+2f8e-2f90, U+2f92-2f97, U+2f99-2fa0, U+2fa2-2fa3,
@@ -875,7 +875,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.68.woff2) format("woff2-variations");
   unicode-range: U+2541-254b, U+25a4-25a9, U+25b1, U+25b5, U+25b9, U+25bf, U+25c1, U+25c3,
@@ -891,7 +891,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.69.woff2) format("woff2-variations");
   unicode-range: U+2479-2487, U+249c-24d1, U+24d3-24d7, U+24d9-24e9, U+24eb-24f4, U+2500-2501,
@@ -902,7 +902,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.70.woff2) format("woff2-variations");
   unicode-range: U+215b-215e, U+2162-2169, U+2170-2179, U+2195-2199, U+21b0-21b4, U+21bc, U+21c0,
@@ -918,7 +918,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.71.woff2) format("woff2-variations");
   unicode-range: U+81-82, U+84, U+a2-a5, U+a7-a8, U+aa, U+ac, U+b1-b3, U+b6, U+b8-ba, U+bc-be, U+c0,
@@ -934,7 +934,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.72.woff2) format("woff2-variations");
   unicode-range: U+e8, U+2da, U+2160, U+2194, U+3054, U+3058, U+306d, U+3086, U+308d, U+30ac, U+30bb,
@@ -952,7 +952,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.73.woff2) format("woff2-variations");
   unicode-range: U+3b1, U+2466, U+25a1, U+25a3, U+261c, U+3008-3009, U+305b, U+305d, U+3069, U+30a7,
@@ -970,7 +970,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.74.woff2) format("woff2-variations");
   unicode-range: U+131, U+2032, U+2465, U+2642, U+3048, U+3051, U+3083-3084, U+308f, U+30c0, U+30d1,
@@ -988,7 +988,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.75.woff2) format("woff2-variations");
   unicode-range: U+b4, U+20a9, U+20ac, U+2190, U+24d8, U+2502, U+2514, U+2592, U+25c7-25c8, U+2663,
@@ -1006,7 +1006,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.76.woff2) format("woff2-variations");
   unicode-range: U+2161, U+2228, U+2299, U+2464, U+2517, U+2640, U+3042, U+304a, U+3053, U+3061,
@@ -1024,7 +1024,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.77.woff2) format("woff2-variations");
   unicode-range: U+2103, U+2463, U+25c6, U+25cb, U+266c, U+3001, U+300a, U+3046, U+304c-304d, U+304f,
@@ -1042,7 +1042,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.78.woff2) format("woff2-variations");
   unicode-range: U+2039-203a, U+223c, U+25b3, U+25b7, U+25bd, U+25cf, U+266a, U+3002, U+300b, U+304b,
@@ -1060,7 +1060,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.79.woff2) format("woff2-variations");
   unicode-range: U+b0, U+e9, U+2193, U+2462, U+260e, U+261e, U+300e-300f, U+3044, U+30a4,
@@ -1078,7 +1078,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.80.woff2) format("woff2-variations");
   unicode-range: U+e0, U+e2, U+395, U+3b7, U+3ba, U+2460-2461, U+25a0, U+3010-3011, U+306e, U+30f3,
@@ -1096,7 +1096,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.81.woff2) format("woff2-variations");
   unicode-range: U+24, U+60, U+3b9, U+3bb, U+3bd, U+2191, U+2606, U+300c-300d, U+3131, U+3134,
@@ -1114,7 +1114,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.82.woff2) format("woff2-variations");
   unicode-range: U+d7, U+ea, U+fc, U+2192, U+25bc, U+3000, U+3137, U+3145, U+315c, U+7f8e, U+ac13,
@@ -1132,7 +1132,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.83.woff2) format("woff2-variations");
   unicode-range: U+e7, U+2022, U+203b, U+25c0, U+2605, U+2661, U+3147, U+318d, U+672c, U+8a9e,
@@ -1150,7 +1150,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.84.woff2) format("woff2-variations");
   unicode-range: U+2665, U+3160, U+4e2d, U+6587, U+65e5, U+ac12, U+ac14, U+ac16, U+ac81, U+ad34,
@@ -1168,7 +1168,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.85.woff2) format("woff2-variations");
   unicode-range: U+5e, U+25b2, U+25b6, U+314e, U+ac24, U+ace1, U+ace4, U+ae68, U+af2d, U+b0d0,
@@ -1186,7 +1186,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.86.woff2) format("woff2-variations");
   unicode-range: U+3c-3d, U+2026, U+24d2, U+314b, U+ac11, U+acf3, U+ad74, U+ad81, U+adf9, U+ae34,
@@ -1204,7 +1204,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.87.woff2) format("woff2-variations");
   unicode-range: U+23, U+25, U+5f, U+a9, U+ac08, U+ac78, U+aca8, U+acac, U+ace8, U+ad70, U+adc0,
@@ -1222,7 +1222,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.88.woff2) format("woff2-variations");
   unicode-range: U+26, U+2b, U+3e, U+40, U+7e, U+ac01, U+ac19, U+ac1d, U+aca0, U+aca9, U+acb0,
@@ -1240,7 +1240,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.89.woff2) format("woff2-variations");
   unicode-range: U+d, U+7c, U+ac10, U+ac15, U+ac74, U+ac80, U+ac83, U+acc4, U+ad11, U+ad50, U+ad6d,
@@ -1258,7 +1258,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.90.woff2) format("woff2-variations");
   unicode-range: U+ac04, U+ac1c, U+ac70, U+ac8c, U+acbd, U+acf5, U+acfc, U+ad00, U+ad6c, U+adf8,
@@ -1276,7 +1276,7 @@ http://scripts.sil.org/OFL
 @font-face {
   font-family: "Pretendard Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 45 920;
   src: url(/fonts/PretendardVariable.subset.91.woff2) format("woff2-variations");
   unicode-range: U+20-22, U+27-2a, U+2c-39, U+3a-3b, U+3f, U+41-4e, U+4f-5d, U+61-7b, U+7d, U+a0-a1,
