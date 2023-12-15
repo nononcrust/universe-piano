@@ -56,8 +56,8 @@ const NavigationDrawerItem = ({ title, href }: NavigationDrawerItemProps) => {
     <Link href={href} className="flex flex-1">
       <li
         className={cn(
-          "w-full flex-1 p-4 font-medium transition hover:bg-slate-100",
-          isActive && "bg-slate-100",
+          "hover:bg-content w-full flex-1 p-4 font-medium transition",
+          isActive && "bg-content",
         )}
       >
         {title}
@@ -80,8 +80,8 @@ const MobileNavigationDrawerItem = ({ title, href }: MobileNavigationDrawerItemP
   return (
     <li
       className={cn(
-        "flex w-full flex-1 rounded-lg p-4 font-medium transition hover:bg-slate-100",
-        isActive && "bg-slate-100",
+        "hover:bg-content flex w-full flex-1 rounded-lg p-4 font-medium transition",
+        isActive && "bg-content",
       )}
       onClick={() => router.push(href)}
     >
@@ -94,7 +94,7 @@ export const MobileNavigationDrawer = () => {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
-        <Icon.Menu className="h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200 hover:bg-slate-100" />
+        <Icon.Menu className="hover:bg-content h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200" />
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="bg-slatek/40 fixed inset-0 z-40" />

@@ -1,5 +1,6 @@
 import typographyPlugin from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 import { shadcnPreset } from "./src/lib/shadcn";
 
 module.exports = {
@@ -10,6 +11,8 @@ module.exports = {
       colors: {
         primary: "#6857FF",
         "primary-dark": "#5E4EE6",
+        content: colors.gray[100],
+        "content-light": colors.gray[50],
       },
     },
   },

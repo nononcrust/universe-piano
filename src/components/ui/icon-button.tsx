@@ -7,7 +7,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ className, ...props }, ref) => {
     return (
       <button
-        className={cn("rounded-full p-2 transition hover:bg-slate-100", className)}
+        className={cn("hover:bg-content rounded-full p-2 transition", className)}
         ref={ref}
         {...props}
       />

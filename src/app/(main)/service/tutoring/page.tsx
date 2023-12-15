@@ -27,7 +27,7 @@ export default function TutoringPage() {
 
 const HeroSection = () => {
   return (
-    <section className="bg-slate-50">
+    <section className="bg-content-light">
       <Aos>
         <div className="container mt-16 flex flex-col items-center gap-8 py-16">
           <div className="flex flex-1 flex-col items-center gap-4">
@@ -83,7 +83,7 @@ const UniversePianoSection = () => {
 
 const CrewResultSection = () => {
   return (
-    <section className="mt-12 bg-slate-100 py-16">
+    <section className="bg-content mt-12 py-16">
       <Aos className="container">
         <SectionTitle title="유니버스 크루들의 결과를 공개합니다" />
         <SectionSubtitle
@@ -121,7 +121,7 @@ interface ScholarshipItemProps {
 const CrewResultItem = ({ title, description }: ScholarshipItemProps) => {
   return (
     <div className="flex w-full max-w-[240px] flex-col items-center rounded-2xl bg-white p-8 shadow-xl">
-      <div className="h-24 w-24 rounded-full bg-slate-100" />
+      <div className="bg-content h-24 w-24 rounded-full" />
       <p className="mt-4 font-semibold text-muted-foreground">{title}</p>
       <p className="mt-2 text-center text-3xl font-bold text-primary">{description}</p>
     </div>
@@ -199,7 +199,7 @@ interface TutoringCompositionItemProps {
 
 const TutoringCompositionItem = ({ title, description }: TutoringCompositionItemProps) => {
   return (
-    <div className="flex flex-col items-center rounded-2xl border bg-slate-50 p-8 md:h-[200px]">
+    <div className="bg-content-light flex flex-col items-center rounded-2xl border p-8 md:h-[200px]">
       <Badge variant="primary">{title}</Badge>
       <p className="mt-4 text-center font-medium">{description}</p>
     </div>
@@ -237,7 +237,7 @@ interface TutoringExpectationItemProps {
 
 const TutoringExpectationItem = ({ title, children }: TutoringExpectationItemProps) => {
   return (
-    <div className="w-full rounded-2xl border bg-slate-100 p-8">
+    <div className="bg-content w-full rounded-2xl border p-8">
       <p className="text-3xl font-bold text-primary">{title}</p>
       <p className="mt-4 text-lg font-medium text-muted-foreground">{children}</p>
     </div>

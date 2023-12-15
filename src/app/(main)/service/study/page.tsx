@@ -33,7 +33,7 @@ export default function StudyPage() {
 
 const HeroSection = () => {
   return (
-    <section className="bg-slate-50">
+    <section className="bg-content-light">
       <Aos>
         <div className="container mt-16 flex flex-col items-center gap-8 py-16">
           <div className="flex flex-1 flex-col items-center gap-4">
@@ -112,7 +112,7 @@ interface CheckPointItemProps {
 
 const CheckPointItem = ({ number, title }: CheckPointItemProps) => {
   return (
-    <div className="flex max-w-[600px] gap-4 rounded-xl border bg-slate-100 p-4">
+    <div className="bg-content flex max-w-[600px] gap-4 rounded-xl border p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black font-bold text-white">
           {number}
@@ -201,7 +201,7 @@ interface WhyUniverseItem {
 
 const WhyUniverseItem = ({ number, title }: WhyUniverseItem) => {
   return (
-    <div className="flex h-[320px] flex-1 flex-col justify-end rounded-2xl border bg-slate-100 p-6 font-bold">
+    <div className="bg-content flex h-[320px] flex-1 flex-col justify-end rounded-2xl border p-6 font-bold">
       <p className="text-xl underline underline-offset-4">0{number}</p>
       <p className="mt-2 whitespace-pre text-xl">{title}</p>
     </div>
@@ -239,7 +239,7 @@ interface StudyExpecttationItemProps {
 const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttationItemProps) => {
   return (
     <div className="flex flex-col md:flex-row md:gap-16">
-      <div className="h-[280px] min-w-[280px] rounded-2xl border bg-slate-100" />
+      <div className="bg-content h-[280px] min-w-[280px] rounded-2xl border" />
       <div className="flex flex-col">
         <p className="mt-8 text-2xl font-semibold md:mt-12 md:text-3xl">{title}</p>
         <p className="mt-4 text-lg font-semibold">{subtitle}</p>
@@ -277,12 +277,12 @@ const StudyMissionSection = () => {
 };
 
 const StudyMissionItem = () => {
-  return <div className="h-[400px] min-w-[240px] rounded-2xl border bg-slate-100" />;
+  return <div className="bg-content h-[400px] min-w-[240px] rounded-2xl border" />;
 };
 
 const StudyReviewSection = () => {
   return (
-    <section className="mt-16 bg-slate-100">
+    <section className="bg-content mt-16">
       <Aos className="container pb-24">
         <SectionTitle title="스터디 리뷰" />
         <SectionSubtitle title="스터디 크루분들의 솔직한 리뷰를 확인해보세요." />

@@ -37,6 +37,8 @@ export const POST = async (request: Request) => {
 
     const jwtPayload: JwtPayload = {
       id: createdUser.id,
+      role: createdUser.role,
+      tier: createdUser.tier,
     };
 
     issueAccessToken(jwtPayload);

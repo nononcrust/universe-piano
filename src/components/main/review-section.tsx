@@ -29,7 +29,7 @@ export const ReviewSection = () => {
 
 const ReviewItem = () => {
   return (
-    <div className="h-[240px] rounded-2xl bg-slate-50 p-6 max-md:min-w-[320px]">
+    <div className="bg-content-light h-[240px] rounded-2xl p-6 max-md:min-w-[320px]">
       <p className="text-xl font-semibold">
         신상호
         <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">

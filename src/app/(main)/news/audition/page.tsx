@@ -10,7 +10,7 @@ import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 
 export default function AuditionListPage() {
-  const { data: auditions, isLoading } = useAuditionList();
+  const { data: auditions, isPending } = useAuditionList();
 
   const pagination = usePagination();
 
@@ -31,7 +31,7 @@ export default function AuditionListPage() {
           </Link>
         ))}
       </ul>
-      {isLoading &&
+      {isPending &&
         Array(5)
           .fill(0)
           .map((_, index) => <NoticeListItem.Skeleton key={index} />)}

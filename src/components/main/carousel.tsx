@@ -11,7 +11,7 @@ export const Carousel = () => {
       autoplay={{ delay: 700000 }}
       className="h-[240px] md:h-[320px]"
     >
-      <SwiperSlide className="bg-slate-100">
+      <SwiperSlide className="bg-content">
         <div className="container relative md:pt-16">
           <div className="absolute z-10 mt-28 flex flex-col md:mt-20">
             <p className="text-xl font-semibold md:text-2xl">1차 오디션 결과 발표</p>
@@ -32,7 +32,7 @@ export const Carousel = () => {
           </div>
         </div>
       </SwiperSlide>
-      <SwiperSlide className="bg-slate-100">
+      <SwiperSlide className="bg-content">
         <div className="container relative md:pt-16">
           <div className="absolute z-10 mt-24 flex flex-col md:mt-20">
             <p className="text-xl font-semibold md:text-2xl">2025 가을학기 서비스</p>
@@ -55,7 +55,7 @@ export const Carousel = () => {
           </div>
         </div>
       </SwiperSlide>
-      {/* <SwiperSlide className="bg-slate-100">
+      {/* <SwiperSlide className="bg-content">
         <div className="container px-8 pt-24 md:px-16 md:pt-36">
           <p className="text-2xl font-bold md:text-3xl">조작없는 후기 시리즈</p>
           <p className="mt-1 text-sm font-medium md:text-base">
@@ -63,7 +63,7 @@ export const Carousel = () => {
           </p>
         </div>
       </SwiperSlide>
-      <SwiperSlide className="bg-slate-100">
+      <SwiperSlide className="bg-content">
         <div className="container px-8 pt-24 md:px-16 md:pt-36">
           <p className="text-2xl font-bold md:text-3xl">역대 전적</p>
           <p className="mt-1 text-sm font-medium md:text-base">

@@ -143,7 +143,7 @@ export const CheckoutForm = () => {
             <PageSubtitle title="상품 정보" className="mb-4 mt-16" />
             {order.orderItems.map((orderItem) => (
               <div className="flex gap-4" key={orderItem.id}>
-                <div className="h-20 w-20 rounded-md bg-slate-100" />
+                <div className="bg-content h-20 w-20 rounded-md" />
                 <div className="flex flex-1 flex-col gap-2">
                   <p className="text-sm">
                     {orderItem.product.category.name} | {orderItem.product.name}

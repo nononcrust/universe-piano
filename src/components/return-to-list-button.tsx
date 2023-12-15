@@ -13,7 +13,7 @@ export const ReturnToListButton = ({ className, href, label }: ReturnToListButto
     <Link href={href}>
       <button
         className={cn(
-          "group absolute -left-2.5 bottom-12 flex items-center rounded-xl py-1 pl-1 pr-3 text-sm text-muted-foreground transition hover:bg-slate-100 hover:text-accent-foreground",
+          "hover:bg-content group absolute -left-2.5 bottom-12 flex items-center rounded-xl py-1 pl-1 pr-3 text-sm text-muted-foreground transition hover:text-accent-foreground",
           className,
         )}
       >
