@@ -29,7 +29,13 @@ export function middleware(request: NextRequest) {
 
   const isAdmin = session?.role === Role.ADMIN;
 
-  if (request.nextUrl.pathname in ADMIN_ROUTES) {
+  if (PROTECTED_ROUTES.includes(request.nextUrl.pathname as (typeof PROTECTED_ROUTES)[number])) {
+    if (!session) {
+      return NextResponse.rewrite(new URL(ROUTE.HOME, request.url));
+    }
+  }
+
+  if (AUTH_ROUTES.includes(request.nextUrl.pathname as (typeof AUTH_ROUTES)[number])) {
     if (session) {
       return NextResponse.rewrite(new URL(ROUTE.HOME, request.url));
     }
