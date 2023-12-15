@@ -15,8 +15,8 @@ export const FaqSection = ({ children }: FaqSectionProps) => {
   return (
     <section className="bg-content pb-32">
       <Aos className="container">
-        <SectionTitle title="자주 묻는 질문" />
-        <SectionSubtitle title="더 자세한 내용은 고객센터에서 확인해주세요." />
+        <SectionTitle>자주 묻는 질문</SectionTitle>
+        <SectionSubtitle>더 자세한 내용은 고객센터에서 확인해주세요.</SectionSubtitle>
         <Accordion.Root type="multiple" className="mt-12 flex flex-col gap-4">
           {children}
         </Accordion.Root>
@@ -44,11 +44,9 @@ export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProp
           <div className="bg-content flex h-8 w-8 items-center justify-center rounded-full font-bold">
             Q
           </div>
-          <p>{title}</p>
+          <p className="text-left font-semibold">{title}</p>
         </div>
-        <div className="bg-content flex h-10 w-10 items-center justify-center rounded-full">
-          <Icon.ChevronDown className="" />
-        </div>
+        <Icon.ChevronDown className="ml-4" />
       </Accordion.Trigger>
       <Accordion.Content className="ml-12 mt-4 font-medium text-muted-foreground transition">
         {description}

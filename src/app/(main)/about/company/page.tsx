@@ -32,15 +32,15 @@ const IntroSection = () => {
 
 const WhatWeDoSection = () => {
   return (
-    <section className="bg-slate-100 py-16">
+    <section className="bg-content py-16">
       <Aos className="container">
         <p className="text-lg font-semibold text-primary">Universe Piano</p>
-        <SectionTitle
-          className="mt-2 whitespace-pre text-left md:leading-normal"
-          title={
+        <SectionTitle className="mt-2 whitespace-pre text-left md:leading-normal">
+          {
             "미국 음대 입시의 핵심 요소를 기반으로\n미국 음대 유학의 새로운 패러다임을 만들어 갑니다."
           }
-        />
+        </SectionTitle>
+
         <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
           <WhatWeDoItem
             title="미국 음대 입시 컨설팅"
@@ -72,7 +72,7 @@ interface WhatWeDoItemProps {
 const WhatWeDoItem = ({ title, description }: WhatWeDoItemProps) => {
   return (
     <div className="min-h-[320px] rounded-2xl bg-white p-6 shadow-lg">
-      <div className="h-16 w-16 rounded-2xl bg-slate-100" />
+      <div className="bg-content h-16 w-16 rounded-2xl" />
       <p className="mt-16 font-semibold">{title}</p>
       <p className="mt-2 font-medium text-muted-foreground">{description}</p>
     </div>
@@ -82,8 +82,8 @@ const WhatWeDoItem = ({ title, description }: WhatWeDoItemProps) => {
 const LogoSliderSection = () => {
   return (
     <section>
-      <SectionTitle title="역대 유니버스 크루" />
-      <SectionSubtitle title="전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다." />
+      <SectionTitle>역대 유니버스 크루</SectionTitle>
+      <SectionSubtitle>전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다</SectionSubtitle>
       <div className="mt-12">
         <LogoSlider />
       </div>

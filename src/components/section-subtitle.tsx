@@ -1,10 +1,8 @@
 import { cn } from "@/lib/utils";
 
-interface SectionSubtitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  title: string;
-}
+interface SectionSubtitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
-export const SectionSubtitle = ({ title, className, ...props }: SectionSubtitleProps) => {
+export const SectionSubtitle = ({ children, className, ...props }: SectionSubtitleProps) => {
   return (
     <h2
       className={cn(
@@ -13,7 +11,7 @@ export const SectionSubtitle = ({ title, className, ...props }: SectionSubtitleP
       )}
       {...props}
     >
-      {title}
+      {children}
     </h2>
   );
 };

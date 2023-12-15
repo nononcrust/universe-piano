@@ -28,49 +28,49 @@ export const LogoSlider = () => {
   return (
     <div ref={sliderRef} className="keen-slider">
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
       <div className="keen-slider__slide" style={{ minWidth: 100, maxWidth: 100, height: 100 }}>
-        <div className="min-w-16 max-w-16 h-16 rounded-full bg-slate-100" />
+        <div className="min-w-16 max-w-16 bg-content h-16 rounded-full" />
       </div>
     </div>
   );

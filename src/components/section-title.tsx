@@ -1,13 +1,11 @@
 import { cn } from "@/lib/utils";
 
-interface SectionTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  title: string;
-}
+interface SectionTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
-export const SectionTitle = ({ title, className, ...props }: SectionTitleProps) => {
+export const SectionTitle = ({ children, className, ...props }: SectionTitleProps) => {
   return (
     <h1 className={cn("mt-32 text-center text-3xl font-bold md:text-4xl", className)} {...props}>
-      {title}
+      {children}
     </h1>
   );
 };

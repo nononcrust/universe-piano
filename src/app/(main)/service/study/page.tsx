@@ -81,9 +81,8 @@ const CheckPointSection = () => {
   return (
     <Aos className="my-16">
       <section className="container">
-        <SectionTitle title="Check Point" />
-
-        <h2 className="mt-4 whitespace-pre-wrap text-center font-semibold text-muted-foreground md:text-lg">
+        <SectionTitle>Check Point</SectionTitle>
+        <h2 className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-lg">
           {"스터디 소개에 앞서 중요한\n몇 가지 주의사항을 먼저 알려드립니다."}
         </h2>
         <div className="mt-12 flex flex-col items-center gap-4">
@@ -118,7 +117,7 @@ const CheckPointItem = ({ number, title }: CheckPointItemProps) => {
           {number}
         </div>
       </div>
-      <p className="flex-1 font-semibold">{title}</p>
+      <p className="flex-1 font-medium">{title}</p>
     </div>
   );
 };
@@ -127,7 +126,7 @@ const StudyCompositionSection = () => {
   return (
     <Aos className="my-16">
       <section className="container">
-        <SectionTitle title="스터디 구성 요소" />
+        <SectionTitle>스터디 구성 요소</SectionTitle>
         <ScrollShadow>
           <div className="mt-12 flex flex-col gap-6 md:flex-row">
             <StudyCompositionItem
@@ -176,7 +175,7 @@ const WhyUniverseSection = () => {
   return (
     <Aos className="my-16">
       <section className="container">
-        <SectionTitle title="음대생 영어공부, 결국 왜 유니버스 피아노일까요?" />
+        <SectionTitle>음대생 영어공부, 결국 왜 유니버스 피아노일까요?</SectionTitle>
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
           <WhyUniverseItem
             number={1}
@@ -201,7 +200,7 @@ interface WhyUniverseItem {
 
 const WhyUniverseItem = ({ number, title }: WhyUniverseItem) => {
   return (
-    <div className="bg-content flex h-[320px] flex-1 flex-col justify-end rounded-2xl border p-6 font-bold">
+    <div className="bg-content flex h-[320px] flex-1 flex-col justify-end rounded-2xl border p-6 font-semibold">
       <p className="text-xl underline underline-offset-4">0{number}</p>
       <p className="mt-2 whitespace-pre text-xl">{title}</p>
     </div>
@@ -212,7 +211,7 @@ const StudyExpectationSection = () => {
   return (
     <Aos className="my-16">
       <section className="container">
-        <SectionTitle title="스터디 기대 효과" />
+        <SectionTitle>스터디 기대 효과</SectionTitle>
         <div className="mt-12 flex flex-col gap-8">
           <StudyExpectationItem
             title="음대생 영어 공부의 마지노선"
@@ -241,7 +240,7 @@ const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttatio
     <div className="flex flex-col md:flex-row md:gap-16">
       <div className="bg-content h-[280px] min-w-[280px] rounded-2xl border" />
       <div className="flex flex-col">
-        <p className="mt-8 text-2xl font-semibold md:mt-12 md:text-3xl">{title}</p>
+        <p className="mt-4 text-2xl font-semibold md:mt-12 md:text-3xl">{title}</p>
         <p className="mt-4 text-lg font-semibold">{subtitle}</p>
         <p className="mt-4 font-medium text-muted-foreground">{description}</p>
       </div>
@@ -252,19 +251,19 @@ const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttatio
 const StudyMissionSection = () => {
   return (
     <Aos className="my-16">
-      <section className="container">
-        <SectionTitle className="text-left" title="변화의 시작은," />
-        <SectionTitle className="mt-2 text-left" title="스터디 미션 수행으로부터" />
-        <SectionSubtitle
-          className="text-left"
-          title="모든 변화의 필수 전제 조건은 이전과는 다른 행동을 하는 자기 자신입니다."
-        />
-        <SectionSubtitle
-          className="mt-1 text-left"
-          title="스터디 크루분들은 스터디의 다양한 미션 수행을 통해, 영어 점수 향상은 물론, 생각과 생활
-          습관에도 긍정적인 변화를 경험하고 있습니다."
-        />
-        <div className="mt-12 flex gap-4 overflow-auto scrollbar-hide">
+      <section>
+        <div className="container">
+          <SectionTitle className="text-left">변화의 시작은,</SectionTitle>
+          <SectionTitle className="mt-2 text-left">스터디 미션 수행으로부터</SectionTitle>
+          <SectionSubtitle className="text-left">
+            모든 변화의 필수 전제 조건은 이전과는 다른 행동을 하는 자기 자신입니다.
+          </SectionSubtitle>
+          <SectionSubtitle className="mt-1 text-left">
+            스터디 크루분들은 스터디의 다양한 미션 수행을 통해, 영어 점수 향상은 물론, 생각과 생활
+            습관에도 긍정적인 변화를 경험하고 있습니다.
+          </SectionSubtitle>
+        </div>
+        <div className="container mt-12 flex gap-4 overflow-auto scrollbar-hide">
           <StudyMissionItem />
           <StudyMissionItem />
           <StudyMissionItem />
@@ -283,15 +282,17 @@ const StudyMissionItem = () => {
 const StudyReviewSection = () => {
   return (
     <section className="bg-content mt-16">
-      <Aos className="container pb-24">
-        <SectionTitle title="스터디 리뷰" />
-        <SectionSubtitle title="스터디 크루분들의 솔직한 리뷰를 확인해보세요." />
-        <div className="mt-12 flex flex-col gap-6 md:flex-row">
+      <Aos className="pb-24">
+        <div className="container">
+          <SectionTitle>스터디 리뷰</SectionTitle>
+          <SectionSubtitle>스터디 크루분들의 솔직한 리뷰를 확인해보세요.</SectionSubtitle>
+        </div>
+        <div className="container mt-8 flex gap-6 overflow-auto py-4 scrollbar-hide">
           <ReviewItem />
           <ReviewItem />
           <ReviewItem />
         </div>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4">
+        <div className="container mt-4 flex flex-col items-center justify-center gap-4">
           <p className="font-medium text-muted-foreground">
             더 많은 스터디 후기는 유니버스 피아노 인스타그램 계정에서 확인 가능합니다.
           </p>
@@ -306,13 +307,16 @@ const StudyInfoSection = () => {
   return (
     <section className="bg-zinc-900 pb-24 text-white">
       <Aos className="container">
-        <SectionTitle className="text-left" title="스터디 신청 및 월별 커리큘럼 확인" />
-        <SectionSubtitle
-          className="text-left text-gray-300"
-          title="스터디 신청 방법 및  월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
-        />
+        <SectionTitle className="text-left">
+          스터디 신청 및 <span className="text-primary">월별 커리큘럼 </span>확인
+        </SectionTitle>
+        <SectionSubtitle className="text-left text-gray-300">
+          {
+            "스터디 신청 방법 및 월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
+          }
+        </SectionSubtitle>
         <div className="mt-20 flex flex-col gap-8 md:flex-row">
-          <div className="rounded-2xl border border-zinc-600 bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">모집 기간: 매월 20일 - 29일</li>
@@ -322,7 +326,7 @@ const StudyInfoSection = () => {
               </li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-zinc-600 bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
             <p className="text-2xl font-bold">스터디 벌금</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">인증 기준 미달 시, 벌금 부과</li>
