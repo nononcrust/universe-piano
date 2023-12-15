@@ -198,7 +198,7 @@ interface TutoringCompositionItemProps {
 const TutoringCompositionItem = ({ title, description }: TutoringCompositionItemProps) => {
   return (
     <div className="bg-content-light flex flex-col items-center rounded-2xl border p-8 md:h-[200px]">
-      <Badge variant="primary">{title}</Badge>
+      <Badge>{title}</Badge>
       <p className="mt-4 text-center font-medium">{description}</p>
     </div>
   );

@@ -4,7 +4,6 @@ import { COOKIE } from "./constants/cookie";
 import { ROUTE } from "./constants/route";
 import { accessTokenSchema, jwt } from "./lib/jwt";
 
-const ADMIN_ROUTES = [ROUTE.ADMIN.HOME];
 const PROTECTED_ROUTES = [ROUTE.MYPAGE.HOME, ROUTE.NEWS.AUDITION.LIST];
 const AUTH_ROUTES = [ROUTE.LOGIN, ROUTE.SIGNUP];
 
@@ -31,19 +30,19 @@ export function middleware(request: NextRequest) {
 
   if (PROTECTED_ROUTES.includes(request.nextUrl.pathname as (typeof PROTECTED_ROUTES)[number])) {
     if (!session) {
-      return NextResponse.rewrite(new URL(ROUTE.HOME, request.url));
+      return NextResponse.redirect(new URL(ROUTE.LOGIN, request.url));
     }
   }
 
   if (AUTH_ROUTES.includes(request.nextUrl.pathname as (typeof AUTH_ROUTES)[number])) {
     if (session) {
-      return NextResponse.rewrite(new URL(ROUTE.HOME, request.url));
+      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
     }
   }
 
   if (request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME)) {
     if (!isAdmin) {
-      return NextResponse.rewrite(new URL(ROUTE.HOME, request.url));
+      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
     }
   }
 }

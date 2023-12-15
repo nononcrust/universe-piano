@@ -1,4 +1,5 @@
 import { LogoSlider } from "@/components/logo-slider";
+import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { Aos } from "@/components/ui/aos";
@@ -9,18 +10,20 @@ export default function AboutCompanyPage() {
       <IntroSection />
       <WhatWeDoSection />
       <LogoSliderSection />
+      <WhatsOurNextSection />
+      <InstagramSection />
     </main>
   );
 }
 
 const IntroSection = () => {
   return (
-    <section className="py-32 pb-48">
+    <section className="bg-zinc-900 py-32 pb-48">
       <Aos className="container">
-        <h1 className="text-3xl font-bold md:text-5xl md:leading-tight">
+        <h1 className="text-3xl font-bold text-white md:text-5xl md:leading-tight">
           Create your Universe: Beyond Talent
         </h1>
-        <p className="text-medium mt-8 text-lg leading-normal text-muted-foreground md:text-2xl md:leading-normal">
+        <p className="text-medium mt-8 text-lg leading-normal text-gray-300 md:text-2xl md:leading-normal">
           스스로를 규정하던 모든 프레임에서 벗어나,
           <br />
           무한한 가능성을 탐험하실 분들과 동행합니다.
@@ -35,13 +38,13 @@ const WhatWeDoSection = () => {
     <section className="bg-content py-16">
       <Aos className="container">
         <p className="text-lg font-semibold text-primary">Universe Piano</p>
-        <SectionTitle className="mt-2 whitespace-pre text-left md:leading-normal">
+        <SectionTitle className="mt-2 whitespace-pre-wrap text-left md:leading-normal">
           {
             "미국 음대 입시의 핵심 요소를 기반으로\n미국 음대 유학의 새로운 패러다임을 만들어 갑니다."
           }
         </SectionTitle>
 
-        <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-4">
           <WhatWeDoItem
             title="미국 음대 입시 컨설팅"
             description="미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다."
@@ -71,9 +74,9 @@ interface WhatWeDoItemProps {
 
 const WhatWeDoItem = ({ title, description }: WhatWeDoItemProps) => {
   return (
-    <div className="min-h-[320px] rounded-2xl bg-white p-6 shadow-lg">
+    <div className="rounded-2xl bg-white p-6 shadow-lg md:min-h-[320px]">
       <div className="bg-content h-16 w-16 rounded-2xl" />
-      <p className="mt-16 font-semibold">{title}</p>
+      <p className="mt-8 font-semibold md:mt-16">{title}</p>
       <p className="mt-2 font-medium text-muted-foreground">{description}</p>
     </div>
   );
@@ -88,5 +91,72 @@ const LogoSliderSection = () => {
         <LogoSlider />
       </div>
     </section>
+  );
+};
+
+const WhatsOurNextSection = () => {
+  return (
+    <section className="bg-content relative py-16">
+      <Aos className="container">
+        <div className="flex justify-center">
+          <SectionBadge>{"What's our NEXT?"}</SectionBadge>
+        </div>
+        <SectionTitle className="mt-4">2024년, 두 개의 국내 최초 서비스가 시작됩니다.</SectionTitle>
+        <div className="flex justify-center">
+          <div className="relative mt-24 flex flex-col gap-4">
+            <div className="to-content absolute h-full w-[1px] translate-x-[5.5px] translate-y-[10px] bg-gradient-to-b from-black from-90%" />
+            <WhatsOurNextItem
+              year="2023"
+              items={[
+                "국내 최초 미국 음대 입시 과외 런칭",
+                "국내 최초 미국 음대 오디션 룸메이트 매칭 서비스",
+                "국내 최초 미국 음대 커뮤니티 형성",
+              ]}
+            />
+            <WhatsOurNextItem
+              year="2022"
+              items={[
+                "국내 최초 음대생을 위한 영어 스터디 런칭",
+                "국내 최초 음대 결과 발표 공유 서비스",
+              ]}
+            />
+            <WhatsOurNextItem year="2020" items={["국내 최초 부분 컨설팅 서비스 제작"]} />
+          </div>
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface WhatsOurNextItemProps {
+  year: string;
+  items: string[];
+}
+
+const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
+  return (
+    <div className="flex">
+      <div className="mr-8 mt-1.5 h-3 w-3 rounded-full bg-black" />
+      <p className="mr-4 text-lg font-semibold text-muted-foreground">{year}</p>
+      <div className="flex flex-col gap-4">
+        {items.map((item, index) => (
+          <p className="text-lg font-medium" key={index}>
+            {item}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const InstagramSection = () => {
+  return (
+    <Aos>
+      <section className="container">
+        <div className="flex">
+          <SectionTitle>{"유학 준비도 트렌디 하게,\nMZ 대표의 소통 방식"}</SectionTitle>
+        </div>
+      </section>
+    </Aos>
   );
 };
