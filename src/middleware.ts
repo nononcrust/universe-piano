@@ -29,9 +29,28 @@ export function middleware(request: NextRequest) {
 
   const isAdmin = session?.role === Role.ADMIN;
 
+  if (request.nextUrl.pathname in ADMIN_ROUTES) {
+    if (session) {
+      return NextResponse.rewrite(new URL(ROUTE.HOME, request.url));
+    }
+  }
+
   if (request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME)) {
     if (!isAdmin) {
-      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
+      return NextResponse.rewrite(new URL(ROUTE.HOME, request.url));
     }
   }
 }
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
+};
