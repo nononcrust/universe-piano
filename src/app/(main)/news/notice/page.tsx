@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function NoticeListPage() {
   const pagination = usePagination();
 
-  const { data: notices, isLoading } = useNoticeList();
+  const { data: notices, isPending } = useNoticeList();
 
   const totalPage = notices ? Math.ceil(notices.length / 10) : 0;
 
@@ -28,7 +28,7 @@ export default function NoticeListPage() {
           </Link>
         ))}
       </ul>
-      {isLoading &&
+      {isPending &&
         Array(5)
           .fill(0)
           .map((_, index) => <NoticeListItem.Skeleton key={index} />)}

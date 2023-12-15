@@ -12,7 +12,7 @@ import { OrderStatus } from "@prisma/client";
 import Link from "next/link";
 
 export default function MyOrderListPage() {
-  const { data: orders, isLoading } = useMyOrderList();
+  const { data: orders, isPending } = useMyOrderList();
 
   return (
     <main className="container pb-16">
@@ -28,7 +28,7 @@ export default function MyOrderListPage() {
             createdAt={order.createdAt}
           />
         ))}
-        {isLoading &&
+        {isPending &&
           Array(5)
             .fill(0)
             .map((_, index) => <OrderItem.Skeleton key={index} />)}
