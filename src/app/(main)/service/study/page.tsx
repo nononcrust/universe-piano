@@ -1,8 +1,10 @@
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { Icon } from "@/components/icon";
 import { Instagram } from "@/components/instagram";
+import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
+import { ServiceFloatingButton } from "@/components/service-floating-button";
 import { Aos } from "@/components/ui/aos";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
 import Image from "next/image";
@@ -24,6 +26,7 @@ export default function StudyPage() {
       <StudyReviewSection />
       <StudyInfoSection />
       <StudyFaqSection />
+      <ServiceFloatingButton />
     </main>
   );
 }
@@ -34,9 +37,7 @@ const HeroSection = () => {
       <Aos>
         <div className="container mt-16 flex flex-col items-center gap-8 py-16">
           <div className="flex flex-1 flex-col items-center gap-4">
-            <div className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-3 py-1 text-sm font-semibold text-white">
-              영어 스터디
-            </div>
+            <SectionBadge>영어 스터디</SectionBadge>
             <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl">
               음대생을 위한 영어 스터디
             </h1>
@@ -311,7 +312,7 @@ const StudyInfoSection = () => {
           title="스터디 신청 방법 및  월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
         />
         <div className="mt-20 flex flex-col gap-8 md:flex-row">
-          <div className="rounded-2xl border border-zinc-500 bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-600 bg-zinc-700 p-8">
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">모집 기간: 매월 20일 - 29일</li>
@@ -321,7 +322,7 @@ const StudyInfoSection = () => {
               </li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-zinc-500 bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-600 bg-zinc-700 p-8">
             <p className="text-2xl font-bold">스터디 벌금</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">인증 기준 미달 시, 벌금 부과</li>

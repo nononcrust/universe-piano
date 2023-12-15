@@ -1,6 +1,8 @@
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
+import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
+import { ServiceFloatingButton } from "@/components/service-floating-button";
 import { TutoringCurriculumSection } from "@/components/tutoring-curriculum-section";
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
@@ -18,6 +20,7 @@ export default function TutoringPage() {
       <TutoringCurriculumSection />
       <TutoringInfoSection />
       <TutoringFaqSection />
+      <ServiceFloatingButton />
     </main>
   );
 }
@@ -28,9 +31,7 @@ const HeroSection = () => {
       <Aos>
         <div className="container mt-16 flex flex-col items-center gap-8 py-16">
           <div className="flex flex-1 flex-col items-center gap-4">
-            <div className="rounded-xl bg-black px-3 py-1 text-sm font-semibold text-white">
-              입시 과외
-            </div>
+            <SectionBadge>입시 과외</SectionBadge>
             <h1 className="whitespace-pre-line text-center text-2xl font-bold md:text-4xl md:leading-tight">
               {"국내 최초 미국 음대 입시 과외,\n유니버스 피아노에서만 가능합니다."}
             </h1>
@@ -155,14 +156,14 @@ interface RecommendItemProps {
 
 const RecommendItem = ({ number, title }: RecommendItemProps) => {
   return (
-    <Aos className="flex w-full max-w-[600px] gap-4 rounded-xl border bg-slate-100 p-4">
+    <div className="flex w-full max-w-[600px] gap-4 rounded-xl border bg-slate-100 p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black font-bold text-white">
           {number}
         </div>
       </div>
       <p className="flex-1 font-semibold">{title}</p>
-    </Aos>
+    </div>
   );
 };
 
@@ -253,13 +254,13 @@ const TutoringInfoSection = () => {
           title="스터디 신청 방법 및  월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
         />
         <div className="mt-20 flex flex-col gap-8">
-          <div className="rounded-2xl border border-zinc-500 bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-600 bg-zinc-700 p-8">
             <p className="text-2xl font-bold">과외 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">690,000</li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-zinc-500 bg-zinc-700 p-8">
+          <div className="rounded-2xl border border-zinc-600 bg-zinc-700 p-8">
             <p className="text-2xl font-bold">스터디 벌금</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">인증 기준 미달 시, 벌금 부과</li>

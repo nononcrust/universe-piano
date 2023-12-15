@@ -1,68 +1,92 @@
+import { LogoSlider } from "@/components/logo-slider";
+import { SectionSubtitle } from "@/components/section-subtitle";
+import { SectionTitle } from "@/components/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export default function AboutCompanyPage() {
   return (
     <main>
-      <Aos>
-        <section className="container py-32">
-          <h1 className="text-3xl font-bold md:text-4xl md:leading-tight">
-            미국 음대 입시를 위한 모든 것<br />
-            유니버스 피아노가 함께합니다.
-          </h1>
-          <p className="text-medium mt-8 text-lg leading-normal text-muted-foreground">
-            음악은 마음을 표현하고 세상을 바꾸는 강력한 언어입니다.
-            <br />
-            미국 음대로의 여정은 그 언어를 깊이 있게 이해하는 시작입니다.
-            <br />
-            우리 미국 음대 입시 컨설팅 팀은 여러분을 미국 음대의 문으로 안내하고자 합니다.
-          </p>
-        </section>
-      </Aos>
-      {/* <section className="bg-black text-white">
-        <Aos>
-          <div className="container py-32">
-            <h1 className="text-3xl font-bold md:text-4xl md:leading-tight">
-              유니버스 피아노는 왜 미국 음대 입시를 지원하나요?
-            </h1>
-            <p className="mt-8">
-              음악은 마음을 표현하고 세상을 감동으로 가득 채울 수 있는 강력한 언어입니다.
-            </p>
-            <p className="mt-8">
-              음악은 마음을 표현하고 세상을 감동으로 가득 채울 수 있는 강력한 언어입니다.
-            </p>
-            <p className="mt-8">
-              음악은 마음을 표현하고 세상을 감동으로 가득 채울 수 있는 강력한 언어입니다.
-            </p>
-          </div>
-        </Aos>
-      </section> */}
-      <Aos>
-        <section className="container py-32">
-          <h1 className="text-3xl font-bold md:text-4xl md:leading-tight">
-            미국 음대 입시를 위한 모든 것
-          </h1>
-          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="h-[240px] rounded-2xl bg-slate-100"></div>
-            <div className="h-[240px] rounded-2xl bg-slate-100"></div>
-            <div className="h-[240px] rounded-2xl bg-slate-100"></div>
-          </div>
-        </section>
-      </Aos>
-      <section
-        className="flex h-[320px] flex-1 justify-center bg-slate-100 bg-cover bg-center bg-no-repeat md:justify-start"
-        style={{
-          backgroundImage: "url(/images/hero.webp)",
-        }}
-      >
-        <Aos className="flex-1">
-          <div className="container flex h-full flex-1 items-center">
-            <h1 className="text-2xl font-semibold text-white md:text-4xl">
-              <p>미국 음대 입시를 위한 모든 것,</p>
-              <p className="mt-1 md:mt-2">유니버스 피아노에서 찾아보세요</p>
-            </h1>
-          </div>
-        </Aos>
-      </section>
+      <IntroSection />
+      <WhatWeDoSection />
+      <LogoSliderSection />
     </main>
   );
 }
+
+const IntroSection = () => {
+  return (
+    <section className="py-32 pb-48">
+      <Aos className="container">
+        <h1 className="text-3xl font-bold md:text-5xl md:leading-tight">
+          Create your Universe: Beyond Talent
+        </h1>
+        <p className="text-medium mt-8 text-lg leading-normal text-muted-foreground md:text-2xl md:leading-normal">
+          스스로를 규정하던 모든 프레임에서 벗어나,
+          <br />
+          무한한 가능성을 탐험하실 분들과 동행합니다.
+        </p>
+      </Aos>
+    </section>
+  );
+};
+
+const WhatWeDoSection = () => {
+  return (
+    <section className="bg-slate-100 py-16">
+      <Aos className="container">
+        <p className="text-lg font-semibold text-primary">Universe Piano</p>
+        <SectionTitle
+          className="mt-2 whitespace-pre text-left md:leading-normal"
+          title={
+            "미국 음대 입시의 핵심 요소를 기반으로\n미국 음대 유학의 새로운 패러다임을 만들어 갑니다."
+          }
+        />
+        <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
+          <WhatWeDoItem
+            title="미국 음대 입시 컨설팅"
+            description="미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다."
+          />
+          <WhatWeDoItem
+            title="미국 음대 입시 과외"
+            description="컨설팅 압축 버전! 맞춤형 정보, 장학금 전략, 그리고 학교 선정까지 단기간에 완성합니다."
+          />
+          <WhatWeDoItem
+            title="영어 스터디"
+            description="음대생을 위한 영어 스터디, 수준에 맞는 공부 방법으로 목표 점수 달성을 도와드립니다."
+          />
+          <WhatWeDoItem
+            title="독학 키트"
+            description="미국 음대 유학을 혼자 준비하시는 분들께 필요한 서비스를 제공합니다."
+          />
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface WhatWeDoItemProps {
+  title: string;
+  description: string;
+}
+
+const WhatWeDoItem = ({ title, description }: WhatWeDoItemProps) => {
+  return (
+    <div className="min-h-[320px] rounded-2xl bg-white p-6 shadow-lg">
+      <div className="h-16 w-16 rounded-2xl bg-slate-100" />
+      <p className="mt-16 font-semibold">{title}</p>
+      <p className="mt-2 font-medium text-muted-foreground">{description}</p>
+    </div>
+  );
+};
+
+const LogoSliderSection = () => {
+  return (
+    <section>
+      <SectionTitle title="역대 유니버스 크루" />
+      <SectionSubtitle title="전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다." />
+      <div className="mt-12">
+        <LogoSlider />
+      </div>
+    </section>
+  );
+};
