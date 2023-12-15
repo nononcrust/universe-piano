@@ -18,7 +18,7 @@
   font-display: swap;
   src:
     local("Pretendard Bold"),
-    url(/fonts/Pretendard-Bold.subset.woff2) format("woff2");
+    url(../assets/fonts/Pretendard-Bold.subset.woff2) format("woff2");
 }
 
 @font-face {
@@ -27,7 +27,7 @@
   font-display: swap;
   src:
     local("Pretendard SemiBold"),
-    url(/fonts/Pretendard-SemiBold.subset.woff2) format("woff2");
+    url(../assets/fonts/Pretendard-SemiBold.subset.woff2) format("woff2");
 }
 
 @font-face {
@@ -36,7 +36,7 @@
   font-display: swap;
   src:
     local("Pretendard Medium"),
-    url(/fonts/Pretendard-Medium.subset.woff2) format("woff2");
+    url(../assets/fonts/Pretendard-Medium.subset.woff2) format("woff2");
 }
 
 @font-face {
@@ -45,7 +45,7 @@
   font-display: swap;
   src:
     local("Pretendard Regular"),
-    url(/fonts/Pretendard-Regular.subset.woff2) format("woff2");
+    url(../assets/fonts/Pretendard-Regular.subset.woff2) format("woff2");
 }
 
 * {
