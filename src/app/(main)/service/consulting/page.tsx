@@ -1,85 +1,53 @@
-import { Icon } from "@/components/icon";
+import { SectionTitle } from "@/components/section-title";
 import { Aos } from "@/components/ui/aos";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ScrollShadow } from "@/components/ui/scroll-shadow";
-import Image from "next/image";
 
 export default function ConsultingPage() {
   return (
     <main className="flex flex-col">
-      <section className="bg-content-light">
-        <Aos>
-          <div className="container mt-16 flex flex-col items-center gap-8 py-16">
-            <div className="flex flex-1 flex-col items-center gap-4">
-              <Badge>입시 컨설팅</Badge>
-              <h1 className="text-center text-2xl font-bold leading-tight md:text-4xl">
-                1:1 입시 컨설팅으로
-                <br />
-                미국 음대 입시 준비를 시작하세요
-              </h1>
-            </div>
-            <div className="flex justify-center">
-              <Image src="/images/3d-star.png" width={300} height={300} alt="별" />
-            </div>
-          </div>
-        </Aos>
-      </section>
-      <Aos>
-        <section className="bg-content-light mt-16 py-32">
-          <div className="container flex flex-col">
-            <h1 className="whitespace-pre-wrap text-center text-2xl font-bold md:text-3xl">
-              {"솔직하고 담백한\n고객님들의 진심 어린 후기"}
-            </h1>
-            <h2 className="text-medium mt-4 text-center text-muted-foreground">
-              새롭게 올라온 이용후기를 직접 읽어보고 판단해보세요.
-            </h2>
-          </div>
-          <ScrollShadow>
-            <div className="container mt-8 flex gap-4 overflow-x-auto scrollbar-hide">
-              <ReviewItem />
-              <ReviewItem />
-              <ReviewItem />
-            </div>
-          </ScrollShadow>
-        </section>
-      </Aos>
-      <Aos>
-        <section className="mt-16 py-32">
-          <h1 className="text-center text-2xl font-bold md:text-3xl">
-            탄탄하게 구성된 32주 커리큘럼
-          </h1>
-        </section>
-      </Aos>
-      <section className="container my-24 flex justify-center">
-        <Button className="h-14 w-full rounded-2xl text-base md:w-40 md:rounded-xl">
-          컨설팅 신청하기
-        </Button>
-      </section>
+      <OverwhelmingResultSection />
     </main>
   );
 }
 
-const ReviewItem = () => {
+const OverwhelmingResultSection = () => {
   return (
-    <div className="h-[240px] rounded-2xl bg-white p-6 max-md:min-w-[320px]">
-      <p className="text-xl font-semibold">
-        신상호
-        <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">
-          유니버스 피아노 14기
-        </span>
-      </p>
-      <div className="mt-1 flex gap-[2px]">
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-gray-100 text-gray-100" />
-      </div>
-      <p className="mt-6 text-muted-foreground">
-        토플 초보도 접근하기 정말 쉬운 교육과정과 플랫폼을 가지고 있어요. 하지만 교육이 끝났을 때는
-        쉬운 스타트와 확실한 엔딩, 저는 유니버스 피아노를 그렇게 정의할게요.
-      </p>
+    <section className="bg-content my-16">
+      <Aos className="container">
+        <SectionTitle>압도적인 결과로 증명합니다.</SectionTitle>
+        <div className="mb-24 mt-24 flex flex-col gap-12 md:flex-row">
+          <OverwhelmingResultItem
+            title="5년 연속 합격률"
+            value="100%"
+            description="어떤  케이스든 꾸준히 성공시켜 왔습니다. 상황과 우선순위에 맞는 입시 필승 전략을 안내 드립니다."
+          />
+          <OverwhelmingResultItem
+            title="장학금 비율"
+            value="전원 65% 이상"
+            description="미국 음대 입학, 장학급은 필수입니다. 맞춤형 전략을 통해 경제적인 부담을 덜어드립니다."
+          />
+          <OverwhelmingResultItem
+            title="장학금 증액"
+            value="연간 최대 $30000"
+            description="장학금을 증액 하려면, 증액 요소들이 필요합니다. 유니버스 피아노는 컨설팅 초기 단계부터 장학금 증액 요소를 준비합니다."
+          />
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface OverwhelmingResultItemProps {
+  title: string;
+  value: string;
+  description: string;
+}
+
+const OverwhelmingResultItem = ({ title, value, description }: OverwhelmingResultItemProps) => {
+  return (
+    <div className="flex flex-col gap-8">
+      <p className="text-xl font-bold">{title}</p>
+      <p className="text-3xl font-bold text-primary">{value}</p>
+      <p className="font-medium text-muted-foreground">{description}</p>
     </div>
   );
 };

@@ -234,7 +234,7 @@ interface TutoringExpectationItemProps {
 
 const TutoringExpectationItem = ({ title, children }: TutoringExpectationItemProps) => {
   return (
-    <div className="bg-content w-full rounded-2xl border p-8">
+    <div className="bg-content-light w-full rounded-2xl border p-8">
       <p className="text-2xl font-bold text-primary">{title}</p>
       <p className="mt-4 text-lg font-medium text-muted-foreground">{children}</p>
     </div>
