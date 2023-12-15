@@ -1,8 +1,13 @@
+import { Instagram } from "@/components/instagram";
 import { LogoSlider } from "@/components/logo-slider";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { Aos } from "@/components/ui/aos";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import mobile from "../../../../../public/images/about/about-company-mobile.png";
+import tablet from "../../../../../public/images/about/about-company-tablet.png";
 
 export default function AboutCompanyPage() {
   return (
@@ -12,6 +17,7 @@ export default function AboutCompanyPage() {
       <LogoSliderSection />
       <WhatsOurNextSection />
       <InstagramSection />
+      <FreeConsultSection />
     </main>
   );
 }
@@ -152,11 +158,50 @@ const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
 const InstagramSection = () => {
   return (
     <Aos>
-      <section className="container">
-        <div className="flex">
-          <SectionTitle>{"유학 준비도 트렌디 하게,\nMZ 대표의 소통 방식"}</SectionTitle>
+      <section className="container my-32">
+        <div className="flex flex-col justify-between gap-16 md:flex-row">
+          <div className="flex flex-col">
+            <SectionTitle className="mt-0 whitespace-pre-wrap text-center md:text-left">
+              {"유학 준비도 트렌디 하게,\nMZ 대표의 소통 방식"}
+            </SectionTitle>
+            <p className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-left">
+              {
+                "유니버스 피아노는 인스타그램을 주요 기반으로 성장해왔습니다.\n대표와 크루들의 최신 소식은 인스타그램 계정에서 확인 하실 수 있습니다."
+              }
+            </p>
+            <div className="flex justify-center md:justify-start">
+              <Instagram className="mt-2 h-16 w-16 -translate-x-2 cursor-pointer transition hover:scale-110" />
+            </div>
+          </div>
+          <div className="flex items-end justify-center gap-4 md:justify-start">
+            <div>
+              <Image className="min-w-[80px]" width={80} src={mobile} alt="" />
+            </div>
+            <div>
+              <Image className="min-w-[300px]" width={300} src={tablet} alt="" />
+            </div>
+          </div>
         </div>
       </section>
     </Aos>
+  );
+};
+
+const FreeConsultSection = () => {
+  return (
+    <section className="bg-zinc-900 py-32">
+      <Aos className="container">
+        <SectionTitle className="mt-0 whitespace-pre text-left text-white md:leading-normal">
+          {"미국 음대 입시 관련\n1회 무료 zoom 상담을 제공합니다."}
+        </SectionTitle>
+        <Button
+          className="mt-8 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-10 text-lg"
+          size="lg"
+          variant="primary"
+        >
+          1회 무료 상담 신청
+        </Button>
+      </Aos>
+    </section>
   );
 };
