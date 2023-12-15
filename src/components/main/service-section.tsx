@@ -87,7 +87,7 @@ interface ServiceItemProps {
 const ServiceItem = ({ title, description }: ServiceItemProps) => {
   return (
     <div className="flex min-w-[320px] flex-col md:min-w-full">
-      <div className="aspect-video rounded-xl bg-slate-100" />
+      <div className="bg-content aspect-video rounded-xl" />
       <div className="mt-3 flex flex-col pl-2">
         <p className="font-medium">{title}</p>
         <p className="text-sm text-muted-foreground">{description}</p>

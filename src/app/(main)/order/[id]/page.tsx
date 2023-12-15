@@ -60,7 +60,7 @@ export default function OrderDetailPage() {
       <div className="mt-4">
         {order.orderItems.map((orderItem) => (
           <div className="flex gap-4" key={orderItem.id}>
-            <div className="h-20 w-20 rounded-md bg-slate-100" />
+            <div className="bg-content h-20 w-20 rounded-md" />
             <div className="flex flex-1 flex-col gap-2">
               <p className="text-sm">
                 {orderItem.product.category.name} | {orderItem.product.name}

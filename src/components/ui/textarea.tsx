@@ -8,7 +8,7 @@ const textareaVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-slate-100 rounded-xl hover:bg-gray-200 focus-visible:bg-slate-100",
+        default: "bg-content rounded-xl hover:bg-gray-200 focus-visible:bg-content",
         outline: "rounded-md border border-input bg-background",
       },
     },

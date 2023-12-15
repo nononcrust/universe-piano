@@ -54,7 +54,7 @@ const data = [
 
 export const TutoringCurriculumSection = () => {
   return (
-    <section className="bg-slate-100 pb-24">
+    <section className="bg-content pb-24">
       <Aos className="container">
         <SectionTitle title="과외 커리큘럼" />
         <Accordion.Root type="multiple" className="mt-12 flex flex-col gap-4">
@@ -87,7 +87,7 @@ const CurriculumItem = ({ value, title, description, items }: CurriculumItemProp
         <p className="text-xl font-bold text-primary">{title}</p>
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-medium">{description}</p>
-          <Icon.ChevronDown className="h-10 w-10 rounded-full bg-slate-100 p-2" />
+          <Icon.ChevronDown className="bg-content h-10 w-10 rounded-full p-2" />
         </div>
       </Accordion.Trigger>
       <Accordion.Content>

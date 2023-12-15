@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function ConsultingPage() {
   return (
     <main className="flex flex-col">
-      <section className="bg-slate-50">
+      <section className="bg-content-light">
         <Aos>
           <div className="container mt-16 flex flex-col items-center gap-8 py-16">
             <div className="flex flex-1 flex-col items-center gap-4">
@@ -26,7 +26,7 @@ export default function ConsultingPage() {
         </Aos>
       </section>
       <Aos>
-        <section className="mt-16 bg-slate-50 py-32">
+        <section className="bg-content-light mt-16 py-32">
           <div className="container flex flex-col">
             <h1 className="whitespace-pre-wrap text-center text-2xl font-bold md:text-3xl">
               {"솔직하고 담백한\n고객님들의 진심 어린 후기"}
