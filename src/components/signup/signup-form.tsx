@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FORM } from "@/constants/form";
 import { ROUTE } from "@/constants/route";
 import { SocialData, useRegister } from "@/features/auth";
 import { formatPhoneNumberInput } from "@/lib/utils";
@@ -23,8 +22,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  nickname: z.string().min(2).max(8).nonempty(FORM.ERROR.REQUIRED),
-  phone: z.string().min(13).max(13).nonempty(FORM.ERROR.REQUIRED),
+  nickname: z.string().min(2).max(12),
+  phone: z.string().min(13).max(13),
   terms: z.boolean().refine((value) => value === true),
 });
 
@@ -45,8 +44,6 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
       terms: false,
     },
   });
-
-  console.log("@", form);
 
   const registerMutation = useRegister();
 
