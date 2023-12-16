@@ -38,7 +38,7 @@ export const NavigationMenuDialog = () => {
           {Object.values(siteContents)
             .filter((item) => item.href !== ROUTE.MYPAGE.HOME)
             .map((category, index) => (
-              <ListCategory key={category.href} title={category.title}>
+              <ListCategory key={index} title={category.title}>
                 {category.children.map((item) => (
                   <ListItem key={item.href} href={item.href}>
                     {item.title}
@@ -96,8 +96,13 @@ interface ListCategoryProps {
   children: React.ReactNode;
 }
 
-const ListCategory = ({ children }: ListCategoryProps) => {
-  return <>{children}</>;
+const ListCategory = ({ title, children }: ListCategoryProps) => {
+  return (
+    <div className="py-2">
+      <p className="text-medium text-sm text-muted-foreground">{title}</p>
+      {children}
+    </div>
+  );
 };
 
 interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {

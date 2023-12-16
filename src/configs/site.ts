@@ -60,20 +60,6 @@ export const siteContents = {
       // },
     ],
   },
-  notice: {
-    title: "소식",
-    href: ROUTE.NEWS.LIST,
-    children: [
-      {
-        title: "공지사항",
-        href: ROUTE.NEWS.NOTICE.LIST,
-      },
-      {
-        title: "오디션 결과 발표",
-        href: ROUTE.NEWS.AUDITION.LIST,
-      },
-    ],
-  },
   // review: {
   //   title: "리뷰",
   //   href: ROUTE.REVIEW.LIST,
@@ -108,6 +94,20 @@ export const siteContents = {
       //   title: "독학 키트",
       //   href: ROUTE.SERVICE.PRODUCT.LIST,
       // },
+    ],
+  },
+  notice: {
+    title: "소식",
+    href: ROUTE.NEWS.LIST,
+    children: [
+      {
+        title: "공지사항",
+        href: ROUTE.NEWS.NOTICE.LIST,
+      },
+      {
+        title: "오디션 결과 발표",
+        href: ROUTE.NEWS.AUDITION.LIST,
+      },
     ],
   },
   support: {
