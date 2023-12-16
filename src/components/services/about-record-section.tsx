@@ -1,5 +1,7 @@
 "use client";
 
+import { ROUTE } from "@/constants/route";
+import Link from "next/link";
 import CountUp from "react-countup";
 import { SectionTitle } from "../section-title";
 import { Aos } from "../ui/aos";
@@ -13,7 +15,7 @@ export const AboutRecordSection = () => {
           <span className="text-primary">2019</span>
           {"년도부터 미국 음대 유학을 꿈꾸는 분들과\n함께 성장해 온 유니버스 피아노"}
         </SectionTitle>
-        <div className="my-24 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="my-12 grid grid-cols-2 gap-4 md:my-24 md:grid-cols-4">
           <AboutRecordItem
             title="합격률"
             value={<CountUp end={100} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
@@ -34,7 +36,9 @@ export const AboutRecordSection = () => {
           />
         </div>
         <div className="flex justify-center">
-          <Button className="h-12 rounded-full px-6 text-lg">연도별 포트폴리오</Button>
+          <Link href={ROUTE.ABOUT.PORTFOLIO}>
+            <Button className="h-12 rounded-full px-6 text-lg">연도별 포트폴리오</Button>
+          </Link>
         </div>
       </Aos>
     </section>

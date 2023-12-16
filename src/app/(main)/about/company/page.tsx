@@ -163,7 +163,7 @@ const InstagramSection = () => {
       <section className="container my-40">
         <div className="flex flex-col justify-between gap-16 md:flex-row">
           <div className="flex flex-col">
-            <SectionTitle className="mt-0 whitespace-pre-wrap text-center md:text-left">
+            <SectionTitle className="mt-0 whitespace-pre-wrap text-center md:text-left md:leading-normal">
               {"유학 준비도 트렌디 하게,\nMZ 대표의 소통 방식"}
             </SectionTitle>
             <p className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-left">

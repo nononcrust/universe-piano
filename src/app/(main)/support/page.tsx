@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { data as consultingData } from "@/contents/services/consulting";
 import { data as studyData } from "@/contents/services/study";
@@ -71,6 +72,7 @@ export default function SupportPage() {
               title={item.title}
               content={item.description}
               value={String(index)}
+              category={item.category}
             />
           ))}
         </Accordion>
@@ -89,13 +91,19 @@ interface SupportListItemProps {
   value: string;
   title: string;
   content: string;
+  category: string;
 }
 
-const SupportListItem = ({ value, title, content }: SupportListItemProps) => {
+const SupportListItem = ({ value, title, content, category }: SupportListItemProps) => {
   return (
     <AccordionItem value={value}>
-      <AccordionTrigger>Q. {title}</AccordionTrigger>
-      <AccordionContent className="whitespace-pre">{content}</AccordionContent>
+      <AccordionTrigger>
+        <div className="flex gap-2">
+          <Badge variant="secondary">{category}</Badge>
+          {title}
+        </div>
+      </AccordionTrigger>
+      <AccordionContent className="ml-1 whitespace-pre">{content}</AccordionContent>
     </AccordionItem>
   );
 };
