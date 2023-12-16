@@ -1,9 +1,13 @@
 import { ConsultingDocumentAgencySection } from "@/components/consulting-document-agency-section";
 import { ConsultingLogoSlider } from "@/components/consulting-logo-slider";
+import { OverwhelmingResultSection } from "@/components/consulting-overwhelming-result-section";
+import { FaqSection, FaqSectionItem } from "@/components/faq-section";
+import { Instagram } from "@/components/instagram";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
+import { data } from "@/contents/services/consulting";
 
 export default function ConsultingPage() {
   return (
@@ -12,53 +16,12 @@ export default function ConsultingPage() {
       <LogoSliderSection />
       <ConsultingExampleSection />
       <ConsultingDocumentAgencySection />
-      <FreeConsultSection />
+      <ConsultingReviewSection />
+      <ConsultingFaqSection />
+      <FreeConsultingSection />
     </main>
   );
 }
-
-const OverwhelmingResultSection = () => {
-  return (
-    <section className="my-16 bg-content">
-      <Aos className="container">
-        <SectionTitle>압도적인 결과로 증명합니다.</SectionTitle>
-        <div className="mb-24 mt-24 flex flex-col gap-12 md:flex-row">
-          <OverwhelmingResultItem
-            title="5년 연속 합격률"
-            value="100%"
-            description="어떤  케이스든 꾸준히 성공시켜 왔습니다. 상황과 우선순위에 맞는 입시 필승 전략을 안내 드립니다."
-          />
-          <OverwhelmingResultItem
-            title="장학금 비율"
-            value="전원 65% 이상"
-            description="미국 음대 입학, 장학급은 필수입니다. 맞춤형 전략을 통해 경제적인 부담을 덜어드립니다."
-          />
-          <OverwhelmingResultItem
-            title="장학금 증액"
-            value="연간 최대 $30000"
-            description="장학금을 증액 하려면, 증액 요소들이 필요합니다. 유니버스 피아노는 컨설팅 초기 단계부터 장학금 증액 요소를 준비합니다."
-          />
-        </div>
-      </Aos>
-    </section>
-  );
-};
-
-interface OverwhelmingResultItemProps {
-  title: string;
-  value: string;
-  description: string;
-}
-
-const OverwhelmingResultItem = ({ title, value, description }: OverwhelmingResultItemProps) => {
-  return (
-    <div className="flex flex-col gap-8">
-      <p className="text-xl font-bold">{title}</p>
-      <p className="text-3xl font-bold text-primary">{value}</p>
-      <p className="font-medium text-muted-foreground">{description}</p>
-    </div>
-  );
-};
 
 const LogoSliderSection = () => {
   return (
@@ -118,7 +81,76 @@ const ConsultingExampleItem = ({ number, title }: ConsultingExampleItemProps) =>
   );
 };
 
-const FreeConsultSection = () => {
+const ConsultingReviewSection = () => {
+  return (
+    <section className="py-16">
+      <Aos className="container">
+        <SectionTitle>조작 없는 후기 시리즈</SectionTitle>
+        <SectionSubtitle>유니버스 크루들이 직접 작성한 후기입니다.</SectionSubtitle>
+        <div className="mt-12 flex flex-col gap-12 md:flex-row">
+          {data.reviews.map((review, index) => (
+            <ConsultingReviewItem
+              key={index}
+              label={review.label}
+              title={review.title}
+              description={review.description}
+            />
+          ))}
+        </div>
+        <div className="mt-12 flex flex-col items-center">
+          <p className="font-semibold">
+            더 많은 후기와 크루들의 근황은 유니버스 피아노 네이버 블로그와 인스타그램에서 확인 하실
+            수 있습니다.
+          </p>
+          <div className="mt-4 flex gap-4">
+            <Instagram className="h-16 w-16 cursor-pointer transition hover:scale-110" />
+          </div>
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface ConsultingReviewItemProps {
+  label: string;
+  title: string;
+  description: string;
+}
+
+const ConsultingReviewItem = ({ label, title, description }: ConsultingReviewItemProps) => {
+  return (
+    <div className="flex flex-col overflow-hidden rounded-2xl border">
+      <div className="flex justify-center">
+        <div className="h-32 w-full bg-gradient-to-b from-gray-200 to-white" />
+      </div>
+      <div className="mt-8 flex flex-col gap-2 px-4">
+        <div className="flex">
+          <div className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">
+            {label}
+          </div>
+        </div>
+        <p className="text-lg font-semibold">{title}</p>
+      </div>
+      <div className="mt-4 h-[240px] overflow-y-auto whitespace-pre-wrap px-4 pb-4 font-medium leading-loose text-muted-foreground">
+        {description}
+      </div>
+    </div>
+  );
+};
+
+const ConsultingFaqSection = () => {
+  return (
+    <FaqSection>
+      <FaqSectionItem
+        title="컨설팅을 신청하면 그 다음은 어떻게 되나요?"
+        description="컨설팅 문의 → 1:1 상담 신청 → 계약서 작성 및 계약금 입금 → 컨설팅 시작"
+        value="item-1"
+      />
+    </FaqSection>
+  );
+};
+
+const FreeConsultingSection = () => {
   return (
     <section className="bg-zinc-900 py-32">
       <Aos className="container">

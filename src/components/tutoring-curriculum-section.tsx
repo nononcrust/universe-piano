@@ -47,7 +47,7 @@ const data = [
   },
   {
     title: "After Care",
-    description: "여기엔 뭐가 들어가나요",
+    description: "지속적인 입시 관련 상담 제공",
     items: ["지원 학교별 원서 작성 필요 목록 파일 제공", "입시 관련 Q&A 카톡 상담 제공"],
   },
 ];

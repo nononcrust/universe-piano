@@ -156,7 +156,7 @@ const RecommendItem = ({ number, title }: RecommendItemProps) => {
   return (
     <div className="flex w-full max-w-[600px] gap-4 rounded-xl border bg-content p-4">
       <div>
-        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black font-bold text-white">
+        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary font-bold text-white">
           {number}
         </div>
       </div>
