@@ -12,13 +12,20 @@ export const OverwhelmingResultSection = () => {
         <div className="mb-24 mt-24 flex flex-col gap-12 md:flex-row">
           <OverwhelmingResultItem
             title="5년 연속 합격률"
-            value={<CountUp end={100} duration={3} suffix="%" enableScrollSpy useEasing={false} />}
+            value={<CountUp end={100} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
             description="어떤  케이스든 꾸준히 성공시켜 왔습니다. 상황과 우선순위에 맞는 입시 필승 전략을 안내 드립니다."
           />
           <OverwhelmingResultItem
             title="장학금 비율"
             value={
-              <CountUp end={65} prefix="전원 " suffix="% 이상" enableScrollSpy useEasing={false} />
+              <CountUp
+                end={65}
+                duration={2}
+                prefix="전원 "
+                suffix="% 이상"
+                enableScrollSpy
+                useEasing={false}
+              />
             }
             description="미국 음대 입학, 장학급은 필수입니다. 맞춤형 전략을 통해 경제적인 부담을 덜어드립니다."
           />
@@ -27,8 +34,8 @@ export const OverwhelmingResultSection = () => {
             value={
               <CountUp
                 end={30000}
+                duration={2}
                 prefix="연간 최대 $"
-                duration={3}
                 enableScrollSpy
                 useEasing={false}
               />

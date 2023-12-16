@@ -2,36 +2,31 @@
 
 import { PageTitle } from "@/components/layout/page-title";
 import { Pagination } from "@/components/pagination";
-import { SupportList } from "@/components/support/support-list";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { data as consultingData } from "@/contents/services/consulting";
+import { data as studyData } from "@/contents/services/study";
+import { data as tutoringData } from "@/contents/services/tutoring";
 import { usePagination } from "@/hooks/use-pagination";
 import { useState } from "react";
 
-const DUMMY_SUPPORT_LIST = [
-  {
-    title: "계정을 분실했어요. 어떻게 해야 하나요?",
-    content: `계정을 분실하셨다면, 고객센터로 문의해주세요.
-    
-고객센터로 문의 시, 아래의 내용을 포함하여 문의해주세요.
-
-- 계정에 연결된 이메일 주소
-- 계정에 연결된 휴대폰 번호
-- 계정에 연결된 닉네임
-
-고객센터로 문의하러 가기
-    `,
-  },
-  {
-    title: "회원탈퇴를 하고 나서 다시 회원가입 할 수 있나요?",
-    content: "회원탈퇴를 하고 나면 30일 후에 다시 회원가입을 할 수 있습니다.",
-  },
-];
+const FAQS = {
+  all: [...consultingData.faq, ...tutoringData.faq, ...studyData.faq],
+  tutoring: tutoringData.faq,
+  consulting: consultingData.faq,
+  study: studyData.faq,
+} as const;
 
 const TAB_LIST = {
   all: "전체",
-  subscription: "구독",
-  register: "가입",
-  account: "계정",
+  consulting: "입시 컨설팅",
+  tutoring: "미국 음대 입시 과외",
+  study: "스터디",
 } as const;
 
 type Tab = keyof typeof TAB_LIST;
@@ -39,6 +34,8 @@ type Tab = keyof typeof TAB_LIST;
 export default function SupportPage() {
   const [tab, setTab] = useState<Tab>("all");
   const pagination = usePagination();
+
+  const filteredFaqs = FAQS[tab];
 
   return (
     <main className="container pb-16">
@@ -67,7 +64,16 @@ export default function SupportPage() {
         </TabsList>
       </Tabs> */}
       <div className="mt-8">
-        <SupportList initialData={DUMMY_SUPPORT_LIST} />
+        <Accordion type="single" collapsible>
+          {filteredFaqs.map((item, index) => (
+            <SupportListItem
+              key={index}
+              title={item.title}
+              content={item.description}
+              value={String(index)}
+            />
+          ))}
+        </Accordion>
       </div>
       <Pagination
         className="mt-8"
@@ -78,3 +84,18 @@ export default function SupportPage() {
     </main>
   );
 }
+
+interface SupportListItemProps {
+  value: string;
+  title: string;
+  content: string;
+}
+
+const SupportListItem = ({ value, title, content }: SupportListItemProps) => {
+  return (
+    <AccordionItem value={value}>
+      <AccordionTrigger>Q. {title}</AccordionTrigger>
+      <AccordionContent className="whitespace-pre">{content}</AccordionContent>
+    </AccordionItem>
+  );
+};

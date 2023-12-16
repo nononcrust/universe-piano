@@ -9,6 +9,7 @@ import { StudyMissionSection } from "@/components/study-mission-section";
 import { WhyUniverseItem } from "@/components/study-why-universe-item";
 import { Aos } from "@/components/ui/aos";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
+import { data } from "@/contents/services/study";
 import Image from "next/image";
 
 export default function StudyPage() {
@@ -324,26 +325,14 @@ const StudyInfoSection = () => {
 const StudyFaqSection = () => {
   return (
     <FaqSection>
-      <FaqSectionItem
-        title="스터디는 어떻게 신청하나요?"
-        description="인스타그램 혹은 카카오톡으로 문의해주세요."
-        value="item-1"
-      />
-      <FaqSectionItem
-        title="스터디를 신청하고 중간에 환불할 수 있나요?"
-        description="네, 환불 금액은 신청 날짜에 따라 계산됩니다."
-        value="item-2"
-      />
-      <FaqSectionItem
-        title="스터디는 어떻게 신청하나요?"
-        description="인스타그램 혹은 카카오톡으로 문의해주세요."
-        value="item-3"
-      />
-      <FaqSectionItem
-        title="스터디를 신청하고 중간에 환불할 수 있나요?"
-        description="네, 환불 금액은 신청 날짜에 따라 계산됩니다."
-        value="item-4"
-      />
+      {data.faq.map((item, index) => (
+        <FaqSectionItem
+          key={index}
+          title={item.title}
+          description={item.description}
+          value={String(index)}
+        />
+      ))}
     </FaqSection>
   );
 };

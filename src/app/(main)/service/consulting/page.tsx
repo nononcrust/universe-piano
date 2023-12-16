@@ -141,11 +141,14 @@ const ConsultingReviewItem = ({ label, title, description }: ConsultingReviewIte
 const ConsultingFaqSection = () => {
   return (
     <FaqSection>
-      <FaqSectionItem
-        title="컨설팅을 신청하면 그 다음은 어떻게 되나요?"
-        description="컨설팅 문의 → 1:1 상담 신청 → 계약서 작성 및 계약금 입금 → 컨설팅 시작"
-        value="item-1"
-      />
+      {data.faq.map((item, index) => (
+        <FaqSectionItem
+          key={index}
+          title={item.title}
+          description={item.description}
+          value={String(index)}
+        />
+      ))}
     </FaqSection>
   );
 };

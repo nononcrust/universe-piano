@@ -6,6 +6,7 @@ import { ServiceFloatingButton } from "@/components/service-floating-button";
 import { TutoringCurriculumSection } from "@/components/tutoring-curriculum-section";
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
+import { data } from "@/contents/services/tutoring";
 import Image from "next/image";
 
 export default function TutoringPage() {
@@ -283,21 +284,14 @@ const TutoringInfoSection = () => {
 const TutoringFaqSection = () => {
   return (
     <FaqSection>
-      <FaqSectionItem
-        title="수업 3회로 미국 음대 입시 준비가 가능할까요?"
-        description="멘토의 설명과 개별 맞춤형 자료가 있다면 수업 3회로고 충분히 가능합니다. 필요한 경우에는 추가 수업을 제공합니다."
-        value="item-1"
-      />
-      <FaqSectionItem
-        title="과외가 끝났는데 궁금한 점이 생기면 어떡하나요?"
-        description="과외가 끝나도 유니버스 피아노의 케어는 계속됩니다. 궁금하신 부분들 카톡으로 남겨주시면 멘토가 직접 답변 드리겠습니다."
-        value="item-2"
-      />
-      <FaqSectionItem
-        title="과외를 이미 했는데 컨설팅으로 바꾸고 싶어요."
-        description="컨설팅 진행 가능한 공석이 남아 있다면, 컨설팅 진행 비용에서 과외 비용 전액 차감 후에 진행 도와드리겠습니다. 단, 전체 과정을 함께하는 컨설팅 (유니버스 컨설팅/전체 컨설팅) 을 진행하시는 경우에만 해당됩니다."
-        value="item-3"
-      />
+      {data.faq.map((item, index) => (
+        <FaqSectionItem
+          key={index}
+          title={item.title}
+          description={item.description}
+          value={String(index)}
+        />
+      ))}
     </FaqSection>
   );
 };

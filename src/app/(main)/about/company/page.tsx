@@ -41,7 +41,7 @@ const IntroSection = () => {
 
 const WhatWeDoSection = () => {
   return (
-    <section className="bg-content py-16">
+    <section className="bg-content py-32">
       <Aos className="container">
         <p className="text-lg font-semibold text-primary">Universe Piano</p>
         <SectionTitle className="mt-2 whitespace-pre-wrap text-left md:leading-normal">
@@ -90,7 +90,7 @@ const WhatWeDoItem = ({ title, description }: WhatWeDoItemProps) => {
 
 const LogoSliderSection = () => {
   return (
-    <section className="my-36">
+    <section className="mb-24 mt-36">
       <SectionTitle>역대 유니버스 크루</SectionTitle>
       <SectionSubtitle>전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다</SectionSubtitle>
       <div className="mt-12">
@@ -102,7 +102,7 @@ const LogoSliderSection = () => {
 
 const WhatsOurNextSection = () => {
   return (
-    <section className="relative bg-content py-16">
+    <section className="relative bg-content py-24">
       <Aos className="container">
         <div className="flex justify-center">
           <SectionBadge>{"What's our NEXT?"}</SectionBadge>
@@ -158,7 +158,7 @@ const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
 const InstagramSection = () => {
   return (
     <Aos>
-      <section className="container my-32">
+      <section className="container my-40">
         <div className="flex flex-col justify-between gap-16 md:flex-row">
           <div className="flex flex-col">
             <SectionTitle className="mt-0 whitespace-pre-wrap text-center md:text-left">
