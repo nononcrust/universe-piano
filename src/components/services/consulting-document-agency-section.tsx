@@ -77,12 +77,12 @@ interface CurriculumItemProps {
 const CurriculumItem = ({ value, title, description, items }: CurriculumItemProps) => {
   return (
     <Accordion.Item value={value} className="flex flex-col rounded-2xl border bg-white p-6">
-      <Accordion.Trigger className="flex flex-col gap-2">
-        <p className="text-lg font-bold text-primary md:text-xl">{title}</p>
-        <div className="flex w-full items-center justify-between">
+      <Accordion.Trigger className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <p className="text-lg font-bold text-primary md:text-xl">{title}</p>
           <p className="text-left text-lg font-semibold">{description}</p>
-          <Icon.ChevronDown className="ml-4 h-10 w-10 rounded-full bg-content p-2" />
         </div>
+        <Icon.ChevronDown className="ml-4 h-10 w-10 rounded-full bg-content p-2" />
       </Accordion.Trigger>
       <Accordion.Content>
         <div className="flex flex-col gap-4 pt-4">
