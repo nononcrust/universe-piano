@@ -5,6 +5,7 @@ import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { ServiceFloatingButton } from "@/components/service-floating-button";
+import { StudyMissionSection } from "@/components/study-mission-section";
 import { Aos } from "@/components/ui/aos";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
 import Image from "next/image";
@@ -111,7 +112,7 @@ interface CheckPointItemProps {
 
 const CheckPointItem = ({ number, title }: CheckPointItemProps) => {
   return (
-    <div className="bg-content flex max-w-[600px] gap-4 rounded-xl border p-4">
+    <div className="flex w-full gap-4 rounded-xl border bg-content p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black font-bold text-white">
           {number}
@@ -175,7 +176,9 @@ const WhyUniverseSection = () => {
   return (
     <Aos className="my-16">
       <section className="container">
-        <SectionTitle>음대생 영어공부, 결국 왜 유니버스 피아노일까요?</SectionTitle>
+        <SectionTitle className="whitespace-pre-wrap md:leading-normal">
+          {"음대생 영어공부,\n결국 왜 유니버스 피아노일까요?"}
+        </SectionTitle>
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
           <WhyUniverseItem
             number={1}
@@ -200,7 +203,7 @@ interface WhyUniverseItem {
 
 const WhyUniverseItem = ({ number, title }: WhyUniverseItem) => {
   return (
-    <div className="bg-content flex h-[320px] flex-1 flex-col justify-end rounded-2xl border p-6 font-semibold">
+    <div className="flex h-[320px] flex-1 flex-col justify-end rounded-2xl border bg-content p-6 font-semibold">
       <p className="text-xl underline underline-offset-4">0{number}</p>
       <p className="mt-2 whitespace-pre text-xl">{title}</p>
     </div>
@@ -238,7 +241,7 @@ interface StudyExpecttationItemProps {
 const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttationItemProps) => {
   return (
     <div className="flex flex-col md:flex-row md:gap-16">
-      <div className="bg-content h-[280px] min-w-[280px] rounded-2xl border" />
+      <div className="h-[280px] min-w-[280px] rounded-2xl border bg-content" />
       <div className="flex flex-col">
         <p className="mt-4 text-2xl font-semibold md:mt-12 md:text-3xl">{title}</p>
         <p className="mt-4 text-lg font-semibold">{subtitle}</p>
@@ -248,40 +251,9 @@ const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttatio
   );
 };
 
-const StudyMissionSection = () => {
-  return (
-    <Aos className="my-16">
-      <section>
-        <div className="container">
-          <SectionTitle className="text-left">변화의 시작은,</SectionTitle>
-          <SectionTitle className="mt-2 text-left">스터디 미션 수행으로부터</SectionTitle>
-          <SectionSubtitle className="text-left">
-            모든 변화의 필수 전제 조건은 이전과는 다른 행동을 하는 자기 자신입니다.
-          </SectionSubtitle>
-          <SectionSubtitle className="mt-1 text-left">
-            스터디 크루분들은 스터디의 다양한 미션 수행을 통해, 영어 점수 향상은 물론, 생각과 생활
-            습관에도 긍정적인 변화를 경험하고 있습니다.
-          </SectionSubtitle>
-        </div>
-        <div className="container mt-12 flex gap-4 overflow-auto scrollbar-hide">
-          <StudyMissionItem />
-          <StudyMissionItem />
-          <StudyMissionItem />
-          <StudyMissionItem />
-          <StudyMissionItem />
-        </div>
-      </section>
-    </Aos>
-  );
-};
-
-const StudyMissionItem = () => {
-  return <div className="bg-content h-[400px] min-w-[240px] rounded-2xl border" />;
-};
-
 const StudyReviewSection = () => {
   return (
-    <section className="bg-content mt-16">
+    <section className="mt-16 bg-content">
       <Aos className="pb-24">
         <div className="container">
           <SectionTitle>스터디 리뷰</SectionTitle>

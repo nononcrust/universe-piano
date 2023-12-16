@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
 import { ROUTE } from "@/constants/route";
 import { useSession, useUpdateProfile } from "@/features/auth";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
@@ -117,7 +116,7 @@ export default function AccountPage() {
           </div>
         </FormLayout>
       </Form>
-      <PageSubtitle className="mt-16" title="알림 설정" />
+      {/* <PageSubtitle className="mt-16" title="알림 설정" />
       <div className="mt-4 flex items-center justify-between rounded-2xl border p-4">
         <div className="flex flex-col gap-1">
           <p className="font-medium">마케팅 알림</p>
@@ -126,7 +125,7 @@ export default function AccountPage() {
           </p>
         </div>
         <Switch />
-      </div>
+      </div> */}
       <PageSubtitle className="mt-16" title="회원 탈퇴" />
       <Link href={ROUTE.WITHDRAWAL}>
         <Button variant="destructive" className="mt-8">

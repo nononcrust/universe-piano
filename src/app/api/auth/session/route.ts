@@ -1,5 +1,5 @@
 import { COOKIE } from "@/constants/cookie";
-import { Session, authRepository } from "@/features/auth";
+import { JwtPayload, Session, authRepository } from "@/features/auth";
 import { issueAccessToken, revokeAccessToken } from "@/lib/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
@@ -26,7 +26,13 @@ export const GET = async (request: Request) => {
       return NextResponse.json(null, { status: 200 });
     }
 
-    issueAccessToken(user);
+    const jwtPayload: JwtPayload = {
+      id: user.id,
+      role: user.role,
+      tier: user.tier,
+    };
+
+    issueAccessToken(jwtPayload);
 
     const session: Session = {
       user: user,

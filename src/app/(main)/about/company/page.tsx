@@ -1,5 +1,5 @@
+import { AboutLogoSlider } from "@/components/about-logo-slider";
 import { Instagram } from "@/components/instagram";
-import { LogoSlider } from "@/components/logo-slider";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
@@ -81,7 +81,7 @@ interface WhatWeDoItemProps {
 const WhatWeDoItem = ({ title, description }: WhatWeDoItemProps) => {
   return (
     <div className="rounded-2xl bg-white p-6 shadow-lg md:min-h-[320px]">
-      <div className="bg-content h-16 w-16 rounded-2xl" />
+      <div className="h-16 w-16 rounded-2xl bg-content" />
       <p className="mt-8 font-semibold md:mt-16">{title}</p>
       <p className="mt-2 font-medium text-muted-foreground">{description}</p>
     </div>
@@ -90,11 +90,11 @@ const WhatWeDoItem = ({ title, description }: WhatWeDoItemProps) => {
 
 const LogoSliderSection = () => {
   return (
-    <section>
+    <section className="my-36">
       <SectionTitle>역대 유니버스 크루</SectionTitle>
       <SectionSubtitle>전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다</SectionSubtitle>
       <div className="mt-12">
-        <LogoSlider />
+        <AboutLogoSlider />
       </div>
     </section>
   );
@@ -102,7 +102,7 @@ const LogoSliderSection = () => {
 
 const WhatsOurNextSection = () => {
   return (
-    <section className="bg-content relative py-16">
+    <section className="relative bg-content py-16">
       <Aos className="container">
         <div className="flex justify-center">
           <SectionBadge>{"What's our NEXT?"}</SectionBadge>
@@ -110,7 +110,7 @@ const WhatsOurNextSection = () => {
         <SectionTitle className="mt-4">2024년, 두 개의 국내 최초 서비스가 시작됩니다.</SectionTitle>
         <div className="flex justify-center">
           <div className="relative mt-24 flex flex-col gap-4">
-            <div className="to-content absolute h-full w-[1px] translate-x-[5.5px] translate-y-[10px] bg-gradient-to-b from-black from-90%" />
+            <div className="absolute h-full w-[1px] translate-x-[5.5px] translate-y-[10px] bg-gradient-to-b from-black from-90% to-content" />
             <WhatsOurNextItem
               year="2023"
               items={[

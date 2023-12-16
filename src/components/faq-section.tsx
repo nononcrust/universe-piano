@@ -1,6 +1,8 @@
 "use client";
 
+import { ROUTE } from "@/constants/route";
 import * as Accordion from "@radix-ui/react-accordion";
+import Link from "next/link";
 import { Icon } from "./icon";
 import { SectionSubtitle } from "./section-subtitle";
 import { SectionTitle } from "./section-title";
@@ -21,9 +23,11 @@ export const FaqSection = ({ children }: FaqSectionProps) => {
           {children}
         </Accordion.Root>
         <div className="mt-12 flex justify-center">
-          <Button className="h-12 rounded-full px-12 text-lg" size="lg">
-            더보기
-          </Button>
+          <Link href={ROUTE.SUPPORT}>
+            <Button className="h-12 rounded-full px-12 text-lg" size="lg">
+              더보기
+            </Button>
+          </Link>
         </div>
       </Aos>
     </section>
@@ -41,14 +45,14 @@ export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProp
     <Accordion.Item value={value} className="flex flex-col rounded-xl border bg-white p-4">
       <Accordion.Trigger className="flex items-center justify-between text-lg font-semibold">
         <div className="flex items-center gap-4">
-          <div className="bg-content flex h-8 w-8 items-center justify-center rounded-full font-bold">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-content font-bold">
             Q
           </div>
-          <p className="text-left font-semibold">{title}</p>
+          <p className="text-left text-[15px] font-semibold md:text-base">{title}</p>
         </div>
         <Icon.ChevronDown className="ml-4" />
       </Accordion.Trigger>
-      <Accordion.Content className="ml-12 mt-4 font-medium text-muted-foreground transition">
+      <Accordion.Content className="ml-12 mt-4 text-[15px] font-medium text-muted-foreground transition">
         {description}
       </Accordion.Content>
     </Accordion.Item>

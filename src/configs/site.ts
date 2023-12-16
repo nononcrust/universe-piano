@@ -9,7 +9,7 @@ export const siteConfig = {
   isa: "김한희",
   title: "유니버스 피아노 - 미국 음대 입시의 모든것",
   address: "울산광역시 동구 봉수로 250, 105동 1604호",
-  email: "nononcrust@gmail.com",
+  email: "universepaino@naver.com",
   description: "유니버스 피아노 홈페이지",
   links: {
     instagram: "https://www.instagram.com/universe_piano",
@@ -32,7 +32,7 @@ export const siteConfig = {
     title: "유니버스 피아노",
     type: "website",
     locale: "ko_KR",
-    url: "https://universe-piano.vercel.app",
+    url: "https://universe-piano.com",
     siteName: "유니버스 피아노",
     description: "미국 음대 입시의 모든것, 유니버스 피아노",
     images: [
@@ -54,10 +54,10 @@ export const siteContents = {
         title: "유니버스 피아노",
         href: ROUTE.ABOUT.COMPANY,
       },
-      {
-        title: "대표의 스토리",
-        href: ROUTE.ABOUT.STORY,
-      },
+      // {
+      //   title: "대표의 스토리",
+      //   href: ROUTE.ABOUT.STORY,
+      // },
     ],
   },
   notice: {
@@ -104,10 +104,10 @@ export const siteContents = {
         title: "스터디",
         href: ROUTE.SERVICE.STUDY,
       },
-      {
-        title: "독학 키트",
-        href: ROUTE.SERVICE.PRODUCT.LIST,
-      },
+      // {
+      //   title: "독학 키트",
+      //   href: ROUTE.SERVICE.PRODUCT.LIST,
+      // },
     ],
   },
   support: {
@@ -128,14 +128,14 @@ export const siteContents = {
         title: "프로필",
         href: ROUTE.MYPAGE.PROFILE,
       },
-      {
-        title: "활동",
-        href: ROUTE.MYPAGE.ACTIVITY,
-      },
-      {
-        title: "구매 내역",
-        href: ROUTE.MYPAGE.ORDER,
-      },
+      // {
+      //   title: "활동",
+      //   href: ROUTE.MYPAGE.ACTIVITY,
+      // },
+      // {
+      //   title: "구매 내역",
+      //   href: ROUTE.MYPAGE.ORDER,
+      // },
       {
         title: "계정 설정",
         href: ROUTE.MYPAGE.ACCOUNT,

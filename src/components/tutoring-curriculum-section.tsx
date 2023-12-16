@@ -84,16 +84,19 @@ const CurriculumItem = ({ value, title, description, items }: CurriculumItemProp
   return (
     <Accordion.Item value={value} className="flex flex-col rounded-2xl border bg-white p-6">
       <Accordion.Trigger className="flex flex-col gap-2">
-        <p className="text-xl font-bold text-primary">{title}</p>
+        <p className="text-lg font-bold text-primary md:text-xl">{title}</p>
         <div className="flex w-full items-center justify-between">
-          <p className="text-left text-lg font-medium">{description}</p>
-          <Icon.ChevronDown className="bg-content ml-4 h-10 w-10 rounded-full p-2" />
+          <p className="text-left text-lg font-semibold">{description}</p>
+          <Icon.ChevronDown className="ml-4 h-10 w-10 rounded-full bg-content p-2" />
         </div>
       </Accordion.Trigger>
       <Accordion.Content>
         <div className="flex flex-col gap-4 pt-4">
           {items.map((item, index) => (
-            <p className="list-item list-inside font-medium text-muted-foreground" key={index}>
+            <p
+              className="ml-5 list-item list-outside text-[15px] font-medium text-muted-foreground md:text-base"
+              key={index}
+            >
               {item}
             </p>
           ))}

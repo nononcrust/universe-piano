@@ -30,6 +30,7 @@ export const jwt = {
     try {
       return jsonwebtoken.verify(token, secret);
     } catch (error) {
+      console.log(error);
       return null;
     }
   },

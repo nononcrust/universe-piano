@@ -83,7 +83,7 @@ const UniversePianoSection = () => {
 
 const CrewResultSection = () => {
   return (
-    <section className="bg-content mt-12 py-16">
+    <section className="mt-12 bg-content py-16">
       <Aos className="container">
         <SectionTitle>유니버스 크루들의 결과를 공개합니다.</SectionTitle>
         <SectionSubtitle className="whitespace-pre-wrap">
@@ -119,7 +119,7 @@ interface ScholarshipItemProps {
 const CrewResultItem = ({ title, description }: ScholarshipItemProps) => {
   return (
     <div className="flex w-full flex-col items-center rounded-2xl bg-white p-8 shadow-xl md:max-w-[240px]">
-      <div className="bg-content h-24 w-24 rounded-full" />
+      <div className="h-24 w-24 rounded-full bg-content" />
       <p className="mt-4 font-semibold text-muted-foreground">{title}</p>
       <p className="mt-2 text-center text-3xl font-bold text-primary">{description}</p>
     </div>
@@ -154,7 +154,7 @@ interface RecommendItemProps {
 
 const RecommendItem = ({ number, title }: RecommendItemProps) => {
   return (
-    <div className="bg-content flex w-full max-w-[600px] gap-4 rounded-xl border p-4">
+    <div className="flex w-full max-w-[600px] gap-4 rounded-xl border bg-content p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black font-bold text-white">
           {number}
@@ -197,7 +197,7 @@ interface TutoringCompositionItemProps {
 
 const TutoringCompositionItem = ({ title, description }: TutoringCompositionItemProps) => {
   return (
-    <div className="bg-content-light flex flex-col items-center rounded-2xl border p-8 md:h-[200px]">
+    <div className="flex flex-col items-center rounded-2xl border bg-content-light p-8 md:h-[200px]">
       <Badge>{title}</Badge>
       <p className="mt-4 text-center font-medium">{description}</p>
     </div>
@@ -234,8 +234,8 @@ interface TutoringExpectationItemProps {
 
 const TutoringExpectationItem = ({ title, children }: TutoringExpectationItemProps) => {
   return (
-    <div className="bg-content-light w-full rounded-2xl border p-8">
-      <p className="text-2xl font-bold text-primary">{title}</p>
+    <div className="w-full rounded-2xl border bg-content-light p-8">
+      <p className="text-xl font-bold text-primary md:text-2xl">{title}</p>
       <p className="mt-4 text-lg font-medium text-muted-foreground">{children}</p>
     </div>
   );
@@ -245,9 +245,9 @@ const TutoringInfoSection = () => {
   return (
     <section className="bg-zinc-900 pb-24 text-white">
       <Aos className="container">
-        <SectionTitle className="text-left">스터디 신청 및 월별 커리큘럼 확인</SectionTitle>
+        <SectionTitle className="text-left">과외 상세정보</SectionTitle>
         <SectionSubtitle className="text-left text-gray-300">
-          스터디 신청 방법 및 월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
+          자세한 정보는 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
         </SectionSubtitle>
         <div className="mt-20 flex flex-col gap-8">
           <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
@@ -257,14 +257,20 @@ const TutoringInfoSection = () => {
             </ul>
           </div>
           <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
-            <p className="text-2xl font-bold">스터디 벌금</p>
+            <p className="text-2xl font-bold">과외 절차</p>
+            <ul className="ml-4 list-decimal">
+              <li className="mt-4 font-medium text-gray-300">과외 신청서 작성</li>
+              <li className="mt-4 font-medium text-gray-300">멘토와 1:1 미팅</li>
+              <li className="mt-4 font-medium text-gray-300">과외 진행 여부 확정</li>
+              <li className="mt-4 font-medium text-gray-300">과외 일정 조율 & 계약서 작성</li>
+              <li className="mt-4 font-medium text-gray-300">과외 시작</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+            <p className="text-2xl font-bold">과외 신청서 작성 방법</p>
             <ul className="ml-4 list-disc">
-              <li className="mt-4 font-medium text-gray-300">인증 기준 미달 시, 벌금 부과</li>
               <li className="mt-4 font-medium text-gray-300">
-                모여진 벌금은 월말에 가장 성실하게 공부하신 분께 전액 수여합니다.
-              </li>
-              <li className="mt-4 font-medium text-gray-300">
-                벌금 기준은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
+                홈페이지 우측 하단 채팅을 통해 신청서 작성 링크 확인 하실 수 있습니다.
               </li>
             </ul>
           </div>
