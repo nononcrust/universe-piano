@@ -54,6 +54,10 @@ export const siteContents = {
         title: "유니버스 피아노",
         href: ROUTE.ABOUT.COMPANY,
       },
+      {
+        title: "포트폴리오",
+        href: ROUTE.ABOUT.PORTFOLIO,
+      },
       // {
       //   title: "대표의 스토리",
       //   href: ROUTE.ABOUT.STORY,

@@ -1,9 +1,9 @@
 "use client";
 
 import * as Accordion from "@radix-ui/react-accordion";
-import { Icon } from "./icon";
-import { SectionTitle } from "./section-title";
-import { Aos } from "./ui/aos";
+import { Icon } from "../icon";
+import { SectionTitle } from "../section-title";
+import { Aos } from "../ui/aos";
 
 const data = [
   {

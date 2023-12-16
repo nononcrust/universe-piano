@@ -1,0 +1,56 @@
+"use client";
+
+import CountUp from "react-countup";
+import { SectionTitle } from "../section-title";
+import { Aos } from "../ui/aos";
+import { Button } from "../ui/button";
+
+export const AboutRecordSection = () => {
+  return (
+    <section className="py-24">
+      <Aos className="container">
+        <SectionTitle className="whitespace-pre-wrap md:leading-normal">
+          <span className="text-primary">2019</span>
+          {"년도부터 미국 음대 유학을 꿈꾸는 분들과\n함께 성장해 온 유니버스 피아노"}
+        </SectionTitle>
+        <div className="my-24 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <AboutRecordItem
+            title="합격률"
+            value={<CountUp end={100} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
+          />
+          <AboutRecordItem
+            title="장학금 수여"
+            value={<CountUp end={65} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
+          />
+          <AboutRecordItem
+            title="연간 장학금 증액"
+            value={
+              <CountUp end={30000} duration={2} prefix="$" enableScrollSpy useEasing={false} />
+            }
+          />
+          <AboutRecordItem
+            title="컨설팅 경력"
+            value={<CountUp end={5} duration={2} suffix=" yrs" enableScrollSpy useEasing={false} />}
+          />
+        </div>
+        <div className="flex justify-center">
+          <Button className="h-12 rounded-full px-6 text-lg">연도별 포트폴리오</Button>
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface AboutRecordItemProps {
+  title: string;
+  value: React.ReactNode;
+}
+
+const AboutRecordItem = ({ title, value }: AboutRecordItemProps) => {
+  return (
+    <div className="flex flex-col items-center justify-center gap-4">
+      <p className="text-3xl font-bold text-primary">{value}</p>
+      <p className="text-medium">{title}</p>
+    </div>
+  );
+};

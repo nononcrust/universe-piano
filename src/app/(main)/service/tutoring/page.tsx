@@ -3,7 +3,7 @@ import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { ServiceFloatingButton } from "@/components/service-floating-button";
-import { TutoringCurriculumSection } from "@/components/tutoring-curriculum-section";
+import { TutoringCurriculumSection } from "@/components/services/tutoring-curriculum-section";
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
 import { data } from "@/contents/services/tutoring";

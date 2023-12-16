@@ -1,25 +1,25 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import image1 from "../../public/images/study/study-mission-1.png";
-import image10 from "../../public/images/study/study-mission-10.png";
-import image11 from "../../public/images/study/study-mission-11.png";
-import image12 from "../../public/images/study/study-mission-12.png";
-import image13 from "../../public/images/study/study-mission-13.png";
-import image14 from "../../public/images/study/study-mission-14.png";
-import image15 from "../../public/images/study/study-mission-15.png";
-import image16 from "../../public/images/study/study-mission-16.png";
-import image2 from "../../public/images/study/study-mission-2.png";
-import image3 from "../../public/images/study/study-mission-3.png";
-import image4 from "../../public/images/study/study-mission-4.png";
-import image5 from "../../public/images/study/study-mission-5.png";
-import image6 from "../../public/images/study/study-mission-6.png";
-import image7 from "../../public/images/study/study-mission-7.png";
-import image8 from "../../public/images/study/study-mission-8.png";
-import image9 from "../../public/images/study/study-mission-9.png";
-import { SectionSubtitle } from "./section-subtitle";
-import { SectionTitle } from "./section-title";
-import { Aos } from "./ui/aos";
+import image1 from "../../../public/images/study/study-mission-1.png";
+import image10 from "../../../public/images/study/study-mission-10.png";
+import image11 from "../../../public/images/study/study-mission-11.png";
+import image12 from "../../../public/images/study/study-mission-12.png";
+import image13 from "../../../public/images/study/study-mission-13.png";
+import image14 from "../../../public/images/study/study-mission-14.png";
+import image15 from "../../../public/images/study/study-mission-15.png";
+import image16 from "../../../public/images/study/study-mission-16.png";
+import image2 from "../../../public/images/study/study-mission-2.png";
+import image3 from "../../../public/images/study/study-mission-3.png";
+import image4 from "../../../public/images/study/study-mission-4.png";
+import image5 from "../../../public/images/study/study-mission-5.png";
+import image6 from "../../../public/images/study/study-mission-6.png";
+import image7 from "../../../public/images/study/study-mission-7.png";
+import image8 from "../../../public/images/study/study-mission-8.png";
+import image9 from "../../../public/images/study/study-mission-9.png";
+import { SectionSubtitle } from "../section-subtitle";
+import { SectionTitle } from "../section-title";
+import { Aos } from "../ui/aos";
 
 const images = [
   image1,

@@ -1,8 +1,8 @@
 "use client";
 
 import CountUp from "react-countup";
-import { SectionTitle } from "./section-title";
-import { Aos } from "./ui/aos";
+import { SectionTitle } from "../section-title";
+import { Aos } from "../ui/aos";
 
 export const OverwhelmingResultSection = () => {
   return (

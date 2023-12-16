@@ -3,6 +3,7 @@ import { Instagram } from "@/components/instagram";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
+import { AboutRecordSection } from "@/components/services/about-record-section";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -15,6 +16,7 @@ export default function AboutCompanyPage() {
       <IntroSection />
       <WhatWeDoSection />
       <LogoSliderSection />
+      <AboutRecordSection />
       <WhatsOurNextSection />
       <InstagramSection />
       <FreeConsultSection />

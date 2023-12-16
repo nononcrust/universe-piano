@@ -1,10 +1,10 @@
-import { ConsultingDocumentAgencySection } from "@/components/consulting-document-agency-section";
 import { ConsultingLogoSlider } from "@/components/consulting-logo-slider";
-import { OverwhelmingResultSection } from "@/components/consulting-overwhelming-result-section";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { Instagram } from "@/components/instagram";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
+import { ConsultingDocumentAgencySection } from "@/components/services/consulting-document-agency-section";
+import { OverwhelmingResultSection } from "@/components/services/consulting-overwhelming-result-section";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { data } from "@/contents/services/consulting";
