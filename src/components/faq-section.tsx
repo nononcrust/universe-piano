@@ -53,7 +53,7 @@ export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProp
         </div>
         <Icon.ChevronDown className="ml-4" />
       </Accordion.Trigger>
-      <Accordion.Content className="ml-12 mt-4 text-[15px] font-medium text-muted-foreground transition">
+      <Accordion.Content className="ml-12 mr-4 mt-4 whitespace-pre-wrap text-[15px] font-medium text-muted-foreground transition">
         {description}
       </Accordion.Content>
     </Accordion.Item>
