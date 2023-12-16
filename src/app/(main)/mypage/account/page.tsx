@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -77,11 +78,14 @@ export default function AccountPage() {
                 <FormControl>
                   <Input
                     variant="underline"
-                    maxLength={10}
+                    maxLength={12}
                     placeholder="닉네임을 입력해주세요."
                     {...field}
                   />
                 </FormControl>
+                <FormDescription>
+                  닉네임 규정: 영문 이니셜 + 전화번호 끝 4자리 (예시: cms7370)
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

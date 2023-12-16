@@ -90,9 +90,11 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
               <FormItem>
                 <FormLabel>닉네임</FormLabel>
                 <FormControl>
-                  <Input placeholder="닉네임" {...field} maxLength={8} />
+                  <Input placeholder="닉네임" {...field} maxLength={12} />
                 </FormControl>
-                <FormDescription>닉네임을 입력해주세요.</FormDescription>
+                <FormDescription>
+                  닉네임 규정: 영문 이니셜 + 전화번호 끝 4자리 (예시: cms7370)
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
