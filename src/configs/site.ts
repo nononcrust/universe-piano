@@ -6,9 +6,9 @@ export const siteConfig = {
   ceo: "최경원",
   bin: "170-41-01086",
   mailOrderBusinessNumber: "2023-울산동구-0158",
-  isa: "김한희",
+  isa: "최경원",
   title: "유니버스 피아노 - 미국 음대 입시의 모든것",
-  address: "울산광역시 동구 봉수로 250, 105동 1604호",
+  address: "울산광역시 동구 봉수로 250, 단지 내 상가 401-B101",
   email: "universepaino@naver.com",
   description: "유니버스 피아노 홈페이지",
   links: {
