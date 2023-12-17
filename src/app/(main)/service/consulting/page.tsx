@@ -1,3 +1,4 @@
+import roadmapImage from "@/assets/images/consulting/consulting-roadmap.jpg";
 import { ConsultingLogoSlider } from "@/components/consulting-logo-slider";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { SectionBadge } from "@/components/section-badge";
@@ -9,6 +10,7 @@ import { ConsultingReviewSection } from "@/components/services/consulting-review
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { data } from "@/contents/services/consulting";
+import Image from "next/image";
 
 export default function ConsultingPage() {
   return (
@@ -17,6 +19,7 @@ export default function ConsultingPage() {
       <OverwhelmingResultSection />
       <LogoSliderSection />
       <ConsultingExampleSection />
+      <RoadmapSection />
       <ConsultingDocumentAgencySection />
       <ConsultingReviewSection />
       <ConsultingFaqSection />
@@ -100,6 +103,18 @@ const ConsultingExampleItem = ({ number, title }: ConsultingExampleItemProps) =>
       </div>
       <p className="flex-1 font-semibold">{title}</p>
     </div>
+  );
+};
+
+const RoadmapSection = () => {
+  return (
+    <section className="my-32">
+      <Aos className="container">
+        <SectionTitle>미국 음대 입시 로드맵</SectionTitle>
+        <SectionSubtitle>미국 음대 입시 과정은 세 단계로 진행됩니다.</SectionSubtitle>
+        <Image className="mt-12" src={roadmapImage} alt="로드맵" />
+      </Aos>
+    </section>
   );
 };
 
