@@ -42,7 +42,7 @@ const images = [
 
 export const StudyMissionSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section>
         <div className="container">
           <SectionTitle className="text-left">변화의 시작은,</SectionTitle>

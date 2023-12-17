@@ -15,7 +15,7 @@ interface FaqSectionProps {
 
 export const FaqSection = ({ children }: FaqSectionProps) => {
   return (
-    <section className="bg-content pb-32">
+    <section className="bg-content py-32">
       <Aos className="container">
         <SectionTitle>자주 묻는 질문</SectionTitle>
         <SectionSubtitle>더 자세한 내용은 고객센터에서 확인해주세요.</SectionSubtitle>

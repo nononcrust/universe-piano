@@ -47,7 +47,7 @@ const data = [
 
 export const ConsultingDocumentAgencySection = () => {
   return (
-    <section className="bg-content pb-24">
+    <section className="bg-content py-32">
       <Aos className="container">
         <SectionTitle>서류 대행 서비스 안내</SectionTitle>
         <SectionSubtitle>대행 비용은 채널톡으로 문의 해주세요.</SectionSubtitle>

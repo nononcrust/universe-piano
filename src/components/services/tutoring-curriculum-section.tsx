@@ -54,7 +54,7 @@ const data = [
 
 export const TutoringCurriculumSection = () => {
   return (
-    <section className="bg-content pb-24">
+    <section className="bg-content py-32">
       <Aos className="container">
         <SectionTitle>과외 커리큘럼</SectionTitle>
         <Accordion.Root type="multiple" className="mt-12 flex flex-col gap-4">

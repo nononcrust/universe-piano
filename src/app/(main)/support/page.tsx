@@ -13,8 +13,9 @@ import { Button } from "@/components/ui/button";
 import { data as consultingData } from "@/contents/services/consulting";
 import { data as studyData } from "@/contents/services/study";
 import { data as tutoringData } from "@/contents/services/tutoring";
-import { usePagination } from "@/hooks/use-pagination";
 import { useState } from "react";
+
+const ROWS_PER_PAGE = 5;
 
 const FAQS = {
   all: [...consultingData.faq, ...tutoringData.faq, ...studyData.faq],
@@ -34,9 +35,16 @@ type Tab = keyof typeof TAB_LIST;
 
 export default function SupportPage() {
   const [tab, setTab] = useState<Tab>("all");
-  const pagination = usePagination();
+  const [page, setPage] = useState(1);
 
-  const filteredFaqs = FAQS[tab];
+  const totalPage = Math.ceil(FAQS[tab].length / ROWS_PER_PAGE);
+
+  const currentFaqs = FAQS[tab].slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
+
+  const onCategoryChange = (value: string) => {
+    setPage(1);
+    setTab(value as keyof typeof TAB_LIST);
+  };
 
   return (
     <main className="container pb-16">
@@ -48,7 +56,7 @@ export default function SupportPage() {
             size="sm"
             className="rounded-full px-4"
             variant={tab === value ? "default" : "secondary"}
-            onClick={() => setTab(value as keyof typeof TAB_LIST)}
+            onClick={() => onCategoryChange(value)}
           >
             {label}
           </Button>
@@ -66,7 +74,7 @@ export default function SupportPage() {
       </Tabs> */}
       <div className="mt-8">
         <Accordion type="single" collapsible>
-          {filteredFaqs.map((item, index) => (
+          {currentFaqs.map((item, index) => (
             <SupportListItem
               key={index}
               title={item.title}
@@ -77,12 +85,7 @@ export default function SupportPage() {
           ))}
         </Accordion>
       </div>
-      <Pagination
-        className="mt-8"
-        currentPage={pagination.current}
-        totalPage={1}
-        onChange={pagination.onChange}
-      />
+      <Pagination className="mt-8" currentPage={page} totalPage={totalPage} onChange={setPage} />
     </main>
   );
 }

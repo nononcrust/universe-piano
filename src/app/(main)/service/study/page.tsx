@@ -1,11 +1,10 @@
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
-import { Icon } from "@/components/icon";
-import { Instagram } from "@/components/instagram";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { ServiceFloatingButton } from "@/components/service-floating-button";
 import { StudyMissionSection } from "@/components/services/study-mission-section";
+import { StudyReviewSection } from "@/components/services/study-review-section";
 import { WhyUniverseItem } from "@/components/services/study-why-universe-item";
 import { Aos } from "@/components/ui/aos";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
@@ -56,33 +55,9 @@ const HeroSection = () => {
   );
 };
 
-const ReviewItem = () => {
-  return (
-    <div className="h-[240px] rounded-2xl bg-white p-6 shadow-lg max-md:min-w-[320px]">
-      <p className="text-xl font-semibold">
-        신상호
-        <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">
-          유니버스 피아노 14기
-        </span>
-      </p>
-      <div className="mt-1 flex gap-[2px]">
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-gray-100 text-gray-100" />
-      </div>
-      <p className="mt-6 text-muted-foreground">
-        토플 초보도 접근하기 정말 쉬운 교육과정과 플랫폼을 가지고 있어요. 하지만 교육이 끝났을 때는
-        쉬운 스타트와 확실한 엔딩, 저는 유니버스 피아노를 그렇게 정의할게요.
-      </p>
-    </div>
-  );
-};
-
 const CheckPointSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle>Check Point</SectionTitle>
         <h2 className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-lg">
@@ -127,7 +102,7 @@ const CheckPointItem = ({ number, title }: CheckPointItemProps) => {
 
 const StudyCompositionSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle>스터디 구성 요소</SectionTitle>
         <ScrollShadow>
@@ -176,7 +151,7 @@ const StudyCompositionItem = ({ imageSrc, title, description }: StudyComposition
 
 const WhyUniverseSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle className="whitespace-pre-wrap md:leading-normal">
           {"음대생 영어공부,\n결국 왜 유니버스 피아노일까요?"}
@@ -218,7 +193,7 @@ const WhyUniverseSection = () => {
 
 const StudyExpectationSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle>스터디 기대 효과</SectionTitle>
         <div className="mt-12 flex flex-col gap-8">
@@ -257,33 +232,9 @@ const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttatio
   );
 };
 
-const StudyReviewSection = () => {
-  return (
-    <section className="mt-16 bg-content">
-      <Aos className="pb-24">
-        <div className="container">
-          <SectionTitle>스터디 리뷰</SectionTitle>
-          <SectionSubtitle>스터디 크루분들의 솔직한 리뷰를 확인해보세요.</SectionSubtitle>
-        </div>
-        <div className="container mt-8 flex gap-6 overflow-auto py-4 scrollbar-hide">
-          <ReviewItem />
-          <ReviewItem />
-          <ReviewItem />
-        </div>
-        <div className="container mt-4 flex flex-col items-center justify-center gap-4">
-          <p className="font-medium text-muted-foreground">
-            더 많은 스터디 후기는 유니버스 피아노 인스타그램 계정에서 확인 가능합니다.
-          </p>
-          <Instagram className="h-16 w-16 cursor-pointer transition hover:scale-110" />
-        </div>
-      </Aos>
-    </section>
-  );
-};
-
 const StudyInfoSection = () => {
   return (
-    <section className="bg-zinc-900 pb-24 text-white">
+    <section className="bg-zinc-900 py-32 text-white">
       <Aos className="container">
         <SectionTitle className="text-left">
           스터디 신청 및 <span className="text-primary">월별 커리큘럼 </span>확인

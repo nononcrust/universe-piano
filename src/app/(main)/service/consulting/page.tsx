@@ -25,8 +25,8 @@ export default function ConsultingPage() {
 
 const LogoSliderSection = () => {
   return (
-    <section className="my-36">
-      <SectionTitle className="mt-0">역대 합격 학교 리스트</SectionTitle>
+    <section className="my-32">
+      <SectionTitle>역대 합격 학교 리스트</SectionTitle>
       <SectionSubtitle className="whitespace-pre-wrap md:leading-normal">
         {
           "유니버스 피아노와 함께 라면, 더 이상 혼자가 되는 걱정은 하지 않으셔도 됩니다.\n미국 각 지역에 있는 유니버스 선배 크루가 여러분들을 기꺼이 도와드릴 거에요."
@@ -41,7 +41,7 @@ const LogoSliderSection = () => {
 
 const ConsultingExampleSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle>컨설팅 진행 사례</SectionTitle>
         <SectionSubtitle>유니버스 피아노에서는 어떤 케이스든 합격 가능했습니다.</SectionSubtitle>

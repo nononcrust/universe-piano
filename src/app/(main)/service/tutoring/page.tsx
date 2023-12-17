@@ -84,7 +84,7 @@ const UniversePianoSection = () => {
 
 const CrewResultSection = () => {
   return (
-    <section className="mt-12 bg-content py-16">
+    <section className="bg-content py-32">
       <Aos className="container">
         <SectionTitle>유니버스 크루들의 결과를 공개합니다.</SectionTitle>
         <SectionSubtitle className="whitespace-pre-wrap">
@@ -129,7 +129,7 @@ const CrewResultItem = ({ title, description }: ScholarshipItemProps) => {
 
 const RecommendSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle>국내 최초, 미국 음대 입시 과외</SectionTitle>
         <SectionSubtitle>이런 분들께 추천드립니다.</SectionSubtitle>
@@ -168,7 +168,7 @@ const RecommendItem = ({ number, title }: RecommendItemProps) => {
 
 const TutoringCompositionSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle>과외 구성 요소</SectionTitle>
         <SectionSubtitle>과외를 통해 나만의 입시 준비 전략을 완성합니다.</SectionSubtitle>
@@ -207,7 +207,7 @@ const TutoringCompositionItem = ({ title, description }: TutoringCompositionItem
 
 const TutoringExpectationSection = () => {
   return (
-    <Aos className="my-16">
+    <Aos className="my-32">
       <section className="container">
         <SectionTitle>과외 기대 효과</SectionTitle>
         <div className="mt-12 flex flex-col gap-8 md:flex-row">
@@ -244,7 +244,7 @@ const TutoringExpectationItem = ({ title, children }: TutoringExpectationItemPro
 
 const TutoringInfoSection = () => {
   return (
-    <section className="bg-zinc-900 pb-24 text-white">
+    <section className="bg-zinc-900 py-32 text-white">
       <Aos className="container">
         <SectionTitle className="text-left">과외 상세정보</SectionTitle>
         <SectionSubtitle className="text-left text-gray-300">

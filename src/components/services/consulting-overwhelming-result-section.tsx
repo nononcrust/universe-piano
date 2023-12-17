@@ -6,10 +6,10 @@ import { Aos } from "../ui/aos";
 
 export const OverwhelmingResultSection = () => {
   return (
-    <section className="my-16 bg-content">
+    <section className="bg-content py-32">
       <Aos className="container">
         <SectionTitle>압도적인 결과로 증명합니다.</SectionTitle>
-        <div className="mb-24 mt-24 flex flex-col gap-12 md:flex-row">
+        <div className="mt-24 flex flex-col gap-12 md:flex-row">
           <OverwhelmingResultItem
             title="5년 연속 합격률"
             value={<CountUp end={100} duration={2} suffix="%" enableScrollSpy useEasing={false} />}

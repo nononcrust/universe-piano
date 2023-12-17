@@ -12,15 +12,15 @@ import { Aos } from "../ui/aos";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent } from "../ui/dialog";
 
-export const ConsultingReviewSection = () => {
+export const StudyReviewSection = () => {
   return (
-    <section className="py-32">
-      <Aos className="container">
+    <Aos className="my-32">
+      <section className="container">
         <SectionTitle>조작 없는 후기 시리즈</SectionTitle>
         <SectionSubtitle>유니버스 크루들이 직접 작성한 후기입니다.</SectionSubtitle>
         <div className="mt-12 flex flex-col gap-12 md:flex-row">
           {data.reviews.map((review, index) => (
-            <ConsultingReviewItem
+            <StudyReviewItem
               key={index}
               label={review.label}
               title={review.title}
@@ -40,24 +40,19 @@ export const ConsultingReviewSection = () => {
             </Link>
           </div>
         </div>
-      </Aos>
-    </section>
+      </section>
+    </Aos>
   );
 };
 
-interface ConsultingReviewItemProps {
+interface StudyReviewItemProps {
   label: string;
   title: string;
   description: string;
   imageSrc: StaticImageData;
 }
 
-const ConsultingReviewItem = ({
-  label,
-  title,
-  description,
-  imageSrc,
-}: ConsultingReviewItemProps) => {
+const StudyReviewItem = ({ label, title, description, imageSrc }: StudyReviewItemProps) => {
   const dialog = useDialog();
 
   return (

@@ -1,4 +1,5 @@
 import { AboutLogoSlider } from "@/components/about-logo-slider";
+import { Icon } from "@/components/icon";
 import { Instagram } from "@/components/instagram";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
@@ -6,7 +7,9 @@ import { SectionTitle } from "@/components/section-title";
 import { AboutRecordSection } from "@/components/services/about-record-section";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/configs/site";
 import Image from "next/image";
+import Link from "next/link";
 import mobile from "../../../../../public/images/about/about-company-mobile.png";
 import tablet from "../../../../../public/images/about/about-company-tablet.png";
 
@@ -19,6 +22,7 @@ export default function AboutCompanyPage() {
       <AboutRecordSection />
       <WhatsOurNextSection />
       <InstagramSection />
+      <ReviewSection />
       <FreeConsultSection />
     </main>
   );
@@ -172,7 +176,9 @@ const InstagramSection = () => {
               }
             </p>
             <div className="flex justify-center md:justify-start">
-              <Instagram className="mt-2 h-16 w-16 -translate-x-2 cursor-pointer transition hover:scale-110" />
+              <Link href={siteConfig.links.instagram}>
+                <Instagram className="mt-2 h-16 w-16 -translate-x-2 cursor-pointer transition hover:scale-110" />
+              </Link>
             </div>
           </div>
           <div className="flex items-end justify-center gap-4 md:justify-start">
@@ -186,6 +192,56 @@ const InstagramSection = () => {
         </div>
       </section>
     </Aos>
+  );
+};
+
+const ReviewSection = () => {
+  return (
+    <section className="bg-content py-32">
+      <Aos>
+        <div className="container">
+          <SectionTitle className="mt-0">유니버스 피아노 크루들의 솔직한 리뷰</SectionTitle>
+          <SectionSubtitle>유니버스 피아노 크루들의 솔직한 리뷰를 확인해보세요.</SectionSubtitle>
+        </div>
+        <div className="container mt-8 flex gap-6 overflow-auto py-4 scrollbar-hide">
+          <ReviewItem />
+          <ReviewItem />
+          <ReviewItem />
+        </div>
+        <div className="container mt-4 flex flex-col items-center justify-center gap-4">
+          <p className="font-medium text-muted-foreground">
+            더 많은 후기는 유니버스 피아노 인스타그램 계정에서 확인 가능합니다.
+          </p>
+          <Link href={siteConfig.links.instagram}>
+            <Instagram className="h-16 w-16 cursor-pointer transition hover:scale-110" />
+          </Link>
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+const ReviewItem = () => {
+  return (
+    <div className="h-[240px] rounded-2xl bg-white p-6 shadow-lg max-md:min-w-[320px]">
+      <p className="text-xl font-semibold">
+        신상호
+        <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">
+          유니버스 피아노 14기
+        </span>
+      </p>
+      <div className="mt-1 flex gap-[2px]">
+        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        <Icon.Star className="h-4 w-4 fill-gray-100 text-gray-100" />
+      </div>
+      <p className="mt-6 text-muted-foreground">
+        토플 초보도 접근하기 정말 쉬운 교육과정과 플랫폼을 가지고 있어요. 하지만 교육이 끝났을 때는
+        쉬운 스타트와 확실한 엔딩, 저는 유니버스 피아노를 그렇게 정의할게요.
+      </p>
+    </div>
   );
 };
 
