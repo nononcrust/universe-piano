@@ -1,5 +1,6 @@
 import { ConsultingLogoSlider } from "@/components/consulting-logo-slider";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
+import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { ConsultingDocumentAgencySection } from "@/components/services/consulting-document-agency-section";
@@ -12,6 +13,7 @@ import { data } from "@/contents/services/consulting";
 export default function ConsultingPage() {
   return (
     <main className="flex flex-col">
+      <HeroSection />
       <OverwhelmingResultSection />
       <LogoSliderSection />
       <ConsultingExampleSection />
@@ -22,6 +24,26 @@ export default function ConsultingPage() {
     </main>
   );
 }
+
+const HeroSection = () => {
+  return (
+    <section className="bg-content-light">
+      <Aos>
+        <div className="container mt-16 flex flex-col items-center gap-8 py-16">
+          <div className="flex flex-1 flex-col items-center gap-4">
+            <SectionBadge>입시 컨설팅</SectionBadge>
+            <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl"></h1>
+          </div>
+          {/* <div className="aspect-square w-full rounded-xl bg-gray-200 md:max-w-[260px]" /> */}
+          <div className="flex justify-center">
+            <div className="h-[300px]" />
+            {/* <Image src="/images/3d-star.png" width={300} height={300} alt="별" /> */}
+          </div>
+        </div>
+      </Aos>
+    </section>
+  );
+};
 
 const LogoSliderSection = () => {
   return (

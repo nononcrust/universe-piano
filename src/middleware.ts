@@ -57,11 +57,11 @@ export function middleware(request: NextRequest) {
   //   }
   // }
 
-  if (request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME)) {
-    if (!isAdmin) {
-      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
-    }
-  }
+  // if (request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME)) {
+  //   if (!isAdmin) {
+  //     return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
+  //   }
+  // }
 
   /** disabled page */
   if (DISABLED_ROUTES.includes(request.nextUrl.pathname as (typeof DISABLED_ROUTES)[number])) {
