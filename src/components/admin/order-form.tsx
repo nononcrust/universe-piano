@@ -68,7 +68,6 @@ export const OrderForm = ({ order }: OrderFormProps) => {
     ) && existingSubscription;
 
   const isSubscribing = !!existingSubscription && existingSubscription.endDate > new Date();
-  console.log("isSubscribing", isSubscribing);
 
   const onStartSubscription: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();

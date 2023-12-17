@@ -13,7 +13,7 @@ export const AboutRecordSection = () => {
       <Aos className="container">
         <SectionTitle className="whitespace-pre-wrap md:leading-normal">
           <span className="text-primary">2019</span>
-          {"년도부터 미국 음대 유학을 꿈꾸는 분들과\n함께 성장해 온 유니버스 피아노"}
+          {"년도부터 미국 음대 유학을 꿈꾸는 분들과\n함께 성장해 왔습니다"}
         </SectionTitle>
         <div className="my-12 grid grid-cols-2 gap-4 md:my-24 md:grid-cols-4">
           <AboutRecordItem

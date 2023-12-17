@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className="flex flex-1 flex-col items-center gap-4">
             <SectionBadge>입시 과외</SectionBadge>
             <h1 className="whitespace-pre-line text-center text-2xl font-bold md:text-4xl md:leading-tight">
-              {"국내 최초 미국 음대 입시 과외,\n유니버스 피아노에서만 가능합니다."}
+              {"국내 최초 미국 음대 입시 과외,\n유니버스 피아노에서만 가능합니다"}
             </h1>
           </div>
           <div className="flex justify-center">
@@ -86,7 +86,7 @@ const CrewResultSection = () => {
   return (
     <section className="bg-content py-32">
       <Aos className="container">
-        <SectionTitle>유니버스 크루들의 결과를 공개합니다.</SectionTitle>
+        <SectionTitle>유니버스 크루들의 결과를 공개합니다</SectionTitle>
         <SectionSubtitle className="whitespace-pre-wrap">
           {
             "입시를 준비하시는 분들 누구나 좋은 학교에 장학금을 많이 받고 입학하길 원합니다.\n정확한 목표와 방향 설정이 있다면 누구나 도전 할 수 있습니다."
@@ -104,7 +104,7 @@ const CrewResultSection = () => {
             }
           </SectionSubtitle>
           <p className="mt-12 text-center text-2xl font-bold">
-            반드시 각자에게 적합한 가이드라인이 필요합니다.
+            반드시 각자에게 적합한 가이드라인이 필요합니다
           </p>
         </div>
       </Aos>
