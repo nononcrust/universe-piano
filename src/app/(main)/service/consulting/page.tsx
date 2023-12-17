@@ -22,6 +22,7 @@ export default function ConsultingPage() {
       <RoadmapSection />
       <ConsultingDocumentAgencySection />
       <ConsultingReviewSection />
+      <ConsultingInfoSection />
       <ConsultingFaqSection />
       <FreeConsultingSection />
     </main>
@@ -35,7 +36,9 @@ const HeroSection = () => {
         <div className="container mt-16 flex flex-col items-center gap-8 py-16">
           <div className="flex flex-1 flex-col items-center gap-4">
             <SectionBadge>입시 컨설팅</SectionBadge>
-            <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl"></h1>
+            <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl">
+              입시 컨설팅 제목으로 들어갈 문구입니다.
+            </h1>
           </div>
           {/* <div className="aspect-square w-full rounded-xl bg-gray-200 md:max-w-[260px]" /> */}
           <div className="flex justify-center">
@@ -113,6 +116,28 @@ const RoadmapSection = () => {
         <SectionTitle>미국 음대 입시 로드맵</SectionTitle>
         <SectionSubtitle>미국 음대 입시 과정은 세 단계로 진행됩니다.</SectionSubtitle>
         <Image className="mt-12" src={roadmapImage} alt="로드맵" />
+      </Aos>
+    </section>
+  );
+};
+
+const ConsultingInfoSection = () => {
+  return (
+    <section className="bg-zinc-900 py-32 text-white">
+      <Aos className="container">
+        <SectionTitle className="text-left">컨설팅 상세정보</SectionTitle>
+        <SectionSubtitle className="text-left text-gray-300">
+          {"더 자세한 내용은 채팅으로 문의해주세요."}
+        </SectionSubtitle>
+        <div className="mt-20 flex flex-col gap-8 md:flex-row">
+          <div className="w-full rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+            <p className="text-2xl font-bold">컨설팅 진행 조건</p>
+            <ul className="ml-4 list-disc">
+              <li className="mt-4 font-medium text-gray-300">미국 음대 석사 과정 입시생</li>
+              <li className="mt-4 font-medium text-gray-300">전공 무관</li>
+            </ul>
+          </div>
+        </div>
       </Aos>
     </section>
   );

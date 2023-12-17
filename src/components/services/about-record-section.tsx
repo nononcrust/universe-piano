@@ -53,8 +53,8 @@ interface AboutRecordItemProps {
 const AboutRecordItem = ({ title, value }: AboutRecordItemProps) => {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-3xl font-bold text-primary">{value}</p>
-      <p className="text-medium">{title}</p>
+      <p className="text-4xl font-bold text-primary">{value}</p>
+      <p className="font-medium">{title}</p>
     </div>
   );
 };

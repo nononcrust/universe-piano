@@ -162,10 +162,12 @@ interface SystemItemProps {
 
 const SystemItem = ({ number, title, description }: SystemItemProps) => {
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col text-center md:text-left">
       <p className="text-lg font-bold text-primary">0{number}</p>
       <p className="text-2xl font-semibold">{title}</p>
-      <p className="mt-2 text-muted-foreground">{description}</p>
+      <p className="mt-2 whitespace-pre-wrap text-muted-foreground md:whitespace-normal">
+        {description}
+      </p>
     </div>
   );
 };
