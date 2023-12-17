@@ -21,6 +21,7 @@ export default function AboutCompanyPage() {
       <WhatWeDoSection />
       <LogoSliderSection />
       <AboutRecordSection />
+      <OurPositioningSection />
       <WhatsOurNextSection />
       <InstagramSection />
       <ReviewSection />
@@ -58,6 +59,68 @@ const LogoSliderSection = () => {
   );
 };
 
+const OurPositioningSection = () => {
+  return (
+    <section className="my-32">
+      <Aos className="container">
+        <SectionTitle>미국 음대 입시, 어떻게 준비할 지 고민되시죠?</SectionTitle>
+        <SectionSubtitle className="whitespace-pre-wrap md:leading-normal">
+          {"비용만 따지기엔 중요한 문제고,\n유학원에 맡겨도 도움이 안된다 그러고!"}
+        </SectionSubtitle>
+        <div className="mt-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-center">
+          <OurPositioningItem
+            title={"Individual\n개인 컨설팅"}
+            items={["저렴한 비용", "체계성 부족", "개인 경험 의존", "영어 실력, 점수 미검증"]}
+          />
+          <div className="flex justify-between rounded-2xl border-2 border-primary p-8 font-medium shadow-xl md:h-[400px] md:max-w-[400px] md:flex-col md:justify-start">
+            <p className="whitespace-pre text-xl font-bold text-primary">
+              {"Universe Piano\n"}
+              <span className="text-foreground">유니버스 피아노</span>
+            </p>
+            <div className="flex flex-col gap-2 text-end font-semibold md:mt-24 md:text-left">
+              {[
+                "고정 비용",
+                "1:1 맞춤형 솔루션",
+                "최근 5년간의 자료 보유",
+                "영어 강사 경력 미국 음대 출신",
+              ].map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
+            </div>
+          </div>
+          <OurPositioningItem
+            title={"Major Agency\n대형 유학원"}
+            items={[
+              "갯수 당 추가 비용",
+              "일률적 솔루션",
+              "다량의 정보 보유",
+              "음악 비 전공자, 미국 조기 유학생",
+            ]}
+          />
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface OurPositioningItemProps {
+  title: string;
+  items: string[];
+}
+
+const OurPositioningItem = ({ title, items }: OurPositioningItemProps) => {
+  return (
+    <div className="flex justify-between rounded-2xl border p-8 md:h-[320px] md:max-w-[220px] md:flex-col md:justify-start">
+      <p className="whitespace-pre text-xl font-semibold">{title}</p>
+      <div className="flex flex-col gap-2 text-end text-muted-foreground md:mt-14 md:text-left">
+        {items.map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const WhatsOurNextSection = () => {
   return (
     <section className="relative bg-content py-24">
@@ -66,6 +129,11 @@ const WhatsOurNextSection = () => {
           <SectionBadge>{"What's our NEXT?"}</SectionBadge>
         </div>
         <SectionTitle className="mt-4">2024년, 두 개의 국내 최초 서비스가 시작됩니다</SectionTitle>
+        <SectionSubtitle className="whitespace-pre-wrap md:leading-normal">
+          {
+            "유니버스 피아노는 미국 음대 유학에 필요한 서비스들을 국내 최초로 제공하며,\n미국 음대 입시생 및 재학생들을 위한 커뮤니티를 구축하고 있습니다."
+          }
+        </SectionSubtitle>
         <div className="flex justify-center">
           <div className="relative mt-24 flex flex-col gap-4">
             <div className="absolute h-full w-[1px] translate-x-[5.5px] translate-y-[10px] bg-gradient-to-b from-black from-90% to-content" />
@@ -73,7 +141,7 @@ const WhatsOurNextSection = () => {
               year="2023"
               items={[
                 "국내 최초 미국 음대 입시 과외 런칭",
-                "국내 최초 미국 음대 오디션 룸메이트 매칭 서비스",
+                "국내 최초 미국 음대 오디션 룸메이트 매칭 서비스 런칭",
                 "국내 최초 미국 음대 커뮤니티 형성",
               ]}
             />
@@ -81,10 +149,10 @@ const WhatsOurNextSection = () => {
               year="2022"
               items={[
                 "국내 최초 음대생을 위한 영어 스터디 런칭",
-                "국내 최초 음대 결과 발표 공유 서비스",
+                "국내 최초 음대 결과 발표 공유 서비스 런칭",
               ]}
             />
-            <WhatsOurNextItem year="2020" items={["국내 최초 부분 컨설팅 서비스 제작"]} />
+            <WhatsOurNextItem year="2019" items={["국내 최초 부분 컨설팅 서비스 제작"]} />
           </div>
         </div>
       </Aos>

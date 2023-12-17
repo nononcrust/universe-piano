@@ -9,7 +9,7 @@ import { Button } from "../ui/button";
 
 export const AboutRecordSection = () => {
   return (
-    <section className="py-24">
+    <section className="bg-content py-24">
       <Aos className="container">
         <SectionTitle className="whitespace-pre-wrap md:leading-normal">
           <span className="text-primary">2019</span>
