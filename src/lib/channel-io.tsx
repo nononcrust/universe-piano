@@ -203,9 +203,11 @@ export const ChannelProvider = ({ children }: PropsWithChildren) => {
   const { data: session } = useSession();
 
   useEffect(() => {
-    if (session === undefined) return;
-
     channel.loadScript();
+  }, []);
+
+  useEffect(() => {
+    if (session === undefined) return;
 
     channel.boot({
       pluginKey: process.env.NEXT_PUBLIC_CHANNEL_IO_KEY!,
