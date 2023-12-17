@@ -22,6 +22,7 @@ export default function AboutCompanyPage() {
       <LogoSliderSection />
       <AboutRecordSection />
       <OurPositioningSection />
+      <SystemSection />
       <WhatsOurNextSection />
       <InstagramSection />
       <ReviewSection />
@@ -117,6 +118,54 @@ const OurPositioningItem = ({ title, items }: OurPositioningItemProps) => {
           <p key={index}>{item}</p>
         ))}
       </div>
+    </div>
+  );
+};
+
+const SystemSection = () => {
+  return (
+    <section className="my-48">
+      <Aos className="container">
+        <SectionTitle>독보적인 시스템</SectionTitle>
+        <SectionSubtitle>오직 유니버스 피아노에서만 가능합니다.</SectionSubtitle>
+        <div className="mt-12 flex flex-col gap-16 md:flex-row">
+          <SystemItem
+            number={1}
+            title="크루 커뮤니티"
+            description={
+              "유니버스 피아노 크루들과 함께 오디션 동행은 물론,\n미국 전역에 있는 선배 크루들이 기꺼이 도움을 줄 거에요."
+            }
+          />
+          <SystemItem
+            number={2}
+            title="음대생 영어 스터디"
+            description={"영어 공부도 함께 합니다!\n영어 왕초보 음대생들만 모여있습니다."}
+          />
+          <SystemItem
+            number={3}
+            title="1:1 맞춤형 솔루션"
+            description={
+              "우선순위와 성향에 맞는 학교와 교수님 추천 부터,\n상황에 맞는 1:1 솔루션을 제공합니다."
+            }
+          />
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface SystemItemProps {
+  number: number;
+  title: string;
+  description: string;
+}
+
+const SystemItem = ({ number, title, description }: SystemItemProps) => {
+  return (
+    <div className="flex flex-1 flex-col">
+      <p className="text-lg font-bold text-primary">0{number}</p>
+      <p className="text-2xl font-semibold">{title}</p>
+      <p className="mt-2 text-muted-foreground">{description}</p>
     </div>
   );
 };
