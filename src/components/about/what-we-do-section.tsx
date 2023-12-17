@@ -36,7 +36,7 @@ export const WhatWeDoSection = () => {
             <div className="h-16 w-16 rounded-2xl bg-content" />
             <div className="mt-8 flex gap-2 md:mt-16">
               <p className="font-semibold">독학 키트</p>
-              <p className="text-medium rounded-lg bg-primary px-2 py-1 text-xs text-white">
+              <p className="text-medium rounded-lg bg-zinc-400 px-2 py-1 text-xs text-white">
                 준비중
               </p>
             </div>
