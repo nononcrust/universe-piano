@@ -12,7 +12,9 @@ export default async function SignUpPage() {
     return redirect(ROUTE.HOME);
   }
 
-  const initialData = registerTokenSchema.safeParse(jwt.verify(registerToken.value));
+  const verifiedRegisterToken = await jwt.verify(registerToken.value);
+
+  const initialData = registerTokenSchema.safeParse(verifiedRegisterToken?.payload);
 
   if (!initialData.success) {
     return redirect(ROUTE.HOME);

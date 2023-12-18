@@ -32,7 +32,7 @@ export const GET = async (request: Request) => {
       tier: user.tier,
     };
 
-    issueAccessToken(jwtPayload);
+    await issueAccessToken(jwtPayload);
 
     const session: Session = {
       user: user,

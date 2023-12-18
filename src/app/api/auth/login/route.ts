@@ -9,7 +9,7 @@ export const POST = async (request: Request) => {
 
     const user = body;
 
-    issueAccessToken(user);
+    await issueAccessToken(user);
 
     return NextResponse.json("", { status: 200 });
   } catch (error) {

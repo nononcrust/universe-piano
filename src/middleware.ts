@@ -38,7 +38,6 @@ const getSessionFromCookie = (request: NextRequest) => {
 
 export function middleware(request: NextRequest) {
   const session = getSessionFromCookie(request);
-  console.log(session);
 
   const isAdmin = session?.role === Role.ADMIN;
 
