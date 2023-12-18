@@ -15,7 +15,7 @@ export const GET = async (request: Request) => {
 
     const accessToken = cookie.value;
 
-    const decoded = accessTokenSchema.parse(jwt.verify(accessToken));
+    const decoded = accessTokenSchema.parse((await jwt.verify(accessToken))?.payload);
 
     const id = decoded.user.id;
 
