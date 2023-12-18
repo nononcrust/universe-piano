@@ -1,9 +1,9 @@
 "use client";
 
-import consultingIcon from "@/assets/icons/002.대화,채팅.svg";
-import tutoringIcon from "@/assets/icons/006.화상회의.svg";
-import studyIcon from "@/assets/icons/034.깃발,목표.svg";
-import kitIcon from "@/assets/icons/045.상자.svg";
+import consultingIcon from "@/assets/icons/002-chat.svg";
+import tutoringIcon from "@/assets/icons/010-idea.svg";
+import studyIcon from "@/assets/icons/034-flag.svg";
+import kitIcon from "@/assets/icons/045-storage.svg";
 import { ROUTE } from "@/constants/route";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
