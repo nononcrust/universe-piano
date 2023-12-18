@@ -5,8 +5,8 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { accessTokenSchema, jwt } from "./jwt";
 
-export const issueAccessToken = (jwtPayload: JwtPayload) => {
-  const accessToken = jwt.signUser(jwtPayload);
+export const issueAccessToken = async (jwtPayload: JwtPayload) => {
+  const accessToken = await jwt.signUser(jwtPayload);
 
   const MAX_AGE_30_DAYS = 60 * 60 * 24 * 30;
 

@@ -1,34 +1,27 @@
 import { JwtPayload, SocialData, jwtPayloadSchema, socialDataSchema } from "@/features/auth";
-import jsonwebtoken from "jsonwebtoken";
+import * as jose from "jose";
 import { z } from "zod";
 
-const secret = process.env.JWT_SECRET!;
+const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
 
 export const jwt = {
-  decode: (token: string) => {
-    try {
-      const payload = token.split(".")[1];
-
-      return JSON.parse(atob(payload));
-    } catch (error) {
-      return null;
-    }
-  },
   signUser: (user: JwtPayload) => {
-    return jsonwebtoken.sign({ user }, secret, {
-      algorithm: "HS256",
-      expiresIn: "30d",
-    });
+    return new jose.SignJWT({ user })
+      .setProtectedHeader({ alg: "HS256" })
+      .setIssuedAt()
+      .setExpirationTime("30d")
+      .sign(secret);
   },
   signRegisterToken: (socialData: SocialData) => {
-    return jsonwebtoken.sign({ socialData }, secret, {
-      algorithm: "HS256",
-      expiresIn: "1d",
-    });
+    return new jose.SignJWT({ socialData })
+      .setProtectedHeader({ alg: "HS256" })
+      .setIssuedAt()
+      .setExpirationTime("1d")
+      .sign(secret);
   },
   verify: (token: string) => {
     try {
-      return jsonwebtoken.verify(token, secret);
+      return jose.jwtVerify(token, secret);
     } catch (error) {
       return null;
     }
