@@ -3,6 +3,7 @@
 import consultingIcon from "@/assets/icons/002.대화,채팅.svg";
 import tutoringIcon from "@/assets/icons/006.화상회의.svg";
 import studyIcon from "@/assets/icons/034.깃발,목표.svg";
+import kitIcon from "@/assets/icons/045.상자.svg";
 import { ROUTE } from "@/constants/route";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -40,7 +41,7 @@ export const WhatWeDoSection = () => {
             image={studyIcon}
           />
           <div className="rounded-2xl bg-white p-6 shadow-lg md:min-h-[320px]">
-            <Image width={48} height={48} src="/icons/045.상자.svg" alt="" />
+            <Image width={48} height={48} src={kitIcon} alt="" />
             <div className="mt-8 flex gap-2 md:mt-16">
               <p className="font-semibold">독학 키트</p>
               <p className="text-medium rounded-lg bg-zinc-400 px-2 py-1 text-xs text-white">

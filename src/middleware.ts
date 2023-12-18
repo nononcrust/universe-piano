@@ -20,14 +20,14 @@ const DISABLED_ROUTES = [
 const PROTECTED_ROUTES = [ROUTE.MYPAGE.HOME, ROUTE.NEWS.AUDITION.LIST];
 const AUTH_ROUTES = [ROUTE.LOGIN, ROUTE.SIGNUP];
 
-const getSessionFromCookie = (request: NextRequest) => {
+const getSessionFromCookie = async (request: NextRequest) => {
   const accessToken = request.cookies.get(COOKIE.ACCESS_TOKEN);
 
   if (!accessToken) {
     return null;
   }
 
-  const session = accessTokenSchema.safeParse(jwt.verify(accessToken.value));
+  const session = accessTokenSchema.safeParse((await jwt.verify(accessToken.value))?.payload);
 
   if (!session.success) {
     return null;
@@ -36,8 +36,9 @@ const getSessionFromCookie = (request: NextRequest) => {
   return session.data.user;
 };
 
-export function middleware(request: NextRequest) {
-  const session = getSessionFromCookie(request);
+export async function middleware(request: NextRequest) {
+  const session = await getSessionFromCookie(request);
+  console.log("middleware session", session);
 
   const isAdmin = session?.role === Role.ADMIN;
 
