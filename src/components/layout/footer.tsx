@@ -40,7 +40,7 @@ export const Footer = () => {
             신고번호: 제 ${siteConfig.mailOrderBusinessNumber}`}
           </p>
           <p>
-            {`${siteConfig.address} | ${siteConfig.email} | 개인정보책임관리자: ${siteConfig.isa} |
+            {`${siteConfig.address} | 전화: ${siteConfig.links.mobile} | 이메일: ${siteConfig.email} | 개인정보책임관리자: ${siteConfig.isa} |
             문의: 채널톡`}
           </p>
         </div>
