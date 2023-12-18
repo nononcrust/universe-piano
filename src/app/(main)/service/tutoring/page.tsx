@@ -1,3 +1,6 @@
+import crewResultImage2 from "@/assets/icons/019-trophy.svg";
+import crewResultImage3 from "@/assets/icons/020-like.svg";
+import crewResultImage1 from "@/assets/icons/022-medal.svg";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
@@ -7,7 +10,7 @@ import { TutoringCurriculumSection } from "@/components/services/tutoring-curric
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
 import { data } from "@/contents/services/tutoring";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 export default function TutoringPage() {
   return (
@@ -98,9 +101,13 @@ const CrewResultSection = () => {
           }
         </SectionSubtitle>
         <div className="mt-12 flex flex-col justify-center gap-4 md:flex-row md:gap-8">
-          <CrewResultItem title="5연속 합격률" description="100%" />
-          <CrewResultItem title="장학금 수여" description="65% 이상" />
-          <CrewResultItem title="장학금 증액" description="연간 최대 $30000" />
+          <CrewResultItem title="5연속 합격률" description="100%" image={crewResultImage1} />
+          <CrewResultItem title="장학금 수여" description="65% 이상" image={crewResultImage2} />
+          <CrewResultItem
+            title="장학금 증액"
+            description="연간 최대 $30000"
+            image={crewResultImage3}
+          />
         </div>
         <div className="container mt-12">
           <SectionSubtitle className="whitespace-pre-wrap text-center text-muted-foreground md:leading-normal">
@@ -120,12 +127,15 @@ const CrewResultSection = () => {
 interface ScholarshipItemProps {
   title: string;
   description: string;
+  image: StaticImageData;
 }
 
-const CrewResultItem = ({ title, description }: ScholarshipItemProps) => {
+const CrewResultItem = ({ title, description, image }: ScholarshipItemProps) => {
   return (
     <div className="flex w-full flex-col items-center rounded-2xl bg-white p-8 shadow-xl md:max-w-[240px]">
-      <div className="h-24 w-24 rounded-full bg-content" />
+      <div className="flex h-24 w-24 items-center justify-center">
+        <Image className="h-20 w-20" alt="" src={image} />
+      </div>
       <p className="mt-4 font-semibold text-muted-foreground">{title}</p>
       <p className="mt-2 text-center text-3xl font-bold text-primary">{description}</p>
     </div>
