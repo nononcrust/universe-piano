@@ -47,14 +47,14 @@ export default function SupportPage() {
   };
 
   return (
-    <main className="container pb-16">
-      <PageTitle title="자주 묻는 질문" />
-      <div className="mt-8 flex gap-2 overflow-x-auto">
+    <main className="pb-16">
+      <PageTitle className="container" title="자주 묻는 질문" />
+      <div className="container mt-8 flex gap-2 overflow-auto scrollbar-hide">
         {Object.entries(TAB_LIST).map(([value, label], index) => (
           <Button
             key={index}
             size="sm"
-            className="rounded-full px-4"
+            className="min-w-fit rounded-full px-4"
             variant={tab === value ? "default" : "secondary"}
             onClick={() => onCategoryChange(value)}
           >
@@ -72,7 +72,7 @@ export default function SupportPage() {
           ))}
         </TabsList>
       </Tabs> */}
-      <div className="mt-8">
+      <div className="container mt-8">
         <Accordion type="single" collapsible>
           {currentFaqs.map((item, index) => (
             <SupportListItem
@@ -85,7 +85,12 @@ export default function SupportPage() {
           ))}
         </Accordion>
       </div>
-      <Pagination className="mt-8" currentPage={page} totalPage={totalPage} onChange={setPage} />
+      <Pagination
+        className="container mt-8"
+        currentPage={page}
+        totalPage={totalPage}
+        onChange={setPage}
+      />
     </main>
   );
 }
