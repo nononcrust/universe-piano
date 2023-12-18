@@ -41,7 +41,7 @@ export const POST = async (request: Request) => {
       tier: createdUser.tier,
     };
 
-    issueAccessToken(jwtPayload);
+    await issueAccessToken(jwtPayload);
 
     return NextResponse.json(user, { status: 201 });
   } catch (error) {

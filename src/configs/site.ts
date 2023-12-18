@@ -3,6 +3,7 @@ import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
 export const siteConfig = {
   name: "유니버스 피아노",
+  businessName: "케이원씨",
   ceo: "최경원",
   bin: "170-41-01086",
   mailOrderBusinessNumber: "2023-울산동구-0158",

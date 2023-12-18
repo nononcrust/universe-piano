@@ -9,8 +9,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../styles/globals.css";
 
-export const revalidate = 0;
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,

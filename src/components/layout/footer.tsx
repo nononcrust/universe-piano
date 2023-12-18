@@ -36,11 +36,11 @@ export const Footer = () => {
         </div>
         <div className="mt-8 text-sm text-muted-foreground">
           <p>
-            {`(주)유니버스 피아노 | 대표이사: ${siteConfig.ceo} | 사업자번호: ${siteConfig.bin} | 통신판매업
+            {`${siteConfig.businessName} | 대표이사: ${siteConfig.ceo} | 사업자번호: ${siteConfig.bin} | 통신판매업
             신고번호: 제 ${siteConfig.mailOrderBusinessNumber}`}
           </p>
           <p>
-            {`${siteConfig.address} | ${siteConfig.email} | 개인정보책임관리자: ${siteConfig.isa} |
+            {`${siteConfig.address} | 전화: ${siteConfig.links.mobile} | 이메일: ${siteConfig.email} | 개인정보책임관리자: ${siteConfig.isa} |
             문의: 채널톡`}
           </p>
         </div>

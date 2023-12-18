@@ -27,10 +27,7 @@ const getSessionFromCookie = (request: NextRequest) => {
     return null;
   }
 
-  console.log(accessToken);
   const session = accessTokenSchema.safeParse(jwt.verify(accessToken.value));
-  console.log("@@@", jwt.verify(accessToken.value));
-  console.log(session);
 
   if (!session.success) {
     return null;
@@ -41,27 +38,26 @@ const getSessionFromCookie = (request: NextRequest) => {
 
 export function middleware(request: NextRequest) {
   const session = getSessionFromCookie(request);
-  console.log(session);
 
   const isAdmin = session?.role === Role.ADMIN;
 
-  // if (PROTECTED_ROUTES.includes(request.nextUrl.pathname as (typeof PROTECTED_ROUTES)[number])) {
-  //   if (!session) {
-  //     return NextResponse.redirect(new URL(ROUTE.LOGIN, request.url));
-  //   }
-  // }
+  if (PROTECTED_ROUTES.includes(request.nextUrl.pathname as (typeof PROTECTED_ROUTES)[number])) {
+    if (!session) {
+      return NextResponse.redirect(new URL(ROUTE.LOGIN, request.url));
+    }
+  }
 
-  // if (AUTH_ROUTES.includes(request.nextUrl.pathname as (typeof AUTH_ROUTES)[number])) {
-  //   if (session) {
-  //     return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
-  //   }
-  // }
+  if (AUTH_ROUTES.includes(request.nextUrl.pathname as (typeof AUTH_ROUTES)[number])) {
+    if (session) {
+      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
+    }
+  }
 
-  // if (request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME)) {
-  //   if (!isAdmin) {
-  //     return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
-  //   }
-  // }
+  if (request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME)) {
+    if (!isAdmin) {
+      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
+    }
+  }
 
   /** disabled page */
   if (DISABLED_ROUTES.includes(request.nextUrl.pathname as (typeof DISABLED_ROUTES)[number])) {

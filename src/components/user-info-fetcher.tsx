@@ -17,7 +17,9 @@ const prefetchUserInfo = async () => {
 
     const accessToken = cookie.value;
 
-    const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
+    const verified = await jwt.verify(accessToken);
+
+    const decoded = accessTokenSchema.safeParse(verified?.payload);
 
     if (!decoded.success) {
       return null;

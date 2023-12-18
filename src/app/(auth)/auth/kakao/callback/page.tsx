@@ -29,7 +29,7 @@ export default async function KakaoCallbackPage({
       email: kakaoUserInfo.kakao_account.email,
     };
 
-    const registerToken = jwt.signRegisterToken(socialData);
+    const registerToken = await jwt.signRegisterToken(socialData);
 
     return <RedirectWithRegisterToken registerToken={registerToken} />;
   }
