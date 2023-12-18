@@ -79,7 +79,7 @@ export const ConsultingLogoSlider = () => {
           className="keen-slider__slide flex items-center justify-center"
           style={{ minWidth: 200, maxWidth: 200, height: 160 }}
         >
-          <Image src={logo} width={160} height={160} alt="" />
+          <Image className="w-[160px]" src={logo} alt="" />
         </div>
       ))}
     </div>

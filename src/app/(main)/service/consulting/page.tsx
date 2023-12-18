@@ -42,7 +42,7 @@ const HeroSection = () => {
             </h1>
           </div>
           <div className="flex justify-center">
-            <Image height={300} src={hero3dImage} alt="" />
+            <Image width={300} height={300} src={hero3dImage} alt="" />
           </div>
         </div>
       </Aos>

@@ -1,3 +1,6 @@
+import studyCompositionImage1 from "@/assets/images/study/study-composition-1.jpg";
+import studyCompositionImage2 from "@/assets/images/study/study-composition-2.jpg";
+import studyCompositionImage3 from "@/assets/images/study/study-composition-3.jpg";
 import hero3dImage from "@/assets/images/study/study-hero-3d.png";
 import whyUniverseImage1 from "@/assets/images/study/study-why-universe-1.jpg";
 import whyUniverseImage2 from "@/assets/images/study/study-why-universe-2.jpg";
@@ -12,14 +15,14 @@ import { WhyUniverseItem } from "@/components/services/study-why-universe-item";
 import { Aos } from "@/components/ui/aos";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
 import { data } from "@/contents/services/study";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 export default function StudyPage() {
   return (
     <main className="flex flex-col">
       <HeroSection />
       <section className="container flex justify-center">
-        <button className="hover: mt-16 rounded-full bg-black px-10 py-4 text-lg font-bold text-white drop-shadow-lg">
+        <button className="hover: mt-16 rounded-full bg-foreground px-10 py-4 text-lg font-bold text-white drop-shadow-lg">
           스터디 신청 및 커리큘럼 확인
         </button>
       </section>
@@ -111,17 +114,17 @@ const StudyCompositionSection = () => {
             <StudyCompositionItem
               title="zoom 수업 및 자습"
               description="영어 기초 수업, Reading 모의고사, 시중 교재 해석본 Speaking 발음 교정, Writing 첨삭, 브레인 스토밍 등 월별로 필요한 zoom 수업과 자료를 제공합니다."
-              imageSrc="/images/study/study-composition-1.jpg"
+              image={studyCompositionImage1}
             />
             <StudyCompositionItem
               title="단톡방 공부 및 미션 인증"
               description="가장 빠르게 성장하는 방법은 경쟁력 있는 동료들과 함께 하는 것입니다. 동료들의 단톡방 인증을 함께 지켜보면서 매일 동기부여를 얻을 수 있습니다."
-              imageSrc="/images/study/study-composition-2.jpg"
+              image={studyCompositionImage2}
             />
             <StudyCompositionItem
               title="단어 시험"
               description="결코 만만하지  않은 스터디! 단어 공부량을 두배로 늘려줄 단어 시험 시스템과 함께 합니다."
-              imageSrc="/images/study/study-composition-3.jpg"
+              image={studyCompositionImage3}
             />
           </div>
         </ScrollShadow>
@@ -131,16 +134,16 @@ const StudyCompositionSection = () => {
 };
 
 interface StudyCompositionItemProps {
-  imageSrc: string;
+  image: StaticImageData;
   title: string;
   description: string;
 }
 
-const StudyCompositionItem = ({ imageSrc, title, description }: StudyCompositionItemProps) => {
+const StudyCompositionItem = ({ image, title, description }: StudyCompositionItemProps) => {
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
       <div className="flex h-[200px] w-full items-center justify-center rounded-2xl border bg-[#B8C0F6] shadow-md md:h-[160px]">
-        <Image className="rounded-2xl" width={180} height={120} alt="" src={imageSrc} />
+        <Image className="w-[180px] rounded-2xl" alt="" src={image} />
       </div>
       <div className="ml-2 mt-2 flex flex-col">
         <p className="text-lg font-semibold">{title}</p>
