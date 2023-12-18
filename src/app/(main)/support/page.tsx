@@ -102,11 +102,13 @@ const SupportListItem = ({ value, title, content, category }: SupportListItemPro
     <AccordionItem value={value}>
       <AccordionTrigger>
         <div className="flex gap-2">
-          <Badge variant="secondary">{category}</Badge>
-          {title}
+          <div>
+            <Badge variant="secondary">{category}</Badge>
+          </div>
+          <p className="mr-4 flex-1 text-left">{title}</p>
         </div>
       </AccordionTrigger>
-      <AccordionContent className="ml-1 whitespace-pre">{content}</AccordionContent>
+      <AccordionContent className="ml-1 whitespace-pre-wrap">{content}</AccordionContent>
     </AccordionItem>
   );
 };

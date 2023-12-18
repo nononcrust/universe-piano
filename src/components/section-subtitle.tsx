@@ -6,7 +6,7 @@ export const SectionSubtitle = ({ children, className, ...props }: SectionSubtit
   return (
     <h2
       className={cn(
-        "mt-4 text-center text-lg font-medium text-muted-foreground md:text-xl",
+        "mt-4 text-center text-base font-medium text-muted-foreground md:text-xl",
         className,
       )}
       {...props}

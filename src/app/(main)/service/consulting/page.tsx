@@ -1,3 +1,4 @@
+import hero3dImage from "@/assets/images/consulting/consulting-hero-3d.png";
 import roadmapImage from "@/assets/images/consulting/consulting-roadmap.jpg";
 import { ConsultingLogoSlider } from "@/components/consulting-logo-slider";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
@@ -37,13 +38,11 @@ const HeroSection = () => {
           <div className="flex flex-1 flex-col items-center gap-4">
             <SectionBadge>입시 컨설팅</SectionBadge>
             <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl">
-              입시 컨설팅 제목으로 들어갈 문구입니다.
+              미국 음대 입시 컨설팅
             </h1>
           </div>
-          {/* <div className="aspect-square w-full rounded-xl bg-gray-200 md:max-w-[260px]" /> */}
           <div className="flex justify-center">
-            <div className="h-[300px]" />
-            {/* <Image src="/images/3d-star.png" width={300} height={300} alt="별" /> */}
+            <Image height={300} src={hero3dImage} alt="" />
           </div>
         </div>
       </Aos>
@@ -55,7 +54,7 @@ const LogoSliderSection = () => {
   return (
     <section className="my-32">
       <SectionTitle>역대 합격 학교 리스트</SectionTitle>
-      <SectionSubtitle className="whitespace-pre-wrap md:leading-normal">
+      <SectionSubtitle className="container md:whitespace-pre-wrap md:leading-normal">
         {
           "유니버스 피아노와 함께 라면, 더 이상 혼자가 되는 걱정은 하지 않으셔도 됩니다.\n미국 각 지역에 있는 유니버스 선배 크루가 여러분들을 기꺼이 도와드릴 거에요."
         }
@@ -129,9 +128,9 @@ const ConsultingInfoSection = () => {
         <SectionSubtitle className="text-left text-gray-300">
           {"더 자세한 내용은 채팅으로 문의해주세요."}
         </SectionSubtitle>
-        <div className="mt-20 flex flex-col gap-8 md:flex-row">
+        <div className="mt-12 flex flex-col gap-8 md:flex-row">
           <div className="w-full rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
-            <p className="text-2xl font-bold">컨설팅 진행 조건</p>
+            <p className="text-lg font-bold md:text-2xl">컨설팅 진행 조건</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">미국 음대 석사 과정 입시생</li>
               <li className="mt-4 font-medium text-gray-300">전공 무관</li>

@@ -1,3 +1,5 @@
+import mobileImage from "@/assets/images/about/about-company-mobile.png";
+import tabletImage from "@/assets/images/about/about-company-tablet.png";
 import { AboutLogoSlider } from "@/components/about-logo-slider";
 import { WhatWeDoSection } from "@/components/about/what-we-do-section";
 import { Icon } from "@/components/icon";
@@ -11,8 +13,6 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/configs/site";
 import Image from "next/image";
 import Link from "next/link";
-import mobile from "../../../../../public/images/about/about-company-mobile.png";
-import tablet from "../../../../../public/images/about/about-company-tablet.png";
 
 export default function AboutCompanyPage() {
   return (
@@ -33,12 +33,12 @@ export default function AboutCompanyPage() {
 
 const IntroSection = () => {
   return (
-    <section className="bg-zinc-900 py-32 pb-48">
+    <section className="bg-zinc-900 py-32">
       <Aos className="container">
-        <h1 className="text-3xl font-bold text-white md:text-5xl md:leading-tight">
+        <h1 className="text-2xl font-bold text-white md:text-5xl md:leading-tight">
           Create your Universe: Beyond Talent
         </h1>
-        <p className="text-medium mt-8 text-lg leading-normal text-gray-300 md:text-2xl md:leading-normal">
+        <p className="text-medium mt-8 leading-normal text-gray-300 md:text-2xl md:leading-normal">
           스스로를 규정하던 모든 프레임에서 벗어나,
           <br />
           무한한 가능성을 탐험하실 분들과 동행합니다
@@ -64,7 +64,9 @@ const OurPositioningSection = () => {
   return (
     <section className="my-32">
       <Aos className="container">
-        <SectionTitle>미국 음대 입시, 어떻게 준비할 지 고민되시죠?</SectionTitle>
+        <SectionTitle className="max-md:whitespace-pre">
+          {"미국 음대 입시,\n어떻게 준비할 지 고민되시죠?"}
+        </SectionTitle>
         <SectionSubtitle className="whitespace-pre-wrap md:leading-normal">
           {"비용만 따지기엔 중요한 문제고,\n유학원에 맡겨도 도움이 안된다 그러고!"}
         </SectionSubtitle>
@@ -164,7 +166,7 @@ const SystemItem = ({ number, title, description }: SystemItemProps) => {
   return (
     <div className="flex flex-1 flex-col text-center md:text-left">
       <p className="text-lg font-bold text-primary">0{number}</p>
-      <p className="text-2xl font-semibold">{title}</p>
+      <p className="text-xl font-semibold md:text-2xl">{title}</p>
       <p className="mt-2 whitespace-pre-wrap text-muted-foreground md:whitespace-normal">
         {description}
       </p>
@@ -180,7 +182,7 @@ const WhatsOurNextSection = () => {
           <SectionBadge>{"What's our NEXT?"}</SectionBadge>
         </div>
         <SectionTitle className="mt-4">2024년, 두 개의 국내 최초 서비스가 시작됩니다</SectionTitle>
-        <SectionSubtitle className="whitespace-pre-wrap md:leading-normal">
+        <SectionSubtitle className="md:whitespace-pre-wrap md:leading-normal">
           {
             "유니버스 피아노는 미국 음대 유학에 필요한 서비스들을 국내 최초로 제공하며,\n미국 음대 입시생 및 재학생들을 위한 커뮤니티를 구축하고 있습니다."
           }
@@ -254,10 +256,10 @@ const InstagramSection = () => {
           </div>
           <div className="flex items-end justify-center gap-4 md:justify-start">
             <div>
-              <Image className="min-w-[80px]" width={80} src={mobile} alt="" />
+              <Image className="min-w-[80px]" width={80} src={mobileImage} alt="" />
             </div>
             <div>
-              <Image className="min-w-[300px]" width={300} src={tablet} alt="" />
+              <Image className="min-w-[300px]" width={300} src={tabletImage} alt="" />
             </div>
           </div>
         </div>

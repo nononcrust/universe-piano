@@ -79,8 +79,8 @@ const CurriculumItem = ({ value, title, description, items }: CurriculumItemProp
     <Accordion.Item value={value} className="flex flex-col rounded-2xl border bg-white p-6">
       <Accordion.Trigger className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <p className="text-lg font-bold text-primary md:text-xl">{title}</p>
-          <p className="text-left text-lg font-semibold">{description}</p>
+          <p className="font-bold text-primary md:text-xl">{title}</p>
+          <p className="text-left font-semibold md:text-lg">{description}</p>
         </div>
         <Icon.ChevronDown className="ml-4 h-10 w-10 rounded-full bg-content p-2" />
       </Accordion.Trigger>

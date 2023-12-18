@@ -13,6 +13,11 @@ export default function TutoringPage() {
   return (
     <main className="flex flex-col">
       <HeroSection />
+      <section className="container flex justify-center">
+        <button className="hover: mt-16 rounded-full bg-black px-10 py-4 text-lg font-bold text-white drop-shadow-lg">
+          스터디 신청 및 커리큘럼 확인
+        </button>
+      </section>
       <UniversePianoSection />
       <CrewResultSection />
       <RecommendSection />
@@ -33,7 +38,7 @@ const HeroSection = () => {
         <div className="container mt-16 flex flex-col items-center gap-8 py-16">
           <div className="flex flex-1 flex-col items-center gap-4">
             <SectionBadge>입시 과외</SectionBadge>
-            <h1 className="whitespace-pre-line text-center text-2xl font-bold md:text-4xl md:leading-tight">
+            <h1 className="whitespace-pre-line text-center text-2xl font-bold md:text-5xl md:leading-tight">
               {"국내 최초 미국 음대 입시 과외,\n유니버스 피아노에서만 가능합니다"}
             </h1>
           </div>
@@ -250,15 +255,15 @@ const TutoringInfoSection = () => {
         <SectionSubtitle className="text-left text-gray-300">
           자세한 정보는 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
         </SectionSubtitle>
-        <div className="mt-20 flex flex-col gap-8">
+        <div className="mt-12 flex flex-col gap-8">
           <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
-            <p className="text-2xl font-bold">과외 비용</p>
+            <p className="text-lg font-bold md:text-2xl">과외 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">690,000</li>
             </ul>
           </div>
           <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
-            <p className="text-2xl font-bold">과외 절차</p>
+            <p className="text-lg font-bold md:text-2xl">과외 절차</p>
             <ul className="ml-4 list-decimal">
               <li className="mt-4 font-medium text-gray-300">과외 신청서 작성</li>
               <li className="mt-4 font-medium text-gray-300">멘토와 1:1 미팅</li>
@@ -268,7 +273,7 @@ const TutoringInfoSection = () => {
             </ul>
           </div>
           <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
-            <p className="text-2xl font-bold">과외 신청서 작성 방법</p>
+            <p className="text-lg font-bold md:text-2xl">과외 신청서 작성 방법</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">
                 홈페이지 우측 하단 채팅을 통해 신청서 작성 링크 확인 하실 수 있습니다.
