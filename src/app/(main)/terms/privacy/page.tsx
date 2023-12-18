@@ -1,8 +1,8 @@
 import { Markdown } from "@/components/markdown";
-import fs from "fs";
+import { allPrivacyPolicies } from "contentlayer/generated";
 
 export default function TermsPrivacyPage() {
-  const content = fs.readFileSync("src/contents/policies/terms-of-service.md", "utf8");
+  const content = allPrivacyPolicies[0].body.raw;
 
   return (
     <main className="container pb-16">
