@@ -38,6 +38,7 @@ export const WhyUniverseItem = ({ number, title, description, image }: WhyUniver
         className="absolute left-0 top-0 h-full brightness-[0.3] transition group-hover:scale-110"
         src={image}
         alt=""
+        priority
       />
     </div>
   );

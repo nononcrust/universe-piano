@@ -84,7 +84,7 @@ const ConsultingReviewItem = ({
         </Button>
         <Dialog open={dialog.isOpen} onOpenChange={dialog.onOpenChange}>
           <DialogContent className="max-h-[80vh] overflow-y-auto">
-            <Image src={imageSrc} alt="" />
+            <Image src={imageSrc} alt="" priority />
           </DialogContent>
         </Dialog>
       </div>

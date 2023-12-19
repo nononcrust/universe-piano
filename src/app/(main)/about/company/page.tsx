@@ -256,10 +256,10 @@ const InstagramSection = () => {
           </div>
           <div className="flex items-end justify-center gap-4 md:justify-start">
             <div>
-              <Image className="min-w-[80px]" width={80} src={mobileImage} alt="" />
+              <Image priority className="min-w-[80px]" width={80} src={mobileImage} alt="" />
             </div>
             <div>
-              <Image className="min-w-[300px]" width={300} src={tabletImage} alt="" />
+              <Image priority className="min-w-[300px]" width={300} src={tabletImage} alt="" />
             </div>
           </div>
         </div>

@@ -1,11 +1,8 @@
 "use client";
 
-import { ROUTE } from "@/constants/route";
-import Link from "next/link";
 import CountUp from "react-countup";
 import { SectionTitle } from "../section-title";
 import { Aos } from "../ui/aos";
-import { Button } from "../ui/button";
 
 export const AboutRecordSection = () => {
   return (
@@ -35,11 +32,11 @@ export const AboutRecordSection = () => {
             value={<CountUp end={5} duration={2} suffix=" yrs" enableScrollSpy useEasing={false} />}
           />
         </div>
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <Link href={ROUTE.ABOUT.PORTFOLIO}>
             <Button className="h-12 rounded-full px-6 text-lg">연도별 포트폴리오</Button>
           </Link>
-        </div>
+        </div> */}
       </Aos>
     </section>
   );

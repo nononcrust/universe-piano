@@ -40,6 +40,7 @@ export const AuditionDetail = () => {
                 height={500}
                 src={image.url}
                 alt="게시글 이미지"
+                priority
               />
             ))}
           </div>

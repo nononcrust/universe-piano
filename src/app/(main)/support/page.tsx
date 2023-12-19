@@ -76,7 +76,7 @@ export default function SupportPage() {
         <Accordion type="single" collapsible>
           {currentFaqs.map((item, index) => (
             <SupportListItem
-              key={index}
+              key={item.title}
               title={item.title}
               content={item.description}
               value={String(index)}

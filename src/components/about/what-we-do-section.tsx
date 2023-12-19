@@ -41,7 +41,7 @@ export const WhatWeDoSection = () => {
             image={studyIcon}
           />
           <div className="rounded-2xl bg-white p-6 shadow-lg md:min-h-[320px]">
-            <Image width={48} height={48} src={kitIcon} alt="" />
+            <Image width={48} height={48} src={kitIcon} alt="" priority />
             <div className="mt-8 flex gap-2 md:mt-16">
               <p className="font-semibold">독학 키트</p>
               <p className="text-medium rounded-lg bg-zinc-400 px-2 py-1 text-xs text-white">
@@ -69,7 +69,7 @@ const WhatWeDoItem = ({ title, description, href, image }: WhatWeDoItemProps) =>
   return (
     <Link className="group relative transition" href={href}>
       <div className="flex cursor-pointer flex-col rounded-2xl bg-white p-6 shadow-lg brightness-100 group-hover:brightness-50 md:min-h-[320px]">
-        <Image width={48} height={48} src={image} alt="" />
+        <Image width={48} height={48} src={image} alt="" priority />
         <p className="mt-8 font-semibold md:mt-16">{title}</p>
         <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">{description}</p>
       </div>

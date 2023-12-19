@@ -71,6 +71,11 @@ interface StudyMissionItemProps {
 
 const StudyMissionItem = ({ image }: StudyMissionItemProps) => {
   return (
-    <Image className="h-[400px] min-w-[240px] rounded-2xl border bg-content" src={image} alt="" />
+    <Image
+      className="h-[400px] min-w-[240px] rounded-2xl border bg-content"
+      src={image}
+      alt=""
+      priority
+    />
   );
 };

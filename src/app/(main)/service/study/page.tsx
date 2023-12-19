@@ -51,7 +51,7 @@ const HeroSection = () => {
             </h1>
           </div>
           <div className="flex justify-center">
-            <Image src={hero3dImage} alt="" height={300} />
+            <Image priority src={hero3dImage} alt="" height={300} />
           </div>
         </div>
       </Aos>
@@ -143,7 +143,7 @@ const StudyCompositionItem = ({ image, title, description }: StudyCompositionIte
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
       <div className="flex h-[200px] w-full items-center justify-center rounded-2xl border bg-[#B8C0F6] shadow-md md:h-[160px]">
-        <Image className="w-[180px] rounded-2xl" alt="" src={image} />
+        <Image className="w-[180px] rounded-2xl" alt="" src={image} priority />
       </div>
       <div className="ml-2 mt-2 flex flex-col">
         <p className="text-lg font-semibold">{title}</p>

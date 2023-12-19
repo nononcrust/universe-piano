@@ -42,7 +42,7 @@ const HeroSection = () => {
             </h1>
           </div>
           <div className="flex justify-center">
-            <Image width={300} height={300} src={hero3dImage} alt="" />
+            <Image priority width={300} height={300} src={hero3dImage} alt="" />
           </div>
         </div>
       </Aos>
@@ -114,7 +114,7 @@ const RoadmapSection = () => {
       <Aos className="container">
         <SectionTitle>미국 음대 입시 로드맵</SectionTitle>
         <SectionSubtitle>미국 음대 입시 과정은 세 단계로 진행됩니다.</SectionSubtitle>
-        <Image className="mt-12" src={roadmapImage} alt="로드맵" />
+        <Image priority className="mt-12" src={roadmapImage} alt="로드맵" />
       </Aos>
     </section>
   );

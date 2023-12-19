@@ -46,7 +46,7 @@ const HeroSection = () => {
             </h1>
           </div>
           <div className="flex justify-center">
-            <Image src="/images/3d-star.png" width={300} height={300} alt="별" />
+            <Image priority src="/images/3d-star.png" width={300} height={300} alt="별" />
           </div>
         </div>
       </Aos>
@@ -65,6 +65,7 @@ const UniversePianoSection = () => {
             alt=""
             width={320}
             height={320}
+            priority
           />
           <p className="text-2xl font-bold md:text-3xl">이런 곳이 있는 줄 알았더라면</p>
         </div>
@@ -77,6 +78,7 @@ const UniversePianoSection = () => {
             alt=""
             width={320}
             height={320}
+            priority
           />
           <p className="text-2xl font-bold md:text-3xl">진작 연락 드릴 껄 그랬어요.</p>
         </div>
@@ -134,7 +136,7 @@ const CrewResultItem = ({ title, description, image }: ScholarshipItemProps) => 
   return (
     <div className="flex w-full flex-col items-center rounded-2xl bg-white p-8 shadow-xl md:max-w-[240px]">
       <div className="flex h-24 w-24 items-center justify-center">
-        <Image className="h-20 w-20" alt="" src={image} />
+        <Image className="h-20 w-20" alt="" src={image} priority />
       </div>
       <p className="mt-4 font-semibold text-muted-foreground">{title}</p>
       <p className="mt-2 text-center text-3xl font-bold text-primary">{description}</p>

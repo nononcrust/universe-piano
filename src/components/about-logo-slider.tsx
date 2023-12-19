@@ -67,7 +67,7 @@ export const AboutLogoSlider = () => {
           className="keen-slider__slide"
           style={{ minWidth: 180, maxWidth: 180, height: 160 }}
         >
-          <Image src={logo} width={160} height={160} alt="" />
+          <Image src={logo} width={160} height={160} alt="" priority />
         </div>
       ))}
     </div>
