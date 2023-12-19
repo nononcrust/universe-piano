@@ -9,4 +9,16 @@ export const PrivacyPolicy = defineDocumentType(() => ({
   },
 }));
 
-export default makeSource({ contentDirPath: "src/contents", documentTypes: [PrivacyPolicy] });
+export const TermsOfService = defineDocumentType(() => ({
+  name: "TermsOfService",
+  filePathPattern: "terms/terms-of-service.md",
+  fields: {
+    title: { type: "string", required: true },
+    date: { type: "date", required: true },
+  },
+}));
+
+export default makeSource({
+  contentDirPath: "src/contents",
+  documentTypes: [PrivacyPolicy, TermsOfService],
+});

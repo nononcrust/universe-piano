@@ -1,7 +1,7 @@
 import { Markdown } from "@/components/markdown";
 import { allPrivacyPolicies } from "contentlayer/generated";
 
-export default function TermsPrivacyPage() {
+export default function PrivacyPolicyPage() {
   const content = allPrivacyPolicies[0].body.raw;
 
   return (
