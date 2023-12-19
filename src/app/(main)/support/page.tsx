@@ -73,7 +73,7 @@ export default function SupportPage() {
         </TabsList>
       </Tabs> */}
       <div className="container mt-8">
-        <Accordion type="single" collapsible>
+        <Accordion type="single" collapsible key={tab}>
           {currentFaqs.map((item, index) => (
             <SupportListItem
               key={item.title}

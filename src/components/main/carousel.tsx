@@ -1,35 +1,28 @@
 "use client";
 
+import carouselImage3 from "@/assets/images/landing/landing-carousel-3.jpg";
+import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export const Carousel = () => {
   return (
-    <Swiper
-      loop
-      modules={[Autoplay]}
-      autoplay={{ delay: 700000 }}
-      className="h-[240px] md:h-[320px]"
-    >
-      <SwiperSlide className="bg-content">
+    <Swiper loop modules={[Autoplay]} autoplay={{ delay: 700000 }} className="h-[400px]">
+      <SwiperSlide className="bg-[#D7E8FF]">
         <div className="container relative md:pt-16">
-          <div className="absolute z-10 mt-28 flex flex-col md:mt-20">
-            <p className="text-xl font-semibold md:text-2xl">1차 오디션 결과 발표</p>
-            <p className="z-10 mt-1 text-sm font-medium text-muted-foreground md:text-base">
+          <div className="z-10flex absolute z-10 mt-72 flex-col md:mt-28">
+            <p className="text-2xl font-bold md:text-3xl">1차 오디션 결과 발표</p>
+            <p className="z-10 mt-1 font-medium text-muted-foreground md:text-xl">
               미국 음대 오디션 결과, 유니버스 피아노에서 확인하세요.
             </p>
           </div>
-          <div className="absolute right-2 top-10 z-0 md:right-0 md:top-16">
-            {/* <div className="relative h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
-              <Image
-                priority
-                src="/images/cat_working.png"
-                alt="고양이"
-                fill
-                sizes="(min-width: 768px) 200px, 200px"
-              />
-            </div> */}
-          </div>
+          <Image
+            className="absolute -right-12 top-1/2 mt-12 md:mt-8"
+            priority
+            src={carouselImage3}
+            width={400}
+            alt=""
+          />
         </div>
       </SwiperSlide>
       <SwiperSlide className="bg-content">
