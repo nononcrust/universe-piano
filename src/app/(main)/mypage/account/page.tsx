@@ -78,7 +78,7 @@ export default function AccountPage() {
                 <FormControl>
                   <Input
                     variant="underline"
-                    maxLength={12}
+                    maxLength={10}
                     placeholder="닉네임을 입력해주세요."
                     {...field}
                   />
