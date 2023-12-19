@@ -41,12 +41,14 @@ export const authRepository = {
 
 export const socialDataSchema = z.object({
   id: z.string(),
+  name: z.string(),
   nickname: z.string(),
   profileImage: z.string(),
   email: z.string().email(),
 });
 
 export const registerRequestSchema = z.object({
+  name: z.string(),
   nickname: z.string().max(20),
   phone: z.string().min(10).max(13),
   kakaoId: z.string(),

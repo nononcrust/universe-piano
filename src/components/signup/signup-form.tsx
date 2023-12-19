@@ -51,6 +51,7 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
     if (registerMutation.isPending) return;
 
     const body = {
+      name: initialData.name,
       nickname: data.nickname,
       phone: data.phone,
       kakaoId: String(initialData.id),

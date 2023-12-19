@@ -24,6 +24,8 @@ export const kakaoUserInfoSchema = z.object({
       profile_image_url: z.string(),
       is_default_image: z.boolean(),
     }),
+    name_needs_agreement: z.boolean(),
+    name: z.string(),
     has_email: z.boolean(),
     email_needs_agreement: z.boolean(),
     is_email_valid: z.boolean(),
@@ -64,6 +66,7 @@ export const kakaoApi = {
       },
     });
 
+    console.log("response.data", response.data);
     return kakaoUserInfoSchema.parse(response.data);
   },
 };

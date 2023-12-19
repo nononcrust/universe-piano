@@ -24,8 +24,9 @@ export default async function KakaoCallbackPage({
   if (user === null) {
     const socialData: SocialData = {
       id: kakaoId,
+      name: kakaoUserInfo.kakao_account.name,
       nickname: kakaoUserInfo.properties.nickname,
-      profileImage: kakaoUserInfo.properties.profile_image,
+      profileImage: kakaoUserInfo.properties.thumbnail_image,
       email: kakaoUserInfo.kakao_account.email,
     };
 

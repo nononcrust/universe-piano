@@ -54,7 +54,6 @@ export const SupportForm = ({ mode }: SupportFormProps) => {
     // createNoticeMutation.mutate(data, {
     //   onSuccess: () => router.push(ROUTE.ADMIN.NOTICE.LIST),
     // });
-    console.log(data);
   });
 
   return (

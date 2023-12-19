@@ -39,7 +39,6 @@ const getSessionFromCookie = async (request: NextRequest) => {
 
 export async function middleware(request: NextRequest) {
   const session = await getSessionFromCookie(request);
-  console.log("middleware session", session);
 
   const isAdmin = session?.role === Role.ADMIN;
 
