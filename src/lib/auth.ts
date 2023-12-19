@@ -30,7 +30,7 @@ export const getServerSession = async (): Promise<Session | null> => {
 
   const accessToken = cookie.value;
 
-  const decoded = accessTokenSchema.safeParse(jwt.verify(accessToken));
+  const decoded = accessTokenSchema.safeParse((await jwt.verify(accessToken))?.payload);
 
   if (!decoded.success) {
     return null;
