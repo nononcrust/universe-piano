@@ -43,7 +43,7 @@ interface FaqSectionItemProps {
 
 export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProps) => {
   return (
-    <Accordion.Item value={value} className="flex flex-col rounded-xl border bg-white p-4">
+    <Accordion.Item value={value} className="flex flex-col rounded-xl bg-white p-4">
       <Accordion.Trigger className="flex items-center justify-between font-semibold">
         <div className="flex items-center gap-4">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-content font-bold">

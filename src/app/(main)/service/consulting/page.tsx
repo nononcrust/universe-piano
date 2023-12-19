@@ -97,7 +97,7 @@ interface ConsultingExampleItemProps {
 
 const ConsultingExampleItem = ({ number, title }: ConsultingExampleItemProps) => {
   return (
-    <div className="flex w-full max-w-[600px] gap-4 rounded-xl border bg-content p-4">
+    <div className="flex w-full max-w-[600px] gap-4 rounded-xl bg-content p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary font-bold text-white">
           {number}
@@ -129,7 +129,7 @@ const ConsultingInfoSection = () => {
           {"더 자세한 내용은 채팅으로 문의해주세요."}
         </SectionSubtitle>
         <div className="mt-12 flex flex-col gap-8 md:flex-row">
-          <div className="w-full rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+          <div className="w-full rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">컨설팅 진행 조건</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">미국 음대 석사 과정 입시생</li>
