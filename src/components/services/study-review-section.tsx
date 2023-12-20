@@ -1,7 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/configs/site";
-import { data } from "@/contents/services/consulting";
+import { data } from "@/contents/services/study";
 import { useDialog } from "@/hooks/use-dialog";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -22,7 +22,7 @@ export const StudyReviewSection = () => {
           {data.reviews.map((review, index) => (
             <StudyReviewItem
               key={index}
-              label={review.label}
+              labels={review.labels}
               title={review.title}
               description={review.description}
               imageSrc={review.imageSrc}
@@ -46,13 +46,13 @@ export const StudyReviewSection = () => {
 };
 
 interface StudyReviewItemProps {
-  label: string;
+  labels: (typeof data.reviews)[number]["labels"];
   title: string;
   description: string;
   imageSrc: StaticImageData;
 }
 
-const StudyReviewItem = ({ label, title, description, imageSrc }: StudyReviewItemProps) => {
+const StudyReviewItem = ({ labels, title, description, imageSrc }: StudyReviewItemProps) => {
   const dialog = useDialog();
 
   return (
@@ -62,10 +62,15 @@ const StudyReviewItem = ({ label, title, description, imageSrc }: StudyReviewIte
           <div className="h-32 w-full bg-gradient-to-b from-gray-200 to-white" />
         </div>
         <div className="mt-8 flex flex-col gap-2 px-4">
-          <div className="flex">
-            <div className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">
-              {label}
-            </div>
+          <div className="flex gap-2">
+            {labels.map((label, index) => (
+              <div
+                key={index}
+                className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white"
+              >
+                {label}
+              </div>
+            ))}
           </div>
           <p className="text-lg font-semibold">{title}</p>
         </div>

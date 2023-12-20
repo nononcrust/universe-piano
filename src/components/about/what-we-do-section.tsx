@@ -22,19 +22,22 @@ export const WhatWeDoSection = () => {
             title="미국 음대 입시 컨설팅"
             description="미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다."
             href={ROUTE.SERVICE.CONSULTING}
+            icon={<ColoredIcon.Idea className="h-12 w-12" />}
           />
           <WhatWeDoItem
             title="미국 음대 입시 과외"
-            description="컨설팅 압축 버전! 맞춤형 정보, 장학금 전략, 그리고 학교 선정까지 단기간에 완성합니다."
+            description="한 달에 딱 한 분에게만 주어지는 기회! 맞춤형 정보, 장학금 전략, 그리고 학교 선정까지 단기간에 완성합니다."
             href={ROUTE.SERVICE.TUTORING}
+            icon={<ColoredIcon.Chat className="h-12 w-12" />}
           />
           <WhatWeDoItem
             title="영어 스터디"
             description="음대생을 위한 영어 스터디, 수준에 맞는 공부 방법으로 목표 점수 달성을 도와드립니다."
             href={ROUTE.SERVICE.STUDY}
+            icon={<ColoredIcon.Pencil className="h-12 w-12" />}
           />
           <div className="rounded-3xl bg-white p-6 shadow-lg md:min-h-[320px]">
-            <ColoredIcon.Medal className="h-12 w-12" />
+            <ColoredIcon.Storage className="h-12 w-12" />
             <div className="mt-8 flex gap-2 md:mt-16">
               <p className="font-semibold">독학 키트</p>
               <p className="text-medium rounded-lg bg-zinc-400 px-2 py-1 text-xs text-white">
@@ -55,14 +58,14 @@ interface WhatWeDoItemProps {
   title: string;
   description: string;
   href: string;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
 }
 
 const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => {
   return (
     <Link className="group relative transition" href={href}>
       <div className="flex cursor-pointer flex-col rounded-3xl bg-white p-6 shadow-lg brightness-100 group-hover:brightness-50 md:min-h-[320px]">
-        <ColoredIcon.Chat width={48} height={48} />
+        {icon}
         <p className="mt-8 font-semibold md:mt-16">{title}</p>
         <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">{description}</p>
       </div>

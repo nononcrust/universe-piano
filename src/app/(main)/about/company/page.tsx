@@ -1,6 +1,7 @@
 import mobileImage from "@/assets/images/about/about-company-mobile.png";
 import tabletImage from "@/assets/images/about/about-company-tablet.png";
 import { AboutLogoSlider } from "@/components/about-logo-slider";
+import { FreeConsultSection } from "@/components/about/free-consult-section";
 import { WhatWeDoSection } from "@/components/about/what-we-do-section";
 import { Icon } from "@/components/icon";
 import { Instagram } from "@/components/instagram";
@@ -9,7 +10,6 @@ import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { AboutRecordSection } from "@/components/services/about-record-section";
 import { Aos } from "@/components/ui/aos";
-import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/configs/site";
 import Image from "next/image";
 import Link from "next/link";
@@ -277,9 +277,21 @@ const ReviewSection = () => {
           <SectionSubtitle>유니버스 피아노 크루들의 솔직한 리뷰를 확인해보세요.</SectionSubtitle>
         </div>
         <div className="container mt-8 flex gap-6 overflow-auto py-4 scrollbar-hide">
-          <ReviewItem />
-          <ReviewItem />
-          <ReviewItem />
+          <ReviewItem
+            name="OHE6507"
+            label="영어 스터디"
+            content="줌 스터디 덕분에…. 토플도 졸업하고 원서 제출도 거의 끝나가고 넘 감사했습니다!!!! 체감상 거의,,,, 쿼터 컨설팅 받은 사람이었어요!"
+          />
+          <ReviewItem
+            name="LSA5931"
+            label="장학금 증액"
+            content="저는 너무 크게 도움 받았고 제가 꼭 장학금 컨설팅 뿐만 아니라 질문이 많았는데도 친절히 답해주셔서 너무 감사하고 든든했어요! 도움이 필요하신 분은 꼭 연락 해보시길 바랍니다."
+          />
+          <ReviewItem
+            name="JSJ5124"
+            label="포트폴리오 컨설팅"
+            content="입시철에 젤 막막할 때 넘 감사했어요 ㅎㅎ 덕분에 일사천리로 딱딱 되었던 것 같아요 ㅎㅎ"
+          />
         </div>
         <div className="container mt-4 flex flex-col items-center justify-center gap-4">
           <p className="font-medium text-muted-foreground">
@@ -294,45 +306,27 @@ const ReviewSection = () => {
   );
 };
 
-const ReviewItem = () => {
+interface ReviewItemProps {
+  name: string;
+  label: string;
+  content: string;
+}
+
+const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
   return (
-    <div className="h-[240px] rounded-2xl bg-white p-6 shadow-lg max-md:min-w-[320px]">
+    <div className="h-[240px] flex-1 rounded-2xl bg-white p-6 shadow-lg max-md:min-w-[320px]">
       <p className="text-xl font-semibold">
-        신상호
-        <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">
-          유니버스 피아노 14기
-        </span>
+        {name}
+        <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
       </p>
       <div className="mt-1 flex gap-[2px]">
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-gray-100 text-gray-100" />
+        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
       </div>
-      <p className="mt-6 text-muted-foreground">
-        토플 초보도 접근하기 정말 쉬운 교육과정과 플랫폼을 가지고 있어요. 하지만 교육이 끝났을 때는
-        쉬운 스타트와 확실한 엔딩, 저는 유니버스 피아노를 그렇게 정의할게요.
-      </p>
+      <p className="mt-6 text-muted-foreground">{content}</p>
     </div>
-  );
-};
-
-const FreeConsultSection = () => {
-  return (
-    <section className="bg-zinc-900 py-32">
-      <Aos className="container">
-        <SectionTitle className="mt-0 whitespace-pre text-left text-white md:leading-normal">
-          {"미국 음대 입시 관련\n1회 무료 zoom 상담을 제공합니다"}
-        </SectionTitle>
-        <Button
-          className="mt-8 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-10 text-lg"
-          size="lg"
-          variant="primary"
-        >
-          1회 무료 상담 신청
-        </Button>
-      </Aos>
-    </section>
   );
 };

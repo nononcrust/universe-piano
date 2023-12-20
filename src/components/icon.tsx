@@ -20,6 +20,7 @@ import {
   Menu,
   MessageCircle,
   MoreHorizontal,
+  Plus,
   Search,
   Settings,
   ShoppingBasket,
@@ -66,4 +67,5 @@ export const Icon = {
   MessageCircle: MessageCircle,
   Info: Info,
   Zap: Zap,
+  Plus: Plus,
 };

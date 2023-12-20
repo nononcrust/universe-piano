@@ -34,18 +34,14 @@ export const BentoSection = () => {
       <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         <Card className="bg-zinc-800 text-white md:col-span-2">
           <div className="mb-2 mt-4 flex">
-            <p className="font-semibold text-primary">Create your universe.</p>
+            <p className="font-semibold text-primary">Create your universe</p>
           </div>
-          <Card.Title className="whitespace-pre-wrap">
-            {"미국 음대 입시를 위한 모든 것,\n유니버스 피아노입니다"}
-          </Card.Title>
-          <Card.Subtitle>
-            안녕하세요! 처음 오신 분들은 아래 버튼을 눌러서 서비스를 둘러보세요.
-          </Card.Subtitle>
+          <Card.Title className="whitespace-pre-wrap">처음 오신 분들께,</Card.Title>
+          <Card.Subtitle>유니버스 피아노를 소개합니다.</Card.Subtitle>
           <div className="mt-6 md:mt-12">
             <Link href={ROUTE.ABOUT.COMPANY}>
               <Button className="h-12 gap-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 pr-4 transition-all hover:gap-3">
-                서비스 둘러보기
+                유니버스 피아노
                 <Icon.ChevronRight className="h-5 w-5" />
               </Button>
             </Link>
@@ -75,7 +71,7 @@ export const BentoSection = () => {
         <Card>
           <div className="mb-4 flex">
             <IconHeader>
-              <ColoredIcon.Flag className="h-6 w-6" />
+              <ColoredIcon.Idea className="h-6 w-6" />
             </IconHeader>
           </div>
           <Card.Title>미국 음대 입시 컨설팅</Card.Title>
@@ -95,7 +91,7 @@ export const BentoSection = () => {
         <Card>
           <div className="mb-4 flex">
             <IconHeader>
-              <ColoredIcon.Like className="h-6 w-6" />
+              <ColoredIcon.Pencil className="h-6 w-6" />
             </IconHeader>
           </div>
           <Card.Title>영어 스터디</Card.Title>
@@ -114,7 +110,7 @@ export const BentoSection = () => {
         <Card>
           <div className="mb-4 flex">
             <IconHeader>
-              <ColoredIcon.Medal className="h-6 w-6" />
+              <ColoredIcon.Storage className="h-6 w-6" />
             </IconHeader>
           </div>
           <Card.Title>독학 키트</Card.Title>

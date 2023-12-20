@@ -2,8 +2,6 @@ import studyCompositionImage1 from "@/assets/images/study/study-composition-1.jp
 import studyCompositionImage2 from "@/assets/images/study/study-composition-2.jpg";
 import studyCompositionImage3 from "@/assets/images/study/study-composition-3.jpg";
 import hero3dImage from "@/assets/images/study/study-hero-3d.png";
-import whyUniverseImage1 from "@/assets/images/study/study-why-universe-1.jpg";
-import whyUniverseImage2 from "@/assets/images/study/study-why-universe-2.jpg";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
@@ -93,7 +91,7 @@ interface CheckPointItemProps {
 
 const CheckPointItem = ({ number, title }: CheckPointItemProps) => {
   return (
-    <div className="flex w-full gap-4 rounded-xl border bg-content p-4">
+    <div className="flex w-full gap-4 rounded-xl bg-content p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black font-bold text-white">
           {number}
@@ -167,7 +165,6 @@ const WhyUniverseSection = () => {
             description={
               "TOEFL 53점에서 94점까지, 영어 실력 밑바닥에서 상위권으로 올라오는 과정을 직접 경험한 멘토가 가르칩니다. 영어 왕초보가 어떻게 하면 미국 음대 입학에 필요한 점수를 얻을 수 있는지를 누구보다 잘 알고 있습니다.\n\n영어 상위권에서 최상위권에 도달한 사람\n영어 최하위권에서 상위권에 도달한 사람\n\n당신에게 필요한 멘토는 누구입니까?"
             }
-            image={whyUniverseImage1}
           />
           <WhyUniverseItem
             number={2}
@@ -175,7 +172,6 @@ const WhyUniverseSection = () => {
             description={
               "현실과 이상의 차이가 클 때에는 간극을 좁혀 나갈 수 있는 현실적인 목표가 필요합니다.\n영어 왕초보 음대생들도 꾸준히 지속 가능한 맞춤형 학습 플랜을 제시합니다."
             }
-            image={whyUniverseImage1}
           />
           <WhyUniverseItem
             number={3}
@@ -183,7 +179,6 @@ const WhyUniverseSection = () => {
             description={
               "공부 시간 인증과 스터디 미션을 통해, 공부를 할 수 밖에 없는 강제성을 부여합니다.\n\n기준 미달 인증 벌금이 부과되며, 모인 벌금은 매달 가장 성실하게 공부하신 분께 전액 수여합니다."
             }
-            image={whyUniverseImage2}
           />
           <WhyUniverseItem
             number={4}
@@ -191,7 +186,6 @@ const WhyUniverseSection = () => {
             description={
               "음대생이라는 공통점을 바탕으로, 다른 스터디에서는 잘 느껴지지 않았던 동질감과 소속감이 자연스럽게 형성됩니다.\n\n경쟁심 NO! 스터디에서 서로 이해하고 공감하며, 함께 성장합니다. 스터디 크루끼리 미국 오디션 기간에 만나서 밥 친구가 되고, 긴급 상황에 서로 도와주고, 룸메이트가 되는 것은 보너스 효과!"
             }
-            image={whyUniverseImage2}
           />
         </div>
       </section>
@@ -253,7 +247,7 @@ const StudyInfoSection = () => {
           }
         </SectionSubtitle>
         <div className="mt-20 flex flex-col gap-8 md:flex-row">
-          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+          <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">모집 기간: 매월 20일 - 29일</li>
@@ -263,7 +257,7 @@ const StudyInfoSection = () => {
               </li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+          <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-2xl font-bold">스터디 벌금</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">인증 기준 미달 시, 벌금 부과</li>

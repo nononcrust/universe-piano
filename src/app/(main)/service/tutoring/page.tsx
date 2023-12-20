@@ -43,7 +43,7 @@ const HeroSection = () => {
           <div className="flex flex-1 flex-col items-center gap-4">
             <SectionBadge>입시 과외</SectionBadge>
             <h1 className="whitespace-pre-line text-center text-2xl font-bold md:text-5xl md:leading-tight">
-              {"국내 최초 미국 음대 입시 과외,\n유니버스 피아노에서만 가능합니다"}
+              국내 최초 미국 음대 입시 과외
             </h1>
           </div>
           <div className="flex justify-center">
@@ -321,7 +321,7 @@ const TutoringInfoSection = () => {
             <p className="text-lg font-bold md:text-2xl">과외 신청서 작성 방법</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">
-                홈페이지 우측 하단 채팅을 통해 신청서 작성 링크 확인 하실 수 있습니다.
+                채널톡에서 과외 신청서 링크 확인하실 수 있습니다.
               </li>
             </ul>
           </div>
