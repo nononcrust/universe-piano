@@ -1,0 +1,21 @@
+import Chat from "@/assets/icons/002-chat.svg";
+import Conference from "@/assets/icons/006-conference.svg";
+import Idea from "@/assets/icons/010-idea.svg";
+import Notice from "@/assets/icons/016-notice.svg";
+import Trophy from "@/assets/icons/019-trophy.svg";
+import Like from "@/assets/icons/020-like.svg";
+import Medal from "@/assets/icons/022-medal.svg";
+import Flag from "@/assets/icons/034-flag.svg";
+import Support from "@/assets/icons/035-support.svg";
+
+export const ColoredIcon = {
+  Chat,
+  Conference,
+  Idea,
+  Notice,
+  Trophy,
+  Like,
+  Medal,
+  Flag,
+  Support,
+} as const;

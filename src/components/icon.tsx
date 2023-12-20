@@ -1,5 +1,6 @@
 import {
   ArrowLeft,
+  ArrowRight,
   BookOpen,
   ChevronDown,
   ChevronLeft,
@@ -29,12 +30,14 @@ import {
   Wrench,
   X,
   Youtube,
+  Zap,
 } from "lucide-react";
 
 export const Icon = {
   Menu: Menu,
   X: X,
   ArrowLeft: ArrowLeft,
+  ArrowRight: ArrowRight,
   MoreHorizontal: MoreHorizontal,
   ChevronLeft: ChevronLeft,
   ChevronRight: ChevronRight,
@@ -62,4 +65,5 @@ export const Icon = {
   Megaphone: Megaphone,
   MessageCircle: MessageCircle,
   Info: Info,
+  Zap: Zap,
 };

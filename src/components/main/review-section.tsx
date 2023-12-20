@@ -81,7 +81,7 @@ const ReviewItem = ({ name, label, content, span }: ReviewItemProps) => {
   return (
     <div
       className={cn(
-        "h-[340px] rounded-2xl bg-content-light p-6 max-md:min-w-[320px] md:h-[240px]",
+        "h-[340px] rounded-2xl border bg-content-light p-6 max-md:min-w-[320px] md:h-[240px]",
         span === 3 && `md:col-span-3`,
         span === 2 && `md:col-span-2`,
       )}
