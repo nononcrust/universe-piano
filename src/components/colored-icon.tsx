@@ -7,6 +7,7 @@ import Like from "@/assets/icons/020-like.svg";
 import Medal from "@/assets/icons/022-medal.svg";
 import Flag from "@/assets/icons/034-flag.svg";
 import Support from "@/assets/icons/035-support.svg";
+import Question from "@/assets/icons/116-question.svg";
 
 export const ColoredIcon = {
   Chat,
@@ -18,4 +19,5 @@ export const ColoredIcon = {
   Medal,
   Flag,
   Support,
+  Question,
 } as const;

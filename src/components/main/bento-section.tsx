@@ -2,7 +2,6 @@
 
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import logo1 from "@/assets/images/about/universe-logo-1.png";
 import logo10 from "@/assets/images/about/universe-logo-10.png";
 import logo11 from "@/assets/images/about/universe-logo-11.png";
 import logo12 from "@/assets/images/about/universe-logo-12.png";
@@ -37,11 +36,13 @@ export const BentoSection = () => {
           <div className="mb-2 mt-4 flex">
             <p className="font-semibold text-primary">Create your universe.</p>
           </div>
-          <Card.Title>미국 음대 입시를 위한 모든 것, 유니버스 피아노입니다</Card.Title>
+          <Card.Title className="whitespace-pre-wrap">
+            {"미국 음대 입시를 위한 모든 것,\n유니버스 피아노입니다"}
+          </Card.Title>
           <Card.Subtitle>
             안녕하세요! 처음 오신 분들은 아래 버튼을 눌러서 서비스를 둘러보세요.
           </Card.Subtitle>
-          <div className="mt-12">
+          <div className="mt-6 md:mt-12">
             <Link href={ROUTE.ABOUT.COMPANY}>
               <Button className="h-12 gap-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 pr-4 transition-all hover:gap-3">
                 서비스 둘러보기
@@ -64,7 +65,10 @@ export const BentoSection = () => {
           </Card.Subtitle>
           <div className="flex flex-1 items-end">
             <Link href={ROUTE.SERVICE.TUTORING}>
-              <Button variant="outline">바로가기</Button>
+              <Button className="pr-2" variant="outline">
+                바로가기
+                <Icon.ChevronRight className="ml-1 h-[18px] w-[18px]" />
+              </Button>
             </Link>
           </div>
         </Card>
@@ -81,7 +85,10 @@ export const BentoSection = () => {
           </Card.Subtitle>
           <div className="flex flex-1 items-end">
             <Link href={ROUTE.SERVICE.CONSULTING}>
-              <Button variant="outline">바로가기</Button>
+              <Button className="pr-2" variant="outline">
+                바로가기
+                <Icon.ChevronRight className="ml-1 h-[18px] w-[18px]" />
+              </Button>
             </Link>
           </div>
         </Card>
@@ -97,7 +104,10 @@ export const BentoSection = () => {
           </Card.Subtitle>
           <div className="flex flex-1 items-end">
             <Link href={ROUTE.SERVICE.STUDY}>
-              <Button variant="outline">바로가기</Button>
+              <Button className="pr-2" variant="outline">
+                바로가기
+                <Icon.ChevronRight className="ml-1 h-[18px] w-[18px]" />
+              </Button>
             </Link>
           </div>
         </Card>
@@ -168,7 +178,7 @@ export const BentoSection = () => {
         <Card className="group cursor-pointer hover:border-gray-400" half>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Icon.BookOpen className="h-5 w-5 fill-primary text-primary" />
+              <ColoredIcon.Notice className="h-5 w-5" />
               <Card.Title>오디션 결과 발표</Card.Title>
             </div>
             <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1 transition group-hover:translate-x-1" />
@@ -178,7 +188,7 @@ export const BentoSection = () => {
         <Card className="group cursor-pointer hover:border-gray-400" half>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Icon.BookOpen className="h-5 w-5 fill-primary text-primary" />
+              <ColoredIcon.Question className="h-6 w-6" />
               <Card.Title>자주 묻는 질문</Card.Title>
             </div>
             <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1 transition group-hover:translate-x-1" />
@@ -254,7 +264,7 @@ const CardSubtitle = ({ className, children, ...props }: CardSubtitleProps) => {
 Card.Title = CardTitle;
 Card.Subtitle = CardSubtitle;
 
-const logos1 = [logo1, logo2, logo3, logo4, logo5, logo6, logo8];
+const logos1 = [logo2, logo3, logo4, logo5, logo6, logo8];
 
 const logos2 = [logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16];
 
@@ -314,7 +324,7 @@ export const LogoSlider = ({ className, direction = "left", logos, ...props }: L
           className="keen-slider__slide"
           style={{ minWidth: 80, maxWidth: 80, height: 64 }}
         >
-          <Image key={index} src={item} alt="" width={76} height={76} />
+          <Image key={index} src={item} alt="" width={74} height={74} />
         </div>
       ))}
     </div>

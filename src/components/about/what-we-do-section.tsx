@@ -33,7 +33,7 @@ export const WhatWeDoSection = () => {
             description="음대생을 위한 영어 스터디, 수준에 맞는 공부 방법으로 목표 점수 달성을 도와드립니다."
             href={ROUTE.SERVICE.STUDY}
           />
-          <div className="rounded-2xl bg-white p-6 shadow-lg md:min-h-[320px]">
+          <div className="rounded-3xl bg-white p-6 shadow-lg md:min-h-[320px]">
             <ColoredIcon.Medal className="h-12 w-12" />
             <div className="mt-8 flex gap-2 md:mt-16">
               <p className="font-semibold">독학 키트</p>

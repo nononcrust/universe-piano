@@ -10,6 +10,7 @@ import { TutoringCurriculumSection } from "@/components/services/tutoring-curric
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
 import { data } from "@/contents/services/tutoring";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 export default function TutoringPage() {
@@ -233,18 +234,30 @@ const TutoringExpectationSection = () => {
     <Aos className="my-32">
       <section className="container">
         <SectionTitle>과외 기대 효과</SectionTitle>
+        <SectionSubtitle>혼자 준비하시더라도, 꼭 알았으면 하는 것들을 담았습니다.</SectionSubtitle>
         <div className="mt-12 flex flex-col gap-8 md:flex-row">
-          <TutoringExpectationItem title="BEFORE">
-            <strong className="text-foreground">과외를 신청하시는 분들 99%는, </strong>
-            도움이 필요하지만 컨설팅 비용이 부담되거나, 너무 많은 정보들 중에 어떤 것이 정확한
-            정보인지 가려내기 힘들거나, 혹은 온라인상에서 나에게 딱 맞는 정보를 찾을 수 없었다고
-            말씀하셨습니다
-          </TutoringExpectationItem>
-          <TutoringExpectationItem title="AFTER">
-            <strong className="text-foreground">하지만, 입시 과외를 마치신 후에는, </strong>내
-            상황에 필요한 정보를 얻게 되고, 지원할 학교가 정해지며, 입시 준비에 대한 정확한 목표와
-            계획이 생겼다고 하십니다
-          </TutoringExpectationItem>
+          <TutoringExpectationItem
+            title="BEFORE"
+            items={[
+              "궁금할 때 마다 정보 검색",
+              "오래 되거나 출처가 불분명한 정보",
+              "'글쓴이'의 상황에 맞는 정보",
+              "원서 마감일 전에 급히 준비 시작",
+              "어디서 들어 본 학교 랜덤 지원",
+            ]}
+          />
+          <TutoringExpectationItem
+            highlight
+            title="AFTER"
+            items={[
+              "최대 6시간 정보 획득 완료",
+              "컨설팅 대표가 직접 전하는 정보",
+              "내 상황에 적용되는 정보",
+              "월 단위 플랜과 함께 체계적으로 준비",
+              "장학금 증액 전략에 따른 학교 선정",
+              "지원 학교별 입시 정보 파악 완료",
+            ]}
+          />
         </div>
       </section>
     </Aos>
@@ -253,14 +266,28 @@ const TutoringExpectationSection = () => {
 
 interface TutoringExpectationItemProps {
   title: string;
-  children: React.ReactNode;
+  items: string[];
+  highlight?: boolean;
 }
 
-const TutoringExpectationItem = ({ title, children }: TutoringExpectationItemProps) => {
+const TutoringExpectationItem = ({ title, items, highlight }: TutoringExpectationItemProps) => {
   return (
     <div className="w-full rounded-3xl bg-content p-8">
-      <p className="text-xl font-bold text-primary md:text-2xl">{title}</p>
-      <p className="mt-4 text-lg font-medium text-muted-foreground">{children}</p>
+      <p
+        className={cn(
+          "text-xl font-bold text-muted-foreground md:text-2xl",
+          highlight && "text-primary",
+        )}
+      >
+        {title}
+      </p>
+      <div className="mt-4 flex flex-col gap-2">
+        {items.map((item, index) => (
+          <p key={index} className="list-item list-inside font-medium text-muted-foreground">
+            {item}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
