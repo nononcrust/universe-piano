@@ -6,11 +6,11 @@ import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { ServiceFloatingButton } from "@/components/service-floating-button";
+import { FreeConsultingSection } from "@/components/services/\bconsulting-free-consulting-section";
 import { ConsultingDocumentAgencySection } from "@/components/services/consulting-document-agency-section";
 import { OverwhelmingResultSection } from "@/components/services/consulting-overwhelming-result-section";
 import { ConsultingReviewSection } from "@/components/services/consulting-review-section";
 import { Aos } from "@/components/ui/aos";
-import { Button } from "@/components/ui/button";
 import { data } from "@/contents/services/consulting";
 import Image from "next/image";
 
@@ -156,24 +156,5 @@ const ConsultingFaqSection = () => {
         />
       ))}
     </FaqSection>
-  );
-};
-
-const FreeConsultingSection = () => {
-  return (
-    <section className="bg-zinc-900 py-32">
-      <Aos className="container">
-        <SectionTitle className="mt-0 whitespace-pre text-left text-white md:leading-normal">
-          더 자세히 알고 싶다면?
-        </SectionTitle>
-        <Button
-          className="mt-8 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-10 text-lg"
-          size="lg"
-          variant="primary"
-        >
-          1회 무료 상담 신청
-        </Button>
-      </Aos>
-    </section>
   );
 };

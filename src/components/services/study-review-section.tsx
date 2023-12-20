@@ -56,7 +56,7 @@ const StudyReviewItem = ({ labels, title, description, imageSrc }: StudyReviewIt
   const dialog = useDialog();
 
   return (
-    <div>
+    <div className="flex flex-1 flex-col">
       <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border">
         <div className="flex justify-center">
           <div className="h-32 w-full bg-gradient-to-b from-gray-200 to-white" />
