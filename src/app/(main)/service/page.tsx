@@ -1,3 +1,6 @@
+import { ROUTE } from "@/constants/route";
+import { redirect } from "next/navigation";
+
 export default function ServicePage() {
-  return <div className="flex-1 border">서비스 페이지</div>;
+  return redirect(ROUTE.SERVICE.CONSULTING);
 }

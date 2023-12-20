@@ -22,7 +22,7 @@ export default function StudyPage() {
     <main className="flex flex-col">
       <HeroSection />
       <section className="container flex justify-center">
-        <button className="hover: mt-16 rounded-full bg-foreground px-10 py-4 text-lg font-bold text-white drop-shadow-lg">
+        <button className="hover: mt-16 rounded-full bg-black px-10 py-4 text-lg font-bold text-white drop-shadow-lg">
           스터디 신청 및 커리큘럼 확인
         </button>
       </section>

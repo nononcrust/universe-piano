@@ -1,8 +1,6 @@
 "use client";
 
-import crewResultImage2 from "@/assets/icons/019-trophy.svg";
-import crewResultImage3 from "@/assets/icons/020-like.svg";
-import crewResultImage1 from "@/assets/icons/022-medal.svg";
+import { ColoredIcon } from "@/components/colored-icon";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
@@ -12,7 +10,7 @@ import { TutoringCurriculumSection } from "@/components/services/tutoring-curric
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
 import { data } from "@/contents/services/tutoring";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 export default function TutoringPage() {
   return (
@@ -105,12 +103,20 @@ const CrewResultSection = () => {
           }
         </SectionSubtitle>
         <div className="mt-12 flex flex-col justify-center gap-4 md:flex-row md:gap-8">
-          <CrewResultItem title="5연속 합격률" description="100%" image={crewResultImage1} />
-          <CrewResultItem title="장학금 수여" description="65% 이상" image={crewResultImage2} />
+          <CrewResultItem
+            title="5연속 합격률"
+            description="100%"
+            icon={<ColoredIcon.Medal className="h-16 w-16" />}
+          />
+          <CrewResultItem
+            title="장학금 수여"
+            description="65% 이상"
+            icon={<ColoredIcon.Trophy className="h-16 w-16" />}
+          />
           <CrewResultItem
             title="장학금 증액"
             description="연간 최대 $30000"
-            image={crewResultImage3}
+            icon={<ColoredIcon.Like className="h-16 w-16" />}
           />
         </div>
         <div className="container mt-12">
@@ -131,15 +137,13 @@ const CrewResultSection = () => {
 interface ScholarshipItemProps {
   title: string;
   description: string;
-  image: StaticImageData;
+  icon: React.ReactNode;
 }
 
-const CrewResultItem = ({ title, description, image }: ScholarshipItemProps) => {
+const CrewResultItem = ({ title, description, icon }: ScholarshipItemProps) => {
   return (
     <div className="flex w-full flex-col items-center rounded-2xl bg-white p-8 shadow-xl md:max-w-[240px]">
-      <div className="flex h-24 w-24 items-center justify-center">
-        <Image className="h-20 w-20" alt="" src={image} priority />
-      </div>
+      <div className="flex h-24 w-24 items-center justify-center">{icon}</div>
       <p className="mt-4 font-semibold text-muted-foreground">{title}</p>
       <p className="mt-2 text-center text-3xl font-bold text-primary">{description}</p>
     </div>
@@ -174,7 +178,7 @@ interface RecommendItemProps {
 
 const RecommendItem = ({ number, title }: RecommendItemProps) => {
   return (
-    <div className="flex w-full max-w-[600px] gap-4 rounded-xl border bg-content p-4">
+    <div className="flex w-full max-w-[600px] gap-4 rounded-xl bg-content p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary font-bold text-white">
           {number}
@@ -217,8 +221,8 @@ interface TutoringCompositionItemProps {
 
 const TutoringCompositionItem = ({ title, description }: TutoringCompositionItemProps) => {
   return (
-    <div className="flex flex-col items-center rounded-2xl border bg-content-light p-8 md:h-[200px]">
-      <Badge>{title}</Badge>
+    <div className="flex flex-col items-center rounded-2xl bg-content p-8 md:h-[200px]">
+      <Badge variant="primary">{title}</Badge>
       <p className="mt-4 text-center font-medium">{description}</p>
     </div>
   );
@@ -254,7 +258,7 @@ interface TutoringExpectationItemProps {
 
 const TutoringExpectationItem = ({ title, children }: TutoringExpectationItemProps) => {
   return (
-    <div className="w-full rounded-2xl border bg-content-light p-8">
+    <div className="w-full rounded-3xl bg-content p-8">
       <p className="text-xl font-bold text-primary md:text-2xl">{title}</p>
       <p className="mt-4 text-lg font-medium text-muted-foreground">{children}</p>
     </div>
@@ -270,13 +274,13 @@ const TutoringInfoSection = () => {
           자세한 정보는 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
         </SectionSubtitle>
         <div className="mt-12 flex flex-col gap-8">
-          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+          <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">과외 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">690,000</li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+          <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">과외 절차</p>
             <ul className="ml-4 list-decimal">
               <li className="mt-4 font-medium text-gray-300">과외 신청서 작성</li>
@@ -286,7 +290,7 @@ const TutoringInfoSection = () => {
               <li className="mt-4 font-medium text-gray-300">과외 시작</li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-zinc-700 bg-zinc-800 p-8">
+          <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">과외 신청서 작성 방법</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">

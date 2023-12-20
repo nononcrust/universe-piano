@@ -33,7 +33,7 @@ export default function AboutCompanyPage() {
 
 const IntroSection = () => {
   return (
-    <section className="bg-zinc-900 py-32">
+    <section className="bg-zinc-900 bg-[url('/images/stars-bg.png')] py-32">
       <Aos className="container">
         <h1 className="text-2xl font-bold text-white md:text-5xl md:leading-tight">
           Create your Universe: Beyond Talent
