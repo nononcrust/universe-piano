@@ -1,3 +1,5 @@
+"use client";
+
 import crewResultImage2 from "@/assets/icons/019-trophy.svg";
 import crewResultImage3 from "@/assets/icons/020-like.svg";
 import crewResultImage1 from "@/assets/icons/022-medal.svg";
