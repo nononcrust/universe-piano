@@ -116,7 +116,9 @@ const RoadmapSection = () => {
       <Aos className="container">
         <SectionTitle>미국 음대 입시 로드맵</SectionTitle>
         <SectionSubtitle>미국 음대 입시 과정은 세 단계로 진행됩니다.</SectionSubtitle>
-        <Image priority className="mt-12" src={roadmapImage} alt="로드맵" />
+        <div className="mt-12 flex justify-center">
+          <Image priority src={roadmapImage} alt="로드맵" />
+        </div>
       </Aos>
     </section>
   );

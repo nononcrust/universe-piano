@@ -40,9 +40,9 @@ const shadcnPlugin = plugin(
     theme: {
       container: {
         center: true,
-        padding: "20px",
+        padding: "16px",
         screens: {
-          "2xl": "900px",
+          "2xl": "1200px",
         },
       },
       extend: {

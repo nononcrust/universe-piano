@@ -110,10 +110,11 @@ export const useCreateAudition = () => {
 
   return useMutation({
     mutationFn: auditionApi.createAudition,
-    onSuccess: () =>
+    onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: queryKeys.all(),
-      }),
+        queryKey: queryKeys.list(),
+      });
+    },
   });
 };
 

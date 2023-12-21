@@ -300,14 +300,8 @@ const TutoringInfoSection = () => {
         <SectionSubtitle className="text-left text-gray-300">
           자세한 정보는 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
         </SectionSubtitle>
-        <div className="mt-12 flex flex-col gap-8">
-          <div className="rounded-2xl bg-zinc-800 p-8">
-            <p className="text-lg font-bold md:text-2xl">과외 비용</p>
-            <ul className="ml-4 list-disc">
-              <li className="mt-4 font-medium text-gray-300">690,000</li>
-            </ul>
-          </div>
-          <div className="rounded-2xl bg-zinc-800 p-8">
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="row-span-2 rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">과외 절차</p>
             <ul className="ml-4 list-decimal">
               <li className="mt-4 font-medium text-gray-300">과외 신청서 작성</li>
@@ -315,6 +309,12 @@ const TutoringInfoSection = () => {
               <li className="mt-4 font-medium text-gray-300">과외 진행 여부 확정</li>
               <li className="mt-4 font-medium text-gray-300">과외 일정 조율 & 계약서 작성</li>
               <li className="mt-4 font-medium text-gray-300">과외 시작</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl bg-zinc-800 p-8">
+            <p className="text-lg font-bold md:text-2xl">과외 비용</p>
+            <ul className="ml-4 list-disc">
+              <li className="mt-4 font-medium text-gray-300">690,000</li>
             </ul>
           </div>
           <div className="rounded-2xl bg-zinc-800 p-8">
