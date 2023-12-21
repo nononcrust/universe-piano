@@ -246,7 +246,7 @@ const StudyInfoSection = () => {
             "스터디 신청 방법 및 월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
           }
         </SectionSubtitle>
-        <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-20 grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
             <ul className="ml-4 list-disc">

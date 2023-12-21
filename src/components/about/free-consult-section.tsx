@@ -7,14 +7,14 @@ import { Button } from "../ui/button";
 
 export const FreeConsultSection = () => {
   return (
-    <section className="relative h-[400px] overflow-hidden bg-zinc-900">
+    <section className="relative overflow-hidden bg-zinc-900 py-24 md:py-32">
       {/* <Image
         src={image}
         alt=""
         className="max-md:min-w-auto absolute brightness-[0.3] max-md:h-full md:top-0 md:object-cover"
       /> */}
       <Aos className="container">
-        <SectionTitle className="mt-32 whitespace-pre text-left text-white md:leading-normal">
+        <SectionTitle className="whitespace-pre text-left text-white md:leading-normal">
           {"미국 음대 입시 관련\n1회 무료 zoom 상담을 제공합니다"}
         </SectionTitle>
         <Button

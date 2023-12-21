@@ -64,7 +64,7 @@ interface WhatWeDoItemProps {
 const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => {
   return (
     <Link className="group relative transition" href={href}>
-      <div className="flex cursor-pointer flex-col rounded-3xl bg-white p-6 shadow-lg brightness-100 group-hover:brightness-50 md:min-h-[320px]">
+      <div className="flex cursor-pointer flex-col rounded-3xl border bg-white p-6 shadow-lg brightness-100 group-hover:brightness-50 md:min-h-[320px]">
         {icon}
         <p className="mt-8 font-semibold md:mt-16">{title}</p>
         <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">{description}</p>

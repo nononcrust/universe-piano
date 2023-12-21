@@ -300,7 +300,7 @@ const TutoringInfoSection = () => {
         <SectionSubtitle className="text-left text-gray-300">
           자세한 정보는 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
         </SectionSubtitle>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="row-span-2 rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">과외 절차</p>
             <ul className="ml-4 list-decimal">

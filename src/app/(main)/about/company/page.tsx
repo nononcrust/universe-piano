@@ -1,5 +1,4 @@
 import mobileImage from "@/assets/images/about/about-company-mobile.png";
-import tabletImage from "@/assets/images/about/about-company-tablet.png";
 import { AboutLogoSlider } from "@/components/about-logo-slider";
 import { FreeConsultSection } from "@/components/about/free-consult-section";
 import { WhatWeDoSection } from "@/components/about/what-we-do-section";
@@ -130,7 +129,7 @@ const SystemSection = () => {
       <Aos className="container">
         <SectionTitle>독보적인 시스템</SectionTitle>
         <SectionSubtitle>오직 유니버스 피아노에서만 가능합니다.</SectionSubtitle>
-        <div className="mt-12 flex flex-col gap-16 md:flex-row">
+        <div className="mt-12 flex flex-col gap-4 md:flex-row">
           <SystemItem
             number={1}
             title="크루 커뮤니티"
@@ -164,7 +163,7 @@ interface SystemItemProps {
 
 const SystemItem = ({ number, title, description }: SystemItemProps) => {
   return (
-    <div className="flex flex-1 flex-col text-center md:text-left">
+    <div className="flex flex-1 flex-col rounded-3xl border bg-content-light p-8 text-center md:text-left">
       <p className="text-lg font-bold text-primary">0{number}</p>
       <p className="text-xl font-semibold md:text-2xl">{title}</p>
       <p className="mt-2 whitespace-pre-wrap text-muted-foreground md:whitespace-normal">
@@ -237,31 +236,34 @@ const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
 const InstagramSection = () => {
   return (
     <Aos>
-      <section className="container my-40">
+      <section className="container flex h-[560px] flex-col overflow-hidden md:flex-row">
         <div className="flex flex-col justify-between gap-16 md:flex-row">
-          <div className="flex flex-col">
-            <SectionTitle className="mt-0 whitespace-pre-wrap text-center md:text-left md:leading-normal">
-              {"유학 준비도 트렌디 하게,\nMZ 대표의 소통 방식"}
-            </SectionTitle>
-            <p className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-left">
-              {
-                "유니버스 피아노는 인스타그램을 주요 기반으로 성장해왔습니다.\n대표와 크루들의 최신 소식은 인스타그램 계정에서 확인 하실 수 있습니다."
-              }
-            </p>
-            <div className="flex justify-center md:justify-start">
-              <Link href={siteConfig.links.instagram}>
-                <Instagram className="mt-2 h-16 w-16 -translate-x-2 cursor-pointer transition hover:scale-110" />
-              </Link>
+          <div className="flex items-center justify-center">
+            <div className="flex flex-col">
+              <SectionTitle className="mt-16 whitespace-pre-wrap text-center md:mt-0 md:text-left md:leading-normal">
+                {"유학 준비도 트렌디 하게,\nMZ 대표의 소통 방식"}
+              </SectionTitle>
+              <p className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-left">
+                {
+                  "유니버스 피아노는 인스타그램을 주요 기반으로 성장해왔습니다.\n대표와 크루들의 최신 소식은 인스타그램 계정에서 확인 하실 수 있습니다."
+                }
+              </p>
+              <div className="flex flex-1 justify-center md:justify-start">
+                <Link className="mt-2" href={siteConfig.links.instagram}>
+                  <Instagram className="h-16 w-16 cursor-pointer transition hover:scale-110 md:-translate-x-2" />
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="flex items-end justify-center gap-4 md:justify-start">
-            <div>
-              <Image priority className="min-w-[80px]" width={80} src={mobileImage} alt="" />
-            </div>
-            <div>
-              <Image priority className="min-w-[300px]" width={300} src={tabletImage} alt="" />
-            </div>
-          </div>
+        </div>
+        <div className="flex flex-1 items-end justify-center gap-4">
+          <Image
+            priority
+            className="min-w-[200px] translate-y-16 md:min-w-[300px] md:translate-y-32"
+            width={80}
+            src={mobileImage}
+            alt=""
+          />
         </div>
       </section>
     </Aos>
