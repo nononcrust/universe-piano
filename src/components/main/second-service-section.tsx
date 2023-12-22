@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ColoredIcon } from "../colored-icon";
 import { Icon } from "../icon";
 import { Badge } from "../ui/badge";
-import { Card } from "./intro-section";
+import { Card } from "./card";
 import { LandingSectionSubtitle } from "./landing-section-subtitle";
 import { LandingSectionTitle } from "./landing-section-title";
 

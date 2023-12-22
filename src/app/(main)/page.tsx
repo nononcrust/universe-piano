@@ -3,6 +3,7 @@ import { IntroSection } from "@/components/main/intro-section";
 import { ReviewSection } from "@/components/main/review-section";
 import { SecondServiceSection } from "@/components/main/second-service-section";
 import { ServiceAccordionSection } from "@/components/main/service-accordion-section";
+import { SupportSection } from "@/components/main/support-section";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       {/* <ServiceSection /> */}
       <SecondServiceSection />
       <CommunitySection />
+      <SupportSection />
       <ReviewSection />
       <ServiceAccordionSection />
     </main>
