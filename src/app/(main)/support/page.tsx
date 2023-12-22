@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { data as consultingData } from "@/contents/services/consulting";
 import { data as studyData } from "@/contents/services/study";
 import { data as tutoringData } from "@/contents/services/tutoring";
 import { useState } from "react";
@@ -18,15 +17,15 @@ import { useState } from "react";
 const ROWS_PER_PAGE = 5;
 
 const FAQS = {
-  all: [...consultingData.faq, ...tutoringData.faq, ...studyData.faq],
+  all: [...tutoringData.faq, ...studyData.faq],
   tutoring: tutoringData.faq,
-  consulting: consultingData.faq,
+  // consulting: consultingData.faq,
   study: studyData.faq,
 } as const;
 
 const TAB_LIST = {
   all: "전체",
-  consulting: "입시 컨설팅",
+  // consulting: "입시 컨설팅",
   tutoring: "미국 음대 입시 과외",
   study: "스터디",
 } as const;

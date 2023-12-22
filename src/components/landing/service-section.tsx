@@ -1,10 +1,6 @@
 "use client";
 
-import instagramIcon from "@/assets/icons/instagram.png";
-import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import { siteConfig } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
-import Image from "next/image";
 import Link from "next/link";
 import { ColoredIcon } from "../colored-icon";
 import { Icon } from "../icon";
@@ -98,25 +94,6 @@ export const ServiceSection = () => {
           </div> */}
           <div className="flex flex-1 items-end">
             <p className="font-medium text-muted-foreground">1월 초 오픈 예정</p>
-          </div>
-        </Card>
-        <Card>
-          <div className="mb-4 flex">
-            <IconHeader>
-              <ColoredIcon.Like className="h-6 w-6" />
-            </IconHeader>
-          </div>
-          <Card.Title>SNS 커뮤니티</Card.Title>
-          <Card.Subtitle>
-            유니버스 피아노는 2019년부터 인스타그램을 기반으로 성장해 왔습니다.
-          </Card.Subtitle>
-          <div className="flex flex-1 items-end gap-2">
-            <Link href={siteConfig.links.instagram} className="transition hover:-translate-y-1">
-              <Image priority src={instagramIcon} className="h-10 w-10 rounded-[10px]" alt="" />
-            </Link>
-            <Link href={siteConfig.links.blog} className="transition hover:-translate-y-1">
-              <Image priority src={naverBlogIcon} className="h-10 w-10 rounded-[10px]" alt="" />
-            </Link>
           </div>
         </Card>
         <Card className="group cursor-pointer hover:border-gray-400" half>

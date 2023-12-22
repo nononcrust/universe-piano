@@ -10,7 +10,7 @@ export const siteConfig = {
   isa: "최경원",
   title: "유니버스 피아노 - 미국 음대 입시의 모든것",
   address: "울산광역시 동구 봉수로 250, 단지 내 상가 401-B101",
-  email: "universepaino@naver.com",
+  email: "universepiano@naver.com",
   description: "유니버스 피아노 홈페이지",
   links: {
     instagram: "https://www.instagram.com/universe_piano",
@@ -47,24 +47,24 @@ export const siteConfig = {
 };
 
 export const siteContents = {
-  about: {
-    title: "소개",
-    href: ROUTE.ABOUT.LIST,
-    children: [
-      {
-        title: "유니버스 피아노",
-        href: ROUTE.ABOUT.COMPANY,
-      },
-      // {
-      //   title: "포트폴리오",
-      //   href: ROUTE.ABOUT.PORTFOLIO,
-      // },
-      // {
-      //   title: "대표의 스토리",
-      //   href: ROUTE.ABOUT.STORY,
-      // },
-    ],
-  },
+  // about: {
+  //   title: "소개",
+  //   href: ROUTE.ABOUT.LIST,
+  //   children: [
+  //     {
+  //       title: "유니버스 피아노",
+  //       href: ROUTE.ABOUT.COMPANY,
+  //     },
+  //     {
+  //       title: "포트폴리오",
+  //       href: ROUTE.ABOUT.PORTFOLIO,
+  //     },
+  //     {
+  //       title: "대표의 스토리",
+  //       href: ROUTE.ABOUT.STORY,
+  //     },
+  //   ],
+  // },
   // review: {
   //   title: "리뷰",
   //   href: ROUTE.REVIEW.LIST,
@@ -83,10 +83,10 @@ export const siteContents = {
     title: "서비스",
     href: ROUTE.SERVICE.LIST,
     children: [
-      {
-        title: "입시 컨설팅",
-        href: ROUTE.SERVICE.CONSULTING,
-      },
+      // {
+      //   title: "입시 컨설팅",
+      //   href: ROUTE.SERVICE.CONSULTING,
+      // },
       {
         title: "미국 음대 입시 과외",
         href: ROUTE.SERVICE.TUTORING,
@@ -150,9 +150,9 @@ export const siteContents = {
 };
 
 export const footerNav = {
-  about: {
-    ...siteContents.about,
-  },
+  // about: {
+  //   ...siteContents.about,
+  // },
   notice: {
     ...siteContents.notice,
   },

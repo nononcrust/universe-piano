@@ -1,5 +1,7 @@
 "use client";
 
+import { ROUTE } from "@/constants/route";
+import Link from "next/link";
 import { ColoredIcon } from "../colored-icon";
 import { Icon } from "../icon";
 import { Card } from "../main/intro-section";
@@ -9,7 +11,7 @@ import { LandingSectionTitle } from "./landing-section-title";
 
 export const SecondServiceSection = () => {
   return (
-    <section className="container pt-32">
+    <section className="container pt-16">
       <LandingSectionTitle>2차 오디션 관련 서비스</LandingSectionTitle>
       <LandingSectionSubtitle>
         2024년 가을 학기 입시생들을 위한 서비스입니다.
@@ -25,16 +27,18 @@ export const SecondServiceSection = () => {
 
 const AuditionResultCard = () => {
   return (
-    <Card className="group relative cursor-pointer overflow-hidden hover:border-gray-400">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Card.Title>오디션 결과 발표</Card.Title>
+    <Link href={ROUTE.NEWS.AUDITION.LIST} className="row-span-2">
+      <Card className="group relative cursor-pointer overflow-hidden hover:border-gray-400">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Card.Title>오디션 결과 발표</Card.Title>
+          </div>
+          <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1 transition group-hover:translate-x-1" />
         </div>
-        <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1 transition group-hover:translate-x-1" />
-      </div>
-      <Card.Subtitle>로그인 후에 미국 음대 오디션 결과를 확인 하실 수 있습니다.</Card.Subtitle>
-      <ColoredIcon.Notice className="absolute -bottom-8 left-1/2 h-52 w-52 -translate-x-1/2" />
-    </Card>
+        <Card.Subtitle>로그인 후에 미국 음대 오디션 결과를 확인 하실 수 있습니다.</Card.Subtitle>
+        <ColoredIcon.Notice className="absolute -bottom-8 left-1/2 h-52 w-52 -translate-x-1/2" />
+      </Card>
+    </Link>
   );
 };
 

@@ -53,8 +53,9 @@ export const HeaderNav = () => {
           </NavigationMenuContent>
         </NavigationMenuItem> */}
 
-        <HeaderNavItem title="소개" href={ROUTE.ABOUT.COMPANY} />
-        <HeaderNavItem title="서비스" href={ROUTE.SERVICE.CONSULTING} />
+        {/* <HeaderNavItem title="소개" href={ROUTE.ABOUT.COMPANY} /> */}
+        {/* TODO: 컨설팅 페이지 오픈 이후 컨설팅 페이지로 수정 */}
+        <HeaderNavItem title="서비스" href={ROUTE.SERVICE.TUTORING} />
         <HeaderNavItem title="소식" href={ROUTE.NEWS.NOTICE.LIST} />
         <HeaderNavItem title="고객지원" href={ROUTE.SUPPORT} />
       </NavigationMenuList>

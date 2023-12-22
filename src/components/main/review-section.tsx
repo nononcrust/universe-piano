@@ -49,12 +49,12 @@ const data = [
 
 export const ReviewSection = () => {
   return (
-    <section className="flex flex-col pt-32">
+    <section className="flex flex-col pt-24">
       <div className="container flex flex-col">
         <LandingSectionTitle>조작 없는 후기</LandingSectionTitle>
         <LandingSectionSubtitle>유니버스 크루들의 후기를 확인 해보세요.</LandingSectionSubtitle>
       </div>
-      <div className="container mt-8 columns-1 md:columns-3">
+      <div className="container mt-8 flex gap-4 overflow-x-auto scrollbar-hide md:grid md:grid-cols-3">
         {data.map((item, index) => (
           <ReviewItem key={index} {...item} />
         ))}
@@ -72,9 +72,7 @@ interface ReviewItemProps {
 const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
   return (
     <div
-      className={cn(
-        "mb-4 break-inside-avoid rounded-2xl border bg-content-light p-6 max-md:min-w-[320px] md:min-h-[120px]",
-      )}
+      className={cn("min-h-[300px] rounded-2xl border bg-content-light p-6 max-md:min-w-[320px]")}
     >
       <p className="text-xl font-semibold">
         {name}

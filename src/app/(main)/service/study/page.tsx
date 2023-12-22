@@ -7,6 +7,7 @@ import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { ServiceFloatingButton } from "@/components/service-floating-button";
+import { StudyCtaSection } from "@/components/services/study-cta-section";
 import { StudyMissionSection } from "@/components/services/study-mission-section";
 import { StudyReviewSection } from "@/components/services/study-review-section";
 import { WhyUniverseItem } from "@/components/services/study-why-universe-item";
@@ -19,11 +20,7 @@ export default function StudyPage() {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      <section className="container flex justify-center">
-        <button className="hover: mt-16 rounded-full bg-black px-10 py-4 text-lg font-bold text-white drop-shadow-lg">
-          스터디 신청 및 커리큘럼 확인
-        </button>
-      </section>
+      <StudyCtaSection />
       <CheckPointSection />
       <StudyCompositionSection />
       <WhyUniverseSection />
