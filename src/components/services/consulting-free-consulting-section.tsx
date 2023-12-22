@@ -13,7 +13,7 @@ export const FreeConsultingSection = () => {
           더 자세히 알고 싶다면?
         </SectionTitle>
         <Button
-          className="mt-8 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-10 text-lg"
+          className="mt-8 h-14 rounded-full px-10 text-lg"
           size="lg"
           variant="primary"
           onClick={() => channel.openChat()}

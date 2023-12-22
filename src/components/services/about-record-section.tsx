@@ -6,13 +6,13 @@ import { Aos } from "../ui/aos";
 
 export const AboutRecordSection = () => {
   return (
-    <section className="bg-content py-24">
+    <section className="bg-content py-36">
       <Aos className="container">
         <SectionTitle className="whitespace-pre-wrap md:leading-normal">
           <span className="text-primary">2019</span>
           {"년도부터 미국 음대 유학을 꿈꾸는 분들과\n함께 성장해 왔습니다"}
         </SectionTitle>
-        <div className="my-12 grid grid-cols-2 gap-4 md:my-24 md:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-4 md:mt-24 md:grid-cols-4">
           <AboutRecordItem
             title="합격률"
             value={<CountUp end={100} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
@@ -50,7 +50,7 @@ interface AboutRecordItemProps {
 const AboutRecordItem = ({ title, value }: AboutRecordItemProps) => {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-4xl font-bold text-primary">{value}</p>
+      <p className="text-4xl font-bold text-primary md:text-[56px]">{value}</p>
       <p className="font-medium">{title}</p>
     </div>
   );

@@ -11,7 +11,7 @@ export const WhatWeDoSection = () => {
     <section className="bg-content py-32">
       <Aos className="container">
         <p className="text-lg font-semibold text-primary">Universe Piano</p>
-        <SectionTitle className="mt-2 whitespace-pre-wrap text-left md:leading-normal">
+        <SectionTitle className="mt-2 whitespace-pre-wrap text-left">
           {
             "미국 음대 입시의 핵심 요소를 기반으로\n미국 음대 유학의 새로운 패러다임을 만들어 갑니다"
           }
@@ -21,25 +21,27 @@ export const WhatWeDoSection = () => {
             title="미국 음대 입시 컨설팅"
             description="미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다."
             href={ROUTE.SERVICE.CONSULTING}
-            icon={<ColoredIcon.Idea className="h-12 w-12" />}
+            icon={<ColoredIcon.Idea className="h-10 w-10" />}
           />
           <WhatWeDoItem
             title="미국 음대 입시 과외"
             description="한 달에 딱 한 분에게만 주어지는 기회! 맞춤형 정보, 장학금 전략, 그리고 학교 선정까지 단기간에 완성합니다."
             href={ROUTE.SERVICE.TUTORING}
-            icon={<ColoredIcon.Chat className="h-12 w-12" />}
+            icon={<ColoredIcon.Chat className="h-10 w-10" />}
           />
           <WhatWeDoItem
             title="영어 스터디"
             description="음대생을 위한 영어 스터디, 수준에 맞는 공부 방법으로 목표 점수 달성을 도와드립니다."
             href={ROUTE.SERVICE.STUDY}
-            icon={<ColoredIcon.Pencil className="h-12 w-12" />}
+            icon={<ColoredIcon.Pencil className="h-10 w-10" />}
           />
           <div className="rounded-3xl bg-white p-6 md:min-h-[320px]">
-            <ColoredIcon.Storage className="h-12 w-12" />
-            <div className="mt-8 flex gap-2 md:mt-16">
-              <p className="font-semibold">독학 키트</p>
-              <p className="text-medium rounded-lg bg-zinc-400 px-2 py-1 text-xs text-white">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
+              <ColoredIcon.Storage className="h-10 w-10" />
+            </div>
+            <div className="mt-8 flex items-center gap-2 md:mt-16">
+              <p className="text-2xl font-semibold">독학 키트</p>
+              <p className="text-medium rounded-lg bg-zinc-300 px-2 py-1 text-xs text-white">
                 준비중
               </p>
             </div>
@@ -64,8 +66,10 @@ const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => 
   return (
     <Link className="group relative transition" href={href}>
       <div className="flex cursor-pointer flex-col rounded-3xl bg-white p-6 brightness-100 md:min-h-[320px] md:group-hover:brightness-50">
-        {icon}
-        <p className="mt-8 font-semibold md:mt-16">{title}</p>
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
+          {icon}
+        </div>
+        <p className="mt-8 text-2xl font-semibold md:mt-16">{title}</p>
         <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">{description}</p>
       </div>
       <div className="absolute right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 cursor-pointer rounded-full bg-black/75 px-3 py-1 text-xs text-white opacity-0 md:group-hover:opacity-100">

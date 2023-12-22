@@ -25,6 +25,8 @@ import {
   Settings,
   ShoppingBasket,
   ShoppingCart,
+  Siren,
+  Sparkles,
   Sprout,
   Star,
   User,
@@ -68,4 +70,6 @@ export const Icon = {
   Info: Info,
   Zap: Zap,
   Plus: Plus,
+  Sparkles: Sparkles,
+  Siren: Siren,
 };

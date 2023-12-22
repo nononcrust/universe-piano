@@ -12,7 +12,9 @@ export const ServiceAccordionSection = () => {
   return (
     <section className="container pt-24">
       <LandingSectionTitle>서비스 안내</LandingSectionTitle>
-      <LandingSectionSubtitle>원하시는 서비스를 찾아보세요.</LandingSectionSubtitle>
+      <LandingSectionSubtitle>
+        아래 메뉴를 통해 내 상황에 맞는 서비스를 선택해보세요.
+      </LandingSectionSubtitle>
       <div className="mt-4">
         <Accordion type="single" collapsible>
           <AccordionItem value="1">
@@ -22,7 +24,10 @@ export const ServiceAccordionSection = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent className="ml-1 whitespace-pre-wrap">
-              <p className="text-xl font-semibold">미국 음대 입시 과외</p>
+              <div className="flex items-center">
+                <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
+                <p className="ml-2 text-xl font-semibold">미국 음대 입시 과외</p>
+              </div>
               <p className="mt-2 text-base font-medium text-muted-foreground">
                 {
                   "한 달 딱 한분에게만 주어지는 기회!\n맞춤형 정보, 장학금 전략, 학교 선정까지 단기간에 완성합니다."
@@ -45,7 +50,10 @@ export const ServiceAccordionSection = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent className="ml-1 whitespace-pre-wrap">
-              <p className="text-xl font-semibold">미국 음대 입시 컨설팅</p>
+              <div className="flex items-center">
+                <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
+                <p className="ml-2 text-xl font-semibold">미국 음대 입시 컨설팅</p>
+              </div>
               <p className="mt-2 text-base font-medium text-muted-foreground">
                 미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다.
               </p>
@@ -66,7 +74,10 @@ export const ServiceAccordionSection = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent className="ml-1 whitespace-pre-wrap">
-              <p className="text-xl font-semibold">영어 스터디</p>
+              <div className="flex items-center">
+                <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
+                <p className="ml-2 text-xl font-semibold">영어 스터디</p>
+              </div>
               <p className="mt-2 text-base font-medium text-muted-foreground">
                 {
                   "음대생을 위한 영어 스터디,\n수준에 맞는 공부 방법으로 목표 점수 달성을 도와드립니다."
@@ -91,7 +102,10 @@ export const ServiceAccordionSection = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent className="ml-1 whitespace-pre-wrap">
-              <p className="text-xl font-semibold">독학 키트</p>
+              <div className="flex items-center">
+                <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
+                <p className="ml-2 text-xl font-semibold">독학 키트</p>
+              </div>
               <p className="mt-2 text-base font-medium text-muted-foreground">
                 미국 음대 독학러에게 필요한 서비스를 제공합니다.
               </p>
@@ -105,7 +119,10 @@ export const ServiceAccordionSection = () => {
                 <p className="mr-4 mt-8 font-medium text-muted-foreground">준비중</p>
               </div>
               <div className="my-8 border-b" />
-              <p className="text-xl font-semibold">미국 음대 입시 과외</p>
+              <div className="flex items-center">
+                <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
+                <p className="ml-2 text-xl font-semibold">미국 음대 입시 과외</p>
+              </div>
               <p className="mt-2 text-base font-medium text-muted-foreground">
                 {"혼자 하더라도 제대로 준비하자!\n맞춤형 정보 + 장학금 전략 + 학교 선정"}
               </p>

@@ -67,7 +67,12 @@ const AuditionKitCard = () => {
     <Card half>
       <div className="flex items-center gap-2">
         {/* <Icon.Leaf className="h-5 w-5 fill-primary text-primary" /> */}
-        <Card.Title>오디션 119 키트</Card.Title>
+        <Card.Title>
+          <div className="flex items-center">
+            <Icon.Siren className="h-6 w-6 fill-primary text-primary" />
+            <p className="ml-2">오디션 119 키트</p>
+          </div>
+        </Card.Title>
         <Badge className="bg-white" variant="outline">
           준비중
         </Badge>

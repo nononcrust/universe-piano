@@ -16,8 +16,10 @@ import { LandingSectionTitle } from "./landing-section-title";
 export const CommunitySection = () => {
   return (
     <section className="container pt-24">
-      <LandingSectionTitle>Create your Universe,</LandingSectionTitle>
-      <LandingSectionSubtitle>세상에 없던 방식으로</LandingSectionSubtitle>
+      <LandingSectionTitle>유니버스 피아노 커뮤니티</LandingSectionTitle>
+      <LandingSectionSubtitle>
+        다양한 사람들과 정보를 나눌 수 있는 공간을 제공하고 있어요.
+      </LandingSectionSubtitle>
       <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         <SnsCard />
         <OfflineCard />

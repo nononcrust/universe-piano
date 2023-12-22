@@ -236,7 +236,7 @@ const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
 const InstagramSection = () => {
   return (
     <Aos>
-      <section className="container flex h-[560px] flex-col overflow-hidden md:flex-row">
+      <section className="container flex h-[560px] flex-col items-center overflow-hidden md:flex-row md:gap-32">
         <div className="flex flex-col justify-between gap-16 md:flex-row">
           <div className="flex items-center justify-center">
             <div className="flex flex-col">
@@ -256,10 +256,10 @@ const InstagramSection = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-1 items-end justify-center gap-4">
+        <div className="flex h-[400px] w-full flex-1 items-end justify-center gap-4 overflow-hidden rounded-[40px] bg-content">
           <Image
             priority
-            className="min-w-[200px] translate-y-16 md:min-w-[300px] md:translate-y-32"
+            className="min-w-[200px] translate-y-36 md:min-w-[240px] md:translate-y-32"
             width={80}
             src={mobileImage}
             alt=""

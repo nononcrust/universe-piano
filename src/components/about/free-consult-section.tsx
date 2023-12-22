@@ -15,10 +15,10 @@ export const FreeConsultSection = () => {
       /> */}
       <Aos className="container">
         <SectionTitle className="whitespace-pre text-left text-white md:leading-normal">
-          {"미국 음대 입시 관련\n1회 무료 zoom 상담을 제공합니다"}
+          {"미국 음대 입시 관련\n1회 무료 zoom 상담을 제공합니다."}
         </SectionTitle>
         <Button
-          className="mt-8 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-10 text-lg"
+          className="mt-8 h-14 rounded-full px-10 text-lg"
           size="lg"
           variant="primary"
           onClick={() => channel.openChat()}

@@ -14,6 +14,7 @@ import { WhyUniverseItem } from "@/components/services/study-why-universe-item";
 import { Aos } from "@/components/ui/aos";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
 import { data } from "@/contents/services/study";
+import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
 
 export default function StudyPage() {
@@ -197,8 +198,7 @@ const StudyExpectationSection = () => {
   return (
     <Aos className="my-32">
       <section className="container">
-        <SectionTitle>스터디 기대 효과</SectionTitle>
-        <div className="mt-12 flex flex-col gap-8">
+        <div className="mt-12 flex flex-col gap-8 md:gap-32">
           <StudyExpectationItem
             title="음대생 영어 공부의 마지노선"
             subtitle="유니버스 피아노 스터디"
@@ -206,6 +206,7 @@ const StudyExpectationSection = () => {
             image={studyExpectationImage1}
           />
           <StudyExpectationItem
+            reverse
             title="스터디 참여 결과"
             subtitle="점수가 오른다!"
             description="스터디 크루분들은 평균 6개월 만에 토플 80점을 달성합니다. 각자의 시작점이 다르기 때문에 얼마나 어떤 방법으로 공부해야 하는지는 특정 짓기 어렵습니다. 다만, 스터디 크루 분들이 만족해하시는 부분은 ‘정말 얻어 가는 게 있고’, ‘실질적으로 영어 점수가 오른다.’라는 것이었습니다."
@@ -222,6 +223,7 @@ interface StudyExpecttationItemProps {
   subtitle: string;
   description: string;
   image: StaticImageData;
+  reverse?: boolean;
 }
 
 const StudyExpectationItem = ({
@@ -229,14 +231,15 @@ const StudyExpectationItem = ({
   subtitle,
   description,
   image,
+  reverse,
 }: StudyExpecttationItemProps) => {
   return (
-    <div className="flex flex-col md:flex-row md:gap-16">
+    <div className={cn("flex flex-col md:flex-row md:gap-16", reverse && "md:flex-row-reverse")}>
       <Image className="min-w-[450px] rounded-3xl md:flex-1" src={image} alt="" />
       <div className="flex flex-1 flex-col">
-        <p className="mt-4 text-xl font-semibold md:mt-12 md:text-3xl">{title}</p>
-        <p className="mt-4 text-lg font-medium">{subtitle}</p>
-        <p className="mt-4 font-medium text-muted-foreground">{description}</p>
+        <SectionTitle className="mt-4 text-left md:mt-12">{title}</SectionTitle>
+        <p className="mt-4 text-lg font-semibold md:text-2xl">{subtitle}</p>
+        <p className="mt-4 font-medium text-muted-foreground md:text-xl">{description}</p>
       </div>
     </div>
   );

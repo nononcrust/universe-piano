@@ -24,7 +24,7 @@ export const FaqSection = ({ children }: FaqSectionProps) => {
         </Accordion.Root>
         <div className="mt-12 flex items-center justify-center">
           <Link href={ROUTE.SUPPORT}>
-            <Button variant="outline" className="h-12 rounded-full pl-10 pr-8 text-base" size="lg">
+            <Button variant="primary" className="h-12 rounded-full pl-10 pr-8 text-base" size="lg">
               더보기
               <Icon.ChevronRight className="ml-1 h-5 w-5" />
             </Button>
@@ -43,8 +43,8 @@ interface FaqSectionItemProps {
 
 export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProps) => {
   return (
-    <Accordion.Item value={value} className="flex flex-col rounded-xl bg-white p-4">
-      <Accordion.Trigger className="flex items-center justify-between font-semibold">
+    <Accordion.Item value={value} className="flex flex-col rounded-xl bg-white">
+      <Accordion.Trigger className="flex items-center justify-between p-4 font-semibold">
         <div className="flex items-center gap-4">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-content font-bold">
             Q
@@ -53,7 +53,7 @@ export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProp
         </div>
         <Icon.ChevronDown className="ml-4" />
       </Accordion.Trigger>
-      <Accordion.Content className="ml-12 mr-4 mt-4 whitespace-pre-wrap text-[15px] font-medium text-muted-foreground transition">
+      <Accordion.Content className="ml-12 mr-4 whitespace-pre-wrap p-4 pt-0 text-[15px] font-medium text-muted-foreground transition">
         {description}
       </Accordion.Content>
     </Accordion.Item>

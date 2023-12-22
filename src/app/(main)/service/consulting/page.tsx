@@ -6,7 +6,6 @@ import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { FreeConsultingSection } from "@/components/services/\bconsulting-free-consulting-section";
-import { ConsultingDocumentAgencySection } from "@/components/services/consulting-document-agency-section";
 import { OverwhelmingResultSection } from "@/components/services/consulting-overwhelming-result-section";
 import { ConsultingReviewSection } from "@/components/services/consulting-review-section";
 import { Aos } from "@/components/ui/aos";
@@ -21,7 +20,6 @@ export default function ConsultingPage() {
       <LogoSliderSection />
       <ConsultingExampleSection />
       <RoadmapSection />
-      <ConsultingDocumentAgencySection />
       <ConsultingReviewSection />
       <ConsultingInfoSection />
       <ConsultingFaqSection />
@@ -110,11 +108,11 @@ const ConsultingExampleItem = ({ number, title }: ConsultingExampleItemProps) =>
 
 const RoadmapSection = () => {
   return (
-    <section className="my-32">
+    <section className="bg-content py-32">
       <Aos className="container">
         <SectionTitle>미국 음대 입시 로드맵</SectionTitle>
         <SectionSubtitle>미국 음대 입시 과정은 세 단계로 진행됩니다.</SectionSubtitle>
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12 flex justify-center rounded-[32px] bg-white p-24">
           <Image priority src={roadmapImage} alt="로드맵" />
         </div>
       </Aos>

@@ -10,8 +10,10 @@ import { ZoomCard } from "./zoom-card";
 export const SupportSection = () => {
   return (
     <section className="container pt-24">
-      <LandingSectionTitle>Create your Universe,</LandingSectionTitle>
-      <LandingSectionSubtitle>세상에 없던 방식으로</LandingSectionSubtitle>
+      <LandingSectionTitle>전체 메뉴</LandingSectionTitle>
+      <LandingSectionSubtitle>
+        찾으시는 서비스가 있으신가요? 전체 메뉴를 확인해보세요.
+      </LandingSectionSubtitle>
       <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         <HelpCenterCard />
         <ServiceCard />
