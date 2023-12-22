@@ -44,17 +44,19 @@ interface FaqSectionItemProps {
 export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProps) => {
   return (
     <Accordion.Item value={value} className="flex flex-col rounded-xl bg-white">
-      <Accordion.Trigger className="flex items-center justify-between p-4 font-semibold">
+      <Accordion.Trigger className="flex items-center justify-between p-4 font-semibold transition-all [&[data-state=open]>svg]:rotate-180">
         <div className="flex items-center gap-4">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-content font-bold">
             Q
           </div>
           <p className="text-left text-base font-semibold md:text-base">{title}</p>
         </div>
-        <Icon.ChevronDown className="ml-4" />
+        <Icon.ChevronDown className="ml-4 transition-transform ease-out" />
       </Accordion.Trigger>
-      <Accordion.Content className="ml-12 mr-4 whitespace-pre-wrap p-4 pt-0 text-[15px] font-medium text-muted-foreground transition">
-        {description}
+      <Accordion.Content className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+        <div className="ml-12 mr-4 whitespace-pre-wrap p-4 pt-0 text-[15px] font-medium text-muted-foreground">
+          {description}
+        </div>
       </Accordion.Content>
     </Accordion.Item>
   );

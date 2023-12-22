@@ -82,16 +82,16 @@ interface CurriculumItemProps {
 
 const CurriculumItem = ({ value, title, description, items }: CurriculumItemProps) => {
   return (
-    <Accordion.Item value={value} className="flex flex-col rounded-2xl bg-white p-6">
-      <Accordion.Trigger className="flex flex-col gap-2">
-        <p className="text-lg font-bold text-primary md:text-xl">{title}</p>
-        <div className="flex w-full items-center justify-between">
+    <Accordion.Item value={value} className="flex flex-col rounded-2xl bg-white">
+      <Accordion.Trigger className="flex items-center p-6 transition-all [&[data-state=open]>svg]:rotate-180">
+        <div className="flex w-full flex-col justify-center gap-2">
+          <p className="text-left text-lg font-bold text-primary md:text-xl">{title}</p>
           <p className="text-left text-lg font-semibold">{description}</p>
-          <Icon.ChevronDown className="ml-4 h-10 w-10 rounded-full bg-content p-2" />
         </div>
+        <Icon.ChevronDown className="ml-4 h-10 w-10 rounded-full bg-content p-2 transition-transform duration-200" />
       </Accordion.Trigger>
-      <Accordion.Content>
-        <div className="flex flex-col gap-4 pt-4">
+      <Accordion.Content className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+        <div className="flex flex-col gap-4 p-6 pt-0">
           {items.map((item, index) => (
             <p
               className="ml-5 list-item list-outside text-[15px] font-medium text-muted-foreground md:text-base"
