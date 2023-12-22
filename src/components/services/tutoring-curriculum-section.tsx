@@ -7,7 +7,7 @@ import { Aos } from "../ui/aos";
 
 const data = [
   {
-    title: "[1회차]",
+    title: "1회차",
     description: "상황 진단 및 미국 음대 입시 전반부 안내",
     items: [
       "현대 상황 진단: 우선 순위 및 방향 설정",
@@ -26,7 +26,7 @@ const data = [
     ],
   },
   {
-    title: "[2회차]",
+    title: "2회차",
     description: "영어 테스트 결과 안내 및 미국 음대 입시 후반부 안내",
     items: [
       "영어 레벨테스트 결과 안내: 영어 공부법 제시",
@@ -41,7 +41,7 @@ const data = [
     ],
   },
   {
-    title: "[3회차]",
+    title: "3회차",
     description: "학교 선정 및 입시 준비 플랜 제공",
     items: ["학교 선정", "맞춤형 입시 준비 플랜 제공"],
   },
