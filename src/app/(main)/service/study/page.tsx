@@ -1,13 +1,13 @@
-import studyCompositionImage1 from "@/assets/images/study/study-composition-1.jpg";
-import studyCompositionImage2 from "@/assets/images/study/study-composition-2.jpg";
-import studyCompositionImage3 from "@/assets/images/study/study-composition-3.jpg";
+import studyCompositionImage1 from "@/assets/images/study/2024-study-1.jpg";
+import studyCompositionImage2 from "@/assets/images/study/2024-study-2.jpg";
+import studyCompositionImage3 from "@/assets/images/study/2024-study-3.jpg";
+import studyExpectationImage1 from "@/assets/images/study/study-expectation-1.jpg";
+import studyExpectationImage2 from "@/assets/images/study/study-expectation-2.jpg";
 import hero3dImage from "@/assets/images/study/study-hero-3d.png";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
-import { ServiceFloatingButton } from "@/components/service-floating-button";
-import { StudyCtaSection } from "@/components/services/study-cta-section";
 import { StudyMissionSection } from "@/components/services/study-mission-section";
 import { StudyReviewSection } from "@/components/services/study-review-section";
 import { WhyUniverseItem } from "@/components/services/study-why-universe-item";
@@ -20,7 +20,6 @@ export default function StudyPage() {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      <StudyCtaSection />
       <CheckPointSection />
       <StudyCompositionSection />
       <WhyUniverseSection />
@@ -29,7 +28,6 @@ export default function StudyPage() {
       <StudyReviewSection />
       <StudyInfoSection />
       <StudyFaqSection />
-      <ServiceFloatingButton />
     </main>
   );
 }
@@ -65,7 +63,7 @@ const CheckPointSection = () => {
         <div className="mt-12 flex flex-col items-center gap-4">
           <CheckPointItem
             number={1}
-            title="스터디는 학원처럼 매일 수업을 듣는 곳이 아닙니다. 학원과 같은 수업 방식을 원하시는 분들은 학원에 다니시는 것을 추천드리겠습니다."
+            title="스터디는 학원처럼 매일 수업을 듣는 곳이 아닙니다. 학원 수업 방식을 원하시는 분들은 학원에 다니시는 것을 추천드리겠습니다."
           />
           <CheckPointItem
             number={2}
@@ -103,7 +101,12 @@ const StudyCompositionSection = () => {
   return (
     <Aos className="my-32">
       <section className="container">
-        <SectionTitle>스터디 구성 요소</SectionTitle>
+        <SectionTitle>2024 스터디</SectionTitle>
+        <SectionSubtitle className="whitespace-pre-wrap">
+          {
+            "2024년도 스터디는 두 달 과정의 영어 기초 트레이닝을 거친 후에, 정규 스터디가 시작 됩니다.\n토플 점수가 80점 이상 이신 분들은, 3월 부터 스터디에 참여 하실 수 있습니다."
+          }
+        </SectionSubtitle>
         <ScrollShadow>
           <div className="mt-12 flex flex-col gap-6 md:flex-row">
             <StudyCompositionItem
@@ -137,8 +140,8 @@ interface StudyCompositionItemProps {
 const StudyCompositionItem = ({ image, title, description }: StudyCompositionItemProps) => {
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
-      <div className="flex h-[200px] w-full items-center justify-center rounded-2xl border bg-[#B8C0F6] shadow-md">
-        <Image className="w-[180px] rounded-2xl" alt="" src={image} priority />
+      <div className="flex h-[280px] w-full items-center justify-center rounded-3xl border bg-[#C1C4EC] shadow-md">
+        <Image className="w-full rounded-2xl" alt="" src={image} priority />
       </div>
       <div className="ml-2 mt-2 flex flex-col">
         <p className="text-lg font-semibold">{title}</p>
@@ -160,28 +163,28 @@ const WhyUniverseSection = () => {
             number={1}
             title={"영어 왕초보였던 음대생이\n직접 스터디 멘토로 참여합니다."}
             description={
-              "TOEFL 53점에서 94점까지, 영어 실력 밑바닥에서 상위권으로 올라오는 과정을 직접 경험한 멘토가 가르칩니다. 영어 왕초보가 어떻게 하면 미국 음대 입학에 필요한 점수를 얻을 수 있는지를 누구보다 잘 알고 있습니다.\n\n영어 상위권에서 최상위권에 도달한 사람\n영어 최하위권에서 상위권에 도달한 사람\n\n당신에게 필요한 멘토는 누구입니까?"
+              "TOEFL 53점에서 94점까지, 영어 실력 밑바닥에서 상위권으로 올라오는 과정을 직접 경험한 멘토가 가르칩니다.\n\n영어 왕초보가 어떻게 하면 미국 음대 입학에 필요한 점수를 얻을 수 있는지를 누구보다 잘 알고 있습니다.\n\n영어 상위권에서 최상위권에 도달한 사람\n영어 최하위권에서 상위권에 도달한 사람\n\n당신에게 필요한 멘토는 누구입니까?"
             }
           />
           <WhyUniverseItem
             number={2}
             title={"각자에게 최적화된 공부시간과 패턴을\n정확히 인지하게 됩니다."}
             description={
-              "현실과 이상의 차이가 클 때에는 간극을 좁혀 나갈 수 있는 현실적인 목표가 필요합니다.\n영어 왕초보 음대생들도 꾸준히 지속 가능한 맞춤형 학습 플랜을 제시합니다."
+              "현실과 이상의 차이가 클 때에는 간극을 좁혀 나갈 수 있는 현실적인 목표가 필요합니다.\n\n영어 왕초보 음대생들도 꾸준히 지속 가능한 맞춤형 학습 플랜을 제시합니다."
             }
           />
           <WhyUniverseItem
             number={3}
             title={"할 수 밖에 없는\n환경을 제공합니다."}
             description={
-              "공부 시간 인증과 스터디 미션을 통해, 공부를 할 수 밖에 없는 강제성을 부여합니다.\n\n기준 미달 인증 벌금이 부과되며, 모인 벌금은 매달 가장 성실하게 공부하신 분께 전액 수여합니다."
+              "공부 시간 인증과 스터디 미션을 통해, 공부를 할 수 밖에 없는 환경을 제공합니다.\n\n기준 미달 인증 시 벌금이 부과되며, 모인 벌금은 매달 가장 성실하게 공부하신 분께 전액 수여합니다."
             }
           />
           <WhyUniverseItem
             number={4}
             title={"미국 음대 입시생들의\n작은 커뮤니티가 형성됩니다."}
             description={
-              "음대생이라는 공통점을 바탕으로, 다른 스터디에서는 잘 느껴지지 않았던 동질감과 소속감이 자연스럽게 형성됩니다.\n\n경쟁심 NO! 스터디에서 서로 이해하고 공감하며, 함께 성장합니다. 스터디 크루끼리 미국 오디션 기간에 만나서 밥 친구가 되고, 긴급 상황에 서로 도와주고, 룸메이트가 되는 것은 보너스 효과!"
+              "같은 목표를 위해 고군분투하면서, 서로를 위로하고 공감하며 성장합니다.\n\n스터디 크루끼리 미국 오디션 기간에 만나서 밥 친구가 되고, 긴급 상황에 서로 도와주고, 룸메이트가 되는 것은 보너스 효과!"
             }
           />
         </div>
@@ -200,11 +203,13 @@ const StudyExpectationSection = () => {
             title="음대생 영어 공부의 마지노선"
             subtitle="유니버스 피아노 스터디"
             description="스터디에 참여하시는 분들 90%는 영어 공부를 제대로 해본 적이 없거나, 영어 학원 수업을 들어도 점수가 오르지 않던 분들이었습니다. 영어 점수 때문에 입시를 1년 이상 미루신 분들도 계셨습니다."
+            image={studyExpectationImage1}
           />
           <StudyExpectationItem
             title="스터디 참여 결과"
             subtitle="점수가 오른다!"
             description="스터디 크루분들은 평균 6개월 만에 토플 80점을 달성합니다. 각자의 시작점이 다르기 때문에 얼마나 어떤 방법으로 공부해야 하는지는 특정 짓기 어렵습니다. 다만, 스터디 크루 분들이 만족해하시는 부분은 ‘정말 얻어 가는 게 있고’, ‘실질적으로 영어 점수가 오른다.’라는 것이었습니다."
+            image={studyExpectationImage2}
           />
         </div>
       </section>
@@ -216,13 +221,19 @@ interface StudyExpecttationItemProps {
   title: string;
   subtitle: string;
   description: string;
+  image: StaticImageData;
 }
 
-const StudyExpectationItem = ({ title, subtitle, description }: StudyExpecttationItemProps) => {
+const StudyExpectationItem = ({
+  title,
+  subtitle,
+  description,
+  image,
+}: StudyExpecttationItemProps) => {
   return (
     <div className="flex flex-col md:flex-row md:gap-16">
-      <div className="h-[280px] min-w-[280px] rounded-2xl border bg-content" />
-      <div className="flex flex-col">
+      <Image className="min-w-[450px] rounded-3xl md:flex-1" src={image} alt="" />
+      <div className="flex flex-1 flex-col">
         <p className="mt-4 text-xl font-semibold md:mt-12 md:text-3xl">{title}</p>
         <p className="mt-4 text-lg font-medium">{subtitle}</p>
         <p className="mt-4 font-medium text-muted-foreground">{description}</p>

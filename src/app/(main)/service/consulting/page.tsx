@@ -5,7 +5,6 @@ import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
-import { ServiceFloatingButton } from "@/components/service-floating-button";
 import { FreeConsultingSection } from "@/components/services/\bconsulting-free-consulting-section";
 import { ConsultingDocumentAgencySection } from "@/components/services/consulting-document-agency-section";
 import { OverwhelmingResultSection } from "@/components/services/consulting-overwhelming-result-section";
@@ -27,7 +26,6 @@ export default function ConsultingPage() {
       <ConsultingInfoSection />
       <ConsultingFaqSection />
       <FreeConsultingSection />
-      <ServiceFloatingButton />
     </main>
   );
 }

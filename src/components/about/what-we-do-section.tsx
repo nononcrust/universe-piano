@@ -16,7 +16,6 @@ export const WhatWeDoSection = () => {
             "미국 음대 입시의 핵심 요소를 기반으로\n미국 음대 유학의 새로운 패러다임을 만들어 갑니다"
           }
         </SectionTitle>
-
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-4">
           <WhatWeDoItem
             title="미국 음대 입시 컨설팅"
@@ -36,7 +35,7 @@ export const WhatWeDoSection = () => {
             href={ROUTE.SERVICE.STUDY}
             icon={<ColoredIcon.Pencil className="h-12 w-12" />}
           />
-          <div className="rounded-3xl bg-white p-6 shadow-lg md:min-h-[320px]">
+          <div className="rounded-3xl bg-white p-6 md:min-h-[320px]">
             <ColoredIcon.Storage className="h-12 w-12" />
             <div className="mt-8 flex gap-2 md:mt-16">
               <p className="font-semibold">독학 키트</p>
@@ -64,12 +63,12 @@ interface WhatWeDoItemProps {
 const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => {
   return (
     <Link className="group relative transition" href={href}>
-      <div className="flex cursor-pointer flex-col rounded-3xl border bg-white p-6 shadow-lg brightness-100 group-hover:brightness-50 md:min-h-[320px]">
+      <div className="flex cursor-pointer flex-col rounded-3xl bg-white p-6 brightness-100 md:min-h-[320px] md:group-hover:brightness-50">
         {icon}
         <p className="mt-8 font-semibold md:mt-16">{title}</p>
         <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">{description}</p>
       </div>
-      <div className="absolute right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 cursor-pointer rounded-full bg-black/75 px-3 py-1 text-xs text-white opacity-0 group-hover:opacity-100">
+      <div className="absolute right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 cursor-pointer rounded-full bg-black/75 px-3 py-1 text-xs text-white opacity-0 md:group-hover:opacity-100">
         바로가기
       </div>
     </Link>

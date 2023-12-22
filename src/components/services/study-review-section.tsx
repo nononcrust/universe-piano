@@ -1,11 +1,12 @@
 "use client";
 
+import instagramIcon from "@/assets/icons/instagram.png";
+import naverBlogIcon from "@/assets/icons/naver-blog.png";
 import { siteConfig } from "@/configs/site";
 import { data } from "@/contents/services/study";
 import { useDialog } from "@/hooks/use-dialog";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { Instagram } from "../instagram";
 import { SectionSubtitle } from "../section-subtitle";
 import { SectionTitle } from "../section-title";
 import { Aos } from "../ui/aos";
@@ -31,12 +32,22 @@ export const StudyReviewSection = () => {
         </div>
         <div className="mt-12 flex flex-col items-center">
           <p className="font-semibold">
-            더 많은 후기와 크루들의 근황은 유니버스 피아노 네이버 블로그와 인스타그램에서 확인 하실
-            수 있습니다.
+            더 많은 후기들은 네이버 블로그와 인스타그램에서 확인 하실 수 있습니다.
           </p>
           <div className="mt-4 flex gap-4">
+            <Link href={siteConfig.links.blog}>
+              <Image
+                src={naverBlogIcon}
+                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                alt="네이버 블로그"
+              />
+            </Link>
             <Link href={siteConfig.links.instagram}>
-              <Instagram className="h-16 w-16 cursor-pointer transition hover:scale-110" />
+              <Image
+                src={instagramIcon}
+                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                alt="인스타그램"
+              />
             </Link>
           </div>
         </div>

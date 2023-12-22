@@ -163,7 +163,7 @@ interface SystemItemProps {
 
 const SystemItem = ({ number, title, description }: SystemItemProps) => {
   return (
-    <div className="flex flex-1 flex-col rounded-3xl border bg-content-light p-8 text-center md:text-left">
+    <div className="flex flex-1 flex-col rounded-3xl bg-content-light p-8 text-center md:text-left">
       <p className="text-lg font-bold text-primary">0{number}</p>
       <p className="text-xl font-semibold md:text-2xl">{title}</p>
       <p className="mt-2 whitespace-pre-wrap text-muted-foreground md:whitespace-normal">
@@ -316,7 +316,7 @@ interface ReviewItemProps {
 
 const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
   return (
-    <div className="h-[240px] flex-1 rounded-2xl bg-white p-6 shadow-lg max-md:min-w-[320px]">
+    <div className="h-[240px] flex-1 rounded-2xl bg-white p-6 max-md:min-w-[320px]">
       <p className="text-xl font-semibold">
         {name}
         <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
