@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Icon } from "../icon";
-import { LandingSectionSubtitle } from "../landing/landing-section-subtitle";
-import { LandingSectionTitle } from "../landing/landing-section-title";
+import { LandingSectionSubtitle } from "./landing-section-subtitle";
+import { LandingSectionTitle } from "./landing-section-title";
 
 const data = [
   {

@@ -7,11 +7,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ColoredIcon } from "../colored-icon";
 import { Icon } from "../icon";
-import { IconHeader } from "../landing/icon-header";
-import { LandingSectionSubtitle } from "../landing/landing-section-subtitle";
-import { LandingSectionTitle } from "../landing/landing-section-title";
 import { Badge } from "../ui/badge";
+import { IconHeader } from "./icon-header";
 import { Card } from "./intro-section";
+import { LandingSectionSubtitle } from "./landing-section-subtitle";
+import { LandingSectionTitle } from "./landing-section-title";
 
 export const CommunitySection = () => {
   return (
