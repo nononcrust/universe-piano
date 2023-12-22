@@ -53,7 +53,7 @@ export const Card = ({ className, half, ...props }: CardProps) => {
   return (
     <div
       className={cn(
-        "row-span-2 flex max-h-[300px] min-h-[300px] flex-col rounded-3xl border bg-content-light p-8 transition",
+        "row-span-2 flex max-h-[300px] min-h-[300px] flex-col rounded-3xl bg-content-light p-8 transition",
         half && "row-span-1 max-h-[142px] min-h-[142px]",
         className,
       )}

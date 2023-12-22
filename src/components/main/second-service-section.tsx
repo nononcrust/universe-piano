@@ -4,8 +4,8 @@ import { ROUTE } from "@/constants/route";
 import Link from "next/link";
 import { ColoredIcon } from "../colored-icon";
 import { Icon } from "../icon";
-import { Card } from "../main/intro-section";
 import { Badge } from "../ui/badge";
+import { Card } from "./intro-section";
 import { LandingSectionSubtitle } from "./landing-section-subtitle";
 import { LandingSectionTitle } from "./landing-section-title";
 
@@ -28,7 +28,7 @@ export const SecondServiceSection = () => {
 const AuditionResultCard = () => {
   return (
     <Link href={ROUTE.NEWS.AUDITION.LIST} className="row-span-2">
-      <Card className="group relative cursor-pointer overflow-hidden hover:border-gray-400">
+      <Card className="group relative cursor-pointer overflow-hidden hover:bg-gray-100">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Card.Title>오디션 결과 발표</Card.Title>

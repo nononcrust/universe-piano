@@ -1,5 +1,6 @@
 "use client";
 
+import { headerNav } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -52,12 +53,9 @@ export const HeaderNav = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem> */}
-
-        {/* <HeaderNavItem title="소개" href={ROUTE.ABOUT.COMPANY} /> */}
-        {/* TODO: 컨설팅 페이지 오픈 이후 컨설팅 페이지로 수정 */}
-        <HeaderNavItem title="서비스" href={ROUTE.SERVICE.TUTORING} />
-        <HeaderNavItem title="소식" href={ROUTE.NEWS.NOTICE.LIST} />
-        <HeaderNavItem title="고객지원" href={ROUTE.SUPPORT} />
+        {headerNav.map((item, index) => (
+          <HeaderNavItem key={index} title={item.title} href={item.href} />
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   );

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Icon } from "../icon";
-import { LandingSectionSubtitle } from "../landing/landing-section-subtitle";
-import { LandingSectionTitle } from "../landing/landing-section-title";
+import { LandingSectionSubtitle } from "./landing-section-subtitle";
+import { LandingSectionTitle } from "./landing-section-title";
 
 const data = [
   {
@@ -71,9 +71,7 @@ interface ReviewItemProps {
 
 const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
   return (
-    <div
-      className={cn("min-h-[300px] rounded-2xl border bg-content-light p-6 max-md:min-w-[320px]")}
-    >
+    <div className={cn("min-h-[300px] rounded-2xl bg-content-light p-6 max-md:min-w-[320px]")}>
       <p className="text-xl font-semibold">
         {name}
         <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
