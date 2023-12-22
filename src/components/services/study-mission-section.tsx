@@ -45,8 +45,9 @@ export const StudyMissionSection = () => {
     <Aos className="my-32">
       <section>
         <div className="container">
-          <SectionTitle className="text-left">변화의 시작은,</SectionTitle>
-          <SectionTitle className="mt-2 text-left">스터디 미션 수행으로부터</SectionTitle>
+          <SectionTitle className="whitespace-pre-wrap text-left">
+            {"변화의 시작은,\n스터디 미션 수행으로부터"}
+          </SectionTitle>
           <SectionSubtitle className="text-left">
             모든 변화의 필수 전제 조건은 이전과는 다른 행동을 하는 자기 자신입니다.
           </SectionSubtitle>

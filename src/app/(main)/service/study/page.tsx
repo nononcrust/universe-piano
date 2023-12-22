@@ -108,7 +108,7 @@ const StudyCompositionSection = () => {
           }
         </SectionSubtitle>
         <ScrollShadow>
-          <div className="mt-12 flex flex-col gap-6 md:flex-row">
+          <div className="mt-12 flex flex-col gap-12 md:flex-row md:gap-6">
             <StudyCompositionItem
               title="zoom 수업 및 자습"
               description="영어 기초 수업, Reading 모의고사, 시중 교재 해석본 Speaking 발음 교정, Writing 첨삭, 브레인 스토밍 등 월별로 필요한 zoom 수업과 자료를 제공합니다."
@@ -140,12 +140,12 @@ interface StudyCompositionItemProps {
 const StudyCompositionItem = ({ image, title, description }: StudyCompositionItemProps) => {
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
-      <div className="flex h-[280px] w-full items-center justify-center rounded-3xl border bg-[#C1C4EC] shadow-md">
+      <div className="flex h-[280px] w-full items-center justify-center rounded-3xl border bg-[#C1C4EC]">
         <Image className="w-full rounded-2xl" alt="" src={image} priority />
       </div>
-      <div className="ml-2 mt-2 flex flex-col">
-        <p className="text-lg font-semibold">{title}</p>
-        <p className="mt-1 font-medium text-muted-foreground">{description}</p>
+      <div className="ml-2 mt-3 flex flex-col">
+        <p className="text-lg font-semibold md:text-xl">{title}</p>
+        <p className="mt-2 font-medium text-muted-foreground md:text-lg">{description}</p>
       </div>
     </div>
   );
@@ -155,7 +155,7 @@ const WhyUniverseSection = () => {
   return (
     <Aos className="my-32">
       <section className="container">
-        <SectionTitle className="whitespace-pre-wrap md:leading-normal">
+        <SectionTitle className="whitespace-pre-wrap">
           {"음대생 영어공부,\n결국 왜 유니버스 피아노일까요?"}
         </SectionTitle>
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -254,7 +254,7 @@ const StudyInfoSection = () => {
             "스터디 신청 방법 및 월별 커리큘럼은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다."
           }
         </SectionSubtitle>
-        <div className="mt-20 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mt-20 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
             <ul className="ml-4 list-disc">

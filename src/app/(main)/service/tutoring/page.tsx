@@ -192,7 +192,7 @@ const TutoringCompositionSection = () => {
       <section className="container">
         <SectionTitle>과외 구성 요소</SectionTitle>
         <SectionSubtitle>과외를 통해 나만의 입시 준비 전략을 완성합니다.</SectionSubtitle>
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-6">
           <TutoringCompositionItem
             title="zoom 수업 3회"
             description="한 달 이내에 3회의 수업이 진행됩니다. 맞춤형 정보, 장학금 전략, 그리고 학교 선정까지 단기간 완성!"
@@ -223,12 +223,12 @@ interface TutoringCompositionItemProps {
 const TutoringCompositionItem = ({ image, title, description }: TutoringCompositionItemProps) => {
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
-      <div className="flex h-[280px] w-full items-center justify-center rounded-3xl border bg-[#C1C4EC] shadow-md">
+      <div className="flex h-[280px] w-full items-center justify-center rounded-3xl border bg-[#C1C4EC]">
         <Image className="w-full rounded-2xl" alt="" src={image} priority />
       </div>
-      <div className="ml-2 mt-2 flex flex-col">
-        <p className="text-lg font-semibold">{title}</p>
-        <p className="mt-1 font-medium text-muted-foreground">{description}</p>
+      <div className="ml-2 mt-3 flex flex-col">
+        <p className="text-lg font-semibold md:text-xl">{title}</p>
+        <p className="mt-2 font-medium text-muted-foreground md:text-lg">{description}</p>
       </div>
     </div>
   );
@@ -355,7 +355,7 @@ const TutoringInfoSection = () => {
         <SectionSubtitle className="text-left text-gray-300">
           자세한 정보는 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
         </SectionSubtitle>
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           <div className="row-span-2 rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">과외 절차</p>
             <ul className="ml-4 list-decimal">
