@@ -5,13 +5,13 @@ import studyExpectationImage1 from "@/assets/images/study/study-expectation-1.jp
 import studyExpectationImage2 from "@/assets/images/study/study-expectation-2.jpg";
 import hero3dImage from "@/assets/images/study/study-hero-3d.png";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
-import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { StudyMissionSection } from "@/components/services/study-mission-section";
 import { StudyReviewSection } from "@/components/services/study-review-section";
 import { WhyUniverseItem } from "@/components/services/study-why-universe-item";
 import { Aos } from "@/components/ui/aos";
+import { Badge } from "@/components/ui/badge";
 import { ScrollShadow } from "@/components/ui/scroll-shadow";
 import { data } from "@/contents/services/study";
 import { cn } from "@/lib/utils";
@@ -35,17 +35,19 @@ export default function StudyPage() {
 
 const HeroSection = () => {
   return (
-    <section className="bg-content-light">
+    <section className="h-[500px] bg-content md:h-[700px] ">
       <Aos>
-        <div className="container mt-16 flex flex-col items-center gap-8 py-16">
+        <div className="container flex flex-col items-center gap-8 py-16 md:mt-16">
           <div className="flex flex-1 flex-col items-center gap-4">
-            <SectionBadge>영어 스터디</SectionBadge>
-            <h1 className="text-center text-3xl font-bold leading-tight md:text-5xl">
+            <Badge className="rounded-xl px-4 text-lg font-semibold" variant="primary">
+              영어 스터디
+            </Badge>
+            <h1 className="text-center text-3xl font-extrabold leading-tight md:text-6xl">
               음대생을 위한 영어 스터디
             </h1>
           </div>
           <div className="flex justify-center">
-            <Image priority src={hero3dImage} alt="" height={300} />
+            <Image className="mt-12 w-[200px] md:w-[300px]" priority src={hero3dImage} alt="" />
           </div>
         </div>
       </Aos>

@@ -3,13 +3,14 @@
 import tutoringCompositionImage1 from "@/assets/images/tutoring/tutoring-composition-1.jpg";
 import tutoringCompositionImage2 from "@/assets/images/tutoring/tutoring-composition-2.jpg";
 import tutoringCompositionImage3 from "@/assets/images/tutoring/tutoring-composition-3.jpg";
+import tutoringHero3dImage from "@/assets/images/tutoring/tutoring-hero-3d.png";
 import { ColoredIcon } from "@/components/colored-icon";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
-import { SectionBadge } from "@/components/section-badge";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { TutoringCurriculumSection } from "@/components/services/tutoring-curriculum-section";
 import { Aos } from "@/components/ui/aos";
+import { Badge } from "@/components/ui/badge";
 import { data } from "@/contents/services/tutoring";
 import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
@@ -33,17 +34,24 @@ export default function TutoringPage() {
 
 const HeroSection = () => {
   return (
-    <section className="bg-content-light">
+    <section className="h-[500px] bg-zinc-800 md:h-[700px]">
       <Aos>
-        <div className="container mt-16 flex flex-col items-center gap-8 py-16">
+        <div className="container flex flex-col items-center gap-8 py-16 md:mt-16">
           <div className="flex flex-1 flex-col items-center gap-4">
-            <SectionBadge>입시 과외</SectionBadge>
-            <h1 className="whitespace-pre-line text-center text-2xl font-bold md:text-5xl md:leading-tight">
+            <Badge className="rounded-xl px-4 text-lg font-semibold" variant="primary">
+              입시 과외
+            </Badge>
+            <h1 className="whitespace-pre-line text-center text-2xl font-bold text-white md:text-6xl md:leading-tight">
               국내 최초 미국 음대 입시 과외
             </h1>
           </div>
           <div className="flex justify-center">
-            <Image priority src="/images/3d-star.png" width={300} height={300} alt="별" />
+            <Image
+              className="mt-12 w-[200px] md:w-[280px]"
+              priority
+              src={tutoringHero3dImage}
+              alt="별"
+            />
           </div>
         </div>
       </Aos>

@@ -39,7 +39,7 @@ export const WhatWeDoSection = () => {
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
               <ColoredIcon.Storage className="h-10 w-10" />
             </div>
-            <div className="mt-8 flex items-center gap-2 md:mt-16">
+            <div className="mt-8 flex items-center gap-2 md:mt-20">
               <p className="text-2xl font-semibold">독학 키트</p>
               <p className="text-medium rounded-lg bg-zinc-300 px-2 py-1 text-xs text-white">
                 준비중
@@ -65,11 +65,11 @@ interface WhatWeDoItemProps {
 const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => {
   return (
     <Link className="group relative transition" href={href}>
-      <div className="flex cursor-pointer flex-col rounded-3xl bg-white p-6 brightness-100 md:min-h-[320px] md:group-hover:brightness-50">
+      <div className="flex cursor-pointer flex-col rounded-3xl bg-white p-6 brightness-100 md:min-h-[360px] md:group-hover:brightness-50">
         <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
           {icon}
         </div>
-        <p className="mt-8 text-2xl font-semibold md:mt-16">{title}</p>
+        <p className="mt-8 text-2xl font-semibold md:mt-20">{title}</p>
         <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">{description}</p>
       </div>
       <div className="absolute right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 cursor-pointer rounded-full bg-black/75 px-3 py-1 text-xs text-white opacity-0 md:group-hover:opacity-100">

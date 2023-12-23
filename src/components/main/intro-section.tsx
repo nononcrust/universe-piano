@@ -36,7 +36,10 @@ export const IntroSection = () => {
           <Card.Subtitle>유니버스 피아노를 소개합니다.</Card.Subtitle>
         </div>
         <Link href={ROUTE.ABOUT.COMPANY}>
-          <Button className="mt-8 h-12 gap-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 pr-4 transition-all hover:gap-3 md:mt-0">
+          <Button
+            variant="primary"
+            className="mt-8 h-12 gap-1 rounded-full px-6 pr-4 transition-all hover:gap-3 md:mt-0"
+          >
             유니버스 피아노 소개
             <Icon.ChevronRight className="h-5 w-5" />
           </Button>

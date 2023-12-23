@@ -24,7 +24,7 @@ export const FaqSection = ({ children }: FaqSectionProps) => {
         </Accordion.Root>
         <div className="mt-12 flex items-center justify-center">
           <Link href={ROUTE.SUPPORT}>
-            <Button variant="primary" className="h-12 rounded-full pl-10 pr-8 text-base" size="lg">
+            <Button variant="outline" className="h-12 rounded-full pl-10 pr-8 text-base" size="lg">
               더보기
               <Icon.ChevronRight className="ml-1 h-5 w-5" />
             </Button>

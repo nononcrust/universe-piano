@@ -235,8 +235,8 @@ const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
 
 const InstagramSection = () => {
   return (
-    <Aos>
-      <section className="container flex h-[560px] flex-col items-center overflow-hidden md:flex-row md:gap-32">
+    <Aos className="my-32">
+      <section className="container flex flex-col items-center gap-8 overflow-hidden md:flex-row md:gap-32">
         <div className="flex flex-col justify-between gap-16 md:flex-row">
           <div className="flex items-center justify-center">
             <div className="flex flex-col">
