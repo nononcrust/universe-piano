@@ -85,7 +85,11 @@ const CurriculumItem = ({ value, title, description, items }: CurriculumItemProp
     <Accordion.Item value={value} className="flex flex-col rounded-2xl bg-white">
       <Accordion.Trigger className="flex items-center p-6 transition-all [&[data-state=open]>svg]:rotate-180">
         <div className="flex w-full flex-col justify-center gap-2">
-          <p className="text-left text-lg font-bold text-primary md:text-xl">{title}</p>
+          <div className="flex">
+            <p className="flex h-7 items-center rounded-lg bg-content px-3 font-semibold">
+              {title}
+            </p>
+          </div>
           <p className="text-left text-lg font-semibold">{description}</p>
         </div>
         <Icon.ChevronDown className="ml-4 h-10 w-10 rounded-full bg-content p-2 transition-transform duration-200" />

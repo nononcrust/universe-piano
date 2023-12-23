@@ -156,7 +156,7 @@ const StudyCompositionItem = ({ image, title, description }: StudyCompositionIte
 
 const WhyUniverseSection = () => {
   return (
-    <Aos className="my-32">
+    <Aos className="bg-content py-32">
       <section className="container">
         <SectionTitle className="whitespace-pre-wrap">
           {"음대생 영어공부,\n결국 왜 유니버스 피아노일까요?"}

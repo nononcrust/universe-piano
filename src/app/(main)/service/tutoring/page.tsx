@@ -19,7 +19,7 @@ export default function TutoringPage() {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      <UniversePianoSection />
+      {/* <UniversePianoSection /> */}
       <CrewResultSection />
       <RecommendSection />
       <TutoringCompositionSection />
