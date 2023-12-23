@@ -98,7 +98,7 @@ model Notice {
   id String @id @default(cuid())
 
   title   String
-  content String
+  content String @db.LongText
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -107,7 +107,7 @@ model Notice {
 model Audition {
   id      String @id @default(cuid())
   title   String
-  content String
+  content String @db.LongText
 
   images   Image[]
   comments AuditionComment[]

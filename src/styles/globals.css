@@ -7,7 +7,7 @@
 }
 
 .swiper-pagination-bullets {
-  justify-content: flex-end;
+  justify-content: center;
   display: flex;
   padding: 6px 12px;
 }

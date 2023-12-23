@@ -6,7 +6,7 @@ import { Aos } from "../ui/aos";
 
 export const OverwhelmingResultSection = () => {
   return (
-    <section className="bg-content py-32">
+    <section className="py-32">
       <Aos className="container">
         <SectionTitle>압도적인 결과로 증명합니다</SectionTitle>
         <div className="mt-24 flex flex-col gap-12 md:flex-row">

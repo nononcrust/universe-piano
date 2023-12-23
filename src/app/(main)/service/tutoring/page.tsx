@@ -34,24 +34,19 @@ export default function TutoringPage() {
 
 const HeroSection = () => {
   return (
-    <section className="h-[500px] bg-zinc-800 md:h-[700px]">
+    <section className="bg-content">
       <Aos>
-        <div className="container flex flex-col items-center gap-8 py-16 md:mt-16">
+        <div className="container flex flex-col items-center gap-8 py-24">
           <div className="flex flex-1 flex-col items-center gap-4">
-            <Badge className="rounded-xl px-4 text-lg font-semibold" variant="primary">
+            <Badge className="rounded-xl px-3 text-base font-semibold" variant="primary">
               입시 과외
             </Badge>
-            <h1 className="whitespace-pre-line text-center text-2xl font-bold text-white md:text-6xl md:leading-tight">
+            <h1 className="whitespace-pre-line text-center text-2xl font-bold md:text-5xl md:leading-tight">
               국내 최초 미국 음대 입시 과외
             </h1>
           </div>
           <div className="flex justify-center">
-            <Image
-              className="mt-12 w-[200px] md:w-[280px]"
-              priority
-              src={tutoringHero3dImage}
-              alt="별"
-            />
+            <Image className="mt-12 w-[200px]" priority src={tutoringHero3dImage} alt="별" />
           </div>
         </div>
       </Aos>

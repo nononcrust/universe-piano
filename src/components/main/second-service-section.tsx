@@ -28,12 +28,12 @@ export const SecondServiceSection = () => {
 const AuditionResultCard = () => {
   return (
     <Link href={ROUTE.NEWS.AUDITION.LIST} className="row-span-2">
-      <Card className="group relative cursor-pointer overflow-hidden hover:bg-gray-100">
+      <Card className="group relative cursor-pointer overflow-hidden transition hover:scale-[1.01] hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Card.Title>오디션 결과 발표</Card.Title>
           </div>
-          <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1 transition group-hover:translate-x-1" />
+          <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1" />
         </div>
         <Card.Subtitle>로그인 후에 미국 음대 오디션 결과를 확인 하실 수 있습니다.</Card.Subtitle>
         <ColoredIcon.Notice className="absolute -bottom-8 left-1/2 h-52 w-52 -translate-x-1/2" />

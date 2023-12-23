@@ -8,7 +8,7 @@ import { SupportSection } from "@/components/main/support-section";
 
 export default function Home() {
   return (
-    <main className="flex flex-col pb-32">
+    <main className="flex flex-col bg-content pb-32">
       <CarouselSection />
       <IntroSection />
       {/* <ServiceSection /> */}

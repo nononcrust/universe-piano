@@ -8,6 +8,10 @@ module.exports = {
   plugins: [typographyPlugin, require("tailwind-scrollbar-hide")],
   theme: {
     extend: {
+      boxShadow: {
+        md: "1px 2px 8px rgba(0, 0, 0, .16)",
+        lg: "2px 4px 16px rgba(0, 0, 0, .16)",
+      },
       colors: {
         primary: "#6857FF",
         "primary-dark": "#5E4EE6",
