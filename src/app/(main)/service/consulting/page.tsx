@@ -21,9 +21,10 @@ export default function ConsultingPage() {
       <OverwhelmingResultSection />
       <LogoSliderSection />
       <ConsultingExampleSection />
-      <BrandPhilosophySection />
+      <VictoryFormulaSection />
       <SchoolSelectionSection />
       <ConsultingReviewSection />
+      <WhyUniverseSection />
       <RoadmapSection />
       <ConsultingInfoSection />
       <ConsultingFaqSection />
@@ -123,20 +124,20 @@ const ConsultingExampleItem = ({
   );
 };
 
-const BrandPhilosophySection = () => {
+const VictoryFormulaSection = () => {
   return (
     <section className="my-32">
       <Aos className="container flex flex-col">
-        <SectionTitle>Brand Philosophy</SectionTitle>
-        <SectionSubtitle>어떻게 이렇게 결과가 좋나요?</SectionSubtitle>
-        <p className="mt-12 text-center text-xl font-bold md:text-4xl">
+        <SectionTitle className="md:text-left">입시 필승 공식</SectionTitle>
+        <SectionSubtitle className="md:text-left">어떻게 이렇게 결과가 좋나요?</SectionSubtitle>
+        <p className="mt-12 text-center text-xl font-bold md:text-left md:text-4xl">
           &quot;<span className="text-primary">첫 음부터 다르니까!</span>&quot;
         </p>
-        <p className="mt-4 text-center text-lg font-semibold md:text-2xl">
+        <p className="mt-4 text-center text-lg font-semibold md:text-left md:text-2xl">
           미국 음대 입시의 첫 음, 학교 선정
         </p>
         <div className="flex justify-center">
-          <p className="mt-6 w-full whitespace-pre-wrap text-center font-medium md:text-lg">
+          <p className="mt-6 w-full whitespace-pre-wrap text-center font-medium md:text-left md:text-lg">
             {
               "유니버스 피아노는 미국 음대 입시의 첫 단계, 학교 선정에 많은 시간을 할애합니다.\n학교 선정은 합격과 장학금에 실질적인 영향을 미치는 부분이지만, 혼자 준비하시는 분들 뿐만 아니라 여러 업체들이 이 부분을 간과합니다.\n\n유니버스 피아노는 지원자 분의 최종 장학금을 고려한 학교 선정을 진행합니다. 이것이 유니버스 피아노가 학교 개수별로 비용을 책정하지 않는 이유입니다."
             }
@@ -144,6 +145,61 @@ const BrandPhilosophySection = () => {
         </div>
       </Aos>
     </section>
+  );
+};
+
+const WhyUniverseSection = () => {
+  return (
+    <section className="py-32">
+      <Aos className="container">
+        <SectionTitle>WHY Universe</SectionTitle>
+        <SectionSubtitle>실제 유니버스 크루분들의 후기로 증명합니다.</SectionSubtitle>
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
+          <WhyUniverseItem
+            number={1}
+            title="다르다"
+            description="지원자의 우선순위와 성향에 맞는 학교와 교수님 추천 부터, 상황에 맞는 1:1 솔루션을 제공합니다."
+          />
+          <WhyUniverseItem
+            number={2}
+            title="빠르다"
+            description="모든 질문은 담당자를 기다릴 필요 없이 대표가 직접 답변 드립니다. 미국 현지에서 발생하는 돌발 상황들도 빠르게 해결합니다."
+          />
+          <WhyUniverseItem
+            number={3}
+            title="투명하다"
+            description="메일 계정 공유를 통해, 학교 및 교수님과의 연락, 합격 결과, 컨설팅 진행 과정을 실시간으로 확인 하실 수 있습니다."
+          />
+          <WhyUniverseItem
+            number={4}
+            title="관리한다"
+            description="미국 현지 오디션 일정 조율, 레슨 컨택, 연습실 및 숙소 정보 공유, 선배 크루와의 연결 등 미국 오디션 기간 전체 과정을 밀착 관리 합니다."
+          />
+        </div>
+      </Aos>
+    </section>
+  );
+};
+
+interface WhyUniverseItemProps {
+  number: number;
+  title: string;
+  description: string;
+}
+
+const WhyUniverseItem = ({ number, title, description }: WhyUniverseItemProps) => {
+  return (
+    <div className="flex gap-4">
+      <div className="flex items-start">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
+          {number}
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col">
+        <p className="text-2xl font-semibold">{title}</p>
+        <p className="mt-2 font-medium text-muted-foreground">{description}</p>
+      </div>
+    </div>
   );
 };
 

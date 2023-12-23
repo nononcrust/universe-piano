@@ -1,6 +1,9 @@
+import instagramIcon from "@/assets/icons/instagram.png";
+import naverBlogIcon from "@/assets/icons/naver-blog.png";
 import mobileImage from "@/assets/images/about/about-company-mobile.png";
 import { AboutLogoSlider } from "@/components/about-logo-slider";
 import { FreeConsultSection } from "@/components/about/free-consult-section";
+import { OurPositioningSection } from "@/components/about/our-positioning-section";
 import { WhatWeDoSection } from "@/components/about/what-we-do-section";
 import { Icon } from "@/components/icon";
 import { Instagram } from "@/components/instagram";
@@ -59,80 +62,16 @@ const LogoSliderSection = () => {
   );
 };
 
-const OurPositioningSection = () => {
-  return (
-    <section className="my-32">
-      <Aos className="container">
-        <SectionTitle className="max-md:whitespace-pre">
-          {"미국 음대 입시,\n어떻게 준비할 지 고민되시죠?"}
-        </SectionTitle>
-        <SectionSubtitle className="whitespace-pre-wrap md:leading-normal">
-          {"비용만 따지기엔 중요한 문제고,\n유학원에 맡겨도 도움이 안된다 그러고!"}
-        </SectionSubtitle>
-        <div className="mt-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-center">
-          <OurPositioningItem
-            title={"Individual\n개인 컨설팅"}
-            items={["저렴한 비용", "체계성 부족", "개인 경험 의존", "영어 실력, 점수 미검증"]}
-          />
-          <div className="flex justify-between rounded-2xl border-2 border-primary p-8 font-medium shadow-xl md:h-[400px] md:max-w-[400px] md:flex-col md:justify-start">
-            <p className="whitespace-pre text-xl font-bold text-primary">
-              {"Universe Piano\n"}
-              <span className="text-foreground">유니버스 피아노</span>
-            </p>
-            <div className="flex flex-col gap-2 text-end font-semibold md:mt-24 md:text-left">
-              {[
-                "고정 비용",
-                "1:1 맞춤형 솔루션",
-                "최근 5년간의 자료 보유",
-                "영어 강사 경력 미국 음대 출신",
-              ].map((item, index) => (
-                <p key={index}>{item}</p>
-              ))}
-            </div>
-          </div>
-          <OurPositioningItem
-            title={"Major Agency\n대형 유학원"}
-            items={[
-              "갯수 당 추가 비용",
-              "일률적 솔루션",
-              "다량의 정보 보유",
-              "음악 비 전공자, 미국 조기 유학생",
-            ]}
-          />
-        </div>
-      </Aos>
-    </section>
-  );
-};
-
-interface OurPositioningItemProps {
-  title: string;
-  items: string[];
-}
-
-const OurPositioningItem = ({ title, items }: OurPositioningItemProps) => {
-  return (
-    <div className="flex justify-between rounded-2xl border p-8 md:h-[320px] md:max-w-[220px] md:flex-col md:justify-start">
-      <p className="whitespace-pre text-xl font-semibold">{title}</p>
-      <div className="flex flex-col gap-2 text-end text-muted-foreground md:mt-14 md:text-left">
-        {items.map((item, index) => (
-          <p key={index}>{item}</p>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const SystemSection = () => {
   return (
-    <section className="my-48">
+    <section className="py-48" id="company-system-section">
       <Aos className="container">
-        <SectionTitle>독보적인 시스템</SectionTitle>
+        <SectionTitle className="text-primary">독보적인 시스템</SectionTitle>
         <SectionSubtitle>오직 유니버스 피아노에서만 가능합니다.</SectionSubtitle>
         <div className="mt-12 flex flex-col gap-4 md:flex-row">
           <SystemItem
             number={1}
-            title="크루 커뮤니티"
+            title="크루 네트워크"
             description={
               "유니버스 피아노 크루들과 함께 오디션 동행은 물론,\n미국 전역에 있는 선배 크루들이 기꺼이 도움을 줄 거에요."
             }
@@ -140,14 +79,14 @@ const SystemSection = () => {
           <SystemItem
             number={2}
             title="음대생 영어 스터디"
-            description={"영어 공부도 함께 합니다!\n영어 왕초보 음대생들만 모여있습니다."}
+            description={
+              "영어 공부도 함께 합니다!\n각자의 수준에 맞는 학습 플랜과 함께 목표 점수 달성을 도와드립니다. "
+            }
           />
           <SystemItem
             number={3}
-            title="1:1 맞춤형 솔루션"
-            description={
-              "우선순위와 성향에 맞는 학교와 교수님 추천 부터,\n상황에 맞는 1:1 솔루션을 제공합니다."
-            }
+            title="실시간 공유 시스템"
+            description={"모든 진행 과정을 실시간으로 확인 할 수 있는 시스템을 갖추고 있습니다."}
           />
         </div>
       </Aos>
@@ -259,8 +198,8 @@ const InstagramSection = () => {
         <div className="flex h-[400px] w-full flex-1 items-end justify-center gap-4 overflow-hidden rounded-[40px] bg-content">
           <Image
             priority
-            className="min-w-[200px] translate-y-36 md:min-w-[240px] md:translate-y-32"
-            width={80}
+            className="min-w-[200px] translate-y-16 md:min-w-[240px] md:translate-y-32"
+            width={200}
             src={mobileImage}
             alt=""
           />
@@ -280,28 +219,41 @@ const ReviewSection = () => {
         </div>
         <div className="container mt-8 flex gap-6 overflow-auto py-4 scrollbar-hide">
           <ReviewItem
-            name="OHE6507"
-            label="영어 스터디"
-            content="줌 스터디 덕분에…. 토플도 졸업하고 원서 제출도 거의 끝나가고 넘 감사했습니다!!!! 체감상 거의,,,, 쿼터 컨설팅 받은 사람이었어요!"
-          />
-          <ReviewItem
             name="LSA5931"
-            label="장학금 증액"
+            label="영어 스터디"
             content="저는 너무 크게 도움 받았고 제가 꼭 장학금 컨설팅 뿐만 아니라 질문이 많았는데도 친절히 답해주셔서 너무 감사하고 든든했어요! 도움이 필요하신 분은 꼭 연락 해보시길 바랍니다."
           />
           <ReviewItem
-            name="JSJ5124"
-            label="포트폴리오 컨설팅"
-            content="입시철에 젤 막막할 때 넘 감사했어요 ㅎㅎ 덕분에 일사천리로 딱딱 되었던 것 같아요 ㅎㅎ"
+            name="GHJ5699"
+            label="전체 컨설팅"
+            content="대표님 덕분에 다시 한번 굳건히 마음잡고 갈 수 있는 힘을 얻었어요! 결과는 나와봐야 알 수 있는 부분인데 너무 겁먹었던 것 같아요. 상담 때도 느꼈지만, 수속 과정들이 진행될수록 좋은 분이 함께해 주셔서 참 다행이고 또 감사해요. 대표님과 인연이 된 건 정말 큰 행운이에요:)"
+          />
+          <ReviewItem
+            name="LSY7747"
+            label="학교 선정 | 서류 대행 | 영어 스터디"
+            content="정말 긴 여정이었습니다… 제가 혼자 하려고 했다면 정말 해내지 못했을 거에요. 중간에 정말 포기 하고 싶었는데, 할 수 있다고 응원해주시고 진심으로 조언과 걱정을 해주시는 게 느껴져서 힘을 낼 수 있었어요. 대표님의 따뜻한 마음과 열정이 느껴져서 믿고 할 수 있었던 것 같아요. 정말 감사드려요."
           />
         </div>
-        <div className="container mt-4 flex flex-col items-center justify-center gap-4">
+        <div className="container mt-4 flex flex-col items-center justify-center">
           <p className="font-medium text-muted-foreground">
-            더 많은 후기는 유니버스 피아노 인스타그램 계정에서 확인 가능합니다.
+            더 많은 후기는 유니버스 피아노 네이버 블로그와 인스타그램 계정에서 확인 가능합니다.
           </p>
-          <Link href={siteConfig.links.instagram}>
-            <Instagram className="h-16 w-16 cursor-pointer transition hover:scale-110" />
-          </Link>
+          <div className="mt-4 flex gap-4">
+            <Link href={siteConfig.links.blog}>
+              <Image
+                src={naverBlogIcon}
+                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                alt="네이버 블로그"
+              />
+            </Link>
+            <Link href={siteConfig.links.instagram}>
+              <Image
+                src={instagramIcon}
+                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                alt="인스타그램"
+              />
+            </Link>
+          </div>
         </div>
       </Aos>
     </section>
@@ -316,7 +268,7 @@ interface ReviewItemProps {
 
 const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
   return (
-    <div className="h-[240px] flex-1 rounded-2xl bg-white p-6 max-md:min-w-[320px]">
+    <div className="h-[280px] flex-1 rounded-2xl bg-white p-6 max-md:min-w-[320px]">
       <p className="text-xl font-semibold">
         {name}
         <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
