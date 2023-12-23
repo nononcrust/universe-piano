@@ -1,5 +1,5 @@
+import curriculumImage from "@/assets/images/consulting/consulting-curriculum.jpg";
 import hero3dImage from "@/assets/images/consulting/consulting-hero-3d.png";
-import roadmapImage from "@/assets/images/consulting/consulting-roadmap.jpg";
 import { ConsultingLogoSlider } from "@/components/consulting-logo-slider";
 import { FaqSection, FaqSectionItem } from "@/components/faq-section";
 import { SectionSubtitle } from "@/components/section-subtitle";
@@ -25,7 +25,7 @@ export default function ConsultingPage() {
       <SchoolSelectionSection />
       <ConsultingReviewSection />
       <WhyUniverseSection />
-      <RoadmapSection />
+      <ConsultingCurriculumSection />
       <ConsultingInfoSection />
       <ConsultingFaqSection />
       <FreeConsultingSection />
@@ -203,14 +203,14 @@ const WhyUniverseItem = ({ number, title, description }: WhyUniverseItemProps) =
   );
 };
 
-const RoadmapSection = () => {
+const ConsultingCurriculumSection = () => {
   return (
-    <section className="bg-content py-32">
+    <section className="py-32">
       <Aos className="container">
-        <SectionTitle>미국 음대 입시 로드맵</SectionTitle>
-        <SectionSubtitle>미국 음대 입시 과정은 세 단계로 진행됩니다.</SectionSubtitle>
-        <div className="mt-12 flex justify-center rounded-[32px] bg-white p-24">
-          <Image priority src={roadmapImage} alt="로드맵" />
+        <SectionTitle>컨설팅 커리큘럼</SectionTitle>
+        <SectionSubtitle>목표 설정부터 합격 후 과정까지</SectionSubtitle>
+        <div className="mt-12 flex justify-center">
+          <Image src={curriculumImage} alt="" />
         </div>
       </Aos>
     </section>
@@ -223,14 +223,24 @@ const ConsultingInfoSection = () => {
       <Aos className="container">
         <SectionTitle className="text-left">컨설팅 상세정보</SectionTitle>
         <SectionSubtitle className="text-left text-gray-300">
-          {"더 자세한 내용은 채팅으로 문의해주세요."}
+          {"더 자세한 내용은 채널톡으로 문의해주세요."}
         </SectionSubtitle>
         <div className="mt-12 flex flex-col gap-8 md:flex-row">
           <div className="w-full rounded-2xl bg-zinc-800 p-8">
-            <p className="text-lg font-bold md:text-2xl">컨설팅 진행 조건</p>
+            <p className="text-lg font-bold md:text-2xl">컨설팅 신청 절차</p>
             <ul className="ml-4 list-disc">
-              <li className="mt-4 font-medium text-gray-300">미국 음대 석사 과정 입시생</li>
-              <li className="mt-4 font-medium text-gray-300">전공 무관</li>
+              <li className="mt-4 font-medium text-gray-300">
+                {"컨설팅 신청 -> 대표와 1:1 상담 -> 계약서 작성 및 계약금 입금 -> 컨설팅 시작"}
+              </li>
+            </ul>
+          </div>
+          <div className="w-full rounded-2xl bg-zinc-800 p-8">
+            <p className="text-lg font-bold md:text-2xl">컨설팅 비용</p>
+            <ul className="ml-4 list-disc">
+              <li className="mt-4 font-medium text-gray-300">
+                홈페이지 채널톡 또는 카톡 오픈채팅 유니버스 피아노로 연락 주시면, 비용 안내 파일
+                보내드리겠습니다.
+              </li>
             </ul>
           </div>
         </div>
