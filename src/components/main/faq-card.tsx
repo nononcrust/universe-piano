@@ -3,7 +3,7 @@ import { Card } from "./card";
 
 export const FaqCard = () => {
   return (
-    <Card className="max-h-[200px] min-h-[200px] p-0" half>
+    <Card className="max-h-[192px] min-h-[192px] p-0" half>
       <div className="flex flex-col p-8">
         <ColoredIcon.Question className="mb-2 h-12 w-12" />
         <Card.Title>자주 묻는 질문</Card.Title>

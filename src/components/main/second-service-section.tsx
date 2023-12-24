@@ -16,7 +16,7 @@ export const SecondServiceSection = () => {
       <LandingSectionSubtitle>
         2024년 가을 학기 입시생들을 위한 서비스입니다.
       </LandingSectionSubtitle>
-      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         <AuditionResultCard />
         <ScholarshipCard />
         <AuditionKitCard />
@@ -27,8 +27,8 @@ export const SecondServiceSection = () => {
 
 const AuditionResultCard = () => {
   return (
-    <Link href={ROUTE.NEWS.AUDITION.LIST} className="row-span-2">
-      <Card className="group relative cursor-pointer overflow-hidden transition hover:scale-[1.01] hover:shadow-lg">
+    <Link href={ROUTE.NEWS.AUDITION.LIST}>
+      <Card className="group relative cursor-pointer overflow-hidden transition hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Card.Title>오디션 결과 발표</Card.Title>
@@ -44,7 +44,7 @@ const AuditionResultCard = () => {
 
 const ScholarshipCard = () => {
   return (
-    <Card half>
+    <Card>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {/* <Icon.BookOpen className="h-5 w-5 fill-primary text-primary" /> */}
@@ -64,7 +64,7 @@ const ScholarshipCard = () => {
 
 const AuditionKitCard = () => {
   return (
-    <Card half>
+    <Card>
       <div className="flex items-center gap-2">
         {/* <Icon.Leaf className="h-5 w-5 fill-primary text-primary" /> */}
         <Card.Title>

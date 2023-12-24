@@ -21,5 +21,5 @@ export default function Home() {
 }
 
 const HeroSection = () => {
-  return <section className="h-[600px] bg-zinc-300"></section>;
+  return <section className="h-[600px] bg-primary"></section>;
 };
