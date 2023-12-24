@@ -285,9 +285,6 @@ const StudyInfoSection = () => {
               <li className="mt-4 font-medium text-gray-300">
                 모여진 벌금은 월말에 가장 성실하게 공부하신 분께 전액 수여합니다.
               </li>
-              <li className="mt-4 font-medium text-gray-300">
-                벌금 기준은 홈페이지 우측 하단 채팅 창에서 확인 하실 수 있습니다.
-              </li>
             </ul>
           </div>
         </div>

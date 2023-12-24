@@ -1,5 +1,7 @@
-import reviewImage1 from "@/assets/images/consulting/consulting-review-1.png";
-import reviewImage2 from "@/assets/images/consulting/consulting-review-2.png";
+import reviewImage1 from "@/assets/images/consulting/consulting-review-1.jpg";
+import reviewImage2 from "@/assets/images/consulting/consulting-review-2.jpg";
+import kakaoImage1 from "@/assets/images/consulting/consulting-review-kakao-1.png";
+import kakaoImage2 from "@/assets/images/consulting/consulting-review-kakao-2.png";
 
 export const data = {
   reviews: [
@@ -15,7 +17,8 @@ export const data = {
 오디션 투어 때도 혼자 비행기, 숙소, 학교 연습실 등 돌발 상황이 있을 때마다 대표님께서 빠른 연락 주시고 같이 해결 해주셔서 너무 든든했어요.
       
 유니버스 피아노 컨설팅을 통해서 저에게 맞는 전략을 같이 고민해주고 솔루션을 주신 덕분에, 생각하지 못한 금액의 장학금 까지 받고 입학하게 되서 너무 감사해요.`,
-      imageSrc: reviewImage1,
+      image: reviewImage1,
+      kakaoImage: kakaoImage1,
     },
     {
       label: "전체 컨설팅",
@@ -31,7 +34,8 @@ export const data = {
   많은 학생들이 처음 유학원을 정할 떄 경험도 많고 큰 곳이 좋은 것 아닌가 하고 생각 할 것 같아요. 저 또한 그랬기에 처음엔 대형 업체에서 진행을 했습니다. 하지만, 대형 업체와 유니버스 직접 모드 경험한 사람으로서 저는 대표님이 직접 모든 것을 케어 해주시는 유니버스가 훨씬 도움이 되었다고 말씀드릴 수 있습니다.
   
   서류 작업은 물론이고 미국에 오디션을 보러 가기 전에 오디션 일정을 짜주시는 것부터 챙겨야 할 준비물들, 학교 근처 연습실/숙소, 그리고 학교 연습실을 사용할 수 있게 재학생과 컨택까지, 생각하는 것보다 더 많은 도움을 받았습니다. 정말 꼼꼼하게 진행하시고 모든 것을 투명하게 볼 수 있어서 후회 없는 선택이었다고 말할 수 있어요!`,
-      imageSrc: reviewImage2,
+      image: reviewImage2,
+      kakaoImage: kakaoImage2,
     },
   ],
   faq: [
