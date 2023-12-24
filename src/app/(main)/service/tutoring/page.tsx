@@ -154,7 +154,7 @@ const RecommendSection = () => {
   return (
     <Aos className="my-32">
       <section className="container">
-        <SectionTitle>국내 최초, 미국 음대 입시 과외</SectionTitle>
+        <SectionTitle>국내 최초 미국 음대 입시 과외</SectionTitle>
         <SectionSubtitle>이런 분들께 추천드립니다.</SectionSubtitle>
         <div className="mt-12 flex flex-col items-center gap-4">
           <RecommendItem number={1} title='"제가 뭘 모르는지 모르겠어요."' />
