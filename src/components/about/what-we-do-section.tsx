@@ -35,8 +35,8 @@ export const WhatWeDoSection = () => {
             href={ROUTE.SERVICE.STUDY}
             icon={<ColoredIcon.Pencil className="h-10 w-10" />}
           />
-          <div className="rounded-3xl bg-white p-6 shadow-md md:min-h-[320px]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
+          <div className="rounded-3xl bg-white p-6 md:min-h-[320px]">
+            <div className="flex h-16 w-16 items-center justify-center">
               <ColoredIcon.Storage className="h-10 w-10" />
             </div>
             <div className="mt-8 flex items-center gap-2 md:mt-20">
@@ -64,11 +64,9 @@ interface WhatWeDoItemProps {
 
 const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => {
   return (
-    <Link className="group relative rounded-3xl shadow-md transition" href={href}>
+    <Link className="group relative rounded-3xl transition" href={href}>
       <div className="flex cursor-pointer flex-col rounded-3xl bg-white p-6 brightness-100 md:min-h-[360px] md:group-hover:brightness-50">
-        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
-          {icon}
-        </div>
+        <div className="flex h-16 w-16 items-center justify-center">{icon}</div>
         <p className="mt-8 text-2xl font-semibold md:mt-20">{title}</p>
         <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">{description}</p>
       </div>
