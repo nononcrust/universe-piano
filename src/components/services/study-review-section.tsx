@@ -26,7 +26,8 @@ export const StudyReviewSection = () => {
               labels={review.labels}
               title={review.title}
               description={review.description}
-              imageSrc={review.imageSrc}
+              image={review.image}
+              kakaoImage={review.kakaoImage}
             />
           ))}
         </div>
@@ -60,25 +61,32 @@ interface StudyReviewItemProps {
   labels: (typeof data.reviews)[number]["labels"];
   title: string;
   description: string;
-  imageSrc: StaticImageData;
+  image: StaticImageData;
+  kakaoImage: StaticImageData;
 }
 
-const StudyReviewItem = ({ labels, title, description, imageSrc }: StudyReviewItemProps) => {
+const StudyReviewItem = ({
+  labels,
+  title,
+  description,
+  kakaoImage,
+  image,
+}: StudyReviewItemProps) => {
   const dialog = useDialog();
 
   return (
     <div className="flex flex-1 flex-col">
       <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border">
         <div className="flex justify-center">
-          <div className="h-32 w-full bg-gradient-to-b from-gray-200 to-white" />
+          <div className="relative h-56 w-full">
+            <Image className="object-cover" fill src={image} alt="" />
+            <div className="absolute bottom-0 left-0 right-0 top-0 z-10 bg-gradient-to-t from-white to-transparent" />
+          </div>
         </div>
         <div className="mt-8 flex flex-col gap-2 px-4">
           <div className="flex gap-2">
             {labels.map((label, index) => (
-              <div
-                key={index}
-                className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white"
-              >
+              <div key={index} className="rounded-full bg-content px-3 py-1 text-sm font-semibold">
                 {label}
               </div>
             ))}
@@ -90,12 +98,12 @@ const StudyReviewItem = ({ labels, title, description, imageSrc }: StudyReviewIt
         </div>
       </div>
       <div className="mt-4 flex justify-end">
-        <Button variant="secondary" onClick={dialog.open}>
+        <Button variant="outline" onClick={dialog.open}>
           후기 카톡 원본 확인
         </Button>
         <Dialog open={dialog.isOpen} onOpenChange={dialog.onOpenChange}>
           <DialogContent className="max-h-[80vh] overflow-y-auto">
-            <Image src={imageSrc} alt="" priority />
+            <Image src={kakaoImage} alt="" priority />
           </DialogContent>
         </Dialog>
       </div>

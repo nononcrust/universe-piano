@@ -44,7 +44,9 @@ export const AuditionDetail = () => {
               />
             ))}
           </div>
-          <Markdown className="prose mt-8" content={audition.content} />
+          <div className="mt-8">
+            <Markdown className="prose" content={audition.content} />
+          </div>
           <PageSubtitle className="mt-24" title={`댓글 ${audition._count.comments}`} />
           <AccessControl>
             <CommentInput className="mt-4" auditionId={audition.id} />

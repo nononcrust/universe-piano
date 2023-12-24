@@ -7,6 +7,7 @@ import { SectionTitle } from "@/components/section-title";
 import { FreeConsultingSection } from "@/components/services/\bconsulting-free-consulting-section";
 import { OverwhelmingResultSection } from "@/components/services/consulting-overwhelming-result-section";
 import { ConsultingReviewSection } from "@/components/services/consulting-review-section";
+import { ConsultingPackageSection } from "@/components/services/consulting/consulting-package-section";
 import { SchoolSelectionSection } from "@/components/services/consulting/school-selection-section";
 import { Aos } from "@/components/ui/aos";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,7 @@ export default function ConsultingPage() {
       <ConsultingReviewSection />
       <WhyUniverseSection />
       <ConsultingCurriculumSection />
+      <ConsultingPackageSection />
       <ConsultingInfoSection />
       <ConsultingFaqSection />
       <FreeConsultingSection />

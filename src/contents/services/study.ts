@@ -1,5 +1,7 @@
 import reviewImage1 from "@/assets/images/study/study-review-1.jpg";
-import reviewImage2 from "@/assets/images/study/study-review-2.png";
+import reviewImage2 from "@/assets/images/study/study-review-2.jpg";
+import reviewKakaoImage1 from "@/assets/images/study/study-review-kakao-1.jpg";
+import reviewKakaoImage2 from "@/assets/images/study/study-review-kakao-2.png";
 
 export const data = {
   reviews: [
@@ -17,7 +19,8 @@ export const data = {
 그리고 또 다른 자극 요소는 유니버스 피아노 대표님 이었다. 스터디를 할 수 있게 이엃게 밥상을 차려주었지만, 스터디원들이 나태해지고 해이해질때면 쓴소리와 잔소리로 밥을 떠먹여 주기까지 하였다. 스터디원들 개개인에게 꾸준하게 관심 가져 주시고, 스터디에 부족하거나 필요한 부분은 발 벗고 나서서 자기일 같이 도움을 주셨다. 
       
 이러한 스터디 모임을 계속해서 안 할 이유가 없었고, 그렇게 나는 약 8개월 동안 스터디에 참여했다. 그 결과, 내가 받아야만 하는 점수에 도달 하였고, 비로소 나는 유니버스 피아노 스터디를 졸업할 수 있게 되었다.`,
-      imageSrc: reviewImage1,
+      image: reviewImage1,
+      kakaoImage: reviewKakaoImage1,
     },
     {
       labels: ["영어 스터디"],
@@ -46,7 +49,8 @@ export const data = {
       
 4. 기타 느낀 점
 사실 토플 공부는 2월부터 했지만 연습과 병행하느라 조금씩 하고 6월, 7월만 진짜 열심히 했던 것 같아요! 공부를 더 일찍부터 열심히 했다면 졸업도 더 빨랐을 것 같습니다! 토플 점수가 필요하시다면 꼭…… 미리 미리 하시길 추천드립니다……`,
-      imageSrc: reviewImage2,
+      image: reviewImage2,
+      kakaoImage: reviewKakaoImage2,
     },
   ],
   faq: [

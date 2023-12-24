@@ -1,6 +1,5 @@
 "use client";
 
-import { Markdown } from "@/components/markdown";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useNoticeDetail } from "@/features/notice";
@@ -8,6 +7,7 @@ import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
 import { PageTitle } from "../layout/page-title";
+import { Markdown } from "../markdown";
 
 export const NoticeDetail = () => {
   const params = useParams<{ id: string }>();
@@ -18,6 +18,8 @@ export const NoticeDetail = () => {
 
   if (!data) return null;
 
+  console.log(data.content);
+
   return (
     <main className="container pb-16">
       <PageTitle title="공지사항" />
@@ -25,7 +27,9 @@ export const NoticeDetail = () => {
         <h2 className="text-lg font-medium md:text-2xl">{data.title}</h2>
         <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
       </div>
-      <Markdown className="prose mt-8" content={data.content} />
+      <div className="mt-8 flex break-all">
+        <Markdown className="prose flex-1" content={data.content} />
+      </div>
       <div className="mt-24">
         <Link href={ROUTE.NEWS.NOTICE.LIST}>
           <Button variant="secondary">목록으로</Button>
