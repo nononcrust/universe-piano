@@ -20,8 +20,9 @@ export const CommunitySection = () => {
       <LandingSectionSubtitle>
         다양한 사람들과 정보를 나눌 수 있는 공간을 제공하고 있어요.
       </LandingSectionSubtitle>
-      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         <SnsCard />
+        <BlogCard />
         <OfflineCard />
       </div>
     </section>
@@ -44,6 +45,22 @@ const SnsCard = () => {
         <Link href={siteConfig.links.instagram} className="transition hover:-translate-y-1">
           <Image priority src={instagramIcon} className="h-10 w-10 rounded-[10px]" alt="" />
         </Link>
+      </div>
+    </Card>
+  );
+};
+
+const BlogCard = () => {
+  return (
+    <Card>
+      <div className="mb-4 flex">
+        <IconHeader>
+          <ColoredIcon.Like className="h-6 w-6" />
+        </IconHeader>
+      </div>
+      <Card.Title>미국 음대 입시 칼럼</Card.Title>
+      <Card.Subtitle>대표가 직접 전하는 미국 음대 입시 이야기</Card.Subtitle>
+      <div className="flex flex-1 items-end gap-2">
         <Link href={siteConfig.links.blog} className="transition hover:-translate-y-1">
           <Image priority src={naverBlogIcon} className="h-10 w-10 rounded-[10px]" alt="" />
         </Link>

@@ -8,7 +8,7 @@ export const SchoolSelectionSection = () => {
       <Aos className="container">
         <SectionTitle>어떻게 이렇게 결과가 좋나요?</SectionTitle>
         <div className="mt-12 flex justify-center">
-          <div className="flex gap-4">
+          <div className="flex w-[200px] gap-4">
             <div className="flex justify-center">
               <div className="mt-1 flex flex-col">
                 <Indicator number={1} />
@@ -47,7 +47,7 @@ export const SchoolSelectionSection = () => {
       <Aos className="container pt-36">
         <SectionTitle>학교 선정은 어떻게 진행되나요?</SectionTitle>
         <div className="mt-12 flex justify-center">
-          <div className="flex gap-4">
+          <div className="flex w-[200px] gap-4">
             <div className="flex justify-center">
               <div className="mt-1 flex flex-col">
                 <Indicator number={1} />
