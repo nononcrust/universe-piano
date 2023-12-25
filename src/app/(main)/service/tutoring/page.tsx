@@ -178,7 +178,7 @@ interface RecommendItemProps {
 
 const RecommendItem = ({ number, title }: RecommendItemProps) => {
   return (
-    <div className="flex w-full max-w-[600px] gap-4 rounded-xl bg-content p-4">
+    <div className="flex w-full max-w-[600px] gap-4 rounded-full rounded-tl-none bg-content p-4">
       <div>
         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary font-bold text-white">
           {number}
@@ -316,7 +316,7 @@ const MustReadSection = () => {
     <Aos className="my-32">
       <section className="container">
         <SectionTitle className="text-left">필독 사항</SectionTitle>
-        <div className="mt-12 max-w-[400px] rounded-full rounded-tl-none bg-primary p-4 text-xl font-semibold text-white">
+        <div className="mt-12 max-w-[400px] rounded-full rounded-tl-none bg-primary p-4 pl-8 text-xl font-semibold text-white">
           {'"너 이러다 망하는거 아니야?"'}
         </div>
         <div className="mt-8">

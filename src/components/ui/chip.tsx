@@ -12,10 +12,11 @@ const chipVariants = cva("flex justify-center items-center rounded-md font-mediu
       green: "bg-green-50 text-green-600",
       red: "bg-red-50 text-red-600",
       blue: "bg-blue-50 text-blue-600",
+      primary: "bg-primary-content text-primary",
     },
   },
   defaultVariants: {
-    color: "blue",
+    color: "primary",
     size: "default",
   },
 });

@@ -31,6 +31,7 @@ export default function ConsultingPage() {
       <ConsultingInfoSection />
       <ConsultingFaqSection />
       <FreeConsultingSection />
+      {/* <ServiceFloatingButton /> */}
     </main>
   );
 }
@@ -48,7 +49,7 @@ const HeroSection = () => {
               미국 음대 입시 컨설팅
             </h1>
           </div>
-          <Image className="w-[200px]" priority src={hero3dImage} alt="" />
+          <Image className="w-[200px]" priority src={hero3dImage} alt="" fetchPriority="high" />
         </div>
       </Aos>
     </section>
@@ -111,7 +112,7 @@ const ConsultingExampleItem = ({
   return (
     <div
       className={cn(
-        "flex w-full gap-4 rounded-3xl bg-content p-4",
+        "flex w-full gap-4 rounded-full bg-content p-4",
         direction === "left" && "rounded-tl-none",
         direction === "right" && "rounded-tr-none",
       )}
