@@ -8,13 +8,17 @@ import Link from "next/link";
 
 export const userColumns: ColumnDef<User>[] = [
   {
-    accessorKey: "nickname",
+    accessorKey: "name",
     header: "이름",
     cell: ({ row }) => (
       <Link className="hover:underline" href={ROUTE.ADMIN.USER.EDIT(row.original.id)}>
-        {row.getValue("nickname")}
+        {row.getValue("name")}
       </Link>
     ),
+  },
+  {
+    accessorKey: "nickname",
+    header: "닉네임",
   },
   {
     accessorKey: "phone",

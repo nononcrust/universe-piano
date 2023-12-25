@@ -22,7 +22,6 @@ export default function ConsultingPage() {
       <OverwhelmingResultSection />
       <LogoSliderSection />
       <ConsultingExampleSection />
-      <VictoryFormulaSection />
       <SchoolSelectionSection />
       <ConsultingReviewSection />
       <WhyUniverseSection />
@@ -124,30 +123,6 @@ const ConsultingExampleItem = ({
       </div>
       <p className="flex-1 font-semibold">{title}</p>
     </div>
-  );
-};
-
-const VictoryFormulaSection = () => {
-  return (
-    <section className="my-32">
-      <Aos className="container flex flex-col">
-        <SectionTitle className="md:text-left">입시 필승 공식</SectionTitle>
-        <SectionSubtitle className="md:text-left">어떻게 이렇게 결과가 좋나요?</SectionSubtitle>
-        <p className="mt-12 text-center text-xl font-bold md:text-left md:text-4xl">
-          &quot;<span className="text-primary">첫 음부터 다르니까!</span>&quot;
-        </p>
-        <p className="mt-4 text-center text-lg font-semibold md:text-left md:text-2xl">
-          미국 음대 입시의 첫 음, 학교 선정
-        </p>
-        <div className="flex justify-center">
-          <p className="mt-6 w-full whitespace-pre-wrap text-center font-medium md:text-left md:text-lg">
-            {
-              "유니버스 피아노는 미국 음대 입시의 첫 단계, 학교 선정에 많은 시간을 할애합니다.\n학교 선정은 합격과 장학금에 실질적인 영향을 미치는 부분이지만, 혼자 준비하시는 분들 뿐만 아니라 여러 업체들이 이 부분을 간과합니다.\n\n유니버스 피아노는 지원자 분의 최종 장학금을 고려한 학교 선정을 진행합니다. 이것이 유니버스 피아노가 학교 개수별로 비용을 책정하지 않는 이유입니다."
-            }
-          </p>
-        </div>
-      </Aos>
-    </section>
   );
 };
 

@@ -40,6 +40,7 @@ export const UserForm = ({ user }: UserFormProps) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(userRequestSchema),
     defaultValues: {
+      name: user.name,
       nickname: user.nickname,
       email: user.email,
       role: user.role,
@@ -74,6 +75,20 @@ export const UserForm = ({ user }: UserFormProps) => {
         </div>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
+            <FormField
+              name="name"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>이름</FormLabel>
+                  <FormControl>
+                    <Input placeholder="이름" {...field} />
+                  </FormControl>
+                  <FormDescription>이름을 입력해주세요.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               name="nickname"
               control={form.control}

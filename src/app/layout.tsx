@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   ...(process.env.NODE_ENV === "production" && { openGraph: siteConfig.openGraph }),
 };
 
+export const revalidate = 0;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">

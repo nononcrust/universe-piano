@@ -28,6 +28,7 @@ export type UserList = Prisma.PromiseReturnType<typeof userRepository.getUserLis
 export type UserDetail = Prisma.PromiseReturnType<typeof userRepository.getUserById>;
 
 export const userRequestSchema = z.object({
+  name: z.string(),
   nickname: z.string(),
   email: z.string().email(),
   role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]),
@@ -36,6 +37,7 @@ export const userRequestSchema = z.object({
 });
 
 export const userUpdateRequestSchema = z.object({
+  name: z.string().optional(),
   nickname: z.string().optional(),
   email: z.string().email().optional(),
   role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]).optional(),
