@@ -36,7 +36,7 @@ export const WhatWeDoSection = () => {
             icon={<ColoredIcon.Pencil className="h-10 w-10" />}
           />
           <div className="rounded-xl bg-white p-6 md:min-h-[320px]">
-            <div className="flex h-16 w-16 items-center justify-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-content">
               <ColoredIcon.Storage className="h-10 w-10" />
             </div>
             <div className="mt-8 flex items-center gap-2 md:mt-20">
@@ -66,7 +66,9 @@ const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => 
   return (
     <Link className="group relative transition" href={href}>
       <div className="flex cursor-pointer flex-col rounded-xl bg-white p-6 brightness-100 md:min-h-[360px] md:group-hover:brightness-50">
-        <div className="flex h-16 w-16 items-center justify-center">{icon}</div>
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-content">
+          {icon}
+        </div>
         <p className="mt-8 text-xl font-semibold md:mt-20">{title}</p>
         <p className="mt-2 font-medium text-muted-foreground">{description}</p>
       </div>
