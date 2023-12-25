@@ -17,7 +17,7 @@ export const WhyUniverseItem = ({ number, title, description, image }: WhyUniver
 
   return (
     <div
-      className="group relative flex h-[320px] flex-1 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl bg-white font-bold"
+      className="group relative flex h-[320px] flex-1 cursor-pointer flex-col justify-between overflow-hidden rounded-2xl bg-white font-bold"
       onClick={() => setShowDescription(!showDescription)}
     >
       <Image

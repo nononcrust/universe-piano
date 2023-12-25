@@ -65,14 +65,12 @@ const SwiperNavigationButton = () => {
       <button
         className={cn("rounded-full p-1 transition hover:bg-content")}
         onClick={() => swiper.slidePrev()}
-        disabled={swiper.isBeginning}
       >
         <Icon.ChevronLeft className="h-8 w-8" />
       </button>
       <button
         className={cn("rounded-full p-1 transition hover:bg-content")}
         onClick={() => swiper.slideNext()}
-        disabled={swiper.isEnd}
       >
         <Icon.ChevronRight className="h-8 w-8" />
       </button>

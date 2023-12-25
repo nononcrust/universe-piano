@@ -147,7 +147,7 @@ interface StudyCompositionItemProps {
 const StudyCompositionItem = ({ image, title, description }: StudyCompositionItemProps) => {
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
-      <div className="flex h-[280px] w-full items-center justify-center rounded-3xl border bg-[#C1C4EC]">
+      <div className="flex h-[280px] w-full items-center justify-center rounded-2xl border bg-[#C1C4EC]">
         <Image className="w-full rounded-2xl" alt="" src={image} priority />
       </div>
       <div className="ml-2 mt-3 flex flex-col">

@@ -142,7 +142,7 @@ interface ScholarshipItemProps {
 
 const CrewResultItem = ({ title, description, icon }: ScholarshipItemProps) => {
   return (
-    <div className="flex w-full flex-col items-center rounded-2xl bg-white p-8 md:max-w-[240px]">
+    <div className="flex w-full flex-col items-center rounded-xl bg-white p-8 md:max-w-[240px]">
       <div className="flex h-24 w-24 items-center justify-center">{icon}</div>
       <p className="mt-4 font-semibold text-muted-foreground">{title}</p>
       <p className="mt-2 text-center text-3xl font-bold text-primary">{description}</p>
@@ -226,7 +226,7 @@ interface TutoringCompositionItemProps {
 const TutoringCompositionItem = ({ image, title, description }: TutoringCompositionItemProps) => {
   return (
     <div className="flex flex-1 flex-col rounded-2xl">
-      <div className="flex h-[280px] w-full items-center justify-center rounded-3xl border bg-[#C1C4EC]">
+      <div className="flex h-[280px] w-full items-center justify-center rounded-2xl border bg-[#C1C4EC]">
         <Image className="w-full rounded-2xl" alt="" src={image} priority />
       </div>
       <div className="ml-2 mt-3 flex flex-col">
