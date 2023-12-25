@@ -127,7 +127,7 @@ const WhatsOurNextSection = () => {
         </SectionSubtitle>
         <div className="flex justify-center">
           <div className="relative mt-24 flex flex-col gap-4">
-            <div className="absolute h-full w-[1px] translate-x-[5.5px] translate-y-[10px] bg-gradient-to-b from-black from-90% to-content" />
+            <div className="absolute h-full w-[1px] translate-x-[5px] translate-y-[10px] bg-gradient-to-b from-black from-90% to-content" />
             <WhatsOurNextItem
               year="2023"
               items={[
@@ -161,7 +161,7 @@ const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
     <div className="flex">
       <div className="mr-8 mt-1.5 h-3 w-3 rounded-full bg-black" />
       <p className="mr-4 text-lg font-semibold text-muted-foreground">{year}</p>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-1 flex-col gap-4">
         {items.map((item, index) => (
           <p className="text-lg font-medium" key={index}>
             {item}
