@@ -1,6 +1,7 @@
 "use client";
 
 import auditionResultImage from "@/assets/images/landing/audition-result.png";
+import kitImage from "@/assets/images/landing/kit.png";
 import scholarshipImage from "@/assets/images/landing/scholarship.png";
 import { ROUTE } from "@/constants/route";
 import Image from "next/image";
@@ -39,7 +40,7 @@ const AuditionResultCard = () => {
         </div>
         <Card.Subtitle>로그인 후에 미국 음대 오디션 결과를 확인 하실 수 있습니다.</Card.Subtitle>
         <div className="flex justify-center">
-          <Image className="mt-6" width={200} src={auditionResultImage} alt="scholarship" />
+          <Image className="mt-6" width={200} src={auditionResultImage} alt="audition" />
         </div>
       </Card>
     </Link>
@@ -71,20 +72,18 @@ const ScholarshipCard = () => {
 
 const AuditionKitCard = () => {
   return (
-    <Card>
+    <Card className="overflow-hidden">
       <div className="flex items-center gap-2">
         {/* <Icon.Leaf className="h-5 w-5 fill-primary text-primary" /> */}
-        <Card.Title>
-          <div className="flex items-center">
-            <Icon.Siren className="h-6 w-6 fill-primary text-primary" />
-            <p className="ml-2">오디션 119 키트</p>
-          </div>
-        </Card.Title>
+        <Card.Title>오디션 119 키트</Card.Title>
         <Badge className="bg-white" variant="outline">
           준비중
         </Badge>
       </div>
       <Card.Subtitle>미국 음대 오디션 투어 꿀팁, 상황별 영어 표현, 체크리스트까지!</Card.Subtitle>
+      <div className="flex justify-center">
+        <Image className="mt-6" width={200} src={kitImage} alt="kit" />
+      </div>
     </Card>
   );
 };

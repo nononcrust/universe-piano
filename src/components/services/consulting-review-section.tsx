@@ -32,7 +32,7 @@ export const ConsultingReviewSection = () => {
           ))}
         </div>
         <div className="mt-12 flex flex-col items-center">
-          <p className="font-semibold">
+          <p className="text-center font-semibold md:text-left">
             더 많은 후기와 크루들의 근황은 유니버스 피아노 네이버 블로그와 인스타그램에서 확인 하실
             수 있습니다.
           </p>

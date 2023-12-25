@@ -15,7 +15,7 @@ export const ServiceAccordionSection = () => {
       <LandingSectionSubtitle>상황에 맞는 서비스를 추천해 드려요.</LandingSectionSubtitle>
       <div className="mt-4">
         <Accordion type="single" collapsible>
-          <AccordionItem value="1">
+          <AccordionItem value="1" className="ml-2 md:ml-0">
             <AccordionTrigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">빠르게 맞춤형 정보와 전략이 필요하신가요?</p>
@@ -41,7 +41,7 @@ export const ServiceAccordionSection = () => {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="2">
+          <AccordionItem value="2" className="ml-2 md:ml-0">
             <AccordionTrigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">입시 전체 과정 케어가 필요하신가요?</p>
@@ -65,7 +65,7 @@ export const ServiceAccordionSection = () => {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="3">
+          <AccordionItem value="3" className="ml-2 md:ml-0">
             <AccordionTrigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">영어 공부 관련 도움이 필요하신가요?</p>
@@ -91,7 +91,7 @@ export const ServiceAccordionSection = () => {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="4">
+          <AccordionItem value="4" className="ml-2 md:ml-0">
             <AccordionTrigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">

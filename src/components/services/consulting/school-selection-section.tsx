@@ -34,12 +34,12 @@ export const SchoolSelectionSection = () => {
         <div className="mt-8">
           <p className="text-center font-medium max-md:whitespace-pre-wrap md:text-lg">
             {
-              "유니버스 피아노는 미국 음대 입시 첫 단계인 학교 선정에서 부터\n지원자분의 장학금을 고려합니다."
+              "유니버스 피아노는 미국 음대 입시 첫 단계인\n학교 선정에서부터 지원자분의 장학금을 고려합니다."
             }
           </p>
           <p className="mt-4 text-center text-lg font-semibold max-md:whitespace-pre-wrap md:text-xl">
             {
-              "이것이 유니버스 피아노 크루들의 결과가 좋은 이유이자,\n학교 개수별로 비용을 책정하지 않는 이유입니다."
+              "이것이 유니버스 피아노 크루들의\n결과가 좋은 이유이자, 학교 개수별로 비용을\n책정하지 않는 이유입니다."
             }
           </p>
         </div>

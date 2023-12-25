@@ -25,8 +25,8 @@ const HeroSection = () => {
   return (
     <section className="bg-zinc-900 bg-[url('/images/stars-bg.png')] py-32">
       <Aos className="container">
-        <h1 className="text-2xl font-bold text-white md:text-5xl md:leading-tight">
-          Create your Universe: Beyond Talent
+        <h1 className="text-3xl font-bold text-white max-md:whitespace-pre-wrap md:text-5xl md:leading-tight">
+          {"Create your Universe:\nBeyond Talent"}
         </h1>
         <p className="text-medium mt-8 leading-normal text-gray-300 md:text-2xl md:leading-normal">
           스스로를 규정하던 모든 프레임에서 벗어나,
