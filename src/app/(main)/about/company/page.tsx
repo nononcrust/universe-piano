@@ -19,7 +19,7 @@ import Link from "next/link";
 export default function AboutCompanyPage() {
   return (
     <main>
-      <IntroSection />
+      {/* <IntroSection /> */}
       <WhatWeDoSection />
       <LogoSliderSection />
       <AboutRecordSection />

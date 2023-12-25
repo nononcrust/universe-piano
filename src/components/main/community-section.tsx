@@ -55,7 +55,7 @@ const BlogCard = () => {
     <Card>
       <div className="mb-4 flex">
         <IconHeader>
-          <ColoredIcon.Like className="h-6 w-6" />
+          <ColoredIcon.Chat className="h-6 w-6" />
         </IconHeader>
       </div>
       <Card.Title>미국 음대 입시 칼럼</Card.Title>

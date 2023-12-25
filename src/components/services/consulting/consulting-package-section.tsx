@@ -1,9 +1,12 @@
+import image1 from "@/assets/images/consulting/consulting-package-1.png";
+import image2 from "@/assets/images/consulting/consulting-package-2.png";
 import { Icon } from "@/components/icon";
 import { SectionSubtitle } from "@/components/section-subtitle";
 import { SectionTitle } from "@/components/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export const ConsultingPackageSection = () => {
   return (
@@ -13,8 +16,19 @@ export const ConsultingPackageSection = () => {
         <SectionSubtitle>입시 전체 과정을 대표가 직접 관리합니다.</SectionSubtitle>
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="rounded-3xl bg-white p-8">
-            <p className="font-medium md:text-lg">입시 전체 과정을 함께하는</p>
-            <p className="mt-2 text-xl font-semibold text-primary md:text-4xl">전체 컨설팅</p>
+            <div className="flex justify-between">
+              <div className="flex flex-col">
+                <p className="font-medium md:text-lg">입시 전체 과정을 함께하는</p>
+                <p className="mt-2 text-xl font-semibold text-primary md:text-4xl">전체 컨설팅</p>
+              </div>
+              <Image
+                src={image1}
+                alt=""
+                width={80}
+                height={80}
+                className="h-16 w-16 md:h-20 md:w-20"
+              />
+            </div>
             <Separator className="mt-8" />
             <ul className="mt-8 flex flex-col gap-4 rounded-3xl bg-white">
               <ListItem>월 1회 zoom 상담</ListItem>
@@ -35,8 +49,21 @@ export const ConsultingPackageSection = () => {
             </ul>
           </div>
           <div className="rounded-3xl bg-white p-8">
-            <p className="font-medium md:text-lg">유니버스 피아노의 최상위 케어</p>
-            <p className="mt-2 text-xl font-semibold text-primary md:text-4xl">유니버스 컨설팅</p>
+            <div className="flex justify-between">
+              <div className="flex flex-col">
+                <p className="font-medium md:text-lg">유니버스 피아노의 최상위 케어</p>
+                <p className="mt-2 text-xl font-semibold text-primary md:text-4xl">
+                  유니버스 컨설팅
+                </p>
+              </div>
+              <Image
+                src={image2}
+                alt=""
+                width={80}
+                height={80}
+                className="h-16 w-16 md:h-20 md:w-20"
+              />
+            </div>
             <Separator className="mt-8" />
             <ul className="mt-8 flex flex-col gap-4 rounded-3xl bg-white">
               <ListItem highlight>전체 컨설팅에서 제공 하는 모든 서비스</ListItem>

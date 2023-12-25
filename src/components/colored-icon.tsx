@@ -1,3 +1,4 @@
+import Document from "@/assets/icons/001-document.svg";
 import Chat from "@/assets/icons/002-chat.svg";
 import Conference from "@/assets/icons/006-conference.svg";
 import Idea from "@/assets/icons/010-idea.svg";
@@ -12,6 +13,7 @@ import Pencil from "@/assets/icons/082-pencil.svg";
 import Question from "@/assets/icons/116-question.svg";
 
 export const ColoredIcon = {
+  Document,
   Chat,
   Conference,
   Idea,
