@@ -9,20 +9,14 @@ import { Card } from "./card";
 
 export const IntroSection = () => {
   return (
-    <section className="container mt-8">
-      <div className="flex flex-col justify-between rounded-3xl bg-zinc-800 p-8 pr-12 text-white md:flex-row md:items-center">
+    <section className="bg-zinc-800">
+      <div className="container flex flex-col justify-between p-8 pr-12 text-white md:flex-row md:items-center">
         <div className="flex flex-col">
-          <div className="mb-2 flex">
-            <p className="font-semibold text-primary">Create your universe</p>
-          </div>
           <Card.Title className="whitespace-pre-wrap">처음 오신 분들께,</Card.Title>
           <Card.Subtitle>유니버스 피아노를 소개합니다.</Card.Subtitle>
         </div>
         <Link href={ROUTE.ABOUT.COMPANY}>
-          <Button
-            variant="primary"
-            className="mt-8 h-12 gap-1 rounded-full px-6 pr-4 transition-all hover:gap-3 md:mt-0"
-          >
+          <Button variant="primary" className="mt-8 h-12 gap-1 rounded-full px-6 pr-4 md:mt-0">
             유니버스 피아노 소개
             <Icon.ChevronRight className="h-5 w-5" />
           </Button>

@@ -10,7 +10,11 @@ import image6 from "@/assets/images/study/study-mission-6.png";
 import image7 from "@/assets/images/study/study-mission-7.png";
 import image8 from "@/assets/images/study/study-mission-8.png";
 import image9 from "@/assets/images/study/study-mission-9.png";
-import Image, { StaticImageData } from "next/image";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import "swiper/css";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Icon } from "../icon";
 import { SectionSubtitle } from "../section-subtitle";
 import { SectionTitle } from "../section-title";
 import { Aos } from "../ui/aos";
@@ -33,27 +37,45 @@ export const StudyMissionSection = () => {
             습관에도 긍정적인 변화를 경험하고 있습니다.
           </SectionSubtitle>
         </div>
-        <div className="container mt-12 flex gap-4 overflow-auto scrollbar-hide">
-          {images.map((image, index) => (
-            <StudyMissionItem key={index} image={image} />
-          ))}
+        <div className="relative mt-12">
+          <Swiper className="container" slidesPerView="auto" spaceBetween={16} loop>
+            {images.map((image, index) => (
+              <SwiperSlide style={{ width: 230 }} key={index}>
+                <Image
+                  className="h-[400px] w-[230px] rounded-2xl border bg-content"
+                  src={image}
+                  alt=""
+                  priority
+                />
+              </SwiperSlide>
+            ))}
+            <SwiperNavigationButton />
+          </Swiper>
         </div>
       </section>
     </Aos>
   );
 };
 
-interface StudyMissionItemProps {
-  image: StaticImageData;
-}
+const SwiperNavigationButton = () => {
+  const swiper = useSwiper();
 
-const StudyMissionItem = ({ image }: StudyMissionItemProps) => {
   return (
-    <Image
-      className="h-[400px] min-w-[230px] rounded-2xl border bg-content"
-      src={image}
-      alt=""
-      priority
-    />
+    <div className="bottom-0 left-1/2 mt-8 flex -translate-y-1/2 justify-center gap-4">
+      <button
+        className={cn("rounded-full p-1 transition hover:bg-content")}
+        onClick={() => swiper.slidePrev()}
+        disabled={swiper.isBeginning}
+      >
+        <Icon.ChevronLeft className="h-8 w-8" />
+      </button>
+      <button
+        className={cn("rounded-full p-1 transition hover:bg-content")}
+        onClick={() => swiper.slideNext()}
+        disabled={swiper.isEnd}
+      >
+        <Icon.ChevronRight className="h-8 w-8" />
+      </button>
+    </div>
   );
 };

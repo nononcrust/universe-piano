@@ -1,4 +1,8 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Icon } from "../icon";
 import { LandingSectionSubtitle } from "./landing-section-subtitle";
 import { LandingSectionTitle } from "./landing-section-title";
@@ -49,15 +53,28 @@ const data = [
 
 export const ReviewSection = () => {
   return (
-    <section className="flex flex-col pt-24">
+    <section className="relative flex flex-col pt-24">
       <div className="container flex flex-col">
         <LandingSectionTitle>조작 없는 후기</LandingSectionTitle>
         <LandingSectionSubtitle>유니버스 크루들의 후기를 확인 해보세요.</LandingSectionSubtitle>
       </div>
-      <div className="container mt-8 flex gap-4 overflow-x-auto scrollbar-hide md:grid md:grid-cols-3">
-        {data.map((item, index) => (
-          <ReviewItem key={index} {...item} />
-        ))}
+      <div className="mt-8">
+        <Swiper
+          modules={[Autoplay]}
+          className="container pl-4"
+          slidesPerView="auto"
+          loop
+          autoplay={{
+            delay: 5000,
+          }}
+        >
+          {data.map((item, index) => (
+            <SwiperSlide className="w-[400px]" key={index}>
+              <ReviewItem key={index} {...item} />
+            </SwiperSlide>
+          ))}
+          {/* <SwiperNavigationButton /> */}
+        </Swiper>
       </div>
     </section>
   );
@@ -71,19 +88,44 @@ interface ReviewItemProps {
 
 const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
   return (
-    <div className={cn("min-h-[300px] rounded-2xl bg-content-light p-6 max-md:min-w-[320px]")}>
-      <p className="text-xl font-semibold">
-        {name}
-        <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
-      </p>
-      <div className="mt-1 flex gap-[2px]">
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-        <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+    <div className="mr-6">
+      <div className={cn("h-[360px] rounded-2xl bg-content-light p-6")}>
+        <p className="text-xl font-semibold">
+          {name}
+          <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
+        </p>
+        <div className="mt-1 flex gap-[2px]">
+          <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+          <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+          <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+          <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+          <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        </div>
+        <p className="mt-6 text-muted-foreground">{content}</p>
       </div>
-      <p className="mt-6 text-muted-foreground">{content}</p>
     </div>
   );
 };
+
+// const SwiperNavigationButton = () => {
+//   const swiper = useSwiper();
+
+//   return (
+//     <div className="absolute -top-12 right-0 z-10">
+//       <button
+//         className={cn("rounded-full p-1 transition hover:bg-content")}
+//         onClick={() => swiper.slidePrev()}
+//         disabled={swiper.isBeginning}
+//       >
+//         <Icon.ChevronLeft className="h-8 w-8 text-black" />
+//       </button>
+//       <button
+//         className={cn("rounded-full p-1 transition hover:bg-content")}
+//         onClick={() => swiper.slideNext()}
+//         disabled={swiper.isEnd}
+//       >
+//         <Icon.ChevronRight className="h-8 w-8" />
+//       </button>
+//     </div>
+//   );
+// };

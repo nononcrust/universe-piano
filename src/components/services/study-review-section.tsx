@@ -79,7 +79,7 @@ const StudyReviewItem = ({
       <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border">
         <div className="flex justify-center">
           <div className="relative h-56 w-full">
-            <Image className="object-cover" fill src={image} alt="" />
+            <Image className="object-cover" fill src={image} alt="" sizes="224px" />
             <div className="absolute bottom-0 left-0 right-0 top-0 z-10 bg-gradient-to-t from-white via-transparent to-transparent" />
           </div>
         </div>

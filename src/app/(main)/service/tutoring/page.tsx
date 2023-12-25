@@ -94,7 +94,7 @@ const UniversePianoSection = () => {
 
 const CrewResultSection = () => {
   return (
-    <section className="bg-content py-32">
+    <section className="bg-primary-content py-32">
       <Aos className="container">
         <SectionTitle>유니버스 크루들의 결과를 공개합니다</SectionTitle>
         <SectionSubtitle className="whitespace-pre-wrap">

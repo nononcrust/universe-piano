@@ -26,13 +26,13 @@ export const Header = () => {
             <div className="flex gap-12">
               <Link href={ROUTE.HOME} className="flex items-center">
                 <Image
-                  width={40}
-                  height={40}
+                  width={48}
+                  height={48}
                   src="/images/logo-icon.svg"
                   alt="사이트 로고"
                   priority
                 />
-                <span className="font-semibold">{siteConfig.name}</span>
+                <span className="translate-y-[1px] font-semibold">{siteConfig.name}</span>
               </Link>
               <HeaderNav />
             </div>

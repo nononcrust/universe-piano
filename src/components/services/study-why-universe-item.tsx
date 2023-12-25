@@ -20,7 +20,14 @@ export const WhyUniverseItem = ({ number, title, description, image }: WhyUniver
       className="group relative flex h-[320px] flex-1 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl bg-white font-bold"
       onClick={() => setShowDescription(!showDescription)}
     >
-      <Image className="object-cover brightness-[0.3]" priority fill src={image} alt="" />
+      <Image
+        className="object-cover brightness-[0.3]"
+        priority
+        fill
+        src={image}
+        alt=""
+        sizes="320px"
+      />
       <div
         className={cn(
           "z-10 flex justify-end",

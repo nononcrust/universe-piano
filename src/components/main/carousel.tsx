@@ -2,29 +2,37 @@
 
 import landingBannerImage from "@/assets/images/landing/landing-banner-1.png";
 import Image from "next/image";
-import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Badge } from "../ui/badge";
 
 export const Carousel = () => {
   return (
     <div className="overflow-hidden">
       <Swiper
         loop
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay, Pagination, EffectFade]}
         autoplay={{ delay: 700000 }}
         pagination
         className="h-[360px] rounded-3xl"
+        effect="fade"
       >
-        <SwiperSlide className="bg-violet-200">
+        <SwiperSlide className="bg-violet-100">
           <div className="container relative md:pt-24">
-            <div className="absolute z-10 mt-40 flex flex-col md:mt-16">
-              <p className="text-2xl font-bold md:text-3xl">1차 오디션 결과 발표</p>
-              <p className="z-10 mt-1 font-medium text-muted-foreground md:text-xl">
+            <div className="absolute z-10 mt-44 flex flex-col md:ml-4 md:mt-8">
+              <div className="flex">
+                <Badge className="font-medium" variant="primary">
+                  NEWS
+                </Badge>
+              </div>
+              <p className="mt-2 text-2xl font-semibold md:text-2xl">1차 오디션 결과 발표</p>
+              <p className="z-10 mt-1 font-medium text-muted-foreground">
                 미국 음대 오디션 결과, 유니버스 피아노에서 확인하세요.
               </p>
             </div>
             <Image
-              className="absolute -right-24 top-[20px]"
+              className="absolute -right-12 top-2 md:right-8 md:top-16"
               width={400}
               height={400}
               src={landingBannerImage}
