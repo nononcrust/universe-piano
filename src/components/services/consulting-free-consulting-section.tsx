@@ -1,13 +1,16 @@
 "use client";
 
+import footerImage from "@/assets/images/consulting/consulting-footer-image.jpg";
 import { channel } from "@/lib/channel-io";
+import Image from "next/image";
 import { SectionTitle } from "../section-title";
 import { Aos } from "../ui/aos";
 import { Button } from "../ui/button";
 
 export const FreeConsultingSection = () => {
   return (
-    <section className="bg-zinc-900 py-32">
+    <section className="relative bg-zinc-900 py-32">
+      <Image src={footerImage} alt="violin" fill className="object-cover brightness-50" />
       <Aos className="container">
         <SectionTitle className="mt-0 whitespace-pre text-left text-white md:leading-normal">
           더 자세히 알고 싶다면?

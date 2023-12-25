@@ -28,7 +28,7 @@ export const SecondServiceSection = () => {
 const AuditionResultCard = () => {
   return (
     <Link href={ROUTE.NEWS.AUDITION.LIST}>
-      <Card className="group relative cursor-pointer overflow-hidden transition hover:shadow-lg">
+      <Card className="group relative cursor-pointer overflow-hidden border border-primary transition hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Card.Title>오디션 결과 발표</Card.Title>

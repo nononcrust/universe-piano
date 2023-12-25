@@ -245,7 +245,7 @@ const StudyExpectationItem = ({
 }: StudyExpecttationItemProps) => {
   return (
     <div className={cn("flex flex-col md:flex-row md:gap-16", reverse && "md:flex-row-reverse")}>
-      <Image className="min-w-[450px] rounded-3xl md:flex-1" src={image} alt="" />
+      <Image className="rounded-3xl md:min-w-[450px] md:flex-1" src={image} alt="" />
       <div className="flex flex-1 flex-col">
         <SectionTitle className="mt-4 text-left md:mt-12">{title}</SectionTitle>
         <p className="mt-4 text-lg font-semibold md:text-2xl">{subtitle}</p>

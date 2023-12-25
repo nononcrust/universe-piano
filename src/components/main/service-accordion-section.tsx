@@ -11,10 +11,8 @@ import { LandingSectionTitle } from "./landing-section-title";
 export const ServiceAccordionSection = () => {
   return (
     <section className="container pt-24">
-      <LandingSectionTitle>서비스 안내</LandingSectionTitle>
-      <LandingSectionSubtitle>
-        아래 메뉴를 통해 내 상황에 맞는 서비스를 선택해보세요.
-      </LandingSectionSubtitle>
+      <LandingSectionTitle>서비스 추천</LandingSectionTitle>
+      <LandingSectionSubtitle>상황에 맞는 서비스를 추천해 드려요.</LandingSectionSubtitle>
       <div className="mt-4">
         <Accordion type="single" collapsible>
           <AccordionItem value="1">

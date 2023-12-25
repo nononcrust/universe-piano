@@ -30,7 +30,7 @@ export const CommunitySection = () => {
 
 const SnsCard = () => {
   return (
-    <Card>
+    <Card className="border-primary">
       <div className="mb-4 flex">
         <IconHeader>
           <ColoredIcon.Like className="h-6 w-6" />
