@@ -2,6 +2,8 @@ import { orderRepository } from "@/features/order";
 import { getServerSession } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async (request: Request) => {
   const session = await getServerSession();
 

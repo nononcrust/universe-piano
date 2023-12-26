@@ -2,6 +2,8 @@ import { orderRepository, orderUpdateRequestSchema } from "@/features/order";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 interface Context {
   params: {
     id: string;

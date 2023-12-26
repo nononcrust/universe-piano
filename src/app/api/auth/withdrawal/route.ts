@@ -2,6 +2,8 @@ import { getServerSession, revokeAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export const DELETE = async (request: Request) => {
   try {
     const session = await getServerSession();

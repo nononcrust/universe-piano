@@ -1,6 +1,8 @@
 import { productRepository } from "@/features/product";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 interface Context {
   params: {
     id: string;

@@ -3,6 +3,8 @@ import { issueAccessToken } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
+export const dynamic = "force-dynamic";
+
 export const POST = async (request: Request) => {
   try {
     const body = jwtPayloadSchema.parse(await request.json());

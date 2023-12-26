@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async (request: Request) => {
   try {
     const auditions = await auditionRepository.getAuditionList();
