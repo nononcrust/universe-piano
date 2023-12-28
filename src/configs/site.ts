@@ -65,20 +65,6 @@ export const siteContents = {
       // },
     ],
   },
-  // review: {
-  //   title: "리뷰",
-  //   href: ROUTE.REVIEW.LIST,
-  //   children: [
-  //     {
-  //       title: "컨설팅 후기",
-  //       href: ROUTE.REVIEW.CONSULT.LIST,
-  //     },
-  //     {
-  //       title: "스터디 후기",
-  //       href: ROUTE.REVIEW.STUDY.LIST,
-  //     },
-  //   ],
-  // },
   service: {
     title: "서비스",
     href: ROUTE.SERVICE.LIST,
