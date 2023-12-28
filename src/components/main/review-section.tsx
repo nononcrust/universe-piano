@@ -1,11 +1,11 @@
 "use client";
 
+import { Icon } from "@/components/icon";
+import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
+import { LandingSectionTitle } from "@/components/main/landing-section-title";
 import { cn } from "@/lib/utils";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Icon } from "../icon";
-import { LandingSectionSubtitle } from "./landing-section-subtitle";
-import { LandingSectionTitle } from "./landing-section-title";
 
 const data = [
   {

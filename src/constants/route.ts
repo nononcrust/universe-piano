@@ -29,28 +29,6 @@ export const ROUTE = {
       DETAIL: (id: string) => `/news/audition/${id}`,
     },
   },
-  REVIEW: {
-    LIST: "/review",
-    STUDY: {
-      LIST: "/review/study",
-      DETAIL: (id: string) => `/review/study/${id}`,
-    },
-    CONSULT: {
-      LIST: "/review/consult",
-      DETAIL: (id: string) => `/review/consult/${id}`,
-    },
-    AUDITION: {
-      LIST: "/review/audition",
-      FIRST: {
-        LIST: "/review/audition/first",
-        DETAIL: (id: string) => `/review/audition/first/${id}`,
-      },
-      SECOND: {
-        LIST: "/review/audition/second",
-        DETAIL: (id: string) => `/review/audition/second/${id}`,
-      },
-    },
-  },
   KIT: {
     LIST: "/kit",
     DETAIL: (id: string) => `/kit/${id}`,
@@ -68,7 +46,6 @@ export const ROUTE = {
     ACCOUNT: "/mypage/account",
     ORDER: "/mypage/order",
   },
-  CART: "/cart",
   CHECKOUT: (id: string) => `/checkout/${id}`,
   WITHDRAWAL: "/withdrawal",
   ORDER: {

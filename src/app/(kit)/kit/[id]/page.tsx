@@ -1,3 +1,3 @@
-export default function EbookDetailPage() {
+export default function KitDetailPage() {
   return <main></main>;
 }

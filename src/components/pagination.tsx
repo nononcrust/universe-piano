@@ -1,5 +1,5 @@
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
 
 interface PaginationProps {
   className?: string;

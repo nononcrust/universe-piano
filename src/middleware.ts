@@ -1,18 +1,16 @@
+import { COOKIE } from "@/constants/cookie";
+import { ROUTE } from "@/constants/route";
+import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { Role } from "@prisma/client";
 import { NextResponse, type NextRequest } from "next/server";
-import { COOKIE } from "./constants/cookie";
-import { ROUTE } from "./constants/route";
-import { accessTokenSchema, jwt } from "./lib/jwt";
 
 const DISABLED_ROUTES = [
   ROUTE.KIT.LIST,
   ROUTE.KIT.DETAIL,
-  ROUTE.CART,
   ROUTE.ORDER.RESULT,
   ROUTE.ORDER.DETAIL,
   ROUTE.SERVICE.PRODUCT.LIST,
   ROUTE.SERVICE.PRODUCT.DETAIL,
-  ROUTE.REVIEW.LIST,
   ROUTE.CHECKOUT,
   ROUTE.MYPAGE.ORDER,
   ROUTE.MYPAGE.ACTIVITY,

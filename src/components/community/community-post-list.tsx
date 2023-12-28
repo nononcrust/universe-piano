@@ -1,5 +1,5 @@
+import { CommunityPostListItem } from "@/components/community/community-post-list-item";
 import { formatDate } from "@/lib/utils";
-import { CommunityPostListItem } from "./community-post-list-item";
 
 const DUMMY_POST_LIST = Array(10)
   .fill(0)

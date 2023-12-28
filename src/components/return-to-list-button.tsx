@@ -1,6 +1,6 @@
+import { Icon } from "@/components/icon";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Icon } from "./icon";
 
 interface ReturnToListButtonProps {
   className?: string;
@@ -13,7 +13,7 @@ export const ReturnToListButton = ({ className, href, label }: ReturnToListButto
     <Link href={href}>
       <button
         className={cn(
-          "hover:bg-content group absolute -left-2.5 bottom-12 flex items-center rounded-xl py-1 pl-1 pr-3 text-sm text-muted-foreground transition hover:text-accent-foreground",
+          "group absolute -left-2.5 bottom-12 flex items-center rounded-xl py-1 pl-1 pr-3 text-sm text-muted-foreground transition hover:bg-content hover:text-accent-foreground",
           className,
         )}
       >

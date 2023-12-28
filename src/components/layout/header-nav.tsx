@@ -1,37 +1,15 @@
 "use client";
 
+import {
+  NavigationMenu,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 import { headerNav } from "@/configs/site";
-import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { NavigationMenu, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
-
-const SERVICES: { title: string; href: string; description: string }[] = [
-  {
-    title: "입시 컨설팅",
-    href: ROUTE.SERVICE.CONSULTING,
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "미국 음대 입시 과외",
-    href: ROUTE.SERVICE.TUTORING,
-    description: "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "스터디",
-    href: ROUTE.HOME,
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "독학 키트",
-    href: ROUTE.SERVICE.PRODUCT.LIST,
-    description: "Visually or semantically separates content.",
-  },
-];
 
 export const HeaderNav = () => {
   return (

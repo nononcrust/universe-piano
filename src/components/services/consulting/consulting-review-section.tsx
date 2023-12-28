@@ -2,16 +2,16 @@
 
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
+import { SectionSubtitle } from "@/components/section-subtitle";
+import { SectionTitle } from "@/components/section-title";
+import { Aos } from "@/components/ui/aos";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { siteConfig } from "@/configs/site";
 import { data } from "@/contents/services/consulting";
 import { useDialog } from "@/hooks/use-dialog";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { SectionSubtitle } from "../section-subtitle";
-import { SectionTitle } from "../section-title";
-import { Aos } from "../ui/aos";
-import { Button } from "../ui/button";
-import { Dialog, DialogContent } from "../ui/dialog";
 
 export const ConsultingReviewSection = () => {
   return (

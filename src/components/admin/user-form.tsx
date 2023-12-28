@@ -1,5 +1,26 @@
 "use client";
 
+import { FormLayout } from "@/components/admin/form-layout";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useUpdateUser, userRequestSchema } from "@/features/user";
@@ -10,21 +31,6 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import { FormLayout } from "./form-layout";
 
 type FormSchema = z.infer<typeof userRequestSchema>;
 

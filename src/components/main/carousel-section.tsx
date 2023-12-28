@@ -1,4 +1,4 @@
-import { Carousel } from "./carousel";
+import { Carousel } from "@/components/main/carousel";
 
 export const CarouselSection = () => {
   return (

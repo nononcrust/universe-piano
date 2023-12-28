@@ -1,4 +1,4 @@
-import { Icon } from "../icon";
+import { Icon } from "@/components/icon";
 
 export const ServicePreparingFallback = () => {
   return (

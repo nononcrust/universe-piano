@@ -1,5 +1,5 @@
+import { Icon } from "@/components/icon";
 import { cn } from "@/lib/utils";
-import { Icon } from "./icon";
 
 interface EmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {
   message: string;

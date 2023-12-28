@@ -1,9 +1,9 @@
 "use client";
 
+import { Icon } from "@/components/icon";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Drawer } from "vaul";
-import { Icon } from "../icon";
 
 const drawer = [
   {
@@ -71,7 +71,7 @@ export const KitMobileNavigationDrawer = () => {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
-        <Icon.Menu className="hover:bg-content h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200" />
+        <Icon.Menu className="h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200 hover:bg-content" />
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-40 bg-black/40" />
@@ -108,7 +108,7 @@ const KitMobileNavigationDrwerItem = ({ title, href }: KitMobileNavigationDrwerI
   return (
     <li
       className={cn(
-        "hover:bg-content flex w-full flex-1 rounded-lg p-4 font-medium transition",
+        "flex w-full flex-1 rounded-lg p-4 font-medium transition hover:bg-content",
         // isActive && "bg-content",
       )}
       // onClick={() => router.push(href)}

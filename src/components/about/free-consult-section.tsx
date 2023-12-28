@@ -1,9 +1,9 @@
 "use client";
 
+import { SectionTitle } from "@/components/section-title";
+import { Aos } from "@/components/ui/aos";
+import { Button } from "@/components/ui/button";
 import { channel } from "@/lib/channel-io";
-import { SectionTitle } from "../section-title";
-import { Aos } from "../ui/aos";
-import { Button } from "../ui/button";
 
 export const FreeConsultSection = () => {
   return (

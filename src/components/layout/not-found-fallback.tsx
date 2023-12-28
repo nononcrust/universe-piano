@@ -1,8 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
 
 const DEFAULT_MESSAGE = "존재하지 않는 페이지입니다";
 

@@ -1,9 +1,9 @@
+import { Session } from "@/features/auth";
 import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
 import { Order, OrderStatus, Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
-import { Session } from "./auth";
 
 export const orderRepository = {
   getMyOrderList: (session: Session) => {

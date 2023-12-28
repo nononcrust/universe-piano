@@ -1,13 +1,13 @@
 "use client";
 
+import { Icon } from "@/components/icon";
+import { SectionSubtitle } from "@/components/section-subtitle";
+import { SectionTitle } from "@/components/section-title";
+import { Aos } from "@/components/ui/aos";
+import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import * as Accordion from "@radix-ui/react-accordion";
 import Link from "next/link";
-import { Icon } from "./icon";
-import { SectionSubtitle } from "./section-subtitle";
-import { SectionTitle } from "./section-title";
-import { Aos } from "./ui/aos";
-import { Button } from "./ui/button";
 
 interface FaqSectionProps {
   children: React.ReactNode;

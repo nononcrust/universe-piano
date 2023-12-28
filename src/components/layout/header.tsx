@@ -1,5 +1,10 @@
 "use client";
 
+import { CategoryTab } from "@/components/layout/category-tab";
+import { HeaderNav } from "@/components/layout/header-nav";
+import { NavigationMenuDialog } from "@/components/layout/navigation-menu-dialog";
+import { UserMenu } from "@/components/layout/user-menu";
+import { Button } from "@/components/ui/button";
 import { siteConfig, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
@@ -7,11 +12,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "../ui/button";
-import { CategoryTab } from "./category-tab";
-import { HeaderNav } from "./header-nav";
-import { NavigationMenuDialog } from "./navigation-menu-dialog";
-import { UserMenu } from "./user-menu";
 
 export const Header = () => {
   const { data: session, fetchStatus } = useSession();

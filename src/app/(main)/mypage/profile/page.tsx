@@ -35,11 +35,6 @@ export default function MyProfilePage() {
             <p className="text-muted-foreground">{user.email}</p>
           </div>
         </div>
-        {/* <IconButton>
-          <Link href={ROUTE.MYPAGE.ACCOUNT}>
-          <Icon.Settings />
-          </Link>
-        </IconButton> */}
         <Link href={ROUTE.MYPAGE.ACCOUNT}>
           <Button variant="secondary">프로필 수정</Button>
         </Link>

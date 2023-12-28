@@ -1,11 +1,11 @@
 "use client";
 
+import { Icon } from "@/components/icon";
+import { Card } from "@/components/main/card";
+import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import "keen-slider/keen-slider.min.css";
 import Link from "next/link";
-import { Icon } from "../icon";
-import { Button } from "../ui/button";
-import { Card } from "./card";
 
 export const IntroSection = () => {
   return (

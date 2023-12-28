@@ -1,9 +1,9 @@
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE } from "@/constants/route";
 import { ProductList } from "@/features/product";
 import Image from "next/image";
 import Link from "next/link";
-import { AspectRatio } from "./ui/aspect-ratio";
-import { Skeleton } from "./ui/skeleton";
 
 interface ProductItemProps {
   product: ProductList[number];

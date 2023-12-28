@@ -4,13 +4,13 @@ import landingBannerImage1 from "@/assets/images/landing/landing-banner-1.png";
 import landingBannerImage2 from "@/assets/images/landing/landing-banner-2.png";
 import landingBannerImage3 from "@/assets/images/landing/landing-banner-3.png";
 import landingBannerImage4 from "@/assets/images/landing/landing-banner-4.png";
+import { Badge } from "@/components/ui/badge";
 import { ROUTE } from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";
 import "swiper/css/effect-fade";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Badge } from "../ui/badge";
 
 export const Carousel = () => {
   return (

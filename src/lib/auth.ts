@@ -1,9 +1,9 @@
 import { COOKIE } from "@/constants/cookie";
 import { JwtPayload, Session, authRepository } from "@/features/auth";
+import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { Role } from "@prisma/client";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { accessTokenSchema, jwt } from "./jwt";
 
 export const issueAccessToken = async (jwtPayload: JwtPayload) => {
   const accessToken = await jwt.signUser(jwtPayload);

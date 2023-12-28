@@ -1,7 +1,9 @@
 "use client";
 
+import { AccessControl } from "@/components/access-control";
 import { AuditionCommentItem } from "@/components/audition/audition-comment-item";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
+import { PageTitle } from "@/components/layout/page-title";
 import { Markdown } from "@/components/markdown";
 import { CommentInput } from "@/components/notice/comment-input";
 import { Button } from "@/components/ui/button";
@@ -12,8 +14,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
-import { AccessControl } from "../access-control";
-import { PageTitle } from "../layout/page-title";
 
 export const AuditionDetail = () => {
   const params = useParams<{ id: string }>();

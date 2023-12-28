@@ -1,5 +1,21 @@
 "use client";
 
+import { DeleteConfirmDialog } from "@/components/admin/delete-confirm-dialog";
+import { FormLayout } from "@/components/admin/form-layout";
+import { ImageInput } from "@/components/image-input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { ROUTE } from "@/constants/route";
 import {
   useAuditionDetail,
@@ -15,22 +31,6 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
-import { ImageInput } from "../image-input";
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { DeleteConfirmDialog } from "./delete-confirm-dialog";
-import { FormLayout } from "./form-layout";
 
 const formSchema = z.object({
   title: titleSchema,

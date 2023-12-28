@@ -1,9 +1,9 @@
 "use client";
 
-import { Icon } from "../icon";
-import { SectionSubtitle } from "../section-subtitle";
-import { SectionTitle } from "../section-title";
-import { Aos } from "../ui/aos";
+import { Icon } from "@/components/icon";
+import { SectionSubtitle } from "@/components/section-subtitle";
+import { SectionTitle } from "@/components/section-title";
+import { Aos } from "@/components/ui/aos";
 
 export const OurPositioningSection = () => {
   return (

@@ -1,7 +1,5 @@
 "use client";
 
-import { useSession } from "@/features/auth";
-import { useDialog } from "@/hooks/use-dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,8 +8,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "../ui/alert-dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+} from "@/components/ui/alert-dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSession } from "@/features/auth";
+import { useDialog } from "@/hooks/use-dialog";
 
 interface CommentItemProps {
   authorId: string;

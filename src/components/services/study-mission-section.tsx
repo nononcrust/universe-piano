@@ -10,14 +10,14 @@ import image6 from "@/assets/images/study/study-mission-6.png";
 import image7 from "@/assets/images/study/study-mission-7.png";
 import image8 from "@/assets/images/study/study-mission-8.png";
 import image9 from "@/assets/images/study/study-mission-9.png";
+import { Icon } from "@/components/icon";
+import { SectionSubtitle } from "@/components/section-subtitle";
+import { SectionTitle } from "@/components/section-title";
+import { Aos } from "@/components/ui/aos";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Icon } from "../icon";
-import { SectionSubtitle } from "../section-subtitle";
-import { SectionTitle } from "../section-title";
-import { Aos } from "../ui/aos";
 
 const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10];
 

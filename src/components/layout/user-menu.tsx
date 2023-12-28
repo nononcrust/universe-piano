@@ -1,21 +1,21 @@
 "use client";
 
-import { TIER_LABEL } from "@/constants/enum";
-import { ROUTE } from "@/constants/route";
-import { useSession } from "@/features/auth";
-import { useAuth } from "@/hooks/use-auth";
-import { Role } from "@prisma/client";
-import Link from "next/link";
-import { AccessControl } from "../access-control";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Badge } from "../ui/badge";
+import { AccessControl } from "@/components/access-control";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
+import { TIER_LABEL } from "@/constants/enum";
+import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth";
+import { useAuth } from "@/hooks/use-auth";
+import { Role } from "@prisma/client";
+import Link from "next/link";
 
 export const UserMenu = () => {
   const { data: session } = useSession();

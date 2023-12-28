@@ -1,9 +1,9 @@
 "use client";
 
+import { Icon } from "@/components/icon";
 import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
-import { Icon } from "../icon";
 
 interface WhyUniverseItemProps {
   number: number;

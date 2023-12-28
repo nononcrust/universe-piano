@@ -1,6 +1,6 @@
+import { Icon } from "@/components/icon";
+import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
-import { Icon } from "../icon";
-import { Checkbox } from "../ui/checkbox";
 
 export const CartItem = () => {
   return (

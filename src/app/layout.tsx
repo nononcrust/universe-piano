@@ -3,11 +3,11 @@ import { UserInfoFetcher } from "@/components/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { Providers } from "@/providers";
+import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Toaster } from "sonner";
 import "swiper/css";
 import "swiper/css/pagination";
-import "../styles/globals.css";
 
 export const viewport: Viewport = {
   width: "device-width",

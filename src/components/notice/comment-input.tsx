@@ -1,14 +1,14 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Form, FormField } from "@/components/ui/form";
+import { Textarea } from "@/components/ui/textarea";
 import { useCreateAuditionComment } from "@/features/audition";
 import { cn } from "@/lib/utils";
 import { contentSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "../ui/button";
-import { Form, FormField } from "../ui/form";
-import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
   content: contentSchema,

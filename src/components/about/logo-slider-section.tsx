@@ -15,9 +15,23 @@ import logo5 from "@/assets/images/about/universe-logo-5.png";
 import logo6 from "@/assets/images/about/universe-logo-6.png";
 import logo8 from "@/assets/images/about/universe-logo-8.png";
 import logo9 from "@/assets/images/about/universe-logo-9.png";
+import { SectionSubtitle } from "@/components/section-subtitle";
+import { SectionTitle } from "@/components/section-title";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
+
+export const LogoSliderSection = () => {
+  return (
+    <section className="mb-24 mt-36">
+      <SectionTitle>역대 유니버스 크루</SectionTitle>
+      <SectionSubtitle>전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다.</SectionSubtitle>
+      <div className="mt-12">
+        <AboutLogoSlider />
+      </div>
+    </section>
+  );
+};
 
 const logos = [
   logo1,

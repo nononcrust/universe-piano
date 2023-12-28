@@ -1,8 +1,8 @@
+import { Icon } from "@/components/icon";
+import { Button } from "@/components/ui/button";
 import { useUploadThing } from "@/lib/uploadthing";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { Icon } from "./icon";
-import { Button } from "./ui/button";
 
 interface ImageInputProps {
   value: string[];

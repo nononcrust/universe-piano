@@ -1,11 +1,11 @@
 "use client";
 
 import footerImage from "@/assets/images/consulting/consulting-footer-image.jpg";
+import { SectionTitle } from "@/components/section-title";
+import { Aos } from "@/components/ui/aos";
+import { Button } from "@/components/ui/button";
 import { channel } from "@/lib/channel-io";
 import Image from "next/image";
-import { SectionTitle } from "../section-title";
-import { Aos } from "../ui/aos";
-import { Button } from "../ui/button";
 
 export const FreeConsultingSection = () => {
   return (

@@ -1,5 +1,5 @@
-import { ColoredIcon } from "../colored-icon";
-import { Card } from "./card";
+import { ColoredIcon } from "@/components/colored-icon";
+import { Card } from "@/components/main/card";
 
 export const NoticeCard = () => {
   return (

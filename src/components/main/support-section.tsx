@@ -1,8 +1,8 @@
-import { ChatCard } from "./chat-card";
-import { FaqCard } from "./faq-card";
-import { LandingSectionSubtitle } from "./landing-section-subtitle";
-import { LandingSectionTitle } from "./landing-section-title";
-import { NoticeCard } from "./notice-card";
+import { ChatCard } from "@/components/main/chat-card";
+import { FaqCard } from "@/components/main/faq-card";
+import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
+import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import { NoticeCard } from "@/components/main/notice-card";
 
 export const SupportSection = () => {
   return (

@@ -21,9 +21,27 @@ import logo5 from "@/assets/images/consulting/consulting-5.png";
 import logo6 from "@/assets/images/consulting/consulting-6.png";
 import logo8 from "@/assets/images/consulting/consulting-8.png";
 import logo9 from "@/assets/images/consulting/consulting-9.png";
+import { SectionSubtitle } from "@/components/section-subtitle";
+import { SectionTitle } from "@/components/section-title";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
+
+export const LogoSliderSection = () => {
+  return (
+    <section className="my-32">
+      <SectionTitle>역대 합격 학교 리스트</SectionTitle>
+      <SectionSubtitle className="container md:whitespace-pre-wrap md:leading-normal">
+        {
+          "유니버스 피아노와 함께 라면, 더 이상 혼자가 되는 걱정은 하지 않으셔도 됩니다.\n미국 각 지역에 있는 유니버스 선배 크루가 여러분들을 기꺼이 도와드릴 거에요."
+        }
+      </SectionSubtitle>
+      <div className="mt-12">
+        <ConsultingLogoSlider />
+      </div>
+    </section>
+  );
+};
 
 const logos = [
   logo1,

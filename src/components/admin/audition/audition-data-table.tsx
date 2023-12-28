@@ -1,8 +1,8 @@
 "use client";
 
+import { noticeColumns } from "@/components/admin/data-table/columns/notice-columns";
+import { DataTable } from "@/components/admin/data-table/data-table";
 import { useAuditionList } from "@/features/audition";
-import { noticeColumns } from "../data-table/columns/notice-columns";
-import { DataTable } from "../data-table/data-table";
 
 export const AuditionDataTable = () => {
   const { data } = useAuditionList();

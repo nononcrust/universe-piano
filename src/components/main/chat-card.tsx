@@ -1,6 +1,6 @@
+import { ColoredIcon } from "@/components/colored-icon";
+import { Card } from "@/components/main/card";
 import { cn } from "@/lib/utils";
-import { ColoredIcon } from "../colored-icon";
-import { Card } from "./card";
 
 export const ChatCard = () => {
   return (

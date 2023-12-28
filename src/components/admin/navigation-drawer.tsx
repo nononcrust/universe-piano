@@ -1,12 +1,12 @@
 "use client";
 
+import { Icon } from "@/components/icon";
 import { adminNav } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Drawer } from "vaul";
-import { Icon } from "../icon";
 
 export const NavigationDrawer = () => {
   return (
@@ -56,7 +56,7 @@ const NavigationDrawerItem = ({ title, href }: NavigationDrawerItemProps) => {
     <Link href={href} className="flex flex-1">
       <li
         className={cn(
-          "hover:bg-content w-full flex-1 p-4 font-medium transition",
+          "w-full flex-1 p-4 font-medium transition hover:bg-content",
           isActive && "bg-content",
         )}
       >
@@ -80,7 +80,7 @@ const MobileNavigationDrawerItem = ({ title, href }: MobileNavigationDrawerItemP
   return (
     <li
       className={cn(
-        "hover:bg-content flex w-full flex-1 rounded-lg p-4 font-medium transition",
+        "flex w-full flex-1 rounded-lg p-4 font-medium transition hover:bg-content",
         isActive && "bg-content",
       )}
       onClick={() => router.push(href)}
@@ -94,7 +94,7 @@ export const MobileNavigationDrawer = () => {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
-        <Icon.Menu className="hover:bg-content h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200" />
+        <Icon.Menu className="h-8 w-8 cursor-pointer rounded-full p-1.5 transition duration-200 hover:bg-content" />
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="bg-slatek/40 fixed inset-0 z-40" />

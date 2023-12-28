@@ -1,13 +1,13 @@
 "use client";
 
+import { PageTitle } from "@/components/layout/page-title";
+import { Markdown } from "@/components/markdown";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useNoticeDetail } from "@/features/notice";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
-import { PageTitle } from "../layout/page-title";
-import { Markdown } from "../markdown";
 
 export const NoticeDetail = () => {
   const params = useParams<{ id: string }>();

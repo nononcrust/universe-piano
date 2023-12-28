@@ -1,10 +1,10 @@
 "use client";
 
+import { ColoredIcon } from "@/components/colored-icon";
+import { SectionTitle } from "@/components/section-title";
+import { Aos } from "@/components/ui/aos";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
-import { ColoredIcon } from "../colored-icon";
-import { SectionTitle } from "../section-title";
-import { Aos } from "../ui/aos";
 
 export const WhatWeDoSection = () => {
   return (

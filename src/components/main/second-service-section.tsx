@@ -1,13 +1,13 @@
 "use client";
 
+import { ColoredIcon } from "@/components/colored-icon";
+import { Icon } from "@/components/icon";
+import { Card } from "@/components/main/card";
+import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
+import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import { Badge } from "@/components/ui/badge";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
-import { ColoredIcon } from "../colored-icon";
-import { Icon } from "../icon";
-import { Badge } from "../ui/badge";
-import { Card } from "./card";
-import { LandingSectionSubtitle } from "./landing-section-subtitle";
-import { LandingSectionTitle } from "./landing-section-title";
 
 export const SecondServiceSection = () => {
   return (

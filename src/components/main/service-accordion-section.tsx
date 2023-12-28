@@ -1,12 +1,17 @@
 "use client";
 
+import { Icon } from "@/components/icon";
+import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
+import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
-import { Icon } from "../icon";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
-import { Button } from "../ui/button";
-import { LandingSectionSubtitle } from "./landing-section-subtitle";
-import { LandingSectionTitle } from "./landing-section-title";
 
 export const ServiceAccordionSection = () => {
   return (
