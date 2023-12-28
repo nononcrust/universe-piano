@@ -7,7 +7,6 @@ import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Toaster } from "sonner";
 import "swiper/css";
-import "swiper/css/pagination";
 
 export const viewport: Viewport = {
   width: "device-width",

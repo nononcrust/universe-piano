@@ -73,7 +73,6 @@ export const ReviewSection = () => {
               <ReviewItem key={index} {...item} />
             </SwiperSlide>
           ))}
-          {/* <SwiperNavigationButton /> */}
         </Swiper>
       </div>
     </section>
@@ -106,26 +105,3 @@ const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
     </div>
   );
 };
-
-// const SwiperNavigationButton = () => {
-//   const swiper = useSwiper();
-
-//   return (
-//     <div className="absolute -top-12 right-0 z-10">
-//       <button
-//         className={cn("rounded-full p-1 transition hover:bg-content")}
-//         onClick={() => swiper.slidePrev()}
-//         disabled={swiper.isBeginning}
-//       >
-//         <Icon.ChevronLeft className="h-8 w-8 text-black" />
-//       </button>
-//       <button
-//         className={cn("rounded-full p-1 transition hover:bg-content")}
-//         onClick={() => swiper.slideNext()}
-//         disabled={swiper.isEnd}
-//       >
-//         <Icon.ChevronRight className="h-8 w-8" />
-//       </button>
-//     </div>
-//   );
-// };
