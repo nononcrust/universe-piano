@@ -9,12 +9,9 @@ export default function Home() {
   return (
     <main className="flex flex-col pb-32">
       <HeroSection />
-      {/* <CarouselSection /> */}
       <IntroSection />
-      {/* <ServiceSection /> */}
       <SecondServiceSection />
       <CommunitySection />
-      {/* <SupportSection /> */}
       <ReviewSection />
       <ServiceAccordionSection />
     </main>
