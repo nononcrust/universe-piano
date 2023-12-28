@@ -1,7 +1,6 @@
 "use client";
 
 import { footerNav, siteConfig } from "@/configs/site";
-import { ASSET } from "@/constants/asset";
 import { ROUTE } from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";
@@ -59,7 +58,7 @@ const SocialIconList = () => {
         className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
       >
         <Image
-          src={ASSET.SOCIAL.INSTAGRAM}
+          src="/socials/instagram.svg"
           width={18}
           height={18}
           alt="인스타그램 아이콘"
@@ -72,7 +71,7 @@ const SocialIconList = () => {
         className="flex  h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
       >
         <Image
-          src={ASSET.SOCIAL.KAKAO}
+          src="/socials/kakao.svg"
           width={18}
           height={18}
           alt="카카오 아이콘"
@@ -85,7 +84,7 @@ const SocialIconList = () => {
         className="flex  h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
       >
         <Image
-          src={ASSET.SOCIAL.NAVER_BLOG}
+          src="/socials/naver-blog.svg"
           width={16}
           height={16}
           alt="네이버 블로그 아이콘"
@@ -98,7 +97,7 @@ const SocialIconList = () => {
         className="flex  h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
       >
         <Image
-          src={ASSET.SOCIAL.NAVER_CAFE}
+          src="/socials/naver-cafe.svg"
           width={16}
           height={16}
           alt="네이버 카페 아이콘"
