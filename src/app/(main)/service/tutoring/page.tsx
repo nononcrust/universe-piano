@@ -19,7 +19,6 @@ export default function TutoringPage() {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      {/* <UniversePianoSection /> */}
       <RecommendSection />
       <CrewResultSection />
       <TutoringCompositionSection />
@@ -49,44 +48,6 @@ const HeroSection = () => {
             <Image className="mt-12 w-[200px]" priority src={tutoringHero3dImage} alt="별" />
           </div>
         </div>
-      </Aos>
-    </section>
-  );
-};
-
-const UniversePianoSection = () => {
-  return (
-    <section className="container my-16">
-      <Aos className="mt-12">
-        <div className="flex flex-col items-center gap-4 md:flex-row md:gap-24">
-          <Image
-            className="rounded-2xl border"
-            src="/images/tutoring/tutoring-1.png"
-            alt=""
-            width={320}
-            height={320}
-            priority
-          />
-          <p className="text-2xl font-bold md:text-3xl">이런 곳이 있는 줄 알았더라면</p>
-        </div>
-      </Aos>
-      <Aos className="mt-24">
-        <div className="flex flex-col items-center gap-4 md:flex-row-reverse md:gap-24">
-          <Image
-            className="rounded-2xl border"
-            src="/images/tutoring/tutoring-2.png"
-            alt=""
-            width={320}
-            height={320}
-            priority
-          />
-          <p className="text-2xl font-bold md:text-3xl">진작 연락 드릴 껄 그랬어요.</p>
-        </div>
-      </Aos>
-      <Aos className="mt-36">
-        <p className="whitespace-pre text-center text-2xl font-bold md:text-3xl md:leading-normal">
-          {"미국 음대 입시생들이 필요했던 ‘그런 곳’,\n유니버스 피아노입니다."}
-        </p>
       </Aos>
     </section>
   );

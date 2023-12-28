@@ -3,11 +3,11 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
-interface Context {
+type Context = {
   params: {
     id: string;
   };
-}
+};
 
 export const GET = async (request: Request, context: Context) => {
   try {

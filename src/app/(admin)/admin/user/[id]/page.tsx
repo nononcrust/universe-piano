@@ -2,11 +2,11 @@ import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { UserForm } from "@/components/admin/user-form";
 import { userRepository } from "@/features/user";
 
-interface Context {
+type Context = {
   params: {
     id: string;
   };
-}
+};
 
 export default async function AdminUserEditPage(context: Context) {
   const id = context.params.id;

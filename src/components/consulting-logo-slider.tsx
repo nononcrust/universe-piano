@@ -1,29 +1,29 @@
 "use client";
 
+import logo1 from "@/assets/images/consulting/consulting-1.png";
+import logo10 from "@/assets/images/consulting/consulting-10.png";
+import logo11 from "@/assets/images/consulting/consulting-11.png";
+import logo12 from "@/assets/images/consulting/consulting-12.png";
+import logo13 from "@/assets/images/consulting/consulting-13.png";
+import logo14 from "@/assets/images/consulting/consulting-14.png";
+import logo15 from "@/assets/images/consulting/consulting-15.png";
+import logo16 from "@/assets/images/consulting/consulting-16.png";
+import logo17 from "@/assets/images/consulting/consulting-17.png";
+import logo18 from "@/assets/images/consulting/consulting-18.png";
+import logo19 from "@/assets/images/consulting/consulting-19.png";
+import logo2 from "@/assets/images/consulting/consulting-2.png";
+import logo20 from "@/assets/images/consulting/consulting-20.png";
+import logo21 from "@/assets/images/consulting/consulting-21.png";
+import logo22 from "@/assets/images/consulting/consulting-22.png";
+import logo3 from "@/assets/images/consulting/consulting-3.png";
+import logo4 from "@/assets/images/consulting/consulting-4.png";
+import logo5 from "@/assets/images/consulting/consulting-5.png";
+import logo6 from "@/assets/images/consulting/consulting-6.png";
+import logo8 from "@/assets/images/consulting/consulting-8.png";
+import logo9 from "@/assets/images/consulting/consulting-9.png";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
-import logo1 from "../../public/images/consulting/consulting-1.png";
-import logo10 from "../../public/images/consulting/consulting-10.png";
-import logo11 from "../../public/images/consulting/consulting-11.png";
-import logo12 from "../../public/images/consulting/consulting-12.png";
-import logo13 from "../../public/images/consulting/consulting-13.png";
-import logo14 from "../../public/images/consulting/consulting-14.png";
-import logo15 from "../../public/images/consulting/consulting-15.png";
-import logo16 from "../../public/images/consulting/consulting-16.png";
-import logo17 from "../../public/images/consulting/consulting-17.png";
-import logo18 from "../../public/images/consulting/consulting-18.png";
-import logo19 from "../../public/images/consulting/consulting-19.png";
-import logo2 from "../../public/images/consulting/consulting-2.png";
-import logo20 from "../../public/images/consulting/consulting-20.png";
-import logo21 from "../../public/images/consulting/consulting-21.png";
-import logo22 from "../../public/images/consulting/consulting-22.png";
-import logo3 from "../../public/images/consulting/consulting-3.png";
-import logo4 from "../../public/images/consulting/consulting-4.png";
-import logo5 from "../../public/images/consulting/consulting-5.png";
-import logo6 from "../../public/images/consulting/consulting-6.png";
-import logo8 from "../../public/images/consulting/consulting-8.png";
-import logo9 from "../../public/images/consulting/consulting-9.png";
 
 const logos = [
   logo1,

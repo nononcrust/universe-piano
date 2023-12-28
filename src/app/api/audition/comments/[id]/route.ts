@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-interface Context {
+type Context = {
   params: {
     id: string;
   };
-}
+};
 
 export const DELETE = async (request: Request, context: Context) => {
   try {

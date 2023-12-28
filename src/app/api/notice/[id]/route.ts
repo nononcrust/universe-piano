@@ -6,11 +6,11 @@ import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
 
-interface Context {
+type Context = {
   params: {
     id: string;
   };
-}
+};
 
 export const GET = async (request: Request, context: Context) => {
   try {
