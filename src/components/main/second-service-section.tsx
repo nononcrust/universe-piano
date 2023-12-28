@@ -49,7 +49,6 @@ const ScholarshipCard = () => {
     <Card className="max-h-[160px] min-h-[160px]">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          {/* <Icon.BookOpen className="h-5 w-5 fill-primary text-primary" /> */}
           <Card.Title className="flex items-center">
             <ColoredIcon.Trophy className="h-6 w-6" />
             <p className="ml-2">장학금 증액 컨설팅</p>
@@ -58,7 +57,6 @@ const ScholarshipCard = () => {
             준비중
           </Badge>
         </div>
-        {/* <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1" /> */}
       </div>
       <Card.Subtitle className="text-gray-400">
         광고, 조작 없음. 결과로 증명합니다. 최초 장학금 $30000까지 증액 성공!
@@ -71,7 +69,6 @@ const AuditionKitCard = () => {
   return (
     <Card className="max-h-[160px] min-h-[160px]">
       <div className="flex items-center gap-2">
-        {/* <Icon.Leaf className="h-5 w-5 fill-primary text-primary" /> */}
         <Card.Title className="flex items-center">
           <ColoredIcon.Storage className="h-6 w-6" />
           <p className="ml-2">오디션 119 키트</p>
