@@ -1,8 +1,8 @@
 "use client";
 
-import { Icon } from "@/components/icon";
-import { SectionSubtitle } from "@/components/section-subtitle";
-import { SectionTitle } from "@/components/section-title";
+import { Icon } from "@/components/common/icon";
+import { SectionSubtitle } from "@/components/common/section-subtitle";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/icon";
+import { Icon } from "@/components/common/icon";
 import { Card } from "@/components/main/card";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";

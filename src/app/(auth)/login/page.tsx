@@ -1,6 +1,6 @@
 "use client";
 
-import { KakaoLoginButton } from "@/components/kakao-login-button";
+import { KakaoLoginButton } from "@/components/common/kakao-login-button";
 import { KAKAO_LOGIN_URL } from "@/features/kakao";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/icon";
+import { Icon } from "@/components/common/icon";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 import { Button } from "@/components/ui/button";
@@ -143,7 +143,7 @@ export const CheckoutForm = () => {
             <PageSubtitle title="상품 정보" className="mb-4 mt-16" />
             {order.orderItems.map((orderItem) => (
               <div className="flex gap-4" key={orderItem.id}>
-                <div className="bg-content h-20 w-20 rounded-md" />
+                <div className="h-20 w-20 rounded-md bg-content" />
                 <div className="flex flex-1 flex-col gap-2">
                   <p className="text-sm">
                     {orderItem.product.category.name} | {orderItem.product.name}

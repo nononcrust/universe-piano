@@ -1,4 +1,4 @@
-import { EmptyState } from "@/components/empty-state";
+import { EmptyState } from "@/components/common/empty-state";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 

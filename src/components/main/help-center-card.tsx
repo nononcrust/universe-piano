@@ -1,4 +1,4 @@
-import { ColoredIcon } from "@/components/colored-icon";
+import { ColoredIcon } from "@/components/common/colored-icon";
 import { Card } from "@/components/main/card";
 
 export const HelpCenterCard = () => {

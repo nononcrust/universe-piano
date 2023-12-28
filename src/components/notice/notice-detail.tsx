@@ -1,7 +1,7 @@
 "use client";
 
+import { Markdown } from "@/components/common/markdown";
 import { PageTitle } from "@/components/layout/page-title";
-import { Markdown } from "@/components/markdown";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useNoticeDetail } from "@/features/notice";
@@ -17,8 +17,6 @@ export const NoticeDetail = () => {
   if (data === null) return redirect(ROUTE.NEWS.NOTICE.LIST);
 
   if (!data) return null;
-
-  console.log(data.content);
 
   return (
     <main className="container pb-16">

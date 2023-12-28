@@ -2,7 +2,7 @@
 
 import { DeleteConfirmDialog } from "@/components/admin/delete-confirm-dialog";
 import { FormLayout } from "@/components/admin/form-layout";
-import { ImageInput } from "@/components/image-input";
+import { ImageInput } from "@/components/common/image-input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {

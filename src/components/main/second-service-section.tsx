@@ -1,7 +1,7 @@
 "use client";
 
-import { ColoredIcon } from "@/components/colored-icon";
-import { Icon } from "@/components/icon";
+import { ColoredIcon } from "@/components/common/colored-icon";
+import { Icon } from "@/components/common/icon";
 import { Card } from "@/components/main/card";
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";

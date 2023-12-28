@@ -1,8 +1,8 @@
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import { Icon } from "@/components/icon";
-import { SectionSubtitle } from "@/components/section-subtitle";
-import { SectionTitle } from "@/components/section-title";
+import { Icon } from "@/components/common/icon";
+import { SectionSubtitle } from "@/components/common/section-subtitle";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 import { siteConfig } from "@/configs/site";
 import Image from "next/image";

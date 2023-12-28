@@ -1,4 +1,4 @@
-import { Markdown } from "@/components/markdown";
+import { Markdown } from "@/components/common/markdown";
 import { allTermsOfServices } from "contentlayer/generated";
 
 export default function TermsOfServicePage() {

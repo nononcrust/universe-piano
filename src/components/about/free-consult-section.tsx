@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionTitle } from "@/components/section-title";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { channel } from "@/lib/channel-io";

@@ -1,7 +1,7 @@
 "use client";
 
+import { Pagination } from "@/components/common/pagination";
 import { PageTitle } from "@/components/layout/page-title";
-import { Pagination } from "@/components/pagination";
 import {
   Accordion,
   AccordionContent,
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { data as consultingData } from "@/contents/services/consulting";
 import { data as studyData } from "@/contents/services/study";
 import { data as tutoringData } from "@/contents/services/tutoring";
 import { useState } from "react";
@@ -19,13 +20,13 @@ const ROWS_PER_PAGE = 5;
 const FAQS = {
   all: [...tutoringData.faq, ...studyData.faq],
   tutoring: tutoringData.faq,
-  // consulting: consultingData.faq,
+  consulting: consultingData.faq,
   study: studyData.faq,
 } as const;
 
 const TAB_LIST = {
   all: "전체",
-  // consulting: "입시 컨설팅",
+  consulting: "입시 컨설팅",
   tutoring: "미국 음대 입시 과외",
   study: "스터디",
 } as const;
@@ -54,23 +55,13 @@ export default function SupportPage() {
             key={index}
             size="sm"
             className="min-w-fit rounded-full px-4"
-            variant={tab === value ? "default" : "secondary"}
+            variant={tab === value ? "default" : "outline"}
             onClick={() => onCategoryChange(value)}
           >
             {label}
           </Button>
         ))}
       </div>
-      {/* <Input placeholder="검색어를 입력해주세요." className="mt-4" /> */}
-      {/* <Tabs className="mt-4 overflow-x-auto border-b" defaultValue="all">
-        <TabsList>
-          {Object.entries(TAB_LIST).map(([value, label], index) => (
-            <TabsTrigger key={index} className="px-6" value={value}>
-              {label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs> */}
       <div className="container mt-8">
         <Accordion type="single" collapsible key={tab}>
           {currentFaqs.map((item, index) => (

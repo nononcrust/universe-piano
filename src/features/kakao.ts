@@ -66,7 +66,6 @@ export const kakaoApi = {
       },
     });
 
-    console.log("response.data", response.data);
     return kakaoUserInfoSchema.parse(response.data);
   },
 };

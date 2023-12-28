@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/icon";
+import { Icon } from "@/components/common/icon";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Drawer } from "vaul";

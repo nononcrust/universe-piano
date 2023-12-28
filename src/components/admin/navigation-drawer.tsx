@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/icon";
+import { Icon } from "@/components/common/icon";
 import { adminNav } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";

@@ -1,7 +1,7 @@
 "use client";
 
-import { ColoredIcon } from "@/components/colored-icon";
-import { SectionTitle } from "@/components/section-title";
+import { ColoredIcon } from "@/components/common/colored-icon";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";

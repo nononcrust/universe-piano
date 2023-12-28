@@ -1,6 +1,6 @@
 "use client";
 
-import { AccessControl } from "@/components/access-control";
+import { AccessControl } from "@/components/common/access-control";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {

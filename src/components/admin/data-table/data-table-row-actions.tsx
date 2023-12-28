@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/icon";
+import { Icon } from "@/components/common/icon";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

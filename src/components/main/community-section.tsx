@@ -2,8 +2,8 @@
 
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import { ColoredIcon } from "@/components/colored-icon";
-import { Icon } from "@/components/icon";
+import { ColoredIcon } from "@/components/common/colored-icon";
+import { Icon } from "@/components/common/icon";
 import { Card } from "@/components/main/card";
 import { IconHeader } from "@/components/main/icon-header";
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";

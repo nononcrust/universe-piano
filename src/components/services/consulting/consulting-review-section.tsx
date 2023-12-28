@@ -2,8 +2,8 @@
 
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import { SectionSubtitle } from "@/components/section-subtitle";
-import { SectionTitle } from "@/components/section-title";
+import { SectionSubtitle } from "@/components/common/section-subtitle";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";

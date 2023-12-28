@@ -1,5 +1,5 @@
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { UserInfoFetcher } from "@/components/user-info-fetcher";
+import { TailwindIndicator } from "@/components/common/tailwind-indicator";
+import { UserInfoFetcher } from "@/components/common/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { Providers } from "@/providers";

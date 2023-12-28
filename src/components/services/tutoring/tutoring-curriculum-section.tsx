@@ -1,7 +1,7 @@
 "use client";
 
-import { Icon } from "@/components/icon";
-import { SectionTitle } from "@/components/section-title";
+import { Icon } from "@/components/common/icon";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 import * as Accordion from "@radix-ui/react-accordion";
 

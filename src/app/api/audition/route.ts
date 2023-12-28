@@ -38,7 +38,6 @@ export const POST = async (request: Request) => {
       return NextResponse.json("Bad Request", { status: 400 });
     }
 
-    console.log(error);
     return NextResponse.json("Internal Error", { status: 500 });
   }
 };

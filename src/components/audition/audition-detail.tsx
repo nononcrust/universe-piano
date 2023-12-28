@@ -1,10 +1,10 @@
 "use client";
 
-import { AccessControl } from "@/components/access-control";
 import { AuditionCommentItem } from "@/components/audition/audition-comment-item";
+import { AccessControl } from "@/components/common/access-control";
+import { Markdown } from "@/components/common/markdown";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
-import { Markdown } from "@/components/markdown";
 import { CommentInput } from "@/components/notice/comment-input";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";

@@ -1,6 +1,6 @@
-import { SectionBadge } from "@/components/section-badge";
-import { SectionSubtitle } from "@/components/section-subtitle";
-import { SectionTitle } from "@/components/section-title";
+import { SectionBadge } from "@/components/common/section-badge";
+import { SectionSubtitle } from "@/components/common/section-subtitle";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const WhatsOurNextSection = () => {

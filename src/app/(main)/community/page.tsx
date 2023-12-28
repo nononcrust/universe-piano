@@ -1,7 +1,7 @@
 "use client";
 
+import { Pagination } from "@/components/common/pagination";
 import { PageTitle } from "@/components/layout/page-title";
-import { Pagination } from "@/components/pagination";
 import { useState } from "react";
 
 const DUMMY_TOTAL_PAGE = 58;

@@ -1,6 +1,6 @@
 "use client";
 
-import { EmptyState } from "@/components/empty-state";
+import { EmptyState } from "@/components/common/empty-state";
 import { PageTitle } from "@/components/layout/page-title";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";

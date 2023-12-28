@@ -51,7 +51,6 @@ export const POST = async (request: Request) => {
     if (error instanceof ZodError) {
       return NextResponse.json("Bad Request", { status: 400 });
     }
-    console.log(error);
     return NextResponse.json("Internal Error", { status: 500 });
   }
 };

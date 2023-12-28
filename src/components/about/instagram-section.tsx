@@ -1,6 +1,6 @@
 import mobileImage from "@/assets/images/about/about-company-mobile.png";
-import { Instagram } from "@/components/instagram";
-import { SectionTitle } from "@/components/section-title";
+import { Instagram } from "@/components/common/instagram";
+import { SectionTitle } from "@/components/common/section-title";
 import { Aos } from "@/components/ui/aos";
 import { siteConfig } from "@/configs/site";
 import Image from "next/image";
