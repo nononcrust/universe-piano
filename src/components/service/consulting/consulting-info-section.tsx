@@ -12,11 +12,12 @@ export const ConsultingInfoSection = () => {
         </SectionSubtitle>
         <div className="mt-12 flex flex-col gap-8 md:flex-row">
           <div className="w-full rounded-2xl bg-zinc-800 p-8">
-            <p className="text-lg font-bold md:text-2xl">컨설팅 신청 절차</p>
-            <ul className="ml-4 list-disc">
-              <li className="mt-4 font-medium text-gray-300">
-                {"컨설팅 신청 -> 대표와 1:1 상담 -> 계약서 작성 및 계약금 입금 -> 컨설팅 시작"}
-              </li>
+            <p className="text-lg font-bold md:text-2xl">컨설팅 절차</p>
+            <ul className="ml-4 list-decimal">
+              <li className="mt-4 font-medium text-gray-300">대표와 1:1 상담</li>
+              <li className="mt-4 font-medium text-gray-300">컨설팅 신청</li>
+              <li className="mt-4 font-medium text-gray-300">계약서 작성 및 계약금 입금</li>
+              <li className="mt-4 font-medium text-gray-300">컨설팅 시작</li>
             </ul>
           </div>
           <div className="w-full rounded-2xl bg-zinc-800 p-8">

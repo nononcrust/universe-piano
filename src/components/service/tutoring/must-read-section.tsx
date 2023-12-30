@@ -19,20 +19,18 @@ export const MustReadSection = () => {
           </p>
         </div>
         <div className="mt-16">
-          <p className="whitespace-pre-wrap text-xl font-semibold md:text-3xl">
-            과외에서는 컨설팅에 준하는 정보와 전략을 제공 합니다.
-          </p>
-          <p className="mt-2 whitespace-pre-wrap text-xl font-semibold md:text-3xl">
-            그래서, 신청 절차가 까다로우며, <span className="text-primary">한 달에 한 분</span>만
-            선정합니다.
+          <p className="mt-2 text-xl font-semibold md:whitespace-pre-wrap md:text-3xl md:leading-normal">
+            {
+              "과외에서는 컨설팅에 준하는 정보와 전략을 제공 합니다.\n그래서, 신청 절차가 까다로우며, "
+            }
+            <span className="text-primary">한 달에 한 분</span>만 선정합니다.
           </p>
         </div>
         <div className="mt-12">
-          <p className="text-muted-foreground">
-            과외 커리큘럼, 상세 정보, Q&A 확인 후 신청서 작성해 주세요.
-          </p>
-          <p className="mt-1 text-muted-foreground">
-            성의 없는 신청서 작성은 과외 진행이 불가할 수 있습니다.
+          <p className="text-muted-foreground md:whitespace-pre-wrap md:leading-normal">
+            {
+              "과외 커리큘럼, 상세 정보, Q&A 확인 후 신청서 작성해 주세요.\n성의 없는 신청서 작성은 과외 진행이 불가할 수 있습니다."
+            }
           </p>
         </div>
       </section>

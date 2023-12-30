@@ -69,7 +69,7 @@ export const WhyUniverseItem = ({ number, title, description, image }: WhyUniver
 
   return (
     <div
-      className="group relative flex h-[320px] flex-1 cursor-pointer flex-col justify-between overflow-hidden rounded-2xl bg-white font-bold"
+      className="group relative flex h-[340px] flex-1 cursor-pointer flex-col justify-between overflow-hidden rounded-2xl bg-white font-bold"
       onClick={() => setShowDescription(!showDescription)}
     >
       <Image
@@ -109,7 +109,7 @@ export const WhyUniverseItem = ({ number, title, description, image }: WhyUniver
         )}
       >
         <p className="text-xl text-white underline underline-offset-4">0{number}</p>
-        <p className="mt-2 whitespace-pre text-2xl text-white">{title}</p>
+        <p className="mt-2 whitespace-pre text-xl text-white md:text-2xl">{title}</p>
       </div>
     </div>
   );
