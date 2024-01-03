@@ -88,7 +88,7 @@ interface ReviewItemProps {
 const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
   return (
     <div className="mr-6">
-      <div className={cn("h-[360px] rounded-2xl border bg-content-light p-6")}>
+      <div className={cn("h-[360px] rounded-2xl bg-content-light p-6")}>
         <p className="text-xl font-semibold">
           {name}
           <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
