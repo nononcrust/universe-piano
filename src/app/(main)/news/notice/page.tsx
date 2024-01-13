@@ -28,6 +28,11 @@ export default function NoticeListPage() {
           </Link>
         ))}
       </ul>
+      {paginatedNotices?.length === 0 && (
+        <div className="flex h-72 items-center justify-center">
+          <p className="font-medium text-gray-400">등록된 공지사항이 없습니다.</p>
+        </div>
+      )}
       {isPending &&
         Array(5)
           .fill(0)
