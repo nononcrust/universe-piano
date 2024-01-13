@@ -69,7 +69,7 @@ export const ReviewSection = () => {
           }}
         >
           {data.map((item, index) => (
-            <SwiperSlide className="w-[400px]" key={index}>
+            <SwiperSlide className="w-[340px] md:w-[400px]" key={index}>
               <ReviewItem key={index} {...item} />
             </SwiperSlide>
           ))}

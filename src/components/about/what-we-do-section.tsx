@@ -10,7 +10,7 @@ export const WhatWeDoSection = () => {
   return (
     <section className="bg-content py-32">
       <Aos className="container">
-        <p className="text-lg font-semibold text-primary">Universe Piano</p>
+        <p className="text-lg font-semibold text-primary md:text-2xl">Universe Piano</p>
         <SectionTitle className="mt-2 whitespace-pre-wrap text-left">
           {
             "미국 음대 입시의 핵심 요소를 기반으로\n미국 음대 유학의 새로운 패러다임을 만들어 갑니다"

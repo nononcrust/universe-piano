@@ -6,7 +6,7 @@ export const SystemSection = () => {
   return (
     <section className="py-48" id="company-system-section">
       <Aos className="container">
-        <SectionTitle className="text-primary">독보적인 시스템</SectionTitle>
+        <SectionTitle>독보적인 시스템</SectionTitle>
         <SectionSubtitle>오직 유니버스 피아노에서만 가능합니다.</SectionSubtitle>
         <div className="mt-12 flex flex-col gap-4 md:flex-row">
           <SystemItem

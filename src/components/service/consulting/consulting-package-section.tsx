@@ -19,7 +19,7 @@ export const ConsultingPackageSection = () => {
             <div className="flex justify-between">
               <div className="flex flex-col">
                 <p className="font-medium md:text-lg">입시 전체 과정을 함께하는</p>
-                <p className="mt-2 text-xl font-semibold text-primary md:text-4xl">전체 컨설팅</p>
+                <p className="mt-2 text-xl font-bold text-primary md:text-4xl">전체 컨설팅</p>
               </div>
               <Image
                 src={image1}
@@ -52,9 +52,7 @@ export const ConsultingPackageSection = () => {
             <div className="flex justify-between">
               <div className="flex flex-col">
                 <p className="font-medium md:text-lg">유니버스 피아노의 최상위 케어</p>
-                <p className="mt-2 text-xl font-semibold text-primary md:text-4xl">
-                  유니버스 컨설팅
-                </p>
+                <p className="mt-2 text-xl font-bold text-primary md:text-4xl">유니버스 컨설팅</p>
               </div>
               <Image
                 src={image2}

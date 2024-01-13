@@ -49,7 +49,7 @@ export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProp
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-content font-bold">
             Q
           </div>
-          <p className="text-left text-base font-semibold md:text-base">{title}</p>
+          <p className="flex-1 text-left text-base font-semibold md:text-base">{title}</p>
         </div>
         <Icon.ChevronDown className="ml-4 transition-transform ease-out" />
       </Accordion.Trigger>

@@ -23,16 +23,16 @@ export default function MyProfilePage() {
       <PageSubtitle className="mt-8" title="기본 정보" />
       <div className="mt-8 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Avatar className="h-20 w-20">
+          <Avatar className="h-12 w-12 md:h-20 md:w-20">
             <AvatarImage src={user.profileImage} />
             <AvatarFallback />
           </Avatar>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <p className="text-2xl font-medium">{user.nickname}</p>
+              <p className="text-lg font-medium md:text-2xl">{user.nickname}</p>
               <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
             </div>
-            <p className="text-muted-foreground">{user.email}</p>
+            <p className="text-sm text-muted-foreground md:text-base">{user.email}</p>
           </div>
         </div>
         <Link href={ROUTE.MYPAGE.ACCOUNT}>
