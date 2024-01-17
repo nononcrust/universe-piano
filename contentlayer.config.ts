@@ -1,6 +1,6 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
-export const PrivacyPolicy = defineDocumentType(() => ({
+const PrivacyPolicy = defineDocumentType(() => ({
   name: "PrivacyPolicy",
   filePathPattern: "terms/privacy-policy.md",
   fields: {
@@ -9,7 +9,7 @@ export const PrivacyPolicy = defineDocumentType(() => ({
   },
 }));
 
-export const TermsOfService = defineDocumentType(() => ({
+const TermsOfService = defineDocumentType(() => ({
   name: "TermsOfService",
   filePathPattern: "terms/terms-of-service.md",
   fields: {
@@ -18,7 +18,15 @@ export const TermsOfService = defineDocumentType(() => ({
   },
 }));
 
+const Book = defineDocumentType(() => ({
+  name: "Book",
+  filePathPattern: "books/**/*.md",
+  fields: {
+    title: { type: "string", required: true },
+  },
+}));
+
 export default makeSource({
   contentDirPath: "src/contents",
-  documentTypes: [PrivacyPolicy, TermsOfService],
+  documentTypes: [PrivacyPolicy, TermsOfService, Book],
 });
