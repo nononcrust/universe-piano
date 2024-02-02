@@ -4,18 +4,7 @@ import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { Role } from "@prisma/client";
 import { NextResponse, type NextRequest } from "next/server";
 
-const DISABLED_ROUTES = [
-  ROUTE.KIT.LIST,
-  ROUTE.KIT.DETAIL,
-  ROUTE.ORDER.RESULT,
-  ROUTE.ORDER.DETAIL,
-  ROUTE.SERVICE.PRODUCT.LIST,
-  ROUTE.SERVICE.PRODUCT.DETAIL,
-  ROUTE.CHECKOUT,
-  ROUTE.MYPAGE.ORDER,
-  ROUTE.MYPAGE.ACTIVITY,
-  ROUTE.ABOUT.PORTFOLIO,
-];
+const DISABLED_ROUTES = [ROUTE.MYPAGE.ACTIVITY, ROUTE.ABOUT.PORTFOLIO];
 const PROTECTED_ROUTES = [ROUTE.MYPAGE.HOME, ROUTE.NEWS.AUDITION.LIST];
 const AUTH_ROUTES = [ROUTE.LOGIN, ROUTE.SIGNUP];
 
@@ -40,13 +29,13 @@ export async function middleware(request: NextRequest) {
 
   const isAdmin = session?.role === Role.ADMIN;
 
-  if (PROTECTED_ROUTES.includes(request.nextUrl.pathname as (typeof PROTECTED_ROUTES)[number])) {
+  if (PROTECTED_ROUTES.includes(request.nextUrl.pathname)) {
     if (!session) {
       return NextResponse.redirect(new URL(ROUTE.LOGIN, request.url));
     }
   }
 
-  if (AUTH_ROUTES.includes(request.nextUrl.pathname as (typeof AUTH_ROUTES)[number])) {
+  if (AUTH_ROUTES.includes(request.nextUrl.pathname)) {
     if (session) {
       return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
     }
@@ -59,7 +48,7 @@ export async function middleware(request: NextRequest) {
   }
 
   /** disabled page */
-  if (DISABLED_ROUTES.includes(request.nextUrl.pathname as (typeof DISABLED_ROUTES)[number])) {
+  if (DISABLED_ROUTES.includes(request.nextUrl.pathname)) {
     return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
   }
 }

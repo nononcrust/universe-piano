@@ -33,6 +33,9 @@ export const ROUTE = {
     LIST: "/kit",
     DETAIL: (id: string) => `/kit/${id}`,
   },
+  BOOK: {
+    DETAIL: (path: string) => `/books/${path}`,
+  },
   SUPPORT: "/support",
   TERMS: {
     LIST: "/terms",

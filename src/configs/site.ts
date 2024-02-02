@@ -81,10 +81,10 @@ export const siteContents = {
         title: "스터디",
         href: ROUTE.SERVICE.STUDY,
       },
-      // {
-      //   title: "독학 키트",
-      //   href: ROUTE.SERVICE.PRODUCT.LIST,
-      // },
+      {
+        title: "독학 키트",
+        href: ROUTE.SERVICE.PRODUCT.LIST,
+      },
     ],
   },
   notice: {
@@ -123,10 +123,10 @@ export const siteContents = {
       //   title: "활동",
       //   href: ROUTE.MYPAGE.ACTIVITY,
       // },
-      // {
-      //   title: "구매 내역",
-      //   href: ROUTE.MYPAGE.ORDER,
-      // },
+      {
+        title: "구매 내역",
+        href: ROUTE.MYPAGE.ORDER,
+      },
       {
         title: "계정 설정",
         href: ROUTE.MYPAGE.ACCOUNT,
@@ -193,19 +193,19 @@ export const adminNav = [
       },
     ],
   },
-  // {
-  //   title: "상품 관리",
-  //   items: [
-  //     {
-  //       title: "상품 목록",
-  //       href: ROUTE.ADMIN.PRODUCT.LIST,
-  //     },
-  //     {
-  //       title: "상품 추가",
-  //       href: ROUTE.ADMIN.PRODUCT.CREATE,
-  //     },
-  //   ],
-  // },
+  {
+    title: "상품 관리",
+    items: [
+      {
+        title: "상품 목록",
+        href: ROUTE.ADMIN.PRODUCT.LIST,
+      },
+      {
+        title: "상품 추가",
+        href: ROUTE.ADMIN.PRODUCT.CREATE,
+      },
+    ],
+  },
   {
     title: "주문 관리",
     items: [
@@ -215,15 +215,15 @@ export const adminNav = [
       },
     ],
   },
-  // {
-  //   title: "후기 관리",
-  //   items: [
-  //     {
-  //       title: "후기 목록",
-  //       href: ROUTE.ADMIN.REVIEW.LIST,
-  //     },
-  //   ],
-  // },
+  {
+    title: "후기 관리",
+    items: [
+      {
+        title: "후기 목록",
+        href: ROUTE.ADMIN.REVIEW.LIST,
+      },
+    ],
+  },
   // {
   //   title: "문의 관리",
   //   items: [

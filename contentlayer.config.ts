@@ -36,12 +36,10 @@ const Category = defineNestedType(() => ({
 const Content = defineDocumentType(() => ({
   name: "Content",
   filePathPattern: "books/**/*.mdx",
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    category: {
-      type: "nested",
-      of: Category,
-    },
+    is_category: { type: "boolean", default: false },
   },
   computedFields: {
     book: {

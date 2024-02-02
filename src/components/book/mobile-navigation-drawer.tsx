@@ -2,7 +2,6 @@
 
 import { Icon } from "@/components/common/icon";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { Drawer } from "vaul";
 
 const drawer = [
@@ -44,30 +43,7 @@ const drawer = [
   },
 ];
 
-export const KitNavigationDrawer = () => {
-  return (
-    <nav className="hidden w-[240px] flex-col border-r pt-16 md:flex">
-      {drawer.map((item, index) => (
-        <KitNavigationDrawerItem key={index} title={item.title} href={item.href} />
-      ))}
-    </nav>
-  );
-};
-
-interface KitNavigationDrawerItemProps {
-  title: string;
-  href: string;
-}
-
-const KitNavigationDrawerItem = ({ title, href }: KitNavigationDrawerItemProps) => {
-  return (
-    <Link href={href} className="p-4 text-muted-foreground transition hover:text-accent-foreground">
-      {title}
-    </Link>
-  );
-};
-
-export const KitMobileNavigationDrawer = () => {
+export const BookMobileNavigationDrawer = () => {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
@@ -89,7 +65,7 @@ export const KitMobileNavigationDrawer = () => {
             </div>
             {drawer.map((item, index) => (
               <Drawer.Close key={index} className="flex w-full flex-col">
-                <KitMobileNavigationDrwerItem title={item.title} href={item.href} />
+                <BookMobileNavigationDrwerItem title={item.title} href={item.href} />
               </Drawer.Close>
             ))}
           </div>
@@ -99,12 +75,12 @@ export const KitMobileNavigationDrawer = () => {
   );
 };
 
-interface KitMobileNavigationDrwerItemProps {
+interface BookMobileNavigationDrwerItemProps {
   title: string;
   href: string;
 }
 
-const KitMobileNavigationDrwerItem = ({ title, href }: KitMobileNavigationDrwerItemProps) => {
+const BookMobileNavigationDrwerItem = ({ title, href }: BookMobileNavigationDrwerItemProps) => {
   return (
     <li
       className={cn(
