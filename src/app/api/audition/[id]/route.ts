@@ -1,6 +1,5 @@
 import { auditionRepository, auditionRequestSchema } from "@/features/audition";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -17,9 +16,9 @@ export const GET = async (request: Request, context: Context) => {
 
     const audition = await auditionRepository.getAuditionById(auditionId);
 
-    return NextResponse.json(audition);
+    return Response.json(audition);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };
 
@@ -44,13 +43,13 @@ export const PUT = async (request: Request, context: Context) => {
       },
     });
 
-    return NextResponse.json(audition);
+    return Response.json(audition);
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json("Bad Request", { status: 400 });
+      return Response.json("Bad Request", { status: 400 });
     }
 
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };
 
@@ -64,8 +63,8 @@ export const DELETE = async (request: Request, context: Context) => {
       },
     });
 
-    return NextResponse.json(audition);
+    return Response.json(audition);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };

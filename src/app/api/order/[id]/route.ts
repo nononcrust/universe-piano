@@ -1,6 +1,5 @@
 import { orderRepository, orderUpdateRequestSchema } from "@/features/order";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -8,7 +7,7 @@ type Context = {
   params: {
     id: string;
   };
-}
+};
 
 export const GET = async (request: Request, context: Context) => {
   try {
@@ -16,9 +15,9 @@ export const GET = async (request: Request, context: Context) => {
 
     const order = await orderRepository.getOrderById(orderId);
 
-    return NextResponse.json(order);
+    return Response.json(order);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };
 
@@ -36,7 +35,7 @@ export const PUT = async (request: Request, context: Context) => {
     data: body,
   });
 
-  return NextResponse.json(order);
+  return Response.json(order);
 };
 
 export const DELETE = async (request: Request, context: Context) => {
@@ -49,8 +48,8 @@ export const DELETE = async (request: Request, context: Context) => {
       },
     });
 
-    return NextResponse.json(order);
+    return Response.json(order);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };

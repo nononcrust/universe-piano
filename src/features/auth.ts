@@ -5,28 +5,12 @@ import { Prisma, Role, Tier } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
 
-const getUserArgs = {
-  include: {
-    orders: {
-      include: {
-        orderItems: {
-          include: {
-            product: true,
-          },
-        },
-      },
-    },
-    subscriptions: true,
-  },
-};
-
 export const authRepository = {
   getUserByKakaoId: (kakaoId: string) => {
     return prisma.user.findUnique({
       where: {
         kakaoId,
       },
-      ...getUserArgs,
     });
   },
   getUserById: (id: string) => {
@@ -34,7 +18,6 @@ export const authRepository = {
       where: {
         id,
       },
-      ...getUserArgs,
     });
   },
 };

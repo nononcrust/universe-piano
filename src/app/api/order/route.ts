@@ -1,7 +1,6 @@
 import { orderRepository, orderRequestSchema } from "@/features/order";
 import { getServerSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -10,9 +9,9 @@ export const GET = async (request: Request) => {
   try {
     const orders = await orderRepository.getOrderList();
 
-    return NextResponse.json(orders);
+    return Response.json(orders);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };
 
@@ -23,7 +22,7 @@ export const POST = async (request: Request) => {
     const user = session?.user;
 
     if (!user) {
-      return NextResponse.json("Unauthorized", { status: 401 });
+      return Response.json("Unauthorized", { status: 401 });
     }
 
     const body = await request.json();
@@ -51,12 +50,12 @@ export const POST = async (request: Request) => {
       },
     });
 
-    return NextResponse.json(order);
+    return Response.json(order);
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json("Bad Request", { status: 400 });
+      return Response.json("Bad Request", { status: 400 });
     }
 
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };

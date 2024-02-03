@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { useMyOrderList } from "@/features/order";
+import { useMyOrderList } from "@/features/me";
 import { formatDate } from "@/lib/utils";
 import { OrderStatus } from "@prisma/client";
 import Link from "next/link";

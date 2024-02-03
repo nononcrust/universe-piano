@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 
 export const Header = () => {
   const { data: session, fetchStatus } = useSession();
+  console.log(session);
 
   const pathname = usePathname();
 
@@ -44,7 +45,7 @@ export const Header = () => {
             )}
             {!session && (
               <div className="hidden gap-2 md:flex">
-                <Button asChild size="sm" className="h-[32px] text-xs" variant="secondary">
+                <Button asChild className="h-[32px] text-xs" variant="outline">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}
@@ -52,7 +53,7 @@ export const Header = () => {
                     로그인
                   </Link>
                 </Button>
-                {/* <Button asChild size="sm" className="h-[32px] text-xs">
+                {/* <Button asChild className="h-[32px] text-xs">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}

@@ -53,7 +53,6 @@ export default function SupportPage() {
         {Object.entries(TAB_LIST).map(([value, label], index) => (
           <Button
             key={index}
-            size="sm"
             className="min-w-fit rounded-full px-4"
             variant={tab === value ? "default" : "outline"}
             onClick={() => onCategoryChange(value)}

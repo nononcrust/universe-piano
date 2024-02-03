@@ -1,12 +1,13 @@
+import "@/styles/globals.css";
+import "swiper/css";
+
 import { TailwindIndicator } from "@/components/common/tailwind-indicator";
 import { UserInfoFetcher } from "@/components/common/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { Providers } from "@/providers";
-import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Toaster } from "sonner";
-import "swiper/css";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -34,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <TailwindIndicator />
           </UserInfoFetcher>
         </Providers>
-        <Toaster richColors />
+        <Toaster />
       </body>
     </html>
   );

@@ -43,10 +43,10 @@ export default function WithdrawalPage() {
       <PageTitle title="회원탈퇴" />
       <PageSubtitle className="mt-16" title="탈퇴하기 전에 반드시 확인해주세요." />
       <div className="mt-4 flex flex-col gap-2">
-        <p className="list-item list-inside font-medium">
+        <p className="list-item list-inside">
           탈퇴 시, 등록한 서비스의 모든 정보가 영구적으로 삭제됩니다.
         </p>
-        <p className="list-item list-inside list-disc font-medium">
+        <p className="list-item list-inside list-disc">
           회원님의 게시물, 댓글 등의 모든 활동 내역이 삭제됩니다.
         </p>
       </div>
@@ -87,7 +87,7 @@ export default function WithdrawalPage() {
           </AlertDialog>
           <Button
             className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
-            variant="secondary"
+            variant="outline"
             asChild
           >
             <Link href={ROUTE.MYPAGE.ACCOUNT}>돌아가기</Link>

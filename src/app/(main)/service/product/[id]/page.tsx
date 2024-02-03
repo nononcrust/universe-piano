@@ -1,16 +1,15 @@
 "use client";
 
 import { PageTitle } from "@/components/layout/page-title";
+import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
-import { ROUTE } from "@/constants/route";
-import { useSession } from "@/features/auth";
-import { useCreateOrder } from "@/features/order";
+import { usePurchasedProductList } from "@/features/me";
 import { useProductDetail } from "@/features/product";
-import { OrderStatus } from "@prisma/client";
+import { useDialog } from "@/hooks/use-dialog";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
@@ -25,7 +24,7 @@ export default function ProductDetailPage() {
         <ProductImageSection />
         <ProductOptionSection />
       </section>
-      <PageTitle title="상품 정보" />
+
       <section className="relative mt-8 flex flex-col gap-12 md:flex-row">
         <ProductInfoSection />
         <ProductAside />
@@ -63,11 +62,6 @@ const ProductOptionSection = () => {
         <Chip>{product.category.name}</Chip>
       </div>
       <h1 className="mt-2 text-2xl font-medium">{product.name}</h1>
-      {/* <div className="mt-2 flex items-center gap-2">
-        <Icon.Star size={20} className="fill-black" />
-        <p>{DUMMY_PRODUCT_DETAIL.rating}</p>
-      </div> */}
-      {/* <ProductOption className="mt-4" /> */}
       <p className="mt-4">{product.description}</p>
       <ProductAction />
     </div>
@@ -76,16 +70,20 @@ const ProductOptionSection = () => {
 
 const ProductInfoSection = () => {
   return (
-    <div className="basis-2/3 flex-col">
-      <div className="flex flex-col gap-8">
-        {Array(10)
-          .fill(0)
-          .map((_, index) => (
-            <AspectRatio key={index} className="rounded-lg border">
-              <Image src="/images/logo.svg" alt="상품 설명 이미지" fill />
-            </AspectRatio>
-          ))}
+    <div className="flex flex-1 flex-col">
+      <PageTitle title="상품 정보" />
+      <div className="mt-4 basis-2/3 flex-col">
+        <div className="flex flex-col gap-8">
+          {Array(10)
+            .fill(0)
+            .map((_, index) => (
+              <AspectRatio key={index} className="rounded-lg border">
+                <Image src="/images/logo.svg" alt="상품 설명 이미지" fill />
+              </AspectRatio>
+            ))}
+        </div>
       </div>
+      <PageTitle title="상품 리뷰" />
     </div>
   );
 };
@@ -94,92 +92,23 @@ const ProductAside = () => {
   return (
     <aside className="basis-1/3">
       <div className="sticky top-24 flex flex-col">
-        {/* <ProductOption /> */}
         <ProductAction />
       </div>
     </aside>
   );
 };
 
-interface ProductOptionProps {
-  className?: string;
-}
-
-// const ProductOption = ({ className }: ProductOptionProps) => {
-//   return (
-//     <>
-//       <Select>
-//         <SelectTrigger className={className}>
-//           <SelectValue placeholder="옵션을 선택해주세요" />
-//         </SelectTrigger>
-//         <SelectContent>
-//           <SelectItem value="option-1">옵션 1</SelectItem>
-//           <SelectItem value="option-2">옵션 2</SelectItem>
-//           <SelectItem value="option-3">옵션 3</SelectItem>
-//         </SelectContent>
-//       </Select>
-//       <Select>
-//         <SelectTrigger className="mt-4">
-//           <SelectValue placeholder="옵션을 선택해주세요" />
-//         </SelectTrigger>
-//         <SelectContent>
-//           <SelectItem value="option-1">옵션 1</SelectItem>
-//           <SelectItem value="option-2">옵션 2</SelectItem>
-//           <SelectItem value="option-3">옵션 3</SelectItem>
-//         </SelectContent>
-//       </Select>
-//       <Select>
-//         <SelectTrigger className="mt-4">
-//           <SelectValue placeholder="옵션을 선택해주세요" />
-//         </SelectTrigger>
-//         <SelectContent>
-//           <SelectItem value="option-1">옵션 1</SelectItem>
-//           <SelectItem value="option-2">옵션 2</SelectItem>
-//           <SelectItem value="option-3">옵션 3</SelectItem>
-//         </SelectContent>
-//       </Select>
-//     </>
-//   );
-// };
-
 const ProductAction = () => {
   const params = useParams<{ id: string }>();
 
-  const router = useRouter();
+  const checkoutDialog = useDialog();
 
   const { data: product } = useProductDetail({ id: params.id });
-  const { data: session } = useSession();
+  const { data: purchasedProducts } = usePurchasedProductList();
 
-  const subscribed =
-    product &&
-    session?.user.subscriptions.some((subscription) => subscription.productId === product.id);
-
-  const createOrderMutation = useCreateOrder();
-
-  const onCheckout = async () => {
-    if (!product || createOrderMutation.isPending) return;
-
-    const orderProduct = {
-      productId: product.id,
-      amount: 1,
-      price: product.price,
-    };
-
-    createOrderMutation.mutate(
-      {
-        body: {
-          point: 0,
-          status: OrderStatus.CHECKING,
-          products: [orderProduct],
-        },
-      },
-      {
-        onSuccess: (order) => {
-          router.push(ROUTE.CHECKOUT(order.id));
-        },
-      },
-    );
-  };
+  const hasAlreadyOrdered = purchasedProducts?.some(
+    (purchasedProducts) => purchasedProducts.id === product?.id,
+  );
 
   if (!product) return null;
 
@@ -192,11 +121,16 @@ const ProductAction = () => {
       <Button
         className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
         size="lg"
-        onClick={onCheckout}
-        disabled={!!subscribed}
+        onClick={checkoutDialog.open}
+        disabled={!!hasAlreadyOrdered}
       >
-        {subscribed ? "이미 구매한 상품입니다." : "구매하기"}
+        {hasAlreadyOrdered ? "이미 구매한 상품입니다." : "구매하기"}
       </Button>
+      <CheckoutDialog
+        productId={params.id}
+        isOpen={checkoutDialog.isOpen}
+        onOpenChange={checkoutDialog.onOpenChange}
+      />
     </div>
   );
 };

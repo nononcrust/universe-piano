@@ -1,0 +1,91 @@
+import { api } from "@/lib/axios";
+import { prisma } from "@/lib/prisma";
+import { OrderStatus, Prisma } from "@prisma/client";
+import { useQuery } from "@tanstack/react-query";
+import { Session } from "./auth";
+
+export const meRepository = {
+  getPurchasedProductList: async (session: Session) => {
+    return prisma.order
+      .findMany({
+        where: {
+          userId: session.user.id,
+          status: OrderStatus.PAYMENT_COMPLETED,
+        },
+        include: {
+          orderItems: {
+            include: {
+              product: {
+                include: {
+                  images: true,
+                },
+              },
+            },
+          },
+        },
+      })
+      .then((orders) => {
+        return orders.flatMap((order) => order.orderItems.map((orderItem) => orderItem.product));
+      });
+  },
+  getMyOrderList: (session: Session) => {
+    return prisma.order.findMany({
+      where: {
+        userId: session.user.id,
+      },
+      include: {
+        orderItems: {
+          include: {
+            product: {
+              include: {
+                category: true,
+                images: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+  },
+};
+
+export type PurchasedProductList = Prisma.PromiseReturnType<
+  typeof meRepository.getPurchasedProductList
+>;
+export type MyOrderList = Prisma.PromiseReturnType<typeof meRepository.getMyOrderList>;
+
+const ENDPOINT = "/me";
+
+export const meApi = {
+  getPurchasedProductList: async () => {
+    const response = await api.get<PurchasedProductList>(`${ENDPOINT}/products`);
+    return response.data;
+  },
+  getMyOrderList: async () => {
+    const response = await api.get<MyOrderList>(`${ENDPOINT}/orders`);
+    return response.data;
+  },
+};
+
+export const queryKeys = {
+  all: () => [ENDPOINT] as const,
+  purchasedProducts: () => [...queryKeys.all(), "purchased-products"] as const,
+  orderList: () => [...queryKeys.all(), "order-list"] as const,
+};
+
+export const usePurchasedProductList = () => {
+  return useQuery({
+    queryKey: queryKeys.purchasedProducts(),
+    queryFn: () => meApi.getPurchasedProductList(),
+  });
+};
+
+export const useMyOrderList = () => {
+  return useQuery({
+    queryKey: queryKeys.orderList(),
+    queryFn: meApi.getMyOrderList,
+  });
+};

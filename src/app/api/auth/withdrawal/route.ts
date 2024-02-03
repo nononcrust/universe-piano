@@ -1,6 +1,5 @@
 import { getServerSession, revokeAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +10,7 @@ export const DELETE = async (request: Request) => {
     const user = session?.user;
 
     if (!user) {
-      return NextResponse.json("Unauthorized", { status: 401 });
+      return Response.json("Unauthorized", { status: 401 });
     }
 
     const deletedUser = await prisma.user.delete({
@@ -22,8 +21,8 @@ export const DELETE = async (request: Request) => {
 
     revokeAccessToken();
 
-    return NextResponse.json(deletedUser);
+    return Response.json(deletedUser);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };

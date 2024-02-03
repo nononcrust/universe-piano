@@ -2,7 +2,7 @@ import { COOKIE } from "@/constants/cookie";
 import { ROUTE } from "@/constants/route";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { Role } from "@prisma/client";
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 
 const DISABLED_ROUTES = [ROUTE.MYPAGE.ACTIVITY, ROUTE.ABOUT.PORTFOLIO];
 const PROTECTED_ROUTES = [ROUTE.MYPAGE.HOME, ROUTE.NEWS.AUDITION.LIST];
@@ -31,25 +31,25 @@ export async function middleware(request: NextRequest) {
 
   if (PROTECTED_ROUTES.includes(request.nextUrl.pathname)) {
     if (!session) {
-      return NextResponse.redirect(new URL(ROUTE.LOGIN, request.url));
+      return Response.redirect(new URL(ROUTE.LOGIN, request.url));
     }
   }
 
   if (AUTH_ROUTES.includes(request.nextUrl.pathname)) {
     if (session) {
-      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
+      return Response.redirect(new URL(ROUTE.HOME, request.url));
     }
   }
 
   if (request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME)) {
     if (!isAdmin) {
-      return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
+      return Response.redirect(new URL(ROUTE.HOME, request.url));
     }
   }
 
   /** disabled page */
   if (DISABLED_ROUTES.includes(request.nextUrl.pathname)) {
-    return NextResponse.redirect(new URL(ROUTE.HOME, request.url));
+    return Response.redirect(new URL(ROUTE.HOME, request.url));
   }
 }
 

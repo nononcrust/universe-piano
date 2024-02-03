@@ -3,7 +3,6 @@ import { JwtPayload, Session, authRepository } from "@/features/auth";
 import { issueAccessToken, revokeAccessToken } from "@/lib/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +11,7 @@ export const GET = async (request: Request) => {
     const cookie = cookies().get(COOKIE.ACCESS_TOKEN);
 
     if (!cookie) {
-      return NextResponse.json(null, { status: 200 });
+      return Response.json(null, { status: 200 });
     }
 
     const accessToken = cookie.value;
@@ -25,7 +24,7 @@ export const GET = async (request: Request) => {
 
     if (!user) {
       revokeAccessToken();
-      return NextResponse.json(null, { status: 200 });
+      return Response.json(null, { status: 200 });
     }
 
     const jwtPayload: JwtPayload = {
@@ -40,8 +39,9 @@ export const GET = async (request: Request) => {
       user: user,
     };
 
-    return NextResponse.json(session);
+    return Response.json(session);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    console.log(error);
+    return Response.json("Internal Error", { status: 500 });
   }
 };

@@ -1,6 +1,6 @@
 import { jwtPayloadSchema } from "@/features/auth";
 import { issueAccessToken } from "@/lib/auth";
-import { NextResponse } from "next/server";
+
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -13,12 +13,12 @@ export const POST = async (request: Request) => {
 
     await issueAccessToken(user);
 
-    return NextResponse.json("", { status: 200 });
+    return Response.json("", { status: 200 });
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json("Bad Request", { status: 400 });
+      return Response.json("Bad Request", { status: 400 });
     }
 
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };

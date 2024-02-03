@@ -1,4 +1,3 @@
-import { Session } from "@/features/auth";
 import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
 import { Order, OrderStatus, Prisma } from "@prisma/client";
@@ -6,38 +5,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
 export const orderRepository = {
-  getMyOrderList: (session: Session) => {
-    return prisma.order.findMany({
-      where: {
-        userId: session.user.id,
-        status: {
-          not: OrderStatus.CHECKING,
-        },
-      },
-      include: {
-        orderItems: {
-          include: {
-            product: {
-              include: {
-                category: true,
-                images: true,
-              },
-            },
-          },
-        },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-  },
   getOrderList: () => {
     return prisma.order.findMany({
-      where: {
-        status: {
-          not: OrderStatus.CHECKING,
-        },
-      },
       include: {
         user: true,
       },
@@ -46,33 +15,10 @@ export const orderRepository = {
       },
     });
   },
-  getCheckoutOrder: (id: string) => {
-    return prisma.order.findUnique({
-      include: {
-        orderItems: {
-          include: {
-            product: {
-              include: {
-                images: true,
-              },
-            },
-          },
-        },
-      },
-      where: {
-        status: OrderStatus.CHECKING,
-        id,
-      },
-    });
-  },
   getOrderById: (id: string, queries?: OrderRequestQueries) => {
     return prisma.order.findUnique({
       include: {
-        user: {
-          include: {
-            subscriptions: true,
-          },
-        },
+        user: true,
         orderItems: {
           include: {
             product: {
@@ -92,7 +38,6 @@ export const orderRepository = {
   },
 };
 
-export type MyOrderList = Prisma.PromiseReturnType<typeof orderRepository.getMyOrderList>;
 export type OrderList = Prisma.PromiseReturnType<typeof orderRepository.getOrderList>;
 export type OrderDetail = Prisma.PromiseReturnType<typeof orderRepository.getOrderById>;
 
@@ -130,10 +75,7 @@ const orderApi = {
     const response = await api.get<OrderList>(ENDPOINT);
     return response.data;
   },
-  getMyOrderList: async () => {
-    const response = await api.get<MyOrderList>(`/my${ENDPOINT}`);
-    return response.data;
-  },
+
   getOrderById: async (data: { params: { id: string }; queries?: OrderRequestQueries }) => {
     const response = await api.get<OrderDetail>(`${ENDPOINT}/${data.params.id}`);
     return response.data;
@@ -156,14 +98,6 @@ export const queryKeys = {
   all: () => [ENDPOINT] as const,
   detail: (id?: string) => [...queryKeys.all(), id] as const,
   list: () => [...queryKeys.all(), "list"] as const,
-  myList: () => [...queryKeys.all(), "myList"] as const,
-};
-
-export const useMyOrderList = () => {
-  return useQuery({
-    queryKey: queryKeys.myList(),
-    queryFn: orderApi.getMyOrderList,
-  });
 };
 
 export const useOrderList = () => {
@@ -180,11 +114,31 @@ export const useOrderDetail = ({ id }: { id: string }) => {
   });
 };
 
+interface CreateOrderData {
+  productId: string;
+  productPrice: number;
+  point: number;
+}
+
 export const useCreateOrder = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: orderApi.createOrder,
+    mutationFn: async (data: CreateOrderData) => {
+      return orderApi.createOrder({
+        body: {
+          status: OrderStatus.PAYMENT_PENDING,
+          point: data.point,
+          products: [
+            {
+              productId: data.productId,
+              amount: 1,
+              price: data.productPrice - data.point,
+            },
+          ],
+        },
+      });
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: queryKeys.all(),

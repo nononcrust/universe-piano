@@ -76,12 +76,7 @@ export default function AccountPage() {
               <FormItem>
                 <FormLabel>닉네임</FormLabel>
                 <FormControl>
-                  <Input
-                    variant="underline"
-                    maxLength={10}
-                    placeholder="닉네임을 입력해주세요."
-                    {...field}
-                  />
+                  <Input maxLength={10} placeholder="닉네임을 입력해주세요." {...field} />
                 </FormControl>
                 <FormDescription>
                   닉네임 규정: 영문 이니셜 + 전화번호 끝 4자리 (예시: cms7370)
@@ -97,13 +92,7 @@ export default function AccountPage() {
               <FormItem>
                 <FormLabel>이메일</FormLabel>
                 <FormControl>
-                  <Input
-                    variant="underline"
-                    maxLength={50}
-                    placeholder="universe@piano.com"
-                    disabled
-                    {...field}
-                  />
+                  <Input maxLength={50} placeholder="universe@piano.com" disabled {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -112,6 +101,7 @@ export default function AccountPage() {
           <div className="flex justify-end">
             <Button
               className="max-md:h-14 max-md:flex-1 max-md:rounded-2xl max-md:text-base"
+              variant="outline"
               type="submit"
               disabled={!form.formState.isDirty || !form.formState.isValid}
             >

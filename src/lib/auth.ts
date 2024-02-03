@@ -3,7 +3,6 @@ import { JwtPayload, Session, authRepository } from "@/features/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { Role } from "@prisma/client";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
 
 export const issueAccessToken = async (jwtPayload: JwtPayload) => {
   const accessToken = await jwt.signUser(jwtPayload);
@@ -56,6 +55,6 @@ export const adminGuard = async () => {
   const session = await getServerSession();
 
   if (session?.user.role !== Role.ADMIN) {
-    return NextResponse.json("Unauthorized", { status: 401 });
+    return Response.json("Unauthorized", { status: 401 });
   }
 };

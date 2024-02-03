@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/configs/site";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { useOrderDetail, useUpdateOrder } from "@/features/order";
+import { useDeleteOrder, useOrderDetail } from "@/features/order";
 import { useDialog } from "@/hooks/use-dialog";
 import { formatDate } from "@/lib/utils";
 import { OrderStatus } from "@prisma/client";
@@ -31,16 +31,13 @@ export default function OrderDetailPage() {
   const router = useRouter();
 
   const { data: order } = useOrderDetail({ id: params.id });
-  const updateOrderMutation = useUpdateOrder();
+  const deleteOrderMutation = useDeleteOrder();
 
   const onCancelOrderButtonClick = () => {
     if (!order) return;
 
-    updateOrderMutation.mutate(
-      {
-        params: { id: order.id },
-        body: { status: OrderStatus.CANCELLED },
-      },
+    deleteOrderMutation.mutate(
+      { params: { id: order.id } },
       {
         onSuccess: () => {
           toast.success("주문이 취소되었습니다.");
@@ -60,7 +57,7 @@ export default function OrderDetailPage() {
       <div className="mt-4">
         {order.orderItems.map((orderItem) => (
           <div className="flex gap-4" key={orderItem.id}>
-            <div className="bg-content h-20 w-20 rounded-md" />
+            <div className="h-20 w-20 rounded-md bg-content" />
             <div className="flex flex-1 flex-col gap-2">
               <p className="text-sm">
                 {orderItem.product.category.name} | {orderItem.product.name}
@@ -109,7 +106,7 @@ export default function OrderDetailPage() {
         </div>
       </div>
       {order.status === OrderStatus.PAYMENT_PENDING && (
-        <Button className="mt-16" variant="secondary" onClick={orderCancelConfirmDialog.open}>
+        <Button className="mt-16" variant="outline" onClick={orderCancelConfirmDialog.open}>
           주문 취소
         </Button>
       )}
@@ -122,8 +119,8 @@ export default function OrderDetailPage() {
             <AlertDialogTitle>주문을 취소할까요?</AlertDialogTitle>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogAction onClick={onCancelOrderButtonClick}>주문 취소하기</AlertDialogAction>
             <AlertDialogCancel>돌아가기</AlertDialogCancel>
+            <AlertDialogAction onClick={onCancelOrderButtonClick}>취소하기</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

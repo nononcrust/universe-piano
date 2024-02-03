@@ -3,7 +3,7 @@ import { JwtPayload, authRepository, registerRequestSchema } from "@/features/au
 import { issueAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -21,7 +21,7 @@ export const POST = async (request: Request) => {
     });
 
     if (existingUser) {
-      return NextResponse.json("User Already Exists", { status: 409 });
+      return Response.json("User Already Exists", { status: 409 });
     }
 
     const createdUser = await prisma.user.create({
@@ -46,11 +46,11 @@ export const POST = async (request: Request) => {
 
     await issueAccessToken(jwtPayload);
 
-    return NextResponse.json(user, { status: 201 });
+    return Response.json(user, { status: 201 });
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json("Bad Request", { status: 400 });
+      return Response.json("Bad Request", { status: 400 });
     }
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };

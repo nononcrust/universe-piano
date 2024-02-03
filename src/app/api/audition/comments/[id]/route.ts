@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -19,8 +18,8 @@ export const DELETE = async (request: Request, context: Context) => {
       },
     });
 
-    return NextResponse.json(auditionComment);
+    return Response.json(auditionComment);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };

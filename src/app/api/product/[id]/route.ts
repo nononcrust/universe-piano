@@ -1,5 +1,4 @@
 import { productRepository } from "@/features/product";
-import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -15,8 +14,8 @@ export const GET = async (request: Request, context: Context) => {
 
     const product = await productRepository.getProductById(productId);
 
-    return NextResponse.json(product);
+    return Response.json(product);
   } catch (error) {
-    return NextResponse.json("Internal Error", { status: 500 });
+    return Response.json("Internal Error", { status: 500 });
   }
 };
