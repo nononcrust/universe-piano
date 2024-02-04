@@ -35,7 +35,7 @@ export default function ProductDetailPage() {
 
   if (isProductDetailPending) return null;
 
-if (session.data && isPurchasedProductsPending) return null;
+  if (session.data && isPurchasedProductsPending) return null;
 
   return (
     <main className="container pb-16">
@@ -152,6 +152,7 @@ const ProductAction = () => {
 
   const checkoutDialog = useDialog();
 
+  const { data: session } = useSession();
   const { data: product } = useProductDetail({ id: params.id });
   const { data: purchasedProducts } = usePurchasedProductList();
 
@@ -167,14 +168,21 @@ const ProductAction = () => {
         <p className="font-medium">주문 금액</p>
         <p className="text-lg font-medium">{product.price.toLocaleString()}원</p>
       </div>
-      <Button
-        className="max-md:h-14 max-md:text-base"
-        size="lg"
-        onClick={checkoutDialog.open}
-        disabled={!!hasAlreadyOrdered}
-      >
-        {hasAlreadyOrdered ? "이미 구매한 상품입니다." : "구매하기"}
-      </Button>
+      {session && (
+        <Button
+          className="max-md:h-14 max-md:text-base"
+          size="lg"
+          onClick={checkoutDialog.open}
+          disabled={!!hasAlreadyOrdered}
+        >
+          {hasAlreadyOrdered ? "이미 구매한 상품입니다." : "구매하기"}
+        </Button>
+      )}
+      {!session && (
+        <Button className="max-md:h-14 max-md:text-base" size="lg" disabled>
+          로그인 후에 구매할 수 있습니다.
+        </Button>
+      )}
       <CheckoutDialog
         productId={params.id}
         isOpen={checkoutDialog.isOpen}
