@@ -1,17 +1,9 @@
 "use client";
 
-import { FormLayout } from "@/components/admin/form-layout";
 import { RatingStarSelect } from "@/components/common/rating-star-select";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateProductReview } from "@/features/product";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -81,7 +73,7 @@ const Content = (props: ContentProps) => {
 
   return (
     <Form {...form}>
-      <FormLayout onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <FormField
           name="rating"
           control={form.control}
@@ -98,22 +90,26 @@ const Content = (props: ContentProps) => {
           name="content"
           control={form.control}
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mt-6">
               <FormControl>
-                <Textarea maxLength={1000} placeholder="리뷰를 입력해주세요." {...field} />
+                <Textarea
+                  className="h-32"
+                  maxLength={1000}
+                  placeholder="리뷰를 입력해주세요."
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>리뷰 내용은 최소 10자 이상 입력해주세요.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <div className="flex justify-end gap-2">
+        <div className="mt-8 flex justify-end gap-2">
           <Button variant="link" type="button" onClick={props.onClose}>
             취소
           </Button>
           <Button variant="outline">작성하기</Button>
         </div>
-      </FormLayout>
+      </form>
     </Form>
   );
 };

@@ -1,4 +1,5 @@
 import {
+  AlignJustify,
   ArrowLeft,
   ArrowRight,
   BookOpen,
@@ -74,4 +75,5 @@ export const Icon = {
   Plus: Plus,
   Sparkles: Sparkles,
   Siren: Siren,
+  AlignJustify: AlignJustify,
 };

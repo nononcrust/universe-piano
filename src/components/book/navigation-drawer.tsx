@@ -1,45 +1,11 @@
+"use client";
+
 import { ROUTE } from "@/constants/route";
 import { getFormattedContentsByBook } from "@/lib/contentlayer";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-const drawer = [
-  {
-    title: "들어가기 전에",
-    href: "/ebook/1",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/2",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/3",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/4",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/5",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/6",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/7",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/8",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/9",
-  },
-];
+import { usePathname } from "next/navigation";
+import { Icon } from "../common/icon";
 
 interface BookNavigationDrawerProps {
   book: string;
@@ -49,10 +15,16 @@ export const BookNavigationDrawer = ({ book }: BookNavigationDrawerProps) => {
   const contents = getFormattedContentsByBook(book);
 
   return (
-    <nav className="hidden w-[320px] flex-col overflow-y-auto border-r pt-16 md:flex">
+    <nav className="hidden w-[320px] flex-col divide-y overflow-y-auto border-r p-10 scrollbar-hide md:flex">
+      <div className="mb-4">
+        <button className="group flex items-center text-sm">
+          <Icon.ChevronLeft className="mr-1 h-4 w-4 transition-all group-hover:-translate-x-1" />
+          목록으로 돌아가기
+        </button>
+      </div>
       {contents.map((item, index) => (
         <div key={index}>
-          <DrawerSubtitle title={item.category!} />
+          <DrawerSubtitle className="mt-4" title={item.category!} />
           <div className="flex flex-col">
             {item.children.map((content, index) => (
               <DrawerItem key={index} title={content.title} href={content.url} />
@@ -66,10 +38,15 @@ export const BookNavigationDrawer = ({ book }: BookNavigationDrawerProps) => {
 
 interface DrawerSubtitleProps {
   title: string;
+  className?: string;
 }
 
-const DrawerSubtitle = ({ title }: DrawerSubtitleProps) => {
-  return <div>{title}</div>;
+const DrawerSubtitle = ({ title, className, ...props }: DrawerSubtitleProps) => {
+  return (
+    <div className={cn("text-sm font-medium uppercase text-primary", className)} {...props}>
+      {title}
+    </div>
+  );
 };
 
 interface DrawerItemProps {
@@ -78,10 +55,18 @@ interface DrawerItemProps {
 }
 
 const DrawerItem = ({ title, href }: DrawerItemProps) => {
+  const pathname = usePathname();
+
+  const isActive = pathname === ROUTE.BOOK.DETAIL(href);
+
   return (
     <Link
+      scroll={false}
       href={ROUTE.BOOK.DETAIL(href)}
-      className="p-4 text-muted-foreground transition hover:text-accent-foreground"
+      className={cn(
+        "py-4 text-muted-foreground transition hover:text-accent-foreground",
+        isActive && "font-semibold text-accent-foreground",
+      )}
     >
       {title}
     </Link>

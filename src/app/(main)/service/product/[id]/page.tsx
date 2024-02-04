@@ -27,9 +27,10 @@ import { useParams } from "next/navigation";
 export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
 
-  const { data: product } = useProductDetail({ id: params.id });
+  const { isPending: isProductDetailPending } = useProductDetail({ id: params.id });
+  const { isPending: isPurchasedProductsPending } = usePurchasedProductList();
 
-  if (!product) return null;
+  if (isProductDetailPending || isPurchasedProductsPending) return null;
 
   return (
     <main className="container pb-16">
@@ -246,7 +247,10 @@ const ProductReviewListItem = ({
           </div>
         </div>
         {isMyReview && (
-          <button className="text-sm text-muted-foreground hover:underline" onClick={deleteConfirmDialog.open}>
+          <button
+            className="text-sm text-muted-foreground hover:underline"
+            onClick={deleteConfirmDialog.open}
+          >
             삭제
           </button>
         )}

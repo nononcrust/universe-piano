@@ -1,49 +1,20 @@
 "use client";
 
 import { Icon } from "@/components/common/icon";
+import { ROUTE } from "@/constants/route";
+import { getFormattedContentsByBook } from "@/lib/contentlayer";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Drawer } from "vaul";
 
-const drawer = [
-  {
-    title: "들어가기 전에",
-    href: "/ebook/1",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/2",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/3",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/4",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/5",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/6",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/7",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/8",
-  },
-  {
-    title: "피아노의 구성",
-    href: "/ebook/9",
-  },
-];
+interface BookMobileNavigationDrawerProps {
+  book: string;
+}
 
-export const BookMobileNavigationDrawer = () => {
+export const BookMobileNavigationDrawer = ({ book }: BookMobileNavigationDrawerProps) => {
+  const contents = getFormattedContentsByBook(book);
+
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
@@ -63,10 +34,15 @@ export const BookMobileNavigationDrawer = () => {
                 <p>홈페이지</p>
               </Drawer.Close>
             </div>
-            {drawer.map((item, index) => (
-              <Drawer.Close key={index} className="flex w-full flex-col">
-                <BookMobileNavigationDrwerItem title={item.title} href={item.href} />
-              </Drawer.Close>
+            {contents.map((item, index) => (
+              <div key={index} className="p-2">
+                <DrawerSubtitle className="mt-2" title={item.category!} />
+                <div className="flex flex-col">
+                  {item.children.map((content, index) => (
+                    <DrawerItem key={index} title={content.title} href={content.url} />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </Drawer.Content>
@@ -75,21 +51,37 @@ export const BookMobileNavigationDrawer = () => {
   );
 };
 
-interface BookMobileNavigationDrwerItemProps {
+interface DrawerSubtitleProps {
+  title: string;
+  className?: string;
+}
+
+const DrawerSubtitle = ({ title, className, ...props }: DrawerSubtitleProps) => {
+  return (
+    <div className={cn("text-sm font-medium uppercase text-primary", className)} {...props}>
+      {title}
+    </div>
+  );
+};
+
+interface DrawerItemProps {
   title: string;
   href: string;
 }
 
-const BookMobileNavigationDrwerItem = ({ title, href }: BookMobileNavigationDrwerItemProps) => {
+const DrawerItem = ({ title, href }: DrawerItemProps) => {
+  const pathname = usePathname();
+  const isActive = pathname === ROUTE.BOOK.DETAIL(href);
+
   return (
-    <li
+    <Link
       className={cn(
-        "flex w-full flex-1 rounded-lg p-4 font-medium transition hover:bg-content",
-        // isActive && "bg-content",
+        "flex w-full flex-1 rounded-lg py-4 font-medium text-muted-foreground transition",
+        isActive && "font-semibold text-accent-foreground",
       )}
-      // onClick={() => router.push(href)}
+      href={ROUTE.BOOK.DETAIL(href)}
     >
       {title}
-    </li>
+    </Link>
   );
 };

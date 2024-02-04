@@ -1,6 +1,7 @@
 import { allContents } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import NextImage, { ImageProps } from "next/image";
+import { cn } from "./utils";
 
 const getTitleInfoFromSourceFileName = (sourceFileName: string) => {
   const flattenedFileName = sourceFileName.split(".")[0];
@@ -70,6 +71,54 @@ export const getFormattedContentsByBook = (book: string) => {
   return formatted;
 };
 
+export const getPreviousContentTitleAndPath = (book: string, category: string, content: string) => {
+  const contents = allContents.filter((item) => item.book === book && item.is_category === false);
+
+  const found = contents.find(
+    (item) =>
+      item.book === book &&
+      splitOrderAndTitle(item.category).title === category &&
+      getTitleInfoFromSourceFileName(item._raw.sourceFileName).title === content,
+  );
+
+  if (!found) return null;
+
+  const index = contents.indexOf(found);
+
+  if (index === 0) return null;
+
+  const previousContent = contents[index - 1];
+
+  return {
+    title: previousContent.title,
+    url: getUrlFromFlattenedPath(previousContent._raw.flattenedPath),
+  };
+};
+
+export const getNextContentTitleAndPath = (book: string, category: string, content: string) => {
+  const contents = allContents.filter((item) => item.book === book && item.is_category === false);
+
+  const found = contents.find(
+    (item) =>
+      item.book === book &&
+      splitOrderAndTitle(item.category).title === category &&
+      getTitleInfoFromSourceFileName(item._raw.sourceFileName).title === content,
+  );
+
+  if (!found) return null;
+
+  const index = contents.indexOf(found);
+
+  if (index === contents.length - 1) return null;
+
+  const nextContent = contents[index + 1];
+
+  return {
+    title: nextContent.title,
+    url: getUrlFromFlattenedPath(nextContent._raw.flattenedPath),
+  };
+};
+
 // books/kit/100-intro/100-intro -> /kit/intro/intro
 export const getUrlFromFlattenedPath = (flattenedPath: string) => {
   const book = flattenedPath.split("/")[1];
@@ -81,8 +130,15 @@ export const getUrlFromFlattenedPath = (flattenedPath: string) => {
   )}`;
 };
 
-const Image = (props: ImageProps) => {
-  return <NextImage {...props} />;
+const Image = ({ className, ...props }: ImageProps) => {
+  return (
+    <NextImage
+      width={600}
+      height={600}
+      className={cn("rounded-2xl border max-md:w-full md:w-[400px]", className)}
+      {...props}
+    />
+  );
 };
 
 interface MDXContentProps {

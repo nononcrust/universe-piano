@@ -26,7 +26,7 @@ export default function KitListPage() {
           {products.map((product) => (
             <PurchasedProductItem
               key={product.id}
-              contentUrl="/"
+              contentUrl={product.contentUrl}
               imageSrc="/images/logo.svg"
               name={product.name}
             />
@@ -66,7 +66,7 @@ export const PurchasedProductItem = ({ contentUrl, name, imageSrc }: PurchasedPr
         />
       </AspectRatio>
       <div className="flex flex-col">
-        <p className="text-base text-gray-700 md:text-sm">{name}</p>
+        <p className="text-lg text-gray-700">{name}</p>
         <div className="flex items-center justify-between"></div>
       </div>
     </Link>

@@ -14,7 +14,7 @@ export default function BookLayout({
   return (
     <div className="flex max-h-screen min-h-screen flex-col overflow-hidden md:flex-row">
       <BookNavigationDrawer book={params.book} />
-      <KitMobileHeader />
+      <KitMobileHeader book={params.book} />
       <div className="flex-1 overflow-y-auto">
         <main className="container pt-16 md:pt-32">{children}</main>
       </div>
