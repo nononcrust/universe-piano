@@ -33,7 +33,7 @@ interface ProductItemProps {
   product: ProductList[number];
 }
 
-export const ProductItem = ({ product }: ProductItemProps) => {
+const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <Link
       href={ROUTE.SERVICE.PRODUCT.DETAIL(String(product.id))}
