@@ -25,14 +25,20 @@ export const BookMobileNavigationDrawer = ({ book }: BookMobileNavigationDrawerP
         <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 mt-24 flex max-h-[400px] flex-1 flex-col rounded-t-2xl bg-white p-2 outline-none">
           <div className="overflow-y-auto p-2">
             <div className="mb-4 flex h-14 items-center gap-2">
-              <Drawer.Close className="flex h-full flex-1 items-center gap-4 rounded-lg border px-4 transition">
-                <Icon.BookOpen />
-                <p>책 목록</p>
-              </Drawer.Close>
-              <Drawer.Close className="flex h-full flex-1 items-center gap-4 rounded-lg border px-4 transition">
-                <Icon.Home />
-                <p>홈페이지</p>
-              </Drawer.Close>
+              <Link
+                href={ROUTE.KIT.LIST}
+                className="flex h-full flex-1 items-center rounded-lg border px-4 transition"
+              >
+                <Icon.AlignJustify className="mr-2 h-5 w-5" />
+                <p className="text-sm">목록으로 돌아가기</p>
+              </Link>
+              <Link
+                href={ROUTE.HOME}
+                className="flex h-full flex-1 items-center rounded-lg border px-4 transition"
+              >
+                <Icon.Home className="mr-2 h-5 w-5" />
+                <p className="text-sm">홈페이지</p>
+              </Link>
             </div>
             {contents.map((item, index) => (
               <div key={index} className="p-2">

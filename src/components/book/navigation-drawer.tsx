@@ -17,10 +17,10 @@ export const BookNavigationDrawer = ({ book }: BookNavigationDrawerProps) => {
   return (
     <nav className="hidden w-[320px] flex-col divide-y overflow-y-auto border-r p-10 scrollbar-hide md:flex">
       <div className="mb-4">
-        <button className="group flex items-center text-sm">
+        <Link href={ROUTE.KIT.LIST} className="group flex items-center text-sm">
           <Icon.ChevronLeft className="mr-1 h-4 w-4 transition-all group-hover:-translate-x-1" />
           목록으로 돌아가기
-        </button>
+        </Link>
       </div>
       {contents.map((item, index) => (
         <div key={index}>

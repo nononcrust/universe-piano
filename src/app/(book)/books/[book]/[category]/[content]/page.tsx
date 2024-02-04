@@ -5,6 +5,7 @@ import {
   findContent,
   getNextContentTitleAndPath,
   getPreviousContentTitleAndPath,
+  splitOrderAndTitle,
 } from "@/lib/contentlayer";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -32,6 +33,9 @@ export default function BookContentPage(context: Context) {
 
   return (
     <div className="pb-32">
+      <p className="mb-4 text-sm font-medium uppercase text-primary">
+        {splitOrderAndTitle(content.category).title}
+      </p>
       <h2 className="mb-8 text-2xl font-semibold">{content.title}</h2>
       <div className="prose max-w-none">
         <MDXContent code={content.body.code} />

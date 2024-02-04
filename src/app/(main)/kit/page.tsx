@@ -54,7 +54,7 @@ interface PurchasedProductItemProps {
   imageSrc: string;
 }
 
-export const PurchasedProductItem = ({ contentUrl, name, imageSrc }: PurchasedProductItemProps) => {
+const PurchasedProductItem = ({ contentUrl, name, imageSrc }: PurchasedProductItemProps) => {
   return (
     <Link href={contentUrl} className="col flex cursor-pointer flex-col gap-2 pb-4">
       <AspectRatio ratio={1} className="rounded-2xl border">
