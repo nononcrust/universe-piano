@@ -81,10 +81,10 @@ export const siteContents = {
         title: "스터디",
         href: ROUTE.SERVICE.STUDY,
       },
-      // {
-      //   title: "독학 키트",
-      //   href: ROUTE.SERVICE.PRODUCT.LIST,
-      // },
+      {
+        title: "독학 키트",
+        href: ROUTE.SERVICE.PRODUCT.LIST,
+      },
     ],
   },
   notice: {
