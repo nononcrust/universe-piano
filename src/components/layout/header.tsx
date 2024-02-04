@@ -15,7 +15,6 @@ import { usePathname } from "next/navigation";
 
 export const Header = () => {
   const { data: session, fetchStatus } = useSession();
-  console.log(session);
 
   const pathname = usePathname();
 

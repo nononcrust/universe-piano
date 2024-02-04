@@ -41,7 +41,6 @@ export const GET = async (request: Request) => {
 
     return Response.json(session);
   } catch (error) {
-    console.log(error);
     return Response.json("Internal Error", { status: 500 });
   }
 };

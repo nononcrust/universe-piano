@@ -51,7 +51,6 @@ export const POST = async (request: Request, context: Context) => {
 
     return Response.json(productReview);
   } catch (error) {
-    console.log(error);
     if (error instanceof ZodError) {
       return Response.json("Bad Request", { status: 400 });
     }
