@@ -100,7 +100,7 @@ export default function AccountPage() {
           />
           <div className="flex justify-end">
             <Button
-              className="max-md:h-14 max-md:flex-1 max-md:rounded-2xl max-md:text-base"
+              className="max-md:h-14 max-md:flex-1 max-md:text-base"
               variant="outline"
               type="submit"
               disabled={!form.formState.isDirty || !form.formState.isValid}

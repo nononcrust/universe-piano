@@ -25,14 +25,12 @@ export const POST = async (request: Request) => {
       return Response.json("Unauthorized", { status: 401 });
     }
 
-    const body = await request.json();
-
-    const { status, products, point } = orderRequestSchema.parse(body);
+    const body = orderRequestSchema.parse(await request.json());
 
     const order = await prisma.order.create({
       data: {
-        point: point,
-        status: status,
+        point: body.point,
+        status: body.status,
         user: {
           connect: {
             id: user.id,
@@ -40,7 +38,7 @@ export const POST = async (request: Request) => {
         },
         orderItems: {
           createMany: {
-            data: products.map((item) => ({
+            data: body.products.map((item) => ({
               amount: item.amount,
               price: item.price,
               productId: item.productId,

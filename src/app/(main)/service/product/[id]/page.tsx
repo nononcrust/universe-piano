@@ -1,13 +1,26 @@
 "use client";
 
+import { RatingStar } from "@/components/common/rating-star";
 import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
+import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
-import { usePurchasedProductList } from "@/features/me";
-import { useProductDetail } from "@/features/product";
+import { useMyProductReviewList, usePurchasedProductList } from "@/features/me";
+import { useDeleteProductReview, useProductDetail, useProductReviewList } from "@/features/product";
 import { useDialog } from "@/hooks/use-dialog";
+import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
@@ -69,6 +82,18 @@ const ProductOptionSection = () => {
 };
 
 const ProductInfoSection = () => {
+  const params = useParams<{ id: string }>();
+
+  const productReviewAddDialog = useDialog();
+
+  const { data: purchasedProducts } = usePurchasedProductList();
+
+  const { data: product } = useProductDetail({ id: params.id });
+
+  const hasPurchased = purchasedProducts?.some(
+    (purchasedProduct) => purchasedProduct.id === product?.id,
+  );
+
   return (
     <div className="flex flex-1 flex-col">
       <PageTitle title="상품 정보" />
@@ -83,7 +108,25 @@ const ProductInfoSection = () => {
             ))}
         </div>
       </div>
-      <PageTitle title="상품 리뷰" />
+      <div className="relative">
+        <PageTitle title="상품 리뷰" />
+        {hasPurchased && (
+          <Button
+            className="absolute bottom-0 right-0"
+            variant="outline"
+            onClick={productReviewAddDialog.open}
+          >
+            리뷰 작성하기
+          </Button>
+        )}
+        <ProductReviewAddDialog
+          productId={params.id}
+          isOpen={productReviewAddDialog.isOpen}
+          onOpenChange={productReviewAddDialog.onOpenChange}
+          onClose={productReviewAddDialog.close}
+        />
+      </div>
+      <ProductReviewList />
     </div>
   );
 };
@@ -119,7 +162,7 @@ const ProductAction = () => {
         <p className="text-lg font-medium">{product.price.toLocaleString()}원</p>
       </div>
       <Button
-        className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
+        className="max-md:h-14 max-md:text-base"
         size="lg"
         onClick={checkoutDialog.open}
         disabled={!!hasAlreadyOrdered}
@@ -131,6 +174,99 @@ const ProductAction = () => {
         isOpen={checkoutDialog.isOpen}
         onOpenChange={checkoutDialog.onOpenChange}
       />
+    </div>
+  );
+};
+
+const ProductReviewList = () => {
+  const params = useParams<{ id: string }>();
+  const { data: reviews } = useProductReviewList({ id: params.id });
+
+  if (!reviews) return null;
+
+  return (
+    <div className="mt-8 flex flex-col gap-4 divide-y">
+      {reviews.map((review, index) => (
+        <ProductReviewListItem
+          key={index}
+          reviewId={review.id}
+          rating={review.rating}
+          content={review.content}
+          createdAt={formatDate(review.createdAt)}
+          username={review.user.nickname}
+          userProfileImage={review.user.profileImage}
+        />
+      ))}
+    </div>
+  );
+};
+
+interface ProductReviewListItemProps {
+  reviewId: string;
+  rating: number;
+  content: string;
+  createdAt: string;
+  username: string;
+  userProfileImage: string;
+}
+
+const ProductReviewListItem = ({
+  reviewId,
+  rating,
+  content,
+  createdAt,
+  username,
+  userProfileImage,
+}: ProductReviewListItemProps) => {
+  const { data: myProductReviews } = useMyProductReviewList();
+
+  const deleteConfirmDialog = useDialog();
+
+  const deleteMutation = useDeleteProductReview();
+
+  const isMyReview = myProductReviews?.some((myProductReview) => myProductReview.id === reviewId);
+
+  const onDelete = () => {
+    if (deleteMutation.isPending) return;
+
+    deleteMutation.mutate({ params: { id: reviewId } });
+  };
+
+  return (
+    <div className="flex flex-col pt-8">
+      <div className="flex justify-between">
+        <div className="flex items-center">
+          <Avatar className="mr-2 h-10 w-10">
+            <AvatarImage src={userProfileImage} alt={username} />
+            <AvatarFallback />
+          </Avatar>
+          <div className="flex flex-col">
+            <p className="text-sm font-medium">{username}</p>
+            <p className="text-xs text-muted-foreground">{formatDate(createdAt)}</p>
+          </div>
+        </div>
+        {isMyReview && (
+          <button className="text-sm text-muted-foreground hover:underline" onClick={deleteConfirmDialog.open}>
+            삭제
+          </button>
+        )}
+        <AlertDialog
+          open={deleteConfirmDialog.isOpen}
+          onOpenChange={deleteConfirmDialog.onOpenChange}
+        >
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>리뷰를 삭제할까요?</AlertDialogTitle>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>돌아가기</AlertDialogCancel>
+              <AlertDialogAction onClick={onDelete}>삭제하기</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
+      <RatingStar className="mt-2" rating={rating} />
+      <p className="mt-3 whitespace-pre-wrap text-[15px] text-muted-foreground">{content}</p>
     </div>
   );
 };

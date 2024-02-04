@@ -197,7 +197,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
         </section>
         <Button
           size="lg"
-          className="mt-8 w-full max-md:h-14 max-md:rounded-2xl max-md:text-base"
+          className="mt-8 w-full max-md:h-14 max-md:text-base"
           type="submit"
           disabled={!termsChecked}
         >

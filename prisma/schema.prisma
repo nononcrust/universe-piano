@@ -143,16 +143,16 @@ model Category {
 }
 
 model Product {
-  id          String  @id @default(cuid())
+  id          String @id @default(cuid())
   name        String
   price       Int
   description String
-  contentUrl  String 
+  contentUrl  String
 
-  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId String
 
-  images      Image[]
+  images         Image[]
   productReviews ProductReview[]
   orders         OrderItem[]
   cartItems      CartItem[]
@@ -194,8 +194,8 @@ model Order {
   point  Int
   status OrderStatus
 
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
   orderItems OrderItem[]
 
   createdAt DateTime @default(now())
@@ -224,8 +224,7 @@ model OrderItem {
 
 model ProductReview {
   id      String  @id @default(cuid())
-  title   String
-  content String
+  content String  @db.LongText
   rating  Int
   images  Image[]
 

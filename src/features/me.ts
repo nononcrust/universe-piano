@@ -50,12 +50,22 @@ export const meRepository = {
       },
     });
   },
+  getMyProductReviewList: (session: Session) => {
+    return prisma.productReview.findMany({
+      where: {
+        userId: session.user.id,
+      },
+    });
+  },
 };
 
 export type PurchasedProductList = Prisma.PromiseReturnType<
   typeof meRepository.getPurchasedProductList
 >;
 export type MyOrderList = Prisma.PromiseReturnType<typeof meRepository.getMyOrderList>;
+export type MyProductReviewList = Prisma.PromiseReturnType<
+  typeof meRepository.getMyProductReviewList
+>;
 
 const ENDPOINT = "/me";
 
@@ -68,18 +78,23 @@ export const meApi = {
     const response = await api.get<MyOrderList>(`${ENDPOINT}/orders`);
     return response.data;
   },
+  getMyProductReviewList: async () => {
+    const response = await api.get<MyProductReviewList>(`${ENDPOINT}/reviews`);
+    return response.data;
+  },
 };
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
   purchasedProducts: () => [...queryKeys.all(), "purchased-products"] as const,
   orderList: () => [...queryKeys.all(), "order-list"] as const,
+  productReviewList: () => [...queryKeys.all(), "product-review-list"] as const,
 };
 
 export const usePurchasedProductList = () => {
   return useQuery({
     queryKey: queryKeys.purchasedProducts(),
-    queryFn: () => meApi.getPurchasedProductList(),
+    queryFn: meApi.getPurchasedProductList,
   });
 };
 
@@ -87,5 +102,12 @@ export const useMyOrderList = () => {
   return useQuery({
     queryKey: queryKeys.orderList(),
     queryFn: meApi.getMyOrderList,
+  });
+};
+
+export const useMyProductReviewList = () => {
+  return useQuery({
+    queryKey: queryKeys.productReviewList(),
+    queryFn: meApi.getMyProductReviewList,
   });
 };

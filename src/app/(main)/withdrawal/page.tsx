@@ -65,10 +65,7 @@ export default function WithdrawalPage() {
         <div className="mt-8 flex flex-col gap-4 md:flex-row">
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button
-                className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
-                disabled={!checked}
-              >
+              <Button className="max-md:h-14 max-md:text-base" disabled={!checked}>
                 탈퇴하기
               </Button>
             </AlertDialogTrigger>
@@ -85,11 +82,7 @@ export default function WithdrawalPage() {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-          <Button
-            className="max-md:h-14 max-md:rounded-2xl max-md:text-base"
-            variant="outline"
-            asChild
-          >
+          <Button className="max-md:h-14 max-md:text-base" variant="outline" asChild>
             <Link href={ROUTE.MYPAGE.ACCOUNT}>돌아가기</Link>
           </Button>
         </div>

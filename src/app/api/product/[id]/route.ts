@@ -9,13 +9,9 @@ type Context = {
 };
 
 export const GET = async (request: Request, context: Context) => {
-  try {
-    const productId = context.params.id;
+  const productId = context.params.id;
 
-    const product = await productRepository.getProductById(productId);
+  const product = await productRepository.getProductById(productId);
 
-    return Response.json(product);
-  } catch (error) {
-    return Response.json("Internal Error", { status: 500 });
-  }
+  return Response.json(product);
 };
