@@ -2,7 +2,7 @@ import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
 import { OrderStatus, Prisma } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
-import { Session } from "./auth";
+import { Session, useSession } from "./auth";
 
 export const meRepository = {
   getPurchasedProductList: async (session: Session) => {
@@ -92,22 +92,31 @@ export const queryKeys = {
 };
 
 export const usePurchasedProductList = () => {
+  const session = useSession();
+
   return useQuery({
     queryKey: queryKeys.purchasedProducts(),
     queryFn: meApi.getPurchasedProductList,
+    enabled: !!session.data,
   });
 };
 
 export const useMyOrderList = () => {
+  const session = useSession();
+
   return useQuery({
     queryKey: queryKeys.orderList(),
     queryFn: meApi.getMyOrderList,
+    enabled: !!session.data,
   });
 };
 
 export const useMyProductReviewList = () => {
+  const session = useSession();
+
   return useQuery({
     queryKey: queryKeys.productReviewList(),
     queryFn: meApi.getMyProductReviewList,
+    enabled: !!session.data,
   });
 };

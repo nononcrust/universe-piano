@@ -18,6 +18,24 @@ export const authRepository = {
       where: {
         id,
       },
+      // include: {
+      //   orders: {
+      //     where: {
+      //       status: OrderStatus.PAYMENT_COMPLETED,
+      //     },
+      //     include: {
+      //       orderItems: {
+      //         include: {
+      //           product: {
+      //             include: {
+      //               images: true,
+      //             },
+      //           },
+      //         },
+      //       },
+      //     },
+      //   },
+      // },
     });
   },
 };

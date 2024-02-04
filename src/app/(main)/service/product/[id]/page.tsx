@@ -17,6 +17,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
+import { useSession } from "@/features/auth";
 import { useMyProductReviewList, usePurchasedProductList } from "@/features/me";
 import { useDeleteProductReview, useProductDetail, useProductReviewList } from "@/features/product";
 import { useDialog } from "@/hooks/use-dialog";
@@ -27,10 +28,14 @@ import { useParams } from "next/navigation";
 export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
 
+  const session = useSession();
+
   const { isPending: isProductDetailPending } = useProductDetail({ id: params.id });
   const { isPending: isPurchasedProductsPending } = usePurchasedProductList();
 
-  if (isProductDetailPending || isPurchasedProductsPending) return null;
+  if (isProductDetailPending) return null;
+
+if (session.data && isPurchasedProductsPending) return null;
 
   return (
     <main className="container pb-16">
