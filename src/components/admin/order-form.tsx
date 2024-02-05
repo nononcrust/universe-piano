@@ -20,12 +20,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
-import { OrderDetail, orderUpdateRequestSchema, useUpdateOrder } from "@/features/order";
+import { ROUTE } from "@/constants/route";
+import {
+  OrderDetail,
+  orderUpdateRequestSchema,
+  useDeleteOrder,
+  useUpdateOrder,
+} from "@/features/order";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { DeleteConfirmDialog } from "./delete-confirm-dialog";
 
 type FormSchema = z.infer<typeof orderUpdateRequestSchema>;
 
@@ -35,6 +42,7 @@ interface OrderFormProps {
 
 export const OrderForm = ({ order }: OrderFormProps) => {
   const updateOrderMutation = useUpdateOrder();
+  const deleteOrderMutation = useDeleteOrder();
 
   const router = useRouter();
 
@@ -46,19 +54,33 @@ export const OrderForm = ({ order }: OrderFormProps) => {
   });
 
   const onSubmit = form.handleSubmit((data: FormSchema) => {
-    if (!updateOrderMutation.isPending) {
-      updateOrderMutation.mutate(
-        { params: { id: order.id }, body: data },
-        {
-          onSuccess: () => {
-            router.refresh();
-            toast.success("주문 정보가 수정되었습니다.");
-            form.reset();
-          },
+    if (updateOrderMutation.isPending) return;
+
+    updateOrderMutation.mutate(
+      { params: { id: order.id }, body: data },
+      {
+        onSuccess: () => {
+          router.refresh();
+          toast.success("주문 정보가 수정되었습니다.");
+          form.reset();
         },
-      );
-    }
+      },
+    );
   });
+
+  const onDelete = () => {
+    if (deleteOrderMutation.isPending) return;
+
+    deleteOrderMutation.mutate(
+      { params: { id: order.id } },
+      {
+        onSuccess: () => {
+          router.push(ROUTE.ADMIN.ORDER.LIST);
+          toast.success("주문 정보가 삭제되었습니다.");
+        },
+      },
+    );
+  };
 
   return (
     <Card>
@@ -91,6 +113,7 @@ export const OrderForm = ({ order }: OrderFormProps) => {
               )}
             />
             <div className="flex justify-between">
+              <DeleteConfirmDialog onDelete={onDelete} />
               <Button
                 className="flex-1 md:flex-initial"
                 type="submit"
