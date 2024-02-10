@@ -1,5 +1,6 @@
 import { KitMobileHeader } from "@/components/book/mobile-header";
 import { BookNavigationDrawer } from "@/components/book/navigation-drawer";
+import { ScrollArea } from "@/components/common/scroll-area";
 
 export default function BookLayout({
   children,
@@ -12,12 +13,12 @@ export default function BookLayout({
   };
 }) {
   return (
-    <div className="flex max-h-screen min-h-screen flex-col overflow-hidden md:flex-row">
+    <div className="flex max-h-screen min-h-screen flex-col overflow-y-hidden md:flex-row">
       <BookNavigationDrawer book={params.book} />
       <KitMobileHeader book={params.book} />
-      <div className="flex-1 overflow-y-auto">
-        <main className="container pt-32">{children}</main>
-      </div>
+      <ScrollArea className="flex-1 max-md:mt-16">
+        <main className="container pt-16 md:pt-32">{children}</main>
+      </ScrollArea>
     </div>
   );
 }

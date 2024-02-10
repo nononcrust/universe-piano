@@ -147,6 +147,13 @@ interface MDXContentProps {
 
 const components = {
   Image,
+  EnglishSnippet: ({ children }: { children: React.ReactNode }) => {
+    return (
+      <div className="mb-2 flex flex-col whitespace-pre-wrap rounded-lg bg-gray-50 p-2 px-4">
+        {children}
+      </div>
+    );
+  },
 };
 
 export const MDXContent = ({ code }: MDXContentProps) => {
