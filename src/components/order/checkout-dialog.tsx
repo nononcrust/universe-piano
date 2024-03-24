@@ -1,7 +1,7 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
-import { CheckoutForm } from "./checkout-form";
+import { CheckoutForm } from "@/components/order/checkout-form";
+import { Dialog } from "@/components/ui/dialog";
 
 interface CheckoutDialogProps {
   productId: string;
@@ -12,12 +12,12 @@ interface CheckoutDialogProps {
 export const CheckoutDialog = (props: CheckoutDialogProps) => {
   return (
     <Dialog open={props.isOpen} onOpenChange={props.onOpenChange}>
-      <DialogContent className="h-5/6 overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>주문하기</DialogTitle>
-        </DialogHeader>
+      <Dialog.Content className="h-5/6 overflow-y-auto">
+        <Dialog.Header>
+          <Dialog.Title>주문하기</Dialog.Title>
+        </Dialog.Header>
         <Content {...props} />
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   );
 };

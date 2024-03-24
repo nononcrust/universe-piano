@@ -4,17 +4,9 @@ import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
 import { RatingStar } from "@/components/shared/rating-star";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import { AlertDialog } from "@/components/ui/alert-dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { useSession } from "@/features/auth";
@@ -171,6 +163,7 @@ const ProductAction = () => {
       {session && (
         <Button
           className="max-md:h-14 max-md:text-base"
+          variant="default"
           size="large"
           onClick={checkoutDialog.open}
           disabled={!!hasAlreadyOrdered}
@@ -251,8 +244,8 @@ const ProductReviewListItem = ({
       <div className="flex justify-between">
         <div className="flex items-center">
           <Avatar className="mr-2 h-10 w-10">
-            <AvatarImage src={userProfileImage} alt={username} />
-            <AvatarFallback />
+            <Avatar.Image src={userProfileImage} alt={username} />
+            <Avatar.Fallback />
           </Avatar>
           <div className="flex flex-col">
             <p className="text-sm font-medium">{username}</p>
@@ -268,15 +261,15 @@ const ProductReviewListItem = ({
           open={deleteConfirmDialog.isOpen}
           onOpenChange={deleteConfirmDialog.onOpenChange}
         >
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>리뷰를 삭제할까요?</AlertDialogTitle>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>돌아가기</AlertDialogCancel>
-              <AlertDialogAction onClick={onDelete}>삭제하기</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
+          <AlertDialog.Content>
+            <AlertDialog.Header>
+              <AlertDialog.Title>리뷰를 삭제할까요?</AlertDialog.Title>
+            </AlertDialog.Header>
+            <AlertDialog.Footer>
+              <AlertDialog.Cancel>돌아가기</AlertDialog.Cancel>
+              <AlertDialog.Action onClick={onDelete}>삭제하기</AlertDialog.Action>
+            </AlertDialog.Footer>
+          </AlertDialog.Content>
         </AlertDialog>
       </div>
       <RatingStar className="mt-2" rating={rating} />

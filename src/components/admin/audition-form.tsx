@@ -4,7 +4,7 @@ import { DeleteConfirmDialog } from "@/components/admin/delete-confirm-dialog";
 import { FormLayout } from "@/components/admin/form-layout";
 import { ImageInput } from "@/components/shared/image-input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -108,7 +108,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
 
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
             <Form.Field
@@ -170,7 +170,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
             </div>
           </FormLayout>
         </Form>
-      </CardContent>
+      </Card.Content>
     </Card>
   );
 };

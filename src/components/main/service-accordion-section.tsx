@@ -3,12 +3,7 @@
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
 import { Icon } from "@/components/shared/icon";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
@@ -20,13 +15,13 @@ export const ServiceAccordionSection = () => {
       <LandingSectionSubtitle>상황에 맞는 서비스를 추천해 드려요.</LandingSectionSubtitle>
       <div className="mt-4">
         <Accordion type="single" collapsible>
-          <AccordionItem value="1" className="ml-2 md:ml-0">
-            <AccordionTrigger>
+          <Accordion.Item value="1" className="ml-2 md:ml-0">
+            <Accordion.Trigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">빠르게 맞춤형 정보와 전략이 필요하신가요?</p>
               </div>
-            </AccordionTrigger>
-            <AccordionContent className="ml-1 whitespace-pre-wrap">
+            </Accordion.Trigger>
+            <Accordion.Content className="ml-1 whitespace-pre-wrap">
               <div className="flex items-center">
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">미국 음대 입시 과외</p>
@@ -44,15 +39,15 @@ export const ServiceAccordionSection = () => {
                   </Button>
                 </Link>
               </div>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="2" className="ml-2 md:ml-0">
-            <AccordionTrigger>
+            </Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="2" className="ml-2 md:ml-0">
+            <Accordion.Trigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">입시 전체 과정 케어가 필요하신가요?</p>
               </div>
-            </AccordionTrigger>
-            <AccordionContent className="ml-1 whitespace-pre-wrap">
+            </Accordion.Trigger>
+            <Accordion.Content className="ml-1 whitespace-pre-wrap">
               <div className="flex items-center">
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">미국 음대 입시 컨설팅</p>
@@ -68,15 +63,15 @@ export const ServiceAccordionSection = () => {
                   </Button>
                 </Link>
               </div>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="3" className="ml-2 md:ml-0">
-            <AccordionTrigger>
+            </Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="3" className="ml-2 md:ml-0">
+            <Accordion.Trigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">영어 공부 관련 도움이 필요하신가요?</p>
               </div>
-            </AccordionTrigger>
-            <AccordionContent className="ml-1 whitespace-pre-wrap">
+            </Accordion.Trigger>
+            <Accordion.Content className="ml-1 whitespace-pre-wrap">
               <div className="flex items-center">
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">영어 스터디</p>
@@ -94,17 +89,17 @@ export const ServiceAccordionSection = () => {
                   </Button>
                 </Link>
               </div>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="4" className="ml-2 md:ml-0">
-            <AccordionTrigger>
+            </Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="4" className="ml-2 md:ml-0">
+            <Accordion.Trigger>
               <div className="my-2 flex gap-2">
                 <p className="mr-4 flex-1 text-left">
                   혼자 준비하시면서, 부분적인 도움이 필요하신가요?
                 </p>
               </div>
-            </AccordionTrigger>
-            <AccordionContent className="ml-1 whitespace-pre-wrap">
+            </Accordion.Trigger>
+            <Accordion.Content className="ml-1 whitespace-pre-wrap">
               <div className="flex items-center">
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">독학 키트</p>
@@ -137,8 +132,8 @@ export const ServiceAccordionSection = () => {
                   </Button>
                 </Link>
               </div>
-            </AccordionContent>
-          </AccordionItem>
+            </Accordion.Content>
+          </Accordion.Item>
         </Accordion>
       </div>
     </section>

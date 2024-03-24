@@ -2,14 +2,7 @@
 
 import { DataTablePagination } from "@/components/admin/data-table/data-table-pagination";
 import { DataTableToolbar } from "@/components/admin/data-table/data-table-toolbar";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table } from "@/components/ui/table";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -61,40 +54,40 @@ export const DataTable = <TData, TValue>({
       />
       <div className="rounded-md border">
         <Table>
-          <TableHeader>
+          <Table.Header>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <Table.Row key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <Table.Head key={header.id}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
+                    </Table.Head>
                   );
                 })}
-              </TableRow>
+              </Table.Row>
             ))}
-          </TableHeader>
-          <TableBody>
+          </Table.Header>
+          <Table.Body>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <Table.Row key={row.id} data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <Table.Cell key={cell.id}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
+                    </Table.Cell>
                   ))}
-                </TableRow>
+                </Table.Row>
               ))
             ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+              <Table.Row>
+                <Table.Cell colSpan={columns.length} className="h-24 text-center">
                   데이터가 없습니다.
-                </TableCell>
-              </TableRow>
+                </Table.Cell>
+              </Table.Row>
             )}
-          </TableBody>
+          </Table.Body>
         </Table>
       </div>
       <DataTablePagination table={table} />

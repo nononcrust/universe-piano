@@ -5,7 +5,7 @@ import React from "react";
 
 export const buttonVariants = cva(
   cn(
-    "flex items-center justify-center whitespace-nowrap rounded-lg transition font-medium",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-lg transition font-medium border",
     "ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "hover:bg-primary-dark",
@@ -13,13 +13,14 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-black text-white hover:bg-black/90",
-        primary: "bg-primary text-white hover:bg-primary-dark",
-        secondary: "bg-secondary text-main border-border border hover:bg-secondary-dark",
-        outlined: "bg-white border border-border text-main hover:bg-gray-50",
-        error: "bg-error text-white border-error border hover:bg-error-dark",
-        errorOutlined: "bg-white border-error border text-error hover:bg-red-50",
-        ghost: "bg-transparent text-main border border-transparent hover:bg-gray-50",
+        default: "bg-black text-white hover:bg-black/90 border-black hover:border-black/90",
+        primary:
+          "bg-primary text-white hover:bg-primary-dark border-primary hover:border-primary-dark",
+        secondary: "bg-secondary text-main border-transparent hover:bg-secondary-dark",
+        outlined: "bg-white border-border text-main hover:bg-gray-50",
+        error: "bg-error text-white border-error hover:bg-error-dark",
+        errorOutlined: "bg-white border-error text-error hover:bg-red-50",
+        ghost: "bg-transparent text-main border-transparent hover:bg-secondary",
       },
       size: {
         small: "h-7 px-3 text-xs",
@@ -28,7 +29,7 @@ export const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "primary",
+      variant: "default",
       size: "medium",
     },
   },

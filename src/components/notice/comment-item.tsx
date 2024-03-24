@@ -1,15 +1,7 @@
 "use client";
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AlertDialog } from "@/components/ui/alert-dialog";
+import { Avatar } from "@/components/ui/avatar";
 import { useSession } from "@/features/auth";
 import { useDialog } from "@/hooks/use-dialog";
 
@@ -43,18 +35,18 @@ export const CommentItem = ({
   return (
     <div className="flex gap-3">
       <Avatar className="h-8 w-8">
-        <AvatarImage src={profileImage} />
-        <AvatarFallback />
+        <Avatar.Image src={profileImage} />
+        <Avatar.Fallback />
       </Avatar>
       <div className="flex flex-1 flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <p className="text-sm font-medium">{nickname}</p>
-            <p className="text-sub text-xs">{createdAt}</p>
+            <p className="text-xs text-sub">{createdAt}</p>
           </div>
           {isMyComment && (
             <p
-              className="text-sub cursor-pointer text-xs font-medium"
+              className="cursor-pointer text-xs font-medium text-sub"
               onClick={onDeleteButtonClick}
             >
               삭제
@@ -67,15 +59,15 @@ export const CommentItem = ({
         open={deleteConfirmDialog.isOpen}
         onOpenChange={deleteConfirmDialog.onOpenChange}
       >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>댓글을 삭제할까요?</AlertDialogTitle>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction onClick={onDelete}>삭제</AlertDialogAction>
-            <AlertDialogCancel>취소</AlertDialogCancel>
-          </AlertDialogFooter>
-        </AlertDialogContent>
+        <AlertDialog.Content>
+          <AlertDialog.Header>
+            <AlertDialog.Title>댓글을 삭제할까요?</AlertDialog.Title>
+          </AlertDialog.Header>
+          <AlertDialog.Footer>
+            <AlertDialog.Action onClick={onDelete}>삭제</AlertDialog.Action>
+            <AlertDialog.Cancel>취소</AlertDialog.Cancel>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
       </AlertDialog>
     </div>
   );

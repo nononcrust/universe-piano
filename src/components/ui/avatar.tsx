@@ -1,50 +1,52 @@
 "use client";
 
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
-import * as React from "react";
-
 import { cn } from "@/lib/utils";
+import * as AvatarPrimitives from "@radix-ui/react-avatar";
 import { motion } from "framer-motion";
+import React from "react";
 
-const Avatar = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
+const AvatarRoot = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitives.Root>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitives.Root>
 >(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Root
+  <AvatarPrimitives.Root
     ref={ref}
     className={cn("relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full", className)}
     {...props}
   />
 ));
-Avatar.displayName = AvatarPrimitive.Root.displayName;
+AvatarRoot.displayName = AvatarPrimitives.Root.displayName;
 
 const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+  React.ElementRef<typeof AvatarPrimitives.Image>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitives.Image>
 >(({ className, ...props }, ref) => (
   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-    <AvatarPrimitive.Image
+    <AvatarPrimitives.Image
       ref={ref}
       className={cn("aspect-square h-full w-full", className)}
       {...props}
     />
   </motion.div>
 ));
-AvatarImage.displayName = AvatarPrimitive.Image.displayName;
+AvatarImage.displayName = AvatarPrimitives.Image.displayName;
 
 const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+  React.ElementRef<typeof AvatarPrimitives.Fallback>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitives.Fallback>
 >(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Fallback
+  <AvatarPrimitives.Fallback
     ref={ref}
     className={cn(
-      "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      "bg-muted flex h-full w-full items-center justify-center rounded-full",
       className,
     )}
     {...props}
   />
 ));
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
+AvatarFallback.displayName = AvatarPrimitives.Fallback.displayName;
 
-export { Avatar, AvatarFallback, AvatarImage };
+export const Avatar = Object.assign(AvatarRoot, {
+  Image: AvatarImage,
+  Fallback: AvatarFallback,
+});

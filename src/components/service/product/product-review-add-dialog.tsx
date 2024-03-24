@@ -2,7 +2,7 @@
 
 import { RatingStarSelect } from "@/components/shared/rating-star-select";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog } from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateProductReview } from "@/features/product";
@@ -28,12 +28,12 @@ interface ProductReviewDialogProps {
 export const ProductReviewAddDialog = (props: ProductReviewDialogProps) => {
   return (
     <Dialog open={props.isOpen} onOpenChange={props.onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>상품 리뷰 작성</DialogTitle>
-        </DialogHeader>
+      <Dialog.Content>
+        <Dialog.Header>
+          <Dialog.Title>상품 리뷰 작성</Dialog.Title>
+        </Dialog.Header>
         <Content {...props} />
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   );
 };

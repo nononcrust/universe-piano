@@ -1,9 +1,10 @@
 import typographyPlugin from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
+import animatePlugin from "tailwindcss-animate";
 import { theme } from "./src/styles/theme";
 
 module.exports = {
-  plugins: [typographyPlugin, require("tailwind-scrollbar-hide")],
+  plugins: [typographyPlugin, animatePlugin, require("tailwind-scrollbar-hide")],
   theme: {
     extend: {
       container: {

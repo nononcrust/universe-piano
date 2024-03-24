@@ -1,9 +1,9 @@
 "use client";
 
 import { FormLayout } from "@/components/admin/form-layout";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -58,11 +58,11 @@ export const UserForm = ({ user }: UserFormProps) => {
 
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <div className="mt-12 flex justify-center">
           <Avatar className="h-32 w-32">
-            <AvatarImage src={user.profileImage} />
-            <AvatarFallback />
+            <Avatar.Image src={user.profileImage} />
+            <Avatar.Fallback />
           </Avatar>
         </div>
         <Form {...form}>
@@ -157,6 +157,7 @@ export const UserForm = ({ user }: UserFormProps) => {
                 탈퇴
               </Button>
               <Button
+                variant="default"
                 className="flex-1 md:flex-initial"
                 type="submit"
                 disabled={!form.formState.isDirty}
@@ -166,7 +167,7 @@ export const UserForm = ({ user }: UserFormProps) => {
             </div>
           </FormLayout>
         </Form>
-      </CardContent>
+      </Card.Content>
     </Card>
   );
 };

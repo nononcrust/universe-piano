@@ -1,15 +1,9 @@
 "use client";
 
 import { AccessControl } from "@/components/shared/access-control";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
@@ -28,21 +22,21 @@ export const UserMenu = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenu.Trigger>
         <Avatar className="h-8 w-8 cursor-pointer">
-          <AvatarImage src={user.profileImage} />
-          <AvatarFallback resource={user.profileImage} />
+          <Avatar.Image src={user.profileImage} />
+          <Avatar.Fallback resource={user.profileImage} />
         </Avatar>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="translate-y-1">
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content align="end" className="translate-y-1">
         {/* <DropdownMenuItem asChild className="px-4 py-2">
           <Link href={ROUTE.CART}>장바구니</Link>
         </DropdownMenuItem> */}
         <div className="p-4 pr-12">
           <div className="flex gap-4">
             <Avatar className="h-12 w-12">
-              <AvatarImage src={user.profileImage} />
-              <AvatarFallback resource={user.profileImage} />
+              <Avatar.Image src={user.profileImage} />
+              <Avatar.Fallback resource={user.profileImage} />
             </Avatar>
             <div>
               <div className="flex items-center gap-2">
@@ -53,22 +47,22 @@ export const UserMenu = () => {
             </div>
           </div>
         </div>
-        <DropdownMenuItem asChild className="px-4 py-2 font-medium">
+        <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.MYPAGE.PROFILE}>마이페이지</Link>
-        </DropdownMenuItem>
+        </DropdownMenu.Item>
         {/* <DropdownMenuItem asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.KIT.LIST}>나의 독학 키트</Link>
         </DropdownMenuItem> */}
         <AccessControl role={Role.ADMIN}>
-          <DropdownMenuItem asChild className="px-4 py-2 font-medium">
+          <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
             <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>
-          </DropdownMenuItem>
+          </DropdownMenu.Item>
         </AccessControl>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="px-4 py-2 font-medium" onClick={auth.logout}>
+        <DropdownMenu.Separator />
+        <DropdownMenu.Item className="px-4 py-2 font-medium" onClick={auth.logout}>
           로그아웃
-        </DropdownMenuItem>
-      </DropdownMenuContent>
+        </DropdownMenu.Item>
+      </DropdownMenu.Content>
     </DropdownMenu>
   );
 };

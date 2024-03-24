@@ -2,7 +2,7 @@
 
 import { FormLayout } from "@/components/admin/form-layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Select } from "@/components/ui/select";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
@@ -70,7 +70,7 @@ export const OrderForm = ({ order }: OrderFormProps) => {
 
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
             <Form.Field
@@ -110,7 +110,7 @@ export const OrderForm = ({ order }: OrderFormProps) => {
             </div>
           </FormLayout>
         </Form>
-      </CardContent>
+      </Card.Content>
     </Card>
   );
 };

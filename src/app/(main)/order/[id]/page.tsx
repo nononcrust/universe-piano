@@ -2,15 +2,7 @@
 
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/configs/site";
@@ -114,15 +106,15 @@ export default function OrderDetailPage() {
         open={orderCancelConfirmDialog.isOpen}
         onOpenChange={orderCancelConfirmDialog.onOpenChange}
       >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>주문을 취소할까요?</AlertDialogTitle>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>돌아가기</AlertDialogCancel>
-            <AlertDialogAction onClick={onCancelOrderButtonClick}>취소하기</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
+        <AlertDialog.Content>
+          <AlertDialog.Header>
+            <AlertDialog.Title>주문을 취소할까요?</AlertDialog.Title>
+          </AlertDialog.Header>
+          <AlertDialog.Footer>
+            <AlertDialog.Cancel>돌아가기</AlertDialog.Cancel>
+            <AlertDialog.Action onClick={onCancelOrderButtonClick}>취소하기</AlertDialog.Action>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
       </AlertDialog>
     </main>
   );

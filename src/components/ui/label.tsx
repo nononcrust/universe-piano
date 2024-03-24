@@ -1,19 +1,19 @@
 import { cn } from "@/lib/utils";
-import * as LabelPrimitive from "@radix-ui/react-label";
+import * as LabelPrimitives from "@radix-ui/react-label";
 import React from "react";
 
-export interface LabelProps extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {}
+export interface LabelProps extends React.ComponentPropsWithoutRef<typeof LabelPrimitives.Root> {}
 
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <LabelPrimitive.Root
-        className={cn("text-main inline-flex text-[13px]", className)}
+      <LabelPrimitives.Root
+        className={cn("inline-flex text-[13px] text-main", className)}
         ref={ref}
         {...props}
       >
         {children}
-      </LabelPrimitive.Root>
+      </LabelPrimitives.Root>
     );
   },
 );

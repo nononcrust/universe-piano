@@ -12,7 +12,7 @@ import { emailSchema, nicknameSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -61,7 +61,7 @@ export default function AccountPage() {
       <PageSubtitle className="mt-8" title="프로필 수정" />
       <Form {...form}>
         <FormLayout onSubmit={onSubmit}>
-          <Controller
+          <Form.Field
             name="nickname"
             control={form.control}
             render={({ field }) => (
@@ -82,7 +82,7 @@ export default function AccountPage() {
               </Form.Item>
             )}
           />
-          <Controller
+          <Form.Field
             name="email"
             control={form.control}
             render={({ field }) => (

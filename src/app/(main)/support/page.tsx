@@ -2,12 +2,7 @@
 
 import { PageTitle } from "@/components/layout/page-title";
 import { Pagination } from "@/components/shared/pagination";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { data as consultingData } from "@/contents/services/consulting";
@@ -54,7 +49,7 @@ export default function SupportPage() {
           <Button
             key={index}
             className="min-w-fit rounded-full px-4"
-            variant={tab === value ? "primary" : "outlined"}
+            variant={tab === value ? "default" : "outlined"}
             onClick={() => onCategoryChange(value)}
           >
             {label}
@@ -93,16 +88,16 @@ interface SupportListItemProps {
 
 const SupportListItem = ({ value, title, content, category }: SupportListItemProps) => {
   return (
-    <AccordionItem value={value}>
-      <AccordionTrigger>
+    <Accordion.Item value={value}>
+      <Accordion.Trigger>
         <div className="flex gap-2">
           <div>
             <Badge variant="secondary">{category}</Badge>
           </div>
           <p className="mr-4 flex-1 text-left">{title}</p>
         </div>
-      </AccordionTrigger>
-      <AccordionContent className="ml-1 whitespace-pre-wrap">{content}</AccordionContent>
-    </AccordionItem>
+      </Accordion.Trigger>
+      <Accordion.Content className="ml-1 whitespace-pre-wrap">{content}</Accordion.Content>
+    </Accordion.Item>
   );
 };

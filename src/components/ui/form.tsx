@@ -36,7 +36,7 @@ const useFormFieldContext = () => {
   return {
     id,
     name: fieldContext.name,
-    formItemId: `${id}-form-item`,
+    formLabelId: `${id}-form-item-label`,
     formDescriptionId: `${id}-form-item-description`,
     formErrorMessageId: `${id}-form-item-error-message`,
     ...fieldState,
@@ -58,6 +58,7 @@ const FormField = <
 
 type FormItemContextValue = {
   id: string;
+  formLabelRef: React.RefObject<HTMLLabelElement>;
   formDescriptionRef: React.RefObject<HTMLParagraphElement>;
   formErrorMessageRef: React.RefObject<HTMLParagraphElement>;
 };
@@ -70,11 +71,12 @@ interface FormItemContextProviderProps {
 
 const FormItemContextProvider = ({ children }: FormItemContextProviderProps) => {
   const id = useId();
+  const formLabelRef = useRef<HTMLLabelElement>(null);
   const formDescriptionRef = useRef<HTMLParagraphElement>(null);
   const formErrorMessageRef = useRef<HTMLParagraphElement>(null);
 
   return (
-    <FormItemContext.Provider value={{ id, formDescriptionRef, formErrorMessageRef }}>
+    <FormItemContext.Provider value={{ id, formLabelRef, formDescriptionRef, formErrorMessageRef }}>
       {children}
     </FormItemContext.Provider>
   );
@@ -112,7 +114,7 @@ interface FormControlProps {
 }
 
 const FormControl = ({ children }: FormControlProps) => {
-  const { error, formDescriptionId, formErrorMessageId, formItemId } = useFormFieldContext();
+  const { error, formDescriptionId, formErrorMessageId, formLabelId } = useFormFieldContext();
 
   const { formDescriptionRef, formErrorMessageRef } = useFormItemContext();
 
@@ -122,7 +124,11 @@ const FormControl = ({ children }: FormControlProps) => {
   );
 
   return (
-    <Slot aria-invalid={!!error} id={formItemId} aria-describedby={ariaDescribedBy || undefined}>
+    <Slot
+      aria-invalid={!!error}
+      aria-labelledby={formLabelId}
+      aria-describedby={ariaDescribedBy || undefined}
+    >
       {children}
     </Slot>
   );
@@ -131,11 +137,12 @@ const FormControl = ({ children }: FormControlProps) => {
 interface FormLabelProps extends LabelProps {}
 
 const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
-  ({ className, children, ...props }, ref) => {
-    const { formItemId } = useFormFieldContext();
+  ({ className, children, ...props }) => {
+    const { formLabelId } = useFormFieldContext();
+    const { formLabelRef } = useFormItemContext();
 
     return (
-      <Label className={cn("mb-2", className)} ref={ref} htmlFor={formItemId} {...props}>
+      <Label className={cn("mb-2", className)} ref={formLabelRef} id={formLabelId} {...props}>
         {children}
       </Label>
     );

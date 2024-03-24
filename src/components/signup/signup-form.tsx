@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form } from "@/components/ui/form";
@@ -66,8 +66,8 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
       <h1 className="text-foreground mt-16 text-2xl font-medium md:text-3xl">회원가입</h1>
       <h2 className="mt-2 font-medium text-sub">카카오 계정으로 회원가입을 진행합니다.</h2>
       <Avatar className="mt-8 h-20 w-20">
-        <AvatarImage src={initialData.profileImage} alt="프로필 이미지" />
-        <AvatarFallback />
+        <Avatar.Image src={initialData.profileImage} alt="프로필 이미지" />
+        <Avatar.Fallback />
       </Avatar>
       <Form {...form}>
         <form className="mt-4 flex w-full flex-col gap-8" onSubmit={onSubmit}>

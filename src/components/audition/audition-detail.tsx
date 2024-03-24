@@ -60,9 +60,9 @@ export const AuditionDetail = () => {
               ))}
             </AnimatePresence>
             <div className="mt-8">
-              <Link href={ROUTE.NEWS.AUDITION.LIST}>
-                <Button variant="secondary">목록으로</Button>
-              </Link>
+              <Button variant="secondary" asChild>
+                <Link href={ROUTE.NEWS.AUDITION.LIST}>목록으로</Link>
+              </Button>
             </div>
           </ul>
         </>

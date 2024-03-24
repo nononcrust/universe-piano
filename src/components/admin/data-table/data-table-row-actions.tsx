@@ -2,12 +2,7 @@
 
 import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { ROUTE } from "@/constants/route";
 import { Row } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
@@ -25,15 +20,15 @@ export const DataTableRowActions = <TData,>({ row }: DataTableRowActionsProps<TD
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenu.Trigger asChild>
         <Button variant="ghost" className="data-[state=open]:bg-muted flex h-8 w-8 p-0">
           <Icon.MoreHorizontal className="h-4 w-4" />
           <span className="sr-only">메뉴 열기</span>
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem onClick={onEditButtonClick}>수정하기</DropdownMenuItem>
-      </DropdownMenuContent>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content align="end" className="w-[160px]">
+        <DropdownMenu.Item onClick={onEditButtonClick}>수정하기</DropdownMenu.Item>
+      </DropdownMenu.Content>
     </DropdownMenu>
   );
 };

@@ -3,7 +3,7 @@
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 import { Icon } from "@/components/shared/icon";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -26,8 +26,8 @@ export default function MyProfilePage() {
       <div className="mt-8 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Avatar className="h-12 w-12 md:h-20 md:w-20">
-            <AvatarImage src={user.profileImage} />
-            <AvatarFallback />
+            <Avatar.Image src={user.profileImage} />
+            <Avatar.Fallback />
           </Avatar>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">

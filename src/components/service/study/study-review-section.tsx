@@ -6,7 +6,7 @@ import { SectionSubtitle } from "@/components/shared/section-subtitle";
 import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog } from "@/components/ui/dialog";
 import { siteConfig } from "@/configs/site";
 import { data } from "@/contents/services/study";
 import { useDialog } from "@/hooks/use-dialog";
@@ -102,9 +102,9 @@ const StudyReviewItem = ({
           후기 카톡 원본 확인
         </Button>
         <Dialog open={dialog.isOpen} onOpenChange={dialog.onOpenChange}>
-          <DialogContent className="max-h-[80vh] overflow-y-auto">
+          <Dialog.Content className="max-h-[80vh] overflow-y-auto">
             <Image src={kakaoImage} alt="" priority />
-          </DialogContent>
+          </Dialog.Content>
         </Dialog>
       </div>
     </div>

@@ -8,7 +8,7 @@ export const HeroSection = () => {
         <p className="text-medium mt-8 leading-normal text-gray-300 md:text-2xl md:leading-normal">
           스스로를 규정하던 모든 프레임에서 벗어나,
           <br />
-          무한한 가능성을 탐험하실 분들과 동행합니다
+          무한한 가능성을 탐험하실 분들과 동행합니다.
         </p>
       </div>
     </section>

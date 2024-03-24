@@ -1,10 +1,10 @@
 "use client";
 
 import { Icon } from "@/components/shared/icon";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Drawer } from "@/components/ui/drawer";
 import { siteContents } from "@/configs/site";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
@@ -19,11 +19,11 @@ export const NavigationMenuDialog = () => {
   const auth = useAuth();
 
   return (
-    <Sheet>
-      <SheetTrigger className="outline-none md:hidden" aria-label="menu-button">
+    <Drawer>
+      <Drawer.Trigger className="outline-none md:hidden" aria-label="menu-button">
         <Icon.Menu />
-      </SheetTrigger>
-      <SheetContent className="overflow-y-auto" side="right">
+      </Drawer.Trigger>
+      <Drawer.Content className="overflow-y-auto" side="right">
         <ListSection>
           {session && (
             <div className="mb-4 mt-2">
@@ -66,8 +66,8 @@ export const NavigationMenuDialog = () => {
             로그아웃
           </Button>
         )}
-      </SheetContent>
-    </Sheet>
+      </Drawer.Content>
+    </Drawer>
   );
 };
 interface ListSubHeaderProps extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -82,9 +82,9 @@ const ListSection = ({ className, children }: ListSubHeaderProps) => {
           <Image priority fill sizes="100px" src="/images/text-logo.png" alt="사이트 로고" />
         </div> */}
         <p className="font-semibold">유니버스 피아노</p>
-        <SheetClose className="outline-none">
+        <Drawer.Close className="outline-none">
           <Icon.X />
-        </SheetClose>
+        </Drawer.Close>
       </div>
       <ul className="mt-4 flex flex-col gap-2">{children}</ul>
     </div>
@@ -113,14 +113,14 @@ interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
 const ListItem = ({ children, href, onClick }: ListItemProps) => {
   return (
     <Link href={href}>
-      <SheetClose className="flex w-full">
+      <Drawer.Close className="flex w-full">
         <li
           className="text-foreground flex-1 cursor-pointer py-3 text-left font-medium"
           onClick={onClick}
         >
           {children}
         </li>
-      </SheetClose>
+      </Drawer.Close>
     </Link>
   );
 };
@@ -135,8 +135,8 @@ const UserProfile = () => {
   return (
     <div className="flex gap-4">
       <Avatar className="h-12 w-12">
-        <AvatarImage src={user.profileImage} />
-        <AvatarFallback resource={user.profileImage} />
+        <Avatar.Image src={user.profileImage} />
+        <Avatar.Fallback resource={user.profileImage} />
       </Avatar>
       <div>
         <div className="flex items-center gap-2">

@@ -7,15 +7,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { RadioGroup } from "@/components/ui/radio-group";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth";
 import { useCreateOrder } from "@/features/order";
 import { useProductDetail } from "@/features/product";
-import { allowNumberOnly, defaultZero, limitMaxNumber, trimLeadingZeros } from "@/lib/utils";
+import { allowNumberOnly, cn, defaultZero, limitMaxNumber, trimLeadingZeros } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -25,11 +24,10 @@ interface CheckoutFormProps {
 
 const formSchema = z.object({
   point: z.string(),
+  terms: z.boolean(),
 });
 
 export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
-  const [termsChecked, setTermsChecked] = useState(false);
-
   const { data: session } = useSession();
 
   const router = useRouter();
@@ -42,6 +40,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       point: "0",
+      terms: false,
     },
   });
 
@@ -161,10 +160,13 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
                 </Label>
               </div> */}
             <div className="cursor-pointer">
-              <RadioGroupItem value="deposit" id="deposit" className="peer sr-only" />
+              <RadioGroup.Item value="deposit" id="deposit" className="peer sr-only" />
               <Label
                 htmlFor="deposit"
-                className="border-muted bg-popover hover:bg-accent peer-data-[state=checked]:border-foreground [&:has([data-state=checked])]:border-foreground flex cursor-pointer flex-col items-center justify-between rounded-md border p-4 transition hover:text-main"
+                className={cn(
+                  "border-muted bg-popover hover:bg-accent flex cursor-pointer flex-col items-center justify-between rounded-md border p-4 transition hover:text-main",
+                  "peer-data-[state=checked]:border-black [&:has([data-state=checked])]:border-black",
+                )}
               >
                 <Icon.CircleDollarSign className="mb-3 h-6 w-6" />
                 무통장 입금
@@ -173,20 +175,24 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
           </RadioGroup>
         </section>
         <section>
-          <Form.Item className="mt-16">
-            <Form.Control>
-              <Checkbox checked={termsChecked} onChange={setTermsChecked}>
-                서비스 이용약관 및 개인정보 처리방침에 동의합니다.
-              </Checkbox>
-            </Form.Control>
-            <Form.ErrorMessage />
-          </Form.Item>
+          <Form.Field
+            name="terms"
+            control={form.control}
+            render={({ field }) => (
+              <Form.Item className="mt-16">
+                <Form.Control>
+                  <Checkbox {...field}>서비스 이용약관 및 개인정보 처리방침에 동의합니다.</Checkbox>
+                </Form.Control>
+                <Form.ErrorMessage />
+              </Form.Item>
+            )}
+          />
         </section>
         <Button
           size="large"
           className="mt-8 w-full max-md:h-14 max-md:text-base"
           type="submit"
-          disabled={!termsChecked}
+          disabled={!!form.formState.errors.terms}
         >
           결제하기
         </Button>

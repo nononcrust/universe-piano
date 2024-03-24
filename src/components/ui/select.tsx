@@ -26,7 +26,7 @@ const SelectContext = createContext<SelectContextValue | null>(null);
 const useSelectContext = () => {
   const context = useContext(SelectContext);
   if (!context) {
-    throw new Error("Select compound components cannot be rendered outside the Select component");
+    throw new Error("useSelectContext는 Select 컴포넌트 안에서만 사용할 수 있습니다.");
   }
   return context;
 };
@@ -104,11 +104,12 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement>(({ ...props }, 
   return (
     <button
       className={cn(
-        "relative flex h-9 w-full items-center justify-between rounded-lg border border-border px-3 pr-9 text-[13px] font-medium transition",
-        "focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring",
+        "relative flex h-9 w-full items-center justify-between rounded-lg bg-secondary px-3 pr-9 text-[13px] font-medium transition",
+        "focus:outline-none",
         label ? "text-gray-900" : "text-gray-400",
         error && "border-error focus:border-error focus:ring-error-lighter",
         disabled && "opacity-50",
+        !isOpen && "hover:bg-secondary-dark",
       )}
       role="combobox"
       aria-label="select"
@@ -162,7 +163,7 @@ export const SelectContent = ({ children }: SelectContentProps) => {
   }
 
   return (
-    <div className="animate-dropdown-open absolute top-10 z-50 min-w-full overflow-hidden rounded-lg border bg-white shadow-md">
+    <div className="absolute top-10 z-50 min-w-full animate-dropdown-open overflow-hidden rounded-lg border bg-white shadow-md">
       <ul
         className="flex max-h-[200px] flex-col gap-0.5 overflow-y-auto border-border p-1"
         ref={ref}
@@ -220,7 +221,7 @@ export const SelectItem = ({ children, value }: SelectItemProps) => {
         tabIndex={-1}
         className={cn(
           "flex h-9 w-full cursor-pointer items-center whitespace-nowrap rounded-md p-1 px-2 text-[13px] hover:bg-gray-50",
-          selected && "font-semibold text-primary",
+          selected && "font-semibold text-black",
           focused && "bg-gray-50",
         )}
         onClick={onClick}

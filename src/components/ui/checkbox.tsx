@@ -1,12 +1,12 @@
+import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import * as CheckboxPrimitives from "@radix-ui/react-checkbox";
 import { CheckIcon } from "lucide-react";
 import React, { useId } from "react";
-import { Label } from "./label";
 
 interface CheckboxProps
   extends Omit<
-    React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+    React.ComponentPropsWithoutRef<typeof CheckboxPrimitives.Root>,
     "onChange" | "onCheckedChange" | "value"
   > {
   value?: string | boolean;
@@ -20,7 +20,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
 
     return (
       <div className="flex items-center">
-        <CheckboxPrimitive.Root
+        <CheckboxPrimitives.Root
           className={cn(
             "group relative flex h-[20px] w-[20px] items-center justify-center rounded-[4px] focus-visible:outline-none",
             className,
@@ -34,18 +34,18 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
           <div
             className={cn(
               "h-[15px] w-[15px] rounded-[4px] border border-border transition",
-              "group-focus:border-primary-dark group-focus:ring-2 group-focus:ring-ring group-focus:ring-offset-1",
-              "group-data-[state=checked]:border-primary-dark group-data-[state=checked]:bg-primary group-data-[state=checked]:hover:bg-primary",
+              "group-focus:ring-2 group-focus:ring-ring group-focus:ring-offset-1",
+              "group-data-[state=checked]:border-black group-data-[state=checked]:bg-black group-data-[state=checked]:hover:bg-black",
               "group-disabled:opacity-50",
               error &&
                 "border-error group-focus:border-error-dark group-focus:ring-error-lighter group-data-[state=checked]:border-error-dark group-data-[state=checked]:bg-error group-data-[state=checked]:hover:bg-error",
             )}
           >
-            <CheckboxPrimitive.Indicator className="absolute inset-0 flex items-center justify-center">
+            <CheckboxPrimitives.Indicator className="absolute inset-0 flex items-center justify-center">
               <CheckIcon className="h-[13px] w-[13px] stroke-[3px] text-white" />
-            </CheckboxPrimitive.Indicator>
+            </CheckboxPrimitives.Indicator>
           </div>
-        </CheckboxPrimitive.Root>
+        </CheckboxPrimitives.Root>
         <Label className="ml-2 text-sm" htmlFor={id}>
           {children}
         </Label>
