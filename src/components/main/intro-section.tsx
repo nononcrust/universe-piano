@@ -1,7 +1,7 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
 import { Card } from "@/components/main/card";
+import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import "keen-slider/keen-slider.min.css";

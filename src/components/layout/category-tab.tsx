@@ -25,8 +25,8 @@ export const CategoryTab = ({ categories }: CategoryTabProps) => {
             key={index}
             href={category.href}
             className={cn(
-              "flex h-full cursor-pointer items-center text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-accent-foreground",
-              isActive(category.href) && "font-semibold text-accent-foreground",
+              "text-sub hover:text-main flex h-full cursor-pointer items-center text-sm font-medium transition hover:font-semibold",
+              isActive(category.href) && "text-main font-semibold",
             )}
           >
             {category.title}

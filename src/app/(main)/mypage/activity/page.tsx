@@ -1,6 +1,6 @@
-import { EmptyState } from "@/components/common/empty-state";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
+import { EmptyState } from "@/components/shared/empty-state";
 
 export default function MyAcitivtyPage() {
   return (

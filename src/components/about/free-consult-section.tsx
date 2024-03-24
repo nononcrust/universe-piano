@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { channel } from "@/lib/channel-io";
@@ -19,7 +19,7 @@ export const FreeConsultSection = () => {
         </SectionTitle>
         <Button
           className="mt-8 h-14 rounded-full px-10 text-lg"
-          size="lg"
+          size="large"
           variant="primary"
           onClick={() => channel.openChat()}
         >

@@ -1,4 +1,4 @@
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { cn } from "@/lib/utils";
 
@@ -115,9 +115,7 @@ const Item = ({ number, title, description }: ItemProps) => {
     <div className="flex flex-1 flex-col rounded-xl bg-content-light p-8 text-center md:text-left">
       <p className="text-lg font-bold text-primary">0{number}</p>
       <p className="text-xl font-semibold md:text-2xl">{title}</p>
-      <p className="mt-2 whitespace-pre-wrap text-muted-foreground md:whitespace-normal">
-        {description}
-      </p>
+      <p className="mt-2 whitespace-pre-wrap text-sub md:whitespace-normal">{description}</p>
     </div>
   );
 };

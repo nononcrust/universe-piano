@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 import "swiper/css";
 
-import { TailwindIndicator } from "@/components/common/tailwind-indicator";
-import { UserInfoFetcher } from "@/components/common/user-info-fetcher";
+import { TailwindIndicator } from "@/components/shared/tailwind-indicator";
+import { UserInfoFetcher } from "@/components/shared/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { Providers } from "@/providers";

@@ -1,7 +1,7 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
-import { SectionTitle } from "@/components/common/section-title";
+import { Icon } from "@/components/shared/icon";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import * as Accordion from "@radix-ui/react-accordion";
 
@@ -98,7 +98,7 @@ const CurriculumItem = ({ value, title, description, items }: CurriculumItemProp
         <div className="flex flex-col gap-4 p-6 pt-0">
           {items.map((item, index) => (
             <p
-              className="ml-5 list-item list-outside text-[15px] font-medium text-muted-foreground md:text-base"
+              className="ml-5 list-item list-outside text-[15px] font-medium text-sub md:text-base"
               key={index}
             >
               {item}

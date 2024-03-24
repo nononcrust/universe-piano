@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import CountUp from "react-countup";
 
@@ -59,7 +59,7 @@ const OverwhelmingResultItem = ({ title, value, description }: OverwhelmingResul
     <div className="flex flex-col gap-8">
       <p className="text-xl font-bold">{title}</p>
       <p className="text-3xl font-bold text-primary">{value}</p>
-      <p className="font-medium text-muted-foreground">{description}</p>
+      <p className="font-medium text-sub">{description}</p>
     </div>
   );
 };

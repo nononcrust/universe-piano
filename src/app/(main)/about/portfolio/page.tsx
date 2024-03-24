@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -27,7 +27,7 @@ const ConsultingResultSection = () => {
           {YEARS.map((year, index) => (
             <Button
               className="rounded-full"
-              variant={year === selectedYear ? "default" : "secondary"}
+              variant={year === selectedYear ? "primary" : "secondary"}
               key={index}
               onClick={() => setSelectedYear(year)}
             >

@@ -1,5 +1,5 @@
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const TutoringInfoSection = () => {

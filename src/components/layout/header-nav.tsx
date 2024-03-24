@@ -17,7 +17,7 @@ export const HeaderNav = () => {
       <NavigationMenuList className="flex gap-6">
         {/* <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <p className="text-[15px] text-sm font-medium text-muted-foreground transition hover:font-semibold hover:text-foreground">
+            <p className="text-[15px] text-sm font-medium text-sub transition hover:font-semibold hover:text-foreground">
               서비스
             </p>
           </NavigationMenuTrigger>
@@ -55,8 +55,8 @@ const HeaderNavItem = ({ title, href }: HeaderNavItemProps) => {
     <Link
       href={href}
       className={cn(
-        "flex items-center text-sm font-semibold text-muted-foreground transition hover:text-accent-foreground",
-        pathname.startsWith(getDomain(href)) && "text-accent-foreground",
+        "text-sub hover:text-main flex items-center text-sm font-semibold transition",
+        pathname.startsWith(getDomain(href)) && "text-main",
       )}
     >
       {title}
@@ -72,13 +72,13 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
           <a
             ref={ref}
             className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              "hover:text-main focus:text-main block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent focus:bg-accent",
               className,
             )}
             {...props}
           >
             <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+            <p className="text-sub line-clamp-2 text-sm leading-snug">{children}</p>
           </a>
         </NavigationMenuLink>
       </li>

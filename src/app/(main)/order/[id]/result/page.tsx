@@ -1,4 +1,4 @@
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";

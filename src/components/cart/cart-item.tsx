@@ -1,4 +1,4 @@
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 

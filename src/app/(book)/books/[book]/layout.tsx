@@ -1,6 +1,6 @@
 import { KitMobileHeader } from "@/components/book/mobile-header";
 import { BookNavigationDrawer } from "@/components/book/navigation-drawer";
-import { ScrollArea } from "@/components/common/scroll-area";
+import { ScrollArea } from "@/components/shared/scroll-area";
 
 export default function BookLayout({
   children,

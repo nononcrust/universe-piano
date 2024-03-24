@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -99,7 +99,7 @@ interface ListCategoryProps {
 const ListCategory = ({ title, children }: ListCategoryProps) => {
   return (
     <div className="py-2">
-      <p className="text-medium text-sm text-muted-foreground">{title}</p>
+      <p className="text-medium text-sm text-sub">{title}</p>
       {children}
     </div>
   );
@@ -115,7 +115,7 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
     <Link href={href}>
       <SheetClose className="flex w-full">
         <li
-          className="flex-1 cursor-pointer py-3 text-left font-medium text-foreground"
+          className="text-foreground flex-1 cursor-pointer py-3 text-left font-medium"
           onClick={onClick}
         >
           {children}
@@ -143,7 +143,7 @@ const UserProfile = () => {
           <p className="text-lg font-medium">{user.nickname}</p>
           <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
         </div>
-        <p className="text-sm text-muted-foreground">{user.email}</p>
+        <p className="text-sm text-sub">{user.email}</p>
       </div>
     </div>
   );

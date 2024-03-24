@@ -1,6 +1,6 @@
 import mobileImage from "@/assets/images/about/about-company-mobile.png";
-import { Instagram } from "@/components/common/instagram";
-import { SectionTitle } from "@/components/common/section-title";
+import { Instagram } from "@/components/shared/instagram";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { siteConfig } from "@/configs/site";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export const InstagramSection = () => {
               <SectionTitle className="mt-16 whitespace-pre-wrap text-center md:mt-0 md:text-left md:leading-normal">
                 {"유학 준비도 트렌디 하게,\nMZ 대표의 소통 방식"}
               </SectionTitle>
-              <p className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-left">
+              <p className="mt-4 whitespace-pre-wrap text-center font-medium text-sub md:text-left">
                 {
                   "유니버스 피아노는 인스타그램을 주요 기반으로 성장해왔습니다.\n대표와 크루들의 최신 소식은 인스타그램 계정에서 확인 하실 수 있습니다."
                 }

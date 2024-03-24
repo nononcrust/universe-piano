@@ -44,7 +44,7 @@ export const Header = () => {
             )}
             {!session && (
               <div className="hidden gap-2 md:flex">
-                <Button asChild className="h-[32px] text-xs" variant="outline">
+                <Button asChild className="h-[32px] text-xs" variant="outlined">
                   <Link
                     href={ROUTE.LOGIN}
                     className={cn("text-sm", fetchStatus === "fetching" && "invisible")}

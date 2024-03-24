@@ -1,4 +1,4 @@
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const CheckPointSection = () => {
@@ -6,7 +6,7 @@ export const CheckPointSection = () => {
     <Aos className="my-32">
       <section className="container">
         <SectionTitle>Check Point</SectionTitle>
-        <h2 className="mt-4 whitespace-pre-wrap text-center font-medium text-muted-foreground md:text-lg">
+        <h2 className="mt-4 whitespace-pre-wrap text-center font-medium text-sub md:text-lg">
           {"스터디 소개에 앞서 중요한\n몇 가지 주의사항을 먼저 알려드립니다."}
         </h2>
         <div className="mt-12 flex flex-col items-center gap-4">

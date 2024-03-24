@@ -4,27 +4,13 @@ import { FormLayout } from "@/components/admin/form-layout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select } from "@/components/ui/select";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useUpdateUser, userRequestSchema } from "@/features/user";
-import { allowNumberOnly, cn } from "@/lib/utils";
+import { allowNumberOnly } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@prisma/client";
 import { useRouter } from "next/navigation";
@@ -81,92 +67,95 @@ export const UserForm = ({ user }: UserFormProps) => {
         </div>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
-            <FormField
+            <Form.Field
               name="name"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>이름</FormLabel>
-                  <FormControl>
-                    <Input placeholder="이름" {...field} />
-                  </FormControl>
-                  <FormDescription>이름을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>이름</Form.Label>
+                  <Form.Control>
+                    <Input placeholder="이름" {...field} error={!!form.formState.errors.name} />
+                  </Form.Control>
+                  <Form.Description>이름을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
-            <FormField
+            <Form.Field
               name="nickname"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>닉네임</FormLabel>
-                  <FormControl>
-                    <Input placeholder="닉네임" {...field} />
-                  </FormControl>
-                  <FormDescription>닉네임을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>닉네임</Form.Label>
+                  <Form.Control>
+                    <Input
+                      placeholder="닉네임"
+                      {...field}
+                      error={!!form.formState.errors.nickname}
+                    />
+                  </Form.Control>
+                  <Form.Description>닉네임을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
-            <FormField
+            <Form.Field
               name="email"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>이메일</FormLabel>
-                  <FormControl>
-                    <Input placeholder="이메일" {...field} />
-                  </FormControl>
-                  <FormDescription>이메일을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>이메일</Form.Label>
+                  <Form.Control>
+                    <Input placeholder="이메일" {...field} error={!!form.formState.errors.email} />
+                  </Form.Control>
+                  <Form.Description>이메일을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
-            <FormField
+            <Form.Field
               name="tier"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>등급</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="등급 선택" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
+                <Form.Item>
+                  <Form.Label>등급</Form.Label>
+                  <Form.Control>
+                    <Select placeholder="등급 선택" {...field} error={!!form.formState.errors.tier}>
                       {Object.entries(TIER_LABEL).map(([value, label]) => (
-                        <SelectItem key={value} value={value}>
+                        <Select.Item key={value} value={value}>
                           {label}
-                        </SelectItem>
+                        </Select.Item>
                       ))}
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>등급을 선택해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                    </Select>
+                  </Form.Control>
+                  <Form.Description>등급을 선택해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
-            <FormField
+            <Form.Field
               name="point"
               control={form.control}
               render={({ field: { onChange, ...field } }) => (
-                <FormItem>
-                  <FormLabel>적립금</FormLabel>
-                  <FormControl>
+                <Form.Item>
+                  <Form.Label>적립금</Form.Label>
+                  <Form.Control>
                     <Input
                       placeholder="적립금"
                       onChange={(e) => onChange(Number(allowNumberOnly(e.target.value)))}
+                      error={!!form.formState.errors.point}
                       {...field}
                     />
-                  </FormControl>
-                  <FormDescription>적립금을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                  </Form.Control>
+                  <Form.Description>적립금을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
-            <div className={cn("flex justify-end")}>
+            <div className="flex justify-between">
+              <Button type="button" variant="error">
+                탈퇴
+              </Button>
               <Button
                 className="flex-1 md:flex-initial"
                 type="submit"

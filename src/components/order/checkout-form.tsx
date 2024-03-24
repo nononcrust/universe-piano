@@ -1,17 +1,10 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
+import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -101,13 +94,13 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
         </section>
         <section>
           <PageSubtitle title="적립금 사용" className="mb-4 mt-16" />
-          <FormField
+          <Form.Field
             name="point"
             control={form.control}
             render={({ field: { onChange, ...field } }) => (
-              <FormItem>
-                <FormLabel>적립금</FormLabel>
-                <FormControl>
+              <Form.Item>
+                <Form.Label>적립금</Form.Label>
+                <Form.Control>
                   <div className="flex gap-2">
                     <Input
                       className="flex-1"
@@ -131,9 +124,9 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
                       전액 사용
                     </Button>
                   </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
+                </Form.Control>
+                <Form.ErrorMessage />
+              </Form.Item>
             )}
           />
           <p className="mt-2 text-sm font-medium">
@@ -142,11 +135,11 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
         </section>
         <section className="mt-12 flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">상품 금액</p>
+            <p className="text-sm text-sub">상품 금액</p>
             <p className="text-sm font-medium">{product.price.toLocaleString()}원</p>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">적립금 사용</p>
+            <p className="text-sm text-sub">적립금 사용</p>
             <p className="text-sm font-medium">{point.toLocaleString()}원</p>
           </div>
           <div className="flex items-center justify-between">
@@ -161,7 +154,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
                 <RadioGroupItem value="card" id="card" className="peer sr-only" />
                 <Label
                   htmlFor="card"
-                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-main peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
                   <Icon.CreditCard className="mb-3 h-6 w-6" />
                   신용카드
@@ -171,7 +164,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
               <RadioGroupItem value="deposit" id="deposit" className="peer sr-only" />
               <Label
                 htmlFor="deposit"
-                className="flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-foreground [&:has([data-state=checked])]:border-foreground"
+                className="border-muted bg-popover hover:bg-accent peer-data-[state=checked]:border-foreground [&:has([data-state=checked])]:border-foreground flex cursor-pointer flex-col items-center justify-between rounded-md border p-4 transition hover:text-main"
               >
                 <Icon.CircleDollarSign className="mb-3 h-6 w-6" />
                 무통장 입금
@@ -180,23 +173,17 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
           </RadioGroup>
         </section>
         <section>
-          <FormItem className="mt-16">
-            <div className="flex flex-row items-start space-x-2 space-y-0">
-              <FormControl>
-                <Checkbox
-                  checked={termsChecked}
-                  onCheckedChange={(checked) => setTermsChecked(!!checked)}
-                />
-              </FormControl>
-              <div className="-translate-y-[1px] space-y-1 leading-none">
-                <FormLabel>서비스 이용약관 및 개인정보 처리방침에 동의합니다.</FormLabel>
-              </div>
-            </div>
-            <FormMessage />
-          </FormItem>
+          <Form.Item className="mt-16">
+            <Form.Control>
+              <Checkbox checked={termsChecked} onChange={setTermsChecked}>
+                서비스 이용약관 및 개인정보 처리방침에 동의합니다.
+              </Checkbox>
+            </Form.Control>
+            <Form.ErrorMessage />
+          </Form.Item>
         </section>
         <Button
-          size="lg"
+          size="large"
           className="mt-8 w-full max-md:h-14 max-md:text-base"
           type="submit"
           disabled={!termsChecked}

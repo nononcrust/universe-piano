@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { ROUTE } from "@/constants/route";
 import { getFormattedContentsByBook } from "@/lib/contentlayer";
 import { cn } from "@/lib/utils";
@@ -82,8 +82,8 @@ const DrawerItem = ({ title, href }: DrawerItemProps) => {
   return (
     <Link
       className={cn(
-        "flex w-full flex-1 rounded-lg py-4 font-medium text-muted-foreground transition",
-        isActive && "font-semibold text-accent-foreground",
+        "flex w-full flex-1 rounded-lg py-4 font-medium text-sub transition",
+        isActive && "font-semibold text-main",
       )}
       href={ROUTE.BOOK.DETAIL(href)}
     >

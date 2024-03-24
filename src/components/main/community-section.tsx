@@ -2,12 +2,12 @@
 
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import { ColoredIcon } from "@/components/common/colored-icon";
-import { Icon } from "@/components/common/icon";
 import { Card } from "@/components/main/card";
 import { IconHeader } from "@/components/main/icon-header";
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import { ColoredIcon } from "@/components/shared/colored-icon";
+import { Icon } from "@/components/shared/icon";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/configs/site";
 import Image from "next/image";
@@ -79,7 +79,7 @@ const OfflineCard = () => {
       </div>
       <div className="flex items-center gap-2">
         <Card.Title>오프라인 모임</Card.Title>
-        <Badge className="bg-white" variant="outline">
+        <Badge className="bg-white" variant="outlined">
           준비중
         </Badge>
       </div>

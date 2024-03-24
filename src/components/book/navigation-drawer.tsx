@@ -5,7 +5,7 @@ import { getFormattedContentsByBook } from "@/lib/contentlayer";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "../common/icon";
+import { Icon } from "../shared/icon";
 
 interface BookNavigationDrawerProps {
   book: string;
@@ -64,8 +64,8 @@ const DrawerItem = ({ title, href }: DrawerItemProps) => {
       scroll={false}
       href={ROUTE.BOOK.DETAIL(href)}
       className={cn(
-        "py-4 text-muted-foreground transition hover:text-accent-foreground",
-        isActive && "font-semibold text-accent-foreground",
+        "py-4 text-sub transition hover:text-main",
+        isActive && "font-semibold text-main",
       )}
     >
       {title}

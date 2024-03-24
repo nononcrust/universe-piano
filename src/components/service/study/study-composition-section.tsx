@@ -1,8 +1,8 @@
 import studyCompositionImage1 from "@/assets/images/study/2024-study-1.jpg";
 import studyCompositionImage2 from "@/assets/images/study/2024-study-2.jpg";
 import studyCompositionImage3 from "@/assets/images/study/2024-study-3.jpg";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import Image, { StaticImageData } from "next/image";
 
@@ -52,7 +52,7 @@ const StudyCompositionItem = ({ image, title, description }: StudyCompositionIte
       </div>
       <div className="ml-2 mt-3 flex flex-col">
         <p className="text-lg font-semibold md:text-xl">{title}</p>
-        <p className="mt-2 font-medium text-muted-foreground md:text-lg">{description}</p>
+        <p className="mt-2 font-medium text-sub md:text-lg">{description}</p>
       </div>
     </div>
   );

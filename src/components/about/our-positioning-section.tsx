@@ -1,8 +1,8 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { Icon } from "@/components/shared/icon";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const OurPositioningSection = () => {
@@ -67,7 +67,7 @@ const OurPositioningItem = ({ title, items }: OurPositioningItemProps) => {
   return (
     <div className="flex justify-between rounded-2xl border p-8 md:h-[320px] md:max-w-[220px] md:flex-col md:justify-start">
       <p className="whitespace-pre text-xl font-semibold">{title}</p>
-      <div className="flex flex-col gap-2 text-end text-muted-foreground md:mt-14 md:text-left">
+      <div className="flex flex-col gap-2 text-end text-sub md:mt-14 md:text-left">
         {items.map((item, index) => (
           <p key={index}>{item}</p>
         ))}

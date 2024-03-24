@@ -1,5 +1,5 @@
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const WhyUniverseSection = () => {
@@ -51,7 +51,7 @@ const WhyUniverseItem = ({ number, title, description }: WhyUniverseItemProps) =
       </div>
       <div className="flex flex-1 flex-col">
         <p className="text-2xl font-semibold">{title}</p>
-        <p className="mt-2 font-medium text-muted-foreground">{description}</p>
+        <p className="mt-2 font-medium text-sub">{description}</p>
       </div>
     </div>
   );

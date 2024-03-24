@@ -1,10 +1,10 @@
 "use client";
 
-import { ColoredIcon } from "@/components/common/colored-icon";
-import { Icon } from "@/components/common/icon";
 import { Card } from "@/components/main/card";
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import { ColoredIcon } from "@/components/shared/colored-icon";
+import { Icon } from "@/components/shared/icon";
 import { Badge } from "@/components/ui/badge";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
@@ -53,7 +53,7 @@ const ScholarshipCard = () => {
             <ColoredIcon.Trophy className="h-6 w-6" />
             <p className="ml-2">장학금 증액 컨설팅</p>
           </Card.Title>
-          <Badge className="bg-white" variant="outline">
+          <Badge className="bg-white" variant="outlined">
             준비중
           </Badge>
         </div>
@@ -73,7 +73,7 @@ const AuditionKitCard = () => {
           <ColoredIcon.Storage className="h-6 w-6" />
           <p className="ml-2">오디션 119 키트</p>
         </Card.Title>
-        <Badge className="bg-white" variant="outline">
+        <Badge className="bg-white" variant="outlined">
           준비중
         </Badge>
       </div>

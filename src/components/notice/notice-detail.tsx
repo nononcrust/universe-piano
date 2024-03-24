@@ -1,7 +1,7 @@
 "use client";
 
-import { Markdown } from "@/components/common/markdown";
 import { PageTitle } from "@/components/layout/page-title";
+import { Markdown } from "@/components/shared/markdown";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useNoticeDetail } from "@/features/notice";
@@ -23,7 +23,7 @@ export const NoticeDetail = () => {
       <PageTitle title="공지사항" />
       <div className="mt-12 border-b pb-8">
         <h2 className="text-lg font-medium md:text-2xl">{data.title}</h2>
-        <p className="mt-4 text-sm text-muted-foreground">{formatDate(data.createdAt)}</p>
+        <p className="mt-4 text-sm text-sub">{formatDate(data.createdAt)}</p>
       </div>
       <div className="mt-8 flex break-all">
         <Markdown className="prose flex-1" content={data.content} />

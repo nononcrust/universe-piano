@@ -4,8 +4,8 @@ import studyWhyUniverseImage1 from "@/assets/images/study/study-why-universe-1.j
 import studyWhyUniverseImage2 from "@/assets/images/study/study-why-universe-2.jpg";
 import studyWhyUniverseImage3 from "@/assets/images/study/study-why-universe-3.jpg";
 import studyWhyUniverseImage4 from "@/assets/images/study/study-why-universe-4.jpg";
-import { Icon } from "@/components/common/icon";
-import { SectionTitle } from "@/components/common/section-title";
+import { Icon } from "@/components/shared/icon";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";

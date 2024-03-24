@@ -50,11 +50,11 @@ export const CommentItem = ({
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <p className="text-sm font-medium">{nickname}</p>
-            <p className="text-xs text-muted-foreground">{createdAt}</p>
+            <p className="text-sub text-xs">{createdAt}</p>
           </div>
           {isMyComment && (
             <p
-              className="cursor-pointer text-xs font-medium text-muted-foreground"
+              className="text-sub cursor-pointer text-xs font-medium"
               onClick={onDeleteButtonClick}
             >
               삭제

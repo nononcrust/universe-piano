@@ -1,8 +1,8 @@
 import image1 from "@/assets/images/consulting/consulting-package-1.png";
 import image2 from "@/assets/images/consulting/consulting-package-2.png";
-import { Icon } from "@/components/common/icon";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { Icon } from "@/components/shared/icon";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";

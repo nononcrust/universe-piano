@@ -1,8 +1,8 @@
 import tutoringCompositionImage1 from "@/assets/images/tutoring/tutoring-composition-1.jpg";
 import tutoringCompositionImage2 from "@/assets/images/tutoring/tutoring-composition-2.jpg";
 import tutoringCompositionImage3 from "@/assets/images/tutoring/tutoring-composition-3.jpg";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import Image, { StaticImageData } from "next/image";
 
@@ -48,7 +48,7 @@ const TutoringCompositionItem = ({ image, title, description }: TutoringComposit
       </div>
       <div className="ml-2 mt-3 flex flex-col">
         <p className="text-lg font-semibold md:text-xl">{title}</p>
-        <p className="mt-2 font-medium text-muted-foreground md:text-lg">{description}</p>
+        <p className="mt-2 font-medium text-sub md:text-lg">{description}</p>
       </div>
     </div>
   );

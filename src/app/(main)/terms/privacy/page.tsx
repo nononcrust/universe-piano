@@ -1,4 +1,4 @@
-import { Markdown } from "@/components/common/markdown";
+import { Markdown } from "@/components/shared/markdown";
 import { allPrivacyPolicies } from "contentlayer/generated";
 
 export default function PrivacyPolicyPage() {

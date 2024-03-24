@@ -1,5 +1,5 @@
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { cn } from "@/lib/utils";
 
@@ -51,12 +51,7 @@ const TutoringExpectationItem = ({ title, items, highlight }: TutoringExpectatio
         highlight && "border-primary bg-white shadow-lg",
       )}
     >
-      <p
-        className={cn(
-          "text-xl font-bold text-muted-foreground md:text-2xl",
-          highlight && "text-primary",
-        )}
-      >
+      <p className={cn("text-xl font-bold text-sub md:text-2xl", highlight && "text-primary")}>
         {title}
       </p>
       <div className="mt-4 flex flex-col gap-2">
@@ -64,7 +59,7 @@ const TutoringExpectationItem = ({ title, items, highlight }: TutoringExpectatio
           <p
             key={index}
             className={cn(
-              "list-item list-inside font-medium text-muted-foreground",
+              "list-item list-inside font-medium text-sub",
               highlight && "text-foreground",
             )}
           >

@@ -1,6 +1,6 @@
 "use client";
 
-import { AccessControl } from "@/components/common/access-control";
+import { AccessControl } from "@/components/shared/access-control";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -49,7 +49,7 @@ export const UserMenu = () => {
                 <p className="text-lg font-medium">{user.nickname}</p>
                 <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
               </div>
-              <p className="text-sm text-muted-foreground">{user.email}</p>
+              <p className="text-sm text-sub">{user.email}</p>
             </div>
           </div>
         </div>

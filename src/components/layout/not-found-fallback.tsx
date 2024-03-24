@@ -15,7 +15,7 @@ export const NotFoundFallback = ({ message = DEFAULT_MESSAGE }: NotFoundFallback
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-4">
-      <p className="text-muted-foreground">{message}</p>
+      <p className="text-sub">{message}</p>
       <Button onClick={() => router.push(ROUTE.HOME)}>홈으로 돌아가기</Button>
     </div>
   );

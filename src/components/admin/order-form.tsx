@@ -3,22 +3,8 @@
 import { FormLayout } from "@/components/admin/form-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Form } from "@/components/ui/form";
+import { Select } from "@/components/ui/select";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import {
@@ -49,7 +35,7 @@ export const OrderForm = ({ order }: OrderFormProps) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(orderUpdateRequestSchema),
     defaultValues: {
-      status: order.status,
+      status: order.status ?? "",
     },
   });
 
@@ -87,29 +73,29 @@ export const OrderForm = ({ order }: OrderFormProps) => {
       <CardContent>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
-            <FormField
+            <Form.Field
               name="status"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>주문 상태</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="주문 상태 선택" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
+                <Form.Item>
+                  <Form.Label>주문 상태</Form.Label>
+                  <Form.Control>
+                    <Select
+                      onChange={field.onChange}
+                      value={String(field.value)}
+                      placeholder="주문 상태 선택"
+                      error={!!form.formState.errors.status}
+                    >
                       {Object.entries(ORDER_STATUS_LABEL).map(([value, label]) => (
-                        <SelectItem key={value} value={value}>
+                        <Select.Item key={value} value={value}>
                           {label}
-                        </SelectItem>
+                        </Select.Item>
                       ))}
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>주문 상태를 선택해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                    </Select>
+                  </Form.Control>
+                  <Form.Description>주문 상태를 선택해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
             <div className="flex justify-between">

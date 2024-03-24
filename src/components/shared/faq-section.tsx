@@ -1,8 +1,8 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { Icon } from "@/components/shared/icon";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
@@ -24,7 +24,11 @@ export const FaqSection = ({ children }: FaqSectionProps) => {
         </Accordion.Root>
         <div className="mt-12 flex items-center justify-center">
           <Link href={ROUTE.SUPPORT}>
-            <Button variant="outline" className="h-12 rounded-full pl-10 pr-8 text-base" size="lg">
+            <Button
+              variant="outlined"
+              className="h-12 rounded-full pl-10 pr-8 text-base"
+              size="large"
+            >
               더보기
               <Icon.ChevronRight className="ml-1 h-5 w-5" />
             </Button>
@@ -54,7 +58,7 @@ export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProp
         <Icon.ChevronDown className="ml-4 transition-transform ease-out" />
       </Accordion.Trigger>
       <Accordion.Content className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-        <div className="ml-12 mr-4 whitespace-pre-wrap p-4 pt-0 text-[15px] font-medium text-muted-foreground">
+        <div className="ml-12 mr-4 whitespace-pre-wrap p-4 pt-0 text-[15px] font-medium text-sub">
           {description}
         </div>
       </Accordion.Content>

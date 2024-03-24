@@ -1,8 +1,8 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import { Icon } from "@/components/shared/icon";
 import {
   Accordion,
   AccordionContent,
@@ -31,7 +31,7 @@ export const ServiceAccordionSection = () => {
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">미국 음대 입시 과외</p>
               </div>
-              <p className="mt-2 text-base font-medium text-muted-foreground">
+              <p className="mt-2 text-base font-medium text-sub">
                 {
                   "한 달 딱 한분에게만 주어지는 기회!\n맞춤형 정보, 장학금 전략, 학교 선정까지 단기간에 완성합니다."
                 }
@@ -57,7 +57,7 @@ export const ServiceAccordionSection = () => {
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">미국 음대 입시 컨설팅</p>
               </div>
-              <p className="mt-2 text-base font-medium text-muted-foreground">
+              <p className="mt-2 text-base font-medium text-sub">
                 미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다.
               </p>
               <div className="flex justify-end">
@@ -81,7 +81,7 @@ export const ServiceAccordionSection = () => {
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">영어 스터디</p>
               </div>
-              <p className="mt-2 text-base font-medium text-muted-foreground">
+              <p className="mt-2 text-base font-medium text-sub">
                 {
                   "음대생을 위한 영어 스터디,\n수준에 맞는 공부 방법으로 목표 점수 달성을 도와드립니다."
                 }
@@ -109,7 +109,7 @@ export const ServiceAccordionSection = () => {
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">독학 키트</p>
               </div>
-              <p className="mt-2 text-base font-medium text-muted-foreground">
+              <p className="mt-2 text-base font-medium text-sub">
                 미국 음대 독학러에게 필요한 서비스를 제공합니다.
               </p>
               <div className="flex justify-end">
@@ -119,14 +119,14 @@ export const ServiceAccordionSection = () => {
                     <Icon.ChevronRight className="ml-1 h-5 w-5" />
                   </Button>
                 </Link> */}
-                <p className="mr-4 mt-8 font-medium text-muted-foreground">준비중</p>
+                <p className="mr-4 mt-8 font-medium text-sub">준비중</p>
               </div>
               <div className="my-8 border-b" />
               <div className="flex items-center">
                 <Icon.Sparkles className="h-6 w-6 fill-primary text-primary" />
                 <p className="ml-2 text-xl font-semibold">미국 음대 입시 과외</p>
               </div>
-              <p className="mt-2 text-base font-medium text-muted-foreground">
+              <p className="mt-2 text-base font-medium text-sub">
                 {"혼자 하더라도 제대로 준비하자!\n맞춤형 정보 + 장학금 전략 + 학교 선정"}
               </p>
               <div className="flex justify-end">

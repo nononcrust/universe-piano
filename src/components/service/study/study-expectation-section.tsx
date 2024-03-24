@@ -1,6 +1,6 @@
 import studyExpectationImage1 from "@/assets/images/study/study-expectation-1.jpg";
 import studyExpectationImage2 from "@/assets/images/study/study-expectation-2.jpg";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
@@ -50,7 +50,7 @@ const StudyExpectationItem = ({
       <div className="flex flex-1 flex-col">
         <SectionTitle className="mt-4 text-left md:mt-12">{title}</SectionTitle>
         <p className="mt-4 text-lg font-semibold md:text-2xl">{subtitle}</p>
-        <p className="mt-4 font-medium text-muted-foreground md:text-xl">{description}</p>
+        <p className="mt-4 font-medium text-sub md:text-xl">{description}</p>
       </div>
     </div>
   );

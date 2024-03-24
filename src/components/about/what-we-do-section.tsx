@@ -1,7 +1,7 @@
 "use client";
 
-import { ColoredIcon } from "@/components/common/colored-icon";
-import { SectionTitle } from "@/components/common/section-title";
+import { ColoredIcon } from "@/components/shared/colored-icon";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
@@ -45,7 +45,7 @@ export const WhatWeDoSection = () => {
                 준비중
               </p>
             </div>
-            <p className="mt-2 font-medium text-muted-foreground">
+            <p className="mt-2 font-medium text-sub">
               미국 음대 유학을 혼자 준비하시는 분들께 필요한 서비스를 제공합니다.
             </p>
           </div>
@@ -70,7 +70,7 @@ const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => 
           {icon}
         </div>
         <p className="mt-8 text-xl font-semibold md:mt-20">{title}</p>
-        <p className="mt-2 font-medium text-muted-foreground">{description}</p>
+        <p className="mt-2 font-medium text-sub">{description}</p>
       </div>
       <div className="absolute right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 cursor-pointer rounded-full bg-black/75 px-3 py-1 text-xs text-white opacity-0 md:group-hover:opacity-100">
         바로가기

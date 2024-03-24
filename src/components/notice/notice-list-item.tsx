@@ -9,7 +9,7 @@ export const NoticeListItem = ({ title, createdAt }: NoticeListItemProps) => {
   return (
     <li className="flex cursor-pointer flex-col py-4 transition">
       <p className="font-medium md:text-lg">{title}</p>
-      <p className="text-sm text-muted-foreground">{createdAt}</p>
+      <p className="text-sub text-sm">{createdAt}</p>
     </li>
   );
 };

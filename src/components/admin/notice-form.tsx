@@ -4,15 +4,7 @@ import { DeleteConfirmDialog } from "@/components/admin/delete-confirm-dialog";
 import { FormLayout } from "@/components/admin/form-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ROUTE } from "@/constants/route";
@@ -96,32 +88,36 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
       <CardContent>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
-            <FormField
+            <Form.Field
               name="title"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>제목</FormLabel>
-                  <FormControl>
-                    <Input placeholder="제목" {...field} />
-                  </FormControl>
-                  <FormDescription>제목을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>제목</Form.Label>
+                  <Form.Control>
+                    <Input placeholder="제목" {...field} error={!!form.formState.errors.title} />
+                  </Form.Control>
+                  <Form.Description>제목을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
-            <FormField
+            <Form.Field
               name="content"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>내용</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="내용" {...field} />
-                  </FormControl>
-                  <FormDescription>내용을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>내용</Form.Label>
+                  <Form.Control>
+                    <Textarea
+                      placeholder="내용"
+                      {...field}
+                      error={!!form.formState.errors.content}
+                    />
+                  </Form.Control>
+                  <Form.Description>내용을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
             <div className={cn("flex gap-4", mode === "edit" ? "justify-between" : "justify-end")}>

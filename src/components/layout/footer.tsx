@@ -22,10 +22,7 @@ export const Footer = () => {
               <p className="font-medium">{section.title}</p>
               <div className="mt-2">
                 {section.children.map((item) => (
-                  <p
-                    key={item.title}
-                    className="mt-1 text-sm text-muted-foreground transition hover:text-accent-foreground"
-                  >
+                  <p key={item.title} className="text-sub hover:text-main mt-1 text-sm transition">
                     <Link href={item.href}>{item.title}</Link>
                   </p>
                 ))}
@@ -33,7 +30,7 @@ export const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="mt-8 text-sm text-muted-foreground">
+        <div className="text-sub mt-8 text-sm">
           <p>
             {`${siteConfig.businessName} | 대표이사: ${siteConfig.ceo} | 사업자번호: ${siteConfig.bin} | 통신판매업
             신고번호: 제 ${siteConfig.mailOrderBusinessNumber}`}

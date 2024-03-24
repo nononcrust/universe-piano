@@ -1,9 +1,9 @@
 "use client";
 
-import { RatingStarSelect } from "@/components/common/rating-star-select";
+import { RatingStarSelect } from "@/components/shared/rating-star-select";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateProductReview } from "@/features/product";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -74,40 +74,41 @@ const Content = (props: ContentProps) => {
   return (
     <Form {...form}>
       <form onSubmit={onSubmit}>
-        <FormField
+        <Form.Field
           name="rating"
           control={form.control}
           render={({ field }) => (
-            <FormItem>
-              <FormControl>
+            <Form.Item>
+              <Form.Control>
                 <RatingStarSelect {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </Form.Control>
+              <Form.ErrorMessage />
+            </Form.Item>
           )}
         />
-        <FormField
+        <Form.Field
           name="content"
           control={form.control}
           render={({ field }) => (
-            <FormItem className="mt-6">
-              <FormControl>
+            <Form.Item className="mt-6">
+              <Form.Control>
                 <Textarea
                   className="h-32"
                   maxLength={1000}
                   placeholder="리뷰를 입력해주세요."
                   {...field}
+                  error={!!form.formState.errors.content}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </Form.Control>
+              <Form.ErrorMessage />
+            </Form.Item>
           )}
         />
         <div className="mt-8 flex justify-end gap-2">
-          <Button variant="link" type="button" onClick={props.onClose}>
+          <Button variant="ghost" type="button" onClick={props.onClose}>
             취소
           </Button>
-          <Button variant="outline">작성하기</Button>
+          <Button variant="outlined">작성하기</Button>
         </div>
       </form>
     </Form>

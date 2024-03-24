@@ -19,7 +19,7 @@ export const DeleteConfirmDialog = ({ onDelete }: DeletConfirmDialogProps) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="flex-1 md:flex-initial" variant="destructive">
+        <Button className="flex-1 md:flex-initial" variant="error">
           삭제
         </Button>
       </AlertDialogTrigger>

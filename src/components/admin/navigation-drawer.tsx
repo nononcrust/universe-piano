@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { adminNav } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
@@ -36,7 +36,7 @@ interface NavigationDrawerSectionProps {
 const NavigationDrawerSection = ({ title, children }: NavigationDrawerSectionProps) => {
   return (
     <div>
-      <div className="p-4 text-xs font-medium text-muted-foreground">{title}</div>
+      <div className="p-4 text-xs font-medium text-sub">{title}</div>
       <ul>{children}</ul>
     </div>
   );

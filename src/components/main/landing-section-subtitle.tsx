@@ -8,7 +8,7 @@ export const LandingSectionSubtitle = ({
   ...props
 }: LandingSectionSubtitleProps) => {
   return (
-    <h2 className={cn("ml-2 mt-2 text-muted-foreground md:ml-0")} {...props}>
+    <h2 className={cn("text-sub ml-2 mt-2 md:ml-0")} {...props}>
       {children}
     </h2>
   );

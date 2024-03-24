@@ -1,4 +1,4 @@
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
 import { useUploadThing } from "@/lib/uploadthing";
 import Image from "next/image";

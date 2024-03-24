@@ -1,11 +1,11 @@
 "use client";
 
 import { AuditionCommentItem } from "@/components/audition/audition-comment-item";
-import { AccessControl } from "@/components/common/access-control";
-import { Markdown } from "@/components/common/markdown";
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 import { CommentInput } from "@/components/notice/comment-input";
+import { AccessControl } from "@/components/shared/access-control";
+import { Markdown } from "@/components/shared/markdown";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
 import { useAuditionDetail } from "@/features/audition";
@@ -29,7 +29,7 @@ export const AuditionDetail = () => {
         <>
           <div className="mt-12 border-b pb-8">
             <h2 className="text-lg font-medium md:text-2xl">{audition.title}</h2>
-            <p className="mt-4 text-sm text-muted-foreground">{formatDate(audition.createdAt)}</p>
+            <p className="mt-4 text-sm text-sub">{formatDate(audition.createdAt)}</p>
           </div>
           <div className="relative mt-8 flex max-w-full flex-col gap-4">
             {audition.images?.map((image) => (

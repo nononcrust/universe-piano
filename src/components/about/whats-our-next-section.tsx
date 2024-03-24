@@ -1,6 +1,6 @@
-import { SectionBadge } from "@/components/common/section-badge";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionBadge } from "@/components/shared/section-badge";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const WhatsOurNextSection = () => {
@@ -51,7 +51,7 @@ const WhatsOurNextItem = ({ year, items }: WhatsOurNextItemProps) => {
   return (
     <div className="flex">
       <div className="mr-8 mt-1.5 h-3 w-3 rounded-full bg-black" />
-      <p className="mr-4 text-lg font-semibold text-muted-foreground">{year}</p>
+      <p className="mr-4 text-lg font-semibold text-sub">{year}</p>
       <div className="flex flex-1 flex-col gap-4">
         {items.map((item, index) => (
           <p className="text-lg font-medium" key={index}>

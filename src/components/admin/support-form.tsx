@@ -3,23 +3,9 @@
 import { FormLayout } from "@/components/admin/form-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { FORM } from "@/constants/form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -67,53 +53,56 @@ export const SupportForm = ({ mode }: SupportFormProps) => {
       <CardContent>
         <Form {...form}>
           <FormLayout onSubmit={onSubmit}>
-            <FormField
+            <Form.Field
               name="category"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>카테고리</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="카테고리를 선택해주세요." />
-                      </SelectTrigger>
-                    </FormControl>
-                    <FormDescription>카테고리를 선택해주세요.</FormDescription>
-                    <SelectContent>
-                      <SelectItem value="common">일반</SelectItem>
-                      <SelectItem value="account">계정</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>카테고리</Form.Label>
+                  <Form.Control>
+                    <Select
+                      placeholder="카테고리를 선택해주세요."
+                      {...field}
+                      error={!!form.formState.errors.category}
+                    >
+                      <Select.Item value="common">일반</Select.Item>
+                      <Select.Item value="account">계정</Select.Item>
+                    </Select>
+                  </Form.Control>
+                  <Form.Description>카테고리를 선택해주세요.</Form.Description>
+                </Form.Item>
               )}
             />
-            <FormField
+            <Form.Field
               name="title"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>제목</FormLabel>
-                  <FormControl>
-                    <Input placeholder="제목" {...field} />
-                  </FormControl>
-                  <FormDescription>제목을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>제목</Form.Label>
+                  <Form.Control>
+                    <Input placeholder="제목" {...field} error={!!form.formState.errors.title} />
+                  </Form.Control>
+                  <Form.Description>제목을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
-            <FormField
+            <Form.Field
               name="content"
               control={form.control}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>내용</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="내용" {...field} />
-                  </FormControl>
-                  <FormDescription>내용을 입력해주세요.</FormDescription>
-                  <FormMessage />
-                </FormItem>
+                <Form.Item>
+                  <Form.Label>내용</Form.Label>
+                  <Form.Control>
+                    <Textarea
+                      placeholder="내용"
+                      {...field}
+                      error={!!form.formState.errors.content}
+                    />
+                  </Form.Control>
+                  <Form.Description>내용을 입력해주세요.</Form.Description>
+                  <Form.ErrorMessage />
+                </Form.Item>
               )}
             />
             <div className="flex justify-end">

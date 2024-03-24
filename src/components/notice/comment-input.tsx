@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Form, FormField } from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateAuditionComment } from "@/features/audition";
 import { cn } from "@/lib/utils";
@@ -51,7 +51,7 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
     <div className={cn("flex flex-col", className)}>
       <Form {...form}>
         <form onSubmit={onSubmit}>
-          <FormField
+          <Form.Field
             name="content"
             control={form.control}
             render={({ field }) => (
@@ -66,7 +66,7 @@ export const CommentInput = ({ className, auditionId }: CommentInputProps) => {
           <div className="flex justify-end">
             <Button
               className="mt-4"
-              variant="outline"
+              variant="outlined"
               type="submit"
               disabled={!form.formState.isValid}
             >

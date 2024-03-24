@@ -1,11 +1,11 @@
 "use client";
 
-import { ColoredIcon } from "@/components/common/colored-icon";
-import { Icon } from "@/components/common/icon";
 import { Card } from "@/components/main/card";
 import { IconHeader } from "@/components/main/icon-header";
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import { ColoredIcon } from "@/components/shared/colored-icon";
+import { Icon } from "@/components/shared/icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
@@ -32,7 +32,7 @@ export const ServiceSection = () => {
           </Card.Subtitle>
           <div className="flex flex-1 items-end">
             <Link href={ROUTE.SERVICE.TUTORING}>
-              <Button className="pr-2" variant="outline">
+              <Button className="pr-2" variant="outlined">
                 바로가기
                 <Icon.ChevronRight className="ml-1 h-[18px] w-[18px]" />
               </Button>
@@ -52,7 +52,7 @@ export const ServiceSection = () => {
           </Card.Subtitle>
           <div className="flex flex-1 items-end">
             <Link href={ROUTE.SERVICE.CONSULTING}>
-              <Button className="pr-2" variant="outline">
+              <Button className="pr-2" variant="outlined">
                 바로가기
                 <Icon.ChevronRight className="ml-1 h-[18px] w-[18px]" />
               </Button>
@@ -71,7 +71,7 @@ export const ServiceSection = () => {
           </Card.Subtitle>
           <div className="flex flex-1 items-end">
             <Link href={ROUTE.SERVICE.STUDY}>
-              <Button className="pr-2" variant="outline">
+              <Button className="pr-2" variant="outlined">
                 바로가기
                 <Icon.ChevronRight className="ml-1 h-[18px] w-[18px]" />
               </Button>
@@ -90,10 +90,10 @@ export const ServiceSection = () => {
             제공합니다.
           </Card.Subtitle>
           {/* <div className="flex flex-1 items-end">
-            <Button variant="outline">자세히 보기</Button>
+            <Button variant="outlined">자세히 보기</Button>
           </div> */}
           <div className="flex flex-1 items-end">
-            <p className="font-medium text-muted-foreground">1월 초 오픈 예정</p>
+            <p className="font-medium text-sub">1월 초 오픈 예정</p>
           </div>
         </Card>
         <Card className="group cursor-pointer hover:border-gray-400" half>
@@ -113,7 +113,7 @@ export const ServiceSection = () => {
             <div className="flex items-center gap-2">
               <Icon.Zap className="h-5 w-5 fill-yellow-400 text-yellow-400" />
               <Card.Title>오프라인 모임</Card.Title>
-              <Badge className="bg-white" variant="outline">
+              <Badge className="bg-white" variant="outlined">
                 준비중
               </Badge>
             </div>

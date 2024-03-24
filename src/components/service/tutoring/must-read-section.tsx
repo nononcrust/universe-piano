@@ -1,4 +1,4 @@
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const MustReadSection = () => {
@@ -27,7 +27,7 @@ export const MustReadSection = () => {
           </p>
         </div>
         <div className="mt-12">
-          <p className="text-muted-foreground md:whitespace-pre-wrap md:leading-normal">
+          <p className="text-sub md:whitespace-pre-wrap md:leading-normal">
             {
               "과외 커리큘럼, 상세 정보, Q&A 확인 후 신청서 작성해 주세요.\n성의 없는 신청서 작성은 과외 진행이 불가할 수 있습니다."
             }

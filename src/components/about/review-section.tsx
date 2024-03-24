@@ -1,8 +1,8 @@
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import { Icon } from "@/components/common/icon";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { Icon } from "@/components/shared/icon";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { siteConfig } from "@/configs/site";
 import Image from "next/image";
@@ -34,7 +34,7 @@ export const ReviewSection = () => {
           />
         </div>
         <div className="container mt-4 flex flex-col items-center justify-center">
-          <p className="font-medium text-muted-foreground">
+          <p className="font-medium text-sub">
             더 많은 후기는 유니버스 피아노 네이버 블로그와 인스타그램 계정에서 확인 가능합니다.
           </p>
           <div className="mt-4 flex gap-4">
@@ -70,7 +70,7 @@ const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
     <div className="h-[280px] flex-1 rounded-2xl bg-white p-6 max-md:min-w-[320px]">
       <p className="text-xl font-semibold">
         {name}
-        <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
+        <span className="ml-2 mt-2 text-sm font-normal text-sub">{label}</span>
       </p>
       <div className="mt-1 flex gap-[2px]">
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -79,7 +79,7 @@ const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
         <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
       </div>
-      <p className="mt-6 text-muted-foreground">{content}</p>
+      <p className="mt-6 text-sub">{content}</p>
     </div>
   );
 };

@@ -2,8 +2,8 @@
 
 import instagramIcon from "@/assets/icons/instagram.png";
 import naverBlogIcon from "@/assets/icons/naver-blog.png";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -90,12 +90,12 @@ const ConsultingReviewItem = ({
           </div>
           <p className="text-lg font-semibold">{title}</p>
         </div>
-        <div className="mt-4 h-[240px] overflow-y-auto whitespace-pre-wrap px-4 pb-4 font-medium leading-loose text-muted-foreground">
+        <div className="mt-4 h-[240px] overflow-y-auto whitespace-pre-wrap px-4 pb-4 font-medium leading-loose text-sub">
           {description}
         </div>
       </div>
       <div className="mt-4 flex justify-end">
-        <Button variant="outline" onClick={dialog.open}>
+        <Button variant="outlined" onClick={dialog.open}>
           후기 카톡 원본 확인
         </Button>
         <Dialog open={dialog.isOpen} onOpenChange={dialog.onOpenChange}>

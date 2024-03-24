@@ -1,5 +1,5 @@
-import { RedirectWithRegisterToken } from "@/components/common/redirect-with-register-token";
-import { RedirectWithUser } from "@/components/common/redirect-with-user";
+import { RedirectWithRegisterToken } from "@/components/shared/redirect-with-register-token";
+import { RedirectWithUser } from "@/components/shared/redirect-with-user";
 import { ROUTE } from "@/constants/route";
 import { SocialData, authRepository } from "@/features/auth";
 import { kakaoApi } from "@/features/kakao";

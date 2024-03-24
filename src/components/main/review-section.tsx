@@ -1,8 +1,8 @@
 "use client";
 
-import { Icon } from "@/components/common/icon";
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
+import { Icon } from "@/components/shared/icon";
 import { cn } from "@/lib/utils";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -91,7 +91,7 @@ const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
       <div className={cn("h-[360px] rounded-2xl bg-content-light p-6")}>
         <p className="text-xl font-semibold">
           {name}
-          <span className="ml-2 mt-2 text-sm font-normal text-muted-foreground">{label}</span>
+          <span className="ml-2 mt-2 text-sm font-normal text-sub">{label}</span>
         </p>
         <div className="mt-1 flex gap-[2px]">
           <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -100,7 +100,7 @@ const ReviewItem = ({ name, label, content }: ReviewItemProps) => {
           <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
           <Icon.Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
         </div>
-        <p className="mt-6 text-muted-foreground">{content}</p>
+        <p className="mt-6 text-sub">{content}</p>
       </div>
     </div>
   );

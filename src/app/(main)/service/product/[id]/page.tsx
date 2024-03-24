@@ -1,9 +1,9 @@
 "use client";
 
-import { RatingStar } from "@/components/common/rating-star";
 import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
+import { RatingStar } from "@/components/shared/rating-star";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -119,7 +119,7 @@ const ProductInfoSection = () => {
         {hasPurchased && (
           <Button
             className="absolute bottom-0 right-0"
-            variant="outline"
+            variant="outlined"
             onClick={productReviewAddDialog.open}
           >
             리뷰 작성하기
@@ -171,7 +171,7 @@ const ProductAction = () => {
       {session && (
         <Button
           className="max-md:h-14 max-md:text-base"
-          size="lg"
+          size="large"
           onClick={checkoutDialog.open}
           disabled={!!hasAlreadyOrdered}
         >
@@ -179,7 +179,7 @@ const ProductAction = () => {
         </Button>
       )}
       {!session && (
-        <Button className="max-md:h-14 max-md:text-base" size="lg" disabled>
+        <Button className="max-md:h-14 max-md:text-base" size="large" disabled>
           로그인 후에 구매할 수 있습니다.
         </Button>
       )}
@@ -256,14 +256,11 @@ const ProductReviewListItem = ({
           </Avatar>
           <div className="flex flex-col">
             <p className="text-sm font-medium">{username}</p>
-            <p className="text-xs text-muted-foreground">{formatDate(createdAt)}</p>
+            <p className="text-xs text-sub">{formatDate(createdAt)}</p>
           </div>
         </div>
         {isMyReview && (
-          <button
-            className="text-sm text-muted-foreground hover:underline"
-            onClick={deleteConfirmDialog.open}
-          >
+          <button className="text-sm text-sub hover:underline" onClick={deleteConfirmDialog.open}>
             삭제
           </button>
         )}
@@ -283,7 +280,7 @@ const ProductReviewListItem = ({
         </AlertDialog>
       </div>
       <RatingStar className="mt-2" rating={rating} />
-      <p className="mt-3 whitespace-pre-wrap text-[15px] text-muted-foreground">{content}</p>
+      <p className="mt-3 whitespace-pre-wrap text-[15px] text-sub">{content}</p>
     </div>
   );
 };

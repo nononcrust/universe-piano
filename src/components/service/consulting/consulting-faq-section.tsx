@@ -1,4 +1,4 @@
-import { FaqSection, FaqSectionItem } from "@/components/common/faq-section";
+import { FaqSection, FaqSectionItem } from "@/components/shared/faq-section";
 import { data } from "@/contents/services/consulting";
 
 export const ConsultingFaqSection = () => {

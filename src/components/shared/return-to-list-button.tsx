@@ -1,4 +1,4 @@
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -13,14 +13,11 @@ export const ReturnToListButton = ({ className, href, label }: ReturnToListButto
     <Link href={href}>
       <button
         className={cn(
-          "group absolute -left-2.5 bottom-12 flex items-center rounded-xl py-1 pl-1 pr-3 text-sm text-muted-foreground transition hover:bg-content hover:text-accent-foreground",
+          "group absolute -left-2.5 bottom-12 flex items-center rounded-xl py-1 pl-1 pr-3 text-sm text-sub transition hover:bg-content hover:text-main",
           className,
         )}
       >
-        <Icon.ChevronLeft
-          className="h-5 w-5 text-muted-foreground group-hover:text-accent-foreground"
-          strokeWidth={1}
-        />
+        <Icon.ChevronLeft className="h-5 w-5 text-sub group-hover:text-main" strokeWidth={1} />
         {label}
       </button>
     </Link>

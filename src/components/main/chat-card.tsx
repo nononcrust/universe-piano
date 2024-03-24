@@ -1,5 +1,5 @@
-import { ColoredIcon } from "@/components/common/colored-icon";
 import { Card } from "@/components/main/card";
+import { ColoredIcon } from "@/components/shared/colored-icon";
 import { cn } from "@/lib/utils";
 
 export const ChatCard = () => {

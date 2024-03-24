@@ -1,5 +1,5 @@
 import { MobileNavigationDrawer } from "@/components/admin/navigation-drawer";
-import { Icon } from "@/components/common/icon";
+import { Icon } from "@/components/shared/icon";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
 

@@ -71,7 +71,7 @@ const CategoryItem = ({ title, icon }: CategoryItemProps) => {
       <div className="flex items-center justify-center rounded-2xl bg-content-light p-4 transition md:group-hover:-translate-y-1">
         <div className="flex items-center justify-center">{icon}</div>
       </div>
-      <p className="mt-2 text-center text-sm text-muted-foreground">{title}</p>
+      <p className="text-sub mt-2 text-center text-sm">{title}</p>
     </div>
   );
 };

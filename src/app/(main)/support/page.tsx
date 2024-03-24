@@ -1,7 +1,7 @@
 "use client";
 
-import { Pagination } from "@/components/common/pagination";
 import { PageTitle } from "@/components/layout/page-title";
+import { Pagination } from "@/components/shared/pagination";
 import {
   Accordion,
   AccordionContent,
@@ -54,7 +54,7 @@ export default function SupportPage() {
           <Button
             key={index}
             className="min-w-fit rounded-full px-4"
-            variant={tab === value ? "default" : "outline"}
+            variant={tab === value ? "primary" : "outlined"}
             onClick={() => onCategoryChange(value)}
           >
             {label}

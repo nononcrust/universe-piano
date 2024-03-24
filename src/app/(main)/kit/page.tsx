@@ -1,7 +1,7 @@
 "use client";
 
-import { EmptyState } from "@/components/common/empty-state";
 import { PageTitle } from "@/components/layout/page-title";
+import { EmptyState } from "@/components/shared/empty-state";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";

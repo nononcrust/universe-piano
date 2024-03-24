@@ -1,6 +1,6 @@
-import { ColoredIcon } from "@/components/common/colored-icon";
-import { SectionSubtitle } from "@/components/common/section-subtitle";
-import { SectionTitle } from "@/components/common/section-title";
+import { ColoredIcon } from "@/components/shared/colored-icon";
+import { SectionSubtitle } from "@/components/shared/section-subtitle";
+import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 
 export const CrewResultSection = () => {
@@ -31,7 +31,7 @@ export const CrewResultSection = () => {
           />
         </div>
         <div className="container mt-12">
-          <SectionSubtitle className="whitespace-pre-wrap text-center text-muted-foreground md:leading-normal">
+          <SectionSubtitle className="whitespace-pre-wrap text-center text-sub md:leading-normal">
             {
               "최근 5년간 미국 음대 입시 상담을 100건 넘게 진행해왔습니다.\n똑같은 사연을 가진 분들은 단 한 건도 없었습니다.\n100개의 각기 다른 사연을 하나의 정형화된 틀에 억지로 맞출 수는 없습니다."
             }
@@ -55,7 +55,7 @@ const CrewResultItem = ({ title, description, icon }: ScholarshipItemProps) => {
   return (
     <div className="flex w-full flex-col items-center rounded-xl bg-white p-8 md:max-w-[240px]">
       <div className="flex h-24 w-24 items-center justify-center">{icon}</div>
-      <p className="mt-4 font-semibold text-muted-foreground">{title}</p>
+      <p className="mt-4 font-semibold text-sub">{title}</p>
       <p className="mt-2 text-center text-3xl font-bold text-primary">{description}</p>
     </div>
   );

@@ -21,7 +21,7 @@ import logo5 from "@/assets/images/consulting/consulting-5.png";
 import logo6 from "@/assets/images/consulting/consulting-6.png";
 import logo8 from "@/assets/images/consulting/consulting-8.png";
 import logo9 from "@/assets/images/consulting/consulting-9.png";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle } from "@/components/shared/section-title";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import Image from "next/image";

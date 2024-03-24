@@ -56,7 +56,7 @@ export default function WithdrawalPage() {
             id="withdrawal-checkbox"
             className="h-5 w-5 rounded-md"
             checked={checked}
-            onCheckedChange={() => setChecked(!checked)}
+            onChange={setChecked}
           />
           <label htmlFor="withdrawal-checkbox" className="text-base">
             해당 내용을 모두 읽었습니다.
@@ -82,7 +82,7 @@ export default function WithdrawalPage() {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-          <Button className="max-md:h-14 max-md:text-base" variant="outline" asChild>
+          <Button className="max-md:h-14 max-md:text-base" variant="outlined" asChild>
             <Link href={ROUTE.MYPAGE.ACCOUNT}>돌아가기</Link>
           </Button>
         </div>

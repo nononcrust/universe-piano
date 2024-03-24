@@ -1,8 +1,8 @@
 "use client";
 
-import { Pagination } from "@/components/common/pagination";
 import { PageTitle } from "@/components/layout/page-title";
 import { NoticeListItem } from "@/components/notice/notice-list-item";
+import { Pagination } from "@/components/shared/pagination";
 import { ROUTE } from "@/constants/route";
 import { useNoticeList } from "@/features/notice";
 import { usePagination } from "@/hooks/use-pagination";
