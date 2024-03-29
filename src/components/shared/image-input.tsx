@@ -1,24 +1,19 @@
 import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
-import { useUploadThing } from "@/lib/uploadthing";
+import { imageApi } from "@/features/image";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
 interface ImageInputProps {
   value: string[];
   onChange: (value: string[]) => void;
+  uploadFolder?: string;
 }
 
-export const ImageInput = ({ value, onChange }: ImageInputProps) => {
+export const ImageInput = ({ value, onChange, uploadFolder }: ImageInputProps) => {
   const [isUploading, setIsUploading] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const { startUpload } = useUploadThing("imageUploader", {
-    onClientUploadComplete: () => {
-      setIsUploading(false);
-    },
-  });
 
   const onAddImageButtonClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
@@ -31,17 +26,13 @@ export const ImageInput = ({ value, onChange }: ImageInputProps) => {
 
     if (!fileList) return;
 
-    const files = Array.from(fileList);
-
     setIsUploading(true);
-    const uploadedFiles = await startUpload(files);
+    const response = await imageApi.uploadList(fileList);
     setIsUploading(false);
 
-    if (!uploadedFiles) return;
+    if (response.urls.length === 0) return;
 
-    const urls = uploadedFiles.map((file) => file.url);
-
-    onChange([...value, ...urls]);
+    onChange([...value, ...response.urls]);
 
     event.target.value = "";
   };

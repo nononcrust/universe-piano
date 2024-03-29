@@ -2,7 +2,6 @@
 
 import { DeleteConfirmDialog } from "@/components/admin/delete-confirm-dialog";
 import { FormLayout } from "@/components/admin/form-layout";
-import { ImageInput } from "@/components/shared/image-input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
@@ -23,6 +22,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
+import { ImageInput } from "../shared/image-input";
 
 const formSchema = z.object({
   title: titleSchema,
@@ -149,11 +149,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
               render={({ field }) => (
                 <Form.Item>
                   <Form.Control>
-                    <ImageInput
-                      value={field.value || []}
-                      onChange={field.onChange}
-                      // error={!!form.formState.errors.images}
-                    />
+                    <ImageInput value={field.value || []} onChange={field.onChange} />
                   </Form.Control>
                 </Form.Item>
               )}

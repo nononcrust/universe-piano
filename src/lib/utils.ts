@@ -89,3 +89,14 @@ export const getRatingAverage = (ratings: number[]) => {
   const average = sum / ratings.length;
   return average;
 };
+
+export const convertBytesToSize = (bytes: number) => {
+  const sizes = ["B", "KB", "MB", "GB", "TB"];
+  if (bytes === 0) return "0 B";
+
+  const index = Math.floor(Math.log(bytes) / Math.log(1024));
+
+  if (index === 0) return `${bytes} ${sizes[index]}`;
+
+  return `${(bytes / 1024 ** index).toFixed(1)} ${sizes[index]}`;
+};
