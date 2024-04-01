@@ -1,14 +1,11 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -25,13 +22,12 @@ model User {
 
   posts                  Post[]
   comments               Comment[]
-  cart                   Cart?
   orders                 Order[]
   productReviews         ProductReview[]
   auditionResultComments AuditionComment[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Post {
@@ -45,10 +41,8 @@ model Post {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Comment {
@@ -61,11 +55,8 @@ model Comment {
   post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([postId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Image {
@@ -84,35 +75,30 @@ model Image {
   productReview   ProductReview? @relation(fields: [productReviewId], references: [id])
   productReviewId String?
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([postId])
-  @@index([auditionId])
-  @@index([productId])
-  @@index([productReviewId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Notice {
   id String @id @default(cuid())
 
   title   String
-  content String @db.LongText
+  content String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Audition {
   id      String @id @default(cuid())
   title   String
-  content String @db.LongText
+  content String
 
   images   Image[]
   comments AuditionComment[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model AuditionComment {
@@ -125,11 +111,8 @@ model AuditionComment {
   audition   Audition @relation(fields: [auditionId], references: [id], onDelete: Cascade)
   auditionId String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([auditionId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Category {
@@ -138,8 +121,8 @@ model Category {
 
   products Product[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Product {
@@ -155,37 +138,9 @@ model Product {
   images         Image[]
   productReviews ProductReview[]
   orders         OrderItem[]
-  cartItems      CartItem[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([categoryId])
-}
-
-model Cart {
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String @id
-
-  cartItems CartItem[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-}
-
-model CartItem {
-  amount Int
-
-  cart   Cart   @relation(fields: [cartId], references: [userId], onDelete: Cascade)
-  cartId String
-
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId String
-
-  @@unique([cartId, productId], name: "CartItem_cartId_productId_unique")
-  @@index([productId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model Order {
@@ -198,10 +153,8 @@ model Order {
   userId     String
   orderItems OrderItem[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model OrderItem {
@@ -215,16 +168,13 @@ model OrderItem {
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([orderId])
-  @@index([productId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 model ProductReview {
   id      String  @id @default(cuid())
-  content String  @db.LongText
+  content String
   rating  Int
   images  Image[]
 
@@ -234,11 +184,8 @@ model ProductReview {
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([productId])
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
 enum Role {
