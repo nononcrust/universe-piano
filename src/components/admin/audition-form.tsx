@@ -133,9 +133,10 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
                   <Form.Label>내용</Form.Label>
                   <Form.Control>
                     <Textarea
+                      className="min-h-[360px]"
                       placeholder="내용"
-                      {...field}
                       error={!!form.formState.errors.content}
+                      {...field}
                     />
                   </Form.Control>
                   <Form.Description>내용을 입력해주세요.</Form.Description>

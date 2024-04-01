@@ -110,6 +110,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
                   <Form.Label>내용</Form.Label>
                   <Form.Control>
                     <Textarea
+                      className="min-h-[360px]"
                       placeholder="내용"
                       {...field}
                       error={!!form.formState.errors.content}
