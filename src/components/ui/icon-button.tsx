@@ -1,13 +1,13 @@
 import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
-interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface IconButtonProps extends React.ComponentPropsWithoutRef<"button"> {}
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ className, ...props }, ref) => {
     return (
       <button
-        className={cn("hover:bg-content rounded-full p-2 transition", className)}
+        className={cn("rounded-full p-2 transition hover:bg-content", className)}
         ref={ref}
         {...props}
       />

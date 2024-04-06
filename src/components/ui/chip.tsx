@@ -22,13 +22,11 @@ const chipVariants = cva("flex justify-center items-center rounded-md font-mediu
 });
 
 interface ChipProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "color">,
+  extends Omit<React.ComponentPropsWithoutRef<"div">, "color">,
     VariantProps<typeof chipVariants> {}
 
-const Chip = forwardRef<HTMLDivElement, ChipProps>(({ className, color, ...props }, ref) => (
+export const Chip = forwardRef<HTMLDivElement, ChipProps>(({ className, color, ...props }, ref) => (
   <div className={cn(chipVariants({ color, className }))} ref={ref} {...props} />
 ));
 
 Chip.displayName = "Chip";
-
-export { Chip };

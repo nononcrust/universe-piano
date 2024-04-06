@@ -1,7 +1,7 @@
+import { Icon } from "@/components/shared/icon";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import * as CheckboxPrimitives from "@radix-ui/react-checkbox";
-import { CheckIcon } from "lucide-react";
 import React, { useId } from "react";
 
 interface CheckboxProps
@@ -42,7 +42,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
             )}
           >
             <CheckboxPrimitives.Indicator className="absolute inset-0 flex items-center justify-center">
-              <CheckIcon className="h-[13px] w-[13px] stroke-[3px] text-white" />
+              <Icon.Check className="h-[13px] w-[13px] stroke-[3px] text-white" />
             </CheckboxPrimitives.Indicator>
           </div>
         </CheckboxPrimitives.Root>

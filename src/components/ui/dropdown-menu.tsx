@@ -1,9 +1,8 @@
 "use client";
 
-import * as DropdownMenuPrimitives from "@radix-ui/react-dropdown-menu";
-import * as React from "react";
-
 import { cn } from "@/lib/utils";
+import * as DropdownMenuPrimitives from "@radix-ui/react-dropdown-menu";
+import React from "react";
 
 const DropdownMenuRoot = DropdownMenuPrimitives.Root;
 
@@ -33,7 +32,7 @@ const DropdownMenuContent = React.forwardRef<
     />
   </DropdownMenuPrimitives.Portal>
 ));
-DropdownMenuContent.displayName = DropdownMenuPrimitives.Content.displayName;
+DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.Item>,
@@ -53,7 +52,7 @@ const DropdownMenuItem = React.forwardRef<
     {...props}
   />
 ));
-DropdownMenuItem.displayName = DropdownMenuPrimitives.Item.displayName;
+DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 const DropdownMenuLabel = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.Label>,
@@ -67,7 +66,7 @@ const DropdownMenuLabel = React.forwardRef<
     {...props}
   />
 ));
-DropdownMenuLabel.displayName = DropdownMenuPrimitives.Label.displayName;
+DropdownMenuLabel.displayName = "DropdownMenu.Label";
 
 const DropdownMenuSeparator = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitives.Separator>,
@@ -79,14 +78,14 @@ const DropdownMenuSeparator = React.forwardRef<
     {...props}
   />
 ));
-DropdownMenuSeparator.displayName = DropdownMenuPrimitives.Separator.displayName;
+DropdownMenuSeparator.displayName = "DropdownMenu.Separator";
 
-const DropdownMenuShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
+const DropdownMenuShortcut = ({ className, ...props }: React.ComponentPropsWithoutRef<"span">) => {
   return (
     <span className={cn("ml-auto text-xs tracking-widest opacity-60", className)} {...props} />
   );
 };
-DropdownMenuShortcut.displayName = "DropdownMenuShortcut";
+DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
 
 export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Trigger: DropdownMenuTrigger,

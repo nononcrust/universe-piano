@@ -127,7 +127,7 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement>(({ ...props }, 
     </button>
   );
 });
-SelectTrigger.displayName = "SelectTrigger";
+SelectTrigger.displayName = "Select.Trigger";
 
 interface SelectContentProps {
   children: React.ReactNode;
@@ -241,7 +241,7 @@ interface SelectProps {
   disabled?: boolean;
 }
 
-export const SelectComp = React.forwardRef<HTMLButtonElement, SelectProps>(
+export const SelectImpl = React.forwardRef<HTMLButtonElement, SelectProps>(
   ({ children, value, onChange, placeholder = "", disabled = false, error = false }, ref) => {
     const [isOpen, setIsOpen] = useState(false);
     const [focusedIndex, setFocusedIndex] = useState(0);
@@ -281,8 +281,8 @@ export const SelectComp = React.forwardRef<HTMLButtonElement, SelectProps>(
     );
   },
 );
-SelectComp.displayName = "Select";
+SelectImpl.displayName = "Select";
 
-export const Select = Object.assign(SelectComp, {
+export const Select = Object.assign(SelectImpl, {
   Item: SelectItem,
 });

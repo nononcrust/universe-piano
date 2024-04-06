@@ -23,15 +23,15 @@ export const NoticeDetail = () => {
       <PageTitle title="공지사항" />
       <div className="mt-12 border-b pb-8">
         <h2 className="text-lg font-medium md:text-2xl">{data.title}</h2>
-        <p className="text-sub mt-4 text-sm">{formatDate(data.createdAt)}</p>
+        <p className="mt-4 text-sm text-sub">{formatDate(data.createdAt)}</p>
       </div>
       <div className="mt-8 flex break-all">
         <Markdown className="prose flex-1" content={data.content} />
       </div>
       <div className="mt-24">
-        <Link href={ROUTE.NEWS.NOTICE.LIST}>
-          <Button variant="secondary">목록으로</Button>
-        </Link>
+        <Button variant="secondary" asChild>
+          <Link href={ROUTE.NEWS.NOTICE.LIST}>목록으로</Link>
+        </Button>
       </div>
     </main>
   );

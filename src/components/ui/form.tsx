@@ -25,7 +25,7 @@ const useFormFieldContext = () => {
   const itemContext = useFormItemContext();
 
   if (!fieldContext) {
-    throw new Error("useFormFieldContext는 FormField 컴포넌트 내부에서만 사용할 수 있습니다.");
+    throw new Error("useFormFieldContext는 FormField 컴포넌트 안에서만 사용할 수 있습니다.");
   }
 
   const { getFieldState, formState } = useFormContext();
@@ -86,7 +86,7 @@ const useFormItemContext = () => {
   const context = useContext(FormItemContext);
 
   if (!context) {
-    throw new Error("useFormItemContext는 FormItem 컴포넌트 내부에서만 사용할 수 있습니다.");
+    throw new Error("useFormItemContext는 FormItem 컴포넌트 안에서만 사용할 수 있습니다.");
   }
 
   return context;
@@ -107,7 +107,7 @@ const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
     );
   },
 );
-FormItem.displayName = "FormItem";
+FormItem.displayName = "Form.Item";
 
 interface FormControlProps {
   children: React.ReactNode;
@@ -158,7 +158,7 @@ export const FormDescription = React.forwardRef<HTMLParagraphElement, FormDescri
     );
   },
 );
-FormDescription.displayName = "FormDescription";
+FormDescription.displayName = "Form.Description";
 
 interface FormErrorMessageProps extends React.ComponentPropsWithoutRef<"p"> {}
 
@@ -183,7 +183,7 @@ const FormErrorMessage = React.forwardRef<HTMLParagraphElement, FormErrorMessage
     );
   },
 );
-FormErrorMessage.displayName = "FormErrorMessage";
+FormErrorMessage.displayName = "Form.ErrorMessage";
 
 export const Form = Object.assign(FormProvider, {
   Field: FormField,

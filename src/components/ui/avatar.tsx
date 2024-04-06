@@ -5,7 +5,7 @@ import * as AvatarPrimitives from "@radix-ui/react-avatar";
 import { motion } from "framer-motion";
 import React from "react";
 
-const AvatarRoot = React.forwardRef<
+const AvatarImpl = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitives.Root>
 >(({ className, ...props }, ref) => (
@@ -15,7 +15,7 @@ const AvatarRoot = React.forwardRef<
     {...props}
   />
 ));
-AvatarRoot.displayName = AvatarPrimitives.Root.displayName;
+AvatarImpl.displayName = "Avatar";
 
 const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitives.Image>,
@@ -29,7 +29,7 @@ const AvatarImage = React.forwardRef<
     />
   </motion.div>
 ));
-AvatarImage.displayName = AvatarPrimitives.Image.displayName;
+AvatarImage.displayName = "Avatar.Image";
 
 const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitives.Fallback>,
@@ -44,9 +44,9 @@ const AvatarFallback = React.forwardRef<
     {...props}
   />
 ));
-AvatarFallback.displayName = AvatarPrimitives.Fallback.displayName;
+AvatarFallback.displayName = "Avatar.Fallback";
 
-export const Avatar = Object.assign(AvatarRoot, {
+export const Avatar = Object.assign(AvatarImpl, {
   Image: AvatarImage,
   Fallback: AvatarFallback,
 });

@@ -9,11 +9,12 @@ const AlertDialogRoot = AlertDialogPrimitives.Root;
 
 const AlertDialogTrigger = AlertDialogPrimitives.Trigger;
 
-// TODO: 이슈가 해결된 후 any 제거
-const AlertDialogPortal = ({ className, ...props }: any) => (
-  <AlertDialogPrimitives.Portal className={cn(className)} {...props} />
+interface AlertDialogPortalProps extends AlertDialogPrimitives.AlertDialogPortalProps {}
+
+const AlertDialogPortal = ({ ...props }: AlertDialogPortalProps) => (
+  <AlertDialogPrimitives.Portal {...props} />
 );
-AlertDialogPortal.displayName = AlertDialogPrimitives.Portal.displayName;
+AlertDialogPortal.displayName = "AlertDialog.Portal";
 
 const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitives.Overlay>,
@@ -23,14 +24,14 @@ const AlertDialogOverlay = React.forwardRef<
     className={cn(
       "fixed inset-0 z-50 bg-black/50",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
-      "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
+      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className,
     )}
     {...props}
     ref={ref}
   />
 ));
-AlertDialogOverlay.displayName = AlertDialogPrimitives.Overlay.displayName;
+AlertDialogOverlay.displayName = "AlertDialog.Overlay";
 
 const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitives.Content>,
@@ -52,12 +53,12 @@ const AlertDialogContent = React.forwardRef<
     />
   </AlertDialogPortal>
 ));
-AlertDialogContent.displayName = AlertDialogPrimitives.Content.displayName;
+AlertDialogContent.displayName = "AlertDialog.Content";
 
 const AlertDialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("flex flex-col space-y-2 text-center sm:text-left", className)} {...props} />
 );
-AlertDialogHeader.displayName = "AlertDialogHeader";
+AlertDialogHeader.displayName = "AlertDialog.Header";
 
 const AlertDialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
@@ -65,7 +66,7 @@ const AlertDialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDiv
     {...props}
   />
 );
-AlertDialogFooter.displayName = "AlertDialogFooter";
+AlertDialogFooter.displayName = "AlertDialog.Footer";
 
 const AlertDialogTitle = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitives.Title>,
@@ -77,7 +78,7 @@ const AlertDialogTitle = React.forwardRef<
     {...props}
   />
 ));
-AlertDialogTitle.displayName = AlertDialogPrimitives.Title.displayName;
+AlertDialogTitle.displayName = "AlertDialog.Title";
 
 const AlertDialogDescription = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitives.Description>,
@@ -89,7 +90,7 @@ const AlertDialogDescription = React.forwardRef<
     {...props}
   />
 ));
-AlertDialogDescription.displayName = AlertDialogPrimitives.Description.displayName;
+AlertDialogDescription.displayName = "AlertDialog.Description";
 
 const AlertDialogAction = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitives.Action>,
@@ -101,7 +102,7 @@ const AlertDialogAction = React.forwardRef<
     {...props}
   />
 ));
-AlertDialogAction.displayName = AlertDialogPrimitives.Action.displayName;
+AlertDialogAction.displayName = "AlertDialog.Action";
 
 const AlertDialogCancel = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitives.Cancel>,
@@ -113,7 +114,7 @@ const AlertDialogCancel = React.forwardRef<
     {...props}
   />
 ));
-AlertDialogCancel.displayName = AlertDialogPrimitives.Cancel.displayName;
+AlertDialogCancel.displayName = "AlertDialog.Cancel";
 
 export const AlertDialog = Object.assign(AlertDialogRoot, {
   Action: AlertDialogAction,

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-interface AosProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AosProps extends React.ComponentPropsWithoutRef<"div"> {
   children: React.ReactNode;
 }
 

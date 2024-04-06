@@ -1,11 +1,10 @@
 "use client";
 
-import * as SeparatorPrimitives from "@radix-ui/react-separator";
-import * as React from "react";
-
 import { cn } from "@/lib/utils";
+import * as SeparatorPrimitives from "@radix-ui/react-separator";
+import React from "react";
 
-const Separator = React.forwardRef<
+export const Separator = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitives.Root>
 >(({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (
@@ -21,6 +20,4 @@ const Separator = React.forwardRef<
     {...props}
   />
 ));
-Separator.displayName = SeparatorPrimitives.Root.displayName;
-
-export { Separator };
+Separator.displayName = "Separator";
