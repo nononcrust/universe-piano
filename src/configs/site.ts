@@ -19,6 +19,8 @@ export const siteConfig = {
     cafe: "https://cafe.naver.com/universepianousa",
     email: "universepiano@naver.com",
     mobile: "010-2134-7370",
+    scholarships:
+      "https://universe-scholarships.notion.site/1d8ef47733e449baae22ec8bd6472130?pvs=4",
   },
   depositAccount: {
     bank: "농협",

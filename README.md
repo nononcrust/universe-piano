@@ -34,5 +34,5 @@ npm run dev
 - [Next.js](https://nextjs.org/) – 프레임워크
 - [TypeScript](https://www.typescriptlang.org/) – 언어
 - [Tailwind](https://tailwindcss.com/) – 스타일
-- [PlanetScale](https://planetscale.com/) – 데이터베이스
+- [Supabase](https://supabase.com/) – 데이터베이스
 - [Vercel](https://vercel.com/) – 배포
