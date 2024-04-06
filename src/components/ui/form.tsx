@@ -136,19 +136,16 @@ const FormControl = ({ children }: FormControlProps) => {
 
 interface FormLabelProps extends LabelProps {}
 
-const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
-  ({ className, children, ...props }) => {
-    const { formLabelId } = useFormFieldContext();
-    const { formLabelRef } = useFormItemContext();
+const FormLabel = ({ className, children, ...props }: FormLabelProps) => {
+  const { formLabelId } = useFormFieldContext();
+  const { formLabelRef } = useFormItemContext();
 
-    return (
-      <Label className={cn("mb-2", className)} ref={formLabelRef} id={formLabelId} {...props}>
-        {children}
-      </Label>
-    );
-  },
-);
-FormLabel.displayName = "FormLabel";
+  return (
+    <Label className={cn("mb-2", className)} ref={formLabelRef} id={formLabelId} {...props}>
+      {children}
+    </Label>
+  );
+};
 
 interface FormDescriptionProps extends React.ComponentPropsWithoutRef<"p"> {}
 

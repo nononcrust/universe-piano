@@ -1,19 +1,22 @@
 import { createClient } from "@supabase/supabase-js";
-import { v4 as uuidv4 } from "uuid";
+import { nanoid } from "nanoid";
 
 const PROJECT_URL = process.env.SUPABASE_PROJECT_URL!;
 const BUCKET_NAME = process.env.SUPABASE_BUCKET_NAME!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY!;
 const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!;
 
-const supabase = createClient(PROJECT_URL, SERVICE_KEY);
+export const UPLOAD_FOLDER = {
+  AUDITION: "audition",
+  PROFILE: "profile",
+  REVIEW: "review",
+} as const;
 
-export const uploadFile = async (file: File, folder?: string) => {
-  const path = folder ? `${folder}/${uuidv4()}` : uuidv4();
-  const { data, error } = await supabase.storage
-    .from(BUCKET_NAME)
+const uploadFile = async (file: File, folder?: string) => {
+  const supabase = createClient(PROJECT_URL, SERVICE_KEY);
 
-    .upload(path, file);
+  const path = folder ? `${folder}/${nanoid()}` : nanoid();
+  const { data, error } = await supabase.storage.from(BUCKET_NAME).upload(path, file);
 
   if (error) {
     throw new Error(error.message);
@@ -22,6 +25,22 @@ export const uploadFile = async (file: File, folder?: string) => {
   }
 };
 
-export const getFileUrl = (path: string) => {
+const deleteFiles = async (paths: string[]) => {
+  const supabase = createClient(PROJECT_URL, SERVICE_KEY);
+
+  const { error } = await supabase.storage.from(BUCKET_NAME).remove(paths);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+};
+
+const getFileUrl = (path: string) => {
   return `${STORAGE_URL}/${path}`;
+};
+
+export const storage = {
+  uploadFile,
+  deleteFiles,
+  getFileUrl,
 };

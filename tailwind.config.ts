@@ -1,12 +1,16 @@
 import typographyPlugin from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
+import defaultTheme from "tailwindcss/defaultTheme";
 import { theme } from "./src/styles/theme";
 
 module.exports = {
   plugins: [typographyPlugin, animatePlugin, require("tailwind-scrollbar-hide")],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-pretendard)", ...defaultTheme.fontFamily.sans],
+      },
       container: {
         center: true,
         padding: "16px",

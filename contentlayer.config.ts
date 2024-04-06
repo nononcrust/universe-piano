@@ -1,4 +1,4 @@
-import { defineDocumentType, defineNestedType, makeSource } from "contentlayer/source-files";
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 const PrivacyPolicy = defineDocumentType(() => ({
   name: "PrivacyPolicy",
@@ -17,21 +17,6 @@ const TermsOfService = defineDocumentType(() => ({
     date: { type: "date", required: true },
   },
 }));
-
-const Category = defineNestedType(() => ({
-  name: "Category",
-  filePathPattern: "categories/*.mdx",
-  fields: {
-    title: { type: "string", required: true },
-  },
-}));
-
-/**
- * src/contents/[book]/[category]/[content].mdx
- * book: flattenPath.split("/")[1]
- * category: flattenPath.split("/")[2]
- * content: flattenPath.split("/")[3]
- * */
 
 const Content = defineDocumentType(() => ({
   name: "Content",

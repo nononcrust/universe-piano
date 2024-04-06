@@ -4,9 +4,9 @@ import { accessTokenSchema, jwt } from "@/lib/jwt";
 import { Role } from "@prisma/client";
 import { NextRequest } from "next/server";
 
-const DISABLED_ROUTES = [ROUTE.MYPAGE.ACTIVITY, ROUTE.ABOUT.PORTFOLIO];
-const PROTECTED_ROUTES = [ROUTE.MYPAGE.HOME, ROUTE.NEWS.AUDITION.LIST];
-const AUTH_ROUTES = [ROUTE.LOGIN, ROUTE.SIGNUP];
+const DISABLED_ROUTES = [ROUTE.MYPAGE.ACTIVITY, ROUTE.ABOUT.PORTFOLIO] as const;
+const PROTECTED_ROUTES = [ROUTE.MYPAGE.HOME, ROUTE.NEWS.AUDITION.LIST] as const;
+const AUTH_ROUTES = [ROUTE.LOGIN, ROUTE.SIGNUP] as const;
 
 const getSessionFromCookie = async (request: NextRequest) => {
   const accessToken = request.cookies.get(COOKIE.ACCESS_TOKEN);

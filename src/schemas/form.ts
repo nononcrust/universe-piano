@@ -1,9 +1,6 @@
 import { FORM } from "@/constants/form";
 import { z } from "zod";
 
-const MAX_FILE_SIZE = 1024 * 1024 * 5; // 5MB
-const MAX_IMAGE_COUNT = 5;
-
 export const titleSchema = z
   .string()
   .min(1)
@@ -14,7 +11,8 @@ export const contentSchema = z
   .min(1)
   .max(1000, { message: FORM.ERROR.MAX_LENGTH(1000) });
 
-export const imagesSchema = z.array(z.string()).optional();
+// TODO: any 타입 수정
+export const imagesSchema = z.any();
 
 export const nicknameSchema = z
   .string()

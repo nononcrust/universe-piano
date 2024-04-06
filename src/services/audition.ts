@@ -64,7 +64,7 @@ const auditionApi = {
     return response.data;
   },
   createAudition: async (data: { body: AuditionRequest }) => {
-    const response = await api.post(ENDPOINT, data.body);
+    const response = await api.postForm(ENDPOINT, data.body);
     return response.data;
   },
   updateAudition: async (data: { params: { id: string }; body: Partial<AuditionRequest> }) => {
@@ -102,6 +102,7 @@ export const useAuditionDetail = ({ id }: { id: string }) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => auditionApi.getAuditionById({ params: { id } }),
+    enabled: !!id,
   });
 };
 

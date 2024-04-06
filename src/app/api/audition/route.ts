@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { UPLOAD_FOLDER, storage } from "@/lib/supabase";
 import { auditionRepository, auditionRequestSchema } from "@/services/audition";
 import { ZodError } from "zod";
 
@@ -16,23 +17,34 @@ export const GET = async (request: Request) => {
 
 export const POST = async (request: Request) => {
   try {
-    const body = await request.json();
+    const formData = await request.formData();
 
-    const { images, ...parsedBody } = auditionRequestSchema.parse(body);
+    const { images, ...body } = auditionRequestSchema.parse(Object.fromEntries(formData.entries()));
 
-    const audition = await prisma.audition.create({
-      data: {
-        ...parsedBody,
-        images: {
-          createMany: {
-            data: images?.map((image) => ({ url: image })) ?? [],
+    if (images && images.length > 0) {
+      const { path } = await storage.uploadFile(images[0], UPLOAD_FOLDER.AUDITION);
+
+      const audition = await prisma.audition.create({
+        data: {
+          ...body,
+          images: {
+            createMany: {
+              data: [{ url: path }],
+            },
           },
         },
-      },
+      });
+
+      return Response.json(audition);
+    }
+
+    const audition = await prisma.audition.create({
+      data: body,
     });
 
     return Response.json(audition);
   } catch (error) {
+    console.log(error);
     if (error instanceof ZodError) {
       return Response.json("Bad Request", { status: 400 });
     }

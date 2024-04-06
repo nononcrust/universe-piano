@@ -1,17 +1,15 @@
 import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
-import { imageApi } from "@/services/image";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface ImageInputProps {
-  value: string[];
-  onChange: (value: string[]) => void;
-  uploadFolder?: string;
+  value: File[];
+  onChange: (value: File[]) => void;
 }
 
-export const ImageInput = ({ value, onChange, uploadFolder }: ImageInputProps) => {
-  const [isUploading, setIsUploading] = useState(false);
+export const ImageInput = ({ value, onChange }: ImageInputProps) => {
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -26,25 +24,29 @@ export const ImageInput = ({ value, onChange, uploadFolder }: ImageInputProps) =
 
     if (!fileList) return;
 
-    setIsUploading(true);
-    const response = await imageApi.uploadList(fileList);
-    setIsUploading(false);
+    const file = fileList[0];
 
-    if (response.urls.length === 0) return;
+    onChange([file]);
 
-    onChange([...value, ...response.urls]);
+    const imageObjectUrl = URL.createObjectURL(file);
+    setImageUrls([imageObjectUrl]);
 
     event.target.value = "";
   };
 
-  const onImageDelete = (url: string) => {
-    if (isUploading) return;
-
-    onChange(value.filter((item) => item !== url));
+  const onImageDelete = () => {
+    onChange([]);
+    setImageUrls([]);
   };
 
+  useEffect(() => {
+    return () => {
+      imageUrls.forEach(URL.revokeObjectURL);
+    };
+  }, [imageUrls]);
+
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex gap-4">
       <div>
         <input
           className="hidden"
@@ -53,13 +55,14 @@ export const ImageInput = ({ value, onChange, uploadFolder }: ImageInputProps) =
           ref={fileInputRef}
           accept="image/*"
         />
-        <Button variant="secondary" onClick={onAddImageButtonClick} disabled={isUploading}>
-          {isUploading ? "업로드 중..." : "이미지 추가"}
+        <Button className="h-24 flex-col" variant="secondary" onClick={onAddImageButtonClick}>
+          <Icon.Camera />
+          <p className="mt-2">사진 업로드</p>
         </Button>
       </div>
       <div className="flex flex-wrap gap-4">
-        {value.map((url, index) => (
-          <ImagePreviewItem key={index} imageUrl={url} onDelete={onImageDelete} />
+        {imageUrls.map((url, index) => (
+          <ImagePreviewItem key={index} url={url} onDelete={onImageDelete} />
         ))}
       </div>
     </div>
@@ -67,22 +70,22 @@ export const ImageInput = ({ value, onChange, uploadFolder }: ImageInputProps) =
 };
 
 interface ImagePreviewItemProps {
-  imageUrl: string;
-  onDelete: (url: string) => void;
+  url: string;
+  onDelete: () => void;
 }
 
-const ImagePreviewItem = ({ imageUrl, onDelete }: ImagePreviewItemProps) => {
+const ImagePreviewItem = ({ url, onDelete }: ImagePreviewItemProps) => {
   return (
     <div className="relative">
       <Image
         width={96}
         height={96}
-        src={imageUrl}
+        src={url}
         className="h-24 w-24 rounded-lg border"
         alt="이미지 미리보기"
       />
       <div className="absolute -right-1 -top-1 flex cursor-pointer rounded-full bg-black p-[2px] transition hover:bg-gray-700">
-        <Icon.X className="h-4 w-4 text-white" onClick={() => onDelete(imageUrl)} />
+        <Icon.X className="h-4 w-4 text-white" onClick={onDelete} />
       </div>
     </div>
   );

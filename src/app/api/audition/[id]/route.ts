@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { storage } from "@/lib/supabase";
 import { auditionRepository, auditionRequestSchema } from "@/services/audition";
 import { ZodError } from "zod";
 
@@ -26,9 +27,7 @@ export const PUT = async (request: Request, context: Context) => {
   try {
     const auditionId = context.params.id;
 
-    const body = await request.json();
-
-    const { images, ...parsedBody } = auditionRequestSchema.parse(body);
+    const body = auditionRequestSchema.parse(await request.json());
 
     const audition = await prisma.audition.update({
       where: {
@@ -37,10 +36,7 @@ export const PUT = async (request: Request, context: Context) => {
       include: {
         comments: true,
       },
-      data: {
-        ...parsedBody,
-        ...(images && { image: images[0] }),
-      },
+      data: body,
     });
 
     return Response.json(audition);
@@ -57,13 +53,30 @@ export const DELETE = async (request: Request, context: Context) => {
   try {
     const auditionId = context.params.id;
 
-    const audition = await prisma.audition.delete({
+    const audition = await prisma.audition.findUnique({
+      where: {
+        id: auditionId,
+      },
+      include: {
+        images: true,
+      },
+    });
+
+    if (!audition) {
+      return Response.json("Not Found", { status: 404 });
+    }
+
+    if (audition.images.length > 0) {
+      await storage.deleteFiles(audition.images.map((image) => image.url));
+    }
+
+    const response = await prisma.audition.delete({
       where: {
         id: auditionId,
       },
     });
 
-    return Response.json(audition);
+    return Response.json(response);
   } catch (error) {
     return Response.json("Internal Error", { status: 500 });
   }

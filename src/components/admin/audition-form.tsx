@@ -99,7 +99,6 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
       form.reset({
         title: data.title,
         content: data.content,
-        images: data.images.map((image) => image.url),
       });
     }
   }, [data, form, mode]);
@@ -144,17 +143,19 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
                 </Form.Item>
               )}
             />
-            <Form.Field
-              name="images"
-              control={form.control}
-              render={({ field }) => (
-                <Form.Item>
-                  <Form.Control>
-                    <ImageInput value={field.value || []} onChange={field.onChange} />
-                  </Form.Control>
-                </Form.Item>
-              )}
-            />
+            {mode === "create" && (
+              <Form.Field
+                name="images"
+                control={form.control}
+                render={({ field }) => (
+                  <Form.Item>
+                    <Form.Control>
+                      <ImageInput value={field.value || []} onChange={field.onChange} />
+                    </Form.Control>
+                  </Form.Item>
+                )}
+              />
+            )}
             <div className={cn("flex gap-4", mode === "edit" ? "justify-between" : "justify-end")}>
               {mode === "edit" && <DeleteConfirmDialog onDelete={onDelete} />}
               <Button
