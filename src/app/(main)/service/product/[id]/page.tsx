@@ -1,14 +1,17 @@
 "use client";
 
+import detailImage from "@/assets/images/kit/kit-119-detail.jpg";
+import thumbnailImage from "@/assets/images/kit/kit-119-thumbnail.jpg";
 import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
 import { RatingStar } from "@/components/shared/rating-star";
+import { Accordion } from "@/components/ui/accordion";
 import { AlertDialog } from "@/components/ui/alert-dialog";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
+import { data } from "@/contents/services/kit";
 import { useDialog } from "@/hooks/use-dialog";
 import { formatDate } from "@/lib/utils";
 import { useSession } from "@/services/auth";
@@ -35,7 +38,6 @@ export default function ProductDetailPage() {
         <ProductImageSection />
         <ProductOptionSection />
       </section>
-
       <section className="relative mt-8 flex flex-col gap-12 md:flex-row">
         <ProductInfoSection />
         <ProductAside />
@@ -49,8 +51,8 @@ const ProductImageSection = () => {
     <div className="flex-1">
       <div className="flex aspect-square items-center justify-center rounded-2xl border">
         <Image
-          src="/images/logo.svg"
-          alt="상품 이미지"
+          src={thumbnailImage}
+          alt="썸네일 이미지"
           className="aspect-square"
           width={400}
           height={400}
@@ -94,16 +96,10 @@ const ProductInfoSection = () => {
 
   return (
     <div className="flex flex-1 flex-col">
-      <PageTitle title="상품 정보" />
+      <PageTitle title="상세 정보" />
       <div className="mt-4 basis-2/3 flex-col">
         <div className="flex flex-col gap-8">
-          {Array(10)
-            .fill(0)
-            .map((_, index) => (
-              <AspectRatio key={index} className="rounded-lg border">
-                <Image src="/images/logo.svg" alt="상품 설명 이미지" fill />
-              </AspectRatio>
-            ))}
+          <Image className="rounded-lg" src={detailImage} alt="상세 정보 이미지" />
         </div>
       </div>
       <div className="relative">
@@ -125,6 +121,25 @@ const ProductInfoSection = () => {
         />
       </div>
       <ProductReviewList />
+      <div>
+        <PageTitle title="Q&A" />
+        <Accordion className="mt-4" type="single" collapsible>
+          {data.faq.map((item, index) => (
+            <Accordion.Item key={index} value={String(index)} className="ml-2 md:ml-0">
+              <Accordion.Trigger>
+                <div className="my-1 flex gap-2">
+                  <p className="mr-4 flex-1 text-left">
+                    {index + 1}. {item.title}
+                  </p>
+                </div>
+              </Accordion.Trigger>
+              <Accordion.Content className="ml-1 whitespace-pre-wrap">
+                {item.description}
+              </Accordion.Content>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+      </div>
     </div>
   );
 };
@@ -249,11 +264,11 @@ const ProductReviewListItem = ({
           </Avatar>
           <div className="flex flex-col">
             <p className="text-sm font-medium">{username}</p>
-            <p className="text-sub text-xs">{formatDate(createdAt)}</p>
+            <p className="text-xs text-sub">{formatDate(createdAt)}</p>
           </div>
         </div>
         {isMyReview && (
-          <button className="text-sub text-sm hover:underline" onClick={deleteConfirmDialog.open}>
+          <button className="text-sm text-sub hover:underline" onClick={deleteConfirmDialog.open}>
             삭제
           </button>
         )}
@@ -273,7 +288,7 @@ const ProductReviewListItem = ({
         </AlertDialog>
       </div>
       <RatingStar className="mt-2" rating={rating} />
-      <p className="text-sub mt-3 whitespace-pre-wrap text-[15px]">{content}</p>
+      <p className="mt-3 whitespace-pre-wrap text-[15px] text-sub">{content}</p>
     </div>
   );
 };

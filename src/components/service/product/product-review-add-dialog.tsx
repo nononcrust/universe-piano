@@ -108,7 +108,7 @@ const Content = (props: ContentProps) => {
           <Button variant="ghost" type="button" onClick={props.onClose}>
             취소
           </Button>
-          <Button variant="outlined">작성하기</Button>
+          <Button type="submit">작성하기</Button>
         </div>
       </form>
     </Form>

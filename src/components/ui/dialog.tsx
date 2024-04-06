@@ -7,8 +7,10 @@ import * as DialogPrimitives from "@radix-ui/react-dialog";
 import React from "react";
 
 const DialogRoot = DialogPrimitives.Root;
+DialogRoot.displayName = "Dialog";
 
 const DialogTrigger = DialogPrimitives.Trigger;
+DialogTrigger.displayName = "Dialog.Trigger";
 
 const DialogPortal = ({ className, ...props }: DialogPrimitives.DialogPortalProps) => (
   <DialogPrimitives.Portal className={cn(className)} {...props} />

@@ -87,6 +87,10 @@ export const siteContents = {
         title: "독학 키트",
         href: ROUTE.SERVICE.PRODUCT.LIST,
       },
+      {
+        title: "부분 컨설팅",
+        href: ROUTE.SERVICE.PARTIAL_CONSULTING,
+      },
     ],
   },
   notice: {

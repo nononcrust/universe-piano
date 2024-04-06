@@ -17,6 +17,10 @@ export const orderColumns: ColumnDef<OrderList[number]>[] = [
     ),
   },
   {
+    accessorFn: (row) => row.user.name,
+    header: "이름",
+  },
+  {
     accessorFn: (row) => row.user.nickname,
     header: "닉네임",
   },

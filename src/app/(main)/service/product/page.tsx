@@ -1,5 +1,6 @@
 "use client";
 
+import kitThumbnailImage from "@/assets/images/kit/kit-119-thumbnail.jpg";
 import { PageTitle } from "@/components/layout/page-title";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
@@ -39,12 +40,11 @@ const ProductItem = ({ product }: ProductItemProps) => {
       href={ROUTE.SERVICE.PRODUCT.DETAIL(String(product.id))}
       className="col flex cursor-pointer flex-col gap-2 pb-4"
     >
-      <AspectRatio ratio={1} className="rounded-2xl border">
+      <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border">
         <Image
-          src="/images/logo.svg"
-          fill
+          src={kitThumbnailImage}
           alt="상품 이미지"
-          className="transition-all hover:scale-100 md:hover:scale-110"
+          className="transition-all hover:scale-100 md:hover:scale-105"
         />
       </AspectRatio>
       <div className="flex flex-col">

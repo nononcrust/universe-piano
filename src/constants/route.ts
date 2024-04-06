@@ -17,6 +17,7 @@ export const ROUTE = {
     TUTORING: "/service/tutoring",
     CONSULTING: "/service/consulting",
     STUDY: "/service/study",
+    PARTIAL_CONSULTING: "/service/partial-consulting",
   },
   NEWS: {
     LIST: "/news",

@@ -6,15 +6,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const DrawerRoot = DrawerPrimitives.Root;
+DrawerRoot.displayName = "Drawer";
 
 const DrawerTrigger = DrawerPrimitives.Trigger;
+DrawerTrigger.displayName = "Drawer.Trigger";
 
 const DrawerClose = DrawerPrimitives.Close;
+DrawerClose.displayName = "Drawer.Close";
 
 const DrawerPortal = ({ className, ...props }: DrawerPrimitives.DialogPortalProps) => (
   <DrawerPrimitives.Portal className={cn(className)} {...props} />
 );
-DrawerPortal.displayName = DrawerPrimitives.Portal.displayName;
+DrawerPortal.displayName = "Drawer.Portal";
 
 const DrawerOverlay = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitives.Overlay>,
@@ -31,7 +34,7 @@ const DrawerOverlay = React.forwardRef<
     ref={ref}
   />
 ));
-DrawerOverlay.displayName = DrawerPrimitives.Overlay.displayName;
+DrawerOverlay.displayName = "Drawer.Overlay";
 
 const DrawerVariants = cva(
   cn(
@@ -79,12 +82,12 @@ const DrawerContent = React.forwardRef<
     </DrawerPrimitives.Content>
   </DrawerPortal>
 ));
-DrawerContent.displayName = DrawerPrimitives.Content.displayName;
+DrawerContent.displayName = "Drawer.Content";
 
 const DrawerHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("flex flex-col space-y-2 text-center sm:text-left", className)} {...props} />
 );
-DrawerHeader.displayName = "DrawerHeader";
+DrawerHeader.displayName = "Drawer.Header";
 
 const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
@@ -92,7 +95,7 @@ const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
     {...props}
   />
 );
-DrawerFooter.displayName = "DrawerFooter";
+DrawerFooter.displayName = "Drawer.Footer";
 
 const DrawerTitle = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitives.Title>,
@@ -104,7 +107,7 @@ const DrawerTitle = React.forwardRef<
     {...props}
   />
 ));
-DrawerTitle.displayName = DrawerPrimitives.Title.displayName;
+DrawerTitle.displayName = "Drawer.Title";
 
 const DrawerDescription = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitives.Description>,
@@ -116,7 +119,7 @@ const DrawerDescription = React.forwardRef<
     {...props}
   />
 ));
-DrawerDescription.displayName = DrawerPrimitives.Description.displayName;
+DrawerDescription.displayName = "Drawer.Description";
 
 export const Drawer = Object.assign(DrawerRoot, {
   Trigger: DrawerTrigger,
