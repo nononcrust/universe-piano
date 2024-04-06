@@ -6,8 +6,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ROUTE } from "@/constants/route";
-import { SocialData, useRegister } from "@/features/auth";
 import { formatPhoneNumberInput } from "@/lib/utils";
+import { SocialData, useRegister } from "@/services/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -63,8 +63,8 @@ export const SignUpForm = ({ initialData }: SignUpFormProps) => {
 
   return (
     <main className="container flex max-w-md flex-col items-center pb-16">
-      <h1 className="text-foreground mt-16 text-2xl font-medium md:text-3xl">회원가입</h1>
-      <h2 className="mt-2 font-medium text-sub">카카오 계정으로 회원가입을 진행합니다.</h2>
+      <h1 className="mt-16 text-2xl font-medium text-foreground md:text-3xl">회원가입</h1>
+      <h2 className="text-sub mt-2 font-medium">카카오 계정으로 회원가입을 진행합니다.</h2>
       <Avatar className="mt-8 h-20 w-20">
         <Avatar.Image src={initialData.profileImage} alt="프로필 이미지" />
         <Avatar.Fallback />

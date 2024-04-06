@@ -2,7 +2,7 @@
 
 import { noticeColumns } from "@/components/admin/data-table/columns/notice-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
-import { useAuditionList } from "@/features/audition";
+import { useAuditionList } from "@/services/audition";
 
 export const AuditionDataTable = () => {
   const { data } = useAuditionList();

@@ -8,9 +8,9 @@ import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/configs/site";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { useDeleteOrder, useOrderDetail } from "@/features/order";
 import { useDialog } from "@/hooks/use-dialog";
 import { formatDate } from "@/lib/utils";
+import { useDeleteOrder, useOrderDetail } from "@/services/order";
 import { OrderStatus } from "@prisma/client";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -63,19 +63,19 @@ export default function OrderDetailPage() {
       <Separator className="mt-4" />
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-sub">주문번호</p>
+          <p className="text-sub text-sm font-medium">주문번호</p>
           <p className="text-sm font-medium">{order.number}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-sub">주문일시</p>
+          <p className="text-sub text-sm font-medium">주문일시</p>
           <p className="text-sm font-medium">{formatDate(order.createdAt)}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-sub">주문상태</p>
+          <p className="text-sub text-sm font-medium">주문상태</p>
           <p className="text-sm font-medium">{ORDER_STATUS_LABEL[order.status]}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-sub">결제금액</p>
+          <p className="text-sub text-sm font-medium">결제금액</p>
           <p className="text-sm font-medium">{"111"}</p>
         </div>
       </div>
@@ -83,15 +83,15 @@ export default function OrderDetailPage() {
       <Separator className="mt-4" />
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-sub">결제방법</p>
+          <p className="text-sub text-sm font-medium">결제방법</p>
           <p className="text-sm font-medium">무통장 입금</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-sub">예금주명</p>
+          <p className="text-sub text-sm font-medium">예금주명</p>
           <p className="text-sm font-medium">{siteConfig.depositAccount.holder}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-sub">입금계좌</p>
+          <p className="text-sub text-sm font-medium">입금계좌</p>
           <p className="text-sm font-medium">
             {siteConfig.depositAccount.bank} {siteConfig.depositAccount.number}
           </p>

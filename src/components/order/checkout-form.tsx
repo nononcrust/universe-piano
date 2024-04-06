@@ -9,10 +9,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { ROUTE } from "@/constants/route";
-import { useSession } from "@/features/auth";
-import { useCreateOrder } from "@/features/order";
-import { useProductDetail } from "@/features/product";
 import { allowNumberOnly, cn, defaultZero, limitMaxNumber, trimLeadingZeros } from "@/lib/utils";
+import { useSession } from "@/services/auth";
+import { useCreateOrder } from "@/services/order";
+import { useProductDetail } from "@/services/product";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -134,11 +134,11 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
         </section>
         <section className="mt-12 flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-sub">상품 금액</p>
+            <p className="text-sub text-sm">상품 금액</p>
             <p className="text-sm font-medium">{product.price.toLocaleString()}원</p>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-sm text-sub">적립금 사용</p>
+            <p className="text-sub text-sm">적립금 사용</p>
             <p className="text-sm font-medium">{point.toLocaleString()}원</p>
           </div>
           <div className="flex items-center justify-between">
@@ -164,7 +164,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
               <Label
                 htmlFor="deposit"
                 className={cn(
-                  "border-muted bg-popover hover:bg-accent flex cursor-pointer flex-col items-center justify-between rounded-md border p-4 transition hover:text-main",
+                  "hover:text-main flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent",
                   "peer-data-[state=checked]:border-black [&:has([data-state=checked])]:border-black",
                 )}
               >

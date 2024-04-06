@@ -1,5 +1,5 @@
-import { auditionRepository, auditionRequestSchema } from "@/features/audition";
 import { prisma } from "@/lib/prisma";
+import { auditionRepository, auditionRequestSchema } from "@/services/audition";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";

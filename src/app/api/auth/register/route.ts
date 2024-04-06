@@ -1,7 +1,7 @@
 import { COOKIE } from "@/constants/cookie";
-import { JwtPayload, authRepository, registerRequestSchema } from "@/features/auth";
 import { issueAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { JwtPayload, authRepository, registerRequestSchema } from "@/services/auth";
 import { cookies } from "next/headers";
 
 import { ZodError } from "zod";

@@ -1,5 +1,5 @@
-import { orderRepository, orderUpdateRequestSchema } from "@/features/order";
 import { prisma } from "@/lib/prisma";
+import { orderRepository, orderUpdateRequestSchema } from "@/services/order";
 
 export const dynamic = "force-dynamic";
 

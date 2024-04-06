@@ -1,4 +1,4 @@
-import { productRepository } from "@/features/product";
+import { productRepository } from "@/services/product";
 
 export const dynamic = "force-dynamic";
 

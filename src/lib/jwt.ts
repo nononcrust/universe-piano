@@ -1,4 +1,4 @@
-import { JwtPayload, SocialData, jwtPayloadSchema, socialDataSchema } from "@/features/auth";
+import { JwtPayload, SocialData, jwtPayloadSchema, socialDataSchema } from "@/services/auth";
 import * as jose from "jose";
 import { z } from "zod";
 

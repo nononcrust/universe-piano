@@ -3,7 +3,7 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { userColumns } from "@/components/admin/data-table/columns/user-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
-import { useUserList } from "@/features/user";
+import { useUserList } from "@/services/user";
 
 export default function AdminUserListPage() {
   const { data } = useUserList();

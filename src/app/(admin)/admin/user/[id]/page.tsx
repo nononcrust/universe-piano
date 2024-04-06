@@ -1,6 +1,6 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { UserForm } from "@/components/admin/user-form";
-import { userRepository } from "@/features/user";
+import { userRepository } from "@/services/user";
 
 type Context = {
   params: {

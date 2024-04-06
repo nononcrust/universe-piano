@@ -1,6 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
-import { Session, authRepository, queryKeys } from "@/features/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
+import { Session, authRepository, queryKeys } from "@/services/auth";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { cookies } from "next/headers";
 import { PropsWithChildren } from "react";

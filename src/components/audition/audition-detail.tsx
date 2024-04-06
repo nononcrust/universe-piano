@@ -8,8 +8,8 @@ import { AccessControl } from "@/components/shared/access-control";
 import { Markdown } from "@/components/shared/markdown";
 import { Button } from "@/components/ui/button";
 import { ROUTE } from "@/constants/route";
-import { useAuditionDetail } from "@/features/audition";
 import { formatDate } from "@/lib/utils";
+import { useAuditionDetail } from "@/services/audition";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,7 +29,7 @@ export const AuditionDetail = () => {
         <>
           <div className="mt-12 border-b pb-8">
             <h2 className="text-lg font-medium md:text-2xl">{audition.title}</h2>
-            <p className="mt-4 text-sm text-sub">{formatDate(audition.createdAt)}</p>
+            <p className="text-sub mt-4 text-sm">{formatDate(audition.createdAt)}</p>
           </div>
           <div className="relative mt-8 flex max-w-full flex-col gap-4">
             {audition.images?.map((image) => (

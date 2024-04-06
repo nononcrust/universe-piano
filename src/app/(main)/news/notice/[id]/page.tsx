@@ -1,5 +1,5 @@
 import { NoticeDetail } from "@/components/notice/notice-detail";
-import { noticeRepository, queryKeys } from "@/features/notice";
+import { noticeRepository, queryKeys } from "@/services/notice";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
 type Context = {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/features/auth";
+import { useSession } from "@/services/auth";
 import { Role, Tier } from "@prisma/client";
 
 type AccessControlAction = "fallback";

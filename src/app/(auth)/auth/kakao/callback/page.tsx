@@ -1,9 +1,9 @@
 import { RedirectWithRegisterToken } from "@/components/shared/redirect-with-register-token";
 import { RedirectWithUser } from "@/components/shared/redirect-with-user";
 import { ROUTE } from "@/constants/route";
-import { SocialData, authRepository } from "@/features/auth";
-import { kakaoApi } from "@/features/kakao";
 import { jwt } from "@/lib/jwt";
+import { SocialData, authRepository } from "@/services/auth";
+import { kakaoApi } from "@/services/kakao";
 import { redirect } from "next/navigation";
 
 export default async function KakaoCallbackPage({

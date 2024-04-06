@@ -1,6 +1,6 @@
-import { auditionCommentRequestSchema } from "@/features/audition";
 import { getServerSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { auditionCommentRequestSchema } from "@/services/audition";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";

@@ -6,7 +6,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE } from "@/constants/route";
-import { usePurchasedProductList } from "@/features/me";
+import { usePurchasedProductList } from "@/services/me";
 import Image from "next/image";
 import Link from "next/link";
 

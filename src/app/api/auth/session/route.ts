@@ -1,7 +1,7 @@
 import { COOKIE } from "@/constants/cookie";
-import { JwtPayload, Session, authRepository } from "@/features/auth";
 import { issueAccessToken, revokeAccessToken } from "@/lib/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
+import { JwtPayload, Session, authRepository } from "@/services/auth";
 import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";

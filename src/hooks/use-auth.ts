@@ -1,4 +1,4 @@
-import { authApi, queryKeys } from "@/features/auth";
+import { authApi, queryKeys } from "@/services/auth";
 import { useQueryClient } from "@tanstack/react-query";
 
 export const useAuth = () => {

@@ -8,14 +8,14 @@ import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ROUTE } from "@/constants/route";
+import { cn } from "@/lib/utils";
+import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
 import {
   useAuditionDetail,
   useCreateAudition,
   useDeleteAudition,
   useUpdateAudition,
-} from "@/features/audition";
-import { cn } from "@/lib/utils";
-import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
+} from "@/services/audition";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

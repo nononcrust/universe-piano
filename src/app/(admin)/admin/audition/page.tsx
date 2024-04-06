@@ -3,7 +3,7 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { auditionColumns } from "@/components/admin/data-table/columns/audition-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
-import { useAuditionList } from "@/features/audition";
+import { useAuditionList } from "@/services/audition";
 
 export default function AdminAuditionListPage() {
   const { data } = useAuditionList();

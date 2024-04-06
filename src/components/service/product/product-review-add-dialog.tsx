@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateProductReview } from "@/features/product";
+import { useCreateProductReview } from "@/services/product";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";

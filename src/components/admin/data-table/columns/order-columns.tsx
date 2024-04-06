@@ -2,7 +2,7 @@
 
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { OrderList } from "@/features/order";
+import { OrderList } from "@/services/order";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 

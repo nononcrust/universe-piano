@@ -12,7 +12,7 @@ import {
   orderUpdateRequestSchema,
   useDeleteOrder,
   useUpdateOrder,
-} from "@/features/order";
+} from "@/services/order";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";

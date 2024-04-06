@@ -5,7 +5,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE } from "@/constants/route";
-import { ProductList, useProductList } from "@/features/product";
+import { ProductList, useProductList } from "@/services/product";
 import Image from "next/image";
 import Link from "next/link";
 

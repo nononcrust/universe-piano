@@ -1,5 +1,5 @@
-import { meRepository } from "@/features/me";
 import { getServerSession } from "@/lib/auth";
+import { meRepository } from "@/services/me";
 
 export const dynamic = "force-dynamic";
 

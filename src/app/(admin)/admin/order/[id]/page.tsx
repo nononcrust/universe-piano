@@ -1,6 +1,6 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { OrderForm } from "@/components/admin/order-form";
-import { orderRepository } from "@/features/order";
+import { orderRepository } from "@/services/order";
 
 type Context = {
   params: {

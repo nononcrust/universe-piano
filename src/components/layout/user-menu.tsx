@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { useSession } from "@/features/auth";
 import { useAuth } from "@/hooks/use-auth";
+import { useSession } from "@/services/auth";
 import { Role } from "@prisma/client";
 import Link from "next/link";
 
@@ -43,7 +43,7 @@ export const UserMenu = () => {
                 <p className="text-lg font-medium">{user.nickname}</p>
                 <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
               </div>
-              <p className="text-sm text-sub">{user.email}</p>
+              <p className="text-sub text-sm">{user.email}</p>
             </div>
           </div>
         </div>

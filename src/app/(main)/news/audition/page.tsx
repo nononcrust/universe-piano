@@ -4,9 +4,9 @@ import { PageTitle } from "@/components/layout/page-title";
 import { NoticeListItem } from "@/components/notice/notice-list-item";
 import { Pagination } from "@/components/shared/pagination";
 import { ROUTE } from "@/constants/route";
-import { useAuditionList } from "@/features/audition";
 import { usePagination } from "@/hooks/use-pagination";
 import { formatDate } from "@/lib/utils";
+import { useAuditionList } from "@/services/audition";
 import Link from "next/link";
 
 export default function AuditionListPage() {

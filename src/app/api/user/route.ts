@@ -1,4 +1,4 @@
-import { userRepository } from "@/features/user";
+import { userRepository } from "@/services/user";
 
 export const dynamic = "force-dynamic";
 

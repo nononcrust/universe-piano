@@ -9,11 +9,11 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
-import { useSession } from "@/features/auth";
-import { useMyProductReviewList, usePurchasedProductList } from "@/features/me";
-import { useDeleteProductReview, useProductDetail, useProductReviewList } from "@/features/product";
 import { useDialog } from "@/hooks/use-dialog";
 import { formatDate } from "@/lib/utils";
+import { useSession } from "@/services/auth";
+import { useMyProductReviewList, usePurchasedProductList } from "@/services/me";
+import { useDeleteProductReview, useProductDetail, useProductReviewList } from "@/services/product";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
@@ -249,11 +249,11 @@ const ProductReviewListItem = ({
           </Avatar>
           <div className="flex flex-col">
             <p className="text-sm font-medium">{username}</p>
-            <p className="text-xs text-sub">{formatDate(createdAt)}</p>
+            <p className="text-sub text-xs">{formatDate(createdAt)}</p>
           </div>
         </div>
         {isMyReview && (
-          <button className="text-sm text-sub hover:underline" onClick={deleteConfirmDialog.open}>
+          <button className="text-sub text-sm hover:underline" onClick={deleteConfirmDialog.open}>
             삭제
           </button>
         )}
@@ -273,7 +273,7 @@ const ProductReviewListItem = ({
         </AlertDialog>
       </div>
       <RatingStar className="mt-2" rating={rating} />
-      <p className="mt-3 whitespace-pre-wrap text-[15px] text-sub">{content}</p>
+      <p className="text-sub mt-3 whitespace-pre-wrap text-[15px]">{content}</p>
     </div>
   );
 };

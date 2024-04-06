@@ -1,7 +1,7 @@
 "use client";
 
 import { ROUTE } from "@/constants/route";
-import { Session, User, authApi, queryKeys } from "@/features/auth";
+import { Session, User, authApi, queryKeys } from "@/services/auth";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";

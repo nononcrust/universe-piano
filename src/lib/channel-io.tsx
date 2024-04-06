@@ -1,4 +1,4 @@
-import { useSession } from "@/features/auth";
+import { useSession } from "@/services/auth";
 import { PropsWithChildren, useEffect } from "react";
 
 declare global {

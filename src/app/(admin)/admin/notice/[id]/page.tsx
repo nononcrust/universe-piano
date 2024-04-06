@@ -1,6 +1,6 @@
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { NoticeForm } from "@/components/admin/notice-form";
-import { noticeRepository } from "@/features/notice";
+import { noticeRepository } from "@/services/notice";
 
 type Context = {
   params: {

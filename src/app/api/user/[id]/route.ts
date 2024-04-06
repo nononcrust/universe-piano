@@ -1,5 +1,5 @@
-import { userRepository, userUpdateRequestSchema } from "@/features/user";
 import { prisma } from "@/lib/prisma";
+import { userRepository, userUpdateRequestSchema } from "@/services/user";
 
 import { ZodError } from "zod";
 

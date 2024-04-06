@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateAuditionComment } from "@/features/audition";
 import { cn } from "@/lib/utils";
 import { contentSchema } from "@/schemas/form";
+import { useCreateAuditionComment } from "@/services/audition";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

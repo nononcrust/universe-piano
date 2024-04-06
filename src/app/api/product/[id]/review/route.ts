@@ -1,6 +1,6 @@
-import { productRepository, productReviewCreateRequestSchema } from "@/features/product";
 import { getServerSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { productRepository, productReviewCreateRequestSchema } from "@/services/product";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";

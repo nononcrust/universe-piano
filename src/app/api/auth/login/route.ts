@@ -1,5 +1,5 @@
-import { jwtPayloadSchema } from "@/features/auth";
 import { issueAccessToken } from "@/lib/auth";
+import { jwtPayloadSchema } from "@/services/auth";
 
 import { ZodError } from "zod";
 

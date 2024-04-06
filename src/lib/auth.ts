@@ -1,6 +1,6 @@
 import { COOKIE } from "@/constants/cookie";
-import { JwtPayload, Session, authRepository } from "@/features/auth";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
+import { JwtPayload, Session, authRepository } from "@/services/auth";
 import { Role } from "@prisma/client";
 import { cookies } from "next/headers";
 

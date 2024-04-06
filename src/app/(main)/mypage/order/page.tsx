@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { useMyOrderList } from "@/features/me";
 import { formatDate } from "@/lib/utils";
+import { useMyOrderList } from "@/services/me";
 import { OrderStatus } from "@prisma/client";
 import Link from "next/link";
 
@@ -52,10 +52,10 @@ const OrderItem = ({ id, createdAt, category, productName, status }: OrderItemPr
       className="flex cursor-pointer items-center justify-between transition md:hover:translate-x-2"
     >
       <div className="flex flex-col">
-        <p className="text-sm text-sub">{category}</p>
+        <p className="text-sub text-sm">{category}</p>
         <p className="mt-[2px] font-medium">{productName}</p>
         <div className="flex items-center gap-2">
-          <p className="text-sm font-medium text-sub">{formatDate(createdAt)}</p>
+          <p className="text-sub text-sm font-medium">{formatDate(createdAt)}</p>
           <div className="flex items-center gap-2">
             <Badge variant={status === OrderStatus.PAYMENT_PENDING ? "secondary" : "default"}>
               {ORDER_STATUS_LABEL[status]}
@@ -63,7 +63,7 @@ const OrderItem = ({ id, createdAt, category, productName, status }: OrderItemPr
           </div>
         </div>
       </div>
-      <Icon.ChevronRight className="h-5 w-5 text-sub" />
+      <Icon.ChevronRight className="text-sub h-5 w-5" />
     </Link>
   );
 };

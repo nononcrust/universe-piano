@@ -1,8 +1,8 @@
 "use client";
 
 import { CommentItem } from "@/components/notice/comment-item";
-import { AuditionComment, useDeleteAuditionComment } from "@/features/audition";
 import { formatDateDistance } from "@/lib/utils";
+import { AuditionComment, useDeleteAuditionComment } from "@/services/audition";
 
 interface AuditionCommentItemProps {
   comment: AuditionComment;

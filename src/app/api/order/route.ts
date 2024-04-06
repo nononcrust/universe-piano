@@ -1,6 +1,6 @@
-import { orderRepository, orderRequestSchema } from "@/features/order";
 import { getServerSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { orderRepository, orderRequestSchema } from "@/services/order";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";

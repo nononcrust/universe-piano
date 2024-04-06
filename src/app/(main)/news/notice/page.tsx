@@ -4,9 +4,9 @@ import { PageTitle } from "@/components/layout/page-title";
 import { NoticeListItem } from "@/components/notice/notice-list-item";
 import { Pagination } from "@/components/shared/pagination";
 import { ROUTE } from "@/constants/route";
-import { useNoticeList } from "@/features/notice";
 import { usePagination } from "@/hooks/use-pagination";
 import { formatDate } from "@/lib/utils";
+import { useNoticeList } from "@/services/notice";
 import Link from "next/link";
 
 export default function NoticeListPage() {

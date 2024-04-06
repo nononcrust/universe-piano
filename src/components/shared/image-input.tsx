@@ -1,6 +1,6 @@
 import { Icon } from "@/components/shared/icon";
 import { Button } from "@/components/ui/button";
-import { imageApi } from "@/features/image";
+import { imageApi } from "@/services/image";
 import Image from "next/image";
 import { useRef, useState } from "react";
 

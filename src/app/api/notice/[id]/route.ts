@@ -1,6 +1,6 @@
-import { noticeRepository, noticeRequestSchema } from "@/features/notice";
 import { adminGuard } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { noticeRepository, noticeRequestSchema } from "@/services/notice";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
