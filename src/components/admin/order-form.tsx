@@ -1,5 +1,6 @@
 "use client";
 
+import { DeleteConfirmDialog } from "@/components/admin/delete-confirm-dialog";
 import { FormLayout } from "@/components/admin/form-layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,7 +19,6 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import { DeleteConfirmDialog } from "./delete-confirm-dialog";
 
 type FormSchema = z.infer<typeof orderUpdateRequestSchema>;
 
@@ -47,8 +47,8 @@ export const OrderForm = ({ order }: OrderFormProps) => {
       {
         onSuccess: () => {
           router.refresh();
+          router.push(ROUTE.ADMIN.ORDER.LIST);
           toast.success("주문 정보가 수정되었습니다.");
-          form.reset();
         },
       },
     );
@@ -61,6 +61,7 @@ export const OrderForm = ({ order }: OrderFormProps) => {
       { params: { id: order.id } },
       {
         onSuccess: () => {
+          router.refresh();
           router.push(ROUTE.ADMIN.ORDER.LIST);
           toast.success("주문 정보가 삭제되었습니다.");
         },

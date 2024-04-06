@@ -134,11 +134,11 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
         </section>
         <section className="mt-12 flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <p className="text-sub text-sm">상품 금액</p>
+            <p className="text-sm text-sub">상품 금액</p>
             <p className="text-sm font-medium">{product.price.toLocaleString()}원</p>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-sub text-sm">적립금 사용</p>
+            <p className="text-sm text-sub">적립금 사용</p>
             <p className="text-sm font-medium">{point.toLocaleString()}원</p>
           </div>
           <div className="flex items-center justify-between">
@@ -164,12 +164,12 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
               <Label
                 htmlFor="deposit"
                 className={cn(
-                  "hover:text-main flex cursor-pointer flex-col items-center justify-between rounded-md border border-muted bg-popover p-4 transition hover:bg-accent",
+                  "border-muted bg-popover hover:bg-accent flex cursor-pointer flex-col items-center justify-between rounded-md border p-4 transition hover:text-main",
                   "peer-data-[state=checked]:border-black [&:has([data-state=checked])]:border-black",
                 )}
               >
                 <Icon.CircleDollarSign className="mb-3 h-6 w-6" />
-                무통장 입금
+                계좌이체
               </Label>
             </div>
           </RadioGroup>
@@ -192,7 +192,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
           size="large"
           className="mt-8 w-full max-md:h-14 max-md:text-base"
           type="submit"
-          disabled={!!form.formState.errors.terms}
+          disabled={!!form.formState.errors.terms || createOrderMutation.isPending}
         >
           결제하기
         </Button>

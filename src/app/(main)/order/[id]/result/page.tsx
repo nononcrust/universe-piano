@@ -11,11 +11,11 @@ type Context = {
 
 export default function OrderResultPage(context: Context) {
   return (
-    <main className="container pb-16">
-      <section className="flex flex-col">
-        <div className="mt-56 flex flex-col items-center justify-center">
+    <main className="container flex flex-1 flex-col">
+      <section className="flex flex-1 flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <CheckIcon />
-          <p className="mt-4 text-center text-lg font-semibold">주문이 성공적으로 완료되었습니다</p>
+          <p className="mt-8 text-center text-lg font-semibold">주문이 성공적으로 완료되었습니다</p>
         </div>
         <div className="mt-4 flex justify-center">
           <Link href={ROUTE.ORDER.DETAIL(context.params.id)}>

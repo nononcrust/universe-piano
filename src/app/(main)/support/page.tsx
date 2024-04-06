@@ -6,6 +6,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { data as consultingData } from "@/contents/services/consulting";
+import { data as kitData } from "@/contents/services/kit";
 import { data as studyData } from "@/contents/services/study";
 import { data as tutoringData } from "@/contents/services/tutoring";
 import { useState } from "react";
@@ -13,10 +14,11 @@ import { useState } from "react";
 const ROWS_PER_PAGE = 5;
 
 const FAQS = {
-  all: [...tutoringData.faq, ...studyData.faq],
+  all: [...tutoringData.faq, ...consultingData.faq, ...studyData.faq, ...kitData.faq],
   tutoring: tutoringData.faq,
   consulting: consultingData.faq,
   study: studyData.faq,
+  kit: kitData.faq,
 } as const;
 
 const TAB_LIST = {
@@ -24,6 +26,7 @@ const TAB_LIST = {
   consulting: "입시 컨설팅",
   tutoring: "미국 음대 입시 과외",
   study: "스터디",
+  kit: "독학 키트",
 } as const;
 
 type Tab = keyof typeof TAB_LIST;
