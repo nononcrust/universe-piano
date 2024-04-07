@@ -1,5 +1,5 @@
-import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
+import { api } from "@/services/shared";
 import { userApi } from "@/services/user";
 import { Prisma, Role, Tier } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";

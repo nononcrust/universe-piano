@@ -1,6 +1,6 @@
-import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
 import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
+import { api } from "@/services/shared";
 import { Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";

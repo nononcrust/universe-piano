@@ -1,4 +1,4 @@
-import { api } from "@/lib/axios";
+import { api } from "@/services/shared";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 

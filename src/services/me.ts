@@ -1,5 +1,5 @@
-import { api } from "@/lib/axios";
 import { prisma } from "@/lib/prisma";
+import { api } from "@/services/shared";
 import { OrderStatus, Prisma } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { Session, useSession } from "./auth";
