@@ -6,6 +6,7 @@ import { UserInfoFetcher } from "@/components/shared/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { Providers } from "@/providers";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </UserInfoFetcher>
         </Providers>
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   );
