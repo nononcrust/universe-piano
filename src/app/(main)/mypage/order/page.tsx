@@ -1,6 +1,7 @@
 "use client";
 
 import { PageTitle } from "@/components/layout/page-title";
+import { EmptyState } from "@/components/shared/empty-state";
 import { Icon } from "@/components/shared/icon";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -32,6 +33,7 @@ export default function MyOrderListPage() {
           Array(5)
             .fill(0)
             .map((_, index) => <OrderItem.Skeleton key={index} />)}
+        {orders?.length === 0 && <EmptyState message="구매 내역이 없습니다" />}
       </section>
     </main>
   );
@@ -52,10 +54,10 @@ const OrderItem = ({ id, createdAt, category, productName, status }: OrderItemPr
       className="flex cursor-pointer items-center justify-between transition md:hover:translate-x-2"
     >
       <div className="flex flex-col">
-        <p className="text-sub text-sm">{category}</p>
+        <p className="text-sm text-sub">{category}</p>
         <p className="mt-[2px] font-medium">{productName}</p>
         <div className="flex items-center gap-2">
-          <p className="text-sub text-sm font-medium">{formatDate(createdAt)}</p>
+          <p className="text-sm font-medium text-sub">{formatDate(createdAt)}</p>
           <div className="flex items-center gap-2">
             <Badge variant={status === OrderStatus.PAYMENT_PENDING ? "secondary" : "default"}>
               {ORDER_STATUS_LABEL[status]}
@@ -63,7 +65,7 @@ const OrderItem = ({ id, createdAt, category, productName, status }: OrderItemPr
           </div>
         </div>
       </div>
-      <Icon.ChevronRight className="text-sub h-5 w-5" />
+      <Icon.ChevronRight className="h-5 w-5 text-sub" />
     </Link>
   );
 };

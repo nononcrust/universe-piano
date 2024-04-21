@@ -35,20 +35,12 @@ export const WhatWeDoSection = () => {
             href={ROUTE.SERVICE.STUDY}
             icon={<ColoredIcon.Pencil className="h-10 w-10" />}
           />
-          <div className="rounded-xl bg-white p-6 md:min-h-[320px]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-content">
-              <ColoredIcon.Storage className="h-10 w-10" />
-            </div>
-            <div className="mt-8 flex items-center gap-2 md:mt-20">
-              <p className="text-xl font-semibold">독학 키트</p>
-              <p className="text-medium rounded-lg bg-zinc-300 px-2 py-1 text-xs text-white">
-                준비중
-              </p>
-            </div>
-            <p className="mt-2 font-medium text-sub">
-              미국 음대 유학을 혼자 준비하시는 분들께 필요한 서비스를 제공합니다.
-            </p>
-          </div>
+          <WhatWeDoItem
+            title="독학 키트"
+            description="미국 음대 유학을 혼자 준비하시는 분들께 필요한 서비스를 제공합니다."
+            href={ROUTE.SERVICE.PRODUCT.LIST}
+            icon={<ColoredIcon.Storage className="h-10 w-10" />}
+          />
         </div>
       </Aos>
     </section>

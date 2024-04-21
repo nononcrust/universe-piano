@@ -1,4 +1,7 @@
+import { channelEnabledRoutes } from "@/configs/site";
+import { ROUTE } from "@/constants/route";
 import { useSession } from "@/services/auth";
+import { usePathname } from "next/navigation";
 import { PropsWithChildren, useEffect } from "react";
 
 declare global {
@@ -199,25 +202,34 @@ class ChannelService {
 
 export const channel = new ChannelService();
 
+if (typeof window !== "undefined") {
+  channel.loadScript();
+}
+
 export const ChannelProvider = ({ children }: PropsWithChildren) => {
   const { data: session } = useSession();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    channel.loadScript();
-  }, []);
+  const isChannelRoute =
+    pathname === ROUTE.HOME || channelEnabledRoutes.some((route) => pathname.startsWith(route));
 
   useEffect(() => {
     if (session === undefined) return;
 
-    channel.boot({
-      pluginKey: process.env.NEXT_PUBLIC_CHANNEL_IO_KEY!,
-      ...(session && { memberId: session.user.id }),
-    });
+    if (isChannelRoute)
+      channel.boot({
+        pluginKey: process.env.NEXT_PUBLIC_CHANNEL_IO_KEY!,
+        ...(session && { memberId: session.user.id }),
+      });
+
+    if (!isChannelRoute) {
+      channel.shutdown();
+    }
 
     return () => {
       channel.shutdown();
     };
-  }, [session]);
+  }, [session, pathname, isChannelRoute]);
 
   return <>{children}</>;
 };

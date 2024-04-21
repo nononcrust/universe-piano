@@ -5,7 +5,6 @@ import { LandingSectionSubtitle } from "@/components/main/landing-section-subtit
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
 import { ColoredIcon } from "@/components/shared/colored-icon";
 import { Icon } from "@/components/shared/icon";
-import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
 import Link from "next/link";
@@ -68,17 +67,21 @@ const ScholarshipCard = () => {
 
 const AuditionKitCard = () => {
   return (
-    <Card className="max-h-[160px] min-h-[160px]">
-      <div className="flex items-center gap-2">
-        <Card.Title className="flex items-center">
-          <ColoredIcon.Storage className="h-6 w-6" />
-          <p className="ml-2">오디션 119 키트</p>
-        </Card.Title>
-        <Badge className="bg-white" variant="outlined">
-          준비중
-        </Badge>
-      </div>
-      <Card.Subtitle>미국 음대 오디션 투어 꿀팁, 상황별 영어 표현, 체크리스트까지!</Card.Subtitle>
-    </Card>
+    <Link href={ROUTE.SERVICE.PRODUCT.LIST} target="_blank">
+      <Card className="max-h-[160px] min-h-[160px] transition md:hover:shadow-lg">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Card.Title className="flex items-center">
+              <ColoredIcon.Storage className="h-6 w-6" />
+              <p className="ml-2">오디션 119 키트</p>
+            </Card.Title>
+          </div>
+          <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1" />
+        </div>
+        <Card.Subtitle className="text-gray-400">
+          미국 음대 오디션 투어 꿀팁, 상황별 영어 표현, 체크리스트까지!
+        </Card.Subtitle>
+      </Card>
+    </Link>
   );
 };

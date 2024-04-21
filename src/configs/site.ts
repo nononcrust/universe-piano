@@ -48,6 +48,13 @@ export const siteConfig = {
   } as OpenGraph,
 };
 
+export const channelEnabledRoutes = [
+  ROUTE.ABOUT.LIST,
+  ROUTE.SERVICE.LIST,
+  ROUTE.NEWS.LIST,
+  ROUTE.SUPPORT,
+] as const;
+
 export const siteContents = {
   about: {
     title: "소개",
@@ -141,24 +148,7 @@ export const siteContents = {
   },
 };
 
-export const headerNav = [
-  {
-    title: "소개",
-    href: ROUTE.ABOUT.COMPANY,
-  },
-  {
-    title: "서비스",
-    href: ROUTE.SERVICE.CONSULTING,
-  },
-  {
-    title: "소식",
-    href: ROUTE.NEWS.NOTICE.LIST,
-  },
-  {
-    title: "고객지원",
-    href: ROUTE.SUPPORT,
-  },
-];
+
 
 export const footerNav = {
   about: {

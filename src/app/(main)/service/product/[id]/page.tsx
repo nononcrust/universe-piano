@@ -5,6 +5,7 @@ import thumbnailImage from "@/assets/images/kit/kit-119-thumbnail.jpg";
 import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
+import { EmptyState } from "@/components/shared/empty-state";
 import { RatingStar } from "@/components/shared/rating-star";
 import { Accordion } from "@/components/ui/accordion";
 import { AlertDialog } from "@/components/ui/alert-dialog";
@@ -102,25 +103,6 @@ const ProductInfoSection = () => {
           <Image className="rounded-lg" src={detailImage} alt="상세 정보 이미지" />
         </div>
       </div>
-      <div className="relative">
-        <PageTitle title="상품 리뷰" />
-        {hasPurchased && (
-          <Button
-            className="absolute bottom-0 right-0"
-            variant="outlined"
-            onClick={productReviewAddDialog.open}
-          >
-            리뷰 작성하기
-          </Button>
-        )}
-        <ProductReviewAddDialog
-          productId={params.id}
-          isOpen={productReviewAddDialog.isOpen}
-          onOpenChange={productReviewAddDialog.onOpenChange}
-          onClose={productReviewAddDialog.close}
-        />
-      </div>
-      <ProductReviewList />
       <div>
         <PageTitle title="Q&A" />
         <Accordion className="mt-4" type="single" collapsible>
@@ -140,6 +122,25 @@ const ProductInfoSection = () => {
           ))}
         </Accordion>
       </div>
+      <div className="relative">
+        <PageTitle title="상품 리뷰" />
+        {hasPurchased && (
+          <Button
+            className="absolute bottom-0 right-0"
+            variant="outlined"
+            onClick={productReviewAddDialog.open}
+          >
+            리뷰 작성하기
+          </Button>
+        )}
+        <ProductReviewAddDialog
+          productId={params.id}
+          isOpen={productReviewAddDialog.isOpen}
+          onOpenChange={productReviewAddDialog.onOpenChange}
+          onClose={productReviewAddDialog.close}
+        />
+      </div>
+      <ProductReviewList />
     </div>
   );
 };
@@ -219,6 +220,7 @@ const ProductReviewList = () => {
           userProfileImage={review.user.profileImage}
         />
       ))}
+      {reviews.length === 0 && <EmptyState message="작성된 리뷰가 없습니다." />}
     </div>
   );
 };
