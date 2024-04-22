@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db white;
+}
+
 .swiper-pagination-bullet-active {
   background-color: #fff !important;
 }
@@ -12,62 +17,13 @@
   padding: 6px 12px;
 }
 
-@font-face {
-  font-family: Pretendard;
-  font-weight: 800;
-  font-display: swap;
-  src:
-    local("Pretendard ExtraBold"),
-    url(../assets/fonts/Pretendard-ExtraBold.subset.woff2) format("woff2");
-}
+@layer base {
+  button,
+  a {
+    @apply focus-visible:focus-ring;
+  }
 
-@font-face {
-  font-family: Pretendard;
-  font-weight: 700;
-  font-display: swap;
-  src:
-    local("Pretendard Bold"),
-    url(../assets/fonts/Pretendard-Bold.subset.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: Pretendard;
-  font-weight: 600;
-  font-display: swap;
-  src:
-    local("Pretendard SemiBold"),
-    url(../assets/fonts/Pretendard-SemiBold.subset.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: Pretendard;
-  font-weight: 500;
-  font-display: swap;
-  src:
-    local("Pretendard Medium"),
-    url(../assets/fonts/Pretendard-Medium.subset.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: Pretendard;
-  font-weight: 400;
-  font-display: swap;
-  src:
-    local("Pretendard Regular"),
-    url(../assets/fonts/Pretendard-Regular.subset.woff2) format("woff2");
-}
-
-* {
-  font-family:
-    Pretendard,
-    -apple-system,
-    BlinkMacSystemFont,
-    system-ui,
-    Roboto,
-    Helvetica Neue,
-    Segoe UI,
-    Apple SD Gothic Neo,
-    Noto Sans KR,
-    Malgun Gothic,
-    sans-serif;
+  .focus-ring {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-white;
+  }
 }

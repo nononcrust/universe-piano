@@ -5,8 +5,8 @@ import React from "react";
 
 export const buttonVariants = cva(
   cn(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-lg transition font-medium border",
-    "ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-lg transition-colors font-medium border",
+    "focus-visible:focus-ring",
     "disabled:pointer-events-none disabled:opacity-50",
     "hover:bg-primary-dark",
   ),

@@ -27,7 +27,7 @@ export const SecondServiceSection = () => {
 
 const AuditionResultCard = () => {
   return (
-    <Link href={ROUTE.NEWS.AUDITION.LIST}>
+    <Link href={ROUTE.NEWS.AUDITION.LIST} className="focus-visible:focus-ring rounded-xl">
       <Card className="max-h-[160px] min-h-[160px] transition md:hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -46,7 +46,11 @@ const AuditionResultCard = () => {
 
 const ScholarshipCard = () => {
   return (
-    <Link href={siteConfig.links.scholarships} target="_blank">
+    <Link
+      href={siteConfig.links.scholarships}
+      target="_blank"
+      className="focus-visible:focus-ring rounded-xl"
+    >
       <Card className="max-h-[160px] min-h-[160px] transition md:hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -67,7 +71,11 @@ const ScholarshipCard = () => {
 
 const AuditionKitCard = () => {
   return (
-    <Link href={ROUTE.SERVICE.PRODUCT.LIST} target="_blank">
+    <Link
+      href={ROUTE.SERVICE.PRODUCT.LIST}
+      target="_blank"
+      className="focus-visible:focus-ring rounded-xl"
+    >
       <Card className="max-h-[160px] min-h-[160px] transition md:hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

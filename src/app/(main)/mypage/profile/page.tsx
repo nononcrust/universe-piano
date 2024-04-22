@@ -34,18 +34,18 @@ export default function MyProfilePage() {
               <p className="text-lg font-medium md:text-2xl">{user.nickname}</p>
               <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
             </div>
-            <p className="text-sub text-sm md:text-base">{user.email}</p>
+            <p className="text-sm text-sub md:text-base">{user.email}</p>
           </div>
         </div>
-        <Link href={ROUTE.MYPAGE.ACCOUNT}>
-          <Button variant="outlined">프로필 수정</Button>
-        </Link>
+        <Button variant="outlined" asChild>
+          <Link href={ROUTE.MYPAGE.ACCOUNT}>프로필 수정</Link>
+        </Button>
       </div>
       <PageSubtitle className="mt-20" title="적립금" />
       <div className="mt-4 flex items-center justify-between gap-3">
         <p>
           사용 가능한 적립금:
-          <span className="ml-2 font-semibold text-foreground">{user.point} P</span>
+          <span className="text-foreground ml-2 font-semibold">{user.point} P</span>
         </p>
       </div>
       <PageSubtitle className="mt-20" title="추가 정보" />
@@ -56,14 +56,14 @@ export default function MyProfilePage() {
           href={ROUTE.KIT.LIST}
         >
           <p className="flex-1 font-medium">나의 독학 키트</p>
-          <Icon.ChevronRight className="text-sub ml-2 h-5 w-5" />
+          <Icon.ChevronRight className="ml-2 h-5 w-5 text-sub" />
         </Link>
         <Link
           className="flex items-center justify-between py-2 transition md:hover:opacity-80"
           href={ROUTE.MYPAGE.ORDER}
         >
           <p className="flex-1 font-medium">구매 내역</p>
-          <Icon.ChevronRight className="text-sub ml-2 h-5 w-5" />
+          <Icon.ChevronRight className="ml-2 h-5 w-5 text-sub" />
         </Link>
         {/* <Link
           className="flex items-center justify-between py-2 transition md:hover:opacity-80"

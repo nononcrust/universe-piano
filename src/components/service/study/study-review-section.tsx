@@ -36,17 +36,19 @@ export const StudyReviewSection = () => {
             더 많은 후기들은 네이버 블로그와 인스타그램에서 확인 하실 수 있습니다.
           </p>
           <div className="mt-4 flex gap-4">
-            <Link href={siteConfig.links.blog}>
-              <Image
-                src={naverBlogIcon}
-                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
-                alt="네이버 블로그"
-              />
+            <Link
+              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+              href={siteConfig.links.blog}
+            >
+              <Image src={naverBlogIcon} className="h-12 w-12 rounded-[10px]" alt="네이버 블로그" />
             </Link>
-            <Link href={siteConfig.links.instagram}>
+            <Link
+              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+              href={siteConfig.links.instagram}
+            >
               <Image
                 src={instagramIcon}
-                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                className="h-12 w-12 cursor-pointer rounded-[10px]"
                 alt="인스타그램"
               />
             </Link>

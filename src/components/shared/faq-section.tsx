@@ -23,16 +23,17 @@ export const FaqSection = ({ children }: FaqSectionProps) => {
           {children}
         </Accordion.Root>
         <div className="mt-12 flex items-center justify-center">
-          <Link href={ROUTE.SUPPORT}>
-            <Button
-              variant="outlined"
-              className="h-12 rounded-full pl-10 pr-8 text-base"
-              size="large"
-            >
+          <Button
+            variant="outlined"
+            className="h-12 rounded-full pl-10 pr-8 text-base"
+            size="large"
+            asChild
+          >
+            <Link href={ROUTE.SUPPORT}>
               더보기
               <Icon.ChevronRight className="ml-1 h-5 w-5" />
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </Aos>
     </section>
@@ -47,8 +48,11 @@ interface FaqSectionItemProps {
 
 export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProps) => {
   return (
-    <Accordion.Item value={value} className="flex flex-col rounded-xl bg-white">
-      <Accordion.Trigger className="flex items-center justify-between p-4 font-semibold transition-all [&[data-state=open]>svg]:rotate-180">
+    <Accordion.Item
+      value={value}
+      className="has-[:focus-visible]:focus-ring flex flex-col rounded-xl bg-white"
+    >
+      <Accordion.Trigger className="flex items-center justify-between rounded-xl p-4 font-semibold outline-none transition-transform [&[data-state=open]>svg]:rotate-180">
         <div className="flex items-center gap-4">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-content font-bold">
             Q

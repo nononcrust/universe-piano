@@ -1,21 +1,17 @@
 "use client";
 
 import { Icon } from "@/components/shared/icon";
-import { IconButton } from "@/components/ui/icon-button";
 import { cn } from "@/lib/utils";
 import * as DialogPrimitives from "@radix-ui/react-dialog";
 import React from "react";
 
 const DialogRoot = DialogPrimitives.Root;
-DialogRoot.displayName = "Dialog";
 
 const DialogTrigger = DialogPrimitives.Trigger;
-DialogTrigger.displayName = "Dialog.Trigger";
 
 const DialogPortal = ({ className, ...props }: DialogPrimitives.DialogPortalProps) => (
   <DialogPrimitives.Portal className={cn(className)} {...props} />
 );
-DialogPortal.displayName = "Dialog.Portal";
 
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitives.Overlay>,
@@ -53,11 +49,15 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitives.Close className="absolute right-3 top-3 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:text-sub">
-        <IconButton>
-          <Icon.X className="h-4 w-4" />
-          <span className="sr-only">Close</span>
-        </IconButton>
+      <DialogPrimitives.Close
+        className={cn(
+          "absolute right-3 top-3 rounded-full p-2 disabled:pointer-events-none",
+          "focus-visible:focus-ring",
+          "data-[state=open]:text-sub",
+        )}
+      >
+        <Icon.X className="h-5 w-5" />
+        <span className="sr-only">Close</span>
       </DialogPrimitives.Close>
     </DialogPrimitives.Content>
   </DialogPortal>
@@ -67,7 +67,6 @@ DialogContent.displayName = "Dialog.Content";
 const DialogHeader = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => (
   <div className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)} {...props} />
 );
-DialogHeader.displayName = "Dialog.Header";
 
 const DialogFooter = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => (
   <div
@@ -75,7 +74,6 @@ const DialogFooter = ({ className, ...props }: React.ComponentPropsWithoutRef<"d
     {...props}
   />
 );
-DialogFooter.displayName = "Dialog.Footer";
 
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitives.Title>,

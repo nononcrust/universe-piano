@@ -37,17 +37,23 @@ export const ConsultingReviewSection = () => {
             수 있습니다.
           </p>
           <div className="mt-4 flex gap-4">
-            <Link href={siteConfig.links.blog}>
+            <Link
+              href={siteConfig.links.blog}
+              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+            >
               <Image
                 src={naverBlogIcon}
-                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                className="h-12 w-12 cursor-pointer rounded-[10px]"
                 alt="네이버 블로그"
               />
             </Link>
-            <Link href={siteConfig.links.instagram}>
+            <Link
+              href={siteConfig.links.instagram}
+              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+            >
               <Image
                 src={instagramIcon}
-                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                className="h-12 w-12 cursor-pointer rounded-[10px]"
                 alt="인스타그램"
               />
             </Link>
@@ -100,7 +106,7 @@ const ConsultingReviewItem = ({
         </Button>
         <Dialog open={dialog.isOpen} onOpenChange={dialog.onOpenChange}>
           <Dialog.Content className="max-h-[80vh] overflow-y-auto">
-            <Image src={kakaoImage} alt="" priority />
+            <Image className="w-full" src={kakaoImage} alt="" priority />
           </Dialog.Content>
         </Dialog>
       </div>

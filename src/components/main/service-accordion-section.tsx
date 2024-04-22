@@ -32,12 +32,12 @@ export const ServiceAccordionSection = () => {
                 }
               </p>
               <div className="flex justify-end">
-                <Link href={ROUTE.SERVICE.TUTORING}>
-                  <Button className="mt-8" variant="ghost">
+                <Button className="mr-1 mt-8" variant="ghost" asChild>
+                  <Link href={ROUTE.SERVICE.TUTORING}>
                     서비스 바로가기
                     <Icon.ChevronRight className="ml-1 h-5 w-5" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </Accordion.Content>
           </Accordion.Item>
@@ -56,12 +56,12 @@ export const ServiceAccordionSection = () => {
                 미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다.
               </p>
               <div className="flex justify-end">
-                <Link href={ROUTE.SERVICE.CONSULTING}>
-                  <Button className="mt-8" variant="ghost">
+                <Button className="mr-1 mt-8" variant="ghost" asChild>
+                  <Link href={ROUTE.SERVICE.CONSULTING}>
                     서비스 바로가기
                     <Icon.ChevronRight className="ml-1 h-5 w-5" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </Accordion.Content>
           </Accordion.Item>
@@ -82,12 +82,12 @@ export const ServiceAccordionSection = () => {
                 }
               </p>
               <div className="flex justify-end">
-                <Link href={ROUTE.SERVICE.STUDY}>
-                  <Button className="mt-8" variant="ghost">
+                <Button className="mr-1 mt-8" variant="ghost" asChild>
+                  <Link href={ROUTE.SERVICE.STUDY}>
                     서비스 바로가기
                     <Icon.ChevronRight className="ml-1 h-5 w-5" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </Accordion.Content>
           </Accordion.Item>
@@ -108,13 +108,12 @@ export const ServiceAccordionSection = () => {
                 미국 음대 독학러에게 필요한 서비스를 제공합니다.
               </p>
               <div className="flex justify-end">
-                {/* <Link href={ROUTE.SERVICE.PRODUCT.LIST}>
-                  <Button className="mt-8" variant="ghost">
+                <Button className="mr-1 mt-8" variant="ghost" asChild>
+                  <Link href={ROUTE.SERVICE.PRODUCT.LIST}>
                     서비스 바로가기
                     <Icon.ChevronRight className="ml-1 h-5 w-5" />
-                  </Button>
-                </Link> */}
-                <p className="mr-4 mt-8 font-medium text-sub">준비중</p>
+                  </Link>
+                </Button>
               </div>
               <div className="my-8 border-b" />
               <div className="flex items-center">
@@ -125,12 +124,12 @@ export const ServiceAccordionSection = () => {
                 {"혼자 하더라도 제대로 준비하자!\n맞춤형 정보 + 장학금 전략 + 학교 선정"}
               </p>
               <div className="flex justify-end">
-                <Link href={ROUTE.SERVICE.TUTORING}>
-                  <Button className="mt-8" variant="ghost">
+                <Button className="mr-1 mt-8" variant="ghost" asChild>
+                  <Link href={ROUTE.SERVICE.TUTORING}>
                     서비스 바로가기
                     <Icon.ChevronRight className="ml-1 h-5 w-5" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </Accordion.Content>
           </Accordion.Item>

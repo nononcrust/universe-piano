@@ -38,7 +38,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <Link
       href={ROUTE.SERVICE.PRODUCT.DETAIL(String(product.id))}
-      className="col flex cursor-pointer flex-col gap-2 pb-4"
+      className="focus-visible:focus-ring flex cursor-pointer flex-col gap-2 pb-4"
     >
       <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border">
         <Image

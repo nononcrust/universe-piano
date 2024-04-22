@@ -47,7 +47,7 @@ export default function SupportPage() {
   return (
     <main className="pb-16">
       <PageTitle className="container" title="자주 묻는 질문" />
-      <div className="container mt-8 flex gap-2 overflow-auto scrollbar-hide">
+      <div className="container mt-8 flex gap-2 overflow-auto py-1 scrollbar-hide">
         {Object.entries(TAB_LIST).map(([value, label], index) => (
           <Button
             key={index}

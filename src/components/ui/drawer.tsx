@@ -6,18 +6,14 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const DrawerRoot = DrawerPrimitives.Root;
-DrawerRoot.displayName = "Drawer";
 
 const DrawerTrigger = DrawerPrimitives.Trigger;
-DrawerTrigger.displayName = "Drawer.Trigger";
 
 const DrawerClose = DrawerPrimitives.Close;
-DrawerClose.displayName = "Drawer.Close";
 
 const DrawerPortal = ({ className, ...props }: DrawerPrimitives.DialogPortalProps) => (
   <DrawerPrimitives.Portal className={cn(className)} {...props} />
 );
-DrawerPortal.displayName = "Drawer.Portal";
 
 const DrawerOverlay = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitives.Overlay>,

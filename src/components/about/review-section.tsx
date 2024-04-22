@@ -38,17 +38,23 @@ export const ReviewSection = () => {
             더 많은 후기는 유니버스 피아노 네이버 블로그와 인스타그램 계정에서 확인 가능합니다.
           </p>
           <div className="mt-4 flex gap-4">
-            <Link href={siteConfig.links.blog}>
+            <Link
+              href={siteConfig.links.blog}
+              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+            >
               <Image
                 src={naverBlogIcon}
-                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                className="h-12 w-12 cursor-pointer rounded-[10px]"
                 alt="네이버 블로그"
               />
             </Link>
-            <Link href={siteConfig.links.instagram}>
+            <Link
+              href={siteConfig.links.instagram}
+              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+            >
               <Image
                 src={instagramIcon}
-                className="h-12 w-12 cursor-pointer rounded-[10px] transition md:hover:scale-110"
+                className="h-12 w-12 cursor-pointer rounded-[10px]"
                 alt="인스타그램"
               />
             </Link>

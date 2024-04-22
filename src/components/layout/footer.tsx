@@ -20,17 +20,21 @@ export const Footer = () => {
           {Object.values(footerNav).map((section, index) => (
             <div key={index} className="flex flex-col">
               <p className="font-medium">{section.title}</p>
-              <div className="mt-2">
+              <div className="mt-2 flex flex-col">
                 {section.children.map((item) => (
-                  <p key={item.title} className="text-sub hover:text-main mt-1 text-sm transition">
-                    <Link href={item.href}>{item.title}</Link>
-                  </p>
+                  <Link
+                    key={item.title}
+                    className="focus-visible:focus-ring mt-1 w-auto self-start text-sm text-sub transition-colors hover:text-main"
+                    href={item.href}
+                  >
+                    {item.title}
+                  </Link>
                 ))}
               </div>
             </div>
           ))}
         </div>
-        <div className="text-sub mt-8 text-sm">
+        <div className="mt-8 text-sm text-sub">
           <p>
             {`${siteConfig.businessName} | 대표이사: ${siteConfig.ceo} | 사업자번호: ${siteConfig.bin} | 통신판매업
             신고번호: 제 ${siteConfig.mailOrderBusinessNumber}`}
@@ -52,7 +56,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.instagram}
         target="_blank"
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="focus-visible:focus-ring flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/instagram.svg"
@@ -65,7 +69,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.kakao}
         target="_blank"
-        className="flex  h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="focus-visible:focus-ring flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/kakao.svg"
@@ -78,7 +82,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.blog}
         target="_blank"
-        className="flex  h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="focus-visible:focus-ring flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/naver-blog.svg"
@@ -91,7 +95,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.cafe}
         target="_blank"
-        className="flex  h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition hover:bg-gray-500"
+        className="focus-visible:focus-ring flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/naver-cafe.svg"

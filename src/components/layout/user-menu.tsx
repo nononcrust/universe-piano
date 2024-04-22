@@ -22,7 +22,7 @@ export const UserMenu = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger>
+      <DropdownMenu.Trigger className="focus-visible:focus-ring rounded-full">
         <Avatar className="h-8 w-8 cursor-pointer">
           <Avatar.Image src={user.profileImage} />
           <Avatar.Fallback resource={user.profileImage} />
@@ -43,7 +43,7 @@ export const UserMenu = () => {
                 <p className="text-lg font-medium">{user.nickname}</p>
                 <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
               </div>
-              <p className="text-sub text-sm">{user.email}</p>
+              <p className="text-sm text-sub">{user.email}</p>
             </div>
           </div>
         </div>

@@ -42,8 +42,16 @@ const SnsCard = () => {
         유니버스 피아노는 2019년부터 인스타그램을 기반으로 성장해 왔습니다.
       </Card.Subtitle>
       <div className="flex flex-1 items-end gap-2">
-        <Link href={siteConfig.links.instagram} className="transition hover:-translate-y-1">
-          <Image priority src={instagramIcon} className="h-10 w-10 rounded-[10px]" alt="" />
+        <Link
+          href={siteConfig.links.instagram}
+          className="focus-visible:focus-ring rounded-[10px] transition-transform hover:-translate-y-1"
+        >
+          <Image
+            priority
+            src={instagramIcon}
+            className="h-10 w-10 rounded-[10px]"
+            alt="인스타그램"
+          />
         </Link>
       </div>
     </Card>
@@ -61,8 +69,16 @@ const BlogCard = () => {
       <Card.Title>미국 음대 입시 칼럼</Card.Title>
       <Card.Subtitle>대표가 직접 전하는 미국 음대 입시 이야기</Card.Subtitle>
       <div className="flex flex-1 items-end gap-2">
-        <Link href={siteConfig.links.blog} className="transition hover:-translate-y-1">
-          <Image priority src={naverBlogIcon} className="h-10 w-10 rounded-[10px]" alt="" />
+        <Link
+          href={siteConfig.links.blog}
+          className="focus-visible:focus-ring rounded-[10px] transition-transform hover:-translate-y-1"
+        >
+          <Image
+            priority
+            src={naverBlogIcon}
+            className="h-10 w-10 rounded-[10px]"
+            alt="네이버 블로그"
+          />
         </Link>
       </div>
     </Card>

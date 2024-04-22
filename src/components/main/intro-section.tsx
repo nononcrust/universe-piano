@@ -15,12 +15,16 @@ export const IntroSection = () => {
           <Card.Title className="whitespace-pre-wrap">처음 오신 분들께,</Card.Title>
           <Card.Subtitle>유니버스 피아노를 소개합니다.</Card.Subtitle>
         </div>
-        <Link href={ROUTE.ABOUT.COMPANY}>
-          <Button variant="primary" className="mt-8 h-12 gap-1 rounded-full px-6 pr-4 md:mt-0">
+        <Button
+          variant="primary"
+          className="mt-8 h-12 gap-1 rounded-full px-6 pr-4 md:mt-0"
+          asChild
+        >
+          <Link href={ROUTE.ABOUT.COMPANY}>
             유니버스 피아노 소개
             <Icon.ChevronRight className="h-5 w-5" />
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </section>
   );

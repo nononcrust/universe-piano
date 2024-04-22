@@ -63,13 +63,13 @@ const SwiperNavigationButton = () => {
   return (
     <div className="bottom-0 left-1/2 mt-8 flex -translate-y-1/2 justify-center gap-4">
       <button
-        className={cn("rounded-full p-1 transition hover:bg-content")}
+        className={cn("focus-visible:focus-ring rounded-full p-1 transition hover:bg-content")}
         onClick={() => swiper.slidePrev()}
       >
         <Icon.ChevronLeft className="h-8 w-8" />
       </button>
       <button
-        className={cn("rounded-full p-1 transition hover:bg-content")}
+        className={cn("focus-visible:focus-ring rounded-full p-1 transition hover:bg-content")}
         onClick={() => swiper.slideNext()}
       >
         <Icon.ChevronRight className="h-8 w-8" />
