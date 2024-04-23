@@ -38,7 +38,7 @@ export default function KitListPage() {
           message="보유한 독학 키트가 없어요."
           className="mt-8"
           action={
-            <Link href={ROUTE.SERVICE.PRODUCT.LIST}>
+            <Link href={ROUTE.SERVICE.KIT.LIST}>
               <Button variant="secondary">독학 키트 둘러보기</Button>
             </Link>
           }

@@ -44,7 +44,7 @@ const SnsCard = () => {
       <div className="flex flex-1 items-end gap-2">
         <Link
           href={siteConfig.links.instagram}
-          className="focus-visible:focus-ring rounded-[10px] transition-transform hover:-translate-y-1"
+          className="rounded-[10px] transition-transform hover:-translate-y-1"
         >
           <Image
             priority
@@ -71,7 +71,7 @@ const BlogCard = () => {
       <div className="flex flex-1 items-end gap-2">
         <Link
           href={siteConfig.links.blog}
-          className="focus-visible:focus-ring rounded-[10px] transition-transform hover:-translate-y-1"
+          className="rounded-[10px] transition-transform hover:-translate-y-1"
         >
           <Image
             priority

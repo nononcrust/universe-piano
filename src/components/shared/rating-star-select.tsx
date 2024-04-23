@@ -12,12 +12,7 @@ export const RatingStarSelect = ({ value, onChange }: RatingStarSelectProps) => 
       {Array(5)
         .fill(0)
         .map((_, index) => (
-          <button
-            key={index}
-            onClick={() => onChange(index + 1)}
-            className="focus-visible:focus-ring h-8 w-8"
-            type="button"
-          >
+          <button key={index} onClick={() => onChange(index + 1)} className="h-8 w-8" type="button">
             <Icon.Star
               className={cn(
                 "h-8 w-8",

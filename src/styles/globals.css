@@ -18,7 +18,7 @@
 }
 
 @layer base {
-  button,
+  button:not([role="checkbox"]),
   a {
     @apply focus-visible:focus-ring;
   }

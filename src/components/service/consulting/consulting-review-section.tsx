@@ -39,7 +39,7 @@ export const ConsultingReviewSection = () => {
           <div className="mt-4 flex gap-4">
             <Link
               href={siteConfig.links.blog}
-              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+              className="rounded-[10px] transition-transform md:hover:scale-110"
             >
               <Image
                 src={naverBlogIcon}
@@ -49,7 +49,7 @@ export const ConsultingReviewSection = () => {
             </Link>
             <Link
               href={siteConfig.links.instagram}
-              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+              className="rounded-[10px] transition-transform md:hover:scale-110"
             >
               <Image
                 src={instagramIcon}

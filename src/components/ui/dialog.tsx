@@ -52,7 +52,6 @@ const DialogContent = React.forwardRef<
       <DialogPrimitives.Close
         className={cn(
           "absolute right-3 top-3 rounded-full p-2 disabled:pointer-events-none",
-          "focus-visible:focus-ring",
           "data-[state=open]:text-sub",
         )}
       >

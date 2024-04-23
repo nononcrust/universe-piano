@@ -38,7 +38,7 @@ export const WhatWeDoSection = () => {
           <WhatWeDoItem
             title="독학 키트"
             description="미국 음대 유학을 혼자 준비하시는 분들께 필요한 서비스를 제공합니다."
-            href={ROUTE.SERVICE.PRODUCT.LIST}
+            href={ROUTE.SERVICE.KIT.LIST}
             icon={<ColoredIcon.Storage className="h-10 w-10" />}
           />
         </div>
@@ -56,7 +56,7 @@ interface WhatWeDoItemProps {
 
 const WhatWeDoItem = ({ title, description, href, icon }: WhatWeDoItemProps) => {
   return (
-    <Link className="focus-visible:focus-ring group relative rounded-2xl" href={href}>
+    <Link className="group relative rounded-2xl" href={href}>
       <div className="flex cursor-pointer flex-col rounded-xl bg-white p-6 brightness-100 md:min-h-[360px] md:group-hover:brightness-50">
         <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-content">
           {icon}

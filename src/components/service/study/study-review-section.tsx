@@ -37,13 +37,13 @@ export const StudyReviewSection = () => {
           </p>
           <div className="mt-4 flex gap-4">
             <Link
-              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+              className="rounded-[10px] transition-transform md:hover:scale-110"
               href={siteConfig.links.blog}
             >
               <Image src={naverBlogIcon} className="h-12 w-12 rounded-[10px]" alt="네이버 블로그" />
             </Link>
             <Link
-              className="focus-visible:focus-ring rounded-[10px] transition-transform md:hover:scale-110"
+              className="rounded-[10px] transition-transform md:hover:scale-110"
               href={siteConfig.links.instagram}
             >
               <Image

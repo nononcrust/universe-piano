@@ -24,7 +24,7 @@ export const Footer = () => {
                 {section.children.map((item) => (
                   <Link
                     key={item.title}
-                    className="focus-visible:focus-ring mt-1 w-auto self-start text-sm text-sub transition-colors hover:text-main"
+                    className="mt-1 w-auto self-start text-sm text-sub transition-colors hover:text-main"
                     href={item.href}
                   >
                     {item.title}
@@ -56,7 +56,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.instagram}
         target="_blank"
-        className="focus-visible:focus-ring flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/instagram.svg"
@@ -69,7 +69,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.kakao}
         target="_blank"
-        className="focus-visible:focus-ring flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
+        className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/kakao.svg"
@@ -82,7 +82,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.blog}
         target="_blank"
-        className="focus-visible:focus-ring flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/naver-blog.svg"
@@ -95,7 +95,7 @@ const SocialIconList = () => {
       <Link
         href={siteConfig.links.cafe}
         target="_blank"
-        className="focus-visible:focus-ring flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:bg-gray-500"
       >
         <Image
           src="/socials/naver-cafe.svg"

@@ -10,14 +10,17 @@ export const ROUTE = {
   },
   SERVICE: {
     LIST: "/service",
-    PRODUCT: {
-      LIST: "/service/product",
-      DETAIL: (id: string) => `/service/product/${id}`,
+    KIT: {
+      LIST: "/service/kit",
+      DETAIL: (id: string) => `/service/kit/${id}`,
     },
     TUTORING: "/service/tutoring",
     CONSULTING: "/service/consulting",
     STUDY: "/service/study",
-    PARTIAL_CONSULTING: "/service/partial-consulting",
+    PARTIAL_CONSULTING: {
+      LIST: "/service/partial-consulting",
+      DETAIL: (id: string) => `/service/partial-consulting/${id}`,
+    },
   },
   NEWS: {
     LIST: "/news",

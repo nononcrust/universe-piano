@@ -1,46 +1,21 @@
 "use client";
 
 import kitThumbnailImage from "@/assets/images/kit/kit-119-thumbnail.jpg";
-import { PageTitle } from "@/components/layout/page-title";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ROUTE } from "@/constants/route";
-import { ProductList, useProductList } from "@/services/product";
+import { ProductList } from "@/services/product";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProductListPage() {
-  const { data: products, isPending } = useProductList();
-
-  return (
-    <main className="container pb-16">
-      <div className="flex items-center">
-        <PageTitle title="독학 키트">
-          <Badge className="ml-2" variant="primary">
-            new
-          </Badge>
-        </PageTitle>
-      </div>
-      <section className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products?.map((product) => <ProductItem key={product.id} product={product} />)}
-        {isPending && <ProductItem.Skeleton />}
-      </section>
-    </main>
-  );
-}
-
 interface ProductItemProps {
+  href: string;
   product: ProductList[number];
 }
 
-const ProductItem = ({ product }: ProductItemProps) => {
+export const ProductItem = ({ href, product }: ProductItemProps) => {
   return (
-    <Link
-      href={ROUTE.SERVICE.PRODUCT.DETAIL(String(product.id))}
-      className="focus-visible:focus-ring flex cursor-pointer flex-col gap-2 pb-4"
-    >
-      <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border">
+    <Link href={href} className="flex cursor-pointer flex-col gap-2 pb-4">
+      <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border p-4">
         <Image
           src={kitThumbnailImage}
           alt="상품 이미지"

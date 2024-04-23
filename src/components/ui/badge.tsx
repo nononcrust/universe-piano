@@ -5,7 +5,6 @@ import React from "react";
 const badgeVariants = cva(
   cn(
     "inline-flex items-center rounded-lg leading-9 border px-2 py-0.5 text-xs font-medium transition-colors",
-    "focus-visible:focus-ring",
   ),
   {
     variants: {

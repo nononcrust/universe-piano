@@ -24,7 +24,7 @@ export const Header = () => {
         <div className="border-b">
           <div className="container flex h-16 items-center justify-between space-x-4 sm:space-x-0">
             <div className="flex gap-12">
-              <Link href={ROUTE.HOME} className="focus-visible:focus-ring flex items-center">
+              <Link href={ROUTE.HOME} className="flex items-center">
                 <Image
                   width={48}
                   height={48}

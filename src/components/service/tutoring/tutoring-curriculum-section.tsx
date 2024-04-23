@@ -84,9 +84,9 @@ const CurriculumItem = ({ value, title, description, items }: CurriculumItemProp
   return (
     <Accordion.Item
       value={value}
-      className="has-[:focus-visible]:focus-ring flex flex-col rounded-2xl bg-white"
+      className="has-[:focus-visible]:focus-ring flex flex-col overflow-hidden rounded-2xl bg-white"
     >
-      <Accordion.Trigger className="flex items-center p-6 outline-none transition-all [&[data-state=open]>svg]:rotate-180">
+      <Accordion.Trigger className="flex items-center p-6 outline-none !ring-0 transition-transform [&[data-state=open]>svg]:rotate-180">
         <div className="flex w-full flex-col justify-center gap-2">
           <div className="flex">
             <p className="flex h-7 items-center rounded-lg bg-content px-3 font-semibold">

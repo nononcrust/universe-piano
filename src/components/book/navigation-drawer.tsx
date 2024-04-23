@@ -64,7 +64,7 @@ const DrawerItem = ({ title, href }: DrawerItemProps) => {
       scroll={false}
       href={ROUTE.BOOK.DETAIL(href)}
       className={cn(
-        "py-4 text-sub transition hover:text-main",
+        "py-4 text-sub transition-colors hover:text-main",
         isActive && "font-semibold text-main",
       )}
     >

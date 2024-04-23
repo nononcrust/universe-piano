@@ -92,11 +92,11 @@ export const siteContents = {
       },
       {
         title: "독학 키트",
-        href: ROUTE.SERVICE.PRODUCT.LIST,
+        href: ROUTE.SERVICE.KIT.LIST,
       },
       {
         title: "부분 컨설팅",
-        href: ROUTE.SERVICE.PARTIAL_CONSULTING,
+        href: ROUTE.SERVICE.PARTIAL_CONSULTING.LIST,
       },
     ],
   },
@@ -147,8 +147,6 @@ export const siteContents = {
     ],
   },
 };
-
-
 
 export const footerNav = {
   about: {

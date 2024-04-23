@@ -31,13 +31,13 @@ const SERVICES = [
   {
     title: "독학 키트",
     description: "독학러를 위한 유학 준비 키트",
-    href: ROUTE.SERVICE.PRODUCT.LIST,
+    href: ROUTE.SERVICE.KIT.LIST,
     icon: <ColoredIcon.Storage />,
   },
   {
     title: "부분 컨설팅",
     description: "부분 컨설팅",
-    href: ROUTE.SERVICE.PARTIAL_CONSULTING,
+    href: ROUTE.SERVICE.PARTIAL_CONSULTING.LIST,
     icon: <ColoredIcon.Question />,
   },
 ] as const;
@@ -52,7 +52,6 @@ export const HeaderNav = () => {
             className={cn(
               "text-sm font-medium text-sub transition-colors",
               "hover:font-semibold hover:text-main",
-              "focus-visible:focus-ring",
             )}
           >
             서비스
@@ -66,7 +65,7 @@ export const HeaderNav = () => {
           <NavigationMenu.Content>
             <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-1">
               {SERVICES.map((service) => (
-                <ListItem key={service.title} {...service}></ListItem>
+                <ListItem key={service.title} {...service} />
               ))}
             </ul>
           </NavigationMenu.Content>
@@ -94,7 +93,7 @@ const HeaderNavItem = ({ title, href }: HeaderNavItemProps) => {
     <Link
       href={href}
       className={cn(
-        "focus-visible:focus-ring flex items-center text-sm font-semibold text-sub transition-colors hover:text-main",
+        "flex items-center text-sm font-semibold text-sub transition-colors hover:text-main",
         pathname.startsWith(getDomain(href)) && "text-main",
       )}
     >
@@ -119,7 +118,6 @@ const ListItem = ({ title, description, icon, href }: ListItemProps) => {
           className={cn(
             "flex select-none gap-4 rounded-md p-3 leading-none no-underline transition-colors",
             "hover:bg-accent hover:text-main",
-            "focus-visible:focus-ring",
           )}
         >
           <div className="h-9 w-9 rounded-md bg-content p-2">{icon}</div>

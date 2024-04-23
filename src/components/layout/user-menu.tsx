@@ -22,16 +22,13 @@ export const UserMenu = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger className="focus-visible:focus-ring rounded-full">
+      <DropdownMenu.Trigger className="rounded-full">
         <Avatar className="h-8 w-8 cursor-pointer">
           <Avatar.Image src={user.profileImage} />
           <Avatar.Fallback resource={user.profileImage} />
         </Avatar>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content align="end" className="translate-y-1">
-        {/* <DropdownMenuItem asChild className="px-4 py-2">
-          <Link href={ROUTE.CART}>장바구니</Link>
-        </DropdownMenuItem> */}
         <div className="p-4 pr-12">
           <div className="flex gap-4">
             <Avatar className="h-12 w-12">
@@ -50,9 +47,9 @@ export const UserMenu = () => {
         <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.MYPAGE.PROFILE}>마이페이지</Link>
         </DropdownMenu.Item>
-        {/* <DropdownMenuItem asChild className="px-4 py-2 font-medium">
+        <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.KIT.LIST}>나의 독학 키트</Link>
-        </DropdownMenuItem> */}
+        </DropdownMenu.Item>
         <AccessControl role={Role.ADMIN}>
           <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
             <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>

@@ -21,7 +21,7 @@ import { useDeleteProductReview, useProductDetail, useProductReviewList } from "
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
-export default function ProductDetailPage() {
+export default function KitDetailPage() {
   const params = useParams<{ id: string }>();
 
   const session = useSession();

@@ -51,7 +51,7 @@ const OrderItem = ({ id, createdAt, category, productName, status }: OrderItemPr
   return (
     <Link
       href={ROUTE.ORDER.DETAIL(id)}
-      className="flex cursor-pointer items-center justify-between transition md:hover:translate-x-2"
+      className="flex cursor-pointer items-center justify-between"
     >
       <div className="flex flex-col">
         <p className="text-sm text-sub">{category}</p>

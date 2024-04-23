@@ -23,7 +23,7 @@ export const InstagramSection = () => {
               </p>
               <div className="flex flex-1 justify-center md:justify-start">
                 <Link
-                  className="focus-visible:focus-ring mt-2 rounded-lg transition-transform hover:scale-110 md:-translate-x-2"
+                  className="mt-2 rounded-lg transition-transform hover:scale-110 md:-translate-x-2"
                   href={siteConfig.links.instagram}
                 >
                   <Instagram className="h-16 w-16" />

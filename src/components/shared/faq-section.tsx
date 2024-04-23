@@ -52,7 +52,7 @@ export const FaqSectionItem = ({ title, description, value }: FaqSectionItemProp
       value={value}
       className="has-[:focus-visible]:focus-ring flex flex-col rounded-xl bg-white"
     >
-      <Accordion.Trigger className="flex items-center justify-between rounded-xl p-4 font-semibold outline-none transition-transform [&[data-state=open]>svg]:rotate-180">
+      <Accordion.Trigger className="flex items-center justify-between rounded-xl p-4 font-semibold !ring-0 transition-transform [&[data-state=open]>svg]:rotate-180">
         <div className="flex items-center gap-4">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-content font-bold">
             Q

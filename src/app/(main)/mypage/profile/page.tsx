@@ -52,14 +52,14 @@ export default function MyProfilePage() {
       <Separator className="mt-4" />
       <div className="mt-6 flex flex-col">
         <Link
-          className="flex items-center justify-between py-2 transition md:hover:opacity-80"
+          className="flex items-center justify-between py-2 transition-opacity md:hover:opacity-80"
           href={ROUTE.KIT.LIST}
         >
           <p className="flex-1 font-medium">나의 독학 키트</p>
           <Icon.ChevronRight className="ml-2 h-5 w-5 text-sub" />
         </Link>
         <Link
-          className="flex items-center justify-between py-2 transition md:hover:opacity-80"
+          className="flex items-center justify-between py-2 transition-opacity md:hover:opacity-80"
           href={ROUTE.MYPAGE.ORDER}
         >
           <p className="flex-1 font-medium">구매 내역</p>
