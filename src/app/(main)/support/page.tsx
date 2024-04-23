@@ -9,6 +9,7 @@ import { data as consultingData } from "@/contents/services/consulting";
 import { data as kitData } from "@/contents/services/kit";
 import { data as studyData } from "@/contents/services/study";
 import { data as tutoringData } from "@/contents/services/tutoring";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { useState } from "react";
 
 const ROWS_PER_PAGE = 5;
@@ -47,31 +48,33 @@ export default function SupportPage() {
   return (
     <main className="pb-16">
       <PageTitle className="container" title="자주 묻는 질문" />
-      <div className="container mt-8 flex gap-2 overflow-auto py-1 scrollbar-hide">
-        {Object.entries(TAB_LIST).map(([value, label], index) => (
-          <Button
-            key={index}
-            className="min-w-fit rounded-full px-4"
-            variant={tab === value ? "default" : "outlined"}
-            onClick={() => onCategoryChange(value)}
-          >
-            {label}
-          </Button>
-        ))}
-      </div>
-      <div className="container mt-8">
-        <Accordion type="single" collapsible key={tab}>
-          {currentFaqs.map((item, index) => (
-            <SupportListItem
-              key={item.title}
-              title={item.title}
-              content={item.description}
-              value={String(index)}
-              category={item.category}
-            />
+      <Tabs value={tab} onValueChange={onCategoryChange}>
+        <Tabs.List className="container mt-8 flex gap-2 overflow-auto py-1 scrollbar-hide">
+          {Object.entries(TAB_LIST).map(([value, label], index) => (
+            <Tabs.Trigger key={index} value={value} asChild>
+              <Button
+                className="min-w-fit rounded-full px-4"
+                variant={tab === value ? "default" : "outlined"}
+              >
+                {label}
+              </Button>
+            </Tabs.Trigger>
           ))}
-        </Accordion>
-      </div>
+        </Tabs.List>
+        <div className="container mt-8">
+          <Accordion type="single" collapsible key={tab}>
+            {currentFaqs.map((item, index) => (
+              <SupportListItem
+                key={item.title}
+                title={item.title}
+                content={item.description}
+                value={String(index)}
+                category={item.category}
+              />
+            ))}
+          </Accordion>
+        </div>
+      </Tabs>
       <Pagination
         className="container mt-8"
         currentPage={page}
@@ -104,3 +107,11 @@ const SupportListItem = ({ value, title, content, category }: SupportListItemPro
     </Accordion.Item>
   );
 };
+
+const Tabs = ({ children, ...props }: React.ComponentProps<typeof TabsPrimitive.Root>) => (
+  <TabsPrimitive.Root {...props}>{children}</TabsPrimitive.Root>
+);
+
+Tabs.Trigger = TabsPrimitive.Trigger;
+Tabs.List = TabsPrimitive.List;
+Tabs.Item = TabsPrimitive;
