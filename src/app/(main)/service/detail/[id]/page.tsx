@@ -95,14 +95,13 @@ const ProductInfoSection = () => {
         <PageTitle title="상세 정보" />
       </div>
       <div className="flex w-full max-w-4xl flex-1 flex-col">
-        <div className="mt-4 flex-col">
+        <div className="mt-4 max-w-4xl">
           <Image
             priority
-            width={0}
-            height={0}
-            sizes="100vw"
+            width={896}
+            height={4000}
             quality={100}
-            className="h-full w-full rounded-lg"
+            className="rounded-lg"
             src={storage.getFileUrl(product.images[1].url)}
             alt="상세 정보 이미지"
           />
