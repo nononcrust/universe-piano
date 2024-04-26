@@ -1,8 +1,8 @@
 "use client";
 
-import kitThumbnailImage from "@/assets/images/kit/kit-119-thumbnail.jpg";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Skeleton } from "@/components/ui/skeleton";
+import { storage } from "@/lib/supabase";
 import { ProductList } from "@/services/product";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,7 +17,9 @@ export const ProductItem = ({ href, product }: ProductItemProps) => {
     <Link href={href} className="flex cursor-pointer flex-col gap-2 pb-4">
       <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border p-4">
         <Image
-          src={kitThumbnailImage}
+          src={storage.getFileUrl(product.images[0].url)}
+          width={640}
+          height={640}
           alt="상품 이미지"
           className="transition-all hover:scale-100 md:hover:scale-105"
         />

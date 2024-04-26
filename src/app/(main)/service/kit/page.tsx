@@ -3,11 +3,14 @@
 import { PageTitle } from "@/components/layout/page-title";
 import { ProductItem } from "@/components/service/product/product-item";
 import { Badge } from "@/components/ui/badge";
+import { CATEGORY } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useProductList } from "@/services/product";
 
 export default function KitListPage() {
-  const { data: kits, isPending } = useProductList();
+  const { data: kits, isPending } = useProductList({
+    category: CATEGORY.KIT,
+  });
 
   return (
     <main className="container pb-16">

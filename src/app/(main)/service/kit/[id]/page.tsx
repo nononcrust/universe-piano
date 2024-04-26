@@ -1,7 +1,5 @@
 "use client";
 
-import detailImage from "@/assets/images/kit/kit-119-detail.jpg";
-import thumbnailImage from "@/assets/images/kit/kit-119-thumbnail.jpg";
 import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
@@ -12,8 +10,8 @@ import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
-import { data } from "@/contents/services/kit";
 import { useDialog } from "@/hooks/use-dialog";
+import { storage } from "@/lib/supabase";
 import { formatDate } from "@/lib/utils";
 import { useSession } from "@/services/auth";
 import { useMyProductReviewList, usePurchasedProductList } from "@/services/me";
@@ -39,20 +37,25 @@ export default function KitDetailPage() {
         <ProductImageSection />
         <ProductOptionSection />
       </section>
-      <section className="relative mt-8 flex flex-col gap-12 md:flex-row">
+      <section className="relative mt-8 flex justify-center">
         <ProductInfoSection />
-        <ProductAside />
       </section>
     </main>
   );
 }
 
 const ProductImageSection = () => {
+  const params = useParams<{ id: string }>();
+
+  const { data: product } = useProductDetail({ id: params.id });
+
+  if (!product) return null;
+
   return (
     <div className="flex-1">
       <div className="flex aspect-square items-center justify-center rounded-2xl border">
         <Image
-          src={thumbnailImage}
+          src={storage.getFileUrl(product.images[0].url)}
           alt="썸네일 이미지"
           className="aspect-square"
           width={400}
@@ -95,63 +98,66 @@ const ProductInfoSection = () => {
     (purchasedProduct) => purchasedProduct.id === product?.id,
   );
 
-  return (
-    <div className="flex flex-1 flex-col">
-      <PageTitle title="상세 정보" />
-      <div className="mt-4 basis-2/3 flex-col">
-        <div className="flex flex-col gap-8">
-          <Image className="rounded-lg" src={detailImage} alt="상세 정보 이미지" />
-        </div>
-      </div>
-      <div>
-        <PageTitle title="Q&A" />
-        <Accordion className="mt-4" type="single" collapsible>
-          {data.faq.map((item, index) => (
-            <Accordion.Item key={index} value={String(index)} className="ml-2 md:ml-0">
-              <Accordion.Trigger>
-                <div className="my-1 flex gap-2">
-                  <p className="mr-4 flex-1 text-left">
-                    {index + 1}. {item.title}
-                  </p>
-                </div>
-              </Accordion.Trigger>
-              <Accordion.Content className="ml-1 whitespace-pre-wrap">
-                {item.description}
-              </Accordion.Content>
-            </Accordion.Item>
-          ))}
-        </Accordion>
-      </div>
-      <div className="relative">
-        <PageTitle title="상품 리뷰" />
-        {hasPurchased && (
-          <Button
-            className="absolute bottom-0 right-0"
-            variant="outlined"
-            onClick={productReviewAddDialog.open}
-          >
-            리뷰 작성하기
-          </Button>
-        )}
-        <ProductReviewAddDialog
-          productId={params.id}
-          isOpen={productReviewAddDialog.isOpen}
-          onOpenChange={productReviewAddDialog.onOpenChange}
-          onClose={productReviewAddDialog.close}
-        />
-      </div>
-      <ProductReviewList />
-    </div>
-  );
-};
+  if (!product) return null;
 
-const ProductAside = () => {
   return (
-    <aside className="basis-1/3">
-      <div className="sticky top-24 flex flex-col">
-        <ProductAction />
+    <div className="flex w-full flex-col items-center">
+      <div className="flex w-full border-b py-4">
+        <PageTitle title="상세 정보" />
       </div>
-    </aside>
+      <div className="flex w-full max-w-4xl flex-1 flex-col">
+        <div className="mt-4 flex-col">
+          <Image
+            priority
+            width={0}
+            height={0}
+            sizes="100vw"
+            quality={100}
+            className="h-full w-full rounded-lg"
+            src={storage.getFileUrl(product.images[1].url)}
+            alt="상세 정보 이미지"
+          />
+        </div>
+        <div>
+          <PageTitle title="Q&A" />
+          <Accordion className="mt-4" type="single" collapsible>
+            {product?.faqs.map((faq, index) => (
+              <Accordion.Item key={index} value={String(index)} className="ml-2 md:ml-0">
+                <Accordion.Trigger>
+                  <div className="my-1 flex gap-2">
+                    <p className="mr-4 flex-1 text-left">
+                      {index + 1}. {faq.title}
+                    </p>
+                  </div>
+                </Accordion.Trigger>
+                <Accordion.Content className="ml-1 whitespace-pre-wrap">
+                  {faq.content}
+                </Accordion.Content>
+              </Accordion.Item>
+            ))}
+          </Accordion>
+        </div>
+        <div className="relative">
+          <PageTitle title="상품 리뷰" />
+          {hasPurchased && (
+            <Button
+              className="absolute bottom-0 right-0"
+              variant="outlined"
+              onClick={productReviewAddDialog.open}
+            >
+              리뷰 작성하기
+            </Button>
+          )}
+          <ProductReviewAddDialog
+            productId={params.id}
+            isOpen={productReviewAddDialog.isOpen}
+            onOpenChange={productReviewAddDialog.onOpenChange}
+            onClose={productReviewAddDialog.close}
+          />
+        </div>
+        <ProductReviewList />
+      </div>
+    </div>
   );
 };
 

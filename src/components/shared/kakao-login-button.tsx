@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import { KAKAO_LOGIN_URL } from "@/services/kakao";
+import Link from "next/link";
 
 interface KakaoLoginButtonProps {
   className?: string;
@@ -6,16 +8,18 @@ interface KakaoLoginButtonProps {
 
 export const KakaoLoginButton = ({ className, ...props }: KakaoLoginButtonProps) => {
   return (
-    <button
+    <Link
+      href={KAKAO_LOGIN_URL}
+      replace
       className={cn(
-        "flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border border-white bg-[#FFEB00] px-4 text-sm font-medium text-[#3C2929] transition hover:border-gray-200",
+        "flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border border-white bg-[#FFEB00] px-4 text-sm font-medium text-[#3C2929] transition-colors hover:border-gray-200",
         className,
       )}
       {...props}
     >
       <KakaoLogo />
       카카오 계정으로 로그인
-    </button>
+    </Link>
   );
 };
 

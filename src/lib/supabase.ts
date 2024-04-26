@@ -36,7 +36,7 @@ const deleteFiles = async (paths: string[]) => {
 };
 
 const getFileUrl = (path: string) => {
-  return `${STORAGE_URL}/${path}`;
+  return `${STORAGE_URL}${path}`;
 };
 
 export const storage = {

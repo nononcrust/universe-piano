@@ -54,7 +54,7 @@ export default function OrderDetailPage() {
               <p className="text-sm">
                 {orderItem.product.category.name} | {orderItem.product.name}
               </p>
-              <p className="font-medium">{orderItem.product.price}원</p>
+              <p className="font-medium">{orderItem.product.price.toLocaleString()}원</p>
             </div>
           </div>
         ))}
@@ -63,35 +63,35 @@ export default function OrderDetailPage() {
       <Separator className="mt-4" />
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="text-sub text-sm font-medium">주문번호</p>
+          <p className="text-sm font-medium text-sub">주문번호</p>
           <p className="text-sm font-medium">{order.number}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sub text-sm font-medium">주문일시</p>
+          <p className="text-sm font-medium text-sub">주문일시</p>
           <p className="text-sm font-medium">{formatDate(order.createdAt)}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sub text-sm font-medium">주문상태</p>
+          <p className="text-sm font-medium text-sub">주문상태</p>
           <p className="text-sm font-medium">{ORDER_STATUS_LABEL[order.status]}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sub text-sm font-medium">결제금액</p>
-          <p className="text-sm font-medium">{"111"}</p>
+          <p className="text-sm font-medium text-sub">결제금액</p>
+          <p className="text-sm font-medium">{order.orderItems[0].price.toLocaleString()}원</p>
         </div>
       </div>
       <PageSubtitle className="mt-16" title="결제 정보" />
       <Separator className="mt-4" />
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="text-sub text-sm font-medium">결제방법</p>
+          <p className="text-sm font-medium text-sub">결제방법</p>
           <p className="text-sm font-medium">무통장 입금</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sub text-sm font-medium">예금주명</p>
+          <p className="text-sm font-medium text-sub">예금주명</p>
           <p className="text-sm font-medium">{siteConfig.depositAccount.holder}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sub text-sm font-medium">입금계좌</p>
+          <p className="text-sm font-medium text-sub">입금계좌</p>
           <p className="text-sm font-medium">
             {siteConfig.depositAccount.bank} {siteConfig.depositAccount.number}
           </p>

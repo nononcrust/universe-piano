@@ -138,6 +138,7 @@ model Product {
   images         Image[]
   productReviews ProductReview[]
   orders         OrderItem[]
+  faqs           Faq[]
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
@@ -183,6 +184,18 @@ model ProductReview {
 
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+}
+
+model Faq {
+  id      String @id @default(cuid())
+  title   String
+  content String
+
+  product   Product? @relation(fields: [productId], references: [id])
+  productId String?
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()

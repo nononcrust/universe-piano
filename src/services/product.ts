@@ -6,8 +6,13 @@ import { z } from "zod";
 import { queryKeys as meQueryKeys } from "./me";
 
 export const productRepository = {
-  getProductList: () => {
+  getProductList: (category?: string) => {
     return prisma.product.findMany({
+      where: {
+        category: {
+          name: category,
+        },
+      },
       include: {
         images: true,
         productReviews: true,
@@ -25,6 +30,7 @@ export const productRepository = {
         images: true,
         productReviews: true,
         category: true,
+        faqs: true,
       },
       where: {
         id,
@@ -52,6 +58,10 @@ export type ProductReviewList = Prisma.PromiseReturnType<
   typeof productRepository.getProductReviewListById
 >;
 
+export const productListRequestSchema = z.object({
+  category: z.string().optional().nullable(),
+});
+
 export const productReviewCreateRequestSchema = z.object({
   rating: z.number().int().min(1).max(5),
   content: z.string().min(1).max(1000),
@@ -63,8 +73,8 @@ const PRODUCT_ENDPOINT = "/product";
 const REVIEW_ENDPOINT = "/product-review";
 
 const productApi = {
-  getProductList: async () => {
-    const response = await api.get<ProductList>(PRODUCT_ENDPOINT);
+  getProductList: async (params?: GetProductListParams) => {
+    const response = await api.get<ProductList>(PRODUCT_ENDPOINT, { params });
     return response.data;
   },
   getProductById: async (data: { params: { id: string } }) => {
@@ -90,6 +100,10 @@ const productApi = {
   },
 };
 
+interface GetProductListParams {
+  category?: string;
+}
+
 export const queryKeys = {
   all: () => [PRODUCT_ENDPOINT] as const,
   detail: (id?: string) => [...queryKeys.all(), id] as const,
@@ -97,10 +111,10 @@ export const queryKeys = {
   reviewList: (id?: string) => [...queryKeys.all(), "review-list", id] as const,
 };
 
-export const useProductList = () => {
+export const useProductList = (params?: GetProductListParams) => {
   return useQuery({
     queryKey: queryKeys.list(),
-    queryFn: productApi.getProductList,
+    queryFn: () => productApi.getProductList(params),
   });
 };
 
