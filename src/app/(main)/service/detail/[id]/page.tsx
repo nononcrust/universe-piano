@@ -162,7 +162,7 @@ const ProductAction = () => {
     (purchasedProducts) => purchasedProducts.id === product?.id,
   );
 
-  if (!product) return null;
+  if (!product || !purchasedProducts) return null;
 
   return (
     <div className="mt-8 flex flex-col gap-4">
