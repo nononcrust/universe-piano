@@ -6,13 +6,13 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE } from "@/constants/route";
+import { storage } from "@/lib/supabase";
 import { useMyKitList } from "@/services/me";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function KitListPage() {
+export default function MyKitListPage() {
   const { data: products, isPending } = useMyKitList();
-  console.log(products);
 
   return (
     <main className="container pb-16">
@@ -28,7 +28,7 @@ export default function KitListPage() {
             <PurchasedProductItem
               key={product.id}
               contentUrl={product.contentUrl}
-              imageSrc="/images/logo.svg"
+              imageSrc={storage.getFileUrl(product.images[0].url)}
               name={product.name}
             />
           ))}
@@ -58,12 +58,12 @@ interface PurchasedProductItemProps {
 const PurchasedProductItem = ({ contentUrl, name, imageSrc }: PurchasedProductItemProps) => {
   return (
     <Link href={contentUrl} className="col flex cursor-pointer flex-col gap-2 pb-4">
-      <AspectRatio ratio={1} className="rounded-2xl border">
+      <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border">
         <Image
           src={imageSrc}
           fill
           alt="상품 이미지"
-          className="transition-all hover:scale-100 md:hover:scale-110"
+          className="p-2 transition-all hover:scale-100 md:hover:scale-105"
         />
       </AspectRatio>
       <div className="flex flex-col">
