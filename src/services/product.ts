@@ -113,7 +113,7 @@ export const queryKeys = {
 
 export const useProductList = (params?: GetProductListParams) => {
   return useQuery({
-    queryKey: queryKeys.list(),
+    queryKey: [...queryKeys.list(), params],
     queryFn: () => productApi.getProductList(params),
   });
 };

@@ -1,3 +1,4 @@
+import { CATEGORY } from "@/constants/enum";
 import { prisma } from "@/lib/prisma";
 import { api } from "@/services/shared";
 import { OrderStatus, Prisma } from "@prisma/client";
@@ -57,6 +58,38 @@ export const meRepository = {
       },
     });
   },
+  getMyKitList: (session: Session) => {
+    return prisma.order
+      .findMany({
+        where: {
+          userId: session.user.id,
+          status: OrderStatus.PAYMENT_COMPLETED,
+          orderItems: {
+            some: {
+              product: {
+                category: {
+                  name: CATEGORY.KIT,
+                },
+              },
+            },
+          },
+        },
+        include: {
+          orderItems: {
+            include: {
+              product: {
+                include: {
+                  images: true,
+                },
+              },
+            },
+          },
+        },
+      })
+      .then((orders) => {
+        return orders.flatMap((order) => order.orderItems.map((orderItem) => orderItem.product));
+      });
+  },
 };
 
 export type PurchasedProductList = Prisma.PromiseReturnType<
@@ -82,6 +115,10 @@ export const meApi = {
     const response = await api.get<MyProductReviewList>(`${ENDPOINT}/reviews`);
     return response.data;
   },
+  getMyKitList: async () => {
+    const response = await api.get<PurchasedProductList>(`${ENDPOINT}/kits`);
+    return response.data;
+  },
 };
 
 export const queryKeys = {
@@ -89,6 +126,7 @@ export const queryKeys = {
   purchasedProducts: () => [...queryKeys.all(), "purchased-products"] as const,
   orderList: () => [...queryKeys.all(), "order-list"] as const,
   productReviewList: () => [...queryKeys.all(), "product-review-list"] as const,
+  myKitList: () => [...queryKeys.all(), "kit-list"] as const,
 };
 
 export const usePurchasedProductList = () => {
@@ -97,6 +135,16 @@ export const usePurchasedProductList = () => {
   return useQuery({
     queryKey: queryKeys.purchasedProducts(),
     queryFn: meApi.getPurchasedProductList,
+    enabled: !!session.data,
+  });
+};
+
+export const useMyKitList = () => {
+  const session = useSession();
+
+  return useQuery({
+    queryKey: queryKeys.myKitList(),
+    queryFn: meApi.getMyKitList,
     enabled: !!session.data,
   });
 };

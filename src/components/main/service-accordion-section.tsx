@@ -109,7 +109,7 @@ export const ServiceAccordionSection = () => {
               </p>
               <div className="flex justify-end">
                 <Button className="mr-1 mt-8" variant="ghost" asChild>
-                  <Link href={ROUTE.SERVICE.KIT.LIST}>
+                  <Link href={ROUTE.SERVICE.KIT}>
                     서비스 바로가기
                     <Icon.ChevronRight className="ml-1 h-5 w-5" />
                   </Link>

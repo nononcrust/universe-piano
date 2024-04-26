@@ -3,11 +3,14 @@
 import { PageTitle } from "@/components/layout/page-title";
 import { ProductItem } from "@/components/service/product/product-item";
 import { Badge } from "@/components/ui/badge";
+import { CATEGORY } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useProductList } from "@/services/product";
 
 export default function PartialConsultingPage() {
-  const { data: items, isPending } = useProductList();
+  const { data: items, isPending } = useProductList({
+    category: CATEGORY.PARTIAL_CONSULTING,
+  });
 
   return (
     <main className="container pb-16">
@@ -22,7 +25,7 @@ export default function PartialConsultingPage() {
         {items?.map((product) => (
           <ProductItem
             key={product.id}
-            href={ROUTE.SERVICE.PARTIAL_CONSULTING.DETAIL(String(product.id))}
+            href={ROUTE.SERVICE.DETAIL(String(product.id))}
             product={product}
           />
         ))}

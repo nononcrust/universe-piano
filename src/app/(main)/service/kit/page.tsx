@@ -25,7 +25,7 @@ export default function KitListPage() {
         {kits?.map((product) => (
           <ProductItem
             key={product.id}
-            href={ROUTE.SERVICE.KIT.DETAIL(String(product.id))}
+            href={ROUTE.SERVICE.DETAIL(String(product.id))}
             product={product}
           />
         ))}

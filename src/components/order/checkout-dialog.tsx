@@ -12,7 +12,7 @@ interface CheckoutDialogProps {
 export const CheckoutDialog = (props: CheckoutDialogProps) => {
   return (
     <Dialog open={props.isOpen} onOpenChange={props.onOpenChange}>
-      <Dialog.Content className="h-5/6 overflow-y-auto">
+      <Dialog.Content className="overflow-y-auto">
         <Dialog.Header>
           <Dialog.Title>주문하기</Dialog.Title>
         </Dialog.Header>

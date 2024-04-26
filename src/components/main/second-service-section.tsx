@@ -67,7 +67,7 @@ const ScholarshipCard = () => {
 
 const AuditionKitCard = () => {
   return (
-    <Link href={ROUTE.SERVICE.KIT.LIST} target="_blank" className="rounded-xl">
+    <Link href={ROUTE.SERVICE.KIT} target="_blank" className="rounded-xl">
       <Card className="max-h-[160px] min-h-[160px] transition md:hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

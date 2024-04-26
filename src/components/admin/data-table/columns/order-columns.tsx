@@ -12,7 +12,7 @@ export const orderColumns: ColumnDef<OrderList[number]>[] = [
     accessorKey: "number",
     cell: ({ row }) => (
       <Link className="hover:underline" href={ROUTE.ADMIN.ORDER.EDIT(row.original.id)}>
-        {row.original.number}
+        {row.original.orderNumber}
       </Link>
     ),
   },

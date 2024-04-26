@@ -38,7 +38,7 @@ export const WhatWeDoSection = () => {
           <WhatWeDoItem
             title="독학 키트"
             description="미국 음대 유학을 혼자 준비하시는 분들께 필요한 서비스를 제공합니다."
-            href={ROUTE.SERVICE.KIT.LIST}
+            href={ROUTE.SERVICE.KIT}
             icon={<ColoredIcon.Storage className="h-10 w-10" />}
           />
         </div>

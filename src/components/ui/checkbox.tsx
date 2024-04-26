@@ -34,11 +34,11 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
           <div
             className={cn(
               "h-[15px] w-[15px] rounded-[4px] border border-border transition",
-              "group-focus:ring-2 group-focus:ring-ring group-focus:ring-offset-1",
+              "group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-1",
               "group-data-[state=checked]:border-black group-data-[state=checked]:bg-black group-data-[state=checked]:hover:bg-black",
               "group-disabled:opacity-50",
               error &&
-                "border-error group-focus:border-error-dark group-focus:ring-error-lighter group-data-[state=checked]:border-error-dark group-data-[state=checked]:bg-error group-data-[state=checked]:hover:bg-error",
+                "border-error group-focus-visible:border-error-dark group-focus-visible:ring-error-lighter group-data-[state=checked]:border-error-dark group-data-[state=checked]:bg-error group-data-[state=checked]:hover:bg-error",
             )}
           >
             <CheckboxPrimitives.Indicator className="absolute inset-0 flex items-center justify-center">

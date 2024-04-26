@@ -19,18 +19,7 @@ import { useDeleteProductReview, useProductDetail, useProductReviewList } from "
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
-export default function KitDetailPage() {
-  const params = useParams<{ id: string }>();
-
-  const session = useSession();
-
-  const { isPending: isProductDetailPending } = useProductDetail({ id: params.id });
-  const { isPending: isPurchasedProductsPending } = usePurchasedProductList();
-
-  if (isProductDetailPending) return null;
-
-  if (session.data && isPurchasedProductsPending) return null;
-
+export default function ProductDetailPage() {
   return (
     <main className="container pb-16">
       <section className="mt-5 flex flex-col gap-12 md:mt-12 md:flex-row">

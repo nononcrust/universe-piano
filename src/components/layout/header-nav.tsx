@@ -31,13 +31,13 @@ const SERVICES = [
   {
     title: "독학 키트",
     description: "독학러를 위한 유학 준비 키트",
-    href: ROUTE.SERVICE.KIT.LIST,
+    href: ROUTE.SERVICE.KIT,
     icon: <ColoredIcon.Storage />,
   },
   {
     title: "부분 컨설팅",
     description: "부분 컨설팅",
-    href: ROUTE.SERVICE.PARTIAL_CONSULTING.LIST,
+    href: ROUTE.SERVICE.PARTIAL_CONSULTING,
     icon: <ColoredIcon.Question />,
   },
 ] as const;

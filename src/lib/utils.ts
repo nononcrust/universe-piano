@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { format } from "date-fns";
+import { nanoid } from "nanoid";
 import { twMerge } from "tailwind-merge";
 
 export const cn = (...inputs: ClassValue[]) => {
@@ -99,4 +100,8 @@ export const convertBytesToSize = (bytes: number) => {
   if (index === 0) return `${bytes} ${sizes[index]}`;
 
   return `${(bytes / 1024 ** index).toFixed(1)} ${sizes[index]}`;
+};
+
+export const generateOrderNumber = () => {
+  return nanoid(8).toUpperCase();
 };

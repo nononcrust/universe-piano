@@ -1,5 +1,6 @@
 import { getServerSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { generateOrderNumber } from "@/lib/utils";
 import { orderRepository, orderRequestSchema } from "@/services/order";
 import { ZodError } from "zod";
 
@@ -29,6 +30,7 @@ export const POST = async (request: Request) => {
 
     const order = await prisma.order.create({
       data: {
+        orderNumber: generateOrderNumber(),
         point: body.point,
         status: body.status,
         user: {

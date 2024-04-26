@@ -6,12 +6,13 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE } from "@/constants/route";
-import { usePurchasedProductList } from "@/services/me";
+import { useMyKitList } from "@/services/me";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function KitListPage() {
-  const { data: products, isPending } = usePurchasedProductList();
+  const { data: products, isPending } = useMyKitList();
+  console.log(products);
 
   return (
     <main className="container pb-16">
@@ -38,7 +39,7 @@ export default function KitListPage() {
           message="보유한 독학 키트가 없어요."
           className="mt-8"
           action={
-            <Link href={ROUTE.SERVICE.KIT.LIST}>
+            <Link href={ROUTE.SERVICE.KIT}>
               <Button variant="secondary">독학 키트 둘러보기</Button>
             </Link>
           }

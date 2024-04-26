@@ -146,7 +146,7 @@ model Product {
 
 model Order {
   id     String      @unique @default(cuid())
-  number Int         @id @default(autoincrement())
+  orderNumber String
   point  Int
   status OrderStatus
 

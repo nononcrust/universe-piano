@@ -9,9 +9,11 @@ import { siteConfig } from "@/configs/site";
 import { ORDER_STATUS_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useDialog } from "@/hooks/use-dialog";
+import { storage } from "@/lib/supabase";
 import { formatDate } from "@/lib/utils";
 import { useDeleteOrder, useOrderDetail } from "@/services/order";
 import { OrderStatus } from "@prisma/client";
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -49,7 +51,13 @@ export default function OrderDetailPage() {
       <div className="mt-4">
         {order.orderItems.map((orderItem) => (
           <div className="flex gap-4" key={orderItem.id}>
-            <div className="h-20 w-20 rounded-md bg-content" />
+            <Image
+              className="h-[100px] w-[100px] rounded-md border bg-transparent p-2"
+              src={storage.getFileUrl(orderItem.product.images[0].url)}
+              width={100}
+              height={100}
+              alt="상품 썸네일"
+            />
             <div className="flex flex-1 flex-col gap-2">
               <p className="text-sm">
                 {orderItem.product.category.name} | {orderItem.product.name}
@@ -64,7 +72,7 @@ export default function OrderDetailPage() {
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-sub">주문번호</p>
-          <p className="text-sm font-medium">{order.number}</p>
+          <p className="text-sm font-medium">{order.orderNumber}</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-sub">주문일시</p>

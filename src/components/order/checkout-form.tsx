@@ -9,11 +9,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { ROUTE } from "@/constants/route";
+import { storage } from "@/lib/supabase";
 import { allowNumberOnly, cn, defaultZero, limitMaxNumber, trimLeadingZeros } from "@/lib/utils";
 import { useSession } from "@/services/auth";
 import { useCreateOrder } from "@/services/order";
 import { useProductDetail } from "@/services/product";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -24,7 +26,10 @@ interface CheckoutFormProps {
 
 const formSchema = z.object({
   point: z.string(),
-  terms: z.boolean(),
+  // true
+  terms: z.literal<boolean>(true, {
+    errorMap: () => ({ message: "서비스 이용약관에 동의해주세요." }),
+  }),
 });
 
 export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
@@ -82,7 +87,13 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
         <section>
           <PageSubtitle title="상품 정보" className="mb-4 mt-4" />
           <div className="flex gap-4">
-            <div className="h-20 w-20 rounded-md bg-content" />
+            <Image
+              className="h-[100px] w-[100px] rounded-md border bg-transparent p-2"
+              src={storage.getFileUrl(product.images[0].url)}
+              width={100}
+              height={100}
+              alt="상품 썸네일"
+            />
             <div className="flex flex-1 flex-col gap-2">
               <p className="text-sm">
                 {product.category.name} | {product.name}
@@ -192,7 +203,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
           size="large"
           className="mt-8 w-full max-md:h-14 max-md:text-base"
           type="submit"
-          disabled={!!form.formState.errors.terms || createOrderMutation.isPending}
+          disabled={createOrderMutation.isPending || form.formState.isSubmitSuccessful}
         >
           결제하기
         </Button>
