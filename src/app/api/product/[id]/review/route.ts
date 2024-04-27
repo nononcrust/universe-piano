@@ -33,19 +33,13 @@ export const POST = async (request: Request, context: Context) => {
     const productId = context.params.id;
 
     const formData = await request.formData();
-    console.log("#formData", formData);
-    console.log("#formData Entries", formData.entries());
-    console.log("## formDataobject", Object.fromEntries(formData.entries()));
 
     const body = productReviewCreateRequestSchema.parse(Object.fromEntries(formData.entries()));
 
     const images = formData.get("images[]") as File;
-    console.log("## images", images);
 
     if (images) {
-      console.log("imgae creating");
       const { path } = await storage.uploadFile(images, UPLOAD_FOLDER.REVIEW);
-      console.log("image cerated", path);
 
       const productReview = await prisma.productReview.create({
         data: {
