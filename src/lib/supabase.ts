@@ -7,9 +7,9 @@ const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY!;
 const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!;
 
 export const UPLOAD_FOLDER = {
-  AUDITION: "audition",
-  PROFILE: "profile",
-  REVIEW: "review",
+  AUDITION: "/audition",
+  PROFILE: "/profile",
+  REVIEW: "/review",
 } as const;
 
 const uploadFile = async (file: File, folder?: string) => {

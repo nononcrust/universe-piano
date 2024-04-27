@@ -150,7 +150,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
                 render={({ field }) => (
                   <Form.Item>
                     <Form.Control>
-                      <ImageInput value={field.value || []} onChange={field.onChange} />
+                      <ImageInput onChange={field.onChange} />
                     </Form.Control>
                   </Form.Item>
                 )}

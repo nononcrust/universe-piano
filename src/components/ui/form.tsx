@@ -165,9 +165,9 @@ interface FormErrorMessageProps extends React.ComponentPropsWithoutRef<"p"> {}
 const FormErrorMessage = React.forwardRef<HTMLParagraphElement, FormErrorMessageProps>(
   ({ className, children, ...props }, ref) => {
     const { error, formErrorMessageId } = useFormFieldContext();
-    const body = error ? String(error?.message) : children;
+    const body = children ?? String(error?.message);
 
-    if (!body) {
+    if (!body || !error) {
       return null;
     }
 

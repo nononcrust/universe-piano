@@ -63,16 +63,16 @@ model Image {
   id  String @id @default(cuid())
   url String
 
-  post   Post?   @relation(fields: [postId], references: [id])
+  post   Post?   @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId String?
 
-  audition   Audition? @relation(fields: [auditionId], references: [id])
+  audition   Audition? @relation(fields: [auditionId], references: [id], onDelete: Cascade)
   auditionId String?
 
-  product   Product? @relation(fields: [productId], references: [id])
+  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String?
 
-  productReview   ProductReview? @relation(fields: [productReviewId], references: [id])
+  productReview   ProductReview? @relation(fields: [productReviewId], references: [id], onDelete: Cascade)
   productReviewId String?
 
   createdAt DateTime @default(now()) @db.Timestamptz()

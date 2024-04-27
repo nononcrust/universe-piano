@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { imagesSchema } from "@/schemas/form";
 import { api } from "@/services/shared";
 import { Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -44,6 +45,7 @@ export const productRepository = {
       },
       include: {
         user: true,
+        images: true,
       },
       orderBy: {
         createdAt: "desc",
@@ -63,8 +65,9 @@ export const productListRequestSchema = z.object({
 });
 
 export const productReviewCreateRequestSchema = z.object({
-  rating: z.number().int().min(1).max(5),
+  rating: z.string(),
   content: z.string().min(1).max(1000),
+  images: imagesSchema,
 });
 
 export type ProductReviewCreateRequest = z.infer<typeof productReviewCreateRequestSchema>;
@@ -91,7 +94,7 @@ const productApi = {
     params: { id: string };
     body: ProductReviewCreateRequest;
   }) => {
-    const response = await api.post(`${PRODUCT_ENDPOINT}/${data.params.id}/review`, data.body);
+    const response = await api.postForm(`${PRODUCT_ENDPOINT}/${data.params.id}/review`, data.body);
     return response.data;
   },
   deleteProductReview: async (data: { params: { id: string } }) => {

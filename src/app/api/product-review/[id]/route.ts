@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { storage } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +16,14 @@ export const DELETE = async (request: Request, context: Context) => {
     where: {
       id: productReviewId,
     },
+    include: {
+      images: true,
+    },
   });
+
+  if (productReview.images.length > 0) {
+    await storage.deleteFiles(productReview.images.map((image) => image.url));
+  }
 
   return Response.json(productReview);
 };

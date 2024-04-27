@@ -1,5 +1,6 @@
 "use client";
 
+import { ImageInput } from "@/components/shared/image-input";
 import { RatingStarSelect } from "@/components/shared/rating-star-select";
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
@@ -11,9 +12,18 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+const MAX_FILE_SIZE = 1024 * 1024 * 5;
+
 const formSchema = z.object({
   rating: z.number().int().min(1, "별점을 선택해주세요."),
   content: z.string().min(1, "리뷰 내용을 입력해주세요."),
+  images: z
+    .array(
+      z.instanceof(File).refine((file) => file.size <= MAX_FILE_SIZE, {
+        message: "5MB 이하의 이미지 파일을 업로드해주세요.",
+      }),
+    )
+    .optional(),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -30,7 +40,7 @@ export const ProductReviewAddDialog = (props: ProductReviewDialogProps) => {
     <Dialog open={props.isOpen} onOpenChange={props.onOpenChange}>
       <Dialog.Content>
         <Dialog.Header>
-          <Dialog.Title>상품 리뷰 작성</Dialog.Title>
+          <Dialog.Title>리뷰 작성</Dialog.Title>
         </Dialog.Header>
         <Content {...props} />
       </Dialog.Content>
@@ -58,8 +68,9 @@ const Content = (props: ContentProps) => {
       {
         params: { id: props.productId },
         body: {
-          rating: data.rating,
+          rating: String(data.rating),
           content: data.content,
+          images: data.images,
         },
       },
       {
@@ -101,6 +112,18 @@ const Content = (props: ContentProps) => {
                 />
               </Form.Control>
               <Form.ErrorMessage />
+            </Form.Item>
+          )}
+        />
+        <Form.Field
+          name="images"
+          control={form.control}
+          render={({ field }) => (
+            <Form.Item className="mt-6">
+              <Form.Control>
+                <ImageInput onChange={field.onChange} />
+              </Form.Control>
+              <Form.ErrorMessage>5MB 이하의 이미지 파일을 업로드해주세요.</Form.ErrorMessage>
             </Form.Item>
           )}
         />

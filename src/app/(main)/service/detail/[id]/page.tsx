@@ -95,38 +95,40 @@ const ProductInfoSection = () => {
         <PageTitle title="상세 정보" />
       </div>
       <div className="flex w-full max-w-4xl flex-1 flex-col">
-        <div className="mt-4 max-w-4xl">
+        <div className="mt-4 flex max-w-4xl flex-col items-center">
           <Image
             priority
             width={896}
             height={4000}
             quality={100}
-            className="rounded-lg"
+            className="h-auto w-auto rounded-lg"
             src={storage.getFileUrl(product.images[1].url)}
             alt="상세 정보 이미지"
           />
         </div>
-        <div>
-          <PageTitle title="Q&A" />
-          <Accordion className="mt-4" type="single" collapsible>
-            {product?.faqs.map((faq, index) => (
-              <Accordion.Item key={index} value={String(index)} className="ml-2 md:ml-0">
-                <Accordion.Trigger>
-                  <div className="my-1 flex gap-2">
-                    <p className="mr-4 flex-1 text-left">
-                      {index + 1}. {faq.title}
-                    </p>
-                  </div>
-                </Accordion.Trigger>
-                <Accordion.Content className="ml-1 whitespace-pre-wrap">
-                  {faq.content}
-                </Accordion.Content>
-              </Accordion.Item>
-            ))}
-          </Accordion>
-        </div>
+        {product?.faqs.length > 0 && (
+          <div>
+            <PageTitle title="Q&A" />
+            <Accordion className="mt-4" type="single" collapsible>
+              {product?.faqs.map((faq, index) => (
+                <Accordion.Item key={index} value={String(index)} className="ml-2 md:ml-0">
+                  <Accordion.Trigger>
+                    <div className="my-1 flex gap-2">
+                      <p className="mr-4 flex-1 text-left">
+                        {index + 1}. {faq.title}
+                      </p>
+                    </div>
+                  </Accordion.Trigger>
+                  <Accordion.Content className="ml-1 whitespace-pre-wrap">
+                    {faq.content}
+                  </Accordion.Content>
+                </Accordion.Item>
+              ))}
+            </Accordion>
+          </div>
+        )}
         <div className="relative">
-          <PageTitle title="상품 리뷰" />
+          <PageTitle title="리뷰" />
           {hasPurchased && (
             <Button
               className="absolute bottom-0 right-0"
@@ -199,6 +201,8 @@ const ProductReviewList = () => {
   const params = useParams<{ id: string }>();
   const { data: reviews } = useProductReviewList({ id: params.id });
 
+  console.log("#reviews", reviews);
+
   if (!reviews) return null;
 
   return (
@@ -212,6 +216,7 @@ const ProductReviewList = () => {
           createdAt={formatDate(review.createdAt)}
           username={review.user.nickname}
           userProfileImage={review.user.profileImage}
+          reviewImageUrl={storage.getFileUrl(review.images[0]?.url)}
         />
       ))}
       {reviews.length === 0 && <EmptyState message="작성된 리뷰가 없습니다." />}
@@ -226,6 +231,7 @@ interface ProductReviewListItemProps {
   createdAt: string;
   username: string;
   userProfileImage: string;
+  reviewImageUrl?: string;
 }
 
 const ProductReviewListItem = ({
@@ -235,6 +241,7 @@ const ProductReviewListItem = ({
   createdAt,
   username,
   userProfileImage,
+  reviewImageUrl,
 }: ProductReviewListItemProps) => {
   const { data: myProductReviews } = useMyProductReviewList();
 
@@ -284,6 +291,7 @@ const ProductReviewListItem = ({
         </AlertDialog>
       </div>
       <RatingStar className="mt-2" rating={rating} />
+      {reviewImageUrl && <Image src={reviewImageUrl} alt="리뷰 이미지" width={400} height={400} />}
       <p className="mt-3 whitespace-pre-wrap text-[15px] text-sub">{content}</p>
     </div>
   );
