@@ -3,6 +3,7 @@
 import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
+import { ColoredIcon } from "@/components/shared/colored-icon";
 import { EmptyState } from "@/components/shared/empty-state";
 import { RatingStar } from "@/components/shared/rating-star";
 import { Accordion } from "@/components/ui/accordion";
@@ -10,6 +11,7 @@ import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
+import { CATEGORY } from "@/constants/enum";
 import { useDialog } from "@/hooks/use-dialog";
 import { storage } from "@/lib/supabase";
 import { formatDate } from "@/lib/utils";
@@ -17,6 +19,7 @@ import { useSession } from "@/services/auth";
 import { useMyProductReviewList, usePurchasedProductList } from "@/services/me";
 import { useDeleteProductReview, useProductDetail, useProductReviewList } from "@/services/product";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 
 export default function ProductDetailPage() {
@@ -127,6 +130,23 @@ const ProductInfoSection = () => {
                 </Accordion.Item>
               ))}
             </Accordion>
+          </div>
+        )}
+        {/* TODO: 임시 링크 삭제 */}
+        {product.category.name === CATEGORY.PARTIAL_CONSULTING && (
+          <div className="flex flex-col items-center pb-[120px]">
+            <div className="rounded-full bg-content-light p-4">
+              <ColoredIcon.Support className="size-8" />
+            </div>
+            <p className="mt-4 text-xl font-semibold">서류 대행 관련 문의</p>
+            <p className="mt-2 text-sub">서류 대행 관련 문의사항은 카카오톡으로 문의해주세요.</p>
+            <Link
+              className="mt-8 flex items-center gap-4 text-nowrap rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-primary-dark"
+              href="https://open.kakao.com/o/sy3BCAif"
+              target="_blank"
+            >
+              서류 대행 문의하기
+            </Link>
           </div>
         )}
         <div className="relative">
