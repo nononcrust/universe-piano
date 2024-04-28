@@ -139,7 +139,9 @@ const ProductInfoSection = () => {
               <ColoredIcon.Support className="size-8" />
             </div>
             <p className="mt-4 text-xl font-semibold">서류 대행 관련 문의</p>
-            <p className="mt-2 text-sub">서류 대행 관련 문의사항은 카카오톡으로 문의해주세요.</p>
+            <p className="mt-2 text-sub">
+              서류 대행 관련 문의사항은 아래 링크를 통해 카카오톡 오픈채팅으로 문의해주세요.
+            </p>
             <Link
               className="mt-8 flex items-center gap-4 text-nowrap rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-primary-dark"
               href="https://open.kakao.com/o/sy3BCAif"
