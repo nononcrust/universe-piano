@@ -80,6 +80,7 @@ const ProductInfoSection = () => {
   const productReviewAddDialog = useDialog();
 
   const { data: purchasedProducts } = usePurchasedProductList();
+  const { data: reviews } = useProductReviewList({ id: params.id });
 
   const { data: product } = useProductDetail({ id: params.id });
 
@@ -97,6 +98,7 @@ const ProductInfoSection = () => {
       <div className="flex w-full max-w-4xl flex-1 flex-col">
         <div className="mt-4 flex max-w-4xl flex-col items-center">
           <Image
+            unoptimized
             priority
             width={896}
             height={4000}
@@ -128,14 +130,16 @@ const ProductInfoSection = () => {
           </div>
         )}
         <div className="relative">
-          <PageTitle title="리뷰" />
+          <PageTitle title="리뷰">
+            {reviews && <span className="ml-2 text-primary">{reviews.length}</span>}
+          </PageTitle>
           {hasPurchased && (
             <Button
               className="absolute bottom-0 right-0"
               variant="outlined"
               onClick={productReviewAddDialog.open}
             >
-              리뷰 작성하기
+              리뷰 쓰기
             </Button>
           )}
           <ProductReviewAddDialog
@@ -201,15 +205,13 @@ const ProductReviewList = () => {
   const params = useParams<{ id: string }>();
   const { data: reviews } = useProductReviewList({ id: params.id });
 
-  console.log("#reviews", reviews);
-
   if (!reviews) return null;
 
   return (
     <div className="mt-8 flex flex-col gap-4 divide-y">
-      {reviews.map((review, index) => (
+      {reviews.map((review) => (
         <ProductReviewListItem
-          key={index}
+          key={review.id}
           reviewId={review.id}
           rating={review.rating}
           content={review.content}
@@ -257,6 +259,8 @@ const ProductReviewListItem = ({
     deleteMutation.mutate({ params: { id: reviewId } });
   };
 
+  console.log("#", reviewImageUrl);
+
   return (
     <div className="flex flex-col pt-8">
       <div className="flex justify-between">
@@ -291,7 +295,15 @@ const ProductReviewListItem = ({
         </AlertDialog>
       </div>
       <RatingStar className="mt-2" rating={rating} />
-      {reviewImageUrl && <Image src={reviewImageUrl} alt="리뷰 이미지" width={400} height={400} />}
+      {reviewImageUrl && (
+        <Image
+          className="mt-4 rounded-xl border"
+          src={reviewImageUrl}
+          alt="리뷰 이미지"
+          width={300}
+          height={300}
+        />
+      )}
       <p className="mt-3 whitespace-pre-wrap text-[15px] text-sub">{content}</p>
     </div>
   );

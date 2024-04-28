@@ -12,7 +12,7 @@ import { Icon } from "../shared/icon";
 const SERVICES = [
   {
     title: "입시 컨설팅",
-    description: "미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅",
+    description: "미국 음대 입시생을 위한 1:1 맞춤형 컨설팅",
     href: ROUTE.SERVICE.CONSULTING,
     icon: <ColoredIcon.Idea />,
   },
@@ -36,9 +36,9 @@ const SERVICES = [
   },
   {
     title: "부분 컨설팅",
-    description: "부분 컨설팅",
+    description: "미국 음대 입시 관련 부분 컨설팅",
     href: ROUTE.SERVICE.PARTIAL_CONSULTING,
-    icon: <ColoredIcon.Question />,
+    icon: <ColoredIcon.Todo />,
   },
 ] as const;
 

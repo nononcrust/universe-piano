@@ -53,7 +53,7 @@ export const ServiceAccordionSection = () => {
                 <p className="ml-2 text-xl font-semibold">미국 음대 입시 컨설팅</p>
               </div>
               <p className="mt-2 text-base font-medium text-sub">
-                미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다.
+                미국 음대 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다.
               </p>
               <div className="flex justify-end">
                 <Button className="mr-1 mt-8" variant="ghost" asChild>

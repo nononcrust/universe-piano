@@ -23,7 +23,7 @@ import logo8 from "@/assets/images/consulting/consulting-8.png";
 import logo9 from "@/assets/images/consulting/consulting-9.png";
 import { SectionTitle } from "@/components/shared/section-title";
 import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
+import { KeenSliderOptions, useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
 
 export const LogoSliderSection = () => {
@@ -37,63 +37,78 @@ export const LogoSliderSection = () => {
   );
 };
 
-const logos = [
-  logo1,
-  logo2,
-  logo3,
-  logo4,
-  logo5,
-  logo6,
-  logo8,
-  logo9,
-  logo10,
-  logo11,
-  logo12,
-  logo13,
-  logo14,
-  logo15,
-  logo16,
-  logo17,
-  logo18,
-  logo19,
-  logo20,
-  logo21,
-  logo22,
-];
+const logos1 = [logo1, logo2, logo3, logo4, logo5, logo6, logo8];
+
+const logos2 = [logo9, logo10, logo11, logo12, logo13, logo14, logo15];
+
+const logos3 = [logo16, logo17, logo18, logo19, logo20, logo21, logo22];
 
 const animation = {
   duration: 25000,
   easing: (t: number) => t,
 };
 
+const sliderOptions = {
+  loop: true,
+  renderMode: "performance",
+  drag: false,
+  slides: { perView: "auto" },
+  created(s) {
+    s.moveToIdx(5, true, animation);
+  },
+  updated(s) {
+    s.moveToIdx(s.track.details.abs + 5, true, animation);
+  },
+  animationEnded(s) {
+    s.moveToIdx(s.track.details.abs + 5, true, animation);
+  },
+} satisfies KeenSliderOptions;
+
 export const ConsultingLogoSlider = () => {
-  const [sliderRef] = useKeenSlider({
-    loop: true,
-    renderMode: "performance",
-    drag: false,
-    slides: { perView: "auto" },
-    created(s) {
-      s.moveToIdx(5, true, animation);
-    },
-    updated(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation);
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation);
-    },
+  const [ltrRef] = useKeenSlider({
+    ...sliderOptions,
+  });
+
+  const [rtlRef] = useKeenSlider({
+    ...sliderOptions,
+    rtl: true,
   });
 
   return (
-    <div ref={sliderRef} className="keen-slider">
-      {logos.map((logo, index) => (
-        <div
-          key={index}
-          className="keen-slider__slide flex items-center justify-center"
-          style={{ minWidth: 200, maxWidth: 200, height: 160 }}
-        >
-          <Image className="w-[160px]" src={logo} alt="" priority />
-        </div>
-      ))}
+    <div className="flex flex-col">
+      <div ref={ltrRef} className="keen-slider">
+        {[...logos1, ...logos1].map((logo, index) => (
+          <div
+            key={index}
+            className="keen-slider__slide flex items-center justify-center"
+            style={{ minWidth: 200, maxWidth: 200, height: 160 }}
+          >
+            <Image className="w-[160px]" src={logo} alt="" priority />
+          </div>
+        ))}
+      </div>
+      <div ref={rtlRef} className="keen-slider">
+        {[...logos2, ...logos2].map((logo, index) => (
+          <div
+            key={index}
+            className="keen-slider__slide flex items-center justify-center"
+            style={{ minWidth: 200, maxWidth: 200, height: 160 }}
+          >
+            <Image className="w-[160px]" src={logo} alt="" priority />
+          </div>
+        ))}
+      </div>
+      <div ref={ltrRef} className="keen-slider">
+        {[...logos3, ...logos3].map((logo, index) => (
+          <div
+            key={index}
+            className="keen-slider__slide flex items-center justify-center"
+            style={{ minWidth: 200, maxWidth: 200, height: 160 }}
+          >
+            <Image className="w-[160px]" src={logo} alt="" priority />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

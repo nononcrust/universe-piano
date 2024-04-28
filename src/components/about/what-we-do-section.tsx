@@ -19,7 +19,7 @@ export const WhatWeDoSection = () => {
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-4">
           <WhatWeDoItem
             title="미국 음대 입시 컨설팅"
-            description="미국 음대 석사 과정 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다."
+            description="미국 음대 입시생을 위한 1:1 맞춤형 컨설팅을 제공합니다."
             href={ROUTE.SERVICE.CONSULTING}
             icon={<ColoredIcon.Idea className="h-10 w-10" />}
           />

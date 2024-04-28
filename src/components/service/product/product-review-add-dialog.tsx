@@ -40,7 +40,7 @@ export const ProductReviewAddDialog = (props: ProductReviewDialogProps) => {
     <Dialog open={props.isOpen} onOpenChange={props.onOpenChange}>
       <Dialog.Content>
         <Dialog.Header>
-          <Dialog.Title>리뷰 작성</Dialog.Title>
+          <Dialog.Title>리뷰 쓰기</Dialog.Title>
         </Dialog.Header>
         <Content {...props} />
       </Dialog.Content>
