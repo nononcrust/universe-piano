@@ -44,7 +44,6 @@ export const POST = async (request: Request) => {
 
     return Response.json(audition);
   } catch (error) {
-    console.log(error);
     if (error instanceof ZodError) {
       return Response.json("Bad Request", { status: 400 });
     }
