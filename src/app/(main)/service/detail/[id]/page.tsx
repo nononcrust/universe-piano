@@ -102,6 +102,7 @@ const ProductInfoSection = () => {
         <div className="mt-4 flex max-w-4xl flex-col items-center">
           <Image
             priority
+            sizes="100vw"
             width={896}
             height={4000}
             quality={100}
