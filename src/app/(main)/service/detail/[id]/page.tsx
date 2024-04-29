@@ -101,11 +101,10 @@ const ProductInfoSection = () => {
       <div className="flex w-full max-w-4xl flex-1 flex-col">
         <div className="mt-4 flex max-w-4xl flex-col items-center">
           <Image
+            unoptimized
             priority
-            sizes="100vw"
             width={896}
             height={4000}
-            quality={100}
             className="h-auto w-full rounded-lg"
             src={storage.getFileUrl(product.images[1].url)}
             alt="상세 정보 이미지"
