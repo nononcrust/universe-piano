@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import "swiper/css";
 
 import { TailwindIndicator } from "@/components/shared/tailwind-indicator";
 import { UserInfoFetcher } from "@/components/shared/user-info-fetcher";
@@ -9,6 +8,7 @@ import { Providers } from "@/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Suspense } from "react";
 import { Toaster } from "sonner";
 
 const pretendard = localFont({
@@ -63,14 +63,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GoogleAnalytics />
       </head>
       <body className="tracking-tight antialiased">
-        <Providers>
-          <UserInfoFetcher>
-            {children}
-            <TailwindIndicator />
-          </UserInfoFetcher>
-        </Providers>
-        <Toaster />
-        <SpeedInsights />
+        <Suspense>
+          <Providers>
+            <UserInfoFetcher>
+              {children}
+              <TailwindIndicator />
+            </UserInfoFetcher>
+          </Providers>
+          <Toaster />
+          <SpeedInsights />
+        </Suspense>
       </body>
     </html>
   );
