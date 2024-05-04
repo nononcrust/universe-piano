@@ -14,6 +14,8 @@ import Link from "next/link";
 export default function MyKitListPage() {
   const { data: products, isPending } = useMyKitList();
 
+  const contentProducts = products?.filter((product) => product.contentUrl !== null);
+
   return (
     <main className="container pb-16">
       <PageTitle title="나의 독학 키트" />
@@ -22,19 +24,19 @@ export default function MyKitListPage() {
           <PurchasedProductItem.Skeleton />
         </section>
       )}
-      {products && products.length > 0 && (
+      {contentProducts && contentProducts.length > 0 && (
         <section className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {products.map((product) => (
+          {contentProducts.map((product) => (
             <PurchasedProductItem
               key={product.id}
-              contentUrl={product.contentUrl}
-              imageSrc={storage.getFileUrl(product.images[0].url)}
+              contentUrl={product.contentUrl || ""}
+              imageSrc={storage.getFileUrl(product.thumbnailUrl)}
               name={product.name}
             />
           ))}
         </section>
       )}
-      {products && products.length === 0 && (
+      {contentProducts && contentProducts.length === 0 && (
         <EmptyState
           message="보유한 독학 키트가 없어요."
           className="mt-8"

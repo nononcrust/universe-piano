@@ -53,7 +53,7 @@ export default function OrderDetailPage() {
           <div className="flex gap-4" key={orderItem.id}>
             <Image
               className="h-[100px] w-[100px] rounded-md border bg-transparent p-2"
-              src={storage.getFileUrl(orderItem.product.images[0].url)}
+              src={storage.getFileUrl(orderItem.product.thumbnailUrl)}
               width={100}
               height={100}
               alt="상품 썸네일"

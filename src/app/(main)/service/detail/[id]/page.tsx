@@ -47,7 +47,7 @@ const ProductImageSection = () => {
     <div className="flex-1">
       <div className="flex aspect-square items-center justify-center rounded-2xl border">
         <Image
-          src={storage.getFileUrl(product.images[0].url)}
+          src={storage.getFileUrl(product.thumbnailUrl)}
           alt="썸네일 이미지"
           className="aspect-square"
           width={400}
@@ -100,15 +100,18 @@ const ProductInfoSection = () => {
       </div>
       <div className="flex w-full max-w-4xl flex-1 flex-col">
         <div className="mt-4 flex max-w-4xl flex-col items-center">
-          <Image
-            unoptimized
-            priority
-            width={896}
-            height={4000}
-            className="h-auto w-full rounded-lg"
-            src={storage.getFileUrl(product.images[1].url)}
-            alt="상세 정보 이미지"
-          />
+          {product.detailImageUrls.map((detailImageUrl) => (
+            <Image
+              key={detailImageUrl}
+              unoptimized
+              priority
+              width={896}
+              height={4000}
+              className="h-auto w-full rounded-lg"
+              src={storage.getFileUrl(detailImageUrl)}
+              alt="상세 정보 이미지"
+            />
+          ))}
         </div>
         {product?.faqs.length > 0 && (
           <div>
@@ -239,7 +242,7 @@ const ProductReviewList = () => {
           createdAt={formatDate(review.createdAt)}
           username={review.user.nickname}
           userProfileImage={review.user.profileImage}
-          reviewImageUrl={storage.getFileUrl(review.images[0]?.url)}
+          reviewImageUrl={storage.getFileUrl(review.imageUrls[0])}
         />
       ))}
       {reviews.length === 0 && <EmptyState message="작성된 리뷰가 없습니다." />}

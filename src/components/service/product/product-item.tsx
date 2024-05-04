@@ -17,7 +17,7 @@ export const ProductItem = ({ href, product }: ProductItemProps) => {
     <Link href={href} className="flex cursor-pointer flex-col gap-2 pb-4">
       <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border p-4">
         <Image
-          src={storage.getFileUrl(product.images[0].url)}
+          src={storage.getFileUrl(product.thumbnailUrl)}
           width={640}
           height={640}
           alt="상품 이미지"

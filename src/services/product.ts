@@ -15,7 +15,6 @@ export const productRepository = {
         },
       },
       include: {
-        images: true,
         productReviews: true,
         _count: {
           select: {
@@ -28,7 +27,6 @@ export const productRepository = {
   getProductById: (id: string) => {
     return prisma.product.findUnique({
       include: {
-        images: true,
         productReviews: true,
         category: true,
         faqs: true,
@@ -45,7 +43,6 @@ export const productRepository = {
       },
       include: {
         user: true,
-        images: true,
       },
       orderBy: {
         createdAt: "desc",

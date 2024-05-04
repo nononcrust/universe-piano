@@ -89,7 +89,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
           <div className="flex gap-4">
             <Image
               className="h-[100px] w-[100px] rounded-md border bg-transparent p-2"
-              src={storage.getFileUrl(product.images[0].url)}
+              src={storage.getFileUrl(product.thumbnailUrl)}
               width={100}
               height={100}
               alt="상품 썸네일"

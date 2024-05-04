@@ -19,7 +19,6 @@ export const auditionRepository = {
         id,
       },
       include: {
-        images: true,
         comments: {
           include: {
             user: true,

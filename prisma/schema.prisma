@@ -36,7 +36,6 @@ model Post {
   content String
 
   comments Comment[]
-  images   Image[]
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
@@ -59,26 +58,6 @@ model Comment {
   updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
-model Image {
-  id  String @id @default(cuid())
-  url String
-
-  post   Post?   @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId String?
-
-  audition   Audition? @relation(fields: [auditionId], references: [id], onDelete: Cascade)
-  auditionId String?
-
-  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId String?
-
-  productReview   ProductReview? @relation(fields: [productReviewId], references: [id], onDelete: Cascade)
-  productReviewId String?
-
-  createdAt DateTime @default(now()) @db.Timestamptz()
-  updatedAt DateTime @updatedAt @db.Timestamptz()
-}
-
 model Notice {
   id String @id @default(cuid())
 
@@ -94,7 +73,7 @@ model Audition {
   title   String
   content String
 
-  images   Image[]
+  imageUrls String[]
   comments AuditionComment[]
 
   createdAt DateTime @default(now()) @db.Timestamptz()
@@ -131,11 +110,14 @@ model Product {
   price       Int
   description String
   contentUrl  String
+  contactUrl  String?
+
+  thumbnailUrl String
+  detailImageUrls String[]
 
   category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId String
 
-  images         Image[]
   productReviews ProductReview[]
   orders         OrderItem[]
   faqs           Faq[]
@@ -177,7 +159,7 @@ model ProductReview {
   id      String  @id @default(cuid())
   content String
   rating  Int
-  images  Image[]
+  imageUrls String[]
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
@@ -204,6 +186,7 @@ model Faq {
 enum Role {
   ADMIN
   USER
+  CREW
 }
 
 enum Tier {
@@ -211,6 +194,7 @@ enum Tier {
   SILVER
   GOLD
   DIAMOND
+  
 }
 
 enum OrderStatus {

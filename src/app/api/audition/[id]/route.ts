@@ -57,17 +57,14 @@ export const DELETE = async (request: Request, context: Context) => {
       where: {
         id: auditionId,
       },
-      include: {
-        images: true,
-      },
     });
 
     if (!audition) {
       return Response.json("Not Found", { status: 404 });
     }
 
-    if (audition.images.length > 0) {
-      await storage.deleteFiles(audition.images.map((image) => image.url));
+    if (audition.imageUrls.length > 0) {
+      await storage.deleteFiles(audition.imageUrls);
     }
 
     const response = await prisma.audition.delete({

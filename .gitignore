@@ -37,13 +37,9 @@ next-env.d.ts
 
 # vscode
 .vscode/*
-# Sentry Config File
-.sentryclirc
-
-# Sentry Config File
-.sentryclirc
 
 # contentlayer
 .contentlayer
+
 # Sentry Config File
 .sentryclirc

@@ -16,13 +16,10 @@ export const DELETE = async (request: Request, context: Context) => {
     where: {
       id: productReviewId,
     },
-    include: {
-      images: true,
-    },
   });
 
-  if (productReview.images.length > 0) {
-    await storage.deleteFiles(productReview.images.map((image) => image.url));
+  if (productReview.imageUrls.length > 0) {
+    await storage.deleteFiles(productReview.imageUrls);
   }
 
   return Response.json(productReview);

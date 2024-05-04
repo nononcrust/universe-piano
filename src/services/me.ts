@@ -16,11 +16,7 @@ export const meRepository = {
         include: {
           orderItems: {
             include: {
-              product: {
-                include: {
-                  images: true,
-                },
-              },
+              product: true,
             },
           },
         },
@@ -40,7 +36,6 @@ export const meRepository = {
             product: {
               include: {
                 category: true,
-                images: true,
               },
             },
           },
@@ -77,11 +72,7 @@ export const meRepository = {
         include: {
           orderItems: {
             include: {
-              product: {
-                include: {
-                  images: true,
-                },
-              },
+              product: true,
             },
           },
         },

@@ -24,7 +24,6 @@ export const orderRepository = {
             product: {
               include: {
                 category: true,
-                images: true,
               },
             },
           },

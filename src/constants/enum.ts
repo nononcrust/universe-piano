@@ -1,4 +1,10 @@
-import { OrderStatus, Tier } from "@prisma/client";
+import { OrderStatus, Role, Tier } from "@prisma/client";
+
+export const USER_ROLE_LABEL: Record<Role, string> = {
+  [Role.USER]: "회원",
+  [Role.CREW]: "크루",
+  [Role.ADMIN]: "매니저",
+};
 
 export const TIER_LABEL: Record<Tier, string> = {
   [Tier.SPROUT]: "새싹",

@@ -27,11 +27,7 @@ export const POST = async (request: Request) => {
       const audition = await prisma.audition.create({
         data: {
           ...body,
-          images: {
-            createMany: {
-              data: [{ url: path }],
-            },
-          },
+          imageUrls: [path],
         },
       });
 

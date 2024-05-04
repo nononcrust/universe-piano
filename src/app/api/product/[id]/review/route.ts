@@ -43,11 +43,7 @@ export const POST = async (request: Request, context: Context) => {
 
       const productReview = await prisma.productReview.create({
         data: {
-          images: {
-            createMany: {
-              data: [{ url: `/${path}` }],
-            },
-          },
+          imageUrls: [`/${path}`],
           content: body.content,
           rating: Number(body.rating),
           user: {
