@@ -1,17 +1,14 @@
+"use client";
+
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
 import { UserForm } from "@/components/admin/user-form";
-import { userRepository } from "@/services/user";
+import { useUserDetail } from "@/services/user";
+import { useParams } from "next/navigation";
 
-type Context = {
-  params: {
-    id: string;
-  };
-};
+export default function AdminUserEditPage() {
+  const params = useParams() as { id: string };
 
-export default async function AdminUserEditPage(context: Context) {
-  const id = context.params.id;
-
-  const user = await userRepository.getUserById(id);
+  const { data: user } = useUserDetail({ id: params.id });
 
   if (!user) return null;
 
