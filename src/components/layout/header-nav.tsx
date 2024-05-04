@@ -28,18 +28,18 @@ const SERVICES = [
     href: ROUTE.SERVICE.TUTORING,
     icon: <ColoredIcon.Pencil />,
   },
-  {
-    title: "독학 키트",
-    description: "독학러를 위한 유학 준비 키트",
-    href: ROUTE.SERVICE.KIT,
-    icon: <ColoredIcon.Storage />,
-  },
-  {
-    title: "부분 컨설팅",
-    description: "미국 음대 입시 관련 부분 컨설팅",
-    href: ROUTE.SERVICE.PARTIAL_CONSULTING,
-    icon: <ColoredIcon.Todo />,
-  },
+  // {
+  //   title: "독학 키트",
+  //   description: "독학러를 위한 유학 준비 키트",
+  //   href: ROUTE.SERVICE.KIT,
+  //   icon: <ColoredIcon.Storage />,
+  // },
+  // {
+  //   title: "부분 컨설팅",
+  //   description: "미국 음대 입시 관련 부분 컨설팅",
+  //   href: ROUTE.SERVICE.PARTIAL_CONSULTING,
+  //   icon: <ColoredIcon.Todo />,
+  // },
 ] as const;
 
 export const HeaderNav = () => {

@@ -47,9 +47,9 @@ export const UserMenu = () => {
         <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.MYPAGE.PROFILE}>마이페이지</Link>
         </DropdownMenu.Item>
-        <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
+        {/* <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
           <Link href={ROUTE.KIT.LIST}>나의 독학 키트</Link>
-        </DropdownMenu.Item>
+        </DropdownMenu.Item> */}
         <AccessControl role={Role.ADMIN}>
           <DropdownMenu.Item asChild className="px-4 py-2 font-medium">
             <Link href={ROUTE.ADMIN.HOME}>사이트 관리</Link>

@@ -90,14 +90,14 @@ export const siteContents = {
         title: "스터디",
         href: ROUTE.SERVICE.STUDY,
       },
-      {
-        title: "독학 키트",
-        href: ROUTE.SERVICE.KIT,
-      },
-      {
-        title: "부분 컨설팅",
-        href: ROUTE.SERVICE.PARTIAL_CONSULTING,
-      },
+      // {
+      //   title: "독학 키트",
+      //   href: ROUTE.SERVICE.KIT,
+      // },
+      // {
+      //   title: "부분 컨설팅",
+      //   href: ROUTE.SERVICE.PARTIAL_CONSULTING,
+      // },
     ],
   },
   notice: {
