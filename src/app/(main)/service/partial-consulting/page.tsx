@@ -16,7 +16,7 @@ export default function PartialConsultingPage() {
     <main className="container pb-16">
       <div className="flex items-center">
         <PageTitle title="부분 컨설팅">
-          <Badge variant="default" className="ml-2 bg-gradient-to-br from-violet-700 to-violet-400">
+          <Badge className="ml-2 rounded-full" variant="primary">
             new
           </Badge>
         </PageTitle>

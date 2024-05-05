@@ -16,7 +16,7 @@ export default function KitListPage() {
     <main className="container pb-16">
       <div className="flex items-center">
         <PageTitle title="독학 키트">
-          <Badge variant="default" className="ml-2 bg-gradient-to-br from-pink-600 to-red-400">
+          <Badge className="ml-2 rounded-full" variant="primary">
             new
           </Badge>
         </PageTitle>
