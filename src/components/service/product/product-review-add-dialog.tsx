@@ -130,15 +130,12 @@ const Content = (props: ContentProps) => {
           )}
         />
         <div className="mt-8 flex justify-end gap-2">
-          <Button
-            variant="ghost"
-            type="button"
-            onClick={props.onClose}
-            disabled={submitButtonDisabled}
-          >
+          <Button variant="ghost" type="button" onClick={props.onClose}>
             취소
           </Button>
-          <Button type="submit">작성하기</Button>
+          <Button type="submit" disabled={submitButtonDisabled}>
+            작성하기
+          </Button>
         </div>
       </form>
     </Form>
