@@ -222,7 +222,7 @@ const ProductAction = () => {
     return (
       <div className="mt-8 flex flex-col gap-4">
         <div className="mt-8 flex items-center justify-between">
-          <p className="font-medium">한번 크루로 가입하고 평생 소장하세요 🙌</p>
+          <p className="font-medium">크루 가입 후 평생 소장하세요 🙌</p>
         </div>
         {session?.user.role !== Role.CREW && (
           <Button className="max-md:h-14 max-md:text-base" variant="default" size="large" asChild>

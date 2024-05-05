@@ -154,6 +154,16 @@ const components = {
       </div>
     );
   },
+  Snippet: ({ children }: { children: React.ReactNode }) => {
+    return (
+      <div className="mb-2 flex whitespace-pre-wrap rounded-lg bg-gray-50 p-2 px-4">{children}</div>
+    );
+  },
+  Box: ({ children }: { children: React.ReactNode }) => {
+    return (
+      <div className="my-5 flex justify-center rounded-lg bg-gray-50 px-4 py-2">{children}</div>
+    );
+  },
 };
 
 export const MDXContent = ({ code }: MDXContentProps) => {

@@ -27,14 +27,14 @@ export const ProductItem = ({ href, product }: ProductItemProps) => {
         />
       </AspectRatio>
       <div className="flex flex-col">
-        <p className="text-base text-gray-700 md:text-sm">{product.name}</p>
+        <p className="font-semibold text-main">{product.name}</p>
         <div className="flex items-center justify-between">
           {!isCrewOnly && (
-            <p className="text-lg font-medium md:text-base">{product.price.toLocaleString()}</p>
+            <p className="font-semibold text-primary md:text-base">
+              {product.price.toLocaleString()}원
+            </p>
           )}
-          {isCrewOnly && (
-            <p className="text-lg font-medium text-primary md:text-base">크루 컨텐츠</p>
-          )}
+          {isCrewOnly && <p className="font-semibold text-primary">크루 컨텐츠</p>}
         </div>
       </div>
     </Link>

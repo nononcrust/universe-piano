@@ -27,12 +27,16 @@ export default function MyKitListPage() {
     <main className="container pb-16">
       <PageTitle title="나의 독학 키트" />
       {isPending && (
-        <section className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          <PurchasedProductItem.Skeleton />
+        <section className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
+          {Array(8)
+            .fill(0)
+            .map((_, index) => (
+              <PurchasedProductItem.Skeleton key={index} />
+            ))}
         </section>
       )}
       {contentProducts && crewOnlyKits && (
-        <section className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <section className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
           {crewOnlyKits.map((product) => (
             <PurchasedProductItem
               key={product.id}
@@ -90,9 +94,9 @@ const PurchasedProductItem = ({
           className="transition-all hover:scale-100 md:hover:scale-105"
         />
       </AspectRatio>
-      <div className="flex items-center gap-2">
+      <div className="ml-2 flex flex-col items-start gap-2">
+        <p className="font-semibold text-main">{name}</p>
         {isCrewOnly && <Chip>크루 컨텐츠</Chip>}
-        <p className="text-lg text-gray-700">{name}</p>
       </div>
     </Link>
   );

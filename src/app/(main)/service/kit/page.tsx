@@ -21,7 +21,7 @@ export default function KitListPage() {
           </Badge>
         </PageTitle>
       </div>
-      <section className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <section className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {kits?.map((product) => (
           <ProductItem
             key={product.id}
