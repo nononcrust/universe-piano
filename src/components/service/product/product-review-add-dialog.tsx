@@ -82,6 +82,8 @@ const Content = (props: ContentProps) => {
     );
   });
 
+  const submitButtonDisabled = createMutation.isPending || form.formState.isSubmitSuccessful;
+
   return (
     <Form {...form}>
       <form onSubmit={onSubmit}>
@@ -128,7 +130,12 @@ const Content = (props: ContentProps) => {
           )}
         />
         <div className="mt-8 flex justify-end gap-2">
-          <Button variant="ghost" type="button" onClick={props.onClose}>
+          <Button
+            variant="ghost"
+            type="button"
+            onClick={props.onClose}
+            disabled={submitButtonDisabled}
+          >
             취소
           </Button>
           <Button type="submit">작성하기</Button>
