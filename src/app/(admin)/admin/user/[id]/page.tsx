@@ -14,7 +14,7 @@ export default function AdminUserEditPage() {
 
   return (
     <main className="container">
-      <AdminPageTitle title="유저 관리" />
+      <AdminPageTitle title="유저 수정" />
       <UserForm user={user} />
     </main>
   );

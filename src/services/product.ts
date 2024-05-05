@@ -15,6 +15,7 @@ export const productRepository = {
         },
       },
       include: {
+        category: true,
         productReviews: true,
         _count: {
           select: {
@@ -57,6 +58,15 @@ export type ProductReviewList = Prisma.PromiseReturnType<
   typeof productRepository.getProductReviewListById
 >;
 
+export const productRequestSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  price: z.number(),
+  category: z.string(),
+});
+
+export type ProductRequest = z.infer<typeof productRequestSchema>;
+
 export const productListRequestSchema = z.object({
   category: z.string().optional().nullable(),
 });
@@ -79,6 +89,10 @@ const productApi = {
   },
   getProductById: async (data: { params: { id: string } }) => {
     const response = await api.get<ProductDetail>(`${PRODUCT_ENDPOINT}/${data.params.id}`);
+    return response.data;
+  },
+  updateProduct: async (data: { params: { id: string }; body: Partial<ProductRequest> }) => {
+    const response = await api.put(`${PRODUCT_ENDPOINT}/${data.params.id}`, data.body);
     return response.data;
   },
   getProductReviewListById: async (data: { params: { id: string } }) => {
@@ -122,6 +136,19 @@ export const useProductDetail = ({ id }: { id: string }) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => productApi.getProductById({ params: { id } }),
+  });
+};
+
+export const useUpdateProduct = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: productApi.updateProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.all(),
+      });
+    },
   });
 };
 

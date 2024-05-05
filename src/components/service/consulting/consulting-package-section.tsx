@@ -48,7 +48,7 @@ export const ConsultingPackageSection = () => {
               <ListItem>장학금 증액</ListItem>
             </ul>
           </div>
-          <div className="rounded-3xl bg-white p-8">
+          <div className="rounded-3xl border-2 border-primary bg-white p-8">
             <div className="flex justify-between">
               <div className="flex flex-col">
                 <p className="font-medium md:text-lg">유니버스 피아노의 최상위 케어</p>

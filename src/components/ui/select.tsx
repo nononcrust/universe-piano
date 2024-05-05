@@ -104,7 +104,7 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement>(({ ...props }, 
   return (
     <button
       className={cn(
-        "relative flex h-9 w-full items-center justify-between rounded-lg bg-secondary px-3 pr-9 text-[13px] font-medium transition",
+        "relative flex h-9 w-full items-center justify-between rounded-lg bg-secondary px-3 pr-9 text-[13px] font-medium transition-colors",
         "focus:outline-none",
         label ? "text-gray-900" : "text-gray-400",
         error && "border-error focus:border-error focus:ring-error-lighter",

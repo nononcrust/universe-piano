@@ -17,7 +17,7 @@ export default async function AdminOrderEditPage(context: Context) {
 
   return (
     <main>
-      <AdminPageTitle title="주문 편집" />
+      <AdminPageTitle title="주문 수정" />
       <OrderForm order={order} />
     </main>
   );

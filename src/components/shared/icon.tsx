@@ -33,6 +33,7 @@ import {
   Sparkles,
   Sprout,
   Star,
+  Trash2,
   User,
   Wrench,
   X,
@@ -80,4 +81,5 @@ export const Icon = {
   Sparkles,
   Siren,
   AlignJustify,
+  Trash2,
 } as const;

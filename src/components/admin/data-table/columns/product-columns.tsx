@@ -8,12 +8,16 @@ import Link from "next/link";
 export const productColumns: ColumnDef<Product>[] = [
   {
     accessorKey: "name",
-    header: "제목",
+    header: "이름",
     cell: ({ row }) => (
-      <Link className="hover:underline" href={ROUTE.ADMIN.NOTICE.EDIT(row.original.id)}>
+      <Link className="hover:underline" href={ROUTE.ADMIN.PRODUCT.EDIT(row.original.id)}>
         {row.getValue("name")}
       </Link>
     ),
+  },
+  {
+    accessorKey: "category.name",
+    header: "카테고리",
   },
   {
     accessorKey: "price",

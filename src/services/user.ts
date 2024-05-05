@@ -32,7 +32,6 @@ export const userRequestSchema = z.object({
   nickname: z.string(),
   email: z.string().email(),
   role: z.enum([Object.values(Role)[0], ...Object.values(Role).slice(1)]),
-  tier: z.enum([Object.values(Tier)[0], ...Object.values(Tier).slice(1)]),
   point: z.number().int(),
 });
 

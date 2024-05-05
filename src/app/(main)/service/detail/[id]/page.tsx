@@ -85,6 +85,7 @@ const ProductInfoSection = () => {
 
   const productReviewAddDialog = useDialog();
 
+  const { data: session } = useSession();
   const { data: purchasedProducts } = usePurchasedProductList();
   const { data: reviews } = useProductReviewList({ id: params.id });
 
@@ -93,6 +94,11 @@ const ProductInfoSection = () => {
   const hasPurchased = purchasedProducts?.some(
     (purchasedProduct) => purchasedProduct.id === product?.id,
   );
+
+  const isCrewOnlyAndCrew =
+    (product?.price === 0 && session?.user.role === Role.CREW) || session?.user.role === Role.ADMIN;
+
+  const canWriteReview = hasPurchased || isCrewOnlyAndCrew;
 
   if (!product) return null;
 
@@ -173,7 +179,7 @@ const ProductInfoSection = () => {
           <PageTitle title="리뷰">
             {reviews && <span className="ml-2 text-primary">{reviews.length}</span>}
           </PageTitle>
-          {hasPurchased && (
+          {canWriteReview && (
             <Button
               className="absolute bottom-0 right-0"
               variant="outlined"
@@ -219,8 +225,8 @@ const ProductAction = () => {
           <p className="font-medium">한번 크루로 가입하고 평생 소장하세요 🙌</p>
         </div>
         {session?.user.role !== Role.CREW && (
-          <Button className="max-md:h-14 max-md:text-base" variant="default" size="large">
-            유니버스 피아노 크루 가입하기
+          <Button className="max-md:h-14 max-md:text-base" variant="default" size="large" asChild>
+            <Link href="https://open.kakao.com/o/sy3BCAif">유니버스 피아노 크루 가입하기</Link>
           </Button>
         )}
       </div>
@@ -275,7 +281,7 @@ const ProductReviewList = () => {
           createdAt={formatDate(review.createdAt)}
           username={review.user.nickname}
           userProfileImage={review.user.profileImage}
-          reviewImageUrl={storage.getFileUrl(review.imageUrls[0])}
+          reviewImageUrl={review.imageUrls[0] ? storage.getFileUrl(review.imageUrls[0]) : null}
         />
       ))}
       {reviews.length === 0 && <EmptyState message="작성된 리뷰가 없습니다." />}
@@ -290,7 +296,7 @@ interface ProductReviewListItemProps {
   createdAt: string;
   username: string;
   userProfileImage: string;
-  reviewImageUrl?: string;
+  reviewImageUrl: string | null;
 }
 
 const ProductReviewListItem = ({

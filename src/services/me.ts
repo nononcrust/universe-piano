@@ -1,7 +1,7 @@
 import { CATEGORY } from "@/constants/enum";
 import { prisma } from "@/lib/prisma";
 import { api } from "@/services/shared";
-import { OrderStatus, Prisma } from "@prisma/client";
+import { OrderStatus, Prisma, Role } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { Session, useSession } from "./auth";
 
@@ -81,6 +81,16 @@ export const meRepository = {
         return orders.flatMap((order) => order.orderItems.map((orderItem) => orderItem.product));
       });
   },
+  getCrewOnlyKitList: async () => {
+    return prisma.product.findMany({
+      where: {
+        category: {
+          name: CATEGORY.KIT,
+        },
+        price: 0,
+      },
+    });
+  },
 };
 
 export type PurchasedProductList = Prisma.PromiseReturnType<
@@ -90,6 +100,8 @@ export type MyOrderList = Prisma.PromiseReturnType<typeof meRepository.getMyOrde
 export type MyProductReviewList = Prisma.PromiseReturnType<
   typeof meRepository.getMyProductReviewList
 >;
+export type MyKitList = Prisma.PromiseReturnType<typeof meRepository.getMyKitList>;
+export type CrewOnlyKitList = Prisma.PromiseReturnType<typeof meRepository.getCrewOnlyKitList>;
 
 const ENDPOINT = "/me";
 
@@ -107,7 +119,11 @@ export const meApi = {
     return response.data;
   },
   getMyKitList: async () => {
-    const response = await api.get<PurchasedProductList>(`${ENDPOINT}/kits`);
+    const response = await api.get<MyKitList>(`${ENDPOINT}/kits`);
+    return response.data;
+  },
+  getCrewOnlyKitList: async () => {
+    const response = await api.get<CrewOnlyKitList>(`${ENDPOINT}/crew-only-kits`);
     return response.data;
   },
 };
@@ -121,41 +137,51 @@ export const queryKeys = {
 };
 
 export const usePurchasedProductList = () => {
-  const session = useSession();
+  const { data: session } = useSession();
 
   return useQuery({
     queryKey: queryKeys.purchasedProducts(),
     queryFn: meApi.getPurchasedProductList,
-    enabled: !!session.data,
+    enabled: !!session,
   });
 };
 
 export const useMyKitList = () => {
-  const session = useSession();
+  const { data: session } = useSession();
 
   return useQuery({
     queryKey: queryKeys.myKitList(),
     queryFn: meApi.getMyKitList,
-    enabled: !!session.data,
+    enabled: !!session,
   });
 };
 
 export const useMyOrderList = () => {
-  const session = useSession();
+  const { data: session } = useSession();
 
   return useQuery({
     queryKey: queryKeys.orderList(),
     queryFn: meApi.getMyOrderList,
-    enabled: !!session.data,
+    enabled: !!session,
   });
 };
 
 export const useMyProductReviewList = () => {
-  const session = useSession();
+  const { data: session } = useSession();
 
   return useQuery({
     queryKey: queryKeys.productReviewList(),
     queryFn: meApi.getMyProductReviewList,
-    enabled: !!session.data,
+    enabled: !!session,
+  });
+};
+
+export const useCrewOnlyKitList = () => {
+  const { data: session } = useSession();
+
+  return useQuery({
+    queryKey: queryKeys.all(),
+    queryFn: meApi.getCrewOnlyKitList,
+    enabled: !!session && session.user.role !== Role.USER,
   });
 };

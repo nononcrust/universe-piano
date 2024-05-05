@@ -52,7 +52,7 @@ const AuditionKitCard = () => {
           <div className="flex items-center gap-2">
             <Card.Title className="flex items-center">
               <ColoredIcon.Storage className="h-6 w-6" />
-              <p className="ml-2">오디션 119 키트</p>
+              <p className="ml-2">독학 키트</p>
             </Card.Title>
           </div>
           <Icon.ArrowRight className="h-6 w-6 rounded-full bg-gray-200 p-1" />

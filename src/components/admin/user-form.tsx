@@ -54,6 +54,8 @@ export const UserForm = ({ user }: UserFormProps) => {
     );
   });
 
+  console.log(form.formState.errors);
+
   return (
     <Card>
       <Card.Content>
