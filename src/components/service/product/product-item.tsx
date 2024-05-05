@@ -13,9 +13,11 @@ interface ProductItemProps {
 }
 
 export const ProductItem = ({ href, product }: ProductItemProps) => {
+  const isCrewOnly = product.price === 0;
+
   return (
     <Link href={href} className="flex cursor-pointer flex-col gap-2 pb-4">
-      <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border p-4">
+      <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border">
         <Image
           src={storage.getFileUrl(product.thumbnailUrl)}
           width={640}
@@ -27,7 +29,12 @@ export const ProductItem = ({ href, product }: ProductItemProps) => {
       <div className="flex flex-col">
         <p className="text-base text-gray-700 md:text-sm">{product.name}</p>
         <div className="flex items-center justify-between">
-          <p className="text-lg font-medium md:text-base">{product.price.toLocaleString()}</p>
+          {!isCrewOnly && (
+            <p className="text-lg font-medium md:text-base">{product.price.toLocaleString()}</p>
+          )}
+          {isCrewOnly && (
+            <p className="text-lg font-medium text-primary md:text-base">크루 컨텐츠</p>
+          )}
         </div>
       </div>
     </Link>

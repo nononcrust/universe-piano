@@ -3,11 +3,10 @@
 import { PageSubtitle } from "@/components/layout/page-subtitle";
 import { PageTitle } from "@/components/layout/page-title";
 import { Icon } from "@/components/shared/icon";
+import { UserRoleBadge } from "@/components/shared/user-role-badge";
 import { Avatar } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/services/auth";
 import Link from "next/link";
@@ -32,7 +31,7 @@ export default function MyProfilePage() {
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <p className="text-lg font-medium md:text-2xl">{user.nickname}</p>
-              <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
+              <UserRoleBadge />
             </div>
             <p className="text-sm text-sub md:text-base">{user.email}</p>
           </div>

@@ -88,7 +88,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
           <PageSubtitle title="상품 정보" className="mb-4 mt-4" />
           <div className="flex gap-4">
             <Image
-              className="h-[100px] w-[100px] rounded-md border bg-transparent p-2"
+              className="h-[100px] w-[100px] rounded-md border bg-transparent"
               src={storage.getFileUrl(product.thumbnailUrl)}
               width={100}
               height={100}

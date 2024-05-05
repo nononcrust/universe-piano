@@ -52,7 +52,7 @@ export default function OrderDetailPage() {
         {order.orderItems.map((orderItem) => (
           <div className="flex gap-4" key={orderItem.id}>
             <Image
-              className="h-[100px] w-[100px] rounded-md border bg-transparent p-2"
+              className="h-[100px] w-[100px] rounded-md border bg-transparent"
               src={storage.getFileUrl(orderItem.product.thumbnailUrl)}
               width={100}
               height={100}

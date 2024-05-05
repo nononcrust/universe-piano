@@ -18,6 +18,7 @@ import { formatDate } from "@/lib/utils";
 import { useSession } from "@/services/auth";
 import { useMyProductReviewList, usePurchasedProductList } from "@/services/me";
 import { useDeleteProductReview, useProductDetail, useProductReviewList } from "@/services/product";
+import { Role } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -45,13 +46,12 @@ const ProductImageSection = () => {
 
   return (
     <div className="flex-1">
-      <div className="flex aspect-square items-center justify-center rounded-2xl border">
+      <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border">
         <Image
+          fill
           src={storage.getFileUrl(product.thumbnailUrl)}
           alt="썸네일 이미지"
           className="aspect-square"
-          width={400}
-          height={400}
         />
       </div>
     </div>
@@ -63,12 +63,15 @@ const ProductOptionSection = () => {
 
   const { data: product } = useProductDetail({ id: params.id });
 
+  const isCrewOnly = product?.price === 0;
+
   if (!product) return null;
 
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex">
+      <div className="flex gap-2">
         <Chip>{product.category.name}</Chip>
+        {isCrewOnly && <Chip color="red">크루 전용</Chip>}
       </div>
       <h1 className="mt-2 text-2xl font-medium">{product.name}</h1>
       <p className="mt-4">{product.description}</p>
@@ -153,6 +156,19 @@ const ProductInfoSection = () => {
             </Link>
           </div>
         )}
+        {product.name === "미국 음대 입학 체크리스트" && (
+          <div className="mt-16 flex flex-col items-center justify-center">
+            <p className="mt-2 text-sub">
+              크루 가입 문의는 아래 링크를 통해 카카오톡 오픈채팅으로 문의해주세요.
+            </p>
+            <Link
+              className="mt-8 flex items-center gap-4 text-nowrap rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-primary-dark"
+              href="https://open.kakao.com/o/sy3BCAif"
+            >
+              크루 가입 문의
+            </Link>
+          </div>
+        )}
         <div className="relative">
           <PageTitle title="리뷰">
             {reviews && <span className="ml-2 text-primary">{reviews.length}</span>}
@@ -192,7 +208,24 @@ const ProductAction = () => {
     (purchasedProducts) => purchasedProducts.id === product?.id,
   );
 
+  const isCrewOnly = product?.price === 0;
+
   if (!product || !purchasedProducts) return null;
+
+  if (isCrewOnly) {
+    return (
+      <div className="mt-8 flex flex-col gap-4">
+        <div className="mt-8 flex items-center justify-between">
+          <p className="font-medium">한번 크루로 가입하고 평생 소장하세요 🙌</p>
+        </div>
+        {session?.user.role !== Role.CREW && (
+          <Button className="max-md:h-14 max-md:text-base" variant="default" size="large">
+            유니버스 피아노 크루 가입하기
+          </Button>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="mt-8 flex flex-col gap-4">

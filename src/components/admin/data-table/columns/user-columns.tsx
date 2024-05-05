@@ -1,8 +1,8 @@
 "use client";
 
-import { TIER_LABEL } from "@/constants/enum";
+import { USER_ROLE_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
-import { User } from "@prisma/client";
+import { Role, User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 
@@ -29,8 +29,8 @@ export const userColumns: ColumnDef<User>[] = [
     header: "이메일",
   },
   {
-    accessorKey: "tier",
+    accessorKey: "role",
     header: "등급",
-    cell: ({ row }) => TIER_LABEL[row.getValue("tier") as keyof typeof TIER_LABEL],
+    cell: ({ row }) => USER_ROLE_LABEL[row.getValue("role") as keyof typeof Role],
   },
 ];

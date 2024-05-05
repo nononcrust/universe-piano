@@ -1,7 +1,7 @@
 import { OrderStatus, Role, Tier } from "@prisma/client";
 
 export const USER_ROLE_LABEL: Record<Role, string> = {
-  [Role.USER]: "회원",
+  [Role.USER]: "멤버",
   [Role.CREW]: "크루",
   [Role.ADMIN]: "매니저",
 };

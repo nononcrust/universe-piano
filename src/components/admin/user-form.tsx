@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { TIER_LABEL } from "@/constants/enum";
+import { USER_ROLE_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { allowNumberOnly } from "@/lib/utils";
 import { useUpdateUser, userRequestSchema } from "@/services/user";
@@ -36,7 +36,6 @@ export const UserForm = ({ user }: UserFormProps) => {
       nickname: user.nickname,
       email: user.email,
       role: user.role,
-      tier: user.tier,
       point: user.point,
     },
   });
@@ -48,7 +47,6 @@ export const UserForm = ({ user }: UserFormProps) => {
       { params: { id: user.id }, body: data },
       {
         onSuccess: () => {
-          router.refresh();
           router.push(ROUTE.ADMIN.USER.LIST);
           toast.success("유저 정보가 수정되었습니다.");
         },
@@ -114,14 +112,14 @@ export const UserForm = ({ user }: UserFormProps) => {
               )}
             />
             <Form.Field
-              name="tier"
+              name="role"
               control={form.control}
               render={({ field }) => (
                 <Form.Item>
                   <Form.Label>등급</Form.Label>
                   <Form.Control>
-                    <Select placeholder="등급 선택" {...field} error={!!form.formState.errors.tier}>
-                      {Object.entries(TIER_LABEL).map(([value, label]) => (
+                    <Select placeholder="등급 선택" {...field} error={!!form.formState.errors.role}>
+                      {Object.entries(USER_ROLE_LABEL).map(([value, label]) => (
                         <Select.Item key={value} value={value}>
                           {label}
                         </Select.Item>

@@ -68,7 +68,7 @@ const AuditionKitCard = () => {
 const ScholarshipCard = () => {
   return (
     // <Link href={siteConfig.links.scholarships} target="_blank" className="rounded-xl">
-    <Card className="max-h-[160px] min-h-[160px] transition md:hover:shadow-lg">
+    <Card className="max-h-[160px] min-h-[160px] transition">
       {/* <div className="flex items-center justify-between"> */}
       <div className="flex items-center gap-2">
         <Card.Title className="flex items-center">
