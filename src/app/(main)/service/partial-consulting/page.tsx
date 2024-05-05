@@ -29,7 +29,10 @@ export default function PartialConsultingPage() {
             product={product}
           />
         ))}
-        {isPending && <ProductItem.Skeleton />}
+        {isPending &&
+          Array(8)
+            .fill(0)
+            .map((_, index) => <ProductItem.Skeleton key={index} />)}
       </section>
     </main>
   );
