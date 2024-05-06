@@ -221,13 +221,15 @@ const ProductAction = () => {
   if (isCrewOnly) {
     return (
       <div className="mt-8 flex flex-col gap-4">
-        <div className="mt-8 flex items-center justify-between">
-          <p className="font-medium">크루 가입 후 평생 소장하세요 🙌</p>
-        </div>
         {session?.user.role !== Role.CREW && (
-          <Button className="max-md:h-14 max-md:text-base" variant="default" size="large" asChild>
-            <Link href="https://open.kakao.com/o/sy3BCAif">유니버스 피아노 크루 가입하기</Link>
-          </Button>
+          <>
+            <div className="mt-8 flex items-center justify-between">
+              <p className="font-medium">크루 가입 후 평생 소장하세요 🙌</p>
+            </div>
+            <Button className="max-md:h-14 max-md:text-base" variant="default" size="large" asChild>
+              <Link href="https://open.kakao.com/o/sy3BCAif">유니버스 피아노 크루 가입하기</Link>
+            </Button>
+          </>
         )}
       </div>
     );

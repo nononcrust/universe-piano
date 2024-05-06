@@ -8,17 +8,21 @@ import { Chip } from "@/components/ui/chip";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE } from "@/constants/route";
 import { storage } from "@/lib/supabase";
+import { useSession } from "@/services/auth";
 import { useCrewOnlyKitList, useMyKitList } from "@/services/me";
+import { Role } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function MyKitListPage() {
   const { data: products, isPending: isMyKitListPending } = useMyKitList();
   const { data: crewOnlyKits, isPending: isCrewOnlyKitListPending } = useCrewOnlyKitList();
+  const { data: session } = useSession();
 
   const contentProducts = products?.filter((product) => product.contentUrl !== null);
 
-  const isPending = isMyKitListPending || isCrewOnlyKitListPending;
+  const isPending =
+    isMyKitListPending || (session && session.user.role === Role.CREW && isCrewOnlyKitListPending);
 
   const isEmpty =
     contentProducts && contentProducts.length === 0 && crewOnlyKits && crewOnlyKits.length === 0;
@@ -35,27 +39,25 @@ export default function MyKitListPage() {
             ))}
         </section>
       )}
-      {contentProducts && crewOnlyKits && (
-        <section className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
-          {crewOnlyKits.map((product) => (
-            <PurchasedProductItem
-              key={product.id}
-              contentUrl={product.contentUrl || ""}
-              imageSrc={storage.getFileUrl(product.thumbnailUrl)}
-              name={product.name}
-              isCrewOnly
-            />
-          ))}
-          {contentProducts.map((product) => (
-            <PurchasedProductItem
-              key={product.id}
-              contentUrl={product.contentUrl || ""}
-              imageSrc={storage.getFileUrl(product.thumbnailUrl)}
-              name={product.name}
-            />
-          ))}
-        </section>
-      )}
+      <section className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
+        {contentProducts?.map((product) => (
+          <PurchasedProductItem
+            key={product.id}
+            contentUrl={product.contentUrl || ""}
+            imageSrc={storage.getFileUrl(product.thumbnailUrl)}
+            name={product.name}
+          />
+        ))}
+        {crewOnlyKits?.map((product) => (
+          <PurchasedProductItem
+            key={product.id}
+            contentUrl={product.contentUrl || ""}
+            imageSrc={storage.getFileUrl(product.thumbnailUrl)}
+            name={product.name}
+            isCrewOnly
+          />
+        ))}
+      </section>
       {isEmpty && (
         <EmptyState
           message="보유한 독학 키트가 없어요."
