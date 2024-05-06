@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { api } from "@/services/shared";
 import { Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys as productQueryKeys } from "./product";
 
 export const reviewRepository = {
   getReviewList: () => {
@@ -52,7 +53,7 @@ export const useDeleteReview = () => {
     mutationFn: reviewApi.deleteReview,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: queryKeys.all(),
+        queryKey: [queryKeys.all(), productQueryKeys.all()],
       });
     },
   });

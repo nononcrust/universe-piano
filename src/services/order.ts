@@ -164,8 +164,10 @@ export const useDeleteOrder = () => {
 
   return useMutation({
     mutationFn: orderApi.deleteOrder,
-    onSuccess: (_, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables.params.id), null);
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.all(),
+      });
     },
   });
 };

@@ -3,8 +3,7 @@
 import { Icon } from "@/components/shared/icon";
 import { AlertDialog } from "@/components/ui/alert-dialog";
 import { IconButton } from "@/components/ui/icon-button";
-import { useDeleteProductReview } from "@/services/product";
-import { ReviewList } from "@/services/review";
+import { ReviewList, useDeleteReview } from "@/services/review";
 import { ColumnDef } from "@tanstack/react-table";
 
 export const reviewColumns: ColumnDef<ReviewList[number]>[] = [
@@ -40,7 +39,7 @@ interface DeleteButtonProps {
 }
 
 const DeleteButton = ({ id }: DeleteButtonProps) => {
-  const deleteMutation = useDeleteProductReview();
+  const deleteMutation = useDeleteReview();
 
   const onDelete = () => {
     if (deleteMutation.isPending) return;

@@ -205,7 +205,7 @@ export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
           type="submit"
           disabled={createOrderMutation.isPending || form.formState.isSubmitSuccessful}
         >
-          결제하기
+          주문하기
         </Button>
       </form>
     </Form>

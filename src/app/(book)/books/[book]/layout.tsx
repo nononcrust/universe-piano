@@ -1,6 +1,19 @@
+"use client";
+
 import { KitMobileHeader } from "@/components/book/mobile-header";
 import { BookNavigationDrawer } from "@/components/book/navigation-drawer";
 import { ScrollArea } from "@/components/shared/scroll-area";
+import { ROUTE } from "@/constants/route";
+import { CREW_CONTENT_URL } from "@/middleware";
+import { useSession } from "@/services/auth";
+import { usePurchasedProductList } from "@/services/me";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+// /books/checklist/checklist/intro -> /books/checklist
+const getBookBasePath = (path: string) => {
+  return path.split("/").slice(0, 3).join("/");
+};
 
 export default function BookLayout({
   children,
@@ -12,6 +25,34 @@ export default function BookLayout({
     content: string;
   };
 }) {
+  const { data: session } = useSession();
+
+  const pathname = usePathname();
+
+  const router = useRouter();
+
+  const bookBasePath = getBookBasePath(pathname);
+
+  const { data: purchasedProducts } = usePurchasedProductList();
+
+  const isCrewContent = CREW_CONTENT_URL.some((url) => bookBasePath === url);
+
+  useEffect(() => {
+    if (isCrewContent || !session || !purchasedProducts) return;
+
+    const isPurchasedBook = purchasedProducts.some((product) => {
+      const productBasePath = getBookBasePath(product.contentUrl);
+
+      return productBasePath === bookBasePath;
+    });
+
+    if (!isPurchasedBook) {
+      router.replace(ROUTE.HOME);
+    }
+  }, [bookBasePath, isCrewContent, purchasedProducts, session, router]);
+
+  if (!session || !purchasedProducts) return null;
+
   return (
     <div className="flex max-h-screen min-h-screen flex-col overflow-y-hidden md:flex-row">
       <BookNavigationDrawer book={params.book} />
