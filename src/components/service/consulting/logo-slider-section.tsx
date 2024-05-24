@@ -15,6 +15,8 @@ import logo2 from "@/assets/images/consulting/consulting-2.png";
 import logo20 from "@/assets/images/consulting/consulting-20.png";
 import logo21 from "@/assets/images/consulting/consulting-21.png";
 import logo22 from "@/assets/images/consulting/consulting-22.png";
+import logo23 from "@/assets/images/consulting/consulting-23.png";
+import logo24 from "@/assets/images/consulting/consulting-24.png";
 import logo3 from "@/assets/images/consulting/consulting-3.png";
 import logo4 from "@/assets/images/consulting/consulting-4.png";
 import logo5 from "@/assets/images/consulting/consulting-5.png";
@@ -37,7 +39,7 @@ export const LogoSliderSection = () => {
   );
 };
 
-const logos1 = [logo1, logo2, logo3, logo4, logo5, logo6, logo8];
+const logos1 = [logo1, logo2, logo3, logo4, logo5, logo6, logo8, logo23, logo24];
 
 const logos2 = [logo9, logo10, logo11, logo12, logo13, logo14, logo15];
 

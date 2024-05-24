@@ -19,13 +19,13 @@ const SERVICES = [
   {
     title: "미국 음대 입시 과외",
     description: "단기간에 완성하는 맞춤형 입시 과외!",
-    href: ROUTE.SERVICE.STUDY,
+    href: ROUTE.SERVICE.TUTORING,
     icon: <ColoredIcon.Chat />,
   },
   {
     title: "영어 스터디",
     description: "음대생을 위한 영어 스터디",
-    href: ROUTE.SERVICE.TUTORING,
+    href: ROUTE.SERVICE.STUDY,
     icon: <ColoredIcon.Pencil />,
   },
   {
