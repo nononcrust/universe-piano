@@ -7,14 +7,14 @@ import { UserMenu } from "@/components/layout/user-menu";
 import { Button } from "@/components/ui/button";
 import { siteConfig, siteContents } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth/use-session";
 import { cn } from "@/lib/utils";
-import { useSession } from "@/services/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const Header = () => {
-  const { data: session, fetchStatus } = useSession();
+  const { session, fetchStatus } = useSession();
 
   const pathname = usePathname();
 

@@ -10,15 +10,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
 import { contentSchema, imagesSchema, titleSchema } from "@/schemas/form";
-import {
-  useAuditionDetail,
-  useCreateAudition,
-  useDeleteAudition,
-  useUpdateAudition,
-} from "@/services/audition";
+import { useCreateAudition, useDeleteAudition, useUpdateAudition } from "@/services/audition";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
@@ -32,25 +26,38 @@ const formSchema = z.object({
 
 type FormSchema = z.infer<typeof formSchema>;
 
-interface AuditionFormProps {
-  mode: "create" | "edit";
+interface AuditionCreateFormProps {
+  mode: "create";
   auditionId?: string;
+  defaultValues?: {
+    title: string;
+    content: string;
+  };
 }
 
-export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
+interface AuditionEditFormProps {
+  mode: "edit";
+  auditionId: string;
+  defaultValues: {
+    title: string;
+    content: string;
+  };
+}
+
+type AuditionFormProps = AuditionCreateFormProps | AuditionEditFormProps;
+
+export const AuditionForm = ({ mode, auditionId, defaultValues }: AuditionFormProps) => {
   const createAuditionMutation = useCreateAudition();
   const updateAuditionMutation = useUpdateAudition();
   const deleteAuditionMutation = useDeleteAudition();
 
   const router = useRouter();
 
-  const { data } = useAuditionDetail({ id: auditionId ?? "" });
-
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      content: "",
+      title: defaultValues?.title ?? "",
+      content: defaultValues?.content ?? "",
       images: [],
     },
   });
@@ -68,7 +75,7 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
       );
     }
 
-    if (mode === "edit" && auditionId && !updateAuditionMutation.isPending) {
+    if (mode === "edit" && !updateAuditionMutation.isPending) {
       updateAuditionMutation.mutate(
         { params: { id: auditionId }, body: data },
         {
@@ -80,8 +87,9 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
       );
     }
   });
+
   const onDelete = () => {
-    if (mode === "edit" && auditionId && !deleteAuditionMutation.isPending) {
+    if (mode === "edit" && !deleteAuditionMutation.isPending) {
       deleteAuditionMutation.mutate(
         { params: { id: auditionId } },
         {
@@ -93,17 +101,6 @@ export const AuditionForm = ({ mode, auditionId }: AuditionFormProps) => {
       );
     }
   };
-
-  useEffect(() => {
-    if (mode === "edit" && data) {
-      form.reset({
-        title: data.title,
-        content: data.content,
-      });
-    }
-  }, [data, form, mode]);
-
-  if (mode === "edit" && !data) return null;
 
   return (
     <Card>

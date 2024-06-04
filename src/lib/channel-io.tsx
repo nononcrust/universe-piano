@@ -1,6 +1,6 @@
 import { channelEnabledRoutes } from "@/configs/site";
 import { ROUTE } from "@/constants/route";
-import { useSession } from "@/services/auth";
+import { useSession } from "@/features/auth/use-session";
 import { usePathname } from "next/navigation";
 import { PropsWithChildren, useEffect } from "react";
 
@@ -207,15 +207,13 @@ if (typeof window !== "undefined") {
 }
 
 export const ChannelProvider = ({ children }: PropsWithChildren) => {
-  const { data: session } = useSession();
+  const { session } = useSession();
   const pathname = usePathname();
 
   const isChannelRoute =
     pathname === ROUTE.HOME || channelEnabledRoutes.some((route) => pathname.startsWith(route));
 
   useEffect(() => {
-    if (session === undefined) return;
-
     if (isChannelRoute)
       channel.boot({
         pluginKey: process.env.NEXT_PUBLIC_CHANNEL_IO_KEY!,

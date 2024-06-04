@@ -25,10 +25,10 @@ const categoryApi = {
 };
 
 export const queryKeys = {
-  all: () => [ENDPOINT] as const,
-  detail: (id?: string) => [...queryKeys.all(), id] as const,
-  list: () => [...queryKeys.all(), "list"] as const,
-};
+  all: () => [ENDPOINT],
+  detail: (id: string) => [...queryKeys.all(), "detail", id],
+  list: () => [...queryKeys.all(), "list"],
+} as const;
 
 export const useCategoryList = () => {
   return useQuery({

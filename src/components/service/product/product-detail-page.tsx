@@ -12,10 +12,10 @@ import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { CATEGORY } from "@/constants/enum";
+import { useSession } from "@/features/auth/use-session";
 import { useDialog } from "@/hooks/use-dialog";
 import { storage } from "@/lib/supabase";
 import { formatDate } from "@/lib/utils";
-import { useSession } from "@/services/auth";
 import { useMyProductReviewList, usePurchasedProductList } from "@/services/me";
 import { useDeleteProductReview, useProductDetail, useProductReviewList } from "@/services/product";
 import { Role } from "@prisma/client";
@@ -85,7 +85,7 @@ const ProductInfoSection = () => {
 
   const productReviewAddDialog = useDialog();
 
-  const { data: session } = useSession();
+  const { session } = useSession();
   const { data: purchasedProducts } = usePurchasedProductList();
   const { data: reviews } = useProductReviewList({ id: params.id });
 
@@ -206,7 +206,7 @@ const ProductAction = () => {
 
   const checkoutDialog = useDialog();
 
-  const { data: session } = useSession();
+  const { session } = useSession();
   const { data: product } = useProductDetail({ id: params.id });
   const { data: purchasedProducts } = usePurchasedProductList();
 

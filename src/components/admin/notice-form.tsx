@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ROUTE } from "@/constants/route";
 import { cn } from "@/lib/utils";
-import { auditionRequestSchema } from "@/services/audition";
+import { auditionRequestBodySchema } from "@/services/audition";
 import { useCreateNotice, useDeleteNotice, useUpdateNotice } from "@/services/notice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Notice } from "@prisma/client";
@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 
-type FormSchema = z.infer<typeof auditionRequestSchema>;
+type FormSchema = z.infer<typeof auditionRequestBodySchema>;
 
 interface NoticeFormProps {
   mode: "create" | "edit";
@@ -33,7 +33,7 @@ export const NoticeForm = ({ mode, notice }: NoticeFormProps) => {
   const router = useRouter();
 
   const form = useForm<FormSchema>({
-    resolver: zodResolver(auditionRequestSchema),
+    resolver: zodResolver(auditionRequestBodySchema),
     defaultValues: {
       title: notice?.title ?? "",
       content: notice?.content ?? "",

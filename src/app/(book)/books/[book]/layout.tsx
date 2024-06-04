@@ -4,8 +4,8 @@ import { KitMobileHeader } from "@/components/book/mobile-header";
 import { BookNavigationDrawer } from "@/components/book/navigation-drawer";
 import { ScrollArea } from "@/components/shared/scroll-area";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth/use-session";
 import { CREW_CONTENT_URL } from "@/middleware";
-import { useSession } from "@/services/auth";
 import { usePurchasedProductList } from "@/services/me";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -25,7 +25,7 @@ export default function BookLayout({
     content: string;
   };
 }) {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const pathname = usePathname();
 

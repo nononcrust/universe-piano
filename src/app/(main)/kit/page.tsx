@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth/use-session";
 import { storage } from "@/lib/supabase";
-import { useSession } from "@/services/auth";
 import { useCrewOnlyKitList, useMyKitList } from "@/services/me";
 import { Role } from "@prisma/client";
 import Image from "next/image";
@@ -17,7 +17,7 @@ import Link from "next/link";
 export default function MyKitListPage() {
   const { data: products, isPending: isMyKitListPending } = useMyKitList();
   const { data: crewOnlyKits, isPending: isCrewOnlyKitListPending } = useCrewOnlyKitList();
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const contentProducts = products?.filter((product) => product.contentUrl !== null);
 
