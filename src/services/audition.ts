@@ -37,13 +37,13 @@ export type AuditionList = Prisma.PromiseReturnType<typeof auditionRepository.ge
 export type AuditionDetail = Prisma.PromiseReturnType<typeof auditionRepository.getAuditionById>;
 export type AuditionComment = NonNullable<AuditionDetail>["comments"][number];
 
-export const auditionRequestSchema = z.object({
+export const auditionRequestBodySchema = z.object({
   title: titleSchema,
   content: contentSchema,
   images: imagesSchema,
 });
 
-export type AuditionRequest = z.infer<typeof auditionRequestSchema>;
+export type AuditionRequestBody = z.infer<typeof auditionRequestBodySchema>;
 
 export const auditionCommentRequestSchema = z.object({
   content: contentSchema,
@@ -58,37 +58,43 @@ const auditionApi = {
     const response = await api.get<AuditionList>(ENDPOINT);
     return response.data;
   },
-  getAuditionById: async (data: { params: { id: string } }) => {
-    const response = await api.get<AuditionDetail>(`${ENDPOINT}/${data.params.id}`);
+  getAuditionById: async (request: { params: { id: string } }) => {
+    const response = await api.get<AuditionDetail>(`${ENDPOINT}/${request.params.id}`);
     return response.data;
   },
-  createAudition: async (data: { body: AuditionRequest }) => {
-    const response = await api.postForm(ENDPOINT, data.body);
+  createAudition: async (request: { body: AuditionRequestBody }) => {
+    const response = await api.postForm(ENDPOINT, request.body);
     return response.data;
   },
-  updateAudition: async (data: { params: { id: string }; body: Partial<AuditionRequest> }) => {
-    const response = await api.put(`${ENDPOINT}/${data.params.id}`, data.body);
+  updateAudition: async (request: {
+    params: { id: string };
+    body: Partial<AuditionRequestBody>;
+  }) => {
+    const response = await api.put(`${ENDPOINT}/${request.params.id}`, request.body);
     return response.data;
   },
-  deleteAudition: async (data: { params: { id: string } }) => {
-    const response = await api.delete(`${ENDPOINT}/${data.params.id}`);
+  deleteAudition: async (request: { params: { id: string } }) => {
+    const response = await api.delete(`${ENDPOINT}/${request.params.id}`);
     return response.data;
   },
-  createAuditionComment: async (data: { params: { id: string }; body: AuditionCommentRequest }) => {
-    const response = await api.post(`${ENDPOINT}/${data.params.id}/comments`, data.body);
+  createAuditionComment: async (request: {
+    params: { id: string };
+    body: AuditionCommentRequest;
+  }) => {
+    const response = await api.post(`${ENDPOINT}/${request.params.id}/comments`, request.body);
     return response.data;
   },
-  deleteAuditionComment: async (data: { params: { id: string } }) => {
-    const response = await api.delete<AuditionComment>(`${ENDPOINT}/comments/${data.params.id}`);
+  deleteAuditionComment: async (request: { params: { id: string } }) => {
+    const response = await api.delete<AuditionComment>(`${ENDPOINT}/comments/${request.params.id}`);
     return response.data;
   },
 };
 
 export const queryKeys = {
-  all: () => [ENDPOINT] as const,
-  detail: (id?: string) => [queryKeys.all(), id] as const,
-  list: () => [queryKeys.all(), "list"] as const,
-};
+  all: () => [ENDPOINT],
+  detail: (id: string) => [queryKeys.all(), "detail", id],
+  list: () => [queryKeys.all(), "list"],
+} as const;
 
 export const useAuditionList = () => {
   return useQuery({
@@ -101,7 +107,6 @@ export const useAuditionDetail = ({ id }: { id: string }) => {
   return useQuery({
     queryKey: queryKeys.detail(id),
     queryFn: () => auditionApi.getAuditionById({ params: { id } }),
-    enabled: !!id,
   });
 };
 
@@ -123,8 +128,10 @@ export const useUpdateAudition = () => {
 
   return useMutation({
     mutationFn: auditionApi.updateAudition,
-    onSuccess: (data, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables.params.id), data);
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.all(),
+      });
     },
   });
 };
@@ -134,8 +141,10 @@ export const useDeleteAudition = () => {
 
   return useMutation({
     mutationFn: auditionApi.deleteAudition,
-    onSuccess: (_, variables) => {
-      queryClient.setQueryData(queryKeys.detail(variables.params.id), null);
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.all(),
+      });
     },
   });
 };

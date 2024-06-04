@@ -1,6 +1,6 @@
 import { USER_ROLE_LABEL } from "@/constants/enum";
+import { useSession } from "@/features/auth/use-session";
 import { cn } from "@/lib/utils";
-import { useSession } from "@/services/auth";
 import { Role } from "@prisma/client";
 import { cva } from "class-variance-authority";
 
@@ -18,7 +18,7 @@ const userRoleBadgeVariants = cva(
 );
 
 export const UserRoleBadge = () => {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   if (!session) return null;
 

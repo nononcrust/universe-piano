@@ -72,20 +72,20 @@ export type Session = { user: User };
 const ENDPOINT = "/auth";
 
 export const authApi = {
-  login: async (data: { body: JwtPayload }) => {
-    const response = await api.post(`${ENDPOINT}/login`, data.body);
+  login: async (request: { body: JwtPayload }) => {
+    const response = await api.post(`${ENDPOINT}/login`, request.body);
     return response.data;
   },
   logout: async () => {
     const response = await api.get(`${ENDPOINT}/logout`);
     return response.data;
   },
-  register: async (data: { body: RegisterBody }) => {
-    const response = await api.post<User>(`${ENDPOINT}/register`, data.body);
+  register: async (request: { body: RegisterBody }) => {
+    const response = await api.post<User>(`${ENDPOINT}/register`, request.body);
     return response.data;
   },
   getSession: async () => {
-    const response = await api.get<Session>(`${ENDPOINT}/session`);
+    const response = await api.get<Session | null>(`${ENDPOINT}/session`);
     return response.data;
   },
   withdrawal: async () => {
@@ -99,7 +99,7 @@ export const queryKeys = {
   session: () => [...queryKeys.all(), "session"] as const,
 };
 
-export const useSession = () => {
+export const useGetSession = () => {
   return useQuery({
     queryKey: queryKeys.session(),
     queryFn: authApi.getSession,

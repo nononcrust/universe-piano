@@ -37,7 +37,7 @@ export const noticeRequestSchema = z.object({
   images: z.array(z.string().url()).optional(),
 });
 
-export type NoticeRequest = z.infer<typeof noticeRequestSchema>;
+export type NoticeRequestBody = z.infer<typeof noticeRequestSchema>;
 
 const ENDPOINT = "/notice";
 
@@ -46,20 +46,20 @@ const noticeApi = {
     const response = await api.get<NoticeList>(`${ENDPOINT}`);
     return response.data;
   },
-  getNoticeById: async (data: { params: { id: string } }) => {
-    const response = await api.get<NoticeDetail>(`${ENDPOINT}/${data.params.id}`);
+  getNoticeById: async (request: { params: { id: string } }) => {
+    const response = await api.get<NoticeDetail>(`${ENDPOINT}/${request.params.id}`);
     return response.data;
   },
-  createNotice: async (data: { body: NoticeRequest }) => {
-    const response = await api.post(`${ENDPOINT}`, data.body);
+  createNotice: async (request: { body: NoticeRequestBody }) => {
+    const response = await api.post(`${ENDPOINT}`, request.body);
     return response.data;
   },
-  updateNotice: async (data: { params: { id: string }; body: Partial<NoticeRequest> }) => {
-    const response = await api.put(`${ENDPOINT}/${data.params.id}`, data.body);
+  updateNotice: async (request: { params: { id: string }; body: Partial<NoticeRequestBody> }) => {
+    const response = await api.put(`${ENDPOINT}/${request.params.id}`, request.body);
     return response.data;
   },
-  deleteNotice: async (data: { params: { id: string } }) => {
-    const response = await api.delete(`${ENDPOINT}/${data.params.id}`);
+  deleteNotice: async (request: { params: { id: string } }) => {
+    const response = await api.delete(`${ENDPOINT}/${request.params.id}`);
     return response.data;
   },
 };

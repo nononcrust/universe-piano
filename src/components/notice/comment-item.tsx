@@ -2,8 +2,8 @@
 
 import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Avatar } from "@/components/ui/avatar";
+import { useSession } from "@/features/auth/use-session";
 import { useDialog } from "@/hooks/use-dialog";
-import { useSession } from "@/services/auth";
 
 interface CommentItemProps {
   authorId: string;
@@ -22,7 +22,7 @@ export const CommentItem = ({
   createdAt,
   onDelete,
 }: CommentItemProps) => {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const deleteConfirmDialog = useDialog();
 
@@ -42,11 +42,11 @@ export const CommentItem = ({
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <p className="text-sm font-medium">{nickname}</p>
-            <p className="text-sub text-xs">{createdAt}</p>
+            <p className="text-xs text-sub">{createdAt}</p>
           </div>
           {isMyComment && (
             <p
-              className="text-sub cursor-pointer text-xs font-medium"
+              className="cursor-pointer text-xs font-medium text-sub"
               onClick={onDeleteButtonClick}
             >
               삭제

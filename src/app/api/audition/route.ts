@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { UPLOAD_FOLDER, storage } from "@/lib/supabase";
-import { auditionRepository, auditionRequestSchema } from "@/services/audition";
+import { auditionRepository, auditionRequestBodySchema } from "@/services/audition";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +19,9 @@ export const POST = async (request: Request) => {
   try {
     const formData = await request.formData();
 
-    const { images, ...body } = auditionRequestSchema.parse(Object.fromEntries(formData.entries()));
+    const { images, ...body } = auditionRequestBodySchema.parse(
+      Object.fromEntries(formData.entries()),
+    );
 
     if (images && images.length > 0) {
       const { path } = await storage.uploadFile(images[0], UPLOAD_FOLDER.AUDITION);

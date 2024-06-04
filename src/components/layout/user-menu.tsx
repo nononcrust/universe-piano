@@ -4,14 +4,14 @@ import { AccessControl } from "@/components/shared/access-control";
 import { Avatar } from "@/components/ui/avatar";
 import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth/use-session";
 import { useAuth } from "@/hooks/use-auth";
-import { useSession } from "@/services/auth";
 import { Role } from "@prisma/client";
 import Link from "next/link";
 import { UserRoleBadge } from "../shared/user-role-badge";
 
 export const UserMenu = () => {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const auth = useAuth();
 

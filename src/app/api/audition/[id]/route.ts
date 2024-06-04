@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { storage } from "@/lib/supabase";
-import { auditionRepository, auditionRequestSchema } from "@/services/audition";
+import { auditionRepository, auditionRequestBodySchema } from "@/services/audition";
 import { ZodError } from "zod";
 
 export const dynamic = "force-dynamic";
@@ -27,7 +27,7 @@ export const PUT = async (request: Request, context: Context) => {
   try {
     const auditionId = context.params.id;
 
-    const body = auditionRequestSchema.parse(await request.json());
+    const body = auditionRequestBodySchema.parse(await request.json());
 
     const audition = await prisma.audition.update({
       where: {

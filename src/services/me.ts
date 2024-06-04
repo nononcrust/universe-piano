@@ -1,9 +1,9 @@
 import { CATEGORY } from "@/constants/enum";
 import { prisma } from "@/lib/prisma";
 import { api } from "@/services/shared";
-import { OrderStatus, Prisma, Role } from "@prisma/client";
+import { OrderStatus, Prisma } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
-import { Session, useSession } from "./auth";
+import { Session } from "./auth";
 
 export const meRepository = {
   getPurchasedProductList: async (session: Session) => {
@@ -137,51 +137,36 @@ export const queryKeys = {
 };
 
 export const usePurchasedProductList = () => {
-  const { data: session } = useSession();
-
   return useQuery({
     queryKey: queryKeys.purchasedProducts(),
     queryFn: meApi.getPurchasedProductList,
-    enabled: !!session,
   });
 };
 
 export const useMyKitList = () => {
-  const { data: session } = useSession();
-
   return useQuery({
     queryKey: queryKeys.myKitList(),
     queryFn: meApi.getMyKitList,
-    enabled: !!session,
   });
 };
 
 export const useMyOrderList = () => {
-  const { data: session } = useSession();
-
   return useQuery({
     queryKey: queryKeys.orderList(),
     queryFn: meApi.getMyOrderList,
-    enabled: !!session,
   });
 };
 
 export const useMyProductReviewList = () => {
-  const { data: session } = useSession();
-
   return useQuery({
     queryKey: queryKeys.productReviewList(),
     queryFn: meApi.getMyProductReviewList,
-    enabled: !!session,
   });
 };
 
 export const useCrewOnlyKitList = () => {
-  const { data: session } = useSession();
-
   return useQuery({
     queryKey: queryKeys.all(),
     queryFn: meApi.getCrewOnlyKitList,
-    enabled: !!session && session.user.role !== Role.USER,
   });
 };

@@ -9,9 +9,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth/use-session";
 import { storage } from "@/lib/supabase";
 import { allowNumberOnly, cn, defaultZero, limitMaxNumber, trimLeadingZeros } from "@/lib/utils";
-import { useSession } from "@/services/auth";
 import { useCreateOrder } from "@/services/order";
 import { useProductDetail } from "@/services/product";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,7 +33,7 @@ const formSchema = z.object({
 });
 
 export const CheckoutForm = ({ productId }: CheckoutFormProps) => {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const router = useRouter();
 

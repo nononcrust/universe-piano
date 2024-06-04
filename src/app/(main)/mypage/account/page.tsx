@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth/use-session";
 import { emailSchema, nicknameSchema } from "@/schemas/form";
-import { useSession, useUpdateProfile } from "@/services/auth";
+import { useUpdateProfile } from "@/services/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,7 +23,7 @@ const formSchema = z.object({
 });
 
 export default function AccountPage() {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const router = useRouter();
 

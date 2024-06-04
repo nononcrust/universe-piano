@@ -8,13 +8,13 @@ import { Drawer } from "@/components/ui/drawer";
 import { siteContents } from "@/configs/site";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
+import { useSession } from "@/features/auth/use-session";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
-import { useSession } from "@/services/auth";
 import Link from "next/link";
 
 export const NavigationMenuDialog = () => {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   const auth = useAuth();
 
@@ -99,7 +99,7 @@ interface ListCategoryProps {
 const ListCategory = ({ title, children }: ListCategoryProps) => {
   return (
     <div className="py-2">
-      <p className="text-medium text-sub text-sm">{title}</p>
+      <p className="text-medium text-sm text-sub">{title}</p>
       {children}
     </div>
   );
@@ -115,7 +115,7 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
     <Link href={href}>
       <Drawer.Close className="flex w-full">
         <li
-          className="flex-1 cursor-pointer py-3 text-left font-medium text-foreground"
+          className="text-foreground flex-1 cursor-pointer py-3 text-left font-medium"
           onClick={onClick}
         >
           {children}
@@ -126,7 +126,7 @@ const ListItem = ({ children, href, onClick }: ListItemProps) => {
 };
 
 const UserProfile = () => {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   if (!session) return null;
 
@@ -143,7 +143,7 @@ const UserProfile = () => {
           <p className="text-lg font-medium">{user.nickname}</p>
           <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
         </div>
-        <p className="text-sub text-sm">{user.email}</p>
+        <p className="text-sm text-sub">{user.email}</p>
       </div>
     </div>
   );

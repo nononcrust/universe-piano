@@ -8,11 +8,11 @@ import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ROUTE } from "@/constants/route";
-import { useSession } from "@/services/auth";
+import { useSession } from "@/features/auth/use-session";
 import Link from "next/link";
 
 export default function MyProfilePage() {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   if (!session) return null;
 

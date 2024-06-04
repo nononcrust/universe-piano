@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/services/auth";
+import { useSession } from "@/features/auth/use-session";
 import { Role, Tier } from "@prisma/client";
 
 type AccessControlAction = "fallback";
@@ -19,7 +19,7 @@ export const AccessControl = ({
   fallback = null,
   role = Role.USER,
 }: AccessControlProps) => {
-  const { data: session } = useSession();
+  const { session } = useSession();
 
   if (action === "fallback") {
     if (role === Role.USER && !session) return fallback;
