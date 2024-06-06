@@ -91,14 +91,12 @@ const ProductInfoSection = () => {
 
   const { data: product } = useProductDetail({ id: params.id });
 
-  const hasPurchased = purchasedProducts?.some(
-    (purchasedProduct) => purchasedProduct.id === product?.id,
-  );
+  // const hasPurchased = purchasedProducts?.some(
+  //   (purchasedProduct) => purchasedProduct.id === product?.id,
+  // );
 
-  const isCrewOnlyAndCrew =
-    (product?.price === 0 && session?.user.role === Role.CREW) || session?.user.role === Role.ADMIN;
-
-  const canWriteReview = hasPurchased || isCrewOnlyAndCrew;
+  // const isCrewOnlyAndCrew =
+  //   (product?.price === 0 && session?.user.role === Role.CREW) || session?.user.role === Role.ADMIN;
 
   if (!product) return null;
 
@@ -179,7 +177,7 @@ const ProductInfoSection = () => {
           <PageTitle title="리뷰">
             {reviews && <span className="ml-2 text-primary">{reviews.length}</span>}
           </PageTitle>
-          {canWriteReview && (
+          {session && (
             <Button
               className="absolute bottom-0 right-0"
               variant="outlined"
