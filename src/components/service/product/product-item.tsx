@@ -44,7 +44,7 @@ export const ProductItem = ({ href, product }: ProductItemProps) => {
               {shouldHidePrice && <p className="font-semibold text-primary md:text-base"></p>}
             </>
           )}
-          {isCrewOnly && <p className="font-semibold text-primary">크루 컨텐츠</p>}
+          {isCrewOnly && <p className="font-semibold text-primary">크루 전용 자료</p>}
         </div>
       </div>
     </Link>

@@ -62,6 +62,7 @@ export const meRepository = {
           orderItems: {
             some: {
               product: {
+                published: true,
                 category: {
                   name: CATEGORY.KIT,
                 },
@@ -84,6 +85,7 @@ export const meRepository = {
   getCrewOnlyKitList: async () => {
     return prisma.product.findMany({
       where: {
+        published: true,
         category: {
           name: CATEGORY.KIT,
         },

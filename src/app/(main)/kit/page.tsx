@@ -98,7 +98,7 @@ const PurchasedProductItem = ({
       </AspectRatio>
       <div className="ml-2 flex flex-col items-start gap-2">
         <p className="font-semibold text-main">{name}</p>
-        {isCrewOnly && <Chip>크루 컨텐츠</Chip>}
+        {isCrewOnly && <Chip>크루 전용 자료</Chip>}
       </div>
     </Link>
   );
