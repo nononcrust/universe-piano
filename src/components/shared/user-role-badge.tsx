@@ -11,6 +11,8 @@ const userRoleBadgeVariants = cva(
       variant: {
         [Role.USER]: "text-main bg-content",
         [Role.CREW]: "text-white bg-primary",
+        [Role.MENTOR_CREW]: "text-white bg-orange-500",
+        [Role.TUTOR_CREW]: "text-white bg-blue-500",
         [Role.ADMIN]: "text-white bg-rose-600",
       },
     },

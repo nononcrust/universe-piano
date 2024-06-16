@@ -111,6 +111,8 @@ model Product {
   description String
   contentUrl  String
   contactUrl  String?
+  published   Boolean
+  isPriceHidden Boolean? @default(false)
 
   thumbnailUrl String
   detailImageUrls String[]
@@ -183,10 +185,13 @@ model Faq {
   updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
+
 enum Role {
   ADMIN
   USER
   CREW
+  MENTOR_CREW
+  TUTOR_CREW
 }
 
 enum Tier {

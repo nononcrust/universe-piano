@@ -11,9 +11,11 @@ import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
+import { siteConfig } from "@/configs/site";
 import { CATEGORY } from "@/constants/enum";
 import { useSession } from "@/features/auth/use-session";
 import { useDialog } from "@/hooks/use-dialog";
+import { createContextFactory } from "@/lib/context";
 import { storage } from "@/lib/supabase";
 import { formatDate } from "@/lib/utils";
 import { useMyProductReviewList, usePurchasedProductList } from "@/services/me";
@@ -25,24 +27,22 @@ import { useParams } from "next/navigation";
 
 export const ProductDetailPage = () => {
   return (
-    <main className="container pb-16">
-      <section className="mt-5 flex flex-col gap-12 md:mt-12 md:flex-row">
-        <ProductImageSection />
-        <ProductOptionSection />
-      </section>
-      <section className="relative mt-8 flex justify-center">
-        <ProductInfoSection />
-      </section>
-    </main>
+    <PageContextProvider>
+      <main className="container pb-16">
+        <section className="mt-5 flex flex-col gap-12 md:mt-12 md:flex-row">
+          <ProductImageSection />
+          <ProductOptionSection />
+        </section>
+        <section className="relative mt-8 flex justify-center">
+          <ProductInfoSection />
+        </section>
+      </main>
+    </PageContextProvider>
   );
 };
 
 const ProductImageSection = () => {
-  const params = useParams<{ id: string }>();
-
-  const { data: product } = useProductDetail({ id: params.id });
-
-  if (!product) return null;
+  const { product } = usePageContext();
 
   return (
     <div className="flex-1">
@@ -59,13 +59,9 @@ const ProductImageSection = () => {
 };
 
 const ProductOptionSection = () => {
-  const params = useParams<{ id: string }>();
+  const { product } = usePageContext();
 
-  const { data: product } = useProductDetail({ id: params.id });
-
-  const isCrewOnly = product?.price === 0;
-
-  if (!product) return null;
+  const isCrewOnly = product.price === 0;
 
   return (
     <div className="flex flex-1 flex-col">
@@ -81,24 +77,11 @@ const ProductOptionSection = () => {
 };
 
 const ProductInfoSection = () => {
-  const params = useParams<{ id: string }>();
-
   const productReviewAddDialog = useDialog();
 
   const { session } = useSession();
-  const { data: purchasedProducts } = usePurchasedProductList();
-  const { data: reviews } = useProductReviewList({ id: params.id });
 
-  const { data: product } = useProductDetail({ id: params.id });
-
-  // const hasPurchased = purchasedProducts?.some(
-  //   (purchasedProduct) => purchasedProduct.id === product?.id,
-  // );
-
-  // const isCrewOnlyAndCrew =
-  //   (product?.price === 0 && session?.user.role === Role.CREW) || session?.user.role === Role.ADMIN;
-
-  if (!product) return null;
+  const { product, reviews } = usePageContext();
 
   return (
     <div className="flex w-full flex-col items-center">
@@ -120,11 +103,11 @@ const ProductInfoSection = () => {
             />
           ))}
         </div>
-        {product?.faqs.length > 0 && (
+        {product.faqs.length > 0 && (
           <div>
             <PageTitle title="Q&A" />
             <Accordion className="mt-4" type="single" collapsible>
-              {product?.faqs.map((faq, index) => (
+              {product.faqs.map((faq, index) => (
                 <Accordion.Item key={index} value={String(index)} className="ml-2 md:ml-0">
                   <Accordion.Trigger>
                     <div className="my-1 flex gap-2">
@@ -141,7 +124,7 @@ const ProductInfoSection = () => {
             </Accordion>
           </div>
         )}
-        {/* TODO: 임시 링크 삭제 */}
+        {/* TODO: 임시 링크 삭제  */}
         {product.category.name === CATEGORY.PARTIAL_CONSULTING && (
           <div className="flex flex-col items-center pb-[120px]">
             <div className="rounded-full bg-content-light p-4">
@@ -153,13 +136,14 @@ const ProductInfoSection = () => {
             </p>
             <Link
               className="mt-8 flex items-center gap-4 text-nowrap rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-primary-dark"
-              href="https://open.kakao.com/o/sy3BCAif"
+              href={siteConfig.links.kakao}
               target="_blank"
             >
               서류 대행 문의하기
             </Link>
           </div>
         )}
+        {/* TODO: 하드코딩 수정  */}
         {product.name === "미국 음대 입학 체크리스트" && (
           <div className="mt-16 flex flex-col items-center justify-center">
             <p className="mt-2 text-sub">
@@ -167,7 +151,7 @@ const ProductInfoSection = () => {
             </p>
             <Link
               className="mt-8 flex items-center gap-4 text-nowrap rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-primary-dark"
-              href="https://open.kakao.com/o/sy3BCAif"
+              href={siteConfig.links.kakao}
             >
               크루 가입 문의
             </Link>
@@ -187,7 +171,7 @@ const ProductInfoSection = () => {
             </Button>
           )}
           <ProductReviewAddDialog
-            productId={params.id}
+            productId={product.id}
             isOpen={productReviewAddDialog.isOpen}
             onOpenChange={productReviewAddDialog.onOpenChange}
             onClose={productReviewAddDialog.close}
@@ -201,20 +185,18 @@ const ProductInfoSection = () => {
 
 const ProductAction = () => {
   const params = useParams<{ id: string }>();
+  const { product, purchasedProducts } = usePageContext();
 
   const checkoutDialog = useDialog();
 
   const { session } = useSession();
-  const { data: product } = useProductDetail({ id: params.id });
-  const { data: purchasedProducts } = usePurchasedProductList();
 
-  const hasAlreadyOrdered = purchasedProducts?.some(
-    (purchasedProducts) => purchasedProducts.id === product?.id,
+  const hasAlreadyOrdered = purchasedProducts.some(
+    (purchasedProducts) => purchasedProducts.id === product.id,
   );
 
-  const isCrewOnly = product?.price === 0;
-
-  if (!product || !purchasedProducts) return null;
+  const isCrewOnly = product.price === 0;
+  const shouldHidePrice = product.isPriceHidden && !session;
 
   if (isCrewOnly) {
     return (
@@ -225,7 +207,7 @@ const ProductAction = () => {
               <p className="font-medium">크루 가입 후 평생 소장하세요 🙌</p>
             </div>
             <Button className="max-md:h-14 max-md:text-base" variant="default" size="large" asChild>
-              <Link href="https://open.kakao.com/o/sy3BCAif">유니버스 피아노 크루 가입하기</Link>
+              <Link href={siteConfig.links.kakao}>유니버스 피아노 크루 가입하기</Link>
             </Button>
           </>
         )}
@@ -235,10 +217,12 @@ const ProductAction = () => {
 
   return (
     <div className="mt-8 flex flex-col gap-4">
-      <div className="mt-8 flex items-center justify-between">
-        <p className="font-medium">주문 금액</p>
-        <p className="text-lg font-medium">{product.price.toLocaleString()}원</p>
-      </div>
+      {!shouldHidePrice && (
+        <div className="mt-8 flex items-center justify-between">
+          <p className="font-medium">주문 금액</p>
+          <p className="text-lg font-medium">{product.price.toLocaleString()}원</p>
+        </div>
+      )}
       {session && (
         <Button
           className="max-md:h-14 max-md:text-base"
@@ -265,10 +249,7 @@ const ProductAction = () => {
 };
 
 const ProductReviewList = () => {
-  const params = useParams<{ id: string }>();
-  const { data: reviews } = useProductReviewList({ id: params.id });
-
-  if (!reviews) return null;
+  const { reviews } = usePageContext();
 
   return (
     <div className="mt-8 flex flex-col gap-4 divide-y">
@@ -308,13 +289,13 @@ const ProductReviewListItem = ({
   userProfileImage,
   reviewImageUrl,
 }: ProductReviewListItemProps) => {
-  const { data: myProductReviews } = useMyProductReviewList();
+  const { myProductReviews } = usePageContext();
 
   const deleteConfirmDialog = useDialog();
 
   const deleteMutation = useDeleteProductReview();
 
-  const isMyReview = myProductReviews?.some((myProductReview) => myProductReview.id === reviewId);
+  const isMyReview = myProductReviews.some((myProductReview) => myProductReview.id === reviewId);
 
   const onDelete = () => {
     if (deleteMutation.isPending) return;
@@ -369,3 +350,32 @@ const ProductReviewListItem = ({
     </div>
   );
 };
+
+const PageContextProvider = ({ children }: { children: React.ReactNode }) => {
+  const params = useParams<{ id: string }>();
+
+  const { data: product } = useProductDetail({ id: params.id });
+  const { data: reviews } = useProductReviewList({ id: params.id });
+  const { data: purchasedProducts } = usePurchasedProductList();
+  const { data: myProductReviews } = useMyProductReviewList();
+
+  if (!product || !reviews || !purchasedProducts || !myProductReviews) return null;
+
+  const value = {
+    product,
+    reviews,
+    purchasedProducts,
+    myProductReviews,
+  };
+
+  return <PageContext.Provider value={value}>{children}</PageContext.Provider>;
+};
+
+type PageContextValue = {
+  product: NonNullable<ReturnType<typeof useProductDetail>["data"]>;
+  reviews: NonNullable<ReturnType<typeof useProductReviewList>["data"]>;
+  purchasedProducts: NonNullable<ReturnType<typeof usePurchasedProductList>["data"]>;
+  myProductReviews: NonNullable<ReturnType<typeof useMyProductReviewList>["data"]>;
+};
+
+const [PageContext, usePageContext] = createContextFactory<PageContextValue>("Page");

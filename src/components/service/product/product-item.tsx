@@ -2,6 +2,7 @@
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useSession } from "@/features/auth/use-session";
 import { storage } from "@/lib/supabase";
 import { ProductList } from "@/services/product";
 import Image from "next/image";
@@ -14,6 +15,10 @@ interface ProductItemProps {
 
 export const ProductItem = ({ href, product }: ProductItemProps) => {
   const isCrewOnly = product.price === 0;
+
+  const { session } = useSession();
+
+  const shouldHidePrice = product.isPriceHidden && !session;
 
   return (
     <Link href={href} className="flex cursor-pointer flex-col gap-2 pb-4">
@@ -30,9 +35,14 @@ export const ProductItem = ({ href, product }: ProductItemProps) => {
         <p className="font-semibold text-main">{product.name}</p>
         <div className="flex items-center justify-between">
           {!isCrewOnly && (
-            <p className="font-semibold text-primary md:text-base">
-              {product.price.toLocaleString()}원
-            </p>
+            <>
+              {!shouldHidePrice && (
+                <p className="font-semibold text-primary md:text-base">
+                  {product.price.toLocaleString()}원
+                </p>
+              )}
+              {shouldHidePrice && <p className="font-semibold text-primary md:text-base"></p>}
+            </>
           )}
           {isCrewOnly && <p className="font-semibold text-primary">크루 컨텐츠</p>}
         </div>

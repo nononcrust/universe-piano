@@ -53,7 +53,7 @@ export const meRepository = {
       },
     });
   },
-  getMyKitList: (session: Session) => {
+  getMyKitList: async (session: Session) => {
     return prisma.order
       .findMany({
         where: {

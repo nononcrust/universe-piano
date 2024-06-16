@@ -4,7 +4,7 @@ import { Icon } from "@/components/shared/icon";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Drawer } from "@/components/ui/drawer";
+import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { siteContents } from "@/configs/site";
 import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
@@ -20,10 +20,10 @@ export const NavigationMenuDialog = () => {
 
   return (
     <Drawer>
-      <Drawer.Trigger className="outline-none md:hidden" aria-label="menu-button">
+      <DrawerTrigger className="outline-none md:hidden" aria-label="menu-button">
         <Icon.Menu />
-      </Drawer.Trigger>
-      <Drawer.Content className="overflow-y-auto" side="right">
+      </DrawerTrigger>
+      <DrawerContent className="overflow-y-auto" side="right">
         <ListSection>
           {session && (
             <div className="mb-4 mt-2">
@@ -66,7 +66,7 @@ export const NavigationMenuDialog = () => {
             로그아웃
           </Button>
         )}
-      </Drawer.Content>
+      </DrawerContent>
     </Drawer>
   );
 };
@@ -82,9 +82,9 @@ const ListSection = ({ className, children }: ListSubHeaderProps) => {
           <Image priority fill sizes="100px" src="/images/text-logo.png" alt="사이트 로고" />
         </div> */}
         <p className="font-semibold">유니버스 피아노</p>
-        <Drawer.Close className="outline-none">
+        <DrawerClose className="outline-none">
           <Icon.X />
-        </Drawer.Close>
+        </DrawerClose>
       </div>
       <ul className="mt-4 flex flex-col gap-2">{children}</ul>
     </div>
@@ -113,14 +113,14 @@ interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
 const ListItem = ({ children, href, onClick }: ListItemProps) => {
   return (
     <Link href={href}>
-      <Drawer.Close className="flex w-full">
+      <DrawerClose className="flex w-full">
         <li
           className="text-foreground flex-1 cursor-pointer py-3 text-left font-medium"
           onClick={onClick}
         >
           {children}
         </li>
-      </Drawer.Close>
+      </DrawerClose>
     </Link>
   );
 };

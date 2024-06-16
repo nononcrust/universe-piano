@@ -10,6 +10,7 @@ export const productRepository = {
   getProductList: (category?: string) => {
     return prisma.product.findMany({
       where: {
+        published: true,
         category: {
           name: category,
         },

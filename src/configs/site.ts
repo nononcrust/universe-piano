@@ -15,7 +15,7 @@ export const siteConfig = {
   links: {
     instagram: "https://www.instagram.com/universe_piano",
     kakao: "https://open.kakao.com/o/sy3BCAif",
-    blog: "https://blog.naver.com/universepiano/223302659520",
+    blog: "https://blog.naver.com/universepiano/223176537869",
     cafe: "https://cafe.naver.com/universepianousa",
     email: "universepiano@naver.com",
     mobile: "010-2134-7370",

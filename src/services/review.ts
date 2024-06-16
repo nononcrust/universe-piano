@@ -2,11 +2,19 @@ import { prisma } from "@/lib/prisma";
 import { api } from "@/services/shared";
 import { Prisma } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { z } from "zod";
 import { queryKeys as productQueryKeys } from "./product";
 
+export type ReviewFilter = {
+  userId?: string;
+};
+
 export const reviewRepository = {
-  getReviewList: () => {
+  getReviewList: (filter?: ReviewFilter) => {
     return prisma.productReview.findMany({
+      where: {
+        userId: filter?.userId,
+      },
       include: {
         product: true,
         user: true,
@@ -23,15 +31,24 @@ export type ReviewList = Prisma.PromiseReturnType<typeof reviewRepository.getRev
 const ENDPOINT = "/review";
 
 const reviewApi = {
-  getReviewList: async () => {
-    const response = await api.get<ReviewList>(`${ENDPOINT}`);
+  getReviewList: async (request?: GetReviewListRequest) => {
+    const response = await api.get<ReviewList>(`${ENDPOINT}`, { params: request?.query });
     return response.data;
   },
-  deleteReview: async (data: { params: { id: string } }) => {
-    const response = await api.delete(`${ENDPOINT}/${data.params.id}`);
+  deleteReview: async (request: { params: { id: string } }) => {
+    const response = await api.delete(`${ENDPOINT}/${request.params.id}`);
     return response.data;
   },
 };
+
+export const getReviewListRequestSchema = z.object({
+  query: z
+    .object({
+      userId: z.string().optional(),
+    })
+    .optional(),
+});
+export type GetReviewListRequest = z.infer<typeof getReviewListRequestSchema>;
 
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
@@ -39,10 +56,10 @@ export const queryKeys = {
   list: () => [...queryKeys.all(), "list"] as const,
 };
 
-export const useReviewList = () => {
+export const useReviewList = (request?: GetReviewListRequest) => {
   return useQuery({
-    queryKey: queryKeys.list(),
-    queryFn: reviewApi.getReviewList,
+    queryKey: [queryKeys.list(), request],
+    queryFn: () => reviewApi.getReviewList(request),
   });
 };
 
