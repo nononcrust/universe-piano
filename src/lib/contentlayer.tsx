@@ -1,6 +1,8 @@
+import { Icon } from "@/components/shared/icon";
 import { allContents } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import NextImage, { ImageProps } from "next/image";
+import React from "react";
 import { cn } from "./utils";
 
 const getTitleInfoFromSourceFileName = (sourceFileName: string) => {
@@ -141,29 +143,136 @@ const Image = ({ className, ...props }: ImageProps) => {
   );
 };
 
+const EnglishSnippet = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="mb-2 flex flex-col whitespace-pre-wrap rounded-lg bg-gray-50 p-2 px-4">
+      {children}
+    </div>
+  );
+};
+
+const Snippet = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="mb-2 flex whitespace-pre-wrap rounded-lg bg-gray-50 p-2 px-4">{children}</div>
+  );
+};
+
+interface BoxProps extends React.ComponentPropsWithoutRef<"div"> {
+  children: React.ReactNode;
+}
+
+const Box = ({ children, className }: BoxProps) => {
+  return (
+    <div className={cn("my-5 flex justify-center rounded-lg bg-gray-50 px-4 py-2", className)}>
+      {children}
+    </div>
+  );
+};
+
+const List = ({ children }: { children: React.ReactNode }) => {
+  return <div className="flex flex-col gap-4 md:flex-row">{children}</div>;
+};
+
+interface ArrowCardProps {
+  title: string;
+  content: string;
+}
+
+const ArrowCard = ({ title, content }: ArrowCardProps) => {
+  return (
+    <div className="flex gap-2 rounded-xl border border-primary p-4 md:w-[240px]">
+      <Icon.ArrowBigRight className="mt-[1px] fill-primary stroke-primary" />
+      <div className="flex flex-col">
+        <div className="font-semibold text-main">{title}</div>
+        <div className="font-medium text-sub">{content}</div>
+      </div>
+    </div>
+  );
+};
+
+const ArrowBox = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box className="justify-start">
+      <Icon.ArrowBigRight className="mr-2 fill-primary stroke-primary" />
+      {children}
+    </Box>
+  );
+};
+
+const Quote = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="flex items-center bg-gray-50 p-4">
+      <Icon.MessageCircle className="mr-2 size-6 fill-gray-300 stroke-gray-300" />
+      {children}
+    </div>
+  );
+};
+
+interface TableProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const TableRoot = ({ children, className }: TableProps) => {
+  return <table className={cn("w-full table-auto", className)}>{children}</table>;
+};
+
+const TableHead = ({ children, className }: TableProps) => {
+  return <thead className={cn("bg-gray-50 font-semibold text-main", className)}>{children}</thead>;
+};
+
+const TableBody = ({ children, className }: TableProps) => {
+  return <tbody className={cn(className)}>{children}</tbody>;
+};
+
+const TableRow = ({ children, className }: TableProps) => {
+  return <tr className={cn(className)}>{children}</tr>;
+};
+
+interface TableCellProps extends React.ComponentPropsWithoutRef<"td"> {
+  header?: boolean;
+}
+
+const TableCell = ({ children, className, header }: TableCellProps) => {
+  return (
+    <td
+      className={cn("border px-4 py-2", header && "bg-gray-50 font-semibold text-main", className)}
+    >
+      {children}
+    </td>
+  );
+};
+
+const Table = Object.assign(TableRoot, {
+  Head: TableHead,
+  Body: TableBody,
+  Row: TableRow,
+  Cell: TableCell,
+});
+
+const UnderlinedHeading = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <h1 className="underline decoration-primary decoration-[7px] underline-offset-[6px]">
+      {children}
+    </h1>
+  );
+};
+
 interface MDXContentProps {
   code: string;
 }
 
 const components = {
   Image,
-  EnglishSnippet: ({ children }: { children: React.ReactNode }) => {
-    return (
-      <div className="mb-2 flex flex-col whitespace-pre-wrap rounded-lg bg-gray-50 p-2 px-4">
-        {children}
-      </div>
-    );
-  },
-  Snippet: ({ children }: { children: React.ReactNode }) => {
-    return (
-      <div className="mb-2 flex whitespace-pre-wrap rounded-lg bg-gray-50 p-2 px-4">{children}</div>
-    );
-  },
-  Box: ({ children }: { children: React.ReactNode }) => {
-    return (
-      <div className="my-5 flex justify-center rounded-lg bg-gray-50 px-4 py-2">{children}</div>
-    );
-  },
+  EnglishSnippet,
+  Snippet,
+  Box,
+  List,
+  ArrowCard,
+  ArrowBox,
+  UnderlinedHeading,
+  Quote,
+  Table,
 };
 
 export const MDXContent = ({ code }: MDXContentProps) => {

@@ -1,11 +1,11 @@
 import { COOKIE } from "@/constants/cookie";
 import { ROUTE } from "@/constants/route";
 import { accessTokenSchema, jwt } from "@/lib/jwt";
-import { Role } from "@prisma/client";
 import { NextRequest } from "next/server";
+import { getAuthorization } from "./features/auth/authorization";
 
 // TODO: 하드코딩 제거
-export const CREW_CONTENT_URL = ["/books/checklist"] as const;
+export const CREW_CONTENT_URL = ["/books/checklist", "/books/roadmap"] as const;
 
 const DISABLED_ROUTES = [ROUTE.MYPAGE.ACTIVITY, ROUTE.ABOUT.PORTFOLIO] as const;
 const PROTECTED_ROUTES = [ROUTE.MYPAGE.HOME, ROUTE.NEWS.AUDITION.LIST] as const;
@@ -30,8 +30,7 @@ const getSessionFromCookie = async (request: NextRequest) => {
 export async function middleware(request: NextRequest) {
   const session = await getSessionFromCookie(request);
 
-  const isCrew = session?.role === Role.CREW || session?.role === Role.ADMIN;
-  const isAdmin = session?.role === Role.ADMIN;
+  const { isCrew, isAdmin } = getAuthorization(session?.role);
 
   const isAuthRoute = AUTH_ROUTES.includes(request.nextUrl.pathname);
   const isMemberRoute = PROTECTED_ROUTES.includes(request.nextUrl.pathname);

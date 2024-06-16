@@ -1,5 +1,6 @@
 import {
   AlignJustify,
+  ArrowBigRight,
   ArrowLeft,
   ArrowRight,
   BookOpen,
@@ -44,6 +45,7 @@ import {
 export const Icon = {
   Menu,
   X,
+  ArrowBigRight,
   ArrowLeft,
   ArrowRight,
   MoreHorizontal,

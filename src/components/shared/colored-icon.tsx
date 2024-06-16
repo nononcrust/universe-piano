@@ -1,6 +1,7 @@
 import Document from "@/assets/icons/001-document.svg";
 import Chat from "@/assets/icons/002-chat.svg";
 import Conference from "@/assets/icons/006-conference.svg";
+import Message from "@/assets/icons/007-message.svg";
 import Idea from "@/assets/icons/010-idea.svg";
 import Todo from "@/assets/icons/015-todo.svg";
 import Notice from "@/assets/icons/016-notice.svg";
@@ -28,4 +29,5 @@ export const ColoredIcon = {
   Storage,
   Pencil,
   Todo,
+  Message,
 } as const;

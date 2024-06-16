@@ -1,9 +1,9 @@
 import { CATEGORY } from "@/constants/enum";
 import { prisma } from "@/lib/prisma";
+import { Session } from "@/services/auth";
 import { api } from "@/services/shared";
 import { OrderStatus, Prisma } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
-import { Session } from "./auth";
 
 export const meRepository = {
   getPurchasedProductList: async (session: Session) => {
