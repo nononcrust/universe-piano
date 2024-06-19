@@ -11,7 +11,9 @@ export default function AdminAuditionEditPage() {
 
   const { data: audition } = useAuditionDetail({ id: params.id });
 
-  if (!audition) redirect(ROUTE.ADMIN.AUDITION.LIST);
+  if (audition === null) redirect(ROUTE.ADMIN.AUDITION.LIST);
+
+  if (!audition) return null;
 
   const defaultValues = {
     title: audition.title,

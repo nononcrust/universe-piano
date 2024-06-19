@@ -1,3 +1,4 @@
+import { canAccess } from "@/features/auth/authorization";
 import { getServerSession } from "@/lib/auth";
 import { meRepository } from "@/services/me";
 import { Role } from "@prisma/client";
@@ -13,5 +14,11 @@ export const GET = async (request: Request) => {
 
   const products = await meRepository.getCrewOnlyKitList();
 
-  return Response.json(products);
+  const roleFilteredProducts = products.filter((product) => {
+    if (!product.requiredRole) return true;
+
+    return canAccess(product.requiredRole, session.user.role);
+  });
+
+  return Response.json(roleFilteredProducts);
 };

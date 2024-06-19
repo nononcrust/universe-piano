@@ -113,6 +113,7 @@ model Product {
   contactUrl  String?
   published   Boolean
   isPriceHidden Boolean? @default(false)
+  requiredRole Role?
 
   thumbnailUrl String
   detailImageUrls String[]
@@ -189,8 +190,8 @@ model Faq {
 enum Role {
   ADMIN
   USER
-  CREW
   MENTOR_CREW
+  CREW
   TUTOR_CREW
 }
 

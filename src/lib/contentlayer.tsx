@@ -169,26 +169,37 @@ const Box = ({ children, className }: BoxProps) => {
   );
 };
 
-const List = ({ children }: { children: React.ReactNode }) => {
-  return <div className="flex flex-col gap-4 md:flex-row">{children}</div>;
+const SequenceList = ({ children }: { children: React.ReactNode }) => {
+  return <div className="flex flex-col items-center gap-4 md:flex-row">{children}</div>;
 };
 
-interface ArrowCardProps {
+interface SequenceListItemProps {
   title: string;
   content: string;
 }
 
-const ArrowCard = ({ title, content }: ArrowCardProps) => {
+const SequenceListArrow = () => {
   return (
-    <div className="flex gap-2 rounded-xl border border-primary p-4 md:w-[240px]">
-      <Icon.ArrowBigRight className="mt-[1px] fill-primary stroke-primary" />
-      <div className="flex flex-col">
-        <div className="font-semibold text-main">{title}</div>
-        <div className="font-medium text-sub">{content}</div>
+    <>
+      <Icon.ArrowBigRight className="hidden size-8 min-w-8 fill-primary stroke-primary md:flex" />
+      <Icon.ArrowBigDown className="size-8 min-w-8 fill-primary stroke-primary md:hidden" />
+    </>
+  );
+};
+
+const SequenceListItem = ({ title, content }: SequenceListItemProps) => {
+  return (
+    <div className="flex w-full gap-2 rounded-xl border border-primary p-4 md:max-w-[240px]">
+      <div className="flex w-full flex-col">
+        <div className="text-center font-semibold text-main md:text-start">{title}</div>
+        <div className="text-center font-medium text-sub md:text-start">{content}</div>
       </div>
     </div>
   );
 };
+
+SequenceList.Item = SequenceListItem;
+SequenceList.Arrow = SequenceListArrow;
 
 const ArrowBox = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -208,13 +219,56 @@ const Quote = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+interface MobileTableProps extends React.ComponentPropsWithoutRef<"div"> {
+  children: React.ReactNode;
+}
+
+const MobileTable = ({ className, children, ...props }: MobileTableProps) => {
+  return (
+    <div className={cn("flex flex-col gap-4", className)} {...props}>
+      {children}
+    </div>
+  );
+};
+
+interface MobileTableRowProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+const MobileTableRow = ({ title, children }: MobileTableRowProps) => {
+  return (
+    <div className="flex flex-col rounded-xl bg-content p-4 px-6">
+      <span className="mb-2 text-lg font-semibold text-primary">{title}</span>
+      {children}
+    </div>
+  );
+};
+
+interface MobileTableColumnProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+const MobileTableColumn = ({ title, children }: MobileTableColumnProps) => {
+  return (
+    <div className="flex gap-2">
+      <span className="font-medium">{title}:</span>
+      <span className="text-sub">{children}</span>
+    </div>
+  );
+};
+
+MobileTable.Row = MobileTableRow;
+MobileTable.Column = MobileTableColumn;
+
 interface TableProps {
   children: React.ReactNode;
   className?: string;
 }
 
 const TableRoot = ({ children, className }: TableProps) => {
-  return <table className={cn("w-full table-auto", className)}>{children}</table>;
+  return <table className={cn("w-full table-auto max-md:hidden", className)}>{children}</table>;
 };
 
 const TableHead = ({ children, className }: TableProps) => {
@@ -267,12 +321,12 @@ const components = {
   EnglishSnippet,
   Snippet,
   Box,
-  List,
-  ArrowCard,
   ArrowBox,
   UnderlinedHeading,
   Quote,
+  SequenceList,
   Table,
+  MobileTable,
 };
 
 export const MDXContent = ({ code }: MDXContentProps) => {

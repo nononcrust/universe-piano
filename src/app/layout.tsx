@@ -6,7 +6,7 @@ import { siteConfig } from "@/configs/site";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { Providers } from "@/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Suspense } from "react";
 import { Toaster } from "sonner";
@@ -42,12 +42,6 @@ const pretendard = localFont({
   display: "swap",
   variable: "--font-pretendard",
 });
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  userScalable: false,
-};
 
 export const metadata: Metadata = {
   title: siteConfig.title,
