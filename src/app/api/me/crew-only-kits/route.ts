@@ -18,7 +18,7 @@ export const GET = async (request: Request) => {
     // TODO: 하드코딩 수정
     if (
       product.name === "미국 음대 입시 로드맵" &&
-      !rolePermissions.TUTOR_CREW.includes(session.user.role)
+      !rolePermissions.CREW.includes(session.user.role)
     ) {
       return false;
     }
