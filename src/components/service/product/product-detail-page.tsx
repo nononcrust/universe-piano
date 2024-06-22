@@ -70,7 +70,7 @@ const ProductOptionSection = () => {
         {isCrewOnly && <Chip color="red">크루 전용</Chip>}
       </div>
       <h1 className="mt-2 text-2xl font-medium">{product.name}</h1>
-      <p className="mt-4">{product.description}</p>
+      <p className="mt-4 whitespace-pre-wrap">{product.description}</p>
       <ProductAction />
     </div>
   );
@@ -144,7 +144,7 @@ const ProductInfoSection = () => {
           </div>
         )}
         {/* TODO: 하드코딩 수정  */}
-        {product.name === "미국 음대 입학 체크리스트" && (
+        {product.price === 0 && (
           <div className="mt-16 flex flex-col items-center justify-center">
             <p className="mt-2 text-sub">
               크루 가입 문의는 아래 링크를 통해 카카오톡 오픈채팅으로 문의해주세요.

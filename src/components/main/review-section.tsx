@@ -1,5 +1,7 @@
 "use client";
 
+import "swiper/css";
+
 import { LandingSectionSubtitle } from "@/components/main/landing-section-subtitle";
 import { LandingSectionTitle } from "@/components/main/landing-section-title";
 import { Icon } from "@/components/shared/icon";
@@ -58,7 +60,7 @@ export const ReviewSection = () => {
         <LandingSectionTitle>조작 없는 후기</LandingSectionTitle>
         <LandingSectionSubtitle>유니버스 크루들의 후기를 확인 해보세요.</LandingSectionSubtitle>
       </div>
-      <div className="mt-8">
+      <div className="mt-8 pl-4">
         <Swiper
           modules={[Autoplay]}
           className="container pl-4"
@@ -69,7 +71,7 @@ export const ReviewSection = () => {
           }}
         >
           {data.map((item, index) => (
-            <SwiperSlide className="w-[340px] md:w-[400px]" key={index}>
+            <SwiperSlide className="max-w-[340px] md:max-w-[400px]" key={index}>
               <ReviewItem key={index} {...item} />
             </SwiperSlide>
           ))}

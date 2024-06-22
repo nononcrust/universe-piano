@@ -1,5 +1,7 @@
 "use client";
 
+import "swiper/css";
+
 import image1 from "@/assets/images/study/study-mission-1.png";
 import image10 from "@/assets/images/study/study-mission-10.png";
 import image2 from "@/assets/images/study/study-mission-2.png";
@@ -16,7 +18,6 @@ import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10];
