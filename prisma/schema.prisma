@@ -74,7 +74,7 @@ model Audition {
   content String
 
   imageUrls String[]
-  comments AuditionComment[]
+  comments  AuditionComment[]
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
@@ -105,17 +105,17 @@ model Category {
 }
 
 model Product {
-  id          String @id @default(cuid())
-  name        String
-  price       Int
-  description String
-  contentUrl  String
-  contactUrl  String?
-  published   Boolean
+  id            String   @id @default(cuid())
+  name          String
+  price         Int
+  description   String
+  contentUrl    String
+  contactUrl    String?
+  published     Boolean
+  requiredRole  Role    @default(USER)
   isPriceHidden Boolean? @default(false)
-  requiredRole Role?
 
-  thumbnailUrl String
+  thumbnailUrl    String
   detailImageUrls String[]
 
   category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
@@ -130,10 +130,10 @@ model Product {
 }
 
 model Order {
-  id     String      @unique @default(cuid())
+  id          String      @unique @default(cuid())
   orderNumber String
-  point  Int
-  status OrderStatus
+  point       Int
+  status      OrderStatus
 
   user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
@@ -159,9 +159,9 @@ model OrderItem {
 }
 
 model ProductReview {
-  id      String  @id @default(cuid())
-  content String
-  rating  Int
+  id        String   @id @default(cuid())
+  content   String
+  rating    Int
   imageUrls String[]
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -186,7 +186,6 @@ model Faq {
   updatedAt DateTime @updatedAt @db.Timestamptz()
 }
 
-
 enum Role {
   ADMIN
   USER
@@ -200,7 +199,6 @@ enum Tier {
   SILVER
   GOLD
   DIAMOND
-  
 }
 
 enum OrderStatus {
