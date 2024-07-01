@@ -2,16 +2,15 @@
 
 import { Icon } from "@/components/shared/icon";
 import { Avatar } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { siteContents } from "@/configs/site";
-import { TIER_LABEL } from "@/constants/enum";
 import { ROUTE } from "@/constants/route";
 import { useSession } from "@/features/auth/use-session";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { UserRoleBadge } from "../shared/user-role-badge";
 
 export const NavigationMenuDialog = () => {
   const { session } = useSession();
@@ -141,7 +140,7 @@ const UserProfile = () => {
       <div>
         <div className="flex items-center gap-2">
           <p className="text-lg font-medium">{user.nickname}</p>
-          <Badge variant="secondary">{TIER_LABEL[user.tier]}</Badge>
+          <UserRoleBadge />
         </div>
         <p className="text-sm text-sub">{user.email}</p>
       </div>

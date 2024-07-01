@@ -30,11 +30,11 @@ const getSessionFromCookie = async (request: NextRequest) => {
 export async function middleware(request: NextRequest) {
   const session = await getSessionFromCookie(request);
 
-  const { isCrew, isAdmin } = getAuthorization(session?.role);
+  const { isAdmin } = getAuthorization(session?.role);
 
   const isAuthRoute = AUTH_ROUTES.includes(request.nextUrl.pathname);
   const isMemberRoute = PROTECTED_ROUTES.includes(request.nextUrl.pathname);
-  const isCrewRoute = request.nextUrl.pathname.startsWith(CREW_CONTENT_URL[0]);
+  // const isCrewRoute = request.nextUrl.pathname.startsWith(CREW_CONTENT_URL[0]);
   const isAdminRoute = request.nextUrl.pathname.startsWith(ROUTE.ADMIN.HOME);
   const isDisabledRoute = DISABLED_ROUTES.includes(request.nextUrl.pathname);
 
@@ -44,10 +44,6 @@ export async function middleware(request: NextRequest) {
 
   if (isMemberRoute && !session) {
     return Response.redirect(new URL(ROUTE.LOGIN, request.url));
-  }
-
-  if (isCrewRoute && !isCrew) {
-    return Response.redirect(new URL(ROUTE.HOME, request.url));
   }
 
   if (isAdminRoute && !isAdmin) {

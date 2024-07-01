@@ -4,11 +4,9 @@ import { KitMobileHeader } from "@/components/book/mobile-header";
 import { BookNavigationDrawer } from "@/components/book/navigation-drawer";
 import { ScrollArea } from "@/components/shared/scroll-area";
 import { ROUTE } from "@/constants/route";
-import { canAccess } from "@/features/auth/authorization";
 import { useSession } from "@/features/auth/use-session";
 import { CREW_CONTENT_URL } from "@/middleware";
 import { usePurchasedProductList } from "@/services/me";
-import { Role } from "@prisma/client";
 import { redirect, usePathname } from "next/navigation";
 
 // /books/checklist/checklist/intro -> /books/checklist
@@ -45,8 +43,6 @@ export default function BookLayout({
   });
 
   if (!isPurchasedBook && !isCrewContent) return redirect(ROUTE.HOME);
-
-  if (isCrewContent && !canAccess(Role.CREW, session.user.role)) return redirect(ROUTE.HOME);
 
   return (
     <div className="flex max-h-screen min-h-screen flex-col overflow-y-hidden md:flex-row">
