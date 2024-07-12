@@ -19,7 +19,7 @@ export const StudyInfoSection = () => {
             <p className="text-2xl font-bold">스터디 모집 기간 및 비용</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">모집 기간: 매월 20일 - 29일</li>
-              <li className="mt-4 font-medium text-gray-300">월 190,000</li>
+              <li className="mt-4 font-medium text-gray-300">월 220,000</li>
               <li className="mt-4 font-medium text-gray-300">
                 스터디 비용과 스터디 벌금은 별도입니다.
               </li>
