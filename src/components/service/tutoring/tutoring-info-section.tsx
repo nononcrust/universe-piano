@@ -24,7 +24,7 @@ export const TutoringInfoSection = () => {
           <div className="rounded-2xl bg-zinc-800 p-8">
             <p className="text-lg font-bold md:text-2xl">과외 비용</p>
             <ul className="ml-4 list-disc">
-              <li className="mt-4 font-medium text-gray-300">690,000</li>
+              <li className="mt-4 font-medium text-gray-300">790,000</li>
             </ul>
           </div>
           <div className="rounded-2xl bg-zinc-800 p-8">
