@@ -48,7 +48,7 @@ export const siteConfig = {
   } as OpenGraph,
 };
 
-export const channelEnabledRoutes = [
+export const kakaoEnabledRoutes = [
   ROUTE.ABOUT.LIST,
   ROUTE.SERVICE.LIST,
   ROUTE.NEWS.LIST,

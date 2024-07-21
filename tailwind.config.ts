@@ -42,6 +42,7 @@ module.exports = {
         "error-dark": theme.colors.errorDark,
         success: theme.colors.success,
         "success-light": theme.colors.successLight,
+        kakao: theme.colors.kakao,
       },
       keyframes: {
         "fade-in": {

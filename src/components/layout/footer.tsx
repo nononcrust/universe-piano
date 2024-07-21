@@ -41,7 +41,7 @@ export const Footer = () => {
           </p>
           <p>
             {`${siteConfig.address} | 전화: ${siteConfig.links.mobile} | 이메일: ${siteConfig.email} | 개인정보책임관리자: ${siteConfig.isa} |
-            문의: 채널톡`}
+            문의: 카카오톡`}
           </p>
         </div>
         <SocialIconList />

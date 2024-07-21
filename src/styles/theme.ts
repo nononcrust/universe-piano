@@ -21,5 +21,6 @@ export const theme = {
     successLight: colors.green[400],
     content: colors.gray[100],
     contentLight: colors.gray[50],
+    kakao: "#FFEB00",
   },
 } as const;

@@ -4,8 +4,9 @@ import footerImage from "@/assets/images/consulting/consulting-footer-image.jpg"
 import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
-import { channel } from "@/lib/channel-io";
+import { siteConfig } from "@/configs/site";
 import Image from "next/image";
+import Link from "next/link";
 
 export const FreeConsultingSection = () => {
   return (
@@ -19,9 +20,9 @@ export const FreeConsultingSection = () => {
           className="mt-8 h-14 rounded-full px-10 text-lg"
           size="large"
           variant="primary"
-          onClick={() => channel.openChat()}
+          asChild
         >
-          1회 무료 상담 신청
+          <Link href={siteConfig.links.kakao}>1회 무료 상담 신청</Link>
         </Button>
       </Aos>
     </section>

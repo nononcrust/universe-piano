@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import { FloatingKakaoButton } from "@/components/shared/floating-kakao-button";
 import { TailwindIndicator } from "@/components/shared/tailwind-indicator";
 import { UserInfoFetcher } from "@/components/shared/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </UserInfoFetcher>
           </Providers>
           <Toaster />
+          <FloatingKakaoButton />
           <SpeedInsights />
         </Suspense>
       </body>

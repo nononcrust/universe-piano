@@ -3,7 +3,8 @@
 import { SectionTitle } from "@/components/shared/section-title";
 import { Aos } from "@/components/ui/aos";
 import { Button } from "@/components/ui/button";
-import { channel } from "@/lib/channel-io";
+import { siteConfig } from "@/configs/site";
+import Link from "next/link";
 
 export const FreeConsultSection = () => {
   return (
@@ -21,9 +22,11 @@ export const FreeConsultSection = () => {
           className="mt-8 h-14 rounded-full px-10 text-lg"
           size="large"
           variant="primary"
-          onClick={() => channel.openChat()}
+          asChild
         >
-          1회 무료 상담 신청
+          <Link href={siteConfig.links.kakao} target="_blank">
+            1회 무료 상담 신청
+          </Link>
         </Button>
       </Aos>
     </section>
