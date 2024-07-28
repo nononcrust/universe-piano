@@ -22,7 +22,7 @@ export const CardSection = () => {
   return (
     <section className="flex flex-col pt-24">
       <div className="container flex flex-col">
-        <h1 className="text-xl font-bold md:text-2xl">2차 오디션 관련 서비스</h1>
+        <h1 className="font-nanum text-xl font-bold md:text-2xl">2차 오디션 관련 서비스</h1>
         <h2 className="mt-2 font-medium text-sub">
           2024년 가을 학기 입시생들을 위한 서비스입니다.
         </h2>

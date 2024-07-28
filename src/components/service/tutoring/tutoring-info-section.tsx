@@ -31,7 +31,7 @@ export const TutoringInfoSection = () => {
             <p className="text-lg font-bold md:text-2xl">과외 신청서 작성 방법</p>
             <ul className="ml-4 list-disc">
               <li className="mt-4 font-medium text-gray-300">
-                채널톡에서 과외 신청서 링크 확인하실 수 있습니다.
+                카카오톡에서 과외 신청서 링크 확인하실 수 있습니다.
               </li>
             </ul>
           </div>

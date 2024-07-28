@@ -8,7 +8,7 @@ export const LandingSectionTitle = ({
   ...props
 }: LandingSectionTitleProps) => {
   return (
-    <h1 className={cn("ml-2 text-2xl font-semibold md:ml-0")} {...props}>
+    <h1 className={cn("font-nanum ml-2 text-2xl font-extrabold md:ml-0")} {...props}>
       {children}
     </h1>
   );

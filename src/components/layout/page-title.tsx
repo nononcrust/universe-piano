@@ -9,7 +9,7 @@ export const PageTitle = ({ children, title, className, ...props }: PageTitlePro
   return (
     <h1
       className={cn(
-        "mt-8 flex items-center text-xl font-semibold text-foreground md:mt-24 md:text-2xl",
+        "text-foreground font-nanum mt-8 flex items-center text-xl font-extrabold md:mt-24 md:text-2xl",
         className,
       )}
       {...props}

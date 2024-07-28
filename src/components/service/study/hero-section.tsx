@@ -12,7 +12,7 @@ export const HeroSection = () => {
             <Badge className="rounded-xl px-3 text-base font-semibold" variant="primary">
               영어 스터디
             </Badge>
-            <h1 className="text-center text-3xl font-extrabold tracking-tighter md:text-5xl">
+            <h1 className="font-nanum text-center text-3xl font-extrabold tracking-tighter md:text-5xl">
               음대생을 위한 영어 스터디
             </h1>
           </div>

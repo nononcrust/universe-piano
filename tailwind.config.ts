@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-pretendard)", ...defaultTheme.fontFamily.sans],
+        nanum: ["var(--font-nanum-square-neo)", ...defaultTheme.fontFamily.sans],
       },
       container: {
         center: true,

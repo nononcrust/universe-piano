@@ -5,6 +5,7 @@ import { TailwindIndicator } from "@/components/shared/tailwind-indicator";
 import { UserInfoFetcher } from "@/components/shared/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
 import { GoogleAnalytics } from "@/lib/google-analytics";
+import { cn } from "@/lib/utils";
 import { Providers } from "@/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -44,6 +45,23 @@ const pretendard = localFont({
   variable: "--font-pretendard",
 });
 
+const nanumSquareNeo = localFont({
+  src: [
+    {
+      path: "../assets/fonts/NanumSquareNeo-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/NanumSquareNeo-ExtraBold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-nanum-square-neo",
+});
+
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
@@ -53,7 +71,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={pretendard.variable}>
+    <html lang="ko" className={cn(pretendard.variable, nanumSquareNeo.variable)}>
       <head>
         <GoogleAnalytics />
       </head>
