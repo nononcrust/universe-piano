@@ -6,7 +6,7 @@ export const SectionTitle = ({ children, className, ...props }: SectionTitleProp
   return (
     <h1
       className={cn(
-        "font-nanum text-center text-xl font-extrabold md:text-[36px] md:leading-[52px]",
+        "font-nanum text-center text-[30px] font-extrabold md:text-[36px] md:leading-[52px]",
         className,
       )}
       {...props}

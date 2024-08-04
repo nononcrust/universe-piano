@@ -1,5 +1,6 @@
 "use client";
 
+import crewOnlyImage from "@/assets/images/product/crew-product-detail.jpg";
 import { PageTitle } from "@/components/layout/page-title";
 import { CheckoutDialog } from "@/components/order/checkout-dialog";
 import { ProductReviewAddDialog } from "@/components/service/product/product-review-add-dialog";
@@ -83,6 +84,8 @@ const ProductInfoSection = () => {
 
   const { product, reviews } = usePageContext();
 
+  const isCrewOnly = product.price === 0;
+
   return (
     <div className="flex w-full flex-col items-center">
       <div className="flex w-full border-b py-4">
@@ -90,6 +93,9 @@ const ProductInfoSection = () => {
       </div>
       <div className="flex w-full max-w-4xl flex-1 flex-col">
         <div className="mt-4 flex max-w-4xl flex-col items-center">
+          {isCrewOnly && (
+            <Image width={896} height={896} src={crewOnlyImage} alt="크루 전용 자료" unoptimized />
+          )}
           {product.detailImageUrls.map((detailImageUrl) => (
             <Image
               key={detailImageUrl}
