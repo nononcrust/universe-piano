@@ -4,6 +4,7 @@ import { FloatingKakaoButton } from "@/components/shared/floating-kakao-button";
 import { TailwindIndicator } from "@/components/shared/tailwind-indicator";
 import { UserInfoFetcher } from "@/components/shared/user-info-fetcher";
 import { siteConfig } from "@/configs/site";
+import { FacebookBusiness } from "@/lib/facbook-business";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/providers";
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className={cn(pretendard.variable, nanumSquareNeo.variable)}>
       <head>
         <GoogleAnalytics />
+        <FacebookBusiness />
       </head>
       <body className="tracking-tight antialiased">
         <Suspense>
