@@ -1,5 +1,5 @@
+import { productColumns } from "@/app/(admin)/admin/product/_components/product-columns";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
-import { productColumns } from "@/components/admin/data-table/columns/product-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
 import { productRepository } from "@/services/product";
 

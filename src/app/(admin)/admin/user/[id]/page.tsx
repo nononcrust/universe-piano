@@ -1,7 +1,7 @@
 "use client";
 
+import { UserForm } from "@/app/(admin)/admin/user/[id]/_components/user-form";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
-import { UserForm } from "@/components/admin/user-form";
 import { useUserDetail } from "@/services/user";
 import { useParams } from "next/navigation";
 

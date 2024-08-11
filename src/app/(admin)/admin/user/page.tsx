@@ -1,7 +1,7 @@
 "use client";
 
+import { userColumns } from "@/app/(admin)/admin/user/_components/user-columns";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
-import { userColumns } from "@/components/admin/data-table/columns/user-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
 import { useUserList } from "@/services/user";
 

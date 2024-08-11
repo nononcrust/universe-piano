@@ -1,9 +1,9 @@
-import { SignUpForm } from "@/components/signup/signup-form";
 import { COOKIE } from "@/constants/cookie";
 import { ROUTE } from "@/constants/route";
 import { jwt, registerTokenSchema } from "@/lib/jwt";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { SignUpForm } from "./_components/signup-form";
 
 export default async function SignUpPage() {
   const registerToken = cookies().get(COOKIE.REGISTER_TOKEN);

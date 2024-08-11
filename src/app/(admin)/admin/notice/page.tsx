@@ -1,5 +1,5 @@
+import { noticeColumns } from "@/app/(admin)/admin/notice/_components/notice-columns";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
-import { noticeColumns } from "@/components/admin/data-table/columns/notice-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
 import { noticeRepository } from "@/services/notice";
 

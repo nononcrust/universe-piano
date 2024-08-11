@@ -1,7 +1,7 @@
 "use client";
 
+import { reviewColumns } from "@/app/(admin)/admin/review/_components/review-columns";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
-import { reviewColumns } from "@/components/admin/data-table/columns/review-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
 import { useReviewList } from "@/services/review";
 

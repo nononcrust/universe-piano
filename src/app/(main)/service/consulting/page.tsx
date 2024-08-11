@@ -1,13 +1,13 @@
-import { ConsultingCurriculumSection } from "@/components/service/consulting/consulting-curriculum-section";
-import { ConsultingExampleSection } from "@/components/service/consulting/consulting-example-section";
-import { ConsultingFaqSection } from "@/components/service/consulting/consulting-faq-section";
-import { ConsultingInfoSection } from "@/components/service/consulting/consulting-info-section";
-import { ConsultingPackageSection } from "@/components/service/consulting/consulting-package-section";
-import { ConsultingProcedureSection } from "@/components/service/consulting/consulting-procedure-section";
-import { ConsultingReviewSection } from "@/components/service/consulting/consulting-review-section";
-import { FreeConsultingSection } from "@/components/service/consulting/free-consulting-section";
-import { HeroSection } from "@/components/service/consulting/hero-section";
-import { LogoSliderSection } from "@/components/service/consulting/logo-slider-section";
+import { ConsultingCurriculumSection } from "@/app/(main)/service/consulting/_components/consulting-curriculum-section";
+import { ConsultingExampleSection } from "@/app/(main)/service/consulting/_components/consulting-example-section";
+import { ConsultingFaqSection } from "@/app/(main)/service/consulting/_components/consulting-faq-section";
+import { ConsultingInfoSection } from "@/app/(main)/service/consulting/_components/consulting-info-section";
+import { ConsultingPackageSection } from "@/app/(main)/service/consulting/_components/consulting-package-section";
+import { ConsultingProcedureSection } from "@/app/(main)/service/consulting/_components/consulting-procedure-section";
+import { ConsultingReviewSection } from "@/app/(main)/service/consulting/_components/consulting-review-section";
+import { FreeConsultingSection } from "@/app/(main)/service/consulting/_components/free-consulting-section";
+import { HeroSection } from "@/app/(main)/service/consulting/_components/hero-section";
+import { LogoSliderSection } from "@/app/(main)/service/consulting/_components/logo-slider-section";
 
 export default function ConsultingPage() {
   return (

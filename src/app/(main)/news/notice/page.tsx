@@ -1,7 +1,8 @@
 "use client";
 
 import { PageTitle } from "@/components/layout/page-title";
-import { NoticeListItem } from "@/components/notice/notice-list-item";
+import { NewsListItem } from "@/components/news/news-list-item";
+
 import { Pagination } from "@/components/shared/pagination";
 import { ROUTE } from "@/constants/route";
 import { usePagination } from "@/hooks/use-pagination";
@@ -24,7 +25,7 @@ export default function NoticeListPage() {
       <ul className="mt-8 flex flex-col divide-y">
         {paginatedNotices?.map((item, index) => (
           <Link key={index} href={ROUTE.NEWS.NOTICE.DETAIL(String(item.id))}>
-            <NoticeListItem title={item.title} createdAt={formatDate(item.createdAt)} />
+            <NewsListItem title={item.title} createdAt={formatDate(item.createdAt)} />
           </Link>
         ))}
       </ul>
@@ -36,7 +37,7 @@ export default function NoticeListPage() {
       {isPending &&
         Array(5)
           .fill(0)
-          .map((_, index) => <NoticeListItem.Skeleton key={index} />)}
+          .map((_, index) => <NewsListItem.Skeleton key={index} />)}
       <Pagination
         className="mt-8"
         currentPage={pagination.current}

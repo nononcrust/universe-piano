@@ -1,7 +1,7 @@
 "use client";
 
+import { orderColumns } from "@/app/(admin)/admin/order/_components/order-columns";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
-import { orderColumns } from "@/components/admin/data-table/columns/order-columns";
 import { DataTable } from "@/components/admin/data-table/data-table";
 import { useOrderList } from "@/services/order";
 

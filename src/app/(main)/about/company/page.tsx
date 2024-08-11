@@ -1,12 +1,12 @@
-import { AboutRecordSection } from "@/components/about/about-record-section";
-import { FreeConsultSection } from "@/components/about/free-consult-section";
-import { InstagramSection } from "@/components/about/instagram-section";
-import { LogoSliderSection } from "@/components/about/logo-slider-section";
-import { OurPositioningSection } from "@/components/about/our-positioning-section";
-import { ReviewSection } from "@/components/about/review-section";
-import { SystemSection } from "@/components/about/system-section";
-import { WhatWeDoSection } from "@/components/about/what-we-do-section";
-import { WhatsOurNextSection } from "@/components/about/whats-our-next-section";
+import { AboutRecordSection } from "@/app/(main)/about/company/_components/about-record-section";
+import { FreeConsultSection } from "@/app/(main)/about/company/_components/free-consult-section";
+import { InstagramSection } from "@/app/(main)/about/company/_components/instagram-section";
+import { LogoSliderSection } from "@/app/(main)/about/company/_components/logo-slider-section";
+import { OurPositioningSection } from "@/app/(main)/about/company/_components/our-positioning-section";
+import { ReviewSection } from "@/app/(main)/about/company/_components/review-section";
+import { SystemSection } from "@/app/(main)/about/company/_components/system-section";
+import { WhatWeDoSection } from "@/app/(main)/about/company/_components/what-we-do-section";
+import { WhatsOurNextSection } from "@/app/(main)/about/company/_components/whats-our-next-section";
 
 export default function AboutCompanyPage() {
   return (

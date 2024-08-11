@@ -1,6 +1,6 @@
-import { AuditionDetail } from "@/components/audition/audition-detail";
 import { auditionRepository, queryKeys } from "@/services/audition";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
+import { AuditionDetail } from "./_components/audition-detail";
 
 type Context = {
   params: {

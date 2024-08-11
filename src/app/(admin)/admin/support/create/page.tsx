@@ -1,5 +1,5 @@
+import { SupportForm } from "@/app/(admin)/admin/support/create/_components/support-form";
 import { AdminPageTitle } from "@/components/admin/admin-page-title";
-import { SupportForm } from "@/components/admin/support-form";
 
 export default function AdminSupportCreatePage() {
   return (
