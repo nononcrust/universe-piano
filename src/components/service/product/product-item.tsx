@@ -21,7 +21,7 @@ export const ProductItem = ({ href, product }: ProductItemProps) => {
   const shouldHidePrice = product.isPriceHidden && !session;
 
   return (
-    <Link href={href} className="flex cursor-pointer flex-col gap-2 pb-4">
+    <Link href={href} className="flex cursor-pointer flex-col gap-2">
       <AspectRatio ratio={1} className="overflow-hidden rounded-2xl border">
         <Image
           src={storage.getFileUrl(product.thumbnailUrl)}

@@ -24,93 +24,57 @@ import logo6 from "@/assets/images/consulting/consulting-6.png";
 import logo8 from "@/assets/images/consulting/consulting-8.png";
 import logo9 from "@/assets/images/consulting/consulting-9.png";
 import { SectionTitle } from "@/components/shared/section-title";
+import { Aos } from "@/components/ui/aos";
 import "keen-slider/keen-slider.min.css";
-import { KeenSliderOptions, useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
 
 export const LogoSliderSection = () => {
   return (
-    <section className="my-32">
-      <SectionTitle>역대 합격 학교 리스트</SectionTitle>
-      <div className="mt-12">
-        <ConsultingLogoSlider />
-      </div>
-    </section>
+    <Aos className="my-32">
+      <section className="container">
+        <SectionTitle>역대 합격 학교 리스트</SectionTitle>
+        <div className="mt-12">
+          <LogoGroup />
+        </div>
+      </section>
+    </Aos>
   );
 };
 
-const logos1 = [logo1, logo2, logo3, logo4, logo5, logo6, logo8, logo23, logo24];
+const LOGO_GROUP = [
+  logo1,
+  logo2,
+  logo3,
+  logo4,
+  logo5,
+  logo6,
+  logo8,
+  logo23,
+  logo24,
+  logo9,
+  logo10,
+  logo11,
+  logo12,
+  logo13,
+  logo14,
+  logo15,
+  logo16,
+  logo17,
+  logo18,
+  logo19,
+  logo20,
+  logo21,
+  logo22,
+];
 
-const logos2 = [logo9, logo10, logo11, logo12, logo13, logo14, logo15];
-
-const logos3 = [logo16, logo17, logo18, logo19, logo20, logo21, logo22];
-
-const animation = {
-  duration: 25000,
-  easing: (t: number) => t,
-};
-
-const sliderOptions = {
-  loop: true,
-  renderMode: "performance",
-  drag: false,
-  slides: { perView: "auto" },
-  created(s) {
-    s.moveToIdx(5, true, animation);
-  },
-  updated(s) {
-    s.moveToIdx(s.track.details.abs + 5, true, animation);
-  },
-  animationEnded(s) {
-    s.moveToIdx(s.track.details.abs + 5, true, animation);
-  },
-} satisfies KeenSliderOptions;
-
-export const ConsultingLogoSlider = () => {
-  const [ltrRef] = useKeenSlider({
-    ...sliderOptions,
-  });
-
-  const [rtlRef] = useKeenSlider({
-    ...sliderOptions,
-    rtl: true,
-  });
-
+const LogoGroup = () => {
   return (
-    <div className="flex flex-col">
-      <div ref={ltrRef} className="keen-slider">
-        {[...logos1, ...logos1].map((logo, index) => (
-          <div
-            key={index}
-            className="keen-slider__slide flex items-center justify-center"
-            style={{ minWidth: 200, maxWidth: 200, height: 160 }}
-          >
-            <Image className="w-[160px]" src={logo} alt="" priority />
-          </div>
-        ))}
-      </div>
-      <div ref={rtlRef} className="keen-slider">
-        {[...logos2, ...logos2].map((logo, index) => (
-          <div
-            key={index}
-            className="keen-slider__slide flex items-center justify-center"
-            style={{ minWidth: 200, maxWidth: 200, height: 160 }}
-          >
-            <Image className="w-[160px]" src={logo} alt="" priority />
-          </div>
-        ))}
-      </div>
-      <div ref={ltrRef} className="keen-slider">
-        {[...logos3, ...logos3].map((logo, index) => (
-          <div
-            key={index}
-            className="keen-slider__slide flex items-center justify-center"
-            style={{ minWidth: 200, maxWidth: 200, height: 160 }}
-          >
-            <Image className="w-[160px]" src={logo} alt="" priority />
-          </div>
-        ))}
-      </div>
+    <div className="grid grid-cols-2 md:grid-cols-6">
+      {LOGO_GROUP.map((logo, index) => (
+        <div key={index} className="flex min-h-[100px] items-center justify-center">
+          <Image unoptimized src={logo} alt="유니버스 크루 로고" width={160} height={160} />
+        </div>
+      ))}
     </div>
   );
 };

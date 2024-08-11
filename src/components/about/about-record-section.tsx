@@ -18,8 +18,8 @@ export const AboutRecordSection = () => {
             value={<CountUp end={100} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
           />
           <AboutRecordItem
-            title="장학금 수여"
-            value={<CountUp end={65} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
+            title="장학금 최소 수령율"
+            value={<CountUp end={50} duration={2} suffix="%" enableScrollSpy useEasing={false} />}
           />
           <AboutRecordItem
             title="연간 장학금 증액"
@@ -29,7 +29,7 @@ export const AboutRecordSection = () => {
           />
           <AboutRecordItem
             title="컨설팅 경력"
-            value={<CountUp end={5} duration={2} suffix=" yrs" enableScrollSpy useEasing={false} />}
+            value={<CountUp end={6} duration={2} suffix=" yrs" enableScrollSpy useEasing={false} />}
           />
         </div>
         {/* <div className="flex justify-center">

@@ -132,7 +132,7 @@ const ProductInfoSection = () => {
         )}
         {/* TODO: 임시 링크 삭제  */}
         {product.category.name === CATEGORY.PARTIAL_CONSULTING && (
-          <div className="flex flex-col items-center pb-[120px]">
+          <div className="flex flex-col items-center pb-[120px] pt-24">
             <div className="rounded-full bg-content-light p-4">
               <ColoredIcon.Support className="size-8" />
             </div>

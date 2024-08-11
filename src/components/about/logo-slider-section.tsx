@@ -18,83 +18,49 @@ import logo9 from "@/assets/images/about/universe-logo-9.png";
 import { SectionSubtitle } from "@/components/shared/section-subtitle";
 import { SectionTitle } from "@/components/shared/section-title";
 import "keen-slider/keen-slider.min.css";
-import { KeenSliderOptions, useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
+import { Aos } from "../ui/aos";
 
 export const LogoSliderSection = () => {
   return (
-    <section className="mb-24 mt-36">
-      <SectionTitle>역대 유니버스 크루</SectionTitle>
-      <SectionSubtitle>전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다.</SectionSubtitle>
-      <div className="mt-12">
-        <AboutLogoSlider />
-      </div>
-    </section>
+    <Aos className="mb-24 mt-36">
+      <section className="container">
+        <SectionTitle>역대 유니버스 크루</SectionTitle>
+        <SectionSubtitle>전국의 음대생들이 유니버스 피아노와 함께 하고 있습니다.</SectionSubtitle>
+        <div className="mt-12 flex justify-center">
+          <LogoGroup />
+        </div>
+      </section>
+    </Aos>
   );
 };
 
-const LOGO_GROUP_1 = [logo1, logo2, logo3, logo4, logo5, logo6, logo8];
+const LOGO_GROUP = [
+  logo1,
+  logo2,
+  logo3,
+  logo4,
+  logo5,
+  logo6,
+  logo8,
+  logo9,
+  logo10,
+  logo11,
+  logo12,
+  logo13,
+  logo14,
+  logo15,
+  logo16,
+];
 
-const LOGO_GROUP_2 = [logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16];
-
-const animation = {
-  duration: 25000,
-  easing: (t: number) => t,
-};
-
-const sliderOptions = {
-  loop: true,
-  renderMode: "performance",
-  drag: false,
-  slides: { perView: "auto" },
-  created(s) {
-    s.moveToIdx(5, true, animation);
-  },
-  updated(s) {
-    s.moveToIdx(s.track.details.abs + 5, true, animation);
-  },
-  animationEnded(s) {
-    s.moveToIdx(s.track.details.abs + 5, true, animation);
-  },
-} satisfies KeenSliderOptions;
-
-export const AboutLogoSlider = () => {
-  const [rtlRef] = useKeenSlider({
-    ...sliderOptions,
-  });
-
-  const [ltrRef] = useKeenSlider({
-    ...sliderOptions,
-    rtl: true,
-  });
-
-  const logos = [...LOGO_GROUP_1, ...LOGO_GROUP_1, ...LOGO_GROUP_1];
-  const logos2 = [...LOGO_GROUP_2, ...LOGO_GROUP_2, ...LOGO_GROUP_2];
-
+const LogoGroup = () => {
   return (
-    <div>
-      <div ref={rtlRef} className="keen-slider">
-        {logos.map((logo, index) => (
-          <div
-            key={index}
-            className="keen-slider__slide"
-            style={{ minWidth: 180, maxWidth: 180, height: 160 }}
-          >
-            <Image src={logo} width={160} height={160} alt="" priority />
-          </div>
-        ))}
-      </div>
-      <div ref={ltrRef} className="keen-slider">
-        {logos2.map((logo, index) => (
-          <div
-            key={index}
-            className="keen-slider__slide"
-            style={{ minWidth: 180, maxWidth: 180, height: 160 }}
-          >
-            <Image src={logo} width={160} height={160} alt="" priority />
-          </div>
-        ))}
-      </div>
+    <div className="grid grid-cols-3 md:grid-cols-5">
+      {LOGO_GROUP.map((logo, index) => (
+        <div key={index} className="flex items-center justify-center">
+          <Image unoptimized src={logo} alt="유니버스 크루 로고" width={160} height={160} />
+        </div>
+      ))}
     </div>
   );
 };
