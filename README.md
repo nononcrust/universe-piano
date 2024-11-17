@@ -1,10 +1,8 @@
-<a href="https://universe-piano.com">
-  <img alt="유니버스 피아노 - 미국 음대 입시를 위한 모든 것" src="https://raw.githubusercontent.com/nononcrust/universe-piano/main/public/images/og-image.jpg">
-  <h1 align="center">유니버스 피아노</h1>
-</a>
+<img alt="유니버스 피아노 - 미국 음대 입시를 위한 모든 것" src="https://raw.githubusercontent.com/nononcrust/universe-piano/main/public/images/og-image.jpg">
+<h1 align="center">유니버스 피아노</h1>
 
 <p align="center">
-  유니버스 피아노 공식 홈페이지
+  유니버스 피아노 공식 홈페이지 (~2024.09)
 </p>
 
 <p align="center">
